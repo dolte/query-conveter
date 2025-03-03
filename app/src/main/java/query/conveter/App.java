@@ -8,7 +8,7 @@ public class App {
     static String createLocation = "D:\\kosmos\\query-conveter\\app\\src\\main\\java\\query\\conveter\\";
     static String xmlLocation = "D:\\\\kosmos\\\\query-conveter\\\\app\\\\src\\\\main\\\\resources\\\\";
     static String filePath = "D:\\kosmos\\spring-example\\demo\\src\\main\\resources\\static\\miplatform\\java\\bra\\";
-    static String fileName = "bra01_s01_1";
+    static String fileName = "bra01_s02_2";
     
         public static void main(String[] args) {
     
@@ -66,6 +66,7 @@ public class App {
         result.append("package query.conveter;\n\n");
         result.append("import java.io.FileWriter;\n");
         result.append("import java.io.IOException;\n\n");
+        result.append("import com.github.vertical_blank.sqlformatter.core.FormatConfig;\n");
         result.append("import com.github.vertical_blank.sqlformatter.SqlFormatter;\n\n");
         result.append("public class ").append(className).append("_Generated {\n\n");
 
@@ -113,13 +114,13 @@ public class App {
 
                 // startLine부터 endLine까지의 모든 코드 포함
                 for (int i = startLine; i <= endLine; i++) {
-                    result.append(methodLines[i]).append("\n");
+                    result.append(convertParams(methodLines[i])).append("\n");
                 }
 
                 // query 출력문 추가
                 result.append("        String xml =\"\";\n");
                 result.append("        xml += \"<select id=\\\"SQL").append(methodName.trim()).append("\\\" parameterType=\\\"\\\" resultType=\\\"\\\">\\n\";\n");
-                result.append("        xml += SqlFormatter.format(query);\n");
+                result.append("        xml += SqlFormatter.format(query, FormatConfig.builder().indent(\"\\t\").build());\n");
                 result.append("        xml += \"\\n</select>\\n\" ;\n\n");
                 result.append("        return xml;\n\n");
                 result.append("    }\n\n");
@@ -150,5 +151,31 @@ public class App {
         result.append("}\n");
 
         return result.toString();
+    }
+
+    public static String convertParams(String input) {
+        // 정규 표현식 패턴: ":"로 시작하고, "_"가 포함된 단어 찾기 
+        Pattern pattern = Pattern.compile(":(\\w+)");
+        Matcher matcher = pattern.matcher(input);
+        
+        StringBuffer result = new StringBuffer();
+        while (matcher.find()) {
+            String original = matcher.group(1); // CHG_NUM, CHG_DAY 등
+            String converted = "#{" + toCamelCase(original) + "}";
+            matcher.appendReplacement(result, converted);
+        }
+        matcher.appendTail(result);
+        
+        return result.toString();
+    }
+    
+    private static String toCamelCase(String input) {
+        String[] parts = input.split("_");
+        StringBuilder camelCaseString = new StringBuilder(parts[0].toLowerCase());
+        for (int i = 1; i < parts.length; i++) {
+            camelCaseString.append(Character.toUpperCase(parts[i].charAt(0)))
+                           .append(parts[i].substring(1).toLowerCase());
+        }
+        return camelCaseString.toString();
     }
 }
