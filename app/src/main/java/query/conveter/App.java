@@ -5,10 +5,14 @@ import java.util.*;
 import java.util.regex.*;
 
 public class App {
-    static String createLocation = "D:\\kosmos\\query-conveter\\app\\src\\main\\java\\query\\conveter\\";
-    static String xmlLocation = "D:\\\\kosmos\\\\query-conveter\\\\app\\\\src\\\\main\\\\resources\\\\";
-    static String filePath = "D:\\kosmos\\spring-example\\demo\\src\\main\\resources\\static\\miplatform\\java\\bra\\";
-    static String fileName = "bra01_s02_2";
+    //static String createLocation = "D:\\kosmos\\query-conveter\\app\\src\\main\\java\\query\\conveter\\";
+    //static String xmlLocation = "D:\\\\kosmos\\\\query-conveter\\\\app\\\\src\\\\main\\\\resources\\\\";
+    //static String filePath = "D:\\kosmos\\spring-example\\demo\\src\\main\\resources\\static\\miplatform\\java\\bra\\";
+
+    static String createLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/java/query/conveter/";
+    static String xmlLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/resources/";
+    static String filePath = "/Users/pp01713/cursor-workspace/kosomos-demo/src/main/resources/static/miplatform/java/bra/";
+    static String fileName = "bra01_s01_1";
     
         public static void main(String[] args) {
     
