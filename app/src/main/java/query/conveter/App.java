@@ -12,7 +12,7 @@ public class App {
     static String createLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/java/query/conveter/";
     static String xmlLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/resources/";
     static String filePath = "/Users/pp01713/cursor-workspace/kosmos-demo/src/main/resources/static/miplatform/java/bra/";
-    static String fileName = "bra04_r04_1";
+    static String fileName = "bra01_s01";
     
         public static void main(String[] args) {
     
