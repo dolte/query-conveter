@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra04_s02" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="OCR&#32;입금정보&#32;UPLOAD" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_OCRBody">
+				<Contents>
+					<colinfo id="OCR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCR_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAKE_ORG" size="256" summ="default" type="STRING"/>
+					<colinfo id="IRN_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptOCRSum">
+				<Contents>
+					<colinfo id="PROC_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_OCRTrailer">
+				<Contents>
+					<colinfo id="OCR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECORD_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="FINAL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FINAL_TRANS_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_OCRHeader">
+				<Contents>
+					<colinfo id="DATA_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCR_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptInput">
+				<Contents>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptErr">
+				<Contents>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_CTENT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_closingYn">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptIn">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<static BKColor="whitesmoke" Height="80" Id="grb1" Left="16" TabOrder="19" Text="시작정보" Top="72" Type="Groupbox" Width="320"></static>
+		<Shape BKColor="white" Bottom="112" Height="24" Id="Shape3" Left="127" LineColor="user3" Right="336" TabOrder="25" Top="88" Type="Rectangle" Width="209"></Shape>
+		<Shape BKColor="white" Bottom="139" Height="24" Id="Shape1" Left="127" LineColor="user3" Right="336" TabOrder="26" Top="115" Type="Rectangle" Width="209"></Shape>
+		<static BKColor="whitesmoke" Height="80" Id="static0" Left="344" TabOrder="18" Text="처리내역" Top="72" Type="groupbox" Width="616"></static>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="5" TabStop="FALSE" Top="19" Width="1012"></Image>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static2" Left="32" Style="box_tx" TabOrder="3" Text="시작시간" Top="88" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static3" Left="32" Style="box_tx" TabOrder="3" Text="종료시간" Top="115" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static5" Left="360" Style="box_tx" TabOrder="4" Text="처리건수" Top="88" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static6" Left="360" Style="box_tx" TabOrder="4" Text="생성건수" Top="115" VAlign="Middle" Width="96"></Static>
+		<File Bottom="48" Height="24" Id="fil_OCR" Left="872" Right="896" TabOrder="9" Top="24" Width="24"></File>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="3" TabStop="FALSE" Top="19" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="428" TabOrder="6" TabStop="FALSE" Top="34" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="444" Style="tx_left_bold" TabOrder="9" Text="처리기간" Top="33" VAlign="Middle" Width="56"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_OCRProc" ImageID="C_btn_90" Left="672" LeftMargin="23" OnClick="btn_OCRProc_OnClick" Style="edit" TabOrder="7" TabStop="FALSE" Text="&#32;처리시작" Top="29" TopMargin="1" Width="90"></Button>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" FocusIndex="0" Height="20" Id="cal_PROC_DAY" Left="512" LeftMargin="8" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="2" ToolTipText="처리기간" Top="29" Width="102"></Calendar>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1038" TabOrder="4" TabStop="FALSE" Top="19" Width="10"></Image>
+		<Edit BKColor="user13" Border="Flat" BorderColor="user10" Height="20" Id="edt_FileName" Left="110" MaxLength="10" Readonly="TRUE" Style="edit" TabOrder="1" ToolTipText="파일명" Top="30" Width="186"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_SearchFile" ImageID="C_btn_70" Left="304" LeftMargin="23" OnClick="btn_SearchFile_OnClick" Style="edit" TabOrder="8" TabStop="FALSE" Text="&#32;찾기" Top="30" TopMargin="1" Width="71"></Button>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_StartTime" Left="131" Mask="####-##-##&#32;##:##:##" NullValue="&#32;" Readonly="TRUE" TabOrder="9" TabStop="FALSE" Top="90" Type="STRING" Width="172"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_EndTime" Left="131" Mask="####-##-##&#32;##:##:##" NullValue="&#32;" Readonly="TRUE" TabOrder="10" TabStop="FALSE" Top="117" Type="STRING" Width="172"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_CntRead" Left="459" NullValue="&#32;" Readonly="TRUE" TabOrder="11" TabStop="FALSE" Top="90" Width="172"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_CntInst" Left="459" NullValue="&#32;" Readonly="TRUE" TabOrder="12" TabStop="FALSE" Top="117" Width="172"></MaskEdit>
+		<FileDialog Bottom="48" Height="24" Id="fdg_OCR" Left="840" Right="864" TabOrder="33" Top="24" Width="24"></FileDialog>
+		<Tab Height="621" Id="tab_Rept" Left="16" TabOrder="13" Top="163" Width="1016">
+			<Contents>
+				<TabPage BorderColor="black" Height="592" Id="tab_Result" ImageID="C_tab" Left="2" TabOrder="39" Text="정상처리" Top="27" Width="1012">
+					<Grid BindDataset="ds_ReptInput" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="586" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="570" Id="grd_ReptResult" InputPanel="FALSE" Left="6" LineColor="silver" OnHeadClick="tab_Rept_tab_Result_grd_ReptResult_OnHeadClick" Right="1006" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="16" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1000">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="63"/>
+									<col width="74"/>
+									<col width="57"/>
+									<col width="89"/>
+									<col width="95"/>
+									<col width="81"/>
+									<col width="66"/>
+									<col width="57"/>
+									<col width="75"/>
+									<col width="73"/>
+									<col width="72"/>
+									<col width="66"/>
+									<col width="80"/>
+									<col width="80"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="센터"/>
+									<cell col="1" color="user12" display="text" text="입금일자"/>
+									<cell col="2" color="user12" display="text" text="입금순번"/>
+									<cell col="3" color="user12" display="text" text="업소코드"/>
+									<cell col="4" color="user12" display="text" text="업소&#32;명"/>
+									<cell col="5" color="user12" display="text" text="사원"/>
+									<cell col="6" color="user12" display="text" text="입금원금"/>
+									<cell col="7" color="user12" display="text" text="사용료"/>
+									<cell col="8" color="user12" display="text" text="가산금"/>
+									<cell col="9" color="user12" display="text" text="수수료"/>
+									<cell col="10" color="user12" display="text" text="징수시작월"/>
+									<cell col="11" color="user12" display="text" text="징수종료월"/>
+									<cell col="12" color="user12" display="text" text="영수일자"/>
+									<cell col="13" color="user12" display="text" text="지로년월"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="DEPT_NM" display="text"/>
+									<cell align="center" col="1" colid="REPT_DAY" display="date" Mask="yyyy/MM/dd"/>
+									<cell align="center" col="2" colid="REPT_NUM" display="text"/>
+									<cell align="center" col="3" colid="UPSO_CD" display="text"/>
+									<cell col="4" colid="UPSO_NM" display="text"/>
+									<cell col="5" colid="STAFF_CD" display="text"/>
+									<cell align="right" col="6" colid="REPT_AMT" display="number"/>
+									<cell align="right" col="7" colid="TOT_USE_AMT" display="number"/>
+									<cell align="right" col="8" colid="TOT_ADDT_AMT" display="number"/>
+									<cell align="right" col="9" colid="COMIS" display="number"/>
+									<cell align="center" col="10" colid="START_YRMN" display="text" Mask="####/##"/>
+									<cell align="center" col="11" colid="END_YRMN" display="text" Mask="####/##"/>
+									<cell align="center" col="12" colid="RECV_DAY" display="date" Mask="yyyy/MM/dd"/>
+									<cell align="center" col="13" colid="DEMD_YRMN" display="text" Mask="####/##"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="592" Id="tab_Summary" ImageID="C_tab" Left="2" TabOrder="39" Text="에러처리" Top="27" Width="1012">
+					<Grid BindDataset="ds_ReptErr" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="586" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="570" Id="grd_ReptResult" InputPanel="FALSE" Left="6" LineColor="silver" OnHeadClick="tab_Rept_tab_Summary_grd_ReptResult_OnHeadClick" Right="1006" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="16" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1000">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="63"/>
+									<col width="74"/>
+									<col width="57"/>
+									<col width="89"/>
+									<col width="68"/>
+									<col width="66"/>
+									<col width="75"/>
+									<col width="73"/>
+									<col width="72"/>
+									<col width="66"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="센터"/>
+									<cell col="1" color="user12" display="text" text="입금일자"/>
+									<cell col="2" color="user12" display="text" text="입금순번"/>
+									<cell col="3" color="user12" display="text" text="업소코드"/>
+									<cell col="4" color="user12" display="text" text="업소&#32;명"/>
+									<cell col="5" color="user12" display="text" text="입금원금"/>
+									<cell col="6" color="user12" display="text" text="사용료"/>
+									<cell col="7" color="user12" display="text" text="수수료"/>
+									<cell col="8" color="user12" display="text" text="징수시작월"/>
+									<cell col="9" color="user12" display="text" text="징수종료월"/>
+									<cell col="10" color="user12" display="text" text="영수일자"/>
+									<cell col="11" color="user12" display="text" text="지로년월"/>
+									<cell col="12" color="user12" display="text" text="오류내용"/>
+									<cell col="13" color="user12" display="text" text="처리업소"/>
+									<cell col="14" color="user12" display="text" text="처리결과"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="DEPT_NM" display="text"/>
+									<cell align="center" col="1" colid="REPT_DAY" display="date" Mask="yyyy/MM/dd"/>
+									<cell align="center" col="2" colid="REPT_NUM" display="text"/>
+									<cell align="center" col="3" colid="UPSO_CD" display="text"/>
+									<cell col="4" colid="UPSO_NM" display="text"/>
+									<cell align="right" col="5" colid="REPT_AMT" display="number"/>
+									<cell align="right" col="6" colid="TOT_USE_AMT" display="number"/>
+									<cell align="right" col="7" colid="COMIS" display="number"/>
+									<cell align="center" col="8" colid="START_YRMN" display="text" Mask="####/##"/>
+									<cell align="center" col="9" colid="END_YRMN" display="text" Mask="####/##"/>
+									<cell align="center" col="10" colid="RECV_DAY" display="date" Mask="yyyy/MM/dd"/>
+									<cell align="center" col="11" colid="DEMD_YRMN" display="text" Mask="####/##"/>
+									<cell col="12" colid="ERR_CTENT" display="text"/>
+									<cell col="13" display="text"/>
+									<cell col="14" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static1" Left="656" Style="box_tx" TabOrder="21" Text="전표생성건수" Top="88" VAlign="Middle" Width="96"></Static>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_CntOCR" Left="755" NullValue="&#32;" Readonly="TRUE" TabOrder="14" Top="90" Width="172"></MaskEdit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static4" Left="656" Style="box_tx" TabOrder="21" Text="체크발생건수" Top="115" VAlign="Middle" Width="96"></Static>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_CntCheck" Left="755" NullValue="&#32;" Readonly="TRUE" TabOrder="15" Top="117" Width="172"></MaskEdit>
+		<Shape BKColor="white" Bottom="112" Height="24" Id="Shape4" Left="455" LineColor="user3" Right="657" TabOrder="27" Top="88" Type="Rectangle" Width="202"></Shape>
+		<Shape BKColor="white" Bottom="112" Height="24" Id="Shape2" Left="751" LineColor="user3" Right="953" TabOrder="28" Top="88" Type="Rectangle" Width="202"></Shape>
+		<Shape BKColor="white" Bottom="139" Height="24" Id="Shape5" Left="455" LineColor="user3" Right="657" TabOrder="29" Top="115" Type="Rectangle" Width="202"></Shape>
+		<Shape BKColor="white" Bottom="139" Height="24" Id="Shape6" Left="751" LineColor="user3" Right="953" TabOrder="30" Top="115" Type="Rectangle" Width="202"></Shape>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="38" TabOrder="16" TabStop="FALSE" Top="34" Width="11"></Image>
+		<Static Height="15" Id="Static7" Left="59" Style="tx_left_bold" TabOrder="32" Text="파일명" Top="34" Width="40"></Static>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	this.cal_PROC_DAY.Value = today();
+	this.edt_FileName.Text = "C:\\KOMCA\\";
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+	
+	if (srvId == "ReptOCR") {
+
+		this.mae_EndTime.Text   = getDate();
+		this.mae_CntRead.Value  = this.ds_ReptOCRSum.GetColumn(0, "PROC_CNT");
+		this.mae_CntOCR.Value   = this.ds_ReptOCRSum.GetColumn(0, "NOTE_CNT");
+		this.mae_CntInst.Value  = this.ds_ReptOCRSum.GetColumn(0, "REPT_CNT");
+		this.mae_CntCheck.Value = this.ds_ReptOCRSum.GetColumn(0, "ERR_CNT" );
+		
+		gfn_SetStatusMsg("마감작업이 완료되었습니다!");
+	}
+
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //엑셀
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New() 
+{
+	this.ds_ReptOCRSum.ClearData();
+	this.ds_ReptInput.ClearData();
+	this.ds_ReptErr.ClearData();
+	this.ds_OCRHeader.ClearData();
+	this.ds_OCRBody.ClearData();
+	this.ds_OCRTrailer.ClearData();
+
+	this.mae_StartTime.Value = "";
+	this.mae_EndTime.Value   = "";
+	this.mae_CntRead.Value   = "";
+	this.mae_CntOCR.Value    = "";
+	this.mae_CntInst.Value   = "";
+	this.mae_CntCheck.Value  = "";
+	this.cal_PROC_DAY.Value  = "";
+	
+}
+function fn_search() 
+{
+	this.ds_ReptIn.ClearData();
+	this.ds_ReptIn.AddRow();
+	this.ds_ReptIn.SetColumn(0, "REPT_DAY", this.cal_PROC_DAY.Value);
+	gfn_AsyncCall("ReptOCRSelect","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001007&EVENTID=rept_ocr_select","S=ds_ReptIn","ds_ReptInput=SEL1 ds_ReptErr=SEL2","","fn_CallBack");
+}
+function fn_Save() {}
+function fn_Add() {}
+function fn_Delete() {}
+function fn_Print() {}
+function fn_Excel() 
+{
+	if (this.tab_Rept.TabIndex == 0) {
+		if (gfn_Confirm("MB_YESNO", "[OCR 정상처리 내역]을 엑셀로 저장할까요?", "경고", "0") == "6") {
+			this.tab_Rept.tab_Result.grd_ReptResult.ExportExcelEX("OCR 정상처리 내역");
+		}
+	}
+	else {
+		if (gfn_Confirm("MB_YESNO", "[OCR 오류 내역]을 엑셀로 저장할까요?", "경고", "0") == "6") {
+			this.tab_Rept.tab_Summary.grd_ReptResult.ExportExcelEX("OCR 오류내역");
+		}
+	}
+}
+
+function fn_ProcOCRData()
+{
+	// file length check
+	var fileSize = this.fil_OCR.GetLength();
+
+	if ( fileSize < 0 || !this.fil_OCR.Open("r")) 
+	{
+        gfn_Confirm("MB_OK", "화일을 open 하지 못했습니다.!!", "경고", "0");
+		return;
+	}
+
+
+/*	
+	// file 형식 check
+	if (fileSize % 120 != 0) 
+	{
+        gfn_Confirm("MB_OK", "화일형식이 맞지않습니다, DownLoad한 화일을 확인하세요!!", "경고", "0");
+		return;
+	}
+*/	
+
+	var sCont = this.fil_OCR.Read();
+	var vArr = sCont.split("\n");
+
+	gfn_SetStatusMsg("입금처리 진행중....");
+	
+	this.mae_StartTime.Value = getDate();
+	this.mae_EndTime.Value = "";
+
+	
+	// DataSet 초기화
+	this.ds_ReptOCRSum.ClearData();
+	this.ds_ReptInput.ClearData();
+	this.ds_ReptErr.ClearData();
+	this.ds_OCRHeader.ClearData();
+	this.ds_OCRBody.ClearData();
+	this.ds_OCRTrailer.ClearData();
+
+	var dsIdx = 0;
+	var gbn = "";
+	var startYRMN = "";
+	var endYRMN = "";
+
+	for (var i=0; i<length(vArr); i++)
+	{
+		gbn = trim(Midb(vArr[i], 0,  2));
+
+		// header 
+		if (gbn == "11") {
+			this.ds_OCRHeader.AddRow();
+
+			this.ds_OCRHeader.SetColumn(0, "DATA_GBN" , gbn); 							// Data 구분코드 : 11
+			this.ds_OCRHeader.SetColumn(0, "ORG_CODE" , trim(Midb(vArr[i],  2,  9))); 	// 기관코드 : 구분코드(2) + 지로번호(7)
+			this.ds_OCRHeader.SetColumn(0, "OCR_GBN"  , trim(Midb(vArr[i], 11,  1))); 	// M : MICR, O:일반 OCR Q: 정액 OCR
+			this.ds_OCRHeader.SetColumn(0, "ACCN_NUM" , trim(Midb(vArr[i], 12,  5))); 	// 계좌번호 앞 5자리 
+			this.ds_OCRHeader.SetColumn(0, "OCR_DAY"  , trim(Midb(vArr[i], 17,  8))); 	// 이체일자 : yyyymmdd
+		}
+		// body
+		else if (gbn == "22") {
+			this.ds_OCRBody.AddRow();
+			this.ds_OCRBody.SetColumn(dsIdx, "OCR_GBN"     , trim(Midb(vArr[i],  0,  2))); // Data 구분코드
+			this.ds_OCRBody.SetColumn(dsIdx, "OCR_SEQ"     , trim(Midb(vArr[i],  2,  7))); // 일련번호
+			this.ds_OCRBody.SetColumn(dsIdx, "RECV_DAY"    , trim(Midb(vArr[i],  9,  8))); // 수납일자
+			this.ds_OCRBody.SetColumn(dsIdx, "REPT_DAY"    , trim(Midb(vArr[i], 17,  8))); // 이체일자
+			this.ds_OCRBody.SetColumn(dsIdx, "RECV_BANK_CD", trim(Midb(vArr[i], 25,  7))); // 수납점 코드
+			this.ds_OCRBody.SetColumn(dsIdx, "MAKE_ORG"    , trim(Midb(vArr[i], 32,  7))); // 정보 작성점
+			this.ds_OCRBody.SetColumn(dsIdx, "IRN_NO"      , trim(Midb(vArr[i], 39, 12))); // 색인번호
+			this.ds_OCRBody.SetColumn(dsIdx, "CLIENT_NUM"  , trim(Midb(vArr[i], 51, 13))); // 고객조회번호
+
+			// 시작년월
+			startYRMN = trim(Midb(vArr[i], 64,  3));
+			if (toInteger("201" + startYRMN) > toInteger(substr(today(), 0, 6))) {
+				startYRMN = "200" + startYRMN;
+			}
+			else {
+				startYRMN = "201" + startYRMN;
+			}
+			
+			endYRMN = trim(Midb(vArr[i], 67,  3));
+			if (toInteger("201" + endYRMN) > toInteger(substr(today(), 0, 6))) {
+				endYRMN = "200" + endYRMN;
+			}
+			else {
+				endYRMN = "201" + endYRMN;
+			}
+
+			this.ds_OCRBody.SetColumn(dsIdx, "START_YRMN", startYRMN); 					 // 시작년월
+			this.ds_OCRBody.SetColumn(dsIdx, "END_YRMN"  , endYRMN); 					 // 종료년월
+			this.ds_OCRBody.SetColumn(dsIdx, "REPT_AMT"  , trim(Midb(vArr[i], 71, 13))); // 금액
+			this.ds_OCRBody.SetColumn(dsIdx, "RECV_GBN"  , trim(Midb(vArr[i], 84,  1))); // 수납구분
+			this.ds_OCRBody.SetColumn(dsIdx, "COMIS"     , trim(Midb(vArr[i], 85,  4))); // 지로수수료
+			this.ds_OCRBody.SetColumn(dsIdx, "PROC_GBN"  , trim(Midb(vArr[i], 89,  1))); // 장표 처리구분
+			this.ds_OCRBody.SetColumn(dsIdx, "INSPRES_ID", gv_USER_ID);
+
+			dsIdx = dsIdx + 1;
+		}
+		// trailer
+		else if (gbn == "33") {
+			this.ds_OCRTrailer.AddRow();
+			this.ds_OCRTrailer.SetColumn(0, "OCR_GBN"        , trim(Mid(vArr[i],  0,  2)));    	//Data 구분코드
+			this.ds_OCRTrailer.SetColumn(0, "RECORD_CNT"     , trim(Mid(vArr[i],  2,  7)));    	//합계 Record 수   
+			this.ds_OCRTrailer.SetColumn(0, "REPT_CNT"       , trim(Mid(vArr[i],  9,  7)));    	//합계 건수  
+			this.ds_OCRTrailer.SetColumn(0, "REPT_AMT"       , trim(Mid(vArr[i], 16, 14)));    	//합계 금액
+			this.ds_OCRTrailer.SetColumn(0, "COMIS"          , trim(Mid(vArr[i], 30, 14)));    	//합계 수수료
+			this.ds_OCRTrailer.SetColumn(0, "FINAL_AMT"      , trim(Mid(vArr[i], 44, 14)));    	//합계 입금 정정금액
+			this.ds_OCRTrailer.SetColumn(0, "FINAL_TRANS_AMT", trim(Mid(vArr[i], 58, 14)));    	//합계 이체금액
+		}
+	}
+	this.fil_OCR.Close();
+
+	//trace(this.ds_OCRBody.SaveXML());
+	/*
+	    로그처리
+	*/
+//trace(ds_OCRBody.SaveXML() );
+    gfn_syncCall("loginfo_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=loginfo_select","S=ds_ReptInput:N","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	gfn_AsyncCall("ReptOCR","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001007&EVENTID=rept_ocr_insert","S=ds_OCRBody","ds_ReptOCRSum=SEL2 ds_ReptInput=SEL3 ds_ReptErr=SEL4","","fn_CallBack");
+
+	this.mae_CntRead.Value = this.ds_ReptOCRSum.GetColumn(0, "READ_CNT");
+	this.mae_CntInst.Value = this.ds_ReptOCRSum.GetColumn(0, "INST_CNT");
+
+	//trace("===========================================");
+	//trace(this.ds_OCRHeader.SaveXML());			
+	//trace("===========================================");
+	//trace(this.ds_OCRBody.SaveXML());
+	//trace("===========================================");
+	//trace(this.ds_OCRTrailer.SaveXML());
+}
+
+
+function btn_SearchFile_OnClick(obj)
+{
+	this.fdg_OCR.filter = "청구데이터 (GR15) 파일|GR15*";
+	this.fdg_OCR.Open();
+	this.fil_OCR.FileName = this.fdg_OCR.FilePath + "\\" + this.fdg_OCR.FileName;
+	this.edt_FileName.Text = this.fil_OCR.FileName;
+
+	var fileDay = "20" + substr(this.fil_OCR.FileName, indexOf(this.fil_OCR.FileName, "GR15") + 4, 6);
+	this.cal_PROC_DAY.Value = fileDay;
+}
+
+function btn_OCRProc_OnClick(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_ReptIn.ClearData();
+	this.ds_ReptIn.AddRow();
+	this.ds_ReptIn.SetColumn(0, "REPT_DAY", this.cal_PROC_DAY.Value );
+
+	gfn_syncCall("rept_closing","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001007&EVENTID=rept_closing","S=ds_ReptIn","ds_closingYn=SEL1","","fn_CallBack");
+	if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+        gfn_Confirm("MB_OK", "해당기간중 마감내역이 존재합니다. 마감내역을 확인하세요.", "경고", "0");
+		return;
+	}
+	
+	var sMsg = this.cal_PROC_DAY.Text + " 에 대한 입금처리를 진행하시겠습니까? ";
+	if (confirm (sMsg) == true)
+	{
+		fn_ProcOCRData();
+	}
+	else
+	{
+		return;
+	}
+}
+
+function tab_Rept_tab_Result_grd_ReptResult_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(obj,  nCell);
+}
+
+function tab_Rept_tab_Summary_grd_ReptResult_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(obj,  nCell);
+}
+]]></Script>
+</Window>

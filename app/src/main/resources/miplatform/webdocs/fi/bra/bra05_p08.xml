@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="Goso_Request" Left="8" OnLoadCompleted="Goso_Request_OnLoadCompleted" PidAttrib="7" Title="고소&#32;미해결&#32;내역서" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_CompIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUDG_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_ZIP" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_DAY></END_DAY>
+						<FROM_ZIP></FROM_ZIP>
+						<JUDG_CD></JUDG_CD>
+						<START_DAY></START_DAY>
+						<TO_ZIP></TO_ZIP>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Goso_List">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Sawon_Static">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Cd">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>미해결</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>기소중지</value>
+					</record>
+					<record>
+						<code>3</code>
+						<value>기소유예</value>
+					</record>
+					<record>
+						<code>4</code>
+						<value>구약식</value>
+					</record>
+					<record>
+						<code>5</code>
+						<value>전체</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Rcase">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>A</code>
+						<value>고소일자별</value>
+					</record>
+					<record>
+						<code>B</code>
+						<value>담당자별</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="70" Id="Image21" ImageID="C_search2_left" Left="8" TabOrder="12" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="70" Id="Image4" ImageID="C_search2_bg" Left="18" OnClick="Image0_OnClick" TabOrder="13" TabStop="FALSE" Top="12" Width="1015"></Image>
+		<Image Height="70" Id="Image3" ImageID="C_search2_right" Left="1029" TabOrder="14" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Static Height="15" Id="Static1" Left="34" Style="tx_left_bold" TabOrder="8" Text="센터명" Top="55" Width="70"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="16" TabOrder="8" TabStop="FALSE" Top="55" Width="11"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="16" TabOrder="9" TabStop="FALSE" Top="28" Width="19"></Image>
+		<Static Height="15" Id="Static0" Left="34" Style="tx_left_bold" TabOrder="11" Text="고소&#32;기간" Top="28" Width="62"></Static>
+		<Static Height="16" Id="Static3" Left="404" Style="tx_left_bold" TabOrder="13" Text="구&#32;&#32;&#32;&#32;분" Top="28" Width="47"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="386" TabOrder="10" TabStop="FALSE" Top="28" Width="19"></Image>
+		<Combo BindDataset="ds_CompIn" BKColor="user13" CodeColumn="code" Column="JUDG_CD" DataColumn="value" Height="20" Id="cob_gubun" InnerDataset="ds_Cd" Left="471" TabOrder="3" ToolTipText="구분" Top="24" Width="113"></Combo>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="386" TabOrder="11" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Height="16" Id="Static4" Left="403" Style="tx_left_bold" TabOrder="15" Text="우편번호" Top="54" Width="56"></Static>
+		<Static Height="8" Id="Static5" Left="525" TabOrder="16" Text="~" Top="54" Width="12"></Static>
+		<Radio BKColor="whitesmoke" CodeColumn="code" ColumnCount="2" DataColumn="value" Height="20" Id="rad_UPSO_STAT" INDEX="1" InnerDataset="ds_Rcase" Left="680" OnChanged="edt_zip1_OnChanged" Style="radio" TabOrder="4" Top="24" Width="232">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="95"/>
+				<Layout code="2" height="18" left="110" text="가등록" top="0" width="95"/>
+			</Contents>
+		</Radio>
+		<Combo BKColor="user13" Height="20" Id="cob_BRAN_CD" ImeMode="none" Left="104" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="5" ToolTipText="센터명" Top="50" Width="120"></Combo>
+		<Static Height="6" Id="Static2" Left="209" TabOrder="17" Text="~" Top="30" Width="8"></Static>
+		<Calendar BKColor="user13" Border="Flat" BorderColor="user3" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Month2" Left="221" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="2" ToolTipText="고소기간_E" Top="24" Value="TODAY" Width="104"></Calendar>
+		<Calendar BKColor="user13" Border="Flat" BorderColor="user3" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Month1" Left="104" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="1" ToolTipText="고소기간_S" Top="24" Value="TODAY" Width="104"></Calendar>
+		<ubiviewer Bottom="794" Height="706" Id="ubi0" Left="8" Right="1040" Top="88" Width="1032">
+			<_PersistData>&#13;&#10;/6ye+gYX/wAAAQCpagAA9/hIAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<MaskEdit BindDataset="ds_CompIn" BKColor="user13" Border="Flat" BorderColor="user3" Column="FROM_ZIP" Height="20" Id="edt_zip1" Left="471" Mask="#####" MaxLength="6" TabOrder="6" ToolTipText="우편번호_S" Top="50" Type="STRING" Value="MaskEdit0" Width="49"></MaskEdit>
+		<MaskEdit BindDataset="ds_CompIn" BKColor="user13" Border="Flat" BorderColor="user3" Column="TO_ZIP" Height="20" Id="edt_zip2" Left="539" Mask="#####" TabOrder="7" ToolTipText="우편번호_E" Top="50" Type="STRING" Value="MaskEdit0" Width="49"></MaskEdit>
+		<Grid AutoEnter="TRUE" AutoEnterType="Key" BindDataset="ds_Goso_List" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="832" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="72" Id="grd_Goso_List" InputPanel="FALSE" Left="520" LineColor="silver" OnCellClick="grd_NONPY_OnCellClick" OnCellDBLClick="grd_NONPY_OnCellDblClick" OnHeadClick="grd_NONPY_OnHeadClick" Right="1032" RowHeight="20" Style="grid" TabOrder="22" TabStop="FALSE" Top="760" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="512">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="73"/>
+						<col width="126"/>
+						<col width="78"/>
+						<col width="137"/>
+						<col width="118"/>
+						<col width="70"/>
+						<col width="87"/>
+						<col width="117"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="고소일자"/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="등급"/>
+						<cell col="3" color="user12" display="text" text="월정료"/>
+						<cell col="4" color="user12" display="text" text="업소명"/>
+						<cell align="center" col="5" color="user12" display="text" text="구분"/>
+						<cell col="6" color="user12" display="text" text="업주명"/>
+						<cell col="7" color="user12" display="text" text="전화번호"/>
+						<cell col="8" color="user12" display="text" text="대상기간"/>
+						<cell col="9" color="user12" display="text" text="고소금액"/>
+						<cell col="10" color="user12" display="text" text="담당사원"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="SUBSTR(ACCU_DAY,0,4)+&apos;/&apos;+substr(ACCU_DAY,4,2)+&apos;/&apos;+substr(ACCU_DAY,6,2)"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell align="center" col="2" colid="GRADNM" display="text"/>
+						<cell align="center" col="3" colid="MONPRNCFEE" display="number"/>
+						<cell align="center" col="4" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="5" colid="GUBUN" display="text"/>
+						<cell align="center" col="6" colid="MNGEMSTR_NM" display="text"/>
+						<cell align="center" col="7" colid="UPSO_PHON" display="text"/>
+						<cell align="center" col="8" display="text" expr="substr(YRMN,0,4)+&apos;/&apos;+substr(YRMN,4,2)+&apos;&#32;~&#32;&apos;+substr(YRMN,11,4)+&apos;/&apos;+substr(YRMN,15,2)"/>
+						<cell align="center" col="9" colid="TOT_AMT" display="number"/>
+						<cell align="center" col="10" colid="STAFF_NM" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" colspan="9" display="text">
+							<cell col="0" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="1" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="2" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="3" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="4" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="5" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="6" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell col="7" color="user12" display="text" font="굴림,9,Bold"/>
+							<cell align="right" col="8" color="user12" display="text" font="굴림,9,Bold" text="합계&#32;:&#32;"/>
+						</cell>
+						<cell align="left" col="9" color="user12" display="number" expr="SUM(&apos;TOT_AMT&apos;)" font="굴림,9,Bold"/>
+						<cell align="right" col="10" color="user12" display="text" expr="&apos;총&#32;&apos;+COUNT(&apos;UPSO_CD&apos;)+&apos;건&apos;" font="굴림,9,Bold"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoEnterType="Key" BindDataset="ds_Sawon_Static" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="832" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="72" Id="grd_Sawon_Static" InputPanel="FALSE" Left="16" LineColor="silver" OnCellClick="grd_NONPY_OnCellClick" OnCellDBLClick="grd_NONPY_OnCellDblClick" OnHeadClick="grd_NONPY_OnHeadClick" Right="528" RowHeight="20" Style="grid" TabOrder="23" TabStop="FALSE" Top="760" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="512">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="73"/>
+						<col width="126"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="건수"/>
+						<cell col="1" color="user12" display="text" text="고소금액"/>
+						<cell col="2" color="user12" display="text" text="구분"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CNT" display="number"/>
+						<cell align="center" col="1" colid="TOT_AMT" display="number"/>
+						<cell align="center" col="2" colid="NAME" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+               * 프로그램명   :   bra05_p08 고소미해결 내역서
+               * 작  성  자   :    	윤지환
+               * 작  성  일   : 	2009
+               * 설      명   :		고소의뢰내역 중 해결된 업소를 보여준다.
+               * 수정일1      : 	
+               * 수정자       : 	
+               * 수정내용     : 설명 부여(여러줄 사용가능)	
+               * 수정일2      : 	
+               * 수정자       :	
+               * 수정내용     : 	
+               * 수정일3      : 	
+               * 수정자       : 	
+               * 수정내용     :	
+*/
+
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+/*
+	 * 기      능 : 	페이지가 처음 호출시 센터데이터와 고소기간, 우편번호를 그 날로 호출한다.
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function Goso_Request_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+
+	this.cal_Month1 = today();
+	this.cal_Month2 = today();
+
+	this.rad_UPSO_STAT.Value = "A";
+	this.cob_gubun.Value = '4';
+
+	
+//임시
+	this.cal_Month1.Value = substr(today(),0,6) + '01';
+	this.cal_Month2.Value = today();
+//	this.cob_BRAN_CD.Value = 'A';
+	this.edt_zip1.Value = "00000";
+	this.edt_zip2.Value = "99999";
+
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+/*
+	 * 기      능 :  신규/조회/저장/삭제/엑셀/출력/닫기 버튼 중 원하는 기능을 구현한다.[조회 구현]
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+  
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function fn_Excel()
+{
+	if(ds_Goso_List.count== 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+	this.grd_Goso_List.ExportExcelEX("고소미해결내역서");
+	this.grd_Sawon_Static.ExportExcelEX("구분별");
+}
+
+function fn_Search(){
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;	
+	
+	//우편번호 검사
+	if(length(this.edt_zip1.Value) !=5){
+		gfn_Confirm("MB_OK", "우편번호 5자리를 입력하세요.", "경고", "0");
+		this.edt_zip1.SetFocus();
+		return;
+	}
+	if(length(this.edt_zip2.Value ) !=5){
+		gfn_Confirm("MB_OK", "우편번호 5자리를 입력하세요.", "경고", "0");
+		this.edt_zip2.SetFocus();
+		return;
+	}
+	
+	// 기간 유효성 검사
+	var start_yrmn = this.cal_Month1.Value;
+	var end_yrmn = this.cal_Month2.Value;
+
+	if (!fn_checkTerm(start_yrmn, end_yrmn)) {
+		gfn_Confirm("MB_OK", "시작기간이 종료기간보다 큽니다.", "경고", "0");	
+		this.cal_Month2.SetFocus();
+		return;
+	}
+
+	// 우편번호 유효성 검사
+	var start_zip = this.edt_zip1.Value;
+	var end_zip = this.edt_zip2.Value;
+
+	if (!fn_checkTerm(start_zip, end_zip)) {
+		gfn_Confirm("MB_OK", "시작우편번호가 종료우편번호보다 큽니다.", "경고", "0");	
+		this.edt_zip2.SetFocus();
+		return;
+	}
+
+	if(this.cal_Month1.Text == null or this.cal_Month1.Text == ""){
+		gfn_Confirm("MB_OK", "시작년월을 입력하세요.", "경고", "0");
+		return;
+	}
+	if(this.cal_Month2.Text == null or this.cal_Month2.Text == ""){
+		gfn_Confirm("MB_OK", "종료년월을 입력하세요.", "경고", "0");
+		return;
+	}
+	if(this.cob_BRAN_CD.Text=="" or this.cob_BRAN_CD.Text == null){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return;
+	}
+	if(this.edt_zip1.Text == "" or this.edt_zip2.Text == ""){
+		gfn_Confirm("MB_OK", "우편번호를 입력하세요 입력하세요.", "경고", "0");
+		return;
+	}
+
+	this.ds_CompIn.SetColumn(0,"BRAN_CD"   ,this.cob_BRAN_CD.Value) ;	
+	this.ds_CompIn.SetColumn(0,"START_DAY" ,this.cal_Month1.Value) ;	
+	this.ds_CompIn.SetColumn(0,"END_DAY"   ,this.cal_Month2.Value) ;
+
+	gfn_syncCall("Acuse_states_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002002&EVENTID=accu_unsol_list","S=ds_CompIn","ds_Goso_List=SEL1 ds_Sawon_Static=SEL2","","fn_CallBack");
+	//trace(ds_CompIn.SaveXML());
+	//trace(ds_Goso_List.SaveXML());
+	ubi0.SetArgument("START_DAY",this.cal_Month1.Text );
+	ubi0.SetArgument("END_DAY",this.cal_Month2.Text );
+	ubi0.SetArgument("BRAN_CD",this.cob_BRAN_CD.Text);
+	ubi0.SetArgument("JUDG_CD",this.rad_UPSO_STAT.Text);
+	ubi0.SetArgument("VALUE",this.rad_UPSO_STAT.Text);
+	ubi0.SetDataset("sql_Goso_List","ds_Goso_List");
+	ubi0.SetDataset("sql_Sawon_Static","ds_Sawon_Static");
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+		
+	if(this.rad_UPSO_STAT.Value == 'A'){
+		ubi0.setJrfFileName("bra05_p08.jrf");
+	}
+	else if(this.rad_UPSO_STAT.Value == 'B'){
+		ubi0.setJrfFileName("bra05_p08_.jrf");
+	}
+	ubi0.Retrieve();
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "Acuse_states_Search") {
+		gfn_SetStatusMsg(ds_Goso_List.count + " 건이 조회되었습니다.");
+	}
+}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

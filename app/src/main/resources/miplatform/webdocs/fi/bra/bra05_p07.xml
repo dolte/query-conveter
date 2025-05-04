@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="Goso_Request" Left="8" OnLoadCompleted="Goso_Request_OnLoadCompleted" PidAttrib="7" Title="고소의뢰내역&#32;대비&#32;해결현황" Top="8" Ver="1.0" Width="1058" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_CompIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_YRMN></END_YRMN>
+						<START_YRMN></START_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_goso_request">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_AMT" size="256" summ="default" type="INT"/>
+					<colinfo id="JUDG_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="7" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="6" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="6" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" Left="116" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="24" Width="145"></Combo>
+		<Static Height="15" Id="Static1" Left="58" Style="tx_left_bold" TabOrder="5" Text="센터명" Top="28" Width="70"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="43" TabOrder="4" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="350" TabOrder="9" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="363" Style="tx_left_bold" TabOrder="10" Text="고소&#32;기간" Top="28" Width="58"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_Month2" Left="564" LeftMargin="12" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="3" ToolTipText="고소기간_E" Top="24" Width="102"></Calendar>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_Month" Left="438" LeftMargin="12" OnKillFocus="cal_Month_OnKillFocus" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="고소기간_S" Top="24" Width="102"></Calendar>
+		<Static Height="15" Id="Static2" Left="541" TabOrder="11" Text="&#32;~" Top="28" Width="21"></Static>
+		<ubiviewer Bottom="793" Height="730" Id="ubi0" Left="8" Right="1040" Top="63" Width="1032">
+			<_PersistData>&#13;&#10;/6yzSm9Y/wAAAQCpagAAd3NLAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+	</Form>
+	<Script><![CDATA[/*
+               * 프로그램명   :   bra05_p07- 고소의뢰내역 대비 해결현황
+               * 작  성  자   :    	윤지환
+               * 작  성  일   : 	2009
+               * 설      명   :		고소의뢰내역 중 해결된 업소를 보여준다.
+               * 수정일1      : 	
+               * 수정자       : 	
+               * 수정내용     : 설명 부여(여러줄 사용가능)	
+               * 수정일2      : 	
+               * 수정자       :	
+               * 수정내용     : 	
+               * 수정일3      : 	
+               * 수정자       : 	
+               * 수정내용     :	
+*/
+
+
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+var sum; //해결 건수의 합
+
+
+/*
+	 * 기      능 : 	페이지가 처음 호출시 센터데이터와 고소기간을 그 날로 호출한다.
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function Goso_Request_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+
+	this.cal_Month = today();
+	this.cal_Month2 = today();
+
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+/*
+	 * 기      능 :  신규/조회/저장/삭제/엑셀/출력/닫기 버튼 중 원하는 기능을 구현한다.[조회 구현]
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+  
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+
+function fn_Search(){
+	if (!gfn_CheckFormNull(this)) return;
+	if(this.cob_BRAN_CD.Text=="") 
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return;
+	}
+	else if(this.cal_Month.Value=="" or this.cal_month2.Value=="")
+	{
+		gfn_Confirm("MB_OK", "고소일자를 확인하세요.", "경고", "0");
+		return;
+	}
+	
+	this.ds_CompIn.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);	
+	this.ds_CompIn.SetColumn(0, "START_YRMN", substr(this.cal_Month.Value, 0, 6));	
+	this.ds_CompIn.SetColumn(0, "END_YRMN", substr(this.cal_Month2.Value, 0, 6));
+	gfn_syncCall("sync_Acuse_states_Search", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006002002&EVENTID=accu_sol_list", "S=ds_CompIn","ds_Goso_request=SEL1", "", "fn_CallBack");
+//trace(ds_CompIn.SaveXML());
+	//trace(ds_Accuse.SaveXML());
+	
+// 해결 금액이 있는 건수를 기억한다.
+	sum = 0;
+	for(var i =0; i<ds_Goso_request.RowCount(); i++){
+		if(ds_Goso_request.GetColumn(i, "SOL_AMT") >0){
+			sum = sum+1;
+		}
+	}
+	fn_UbiConnect();
+	
+}
+/*
+	 * 기      능 :  //UBI리포트 연결
+	 * 인      수 : 
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_UbiConnect() {
+	ubi0.SetArgument("MONTH1", substr(this.cal_Month.Text,0,7));		//고소기간 시작
+	ubi0.SetArgument("MONTH2", substr(this.cal_month2.Text,0,7));		//고소기간 종료
+	ubi0.SetArgument("BRAN_CD", this.cob_BRAN_CD.Text);					//업소명	
+	ubi0.SetArgument("sum", sum );										//해결건수 
+	ubi0.SetDataset("sql_goso", "ds_Goso_request");
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra05_p07.jrf");
+	ubi0.Retrieve();
+}
+
+/*
+			 * 기      능 :  process builder를 실행 후 결과를 나타낸다.
+			 * 인      수 :  srvId : process builder를 
+			 * Return    : 	Return Value	
+			 * 예      시 : 센터명이 변경시에 자동적으로 인자가 전달된다.
+*/
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "sync_Acuse_states_Search") {
+		gfn_SetStatusMsg(ds_goso_request.count + " 건이 조회되었습니다.");
+	}
+}
+
+
+/*
+	 * 기      능 :  시작일자와 종료 일체크
+	 * 인      수 :  
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cal_Month_OnKillFocus(obj)
+{
+	if(this.cal_Month.Value >  this.cal_Month2.Value)
+	{
+		gfn_Confirm("MB_OK", "시작일자는 종료일자보다 클 수 없습니다.", "경고", "0");
+		return;
+	}
+}
+/*
+	 * 기      능 :  로그인한 아이디에 따라 권한을 다르게 준다.
+	 * 인      수 :  
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);	
+}
+]]></Script>
+</Window>

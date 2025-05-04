@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="OCRCancelList" Left="8" OnLoadCompleted="OCRCancelList_OnLoadCompleted" PidAttrib="7" Title="지로취소업소내역서" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_OCRCancelList">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="HAN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="4" TabStop="FALSE" Top="12" Width="990"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="2" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1014" TabOrder="3" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="40" TabOrder="4" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="56" Style="tx_left_bold" TabOrder="5" Text="센터명" Top="27" VAlign="Middle" Width="52"></Static>
+		<Edit Height="21" Id="edt_UPSO_CD" Left="577" TabOrder="5" TabStop="FALSE" Top="763" Visible="FALSE" Width="121"></Edit>
+		<Edit Height="21" Id="edt_UPSO_NM" Left="720" TabOrder="6" TabStop="FALSE" Top="763" Visible="FALSE" Width="121"></Edit>
+		<Edit Height="21" Id="edt_GRADNM" Left="864" TabOrder="6" TabStop="FALSE" Top="760" Visible="FALSE" Width="121"></Edit>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="112" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="24" Width="109"></Combo>
+		<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_OCRCancelList" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="768" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="696" Id="grd_OCRCancelList" InputPanel="FALSE" Left="16" LineColor="silver" MultiSelect="TRUE" OnExpandEdit="grd_Off_Upso_List_OnExpandEdit" Right="1021" RowHeight="20" Style="grid" TabOrder="10" TabStop="FALSE" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1005">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="160"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="400"/>
+						<col width="110"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="업소&#32;명"/>
+						<cell col="2" color="user12" display="text" text="경영주명"/>
+						<cell col="3" color="user12" display="text" text="업종"/>
+						<cell col="4" color="user12" display="text" text="주소"/>
+						<cell col="5" color="user12" display="text" text="담당사원"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell col="1" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="2" colid="MNGEMSTR_NM" display="text"/>
+						<cell align="center" col="3" colid="GRADNM" display="text"/>
+						<cell col="4" colid="UPSO_ADDR" display="text"/>
+						<cell align="center" col="5" colid="HAN_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function OCRCancelList_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	gfn_SetPermission(this.cob_BRAN_CD.value);
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New   () {}
+function fn_Search() 
+{
+	this.ds_In.ClearData();
+	this.ds_In.AddRow();
+	
+	this.ds_In.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	gfn_syncCall("GetOCRCancelList","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009006&EVENTID=ocr_cancle_list","S=ds_In","ds_OCRCancelList=SEL1","","fn_CallBack");
+}
+
+function fn_Save  () {}
+function fn_Excel () 
+{
+	if(this.ds_OCRCancelList.count == 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+    this.grd_OCRCancelList.ExportExcelEx("지로취소업소내역서");
+}
+function fn_Delete() {}
+function fn_Print () {}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

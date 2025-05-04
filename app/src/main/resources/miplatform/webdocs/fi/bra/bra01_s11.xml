@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra01_s11" Left="8" OnLoadCompleted="bra01_s11_OnLoadCompleted" OnSize="bra01_s11_OnSize" PidAttrib="7" Title="계산서발급요청서" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset CanColumnChange="ds_list_CanColumnChange" DataSetType="Dataset" Id="ds_list" OnColumnChanged="ds_list_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPTN_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_BRE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISSUE_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BILL_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_COMPL_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISSADD_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BILL_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPTN_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEL_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOMCA_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BILL_KND" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUPPBSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUPPBSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPTN_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dupcheck" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DUPCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_BRE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_COMPL_YN_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_demd_recv">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iss_compl_yn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>N</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>0</CODE_CD>
+						<CODE_NM>N</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>Y</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bill_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="808" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="704" Id="grd_result" InputPanel="FALSE" Left="8" LineColor="silver" OnChar="grd_result_OnChar" OnExpandEdit="grd_result_OnExpandEdit" OnHeadDBLClick="grd_result_OnHeadDblClick" Right="1039" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="35"/>
+						<col width="35"/>
+						<col width="43"/>
+						<col width="86"/>
+						<col width="63"/>
+						<col width="63"/>
+						<col width="70"/>
+						<col width="180"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="200"/>
+						<col width="170"/>
+						<col width="73"/>
+						<col width="73"/>
+						<col width="69"/>
+						<col width="136"/>
+						<col width="250"/>
+						<col width="60"/>
+						<col width="35"/>
+						<col width="7"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" expr='&quot;발행\n신청&quot;'/>
+						<cell col="2" color="user12" display="text" expr='&quot;발행\n완료&quot;' text="완료"/>
+						<cell col="3" color="user12" display="text" text="구분"/>
+						<cell col="4" color="user12" display="text" text="구분1"/>
+						<cell col="5" color="user12" display="text" text="센터명"/>
+						<cell col="6" color="user12" display="text" text="담당자명"/>
+						<cell col="7" color="user12" display="text" text="업소코드"/>
+						<cell col="8" color="user12" display="text" text="업소명"/>
+						<cell col="9" color="user12" display="text" text="계산서번호"/>
+						<cell col="10" color="user12" display="text" text="거래처코드"/>
+						<cell col="11" color="user12" display="text" text="거래처명"/>
+						<cell col="12" color="user12" display="text" text="내역"/>
+						<cell col="13" color="user12" display="text" text="전체금액"/>
+						<cell col="14" color="user12" display="text" text="협회금액"/>
+						<cell col="15" color="user12" display="text" text="청구일자"/>
+						<cell col="16" color="user12" display="text" text="공급자"/>
+						<cell col="17" color="user12" display="text" text="비고"/>
+						<cell col="18" color="user12" display="text" text="발급구분"/>
+						<cell col="19" color="user12" display="text" text="삭제"/>
+						<cell col="20" color="user12" display="text" text="청구번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text" expr="currow&#32;+&#32;1"/>
+						<cell col="1" colid="ISSADD_YN" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="checkbox" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;&#32;,&quot;none&quot;,&quot;checkbox&quot;)'/>
+						<cell align="center" col="2" colid="ISS_COMPL_YN" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' combocol="CODE_CD" combodataset="ds_iss_compl_yn" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="3" colid="BILL_GBN" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' combocol="CODE_CD" combodataset="ds_demd_recv" combotext="CODE_NM" display="combo" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;&#32;,&quot;none&quot;,&quot;combo&quot;)'/>
+						<cell align="center" col="4" colid="BILL_KND" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' combocol="CODE_CD" combodataset="ds_bill_gbn" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="5" colid="BRAN_NM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell align="center" col="6" colid="STAFF_NM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell align="center" bkcolor="user13" col="7" colid="UPSO_CD" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text" edit='expr:iif(getrowtype(currow)&#32;==&#32;&quot;insert&quot;,&quot;normal&quot;,&quot;none&quot;)' expandimage="rbt_search01" expandshow='expr:iif(getrowtype(currow)&#32;==&#32;&quot;insert&quot;,&quot;true&quot;,&quot;false&quot;)' expandsize="20"/>
+						<cell bkcolor="user13" col="8" colid="UPSO_NM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell col="9" colid="BILL_NUM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell align="center" bkcolor="user13" col="10" colid="BSCON_CD" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text" expandsize="20"/>
+						<cell align="left" bkcolor="user13" col="11" colid="BSCONHAN_NM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell align="left" col="12" colid="ISS_BRE" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;&#32;,&quot;none&quot;,&quot;normal&quot;)'/>
+						<cell align="right" col="13" colid="ISS_AMT" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="number" limit="10"/>
+						<cell align="right" bkcolor="user13" col="14" colid="KOMCA_AMT" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="number" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;&#32;,&quot;none&quot;,&quot;number&quot;)' limit="10"/>
+						<cell bkcolor="user13" col="15" colid="ISS_DAY" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="date" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;&#32;,&quot;none&quot;,&quot;date&quot;)' Mask="yyyy/MM/dd"/>
+						<cell col="16" colid="SUPPBSCON_NM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell align="left" col="17" colid="REMAK" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;&#32;,&quot;none&quot;,&quot;normal&quot;)' limit="150"/>
+						<cell col="18" colid="APPTN_GBN" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+						<cell col="19" colid="DEL_CHK" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="checkbox" edit='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;none&quot;,&#32;&quot;checkbox&quot;)'/>
+						<cell col="20" colid="DEMD_NUM" color='expr:iif(ISS_COMPL_YN==&quot;2&quot;,&quot;deeppink&quot;,&quot;&quot;)' display="text"/>
+					</body>
+					<summary>
+						<cell col="0" colspan="6" display="text"/>
+						<cell align="center" col="6" display="text" font="굴림,10,Bold" text="계"/>
+						<cell align="right" col="7" display="number" expr='COUNT(&quot;UPSO_CD&quot;)' font="굴림,9,Bold" Mask="###,###&#32;건" text="계"/>
+						<cell align="right" col="8" display="number" expr='SUM(&quot;ISS_AMT&quot;)' font="굴림,9,Bold" Mask="###,###,###,###&#32;원"/>
+						<cell align="center" col="9" display="text" font="굴림,10,Bold" text="협회&#32;계"/>
+						<cell align="right" col="10" display="number" expr='SUM(&quot;IIF(SUPPBSCON_CD&#32;==&#32;&apos;KOMCA&apos;,&#32;1,&#32;0)&quot;)' font="굴림,9,Bold" Mask="###,###&#32;건" text="계"/>
+						<cell align="right" col="11" display="number" expr='SUM(&quot;IIF(SUPPBSCON_CD&#32;==&#32;&apos;KOMCA&apos;,&#32;KOMCA_AMT,&#32;0)&quot;)' font="굴림,9,Bold" Mask="###,###,###,###&#32;원"/>
+						<cell col="12" colspan="9" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="13" Id="st_label" Left="8" TabOrder="2" Text="*&#32;[개별발급]신청&#32;시&#32;청구정보가&#32;없는&#32;업소는&#32;월정료가&#32;표시되며,&#32;저장&#32;후&#32;위수탁계산서가&#32;자동생성됩니다." Top="85" Width="575"></Static>
+		<Static Color="red" Height="13" Id="Static0" Left="680" TabOrder="3" Text="*&#32;조회&#32;후에는&#32;신규버튼을&#32;눌러야&#32;발행년월을&#32;변경할&#32;수&#32;있습니다." Top="85" Width="352"></Static>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="11" TabStop="FALSE" Top="8" Width="1015"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="9" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image1" ImageID="C_search_left" Left="8" TabOrder="14" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="29" TabOrder="7" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="48" Style="tx_left_bold" TabOrder="8" Text="센터명" Top="24" Width="48"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="98" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="4" ToolTipText="센터명" Top="19" Width="109"></Combo>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="240" TabOrder="8" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="19" Id="Static1" Left="256" Style="tx_left_bold" TabOrder="10" Text="발행년월" Top="24" Width="64"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="21" Id="cal_Yrmn" Left="320" LeftMargin="15" OnChanged="cal_Yrmn_OnChanged" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="5" ToolTipText="발행년월" Top="21" Width="102"></Calendar>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="448" TabOrder="15" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="19" Id="Static2" Left="464" Style="tx_left_bold" TabOrder="16" Text="청구일자" Top="24" Width="64"></Static>
+		<Calendar AutoIncrement="1" Dateformat="yyyy/MM/dd" FocusIndex="2" Height="21" Id="cal_ISS_DAY" Left="535" LeftMargin="7" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="6" Top="19" Width="102"></Calendar>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_groupIssue" ImageID="C_btn_90" Left="650" LeftMargin="23" OnClick="btn_groupIssue_OnClick" Style="edit" TabOrder="12" TabStop="FALSE" Text="단체발급" Top="19" TopMargin="1" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_oneIssue" ImageID="C_btn_90" Left="746" LeftMargin="23" OnClick="btn_oneIssue_OnClick" Style="edit" TabOrder="13" TabStop="FALSE" Text="개별발급" Top="19" TopMargin="1" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del" ImageID="C_btn_70" Left="951" LeftMargin="23" OnClick="btn_del_OnClick" Style="edit" TabOrder="18" TabStop="FALSE" Text="삭제" Top="19" TopMargin="1" Visible="FALSE" Width="71"></Button>
+		<Shape BKColor="user7" Bottom="104" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1039" TabOrder="19" Top="101" Type="Rectangle" Width="1031"></Shape>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="edt_upso_cd" ImeMode="none" Left="784" LeftMargin="2" MaxLength="8" OnChar="edt_upso_cd_OnChar" OnKeyDown="edt_UPSO_CD_OnKeyDown" Style="edit" TabOrder="20" ToolTipText="업소코드" Top="57" UseIME="FALSE" Width="80"></Edit>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="675" TabOrder="21" TabStop="FALSE" Top="61" Width="12"></Image>
+		<Static Height="15" Id="Static3" Left="691" Style="tx_left_bold" TabOrder="22" Text="업소코드&#32;필터" Top="61" Width="82"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_filter" ImageID="C_btn_70" Left="875" LeftMargin="26" OnClick="btn_filter_OnClick" Style="edit" TabOrder="23" TabStop="FALSE" Text="필터" Top="56" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_unfilter" ImageID="C_btn_70" Left="952" LeftMargin="26" OnClick="btn_unfilter_OnClick" Style="edit" TabOrder="24" TabStop="FALSE" Text="해제" Top="56" TopMargin="1" Width="71"></Button>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="edt_bscon_cd" ImeMode="none" Left="576" LeftMargin="2" MaxLength="8" OnKeyDown="edt_bscon_cd_OnKeyDown" Style="edit" TabOrder="25" ToolTipText="업소코드" Top="57" UseIME="FALSE" Width="80"></Edit>
+		<Static Height="15" Id="Static4" Left="443" Style="tx_left_bold" TabOrder="27" Text="거래처코드(비고추가)" Top="61" Width="132"></Static>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="427" TabOrder="26" TabStop="FALSE" Top="61" Width="12"></Image>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var checked = false;  //발행신청 유무 => ISSADD_YN
+
+function bra01_s11_OnLoadCompleted(obj)
+{
+    ds_search.AddRow();
+	gfn_LoadForm(obj);
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	cal_Yrmn.Value = today();
+	cal_ISS_DAY.Value = today();
+	
+	bra01_s11_OnSize();
+	
+	gfn_PubCode("ds_demd_recv",2,"00216"); 
+	gfn_PubCode("ds_bill_gbn",2,"00283"); 
+
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	if(gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100")
+	{
+		btn_del.Visible = true;
+		btn_groupIssue.Enable = true;
+	}
+	else
+	{
+		btn_del.Visible = false;
+		btn_groupIssue.Enable = false;
+	}
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }    
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function fn_New()
+{
+	cal_Yrmn.Enable = true;
+	ds_list.ClearData();
+	ds_dupcheck.ClearData();
+}
+
+//조회
+function fn_Search()
+{
+	fn_New();
+	
+    if(!gfn_changeAction("SEARCH", "ds_list")) return;
+    
+    gfn_syncCall("bra01_s11_select01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=sel_bill_iss","S=ds_search","ds_list=SEL1","","fn_CallBack", gv_TraceLog, gv_formid);
+    
+    cal_Yrmn.Enable = false;
+    
+    var komca_count = 0;
+    var komca_amt = 0;
+    
+    for(var i = 0; i < ds_list.rowcount; i++)
+    {
+		if(ds_list.GetColumn(i, "SUPPBSCON_CD") == "KOMCA")
+		{
+			komca_count = komca_count + 1;
+			komca_amt = komca_amt + parseInt(ds_list.GetColumn(i, "KOMCA_AMT"));
+		}
+    }
+    
+    //grd_result.SetCellProp("summ", 9, "expr", komca_count);
+    //grd_result.SetCellProp("summ", 10, "expr", komca_amt);
+}
+
+//저장
+function fn_Save()
+{
+    if(!gfn_CheckFormNull(this)) return;
+    
+    if(!confirm("저장하시겠습니까?"))
+    {
+        return;
+    }
+
+    if (substr(this.cal_Yrmn.Value,0,6) != substr(this.cal_ISS_DAY.Value,0,6)) 
+    {
+		gfn_Confirm("MB_OK", "발행년월과 청구일자의 월이 일치 하지 않습니다.", "경고", "0");
+        return;
+    }
+	
+    gfn_syncCall("bra01_s11_save01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=mng_bill_iss","S=ds_list:U S1=ds_search","","","fn_CallBack");        
+    fn_Search();
+}
+
+//엑셀출력
+function fn_Excel()
+{
+    grd_result.ExportExcelEx("계산서발급");
+}
+
+//삭제
+function fn_Delete()
+{
+    // 센터관리부가 아니면 삭제 불가 2017/12/27 이다섭
+    if(gds_sessioninfo.GetColumn(0, "BRAN_CD") != "AL")
+    {
+        gfn_Confirm("MB_OK", "삭제할수 없습니다. 센터업무팀에 문의하세요.", "경고", "0");
+        return;
+    }
+    //계산서 생성 후 발행 전 에도 회계팀 문의 2017/12/11 이다섭
+    else if(ds_list.GetColumn(ds_list.currow,"ISS_COMPL_YN") == "2" || ds_list.GetColumn(ds_list.currow,"ISS_COMPL_YN") == "1")
+    {
+		gfn_Confirm("MB_OK", "이미 계산서가 생성되었습니다. 회계팀에 문의하세요", "경고", "0");
+		return;
+    }
+    
+    if(confirm("삭제하시겠습니까?"))
+    {
+        ds_list.DeleteRow(ds_list.currow);
+        gfn_syncCall("bra01_s11_delete","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=mng_bill_iss","S=ds_list:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+    }
+}
+
+//단체발급
+function btn_groupIssue_OnClick(obj)
+{
+	ds_list.ClearData();
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if(cob_BRAN_CD.Value == "AL")
+	{
+        gfn_Confirm("MB_OK", "센터관리팀은 단체발급신청할수 없습니다.", "경고", "0");
+        return;
+    }
+    
+    if (substr(this.cal_Yrmn.Value,0,6) != substr(this.cal_ISS_DAY.Value,0,6))
+    {
+       gfn_Confirm("MB_OK", "발행년월과 청구일자의 월이 일치 하지 않습니다.", "경고", "0");
+        return;
+    }    
+	ds_search.SetColumn(0,"BRAN_CD"    , this.cob_BRAN_CD.Value);
+	ds_search.SetColumn(0,"ISS_DAY"    , this.cal_ISS_DAY.Value);
+	ds_search.SetColumn(0, "APPTN_YRMN", substr(cal_Yrmn.Value, 0, 6));
+	
+	if(!confirm("계산서 단체발급 데이터를 생성하시겠습니까?"))
+	{
+		return;
+	}
+	gfn_syncCall("bra01_s11_groupDupCheck","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=chk_group_bill","S=ds_search","ds_dupcheck=SEL1","","fn_CallBack");
+	//trace(ds_dupcheck.SaveXML());
+	if(ds_dupcheck.GetColumn(0, "ISS_COMPL_YN_CNT") != "0")
+	{
+        gfn_Confirm("MB_OK", "발급완료된 데이터가 있습니다. 신청할수 없습니다.", "경고", "0");
+	    return;
+	}
+	
+	if(ds_dupcheck.GetColumn(0,"DUPCNT") != "0")
+	{
+	    if(confirm(substr(cal_Yrmn.Value,0,4)+"년"+substr(cal_Yrmn.Value,4,2)+"월에 이미 발행 신청한 데이타가 존재합니다. \n기존데이타를 삭제후 다시 신청하시겠습니까?"))
+	    {
+	        gfn_syncCall("bra01_s11_groupIssue","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=save_group_bill","S=ds_search","","","fn_CallBack");
+	    }
+	}
+	else
+	{
+		gfn_syncCall("bra01_s11_groupIssue","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=save_group_bill","S=ds_search","","","fn_CallBack");
+	}
+	
+	fn_Search();
+}
+
+//개별발급
+function btn_oneIssue_OnClick(obj)
+{
+    if (!gfn_CheckFormNull(this)) return;
+    
+    if (substr(this.cal_Yrmn.Value,0,6) != substr(this.cal_ISS_DAY.Value,0,6))
+    {
+       gfn_Confirm("MB_OK", "발행년월과 청구일자의 월이 일치 하지 않습니다.", "경고", "0");
+        return;
+    }
+	
+	var aRow = ds_list.AddRow();
+	ds_list.SetColumn(aRow,"BILL_GBN","2");
+	ds_list.SetColumn(aRow,"ISSADD_YN","0");
+	ds_list.SetColumn(aRow,"ISS_DAY", this.cal_ISS_DAY.Value);
+	ds_list.SetColumn(aRow,"APPTN_GBN","2"); // 개별발급 신청 셋팅추가 2010.04.22
+}
+
+function fn_SetGridUPSO_CD(result)
+{
+	var nRow = ds_list.currow;
+	var sArr = result.split(",","webstyle");
+
+	if(length(result) == 0)
+	{
+		ds_list.SetColumn(nRow, "UPSO_CD", "");
+		ds_list.SetColumn(nRow, "UPSO_NM", "");
+		ds_list.SetColumn(nRow, "BRAN_CD", "");
+		ds_list.SetColumn(nRow, "STAFF_NM", "");
+		ds_list.SetColumn(nRow, "ISS_AMT", "");
+		ds_list.SetColumn(nRow, "BSCON_CD", "");
+		ds_list.SetColumn(nRow, "BSCONHAN_NM", "");
+		
+		return;
+	}				
+
+	ds_search.SetColumn(0,"BRAN_CD" , this.cob_BRAN_CD.Value );
+	ds_search.SetColumn(0,"UPSO_CD" ,sArr[0]);
+	trace(ds_search.SaveXML());
+	gfn_syncCall("bra01_s11_dupCheck","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=sel_each_bill","S=ds_search","ds_dupcheck=SEL1","","fn_CallBack");
+	
+	trace(ds_dupcheck.SaveXML());
+	if(ds_dupcheck.count == 0)
+	{
+		gfn_Confirm("MB_OK", "업소의 거래처 정보가 없거나 발행하고자 하는 해당월에 청구정보가 없습니다.", "경고", "0");
+		
+		ds_list.SetColumn(nRow,"UPSO_CD","");
+		ds_list.SetColumn(nRow,"UPSO_NM","");
+		ds_list.SetColumn(nRow, "STAFF_NM", "");
+		ds_list.SetColumn(nRow,"BSCON_CD","");
+		ds_list.SetColumn(nRow,"BSCONHAN_NM","");
+		ds_list.SetColumn(nRow,"ISS_AMT","");
+		ds_list.SetColumn(nRow,"CTENT","");
+		ds_list.SetColumn(nRow,"DEMD_YN","");
+		return;
+	}
+	
+//	for(var i = 0; i < ds_dupcheck.rowcount; i++)
+//	{
+	var i = 0;
+	
+		ds_list.SetColumn(nRow, "KOMCA_AMT", ds_dupcheck.GetColumn(i, "MONPRNCFEE"));
+		ds_list.SetColumn(nRow, "BSCON_CD", ds_dupcheck.GetColumn(i, "BSCON_CD"));
+		ds_list.SetColumn(nRow, "BSCONHAN_NM", ds_dupcheck.GetColumn(i, "BSCONHAN_NM"));
+		ds_list.SetColumn(nRow, "ISS_BRE", ds_dupcheck.GetColumn(i, "ISS_BRE"));
+		ds_list.SetColumn(nRow, "BILL_KND", ds_dupcheck.GetColumn(i, "BILL_KND"));
+		ds_list.SetColumn(nRow, "BILL_GBN", "2");
+		ds_list.SetColumn(nRow, "MONPRNCFEE2", ds_dupcheck.GetColumn(i, "MONPRNCFEE2"));
+		
+		ds_list.SetColumn(nRow, "UPSO_CD", sArr[0]);
+		ds_list.SetColumn(nRow, "UPSO_NM", sArr[1]);
+		ds_list.SetColumn(nRow, "STAFF_NM", sArr[4]);
+		ds_list.SetColumn(nRow, "BRAN_CD", cob_BRAN_CD.Value);
+		
+//		ds_list.SetColumn(aRow, "ISSADD_YN", "1");
+		
+//		nRow = ds_list.AddRow();
+//	}
+}
+
+function grd_result_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if(nCell == grd_result.GetBindCellIndex("body", "UPSO_CD"))
+	{
+		var inParam = "SGBN=bra01_s11 BRAN_CD=" + quote(cob_BRAN_CD.Value) + " UPSO_CD=" + quote("") + " UPSO_NM=" + quote("")+ " BRAN_CD2=" + quote(cob_BRAN_CD.Value);
+	    var result = Dialog("fi_bra::find_upso.xml",inParam);
+	    
+	    fn_SetGridUPSO_CD(result);
+	}
+}
+
+//CallBack
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+}
+
+function ds_list_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "RECV_YN")
+	{
+	    if(ds_list.GetColumn(nRow,"RECV_YN") == "1")
+	    {
+	        ds_list.SetColumn(nRow,"DEMD_YN","0");
+	    }
+	}
+	else if(strColumnID == "DEMD_YN")
+	{
+	    if(ds_list.GetColumn(nRow,"DEMD_YN") == "1")
+	    {
+	        ds_list.SetColumn(nRow,"RECV_YN","0");
+	    }
+	}
+	else if(strColumnID == "UPSO_CD")
+	{
+		if (length(varNewValue) > 0)
+		{
+			var BRAN_CD = this.cob_BRAN_CD.Value;
+			var result = gfn_GetUPSO_CD(BRAN_CD, varNewValue, "");
+		
+			fn_SetGridUPSO_CD(result);
+		}
+		else
+		{
+			fn_SetGridUPSO_CD("");
+		}
+	}
+	else if(strColumnID == "ISS_DAY")
+	{
+		var temp_yrmn = this.ds_list.GetColumn(nRow, "APPTN_YRMN");
+		if (length(temp_yrmn) == 6 && length(varNewValue) == 8 && temp_yrmn != substr(varNewValue,0,6))
+		{
+			alert("발행년월과 발행의뢰일의 해당월이 일치 하지 않습니다.");
+			this.ds_list.SetColumn(nRow, "ISS_DAY", varOldValue);
+		}
+	}
+}
+
+function ds_list_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "RECV_YN")
+	{
+	    if(varNewValue == 0 && ds_list.GetColumn(nRow,"DEMD_YN") != "1")
+	    {
+	        return false;
+	    }
+	}
+	else if(strColumnID == "DEMD_YN")
+	{
+	    if(varNewValue == 0 && ds_list.GetColumn(nRow,"RECV_YN") != "1")
+	    {
+	        return false;
+	    }
+	}
+	else if(strColumnID == "REISS_YN")
+	{
+	    if(ds_list.GetColumn(nRow,"ISS_COMPL_YN") != "Y")
+	    {
+            gfn_Confirm("MB_OK", "발행완료시만 재발급이 가능합니다.", "경고", "0");
+	        return false;
+	    }
+	}
+}
+
+//센터콤보박스가 변경되었을때
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	
+	if(!gfn_changeAction("USER","ds_list","변경된 내역이 있습니다.\n센터를 변경하시겠습니까?"))return;
+	ds_list.ClearData();
+}
+
+function grd_result_OnHeadDblClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var yn;
+	
+	if (nCell == 1)
+	{
+		checked = !checked;
+		
+		if (checked = true)
+		{
+			yn = '1';
+		}
+		else
+		{
+			yn = '0';
+		}
+
+		for (var i=0; i<this.ds_list.rowcount; i++)
+		{
+			if (ds_list.GetColumn(i,"ISS_COMPL_YN") != "2")
+			{
+				this.ds_list.SetColumn(i, "ISSADD_YN", yn);
+			}
+		}
+	}
+	
+	if (nCell == 19)
+	{
+		checked = !checked;
+		
+		if (checked = true)
+		{
+			yn = '1';
+		}
+		else
+		{
+			yn = '0';
+		}
+
+		for (var i=0; i<this.ds_list.rowcount; i++)
+		{
+			if (ds_list.GetColumn(i,"ISS_COMPL_YN") != "2")
+			{
+				this.ds_list.SetColumn(i, "DEL_CHK", yn);
+			}
+		}
+	}
+}
+
+function btn_del_OnClick(obj)
+{
+	// 센터관리부가 아니면 삭제 불가 2017/12/27 이다섭
+    if(gds_sessioninfo.GetColumn(0, "BRAN_CD") != "AL" && gds_sessioninfo.GetColumn(0, "DEPT_CD") != "122040100")
+    {
+        gfn_Confirm("MB_OK", "삭제할수 없습니다. 센터업무팀에 문의하세요.", "경고", "0");
+        return;
+    }
+	if(confirm("선택된 계산서를 삭제하시겠습니까?"))
+	{
+		for(var i = 0; i < ds_list.rowcount; i++)
+		{
+			if(ds_list.GetColumn(i, "DEL_CHK") == "1")
+			{
+				if(ds_list.GetColumn(i,"ISS_COMPL_YN") == "2")
+				{
+					gfn_Confirm("MB_OK", "발행완료된 건은 삭제할수 없습니다.", "경고", "0");
+					return;
+				}
+				
+				ds_list.DeleteRow(i);
+				i--;
+			}
+		}
+		gfn_syncCall("bra01_s11_delete","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004002&EVENTID=mng_bill_iss","S=ds_list:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	}
+}
+
+function bra01_s11_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_result, this, 1, 0);
+	gfn_ObjreSize(Shape0, this, 1, 0);
+}
+
+function cal_Yrmn_OnChanged(obj,strOldText,strNewText)
+{
+	ds_search.SetColumn(0, "APPTN_YRMN", substr(cal_Yrmn.Value, 0, 6));
+}
+
+function grd_result_OnChar(obj,strPreText,nChar,strPostText,nLLParam,nHLParam,nRow,nCell,nPivotIndex)
+{
+	/*if(nCell == grd_result.GetBindCellIndex("body", "UPSO_CD") && ds_list.getRowType(nRow) == "insert")
+	{
+		ds_list.FireEvent = false;
+		
+		var strtext = right(strPostText,1);
+		var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]";
+		
+		if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+		{
+			return false;
+		}
+		//trace(strPostText);
+		
+		var vText = strPostText;
+		
+		if(length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z'))
+		{
+			trace("OnChar : " + strPreText + toUpper(chr(nChar)));
+			vText = strPreText + toUpper(chr(nChar));
+		}
+		
+		ds_list.SetColumn(nRow, "UPSO_CD", vText);
+		//grd_result.SetEditSel(length(vText));
+		grd_result.SetEditSel(-1);
+		
+		ds_list.FireEvent = true;
+	}*/
+}
+
+function edt_upso_cd_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar == 13)
+	{
+		if(length(edt_upso_cd.Text) > 0) btn_filter_OnClick();
+		else btn_unfilter_OnClick();
+	}
+}
+
+function edt_upso_cd_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+function btn_filter_OnClick(obj)
+{
+	if(length(edt_upso_cd.Text) == 8)
+	{
+		if(ds_list.FindRow("UPSO_CD", edt_upso_cd.Text) == -1)
+		{
+			alert(edt_upso_cd.Text + " : 찾으시는 업소가 리스트에 없습니다.");
+		}
+		else
+		{
+			ds_list.Filter("UPSO_CD='" + edt_upso_cd.Text + "'");
+		}
+	}
+}
+
+function btn_unfilter_OnClick(obj)
+{
+	edt_upso_cd.Text = "";
+	ds_list.UnFilter();
+}
+
+
+function edt_bscon_cd_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar =="13")
+	{
+		if(edt_bscon_cd.Text ="")
+		{
+			alert("거래처코드를 입력해주세요");
+			return;
+		}
+	
+		for (var i=0; i<ds_list.rowcount; i++)
+		{
+			var tmp_bs_cd=ds_list.GetColumn(i,"BSCON_CD");
+			var tmp_upso_nm=ds_list.GetColumn(i,"UPSO_NM");
+			var tmp_remak=ds_list.GetColumn(i,"REMAK");
+			
+			if (ds_list.GetColumn(i,"ISS_COMPL_YN")=="2")
+			{
+				continue;
+			}
+			
+			if (tmp_bs_cd == edt_bscon_cd.Text )
+			{
+				if(  IndexOf(tmp_remak,tmp_upso_nm) <0 )
+				{
+					ds_list.SetColumn(i,"REMAK", tmp_remak+ ' ' + tmp_upso_nm );
+				}
+			}
+		}
+	}
+}
+]]></Script>
+</Window>

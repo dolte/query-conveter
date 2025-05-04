@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra07_p01" Left="8" OnLoadCompleted="bra07_p01_OnLoadCompleted" PidAttrib="7" Title="우편물발송/회수현황내역" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_radio01">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>발송</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>회수</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_combo01">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>지로</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>독촉</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="228" TabOrder="2" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="243" Style="tx_left_bold" TabOrder="3" Text="센터명" Top="23" Width="46"></Static>
+		<Static Height="15" Id="Static0" Left="44" Style="tx_left_bold" TabOrder="5" Text="발송년월" Top="23" Width="62"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="4" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Calendar Dateformat="yyyy/MM" FocusIndex="0" Height="22" Id="cal_Yrmn" Left="109" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="8" Top="18" Width="102"></Calendar>
+		<Combo Border="Flat" Editable="TRUE" Height="20" Id="cmb_userid" Left="290" Search="FILTERED" Style="edit" TabOrder="9" Top="18" Width="123"></Combo>
+		<Radio BKColor="white" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="2" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="Radio2" INDEX="0" InnerDataset="ds_radio01" Left="440" ShadowColor="user17" Style="radio" TabOrder="11" Top="18" Width="232">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<Combo Border="Flat" Editable="TRUE" Height="20" Id="Combo0" Left="490" Search="FILTERED" Style="edit" TabOrder="12" Top="18" Width="123"></Combo>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+#include "script::global.js"	// 글로벌 js
+
+function bra07_p01_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra07_p01.jrf");
+	//UbiReport0.SetDataset("ds_search", "ds_search");
+	//UbiReport0.SetDataset("ds_master", "ds_Master");
+	ubi0.SetArgument("title","지로발송 업소수 현황");
+	ubi0.Retrieve();
+}
+]]></Script>
+</Window>

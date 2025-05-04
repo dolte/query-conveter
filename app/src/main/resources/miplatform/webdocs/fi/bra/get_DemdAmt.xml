@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="312" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="요금&#32;조견표" Top="8" Ver="1.0" Width="808" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ReptIn">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<DEMD_GBN></DEMD_GBN>
+						<END_YRMN></END_YRMN>
+						<START_YRMN></START_YRMN>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptOut">
+				<Contents>
+					<colinfo id="MONPRNCFEE" size="256" type="STRING"/>
+					<colinfo id="MONPRNCFEE2" size="256" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" type="STRING"/>
+					<colinfo id="DSCT_AMT" size="256" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DemdGBN">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>O</code>
+						<value>일반</value>
+					</record>
+					<record>
+						<code>A</code>
+						<value>자동이체</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptOut2">
+				<Contents>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_feerate">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LogDiscount">
+				<Contents>
+					<colinfo id="DSCT_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_END" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bscon_rate">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="white" Bottom="296" Height="272" Id="Shape0" Left="24" LineColor="user3" Right="672" TabOrder="1" Top="24" Type="Rectangle" Width="648"></Shape>
+		<Shape BKColor="white" Bottom="230" Height="26" Id="Shape3" Left="472" LineColor="user3" Right="647" TabOrder="27" Top="204" Type="Rectangle" Width="175"></Shape>
+		<Shape BKColor="white" Bottom="114" Height="26" Id="Shape13" Left="169" LineColor="user3" Right="537" TabOrder="11" Top="88" Type="Rectangle" Width="368"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static4" Left="40" Style="box_tx" TabOrder="4" Text="사&#32;용&#32;료" Top="179" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user5" Border="None" Font="굴림,11,Bold" Height="26" Id="Static0" Left="40" Style="box_tx" TabOrder="5" Text="요금&#32;조견표" Top="12" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static7" Left="343" Style="box_tx" TabOrder="6" Text="월사용료" Top="179" VAlign="Middle" Width="130"></Static>
+		<Calendar AutoIncrement="1" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_START_YRMN" Left="174" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" Top="91" Width="99"></Calendar>
+		<Static Height="16" Id="Static37" Left="280" TabOrder="10" Text="~" Top="96" Width="16"></Static>
+		<Calendar AutoIncrement="1" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_END_YRMN" Left="296" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="대상기간2" Top="91" Width="99"></Calendar>
+		<Button ButtonStyle="TRUE" Height="23" Id="btn_GetDemd" ImageID="C_btn_70" Left="560" LeftMargin="23" OnClick="btn_GetDemd_OnClick" Style="edit" TabOrder="4" TabStop="FALSE" Text="계산" Top="114" TopMargin="1" VAlign="Top" Width="72"></Button>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static47" Left="40" Style="box_tx" TabOrder="9" Text="&#32;대상&#32;기간" Top="88" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="205" Height="26" Id="Shape1" Left="169" LineColor="user3" Right="344" TabOrder="12" Top="179" Type="Rectangle" Width="175"></Shape>
+		<Shape BKColor="white" Bottom="205" Height="26" Id="Shape2" Left="472" LineColor="user3" Right="647" TabOrder="13" Top="179" Type="Rectangle" Width="175"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static2" Left="40" Style="box_tx" TabOrder="14" Text="할인금액" Top="204" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="230" Height="26" Id="Shape4" Left="169" LineColor="user3" Right="344" TabOrder="15" Top="204" Type="Rectangle" Width="175"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static3" Left="40" Style="box_tx" TabOrder="16" Text="청구기간" Top="154" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="180" Height="26" Id="Shape5" Left="169" LineColor="user3" Right="344" TabOrder="17" Top="154" Type="Rectangle" Width="175"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static5" Left="40" Style="box_tx" TabOrder="18" Text="업소코드/명" Top="47" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="73" Height="26" Id="Shape6" Left="169" LineColor="user3" Right="537" TabOrder="19" Top="47" Type="Rectangle" Width="368"></Shape>
+		<Edit BKColor="user4" Border="Flat" BorderColor="user10" Height="22" Id="edt_UPSO_CD" Left="174" TabOrder="5" TabStop="FALSE" Top="49" Width="74"></Edit>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="TOT_USE_AMT" Height="22" Id="mae_TOT_USE_AMT" Left="174" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="6" TabStop="FALSE" Top="181" Value="MaskEdit0" Width="150"></MaskEdit>
+		<Edit BKColor="user4" Border="Flat" BorderColor="user10" Height="22" Id="edt_UPSO_NM" Left="250" TabOrder="7" TabStop="FALSE" Top="49" Width="270"></Edit>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="TOT_ADDT_AMT" Height="22" Id="mae_TOT_ADDT_AMT" Left="477" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="8" TabStop="FALSE" Top="206" Value="MaskEdit0" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="DSCT_AMT" Height="22" Id="mae_DSCT_AMT" Left="174" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="9" TabStop="FALSE" Top="206" Value="MaskEdit0" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="DEMD_MMCNT" Height="22" Id="mae_DEMD_MMCNT" Left="174" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="10" TabStop="FALSE" Top="156" Value="MaskEdit0" Width="150"></MaskEdit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="343" Style="box_tx" TabOrder="26" Text="가&#32;산&#32;금" Top="204" VAlign="Middle" Width="130"></Static>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="TOT_DEMD_AMT" Height="22" Id="MaskEdit0" Left="477" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="11" TabStop="FALSE" Top="231" Value="mae_TOT_DEMD_AMT" Width="150"></MaskEdit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static6" Left="343" Style="box_tx" TabOrder="29" Text="기준월정료" Top="154" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="180" Height="26" Id="Shape7" Left="472" LineColor="user3" Right="647" TabOrder="30" Top="154" Type="Rectangle" Width="175"></Shape>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="MONPRNCFEE" Height="22" Id="mae_MONPRNCFEE" Left="477" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="12" TabStop="FALSE" Top="181" Value="MaskEdit0" Width="150"></MaskEdit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static8" Left="40" Style="box_tx" TabOrder="32" Text="청구구분" Top="113" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="139" Height="26" Id="Shape8" Left="169" LineColor="user3" Right="537" TabOrder="32" Top="113" Type="Rectangle" Width="368"></Shape>
+		<Radio Border="None" CodeColumn="code" ColumnCount="4" DataColumn="value" Height="21" Id="rad_DEMD_GBN" INDEX="-1" InnerDataset="ds_DemdGBN" Left="176" TabOrder="3" Top="117" Width="216"></Radio>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="560" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="32" TabStop="FALSE" Text="닫기" Top="48" TopMargin="1" Width="71"></Button>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static9" Left="343" Style="box_tx" TabOrder="35" Text="청구금액" Top="229" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="255" Height="26" Id="Shape9" Left="472" LineColor="user3" Right="647" TabOrder="36" Top="229" Type="Rectangle" Width="175"></Shape>
+		<MaskEdit BindDataset="ds_ReptOut" BKColor="user4" Border="Flat" BorderColor="user10" Column="MONPRNCFEE2" Height="22" Id="mae_MONPRNCFEE2" Left="477" OnChanged="MaskEdit0_OnChanged" Readonly="TRUE" TabOrder="37" TabStop="FALSE" Top="156" Value="MaskEdit0" Width="150"></MaskEdit>
+		<Grid BindDataset="ds_feerate" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="160" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="136" Id="grd_rate" InputPanel="FALSE" Left="680" LineColor="default" Right="800" RowHeight="20" TabOrder="38" TabStop="true" Top="24" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="120">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="지분율"/>
+						<cell col="1" color="user12" display="text" text="적용일자"/>
+					</head>
+					<body>
+						<cell col="0" colid="RATE" display="text"/>
+						<cell col="1" colid="APPL_DAY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Color="user1" Height="11" Id="Static10" Left="691" Style="tx_bold" TabOrder="39" Text="월사용료&#32;지분율" Top="7" Width="100"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static11" Left="40" Style="box_tx" TabOrder="40" Text="할인시작월" Top="229" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="255" Height="26" Id="Shape10" Left="169" LineColor="user3" Right="344" TabOrder="41" Top="229" Type="Rectangle" Width="175"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static12" Left="40" Style="box_tx" TabOrder="42" Text="할인종료월" Top="254" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="280" Height="26" Id="Shape11" Left="169" LineColor="user3" Right="344" TabOrder="43" Top="254" Type="Rectangle" Width="175"></Shape>
+		<Edit Align="CENTER" BindDataset="ds_LogDiscount" BKColor="user4" Border="Flat" BorderColor="user10" Column="DSCT_START" Height="20" Id="Edit0" Left="174" TabOrder="44" Top="232" Width="151"></Edit>
+		<Edit Align="CENTER" BindDataset="ds_LogDiscount" BKColor="user4" Border="Flat" BorderColor="user10" Column="DSCT_END" Height="20" Id="Edit1" Left="174" TabOrder="45" Top="257" Width="151"></Edit>
+		<Grid BindDataset="ds_bscon_rate" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="296" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="112" Id="Grid0" InputPanel="FALSE" Left="680" LineColor="default" Right="800" RowHeight="20" TabOrder="46" TabStop="true" Top="184" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="120">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="지분율"/>
+						<cell col="1" color="user12" display="text" text="적용일자"/>
+					</head>
+					<body>
+						<cell col="0" colid="RATE" display="text"/>
+						<cell col="1" colid="APPL_DAY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Color="user1" Height="11" Id="Static13" Left="691" Style="tx_bold" TabOrder="47" Text="통합징수&#32;지분율" Top="167" Width="100"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+ 
+function form_OnLoadCompleted(obj)
+{
+	this.edt_UPSO_CD.Text = UPSO_CD;
+	this.edt_UPSO_NM.Text = UPSO_NM;
+	
+	this.rad_DEMD_GBN.Index = 0;
+	this.cal_START_YRMN.Value = START_YRMN;
+	this.cal_END_YRMN.Value = today();
+} 
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) 
+	{
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function btn_GetDemd_OnClick(obj)
+{
+	if (length(this.edt_UPSO_CD.Text) == 0) return;
+	
+	if (length(this.cal_START_YRMN.Value) == 0 || length(this.cal_START_YRMN.Value) == 0) {
+		alert("청구기간을 선택하세요.");
+		return;
+	}
+	else {
+		this.ds_ReptIn.SetColumn(0,"UPSO_CD"   , this.edt_UPSO_CD.Text);
+		this.ds_ReptIn.SetColumn(0,"START_YRMN", substr(this.cal_START_YRMN.Value, 0, 6));
+		this.ds_ReptIn.SetColumn(0,"END_YRMN"  , substr(this.cal_END_YRMN.Value, 0, 6));
+		this.ds_ReptIn.SetColumn(0,"DEMD_GBN"  , this.rad_DEMD_GBN.Value);
+	
+		//trace(ds_ReptIn.SaveXML());
+		gfn_syncCall("get_demd_amt","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001008001&EVENTID=get_demd_amt","S=ds_ReptIn","ds_ReptOut=SEL2 ds_feerate=SEL4 ds_LogDiscount=SEL5 ds_bscon_rate=SEL6","","fn_CallBack");
+	}
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+]]></Script>
+</Window>

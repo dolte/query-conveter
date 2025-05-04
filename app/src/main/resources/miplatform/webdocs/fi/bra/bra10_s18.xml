@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="792" Id="bra10_s18" Left="8" OnLoadCompleted="form_OnLoadCompleted" OnSize="bra10_s18_OnSize" PidAttrib="7" Title="매장음악서비스&#32;위탁업소&#32;관리" Top="8" Ver="1.0" Width="1024" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Code1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD></CODE_CD>
+						<CODE_NM>--ALL--</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>매칭</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>미매칭</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BUSINESS">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_stomu">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAPER_CANC_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNG_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_BRA" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BSCON_CD></BSCON_CD>
+						<MATCH_GBN></MATCH_GBN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Excel">
+				<Contents>
+					<colinfo id="SEND_EMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TA_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Excel2">
+				<Contents>
+					<colinfo id="SEND_EMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TA_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_stomu_hist">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNG_COL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNG_COL_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFO_CNG" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFT_CNG" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_hist_search" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_addr_in">
+				<Contents>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_komca_list">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Dup_Err">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_stomu_up">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_BRA" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1000" TabOrder="15" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="1" TabStop="FALSE" Top="8" Width="984"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="15" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Static Color="user1" Height="11" Id="Static9" Left="45" Style="tx_bold" TabOrder="4" Text="저장이력정보" Top="582" Width="80"></Static>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="16" TabOrder="5" TabStop="FALSE" Top="578" Width="18"></Image>
+		<Static Height="19" Id="Static5" Left="459" Style="tx_left_bold" TabOrder="5" Text="매칭구분" Top="21" Width="60"></Static>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="443" TabOrder="6" TabStop="FALSE" Top="21" Width="11"></Image>
+		<Combo BindDataset="ds_search" BKColor="user13" CodeColumn="CODE_CD" Column="MATCH_GBN" DataColumn="CODE_NM" Height="20" Id="cob_MATCH_GBN" ImeMode="none" InnerDataset="ds_Code1" Left="520" ResetIndex="FIRST" TabOrder="4" ToolTipText="매칭구분" Top="16" Width="88"></Combo>
+		<Combo BindDataset="ds_search" BKColor="user13" CodeColumn="BSCON_CD" Column="BSCON_CD" DataColumn="BSCONHAN_NM" Height="20" Id="cob_BUSINESS_LIST" INDEX="0" InnerDataset="ds_BUSINESS" Left="144" Style="edit" TabOrder="5" ToolTipText="매장음악사업자" Top="16" Width="230"></Combo>
+		<Static Height="17" Id="Static1" Left="46" Style="tx_left_bold" TabOrder="6" Text="매장음악사업자" Top="23" Width="104"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="30" TabOrder="7" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" BindDataset="ds_stomu" BkColor2="default" BoldHead="true" Border="Flat" Bottom="384" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="304" Id="grd_stomu_list" InputPanel="FALSE" Left="16" LineColor="default" OnCellDBLClick="grd_stomu_list_OnCellDBLClick" OnCellPosChanged="grd_stomu_list_OnCellPosChanged" OnKeyDown="grd_stomu_list_OnKeyDown" Right="1008" RowHeight="20" Style="grid" TabOrder="10" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="992">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="28"/>
+						<col width="58"/>
+						<col width="83"/>
+						<col width="128"/>
+						<col width="63"/>
+						<col width="309"/>
+						<col width="72"/>
+						<col width="99"/>
+						<col width="56"/>
+						<col width="71"/>
+						<col width="60"/>
+						<col width="219"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="No"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="지로취소"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="협회업소코드"/>
+						<cell bkcolor="user8" col="3" color="user12" display="text" text="업소명(제공)"/>
+						<cell bkcolor="user8" col="4" color="user12" display="text" text="지점명"/>
+						<cell bkcolor="user8" col="5" color="user12" display="text" text="기본주소"/>
+						<cell bkcolor="user8" col="6" color="user12" display="text" text="업종(제공)"/>
+						<cell bkcolor="user8" col="7" color="user12" display="text" text="매장음악사업자"/>
+						<cell bkcolor="user8" col="8" color="user12" display="text" text="매칭구분"/>
+						<cell bkcolor="user8" col="9" color="user12" display="text" text="타코드"/>
+						<cell bkcolor="user8" col="10" color="user12" display="text" text="변경여부"/>
+						<cell bkcolor="user8" col="11" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell col="1" colid="PAPER_CANC_YN" display="checkbox" edit="expr:decode(GBN,&apos;N&apos;,&apos;none&apos;,&apos;checkbox&apos;)"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text" edit="expr:decode(GBN,&apos;N&apos;,&apos;none&apos;,&apos;normal&apos;)"/>
+						<cell bkcolor="user13" col="3" colid="BSCON_UPSO_NM" display="text" edit="expr:decode(GBN,&apos;N&apos;,&apos;normal&apos;,&apos;none&apos;)"/>
+						<cell col="4" colid="UPSO_BRA" display="text" edit="expr:decode(GBN,&apos;N&apos;,&apos;normal&apos;,&apos;none&apos;)"/>
+						<cell col="5" colid="UPSO_ADDR" display="text" edit="normal"/>
+						<cell align="center" bkcolor="user13" col="6" colid="BSTYP_NM" display="text" edit="expr:decode(GBN,&apos;N&apos;,&apos;normal&apos;,&apos;none&apos;)"/>
+						<cell align="center" bkcolor="user13" col="7" colid="BSCON_CD" combocol="BSCON_CD" combodataset="ds_BUSINESS" combotext="BSCONHAN_NM" display="combo" edit="expr:decode(GBN,&apos;N&apos;,&apos;combo&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="8" colid="MATCH_GBN" display="text"/>
+						<cell align="center" bkcolor="user13" col="9" colid="BSCON_UPSO_CD" display="text" edit="expr:decode(GBN,&apos;N&apos;,&apos;normal&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="10" colid="MOD_YN" display="text"/>
+						<cell col="11" colid="REMAK" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Color="user1" Height="11" Id="Static0" Left="45" Style="tx_bold" TabOrder="12" Text="협회&#32;동일주소" Top="400" Width="300"></Static>
+		<Image Height="17" Id="Image5" ImageID="C_icon2" Left="19" TabOrder="11" TabStop="FALSE" Top="397" Width="18"></Image>
+		<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_komca_list" BkColor2="default" BoldHead="true" Border="Flat" Bottom="569" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="148" Id="grd_komca_list" InputPanel="FALSE" Left="16" LineColor="default" OnCellDBLClick="grd_komca_list_OnCellDblClick" Right="1008" RowHeight="20" Style="grid" TabOrder="12" TabStop="true" Top="421" UseAutoSizing="Row" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="992">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="39"/>
+						<col width="65"/>
+						<col width="78"/>
+						<col width="151"/>
+						<col width="470"/>
+						<col width="88"/>
+						<col width="96"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="센터코드"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="주소"/>
+						<cell col="5" color="user12" display="text" text="개업년월"/>
+						<cell col="6" color="user12" display="text" text="업종"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BRAN_CD" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="left" col="4" colid="ADDR" display="text"/>
+						<cell align="center" col="5" colid="OPBI_DAY" display="text"/>
+						<cell align="center" col="6" colid="BSTYP_CD" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AreaSelect="true" BindDataset="ds_stomu_hist" BkColor2="default" BoldHead="true" Border="Flat" Bottom="784" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="184" Id="grd_stomu_hist" InputPanel="FALSE" Left="16" LineColor="default" Right="1008" RowHeight="20" Style="grid" TabOrder="12" TabStop="true" Top="600" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="992">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="98"/>
+						<col width="59"/>
+						<col width="72"/>
+						<col width="189"/>
+						<col width="191"/>
+						<col width="62"/>
+						<col width="136"/>
+						<col width="178"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="매장음악사업자"/>
+						<cell col="1" color="user12" display="text" text="타코드"/>
+						<cell col="2" color="user12" display="text" text="바뀐&#32;부분"/>
+						<cell col="3" color="user12" display="text" text="변경&#32;전"/>
+						<cell col="4" color="user12" display="text" text="변경&#32;후"/>
+						<cell align="center" col="5" color="user12" display="text" text="변경&#32;자"/>
+						<cell col="6" color="user12" display="text" text="변경&#32;날짜"/>
+						<cell col="7" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BSCONHAN_NM" display="text"/>
+						<cell align="center" col="1" colid="BSCON_UPSO_CD" display="text"/>
+						<cell align="center" col="2" colid="CNG_COL_NM" display="text"/>
+						<cell col="3" colid="BEFO_CNG" display="text"/>
+						<cell col="4" colid="AFT_CNG" display="text"/>
+						<cell align="center" col="5" colid="STAFF_NM" display="text"/>
+						<cell align="center" col="6" colid="INS_DATE" display="text"/>
+						<cell col="7" colid="REMAK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="16" Id="WARN" Left="24" TabOrder="17" Text="**&#32;주소를&#32;누르면&#32;[협회&#32;동일주소]가&#32;나옵니다.&#32;변경여부를&#32;누르면&#32;[저장이력정보]가&#32;나옵니다" Top="59" Width="584"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_upload" ImageID="C_btn_110" Left="880" LeftMargin="26" OnClick="btn_upload_OnClick" Style="edit" TabOrder="18" Text="엑셀&#32;업로드" Top="19" TopMargin="1" Width="110"></Button>
+		<File Bottom="32" Height="24" Id="fil_Auto" Left="856" Right="880" TabOrder="18" Top="8" Width="24"></File>
+		<FileDialog Bottom="32" Filter="Excel&#32;File(*.xls;*.xlsx)|*.xls;*.xlsx|" Height="24" Id="fdg_Auto" Left="823" Right="847" TabOrder="19" Top="8" Width="24"></FileDialog>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" BindDataset="ds_stomu_up" BkColor2="default" BoldHead="true" Border="Flat" Bottom="384" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="304" Id="grd_stomu_up" InputPanel="FALSE" Left="344" LineColor="default" OnCellDBLClick="grd_stomu_list_OnCellDBLClick" OnCellPosChanged="grd_stomu_list_OnCellPosChanged" OnKeyDown="grd_stomu_list_OnKeyDown" Right="1336" RowHeight="20" Style="grid" TabOrder="19" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="992">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="28"/>
+						<col width="83"/>
+						<col width="128"/>
+						<col width="63"/>
+						<col width="309"/>
+						<col width="72"/>
+						<col width="99"/>
+						<col width="71"/>
+						<col width="219"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="No"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="협회업소코드"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="업소명(제공)"/>
+						<cell bkcolor="user8" col="3" color="user12" display="text" text="지점명"/>
+						<cell bkcolor="user8" col="4" color="user12" display="text" text="기본주소"/>
+						<cell bkcolor="user8" col="5" color="user12" display="text" text="업종(제공)"/>
+						<cell bkcolor="user8" col="6" color="user12" display="text" text="매장음악사업자"/>
+						<cell bkcolor="user8" col="7" color="user12" display="text" text="타코드"/>
+						<cell bkcolor="user8" col="8" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text" edit="none"/>
+						<cell bkcolor="user13" col="2" colid="BSCON_UPSO_NM" display="text" edit="none"/>
+						<cell col="3" colid="UPSO_BRA" display="text" edit="none"/>
+						<cell col="4" colid="UPSO_ADDR" display="text" edit="none"/>
+						<cell align="center" bkcolor="user13" col="5" colid="BSTYP_NM" display="text" edit="none"/>
+						<cell align="center" bkcolor="user13" col="6" colid="BSCON_CD" combocol="BSCON_CD" combodataset="ds_BUSINESS" combotext="BSCONHAN_NM" display="combo" edit="combo"/>
+						<cell align="center" bkcolor="user13" col="7" colid="BSCON_UPSO_CD" display="text" edit="normal"/>
+						<cell col="8" colid="REMAK" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+/*    
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	cob_MATCH_GBN.Index = 0;
+	
+	grd_stomu_up.Left = 16;
+	
+	gfn_syncCall("stomu_business","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=stomu_select","", "ds_BUSINESS=SEL1 ", "", "fn_CallBack");
+	
+	bra10_s18_OnSize();
+}
+
+function fn_Excel()
+{
+	grd_stomu_list.ExportExcelEx("매장음악매칭관리");
+}
+
+function fn_CallBack(svcid,errCode,errMsg)
+{
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "Search" :
+				grd_stomu_list.Visible = true;
+				grd_stomu_up.Visible = false;
+				gfn_SetStatusMsg(ds_stomu.rowcount + "건이 조회되었습니다.");
+				break;
+			case "svcSave" :
+				alert("저장되었습니다.");
+				if(ds_Dup_Err.rowcount > 0)
+				{
+					var v_upso_cd = "";
+					
+					for(var i = 0; i < ds_Dup_Err.rowcount; i++)
+					{
+						v_upso_cd += ds_Dup_Err.GetColumn(i, "UPSO_CD") + " ";
+					}
+					
+					alert(v_upso_cd + "업소가 타단체 통합징수에 포함되어 있어서 저장되지 않았습니다.\n확인 후 등록해주시기 바랍니다.");
+				}
+				fn_Search();
+				break;
+			case "svcGet" :
+				break;
+			case "stomu_business" :
+				ds_BUSINESS.InsertRow(0);
+				ds_BUSINESS.SetColumn(0, "BSCON_CD", "");
+				ds_BUSINESS.SetColumn(0, "BSCONHAN_NM", "--ALL--");
+				cob_BUSINESS_LIST.Index = 0;
+				break;
+			case "svcGetKomcaList" :
+				break;
+			default : break;
+		}
+	}
+}
+
+function fn_Search()
+{
+	ds_stomu.ClearData();
+	gfn_syncCall("Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013005&EVENTID=stomu_search","S=ds_search", "ds_stomu=SEL1", "", "fn_CallBack");	
+}
+
+function grd_stomu_list_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	var selRow = ds_stomu.currow;
+	
+	if(nChar == 13)
+	{
+		if(ds_stomu.GetColumn(selRow, "UPSO_CD") = "")
+		{
+			ds_stomu.SetColumn(selRow, "MATCH_GBN", "N");
+			gfn_setGridFocus(grd_Data, selRow, "BSCON_CD");
+		}
+	}
+	
+	//업소조회팝업
+	if(nChar == 112)
+	{
+		var uName = ds_stomu.GetColumn(selRow, "BSCON_UPSO_NM");
+		
+		var p_upso_nm		= ds_stomu.GetColumn(selRow, "BSCON_UPSO_NM");
+		var p_upso_cd		= ds_stomu.GetColumn(selRow, "UPSO_CD");		var p_bstyp_cd_nm 	= ds_stomu.GetColumn(selRow, "BSTYP_CD");
+		var p_addr			= ds_stomu.GetColumn(selRow, "UPSO_ADDR");
+		var p_phon_num		= "";
+		var p_post_num		= "";	
+		var rst = Dialog("fi_pub::find_upso_match.xml"
+						 ,"SGBN=dis dsName=ds_stomu prNrow='"+selRow+"' colNm1=UPSO_CD colNm2=MATCH_GBN "
+						 +" UPSO_NM=\""			+replace(trim(p_upso_nm),"\"","\\\"")		+"\""
+						 +" UPSO_CD=\""			+replace(trim(p_upso_cd),"\"","\\\"")		+"\""
+						 +" p_bstyp_cd_nm=\""	+replace(trim(p_bstyp_cd_nm),"\"","\\\"")	+"\""
+						 +" p_addr=\""			+replace(trim(p_addr),"\"","\\\"")		+"\""
+						 +" p_phon_num=\""		+replace(trim(p_phon_num),"\"","\\\"")	+"\""
+						 +" p_post_num=\""		+replace(trim(p_post_num),"\"","\\\"")	+"\""
+						 ,"");
+		if(rst == 0)
+		{
+			var f_addr = ds_stomu.GetColumn(selRow,"UPSO_ADDR");
+			var f_phon_num = "";
+			
+			var f_match_gbn = ds_stomu.GetColumn(selRow,"MATCH_GBN");
+			var f_upso_cd = ds_stomu.GetColumn(selRow,"UPSO_CD");
+			
+			//trace(f_match_gbn);
+			
+			for( i = selRow+1 ; i < ds_stomu.rowcount ; i++)
+			{
+				if(ds_stomu.GetColumn(i,"UPSO_ADDR") == f_addr)
+				{
+					ds_stomu.SetColumn(i,"MATCH_GBN",f_match_gbn);
+					ds_stomu.SetColumn(i,"UPSO_CD",f_upso_cd);
+						
+					trace(ds_stomu.GetColumn(i,"MATCH_GBN"));
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+	}
+}
+
+
+function grd_stomu_list_OnCellDBLClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	//변경여부 선택시
+	if(nCell == grd_stomu_list.GetBindCellIndex("body", "MOD_YN") && ds_stomu.GetColumn(nRow, "MOD_YN") == "Y")
+	{
+		ds_hist_search.ClearData();
+		ds_hist_search.AddRow();
+		
+		ds_hist_search.SetColumn(0, "BSCON_CD", ds_stomu.GetColumn(nRow, "BSCON_CD"));
+		ds_hist_search.SetColumn(0, "BSCON_UPSO_CD", ds_stomu.GetColumn(nRow, "BSCON_UPSO_CD"));
+		
+		gfn_syncCall("HisSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006013005&EVENTID=stomu_search","S1=ds_hist_search", "ds_stomu_hist=SEL2", "", "fn_CallBack");
+	}
+	
+	//주소 선택시
+	if(nCell == grd_stomu_list.GetBindCellIndex("body", "UPSO_ADDR") && length(ds_stomu.GetColumn(nRow, "UPSO_ADDR")) > 1)
+	{
+		ds_addr_in.AddRow();
+		ds_addr_in.SetColumn(0, "ADDR", ds_stomu.GetColumn(nRow, "UPSO_ADDR"));
+		ds_addr_in.SetColumn(0, "APPL_DAY", ds_stomu.GetColumn(nRow, "CNG_DATE"));
+
+		gfn_syncCall("svcGetKomcaList","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013002&EVENTID=get_komca_data","S=ds_addr_in","ds_komca_list=SEL1","","fn_CallBack");
+	}
+}
+
+function fn_New()
+{
+	var aRow = ds_stomu.AddRow();
+	ds_stomu.SetColumn(aRow, "GBN", "N");
+	
+	if(length(cob_BUSINESS_LIST.Value) > 0)
+	{
+		ds_stomu.SetColumn(aRow, "BSCON_CD", cob_BUSINESS_LIST.Value);
+	}
+}
+
+function grd_komca_list_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_stomu.SetColumn(ds_stomu.currow, "UPSO_CD", ds_komca_list.GetColumn(nRow, "UPSO_CD"));
+	ds_stomo.SetColumn(ds_stomu.currow, "MATCH_GBN", "Y");
+}
+
+function fn_Save()
+{
+	if(grd_stomu_list.Visible == true)
+	{
+		if(ds_stomu.rowcount < 1)
+		{
+			alert("저장할 자료가 없습니다.");
+			return;
+		}
+		
+		if(!gfn_CheckFormNull(this)) return;
+		
+		//alert(ds_stomu.GetColumn(0,"REMAK"));
+		gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013005&EVENTID=stomu_save","S=ds_stomu:U","ds_Dup_Err=SEL16","","fn_CallBack");
+			
+		for(var k = 0; k < ds_Dup_Err.rowcount; k++)
+		{
+			alert("타단체와 계약된 업소입니다.  " + ds_Dup_Err.GetColumn(k, "UPSO_CD"));
+		}
+	}
+	else
+	{
+		if(!Confirm("엑셀 업로드 시에는 자동으로 업소코드가 매칭되며 지로취소도 적용됩니다.\n저장하시겠습니까?")) return;
+		trace(ds_stomu_up.SaveXML(ds_stomu_up, "U"));
+		gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013005&EVENTID=stomu_save","S=ds_stomu_up:U","ds_Dup_Err=SEL16","","fn_CallBack");
+	}
+}
+
+function grd_stomu_list_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	if(nOldRow != nRow)
+	{
+		ds_hist_search.ClearData();
+		return;
+	}
+	
+}
+
+function bra10_s18_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_stomu_list, this, "1", "");
+}
+
+function btn_upload_OnClick(obj)
+{
+	if(fdg_Auto.Open() == 0)
+	{
+		return;
+	}
+	
+	grd_stomu_up.Visible = true;
+	grd_stomu_list.Visible = false;
+	
+	ds_stomu_up.ClearData();
+	
+	ext_ExcelImportByIndex(fdg_Auto.FilePath + "\\" + fdg_Auto.FileName, 0, "ds_stomu_up", 1, 1, 0, 2);
+	
+	for(var i = 0; i < ds_stomu_up.rowcount; i++)
+	{
+		/*if(length(ds_stomu_up.GetColumn(i, "UPSO_CD")) != 8)
+		{
+			alert("업소코드가 잘못 등록되었습니다.\n업소코드 : " + ds_stomu_up.GetColumn(i, "BSCON_UPSO_CD"));
+			ds_stomu_up.ClearData();
+			return;
+		}*/
+		if(length(ds_stomu_up.GetColumn(i, "BSCON_UPSO_NM")) < 1)
+		{
+			alert("업소명이 잘못 등록되었습니다.\n업소코드 : " + ds_stomu_up.GetColumn(i, "BSCON_UPSO_CD"));
+			ds_stomu_up.ClearData();
+			return;
+		}
+		if(length(ds_stomu_up.GetColumn(i, "BSTYP_NM")) < 1)
+		{
+			alert("업종이 잘못 등록되었습니다.\n업소코드 : " + ds_stomu_up.GetColumn(i, "BSCON_UPSO_CD"));
+			ds_stomu_up.ClearData();
+			return;
+		}
+		if(length(ds_stomu_up.GetColumn(i, "BSCON_CD")) < 1)
+		{
+			alert("매장음악사업자명이 잘못 등록되었습니다.\n업소코드 : " + ds_stomu_up.GetColumn(i, "BSCON_UPSO_CD"));
+			ds_stomu_up.ClearData();
+			return;
+		}
+		if(length(ds_stomu_up.GetColumn(i, "BSCON_UPSO_CD")) < 1)
+		{
+			alert("타코드가 잘못 등록되었습니다.\n업소코드 : " + ds_stomu_up.GetColumn(i, "BSCON_UPSO_CD"));
+			ds_stomu_up.ClearData();
+			return;
+		}
+	}
+	//ds_stomu_up.ApplyChange();
+	/*
+	for(var i = 0; i < ds_post_excel.rowcount; i++)
+	{
+		var vRow = ds_result.AddRow();
+		ds_result.SetColumn(vRow, "COMPANY_CD", ds_post_excel.GetColumn(i, "COMPANY_CD"));
+		ds_result.SetColumn(vRow, "POST_SNUM", ds_post_excel.GetColumn(i, "POST_SNUM"));
+		ds_result.SetColumn(vRow, "SEND_DAY", ds_post_excel.GetColumn(i, "SEND_DAY"));
+		ds_result.SetColumn(vRow, "RECV_NM", ds_post_excel.GetColumn(i, "RECV_NM"));
+		ds_result.SetColumn(vRow, "GBN", "I");
+	}
+	
+	ds_post_excel.ClearData();*/
+}
+]]></Script>
+</Window>

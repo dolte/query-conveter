@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업소담당사원&#32;변경" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_BranZip" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BranZipIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BranZipList" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sigugun">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ATTE">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DSRCCNTY">
+				<Contents>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DONG">
+				<Contents>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DONG_sel">
+				<Contents>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_selectedDongIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Div BKColor="whitesmoke" Height="500" Id="div_ZoneInfo" Left="16" TabOrder="3" Text="Div0" Top="328" Width="1027">
+			<Contents>
+				<Shape BKColor="white" Bottom="117" Height="26" Id="shp_zip2" Left="136" LineColor="user3" Right="856" TabOrder="15" Top="91" Type="Rectangle" Width="720"></Shape>
+				<Shape BKColor="white" Bottom="92" Height="26" Id="shp_zip1" Left="136" LineColor="user3" Right="856" TabOrder="14" Top="66" Type="Rectangle" Width="720"></Shape>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="51" Id="sta_zip" Left="8" Style="box_tx" TabOrder="11" Text="대상우편번호" Top="66" VAlign="Middle" Width="130"></Static>
+				<Shape BKColor="white" Bottom="42" Height="26" Id="Shape0" Left="136" LineColor="user3" Right="856" TabOrder="12" Top="16" Type="Rectangle" Width="720"></Shape>
+				<Shape BKColor="white" Bottom="67" Height="26" Id="Shape1" Left="136" LineColor="user3" Right="856" TabOrder="13" Top="41" Type="Rectangle" Width="720"></Shape>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static03" Left="8" Style="box_tx" TabOrder="4" Text="번경번호" Top="16" VAlign="Middle" Width="130"></Static>
+				<Edit Align="CENTER" Border="Flat" BorderColor="user10" Enable="FALSE" Height="22" Id="edt_CHG_NUM" Left="245" LeftMargin="2" Style="edit" TabOrder="5" TabStop="FALSE" Top="18" Width="60"></Edit>
+				<Calendar Border="Flat" BorderColor="user3" Dateformat="yyyy/MM/dd" DayStyle="edit" EditAlign="CENTER" Enable="FALSE" Height="22" Id="cal_CHG_DAY" Left="140" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="4" TabStop="FALSE" Top="18" Width="83"></Calendar>
+				<Static Height="17" Id="Static0" Left="230" TabOrder="7" Text="-" Top="23" Width="8"></Static>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static2" Left="384" Style="box_tx" TabOrder="10" Text="담당사원" Top="16" VAlign="Middle" Width="130"></Static>
+				<Edit Border="Flat" BorderColor="user10" Enable="FALSE" Height="22" Id="edt_ADDR_START" Left="229" LeftMargin="2" Style="edit" TabOrder="6" TabStop="FALSE" Top="68" Width="448"></Edit>
+				<Edit Border="Flat" BorderColor="user10" Enable="FALSE" Height="22" Id="edt_ADDR_END" Left="229" LeftMargin="2" Style="edit" TabOrder="7" TabStop="FALSE" Top="93" Width="448"></Edit>
+				<MaskEdit Border="Flat" BorderColor="user3" Enable="FALSE" Height="22" Id="mae_ZIP_START" Left="141" LeftMargin="15" Mask="###-###" OnKeyDown="mae_ZIP_START_OnKeyDown" TabOrder="2" ToolTipText="대상우편번호" Top="68" Type="STRING" Width="80"></MaskEdit>
+				<MaskEdit Border="Flat" BorderColor="user3" Enable="FALSE" Height="22" Id="mae_ZIP_END" Left="141" LeftMargin="15" Mask="###-###" OnKeyDown="mae_ZIP_END_OnKeyDown" TabOrder="3" Top="93" Type="STRING" Width="80"></MaskEdit>
+				<Combo BKColor="user13" CodeColumn="stAFF_CD" DataColumn="STAFF_NM" Enable="FALSE" Height="22" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="516" TabOrder="1" ToolTipText="담당사원" Top="18" Width="83"></Combo>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="8" Style="box_tx" TabOrder="16" Text="시군구" Top="41" VAlign="Middle" Width="130"></Static>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static5" Left="384" Style="box_tx" TabOrder="18" Text="비&#32;&#32;고" Top="41" VAlign="Middle" Width="130"></Static>
+				<Edit Border="Flat" BorderColor="user10" Enable="FALSE" Height="22" Id="edt_REMAK" ImeMode="keep,native" Left="517" LeftMargin="2" MaxLength="100" Style="edit" TabOrder="17" Top="43" Width="335"></Edit>
+				<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_DONG" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="456" CellMoving="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="328" Id="grd_alldong" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" MultiSelect="TRUE" NoDataText="No&#32;Data" Right="208" RowHeight="20" Style="grid" TabOrder="19" TabStop="FALSE" Top="128" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="192">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="115"/>
+							</columns>
+							<head>
+								<cell bkcolor="user8" col="0" color="user12" display="text" text="전체&#32;동목록"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="DONG" display="text"/>
+							</body>
+						</format>
+					</contents>
+				</Grid>
+				<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_DONG_sel" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="456" CellMoving="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="328" Id="grd_seldong" InputPanel="FALSE" Left="304" LineColor="silver" MinWidth="100" MultiSelect="TRUE" NoDataText="No&#32;Data" Right="496" RowHeight="20" Style="grid" TabOrder="20" TabStop="FALSE" Top="128" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="192">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="160"/>
+							</columns>
+							<head>
+								<cell bkcolor="user8" col="0" color="user12" display="text" text="선택한&#32;동목록"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="DONG" display="text"/>
+							</body>
+						</format>
+					</contents>
+				</Grid>
+			</Contents>
+		</Div>
+		<Grid BindDataset="ds_BranZipList" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="304" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="240" Id="grd_CHGZONELIST" InputPanel="FALSE" Left="8" LineColor="silver" OnCellClick="grd_CHGZONELIST_OnCellClick" Right="1035" RowHeight="20" Style="grid" TabOrder="9" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1027">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="81"/>
+						<col width="60"/>
+						<col width="129"/>
+						<col width="185"/>
+						<col width="565"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="변경일"/>
+						<cell col="1" color="user12" display="text" text="변경번호"/>
+						<cell col="2" color="user12" display="text" text="사원"/>
+						<cell col="3" color="user12" display="text" text="대상우편번호"/>
+						<cell col="4" color="user12" display="text" text="해당&#32;주소&#32;정보"/>
+					</head>
+					<body>
+						<cell col="0" colid="CHG_DAY" display="date"/>
+						<cell align="center" col="1" colid="CHG_NUM" display="text"/>
+						<cell align="center" col="2" colid="STAFF" display="text"/>
+						<cell align="center" col="3" colid="ZIP" display="text"/>
+						<cell col="4" colid="ADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="20" TabOrder="4" TabStop="FALSE" Top="12" Width="1019"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="12" TabOrder="5" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="6" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="12" Id="Image1" ImageID="C_icon" Left="336" TabOrder="7" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Static Height="15" Id="Static15" Left="357" Style="tx_left_bold" TabOrder="8" Text="입력년월" Top="27" Width="50"></Static>
+		<Combo BKColor="user13" Height="21" Id="cob_BRAN_CD" Left="128" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="21" Width="109"></Combo>
+		<Static Height="15" Id="Static1" Left="68" Style="tx_left_bold" TabOrder="9" Text="센터명" Top="27" Width="40"></Static>
+		<Image Height="12" Id="Image16" ImageID="C_icon" Left="48" TabOrder="8" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" Height="22" Id="cal_YRMN" Left="427" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="입력년월" Top="21" Width="106"></Calendar>
+		<Combo CodeColumn="ATTE" DataColumn="ATTE" Enable="FALSE" Height="23" Id="cob_ATTE" InnerDataset="ds_ATTE" Left="156" OnChanged="cob_ATTE_OnChanged" TabOrder="12" ToolTipText="도명" Top="371" Width="111"></Combo>
+		<Combo CodeColumn="MNG_ZIP" DataColumn="DSRCCNTY" Enable="FALSE" Height="23" Id="cob_DSRCCNTY" InnerDataset="ds_DSRCCNTY" Left="270" OnChanged="cob_DSRCCNTY_OnChanged" TabOrder="13" ToolTipText="시군구명" Top="371" Width="104"></Combo>
+		<Button ButtonStyle="TRUE" Height="19" Id="btn_delete" ImageID="btn_new03" Left="516" LeftMargin="28" OnClick="btn_delete_OnClick" Style="edit" TabOrder="14" TabStop="FALSE" Top="458" TopMargin="1" Width="54"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_insert" ImageID="C_btn_70" Left="232" LeftMargin="28" OnClick="btn_insert_OnClick" Style="edit" TabOrder="15" TabStop="FALSE" Text="입력" Top="608" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 1);
+
+	// 입력년월 초기화
+	this.cal_YRMN.Value = today();
+	fn_SetControlEnabled(false);
+
+	this.ds_BRAN_CD.setcolumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","","ds_ATTE=SEL1","","fn_CallBack");
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New() 
+{
+	if (!gfn_CheckFormNull(this)) return;
+	// 초기화
+	this.div_ZoneInfo.cal_CHG_DAY.Value    = today();
+	fn_InitControl();	
+	fn_SetControlEnabled(true);
+	fn_setControlView(this.cal_YRMN.Value);
+	this.div_ZoneInfo.cob_Staff_Nm.SetFocus();
+	
+	this.cob_ATTE.BKColor = "user13";
+	this.cob_DSRCCNTY.BKColor = "user13";
+	
+}
+
+function fn_search()
+{
+	this.cob_ATTE.BKColor = -1;
+	this.cob_DSRCCNTY.BKColor = -1;
+	
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_BranZipIn.ClearData();
+	this.ds_BranZipIn.AddRow();
+	
+	this.ds_BranZipIn.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_BranZipIn.SetColumn(0, "YRMN"   , substr(this.cal_YRMN.Value, 0, 6));
+	
+	gfn_syncCall("CHGLIST","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008003&EVENTID=staff_zone_chglist","S=ds_BranZipIn","ds_BranZipList=SEL1","","fn_CallBack");
+	
+	trace(ds_BranZipList.SaveXML());
+	
+	fn_InitControl();
+	fn_SetControlEnabled(false);
+	fn_setControlView(this.cal_YRMN.Value);
+}
+
+function fn_Save() 
+{
+	if (!gfn_CheckFormNull(this)) return;
+	if (!gfn_CheckFormNull(this.div_ZoneInfo)) return;
+	
+	//시군구가 disable이면 저장 안되는거지.
+	if (this.cob_ATTE.Enable == false) {
+		gfn_Confirm("MB_OK", "저장할 수 없습니다.", "경고", "0");
+		return;
+	}
+
+	// 시작 / 종료 구역 검사
+	var zip_start = this.div_ZoneInfo.mae_ZIP_START.Value;
+	var zip_end   = this.div_ZoneInfo.mae_ZIP_END.Value;
+
+	if (toNumber(zip_start) > toNumber(zip_end)) {
+        gfn_Confirm("MB_OK", "시작 구역번호가 종료 구역번호보다 클 수 없습니다.", "경고", "0");
+		this.div_ZoneInfo.mae_ZIP_START.SetFocus();
+		return;
+	}
+	
+	if (this.ds_DONG_sel.GetRowCount() == 0) {
+		var yesno = gfn_Confirm("MB_YESNO", "선택한 동이 없습니다. 해당 지역 전체를 관리구역으로 지정하시겠습니까?", "경고", "0");
+		if (yesno == "6") {
+			this.div_ZoneInfo.edt_REMAK.Value = "전체";
+		} else {
+			return;
+		}
+	} else {
+		var temp_remak = "";
+		for (var i=0; i < this.ds_DONG_sel.GetRowCount(); i++) {
+			temp_remak = temp_remak + this.ds_DONG_sel.GetColumn(i,"DONG") + ",";
+		}
+		this.div_ZoneInfo.edt_REMAK.Value = substr(temp_remak, 0, temp_remak.length()-1);
+	}
+
+	this.ds_BranZip.ClearData();
+	this.ds_BranZip.AddRow();
+	
+	this.ds_BranZip.SetColumn(0, "BRAN_CD"  , this.cob_BRAN_CD.Value               );
+	this.ds_BranZip.SetColumn(0, "CHG_DAY"  , this.div_ZoneInfo.cal_CHG_DAY.Value  );
+	this.ds_BranZip.SetColumn(0, "CHG_BRAN" , this.div_ZoneInfo.cob_BRAN_CD.Value  );
+	this.ds_BranZip.SetColumn(0, "STAFF_CD", this.div_ZoneInfo.cob_Staff_Nm.Value);
+	this.ds_BranZip.SetColumn(0, "ZIP_START", this.div_ZoneInfo.mae_ZIP_START.Value);
+	this.ds_BranZip.SetColumn(0, "ZIP_END"  , this.div_ZoneInfo.mae_ZIP_END.Value  );
+	this.ds_BranZip.SetColumn(0, "REMAK"    , this.div_ZoneInfo.edt_REMAK.Value    );
+	
+	this.ds_BranZip.SetColumn(0, "ATTE"     , this.cob_ATTE.Value    );
+	this.ds_BranZip.SetColumn(0, "DSRCCNTY" , this.cob_DSRCCNTY.Text    );
+	this.ds_BranZip.SetColumn(0, "MNG_ZIP"  , this.cob_DSRCCNTY.Value     );
+	
+	//trace(ds_BranZip.SaveXML());
+	gfn_syncCall("CHGSAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008003&EVENTID=staff_zone_chg","S=ds_BranZip:U S1=ds_DONG_sel","","","fn_CallBack",gv_TraceLog,gv_formid);
+
+	fn_search();
+}
+
+function fn_Excel() {}
+function fn_Delete() 
+{
+}
+
+function fn_Print() {}
+
+function fn_InitControl()
+{
+	this.div_ZoneInfo.edt_CHG_NUM.Text     = "";
+	//this.div_ZoneInfo.edt_STAFF_CD.Text    = "";
+	this.div_ZoneInfo.cob_Staff_Nm.text    = "";
+	this.div_ZoneInfo.mae_ZIP_START.Value  = "";
+	this.div_ZoneInfo.edt_ADDR_START.Value = "";
+	this.div_ZoneInfo.mae_ZIP_END.Value    = "";
+	this.div_ZoneInfo.edt_ADDR_END.Value   = "";
+	this.div_ZoneInfo.edt_REMAK.Text       = "";
+	this.cob_ATTE.Value = "";
+	this.cob_DSRCCNTY.value = "";
+	this.ds_DONG.ClearData();
+	this.ds_DONG_sel.ClearData();
+}
+
+function fn_SetControlEnabled(enabled)
+{
+	//this.div_ZoneInfo.edt_STAFF_CD.Enable  = enabled;
+	this.div_ZoneInfo.mae_ZIP_START.Enable = enabled;
+	this.div_ZoneInfo.mae_ZIP_END.Enable   = enabled;
+	//this.div_ZoneInfo.edt_REMAK.Enable     = enabled;
+	this.div_ZoneInfo.cob_Staff_Nm.Enable = enabled;
+	this.cob_ATTE.Enable = enabled;
+	this.cob_DSRCCNTY.Enable = enabled;
+	this.div_ZoneInfo.grd_alldong.Enable = enabled;
+	this.div_ZoneInfo.grd_seldong.Enable = enabled;
+	this.btn_insert.Enable = enabled;
+	this.btn_delete.Enable = enabled;
+}
+/*
+function edt_STAFF_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == "112") {
+		var inParam = "BRAN_CD=" + quote(this.cob_BRAN_CD.Value);
+		var result = Dialog("fi_bra::find_sawon.xml", inParam);
+		
+		if(0 < length(result)){
+			var vArr = result.split(",");
+		
+			this.div_ZoneInfo.edt_STAFF_CD.Text = vArr[0];
+			this.div_ZoneInfo.edt_STAFF_NM.Text = vArr[1];
+		}
+	}
+}
+*/
+
+/*function mae_ZIP_START_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == "112") {
+		
+		var result = Dialog("fi_bra::find_BranZip.xml","");
+	
+		if(0 < length(result)){
+			var vArr = result.split(",");
+			
+			if (length(vArr[0]) == 3) 
+			{
+				this.div_ZoneInfo.mae_ZIP_START.Value = vArr[0] + "000";
+			}
+			else
+			{
+				this.div_ZoneInfo.mae_ZIP_START.Value = vArr[0];
+			}
+			this.div_ZoneInfo.edt_ADDR_START.Text = vArr[1];
+		}
+	}
+}*/
+/*
+function mae_ZIP_END_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == "112") {
+		var result = Dialog("fi_bra::find_BranZip.xml","");
+
+		if(0 < length(result)){
+			var vArr = result.split(",");
+			if (length(vArr[0]) == 3) 
+			{
+				this.div_ZoneInfo.mae_ZIP_END.Value = vArr[0] + "999";
+			}
+			else
+			{
+				this.div_ZoneInfo.mae_ZIP_END.Value = vArr[0];
+			}
+			this.div_ZoneInfo.edt_ADDR_END.Text = vArr[1];
+		}
+	}
+}*/
+
+function grd_CHGZONELIST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	fn_setControlView(this.ds_BranZipList.GetColumn(nRow,"CHG_DAY"));
+	fn_InitControl();
+	fn_SetControlEnabled(false);
+	
+	this.div_ZoneInfo.cal_CHG_DAY.Value    = this.ds_BranZipList.GetColumn(nRow, "CHG_DAY"   );
+	this.div_ZoneInfo.edt_CHG_NUM.Text     = this.ds_BranZipList.GetColumn(nRow, "CHG_NUM"   );
+	//this.div_ZoneInfo.edt_STAFF_CD.Text    = this.ds_BranZipList.GetColumn(nRow, "STAFF_CD"  );
+	//this.div_ZoneInfo.edt_STAFF_CD.Text    = this.ds_BranZipList.GetColumn(nRow, "STAFF_CD"  );
+	this.div_ZoneInfo.cob_Staff_Nm.text   = this.ds_BranZipList.GetColumn(nRow, "STAFF_NM"  );
+	this.div_ZoneInfo.mae_ZIP_START.Value  = this.ds_BranZipList.GetColumn(nRow, "ZIP_START" );
+	this.div_ZoneInfo.edt_ADDR_START.Value = this.ds_BranZipList.GetColumn(nRow, "ADDR_START");
+	this.div_ZoneInfo.mae_ZIP_END.Value    = this.ds_BranZipList.GetColumn(nRow, "ZIP_END"   );
+	this.div_ZoneInfo.edt_ADDR_END.Value   = this.ds_BranZipList.GetColumn(nRow, "ADDR_END"  );
+	this.div_ZoneInfo.edt_REMAK.Text       = this.ds_BranZipList.GetColumn(nRow, "REMAK"     );
+	this.cob_ATTE.Text                     = this.ds_BranZipList.GetColumn(nRow, "ATTE"      );
+	
+	this.ds_DSRCCNTY.ClearData();
+	this.ds_DSRCCNTY.AddRow();
+	this.ds_DSRCCNTY.SetColumn(0, "DSRCCNTY", this.ds_BranZipList.GetColumn(nRow, "DSRCCNTY"));
+	this.ds_DSRCCNTY.SetColumn(0, "MNG_ZIP",  this.ds_BranZipList.GetColumn(nRow, "MNG_ZIP"));
+	this.cob_DSRCCNTY.Text                 = this.ds_BranZipList.GetColumn(nRow, "DSRCCNTY");
+	
+	fn_loadDong(this.cob_ATTE.Value, this.cob_DSRCCNTY.Text, this.cob_DSRCCNTY.Value);
+	
+	this.ds_selectedDongIn.ClearData();
+	this.ds_selectedDongIn.AddRow();
+	this.ds_selectedDongIn.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.value);
+	this.ds_selectedDongIn.SetColumn(0, "CHG_DAY", this.ds_BranZipList.GetColumn(nRow, "CHG_DAY"));
+	this.ds_selectedDongIn.SetColumn(0, "CHG_NUM", this.ds_BranZipList.GetColumn(nRow, "CHG_NUM"));
+	gfn_syncCall("LOAD_DONG","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008003&EVENTID=list_selectedDong","S=ds_selectedDongIn","ds_DONG_sel=SEL1","","fn_CallBack");	
+}
+
+function img_empSearch_OnClick(obj,nX,nY)
+{
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		return;
+	}
+
+	var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+		
+	if (length(result ) > 0) {
+		var vArr = result.Split(",");
+	//	this.div_ZoneInfo.edt_STAFF_CD.Text = vArr[0];
+		this.div_ZoneInfo.cob_Staff_Nm.text = vArr[1];
+	}
+}
+
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	this.ds_BRAN_CD.setcolumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+
+}
+
+
+function cob_ATTE_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	this.ds_sigugun.ClearData();
+	this.ds_sigugun.AddRow();
+	this.ds_sigugun.SetColumn(0, "ATTE", strCode);
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","S=ds_sigugun","ds_DSRCCNTY=SEL5","","fn_CallBack");
+}
+
+function cob_DSRCCNTY_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	fn_loadDong(this.cob_ATTE.Value,strText,strCode);
+	this.div_ZoneInfo.edt_REMAK.Value = "";
+}
+
+
+function fn_loadDong(atte,dsrccnty,mng_zip)
+{
+	this.ds_DONG.ClearData();
+	this.ds_DONG_sel.ClearData();
+
+	this.ds_sigugun.ClearData();
+	this.ds_sigugun.AddRow();
+	this.ds_sigugun.SetColumn(0, "ATTE"    , atte);
+	this.ds_sigugun.SetColumn(0, "DSRCCNTY", dsrccnty);
+	this.ds_sigugun.SetColumn(0, "MNG_ZIP" , mng_zip);
+	
+	gfn_syncCall("LOAD_DSRCCNTY","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","S=ds_sigugun","ds_DONG=SEL6","","fn_CallBack");
+}
+
+
+function btn_insert_OnClick(obj)
+{
+	for (var i=0; i<this.ds_DONG.GetRowCount(); i++) {
+		if (this.ds_DONG.SelectRow(i, false)) {
+			var j = 0;
+			for (j=0; j<this.ds_DONG_sel.GetRowCount(); j++) {
+				if (this.ds_DONG.GetColumn(i, "DONG") == this.ds_DONG_sel.GetColumn(j, "DONG")) {
+					break;
+				}
+			}
+			if (j==this.ds_DONG_sel.GetRowCount()) {
+				var nRow = this.ds_DONG_sel.AddRow();
+				this.ds_DONG_sel.SetColumn(nRow, "DONG", this.ds_DONG.GetColumn(i, "DONG"));
+			}
+		}
+	}
+}
+
+function btn_delete_OnClick(obj)
+{
+	for (var i=this.ds_DONG_sel.GetRowCount()-1; i>=0; i--) {
+		if (this.ds_DONG_sel.SelectRow(i, false)) {
+			this.ds_DONG_sel.DeleteRow(i);
+		}
+	}	
+}
+
+
+function fn_setControlView(yrmn)
+{
+	if (yrmn < "20140101") {
+		this.div_ZoneInfo.sta_zip.Visible = true;
+		this.div_ZoneInfo.shp_zip1.Visible = true;
+		this.div_ZoneInfo.shp_zip2.Visible = true;
+		this.div_ZoneInfo.mae_ZIP_START.Visible = true;
+		this.div_ZoneInfo.mae_ZIP_END.Visible = true;
+		this.div_ZoneInfo.edt_ADDR_START.Visible = true;
+		this.div_ZoneInfo.edt_ADDR_END.Visible = true;
+		
+		this.div_ZoneInfo.grd_alldong.Visible = false;
+		this.div_ZoneInfo.grd_seldong.Visible = false;
+		this.div_ZoneInfo.btn_insert.Visible = false;
+		this.div_ZoneInfo.btn_delete.Visible = false;
+	} else {
+		this.div_ZoneInfo.sta_zip.Visible = false;
+		this.div_ZoneInfo.shp_zip1.Visible = false;
+		this.div_ZoneInfo.shp_zip2.Visible = false;
+		this.div_ZoneInfo.mae_ZIP_START.Visible = false;
+		this.div_ZoneInfo.mae_ZIP_END.Visible = false;
+		this.div_ZoneInfo.edt_ADDR_START.Visible = false;
+		this.div_ZoneInfo.edt_ADDR_END.Visible = false;
+		
+		this.div_ZoneInfo.grd_alldong.Visible = true;
+		this.div_ZoneInfo.grd_seldong.Visible = true;
+		this.div_ZoneInfo.btn_insert.Visible = true;
+		this.div_ZoneInfo.btn_delete.Visible = true;
+	}
+}]]></Script>
+</Window>

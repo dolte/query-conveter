@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_s10" Left="8" OnLoadCompleted="bra10_s10_OnLoadCompleted" PidAttrib="7" Title="스마트앱&#32;실사권한&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_GIBU_CD">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Set" UseClientLayout="1">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="USER_PWD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Grid AutoEnter="TRUE" BindDataset="ds_Set" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="744" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="25" Height="664" Id="grd_udtk_list" InputPanel="FALSE" Left="8" LineColor="silver" Right="1037" Style="grid" TabOrder="4" TabStop="FALSE" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1029">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="160"/>
+						<col width="130"/>
+						<col width="139"/>
+						<col width="130"/>
+						<col width="130"/>
+						<col width="130"/>
+						<col width="130"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터"/>
+						<cell col="1" color="user12" display="text" text="관리자&#32;ID"/>
+						<cell col="2" color="user12" display="text" text="관리자&#32;PW"/>
+						<cell col="3" color="user12" display="text" text="등록자이름"/>
+						<cell col="4" color="user12" display="text" text="등록일시"/>
+						<cell col="5" color="user12" display="text" text="수정자이름"/>
+						<cell col="6" color="user12" display="text" text="수정일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DEPT_CD" combocol="DEPT_CD" combodataset="ds_GIBU_CD" combotext="DEPT_NM" display="combo" edit="combo"/>
+						<cell align="center" col="1" colid="UDTKPRES_ID" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="USER_PWD" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="INSPRES_NM" display="text"/>
+						<cell align="center" col="4" colid="INS_DATE" display="text"/>
+						<cell align="center" col="5" colid="MODPRES_NM" display="text"/>
+						<cell align="center" col="6" colid="MOD_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo BKColor="user13" CodeColumn="DEPT_CD" Color="black" DataColumn="DEPT_NM" Height="20" Id="cob_BRAN_CD" ImeMode="none" InnerDataset="ds_GIBU_CD" Left="1056" OnChanged="cob_BRAN_CD_OnChanged" Style="edit" TabOrder="5" ToolTipText="센터명" Top="56" Visible="FALSE" Width="109"></Combo>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Add" ImageID="C_btn_70" Left="856" LeftMargin="25" OnClick="btn_Add_OnClick" TabOrder="6" TabStop="FALSE" Text="추가" Top="18" Width="72"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Del" ImageID="C_btn_70" Left="936" LeftMargin="25" OnClick="btn_Del_OnClick" TabOrder="7" TabStop="FALSE" Text="삭제" Top="18" Width="72"></Button>
+		<Static Align="Right" Color="red" Height="16" Id="Static0" Left="353" TabOrder="8" Text="*&#32;실사를&#32;위한&#32;아이디&#32;생성&#32;시&#32;대문자&#32;K로&#32;시작하는&#32;아이디는&#32;사용할&#32;수&#32;없습니다.(사번&#32;사용불가)" Top="63" Width="682"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW"){///신규  
+		//fn_new();
+	}else if(strCode == "SEARCH"){///조회
+		fn_search();
+    }else if(strCode == "SAVE"){///저장 
+		fn_save();
+    }else if(strCode == "EXCEL"){///엑셀저장
+		//fn_excel();
+    }else if(strCode == "DELETE"){///삭제
+		//fn_delete();
+    }else if(strCode == "PRINT"){///출력
+		//fn_print();
+    }else if(strCode == "CLOSE"){///닫기
+		if(!gfn_changeAction("CLOSE","ds_Set"))return;
+		close();
+    }
+}
+
+function fn_CallBack(svcid,errCode,errMsg)
+{	if(errCode < 0 )	{		alert("Error =======>"+ svcid + '  ' +errMsg);	}	else	{		switch (svcid)		{			case "svcSearch" :				break;
+			case "svcSave" :
+				alert("저장되었습니다.");
+				fn_Search();
+				break;			default : break;		}	}}
+
+function bra10_s10_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 1);
+
+	fn_Search();
+}
+
+function fn_Search()
+{
+	if(!gfn_changeAction("SEARCH","ds_Set"))return;
+	
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008008&EVENTID=sel_mobile_udtkpres","","ds_Set=SEL1","","fn_CallBack");
+}
+
+function fn_Save()
+{
+	for(var i = 0; i < ds_Set.rowcount; i++)
+	{
+		if(ds_Set.GetColumn(i, "UDTKPRES_ID") == "" || ds_Set.GetColumn(i, "UDTKPRES_ID") == null)
+		{
+			alert("아이디를 지정해주십시오.");
+			return;
+		}
+		if(ds_Set.GetColumn(i, "USER_PWD") == "" || ds_Set.GetColumn(i, "USER_PWD") == null)
+		{
+			alert("비밀번호를 지정해주십시오.");
+			return;
+		}
+	}
+	
+	gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008008&EVENTID=save_mobile_udtkpres","S=ds_Set:U","","","fn_CallBack");
+}
+
+function btn_Add_OnClick(obj)
+{
+	ds_Set.AddRow();
+}
+
+function btn_Del_OnClick(obj)
+{
+	ds_Set.DeleteRow(ds_Set.currow);
+}
+
+]]></Script>
+</Window>

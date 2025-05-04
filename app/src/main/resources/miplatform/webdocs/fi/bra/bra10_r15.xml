@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_r15" Left="8" OnLoadCompleted="bra10_r15_OnLoadCompleted" PidAttrib="7" Title="성과급산출관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="APPL_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab0" UseClientLayout="1">
+				<Contents>
+					<colinfo id="DELCHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTAIN_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FUNC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="BASIC_AMT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_ACTRE_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACTRE_BONUS_SUBTOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_EXTTN_UPSOFREQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_MONPRNCFEE_TOTAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_EXTTN_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab1" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FUNC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BASIC_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BASIC_AMT_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BASIC_AMT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_BONUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab2" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PURE_LEVY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_BONUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab3">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BG_AMT_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PURE_LEVY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_BONUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab4">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CNT_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CNT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_BONUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab5">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FUNC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_ACTRE_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_ACTRE_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list_tab6" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON_TARGET_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLAIM_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PURE_LEVY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="VARIATION_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTAIN_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CNT_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CNT_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRUD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BonusPlot">
+				<Contents>
+					<colinfo id="START_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BONUS_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bre">
+				<Contents>
+					<colinfo id="LEVY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON_TARGET_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTAIN_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BONUS_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LEVY_BONUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO_TOTAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="2" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="3" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Static Height="15" Id="Static0" Left="50" Style="tx_left_bold" TabOrder="4" Text="년&#32;월" Top="23" Width="54"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="26" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_Yrmn" Left="104" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" Top="18" Width="104"></Calendar>
+		<Tab Border="Flat" BorderColor="user7" Height="736" Id="tab_bonus" Left="8" TabOrder="7" Top="54" Width="1032">
+			<Contents>
+				<TabPage BorderColor="black" Height="707" Id="tab7" ImageID="C_tab2" Left="2" TabOrder="7" Text="전국센터징수금액" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="월별&#32;전국센터&#32;징수금액&#32;현황" Top="10" Width="392"></Static>
+					<Grid AutoEnter="TRUE" BindDataset="ds_list_tab6" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="691" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="659" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="60"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="130"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="80"/>
+									<col width="100"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="센터명"/>
+									<cell col="2" color="user12" display="text" text="월목표금액"/>
+									<cell col="3" color="user12" display="text" text="당월징수금액"/>
+									<cell col="4" color="user12" display="text" text="채권징수금액"/>
+									<cell col="5" color="user12" display="text" expr='&quot;채권제외\n징수금액&quot;'/>
+									<cell col="6" color="user12" display="text" expr='&quot;당월징수금액대비\n월목표금액증감액&quot;' text="주민등록번호"/>
+									<cell col="7" color="user12" display="text" text="달성율"/>
+									<cell col="8" color="user12" display="text" text="징수업소수"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" expr="currow&#32;+&#32;1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+									<cell align="right" col="2" colid="MON_TARGET_AMT" display="number"/>
+									<cell align="right" col="3" colid="LEVY_AMT" display="number" edit="number"/>
+									<cell align="right" col="4" colid="CLAIM_AMT" display="number" edit="number"/>
+									<cell align="right" col="5" colid="PURE_LEVY_AMT" display="number" expr="tonumber(LEVY_AMT)&#32;-tonumber(CLAIM_AMT)"/>
+									<cell align="right" col="6" colid="VARIATION_AMT" display="number" expr="tonumber(LEVY_AMT)&#32;-tonumber(MON_TARGET_AMT)"/>
+									<cell align="right" col="7" colid="ATTAIN_RATE" display="normal" expr='round(tonumber(LEVY_AMT)&#32;/&#32;tonumber(MON_TARGET_AMT)&#32;*&#32;100)&#32;+&#32;&quot;%&quot;'/>
+									<cell align="right" col="8" colid="TOT_UPSO_CNT" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="2" display="text" text="계"/>
+									<cell align="right" col="2" display="number" expr='SUM(&quot;MON_TARGET_AMT&quot;)'/>
+									<cell align="right" col="3" display="number" expr='sum(&quot;LEVY_AMT&quot;)'/>
+									<cell align="right" col="4" display="number" expr='sum(&quot;CLAIM_AMT&quot;)'/>
+									<cell align="right" col="5" display="number" expr='sum(&quot;LEVY_AMT&quot;)&#32;-&#32;sum(&quot;CLAIM_AMT&quot;)'/>
+									<cell align="right" col="6" display="number" expr='sum(&quot;VARIATION_AMT&quot;)'/>
+									<cell align="right" col="7" display="normal" expr='round(sum(&quot;LEVY_AMT&quot;)&#32;/&#32;SUM(&quot;MON_TARGET_AMT&quot;)&#32;&#32;*&#32;100)&#32;+&#32;&quot;%&quot;'/>
+									<cell align="right" col="8" display="number" expr='sum(&quot;TOT_UPSO_CNT&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+					<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_Search" ImageID="C_btn_110" Left="216" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="4" Text="성과급&#32;산출" Top="5" TopMargin="1" Width="111"></Button>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab8" ImageID="C_tab2" Left="2" TabOrder="7" Text="성과급&#32;산출&#32;내역" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="15" TabOrder="2" Top="16" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="38" Style="tx_bold" TabOrder="1" Text="성과급&#32;산출&#32;기준표" Top="18" Width="392"></Static>
+					<Static Height="16" Id="Static0" Left="45" TabOrder="3" Text="가.&#32;신규&#32;개발급" Top="45" Width="257"></Static>
+					<Static Height="16" Id="Static2" Left="69" TabOrder="4" Text="-&#32;월정료&#32;*&#32;10&#32;%" Top="69" Width="257"></Static>
+					<Static Height="16" Id="Static3" Left="453" TabOrder="5" Text="나.&#32;징수&#32;실적금" Top="45" Width="257"></Static>
+					<Grid BindDataset="ds_BonusPlot" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="285" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="216" Id="grd_BRANZIP" InputPanel="FALSE" Left="478" LineColor="silver" Right="846" RowHeight="20" Style="grid" TabOrder="6" TabStop="true" Top="69" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="368">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="120"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" color="user12" colspan="2" display="text" text="징수금액&#32;(%)"/>
+									<cell align="center" col="2" color="user12" display="text" rowspan="2" text="요율"/>
+									<cell align="center" col="0" color="user12" display="text" row="1" text="이상"/>
+									<cell align="center" col="1" color="user12" display="text" row="1" text="미만"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="START_RATE" display="normal"/>
+									<cell align="center" col="1" colid="END_RATE" display="text"/>
+									<cell align="center" col="2" colid="BONUS_RATE" display="text" expr='BONUS_RATE&#32;+&#32;&quot;&#32;%&quot;'/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Static Height="16" Id="Static4" Left="453" TabOrder="7" Text="나.&#32;징수&#32;실적금" Top="349" Width="257"></Static>
+					<Image Height="17" Id="Image0" ImageID="C_icon2" Left="15" TabOrder="9" Top="312" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static5" Left="38" Style="tx_bold" TabOrder="8" Text="성과급&#32;산출&#32;기준표" Top="314" Width="392"></Static>
+					<Static Height="16" Id="Static1" Left="469" TabOrder="10" Text="1)&#32;월&#32;징수&#32;예산액" Top="370" Width="121"></Static>
+					<Static Height="14" Id="Static6" Left="469" TabOrder="11" Text="2)&#32;월&#32;징수금액" Top="397" Width="121"></Static>
+					<Static Height="16" Id="Static7" Left="469" TabOrder="12" Text="3)&#32;월&#32;징수달성도" Top="422" Width="121"></Static>
+					<Static Height="16" Id="Static9" Left="469" TabOrder="13" Text="4)&#32;징수&#32;실적금" Top="448" Width="121"></Static>
+					<Static Height="16" Id="Static10" Left="45" TabOrder="14" Text="가.&#32;신규개발급" Top="349" Width="257"></Static>
+					<Shape BKColor="user19" Bottom="302" Height="1" Id="Shape20" Left="8" LineColor="user21" Right="1035" RoundHeight="0" RoundWidth="0" TabOrder="15" Top="301" Type="RoundRect" Width="1027"></Shape>
+					<Shape BKColor="user19" Bottom="502" Height="1" Id="Shape0" Left="480" LineColor="user21" Right="1000" RoundHeight="0" RoundWidth="0" TabOrder="16" Top="501" Type="RoundRect" Width="520"></Shape>
+					<Shape BKColor="user19" Bottom="531" Height="1" Id="Shape1" Left="480" LineColor="user21" Right="1000" RoundHeight="0" RoundWidth="0" TabOrder="17" Top="530" Type="RoundRect" Width="520"></Shape>
+					<Shape BKColor="user19" Bottom="560" Height="1" Id="Shape2" Left="480" LineColor="user21" Right="1000" RoundHeight="0" RoundWidth="0" TabOrder="18" Top="559" Type="RoundRect" Width="520"></Shape>
+					<Shape BKColor="user19" Bottom="588" Height="1" Id="Shape3" Left="480" LineColor="user21" Right="1000" RoundHeight="0" RoundWidth="0" TabOrder="19" Top="587" Type="RoundRect" Width="520"></Shape>
+					<Shape BKColor="user19" Bottom="616" Height="1" Id="Shape4" Left="480" LineColor="user21" Right="1000" RoundHeight="0" RoundWidth="0" TabOrder="20" Top="615" Type="RoundRect" Width="520"></Shape>
+					<Static Height="14" Id="Static11" Left="493" TabOrder="21" Text="가.&#32;기본급비율&#32;성과급&#32;지금&#32;총액&#32;(30%)" Top="511" Width="321"></Static>
+					<Static Height="16" Id="Static12" Left="493" TabOrder="22" Text="나.&#32;전체&#32;징수금액&#32;대비&#32;센터징수&#32;지급&#32;총액&#32;(30%)" Top="541" Width="321"></Static>
+					<Static Height="16" Id="Static13" Left="493" TabOrder="23" Text="다.&#32;월&#32;예산금액&#32;대비&#32;초과센터&#32;지급금액&#32;(20%)" Top="569" Width="321"></Static>
+					<Static Height="18" Id="Static14" Left="493" TabOrder="24" Text="라.&#32;월&#32;전국센터&#32;총징수업소수대비&#32;징수업소비율&#32;(20%)" Top="597" Width="321"></Static>
+					<Shape BKColor="user19" Bottom="616" Height="115" Id="Shape5" Left="825" LineColor="user21" Right="826" RoundHeight="0" RoundWidth="0" TabOrder="25" Top="501" Type="RoundRect" Width="1"></Shape>
+					<Shape BKColor="user19" Bottom="615" Height="114" Id="Shape6" Left="479" LineColor="user21" Right="480" RoundHeight="0" RoundWidth="0" TabOrder="26" Top="501" Type="RoundRect" Width="1"></Shape>
+					<Shape BKColor="user19" Bottom="615" Height="114" Id="Shape7" Left="999" LineColor="user21" Right="1000" RoundHeight="0" RoundWidth="0" TabOrder="27" Top="501" Type="RoundRect" Width="1"></Shape>
+					<Static Height="16" Id="Static15" Left="61" TabOrder="28" Text="1)&#32;신규개발&#32;업소수" Top="370" Width="121"></Static>
+					<Static Height="18" Id="Static16" Left="61" TabOrder="29" Text="2)&#32;신규개발&#32;업소&#32;월정사용료&#32;총액" Top="397" Width="193"></Static>
+					<Static Height="17" Id="Static17" Left="61" TabOrder="30" Text="3)&#32;신규개발&#32;성과급&#32;총액" Top="422" Width="137"></Static>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="MON_TARGET_AMT" Height="23" Id="mae_MON_TARGET_AMT" Left="614" Readonly="TRUE" TabOrder="31" Top="367" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="LEVY_AMT" Height="23" Id="mae_LEVY_AMT" Left="614" Readonly="TRUE" TabOrder="32" Top="393" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="ATTAIN_RATE" Height="23" Id="mae_ATTAIN_RATE" Left="614" Readonly="TRUE" TabOrder="33" Top="419" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit Border="Flat" BorderColor="user10" Height="23" Id="mae_BONUS1" Left="829" Readonly="TRUE" TabOrder="34" Top="505" Width="168"></MaskEdit>
+					<MaskEdit Border="Flat" BorderColor="user10" Height="23" Id="mae_BONUS2" Left="829" Readonly="TRUE" TabOrder="35" Top="534" Width="168"></MaskEdit>
+					<MaskEdit Border="Flat" BorderColor="user10" Height="23" Id="mae_BONUS3" Left="829" Readonly="TRUE" TabOrder="36" Top="562" Width="168"></MaskEdit>
+					<MaskEdit Border="Flat" BorderColor="user10" Height="23" Id="mae_BONUS4" Left="829" Readonly="TRUE" TabOrder="37" Top="590" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="NEW_UPSO_CNT" Height="23" Id="mae_NEW_UPSO_CNT" Left="254" Readonly="TRUE" TabOrder="38" Top="367" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="NEW_UPSO_TOTAMT" Height="23" Id="mae_NEW_UPSO_TOTAMT" Left="254" Readonly="TRUE" TabOrder="39" Top="393" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="NEW_UPSO_AMT" Height="23" Id="mae_NEW_UPSO_AMT" Left="254" Readonly="TRUE" TabOrder="40" Top="419" Value="MaskEdit0" Width="168"></MaskEdit>
+					<Static Height="16" Id="Static18" Left="678" TabOrder="41" Text="*&#32;" Top="479" Width="40"></Static>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="LEVY_BONUS" Height="23" Id="mae_LEVY_BONUS" Left="829" Readonly="TRUE" TabOrder="42" Top="473" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="LEVY_AMT" Height="23" Id="mae_LEVY_AMT2" Left="485" Readonly="TRUE" TabOrder="43" Top="473" Value="MaskEdit0" Width="168"></MaskEdit>
+					<MaskEdit BindDataset="ds_bre" Border="Flat" BorderColor="user10" Column="BONUS_RATE" Height="23" Id="mae_BONUS_RATE" Left="709" Readonly="TRUE" TabOrder="44" Top="473" Value="MaskEdit0" Width="65"></MaskEdit>
+					<Static Height="16" Id="Static19" Left="798" TabOrder="45" Text="=" Top="479" Width="40"></Static>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab_bonusList" ImageID="C_tab2" Left="2" TabOrder="50" Text="개인별성과급현황" Top="27" Width="1028">
+					<Grid BindDataset="ds_list_tab0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="704" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="672" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="30"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="115"/>
+									<col width="100"/>
+									<col width="100"/>
+									<col width="100"/>
+									<col width="60"/>
+									<col width="100"/>
+									<col width="100"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" rowspan="3" text="삭제"/>
+									<cell col="1" color="user12" display="text" rowspan="3" text="센터명"/>
+									<cell col="2" color="user12" display="text" expr='&quot;예산\n달성률&quot;' rowspan="3"/>
+									<cell col="3" color="user12" colspan="2" display="text" rowspan="3" text="성명"/>
+									<cell col="5" color="user12" display="text" rowspan="3" text="성과급총액"/>
+									<cell col="6" color="user12" colspan="3" display="text" text="징수성과급"/>
+									<cell col="9" color="user12" colspan="3" display="text" text="신규개발성과급"/>
+									<cell col="6" color="user12" display="text" expr='&quot;기본급\n비율금액&quot;' row="1" rowspan="2"/>
+									<cell col="7" color="user12" display="text" expr='&quot;징수실적\n\비율금액&quot;' row="1" rowspan="2"/>
+									<cell col="8" color="user12" display="text" row="1" rowspan="2" text="소계"/>
+									<cell col="9" color="user12" display="text" expr='&quot;신규개발\n업소수&quot;' row="1" rowspan="2"/>
+									<cell col="10" color="user12" display="text" expr='&quot;월정사용료\n총액&quot;' row="1" rowspan="2"/>
+									<cell col="11" color="user12" display="text" row="1" rowspan="2" text="성과급"/>
+								</head>
+								<body>
+									<cell col="0" colid="DELCHK" display="checkbox" edit="checkbox"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text" suppress="1"/>
+									<cell align="center" col="2" colid="ATTAIN_RATE" display="normal" expr='round(ATTAIN_RATE)&#32;+&#32;&quot;&#32;%&quot;' suppress="1"/>
+									<cell align="center" col="3" colid="FUNC_NM" display="text" suppress="2"/>
+									<cell align="center" col="4" colid="HAN_NM" display="text"/>
+									<cell align="right" col="5" colid="TOT_BONUS" display="number"/>
+									<cell align="right" col="6" colid="BASIC_AMT_BONUS" display="number"/>
+									<cell align="right" col="7" colid="LEVY_ACTRE_BONUS" display="number"/>
+									<cell align="right" col="8" colid="ACTRE_BONUS_SUBTOTAL" display="number"/>
+									<cell align="right" col="9" colid="NEW_EXTTN_UPSOFREQ" display="number"/>
+									<cell align="right" col="10" colid="NEW_MONPRNCFEE_TOTAMT" display="number"/>
+									<cell align="right" col="11" colid="NEW_EXTTN_BONUS" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="5" display="text" text="계"/>
+									<cell align="right" col="5" display="number" expr='SUM(&quot;TOT_BONUS&quot;)'/>
+									<cell align="right" col="6" display="number" expr='sum(&quot;BASIC_AMT_BONUS&quot;)'/>
+									<cell align="right" col="7" display="number" expr='sum(&quot;LEVY_ACTRE_BONUS&quot;)'/>
+									<cell align="right" col="8" display="number" expr='sum(&quot;ACTRE_BONUS_SUBTOTAL&quot;)'/>
+									<cell align="right" col="9" display="number" expr='sum(&quot;NEW_EXTTN_UPSOFREQ&quot;)'/>
+									<cell align="right" col="10" display="number" expr='sum(&quot;NEW_MONPRNCFEE_TOTAMT&quot;)'/>
+									<cell align="right" col="11" display="number" expr='sum(&quot;NEW_EXTTN_BONUS&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="개인별&#32;성과급&#32;현황" Top="10" Width="392"></Static>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab_DemdAutoReport" ImageID="C_tab2" Left="2" TabOrder="50" Text="기본급비율" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="기본급비율&#32;성과급&#32;지급&#32;총액" Top="10" Width="392"></Static>
+					<Grid BindDataset="ds_list_tab1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="691" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="627" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="60"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="100"/>
+									<col width="150"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="센터명"/>
+									<cell col="2" color="user12" colspan="2" display="text" text="직책&#32;/&#32;성명"/>
+									<cell col="4" color="user12" display="text" text="기본급"/>
+									<cell col="5" color="user12" display="text" text="비율"/>
+									<cell col="6" color="user12" display="text" text="금액"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" expr="currow&#32;+&#32;1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text" suppress="1"/>
+									<cell align="center" col="2" colid="FUNC_NM" display="text" suppress="2"/>
+									<cell align="center" col="3" colid="STAFF_NM" display="text"/>
+									<cell align="right" col="4" colid="BASIC_AMT" display="number"/>
+									<cell align="right" col="5" colid="BASIC_AMT_RATE" display="normal" expr='Truncate(BASIC_AMT_RATE,2)&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="6" colid="BASIC_AMT_BONUS" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="4" display="text" text="계"/>
+									<cell align="right" col="4" display="number" expr='SUM(&quot;BASIC_AMT&quot;)'/>
+									<cell align="right" col="5" display="normal" expr='round(SUM(&quot;BASIC_AMT_RATE&quot;))&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="6" display="number" expr='sum(&quot;BASIC_AMT_BONUS&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+					<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="8" Style="box_tx" TabOrder="5" Text="총&#32;금액" Top="32" VAlign="Middle" Width="104"></Static>
+					<Edit Align="RIGHT" BindDataset="ds_list_tab1" Border="Flat" BorderColor="user10" Column="TOT_BONUS" Height="24" Id="edt_variation_amtsum" Left="116" LeftMargin="4" Readonly="TRUE" RightMargin="2" Style="edit" TabOrder="4" Top="33" Width="196"></Edit>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab3" ImageID="C_tab2" Left="2" TabOrder="7" Text="징수금액대비" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="전체&#32;징수금액대비&#32;센터징수&#32;지급총액" Top="10" Width="392"></Static>
+					<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="8" Style="box_tx" TabOrder="4" Text="총&#32;금액" Top="32" VAlign="Middle" Width="104"></Static>
+					<Edit Align="RIGHT" BindDataset="ds_list_tab2" Border="Flat" BorderColor="user10" Column="TOT_BONUS" Height="24" Id="edt_variation_amtsum" ImeMode="none" Left="116" LeftMargin="4" Readonly="TRUE" RightMargin="2" Style="edit" TabOrder="3" Top="33" Width="196"></Edit>
+					<Grid BindDataset="ds_list_tab2" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="691" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="627" Id="grd_list" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="80"/>
+									<col width="150"/>
+									<col width="100"/>
+									<col width="150"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="센터명"/>
+									<cell col="2" color="user12" display="text" text="징수금액"/>
+									<cell col="3" color="user12" display="text" text="비율"/>
+									<cell col="4" color="user12" display="text" text="금액"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" display="text" expr="currow&#32;+&#32;1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text" suppress="1"/>
+									<cell align="right" col="2" colid="PURE_LEVY_AMT" display="number" suppress="2"/>
+									<cell align="right" col="3" colid="LEVY_RATE" display="normal" expr='round(LEVY_RATE)&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="4" colid="LEVY_BONUS" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="2" display="text" text="계"/>
+									<cell align="right" col="2" display="number" expr='sum(&quot;PURE_LEVY_AMT&quot;)'/>
+									<cell align="right" col="3" display="normal" expr='round(SUM(&quot;LEVY_RATE&quot;))&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="4" display="number" expr='SUM(&quot;LEVY_BONUS&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab4" ImageID="C_tab2" Left="2" TabOrder="7" Text="예산금액대비" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="월&#32;예산금액&#32;대비&#32;초과센터&#32;지급금액" Top="10" Width="392"></Static>
+					<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="8" Style="box_tx" TabOrder="4" Text="총&#32;금액" Top="32" VAlign="Middle" Width="104"></Static>
+					<Edit Align="RIGHT" BindDataset="ds_list_tab3" Border="Flat" BorderColor="user10" Column="TOT_BONUS" Height="24" Id="edt_variation_amtsum" Left="116" LeftMargin="4" Readonly="TRUE" RightMargin="2" Style="edit" TabOrder="3" Top="33" Width="196"></Edit>
+					<Grid BindDataset="ds_list_tab3" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="691" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="627" Id="grd_list" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="80"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="120"/>
+									<col width="80"/>
+									<col width="120"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="센터명"/>
+									<cell col="2" color="user12" display="text" text="월예산액"/>
+									<cell col="3" color="user12" display="text" text="징수금액"/>
+									<cell col="4" color="user12" display="text" text="초과금액"/>
+									<cell col="5" color="user12" display="text" text="비율"/>
+									<cell col="6" color="user12" display="text" text="금액"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" expr="currow&#32;+&#32;1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text" suppress="1"/>
+									<cell align="right" col="2" colid="BG_AMT_YRMN" display="number" suppress="2"/>
+									<cell align="right" col="3" colid="PURE_LEVY_AMT" display="number"/>
+									<cell align="right" col="4" colid="EXT_AMT" display="number"/>
+									<cell align="right" col="5" colid="EXT_RATE" display="normal" expr='round(EXT_RATE)&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="6" colid="EXT_BONUS" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="2" display="text" text="계"/>
+									<cell align="right" col="2" display="number" expr='sum(&quot;BG_AMT_YRMN&quot;)'/>
+									<cell align="right" col="3" display="number" expr='SUM(&quot;PURE_LEVY_AMT&quot;)'/>
+									<cell align="right" col="4" display="number" expr='SUM(&quot;EXT_AMT&quot;)'/>
+									<cell align="right" col="5" display="normal" expr='round(sum(&quot;EXT_RATE&quot;))&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="6" display="number" expr='sum(&quot;EXT_BONUS&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab5" ImageID="C_tab2" Left="2" TabOrder="7" Text="총징수업소수대비" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="월&#32;전국센터&#32;총징수업소수대비&#32;징수업소비율" Top="10" Width="392"></Static>
+					<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="8" Style="box_tx" TabOrder="4" Text="총&#32;금액" Top="32" VAlign="Middle" Width="104"></Static>
+					<Edit Align="RIGHT" BindDataset="ds_list_tab4" Border="Flat" BorderColor="user10" Column="TOT_BONUS" Height="24" Id="edt_variation_amtsum" ImeMode="none" Left="116" LeftMargin="4" Readonly="TRUE" RightMargin="2" Style="edit" TabOrder="3" Top="33" Width="196"></Edit>
+					<Grid BindDataset="ds_list_tab4" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="691" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="627" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="60"/>
+									<col width="150"/>
+									<col width="100"/>
+									<col width="125"/>
+									<col width="125"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="센터명"/>
+									<cell col="2" color="user12" display="text" text="징수업소수"/>
+									<cell col="3" color="user12" display="text" text="비율"/>
+									<cell col="4" color="user12" display="text" text="금액"/>
+									<cell col="5" color="user12" display="text" expr='&quot;총계&quot;' text="비율"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" expr="currow&#32;+&#32;1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text" suppress="1"/>
+									<cell align="right" col="2" colid="LEVY_UPSO_CNT" display="number" suppress="2"/>
+									<cell align="right" col="3" colid="UPSO_CNT_RATE" display="text" expr='truncate(UPSO_CNT_RATE,1)&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="4" colid="UPSO_CNT_BONUS" display="number"/>
+									<cell col="5" colid="TOTAL_BONUS" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="2" display="text" text="계"/>
+									<cell align="right" col="2" display="number" expr='sum(&quot;LEVY_UPSO_CNT&quot;)'/>
+									<cell align="right" col="3" display="normal" expr='round(SUM(&quot;UPSO_CNT_RATE&quot;))&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="4" display="number" expr='SUM(&quot;UPSO_CNT_BONUS&quot;)'/>
+									<cell align="right" col="5" display="number" expr='sum(&quot;TOTAL_BONUS&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="tab6" ImageID="C_tab2" Left="2" TabOrder="7" Text="개인별지급내역서" Top="27" Width="1028">
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="7" TabOrder="2" Top="8" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static8" Left="30" Style="tx_bold" TabOrder="1" Text="개인별&#32;지급내역서" Top="10" Width="392"></Static>
+					<Grid BindDataset="ds_list_tab5" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="691" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="659" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1022" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1014">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="60"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="120"/>
+									<col width="100"/>
+									<col width="80"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="센터명"/>
+									<cell col="2" color="user12" colspan="2" display="text" text="성명"/>
+									<cell col="4" color="user12" display="text" text="금액"/>
+									<cell col="5" color="user12" display="text" text="비율"/>
+									<cell col="6" color="user12" display="text" text="적용율"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" expr="currow&#32;+&#32;1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text" suppress="1"/>
+									<cell align="center" col="2" colid="FUNC_NM" display="text" suppress="2"/>
+									<cell align="center" col="3" colid="STAFF_NM" display="text"/>
+									<cell align="right" col="4" colid="LEVY_ACTRE_BONUS" display="number"/>
+									<cell align="right" col="5" colid="LEVY_ACTRE_RATE" display="text" expr='LEVY_ACTRE_RATE&#32;+&#32;&quot;&#32;%&quot;'/>
+									<cell align="right" col="6" colid="RATE" display="normal" expr='RATE&#32;+&#32;&quot;&#32;%&quot;'/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="4" display="text" text="계"/>
+									<cell align="right" col="4" display="number" expr='SUM(&quot;LEVY_ACTRE_BONUS&quot;)'/>
+									<cell align="right" col="5" display="number"/>
+									<cell align="right" col="6" display="number"/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[/* include */
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra10_r15_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);
+	ds_search.AddRow();
+	
+	cal_Yrmn.Value = today();	
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기f
+    else if(strCode == "CLOSE"){
+		close();
+    }
+	return;
+}
+
+//성과급산출
+function btn_Search_OnClick(obj)
+{
+    if(tab_bonus.TabIndex == 0){                         //월별 전국센터 징수금액 현황
+        gfn_syncCall("bra10_r09_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005004&EVENTID=bra10_r09_save","S=ds_list_tab6:N","","","fn_CallBack", gv_TraceLog, gv_formid);
+    }
+    ds_search.SetColumn(0,"APPL_YRMN",substr(cal_Yrmn.Value,0,6));
+	gfn_syncCall("bra10_r15_bonus","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005010&EVENTID=bra10_r15_bonus","S=ds_Search","","","fn_CallBack");
+}
+
+//저장
+function fn_Save(){
+    if(tab_bonus.TabIndex == 0){                         //월별 전국센터 징수금액 현황
+        gfn_syncCall("bra10_r09_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005004&EVENTID=bra10_r09_save","S=ds_list_tab6:N","","","fn_CallBack", gv_TraceLog, gv_formid);
+    }
+}
+
+//조회
+function fn_search(){
+    ds_search.SetColumn(0,"APPL_YRMN",substr(cal_Yrmn.Value,0,6));
+    if(tab_bonus.TabIndex == 0){                         //월별 전국센터 징수금액 현황
+        gfn_syncCall("bra10_r09_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005004&EVENTID=bra10_r09_select","S=ds_Search","ds_list_tab6=SEL1","","fn_CallBack");
+        tab_bonus.tab7.btn_Search.Enable = true;
+    }else if(tab_bonus.TabIndex == 1){                   //성과급 산출 기준표        
+        gfn_syncCall("bra10_r12_search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005011&EVENTID=bra10_r12_search","S=ds_Search","ds_BonusPlot=SEL1 ds_bre=SEL6","","fn_CallBack");
+
+		this.tab_bonus.tab8.mae_BONUS1.Value = toNumber(this.tab_bonus.tab8.mae_LEVY_BONUS.Value) * 0.3;
+		this.tab_bonus.tab8.mae_BONUS2.Value = toNumber(this.tab_bonus.tab8.mae_LEVY_BONUS.Value) * 0.3;
+		this.tab_bonus.tab8.mae_BONUS3.Value = toNumber(this.tab_bonus.tab8.mae_LEVY_BONUS.Value) * 0.2;
+		this.tab_bonus.tab8.mae_BONUS4.Value = toNumber(this.tab_bonus.tab8.mae_LEVY_BONUS.Value) * 0.2;		
+    }else if(tab_bonus.TabIndex == 2){                   //개인별 성과급 현황
+        gfn_syncCall("bra10_r15_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005010&EVENTID=bra10_r15_select","S=ds_Search","ds_list_tab0=SEL1","","fn_CallBack");
+    }else if(tab_bonus.TabIndex == 3){                   //기본급비율 성과급 지급 총액
+        gfn_syncCall("bra10_r10_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005005&EVENTID=bra10_r10_select","S=ds_Search","ds_list_tab1=SEL1","","fn_CallBack");
+    }else if(tab_bonus.TabIndex == 4){                   //전체 징수금액대비 센터징수 지급총액
+        gfn_syncCall("bra10_r11_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005006&EVENTID=bra10_r11_select","S=ds_Search","ds_list_tab2=SEL1","","fn_CallBack");
+    }else if(tab_bonus.TabIndex == 5){                   //월 예산금액 대비 초과센터 지급금액
+        gfn_syncCall("bra10_r12_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005007&EVENTID=bra10_r12_select","S=ds_Search","ds_list_tab3=SEL1","","fn_CallBack");
+    }else if(tab_bonus.TabIndex == 6){                   //월 전국센터 총징수업소수대비 징수업소비율
+        gfn_syncCall("bra10_r13_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005008&EVENTID=bra10_r13_select","S=ds_Search","ds_list_tab4=SEL1","","fn_CallBack");
+    }else if(tab_bonus.TabIndex == 7){                   //개인별 지급내역서
+		gfn_syncCall("bra10_r14_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005009&EVENTID=bra10_r14_select","S=ds_Search","ds_list_tab5=SEL1","","fn_CallBack");
+    }
+}
+
+//삭제
+function fn_Delete(){
+trace(tab_bonus.TabIndex);
+    if(tab_bonus.TabIndex == 2){
+        if(ds_list_tab0.count == 0){
+            gfn_Confirm("MB_OK", "삭제할 데이터가 없습니다.", "경고", "0");
+            return;
+        }
+        
+		var result = gfn_Confirm("MB_YESNO", "삭제하시겠습니까?", "경고", "0");		
+trace(result);
+		if(result == "6"){       //6 예 7 아니오
+		    gfn_syncCall("bra10_r15_delete","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005010&EVENTID=bra10_r15_delete","S=ds_list_tab0:U","","","fn_CallBack");        
+		    fn_search();
+		}else{
+		}
+    }    
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg){
+}
+
+]]></Script>
+</Window>

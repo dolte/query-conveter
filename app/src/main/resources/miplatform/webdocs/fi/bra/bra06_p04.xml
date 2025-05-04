@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="960" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="인터넷반주기&#32;업체현황" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_EnterNet">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDRONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_TOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_DAESU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="10" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="0" TabStop="FALSE" Top="10" Width="10"></Image>
+		<Shape BKColor="user7" Bottom="62" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="1" Top="59" Type="Rectangle" Width="1032"></Shape>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="2" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="240" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="16" Id="Static0" Left="256" Style="tx_left_bold" TabOrder="4" Text="기&#32;간" Top="24" Width="96"></Static>
+		<Combo Height="18" Id="Combo2" Left="81" TabOrder="6" Top="19" Width="145"></Combo>
+		<Static Height="15" Id="Static5" Left="37" Style="tx_left_bold" TabOrder="7" Text="센터명" Top="24" Width="40"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="21" TabOrder="5" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Button ButtonStyle="TRUE" Color="user12" Font="굴림,9,Bold" Height="21" Id="btn_Sungin" ImageID="C_btn_110" Left="912" LeftMargin="23" OnClick="btn_Sungin_OnClick" Style="edit" TabOrder="10" Text="&#32;Excel&#32;저장" Top="19" TopMargin="1" Width="110"></Button>
+		<Static Color="user6" Height="16" Id="Static20" Left="426" Style="style0" TabOrder="12" Text="~" Top="23" Width="9"></Static>
+		<Calendar Height="21" Id="Calendar0" Left="448" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="13" Top="21" Width="104"></Calendar>
+		<Calendar Height="21" Id="Calendar1" Left="310" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="14" Top="21" Width="104"></Calendar>
+		<Edit BindDataset="ds_EnterNet" Column="MDM_CD" Height="21" Id="Edit0" Left="297" TabOrder="15" Top="597" Width="121"></Edit>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+
+
+function form_OnLoadCompleted(obj)
+{
+    gfn_loadform(obj);
+	gfn_syncCall("svcLogin2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006015&EVENTID=auto_upso","","ds_EnterNet=SEL1","","fn_CallBack");
+	ubi0.setJrfFileDir("http://192.168.1.192:8080/report_file/"+"fi/bra/");
+	ubi0.setJrfFileName("bra06_p04.jrf");
+	ubi0.SetDataset("sql_Print", "ds_EnterNet");
+	ubi0.SetArgument("title","관리업소 내역서");
+	ubi0.Retrieve();
+	
+}
+]]></Script>
+</Window>

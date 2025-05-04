@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="월업소현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_MonthUpso">
+				<Contents>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFORE_MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONTHS" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_CLSBS_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mon_status">
+				<Contents>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFORE_MON_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOP_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLOSE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MINUSEXP" size="256" summ="default" type="STRING"/>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UMonthIn">
+				<Contents>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="3" TabStop="FALSE" Top="12" Width="1013"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="4" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="5" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="244" TabOrder="6" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="259" Style="tx_left_bold" TabOrder="7" Text="센터명" Top="31" Width="40"></Static>
+		<Static Height="15" Id="Static0" Left="44" Style="tx_left_bold" TabOrder="9" Text="현황년월" Top="31" Width="54"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="7" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_month" Left="112" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="현황년월" Top="25" Width="102"></Calendar>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" Left="308" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="센터명" Top="26" Width="109"></Combo>
+		<Grid BindDataset="ds_Mon_status" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="632" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="568" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" OnHeadClick="tab_Rept_tab_Result_grd_ReptResult_OnHeadClick" Right="1039" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="143"/>
+						<col width="143"/>
+						<col width="143"/>
+						<col width="143"/>
+						<col width="143"/>
+						<col width="143"/>
+						<col width="168"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업&#32;종"/>
+						<cell col="1" color="user12" display="text" text="전&#32;월"/>
+						<cell col="2" color="user12" display="text" text="당&#32;월"/>
+						<cell col="3" color="user12" display="text" text="증/감"/>
+						<cell col="4" color="user12" display="text" text="신&#32;규"/>
+						<cell col="5" color="user12" display="text" text="휴&#32;업"/>
+						<cell col="6" color="user12" display="text" text="폐&#32;업"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BSTYP_NM" display="text"/>
+						<cell align="right" col="1" colid="BEFORE_MON_CNT" display="numberexp" edit="normal"/>
+						<cell align="right" col="2" colid="MON_CNT" display="numberexp" edit="normal"/>
+						<cell align="right" col="3" display="numberexp" edit="normal" expr="toNumber(&#32;MON_CNT)-tonumber(BEFORE_MON_CNT)"/>
+						<cell align="right" col="4" colid="NEW_CNT" display="numberexp" edit="normal"/>
+						<cell align="right" col="5" colid="STOP_CNT" display="numberexp" edit="normal"/>
+						<cell align="right" col="6" colid="CLOSE_CNT" display="numberexp" edit="normal"/>
+					</body>
+					<summary>
+						<cell align="center" col="0" display="text" text="계"/>
+						<cell align="right" col="1" display="numberexp" edit="number" expr='sum(&quot;BEFORE_MON_CNT&quot;)'/>
+						<cell align="right" col="2" display="numberexp" edit="number" expr='sum(&quot;MON_CNT&quot;)'/>
+						<cell align="right" col="3" display="numberexp" edit="number" expr='sum(&quot;MON_CNT&quot;)-sum(&quot;BEFORE_MON_CNT&quot;)'/>
+						<cell align="right" col="4" display="numberexp" edit="number" expr='sum(&quot;NEW_CNT&quot;)'/>
+						<cell align="right" col="5" display="numberexp" edit="number" expr='sum(&quot;STOP_CNT&quot;)'/>
+						<cell align="right" col="6" display="numberexp" edit="number" expr='sum(&quot;CLOSE_CNT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	this.ds_Mon_status.AddRow();
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	this.cal_month.Value = today();
+	this.ds_UMonthIn.AddRow();
+
+	gfn_SetPermission(this.cob_BRAN_CD.value);
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function fn_Search() {
+
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+//필수키 체크
+	if(this.cal_month.Value=="" or this.cal_month.Value==null) 
+	{
+        gfn_Confirm("MB_OK", "현황년월을 입력하세요.", "경고", "0");
+		return;
+	}
+	if(this.cob_BRAN_CD.Value == "" or this.cob_BRAN_CD.Value == null){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return;
+	}
+	
+	this.ds_UMonthIn.SetColumn(0,"BRAN_CD",this.cob_BRAN_CD.value);
+	this.ds_UMonthIn.SetColumn(0,"YRMN",substr(this.cal_month.Value,0,6));
+	gfn_syncCall("sync_Mon_status_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009005&EVENTID=mon_upso_status","S=ds_UMonthIn","ds_Mon_status=SEL1","","fn_CallBack");
+//trace(this.ds_Mon_status.SaveXML());
+
+}
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "sync_Mon_status_Search") {
+		gfn_SetStatusMsg(ds_Mon_status.count + " 건이 조회되었습니다.");
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

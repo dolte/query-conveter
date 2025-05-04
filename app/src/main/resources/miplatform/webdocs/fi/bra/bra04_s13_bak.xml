@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra04_s13" Left="8" OnLoadCompleted="bra04_s13_OnLoadCompleted" PidAttrib="7" Title="무통장입금정보UPLOAD" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_banklist">
+				<Contents>
+					<colinfo id="ACCN_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_rept_trans">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OUT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BALANCE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECEPT_BANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset CanColumnChange="ds_bankExcel_CanColumnChange" DataSetType="Dataset" Id="ds_bankExcel" OnColumnChanged="ds_bankExcel_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECEPT_BANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OUT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BALANCE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXCEL_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_TYPE" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM></ACCN_NUM>
+						<BANK_CD></BANK_CD>
+						<BRAN_CD></BRAN_CD>
+						<END_DAY></END_DAY>
+						<END_OPBI_DAY></END_OPBI_DAY>
+						<FROM_DAY></FROM_DAY>
+						<REPT_DAY></REPT_DAY>
+						<START_DAY></START_DAY>
+						<START_OPBI_DAY></START_OPBI_DAY>
+						<USE_TYPE></USE_TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_combo01">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search02">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM></ACCN_NUM>
+						<BANK_CD></BANK_CD>
+						<BRAN_CD></BRAN_CD>
+						<END_DAY></END_DAY>
+						<END_OPBI_DAY></END_OPBI_DAY>
+						<START_DAY></START_DAY>
+						<START_OPBI_DAY></START_OPBI_DAY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_banklist02">
+				<Contents>
+					<colinfo id="ACCN_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_balanceCheck"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_closingYn">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bankExcel2" UseClientLayout="1">
+				<Contents>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECEPT_BANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OUT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BALANCE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXCEL_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_delCheckSearch">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<REPT_DAY></REPT_DAY>
+						<REPT_NUM></REPT_NUM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_delCheckResult">
+				<Contents>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LastBalance">
+				<Contents>
+					<colinfo id="BALANCE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="70" Id="Image15" ImageID="C_search2_bg" Left="16" OnClick="btn_Search_OnClick" TabOrder="8" TabStop="FALSE" Top="8" Width="1008"></Image>
+		<Shape BKColor="user7" Bottom="119" Height="3" Id="Shape0" Left="11" LineColor="user7" Right="1036" TabOrder="7" Top="116" Type="Rectangle" Width="1025"></Shape>
+		<Image Height="75" Id="Image17" ImageID="C_search2_left" Left="8" TabOrder="10" TabStop="FALSE" Top="8" Width="8"></Image>
+		<Image Height="75" Id="Image18" ImageID="C_search2_right" Left="1024" TabOrder="7" TabStop="FALSE" Top="8" Width="16"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="32" TabOrder="9" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="48" Style="tx_left_bold" TabOrder="9" Text="지부명" Top="23" Width="40"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" ImeMode="none" Left="108" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="지부명" Top="18" Width="114"></Combo>
+		<Button Cursor="HAND" Enable="FALSE" Height="21" Id="btn_FILE_sel" ImageID="C_btn_search" Left="834" OnClick="btn_FILE_sel_OnClick" TabOrder="11" TabStop="FALSE" Top="48" Width="58"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" BorderColor="user10" Enable="FALSE" Height="20" Id="edt_fileName" Left="342" LeftMargin="4" Readonly="TRUE" RightMargin="2" Style="edit" TabOrder="6" Top="48" Width="490"></Edit>
+		<Static Height="16" Id="Static1" Left="272" Style="tx_left_bold" TabOrder="12" Text="계좌번호" Top="23" Width="50"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="256" TabOrder="12" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Combo BindDataset="ds_search" BKColor="user13" CodeColumn="ACCN_NUM" Column="ACCN_NUM" DataColumn="BANK_NM" Height="20" Id="cob_banklist" InnerDataset="ds_banklist" Left="342" OnChanged="cob_banklist_OnChanged" TabOrder="2" ToolTipText="계좌번호" Top="18" Width="256"></Combo>
+		<FileDialog Bottom="24" Height="24" Id="fdg_Auto" Left="895" Right="919" TabOrder="14" Width="24"></FileDialog>
+		<File Bottom="24" Height="24" Id="fil_Auto" Left="928" Right="952" TabOrder="12" Width="24"></File>
+		<Grid AutoEnter="TRUE" BindDataset="ds_bankExcel" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user7" Bottom="788" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="669" Id="grd_bank" InputPanel="FALSE" Left="11" LineColor="default" Right="1035" Style="grid" TabOrder="13" TabStop="FALSE" Top="119" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="305"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="105"/>
+						<col width="105"/>
+						<col width="105"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="영수일"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="적요"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="취급점"/>
+						<cell bkcolor="user8" col="3" color="user12" display="text" text="입금자"/>
+						<cell bkcolor="user8" col="4" color="user12" display="text" text="입금금액"/>
+						<cell bkcolor="user8" col="5" color="user12" display="text" text="출금금액"/>
+						<cell bkcolor="user8" col="6" color="user12" display="text" text="잔액"/>
+						<cell bkcolor="user8" col="7" color="user12" display="text" text="분배"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user13" col="0" colid="RECV_DAY" display="date" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;&amp;&amp;&#32;EXCEL_YN&#32;==&#32;&quot;N&quot;&#32;,&quot;date&quot;,&quot;none&quot;)' limit="8" Mask="yyyy-MM-dd"/>
+						<cell align="left" checklength="Byte" col="1" colid="REMAK" display="text" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;&amp;&amp;&#32;EXCEL_YN&#32;==&#32;&quot;N&quot;,&quot;normal&quot;,&quot;none&quot;)' limit="200"/>
+						<cell align="left" checklength="Byte" col="2" colid="RECEPT_BANK" display="text" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;&amp;&amp;&#32;EXCEL_YN&#32;==&#32;&quot;N&quot;,&quot;normal&quot;,&quot;none&quot;)' limit="30"/>
+						<cell align="center" checklength="Byte" col="3" colid="REPTPRES" display="text" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;&amp;&amp;&#32;EXCEL_YN&#32;==&#32;&quot;N&quot;,&quot;normal&quot;,&quot;none&quot;)' limit="50"/>
+						<cell align="right" bkcolor="user13" col="4" colid="REPT_AMT" display="number" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;&amp;&amp;&#32;EXCEL_YN&#32;==&#32;&quot;N&quot;,&quot;number&quot;,&quot;none&quot;)' limit="10"/>
+						<cell align="right" col="5" colid="OUT_AMT" display="number" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;&amp;&amp;&#32;EXCEL_YN&#32;==&#32;&quot;N&quot;,&quot;number&quot;,&quot;none&quot;)' limit="10"/>
+						<cell align="right" col="6" colid="BALANCE" display="number" limit="10"/>
+						<cell align="center" col="7" colid="DISTR_GBN" combocol="CODE_CD" combodataset="ds_combo01" combotext="CODE_NM" display="combo" edit='expr:iif(DISTR_YN&#32;!=&#32;&quot;0&quot;,&quot;none&quot;,&quot;combo&quot;)'/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_New_high_sel" ImageID="C_btn_70" Left="887" LeftMargin="28" OnClick="btn_New_high_edt_OnClick" Style="edit" TabOrder="14" TabStop="FALSE" Text="추가" Top="87" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_Delete_sel" ImageID="C_btn_70" Left="968" LeftMargin="28" OnClick="btn_Delete_sel_OnClick" Style="edit" TabOrder="15" TabStop="FALSE" Text="삭제" Top="87" TopMargin="1" Width="71"></Button>
+		<Static Height="15" Id="Static0" Left="633" Style="tx_left_bold" TabOrder="19" Text="등록일" Top="22" Width="40"></Static>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="615" TabOrder="16" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Calendar BindDataset="ds_search" BKColor="user13" Column="END_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_endday" Left="801" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="4" ToolTipText="입금일&#32;(종료)" Top="18" Width="89"></Calendar>
+		<Static Color="user0" Height="13" Id="st_CNTMON_2" Left="785" Style="style0" TabOrder="21" Text="~" Top="21" Width="9"></Static>
+		<Calendar BindDataset="ds_search" BKColor="user13" Column="FROM_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_startday" Left="691" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="3" ToolTipText="입금일&#32;(시작)" Top="18" Width="89"></Calendar>
+		<Static Height="16" Id="Static4" Left="271" Style="tx_left_bold" TabOrder="22" Text="대상파일" Top="53" Width="56"></Static>
+		<Static Height="13" Id="st_label" Left="16" TabOrder="23" Text="*&#32;엑셀Sheet가&#32;여러개인경우&#32;처음Sheet만&#32;입력됩니다." Top="92" Width="736"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_fileSample_sel" ImageID="C_btn_110" Left="773" LeftMargin="28" OnClick="btn_fileSample_sel_OnClick" Style="edit" TabOrder="17" TabStop="FALSE" Text="파일샘플저장" Top="87" TopMargin="1" Width="111"></Button>
+		<Checkbox BKColor="user8" Color="user19" Font="굴림,9,Bold" Height="13" Id="chk_excelupload" Left="32" OnClick="Checkbox0_OnClick" TabOrder="5" Text="엑셀업로드" Top="51" Value="FALSE" Width="81"></Checkbox>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  		// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+
+var ExcelUploadYN = "N";
+var endRecv_day;
+var state;
+function bra04_s13_OnLoadCompleted(obj)
+{
+    gfn_LoadForm(obj);
+    
+	// 지부코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	gfn_PubCode("ds_combo01", 2 , "00141");		// 분배구분
+	ds_combo01.Filter("CODE_ETC=\"B\"");
+	ds_combo01.insertRow(0);
+	ds_combo01.SetColumn(0,"CODE_CD","00");
+	ds_combo01.SetColumn(0,"CODE_NM","일반");
+	ds_combo01.SetColumn(0,"CODE_ETC","B");
+	
+	cal_startday.value = today();
+	cal_endday.value = today();
+
+	// 지부에 맞는 계좌번호 조회
+	this.ds_search.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+	this.ds_search.SetColumn(0, "USE_TYPE", gfn_GetAccountUsage("03"));
+	gfn_syncCall("find_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=accn_num_select","S=ds_search","ds_banklist=SEL1","","fn_CallBack");
+
+	 gfn_SetPermission(this.cob_BRAN_CD.Value);
+	 gfn_SetInnerPermission("btn_FILE_sel,btn_fileSample_sel,btn_New_high_sel,btn_Delete_sel,chk_excelupload");
+}
+
+/*    
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		//fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+//조회
+function fn_search(){
+	// 필수 입력 검사
+	//this.cob_BRAN_CD02.BKColor = "";
+	//this.cob_banklist02.BKColor = "";
+	//this.cal_startday02.BKColor = "";
+	this.edt_fileName.BKColor = "";
+	
+	this.cob_BRAN_CD.BKColor = "User13";
+	this.cob_banklist.BKColor = "User13";
+	this.cal_startday.BKColor = "User13";
+	this.cal_endday.BKColor = "User13";		
+
+    ds_bankExcel.ClearData();
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+    ExcelUploadYN = "N";
+    chk_excelupload.Value = 0;
+    this.cob_BRAN_CD.BKColor = "User13";
+	this.cob_banklist.BKColor = "User13";
+	this.cal_startday.BKColor = "User13";
+	this.cal_endday.BKColor = "User13";
+	cal_endday.Enable = true;			
+	
+	//this.cob_BRAN_CD02.BKColor = "";
+	//this.cob_banklist02.BKColor = "";
+	this.edt_fileName.BKColor = "";
+	
+	//this.cob_BRAN_CD02.Enable = false;
+	//this.cob_banklist02.Enable = false;
+	//this.cal_startday02.Enable = false;
+	this.edt_fileName.Enable = false;
+	btn_FILE_sel.Enable = false;
+	
+    gfn_syncCall("bra04_s13_search01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_search01","S=ds_search","ds_bankExcel=SEL1","","fn_CallBack");
+//trace(ds_bankExcel.SaveXML());
+    
+    state = 0;
+}
+
+function fn_Save(){
+	/*
+	this.cob_BRAN_CD.BKColor = "";
+	this.cob_banklist.BKColor = "";
+	this.cal_startday.BKColor = "";
+	this.cal_endday.BKColor = "";
+	
+	this.cob_BRAN_CD02.BKColor = "User13";
+	this.cob_banklist02.BKColor = "User13";
+	this.cal_startday02.BKColor = "User13";
+	this.edt_fileName.BKColor = "User13";	
+	*/
+	// 입력 필수 항목 검사;
+	//this.cal_startday02.BKColor = "User13";
+	if (!gfn_CheckFormNull(this)) return;
+	
+    if(ds_bankExcel.count == 0){
+        gfn_Confirm("MB_OK", "저장할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+    
+	this.ds_search.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value );
+	this.ds_search.SetColumn(0, "REPT_DAY", this.cal_startday.Value );
+	gfn_syncCall("rept_closing","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=rept_closing","S=ds_search","ds_closingYn=SEL1","","fn_CallBack");
+
+	if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+        gfn_Confirm("MB_OK", "해당기간중 마감내역이 존재합니다. 마감내역을 확인하세요.", "경고", "0");
+		return;
+	}
+	
+    if(!confirm("저장하시겠습니까?")){
+        return;
+    }
+    ds_search.SetColumn(0,"START_OPBI_DAY",ds_bankExcel.Min("RECV_DAY"));
+    ds_search.SetColumn(0,"END_OPBI_DAY",ds_bankExcel.Max("RECV_DAY"));      
+    ds_search.SetColumn(0,"START_DAY",ds_search02.GetColumn(0,"START_DAY"));
+    if(ExcelUploadYN == "N"){
+        gfn_syncCall("bra04_s13_save02","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_save02","S=ds_search S1=ds_bankExcel:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+        /*
+            로그처리
+        */
+        //gfn_syncCall("loginfo_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=loginfo_select","S=ds_bankExcel:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+        
+    }else{
+        gfn_syncCall("bra04_s13_balanceCheck","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_balanceCheck","S=ds_search","ds_balanceCheck=SEL1","","fn_CallBack");
+		//trace(ds_balanceCheck.SaveXML());
+		if(!(toNumber(ds_balanceCheck.GetColumn(0,"BALANCE")) + toNumber(ds_bankExcel.GetColumn(0,"REPT_AMT")) == toNumber(ds_bankExcel.GetColumn(0,"BALANCE"))
+		   || ds_balanceCheck.count == 0 || ds_balanceCheck.GetColumn(0,"REPT_DAY") == ds_search02.GetColumn(0,"START_DAY"))){
+            gfn_Confirm("MB_OK", "최종 입금된 잔액과 현재 입급 금액이 맞지 않습니다.", "경고", "0");
+			return;
+		}
+		/*
+			로그처리
+		*/
+		gfn_syncCall("loginfo_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=loginfo_select","S=ds_bankExcel:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+		
+        gfn_syncCall("bra04_s13_save01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_save01","S=ds_search S1=ds_bankExcel","","","fn_CallBack");
+    }
+
+	chk_excelupload.Value = 0 ;
+	this.cal_endday.BKColor = "User13";		
+	this.edt_fileName.BKColor = "";
+	
+	//this.cal_startday02.Enable = false;
+	this.edt_fileName.Enable = false;
+	btn_FILE_sel.Enable = false;
+	
+	cal_endday.Enable = true;
+	cal_endday.BKColor = "User13";	
+	state = 1;
+	
+	fn_search();
+}
+
+function btn_FILE_sel_OnClick(obj)
+{
+	ExcelUploadYN = "Y";
+	ds_bankExcel.OnColumnChanged = "";
+	ds_bankExcel.CanColumnChange = "";
+	fdg_Auto.Type = "OPEN";
+	
+	if(this.fdg_Auto.Open()==0)
+	{
+		return;
+	}
+	ds_bankExcel2.ClearData();
+	//this.fil_Auto.FileName = this.fdg_Auto.FilePath + "\\" + this.fdg_Auto.FileName;
+	this.edt_FileName.Text = this.fdg_Auto.FilePath + "\\" + this.fdg_Auto.FileName;
+	
+	ext_ExcelImportByIndex(this.fdg_Auto.FilePath + "\\" + this.fdg_Auto.FileName, 0, "ds_bankExcel2", 1, 1, 0, 2 );
+	for(var i=0; i<ds_bankExcel2.count;i++){
+	    if(length(ds_bankExcel2.GetColumn(i,"RECV_DAY")) == 10){
+	        ds_bankExcel2.SetColumn(i,"RECV_DAY",substr(ds_bankExcel2.GetColumn(i,"RECV_DAY"),0,4)+substr(ds_bankExcel2.GetColumn(i,"RECV_DAY"),5,2)+substr(ds_bankExcel2.GetColumn(i,"RECV_DAY"),8,2));
+	    }
+	    ds_bankExcel2.SetColumn(i,"EXCEL_YN","Y");
+	    ds_bankExcel2.SetColumn(i,"BRAN_CD",cob_BRAN_CD.Value);
+	    ds_bankExcel2.SetColumn(i,"ACCN_NUM",cob_banklist.Value);
+	    ds_bankExcel2.SetColumn(i,"FROM_DAY",cal_startday.Value);
+	    ds_bankExcel2.SetColumn(i,"DISTR_YN","0");
+	}
+	ds_bankExcel2.ApplyChange();
+	for(var i=0; i < ds_bankExcel2.count; i++){
+	    var replREMP_AMT = replace(ds_bankExcel2.GetColumn(i,"REPT_AMT"),",","");
+	    var replOUT_AMT = replace(ds_bankExcel2.GetColumn(i,"OUT_AMT"),",","");
+	    var replBALANCE = replace(ds_bankExcel2.GetColumn(i,"BALANCE"),",","");
+	    
+	    if(length(trim(replREMP_AMT)) == 0){
+	        replREMP_AMT = "0";
+	    }
+	    if(length(trim(replOUT_AMT)) == 0){
+	        replOUT_AMT = "0";
+	    }
+	    if(length(trim(replBALANCE)) == 0){
+	        replBALANCE = "0";
+	    }
+	    
+		if(IsDigit(replREMP_AMT)){
+		    ds_bankExcel2.SetColumn(i,"REPT_AMT",replREMP_AMT);
+		}else{
+		    gfn_Confirm("MB_OK", "입금금액이 숫자데이터가 아닙니다.", "경고", "0");
+		    ds_bankExcel.DeleteAll();
+		    return;
+		}
+		
+		if(IsDigit(replOUT_AMT)){
+		    ds_bankExcel2.SetColumn(i,"OUT_AMT",replOUT_AMT);
+		}else{
+		    gfn_Confirm("MB_OK", "출금금액이 숫자데이터가 아닙니다.", "경고", "0");
+		    ds_bankExcel.DeleteAll();
+		    return;
+		}
+		
+		if(IsDigit(replBALANCE)){
+		    ds_bankExcel2.SetColumn(i,"BALANCE",replBALANCE);
+		}else{
+		    gfn_Confirm("MB_OK", "잔액이 숫자데이터가 아닙니다.", "경고", "0");
+		    ds_bankExcel.DeleteAll();
+		    return;
+		}
+	}
+	
+	ds_bankExcel.ClearData();	
+	
+	/*
+	    로그처리
+	*/
+	for(var i=0; i < ds_bankExcel2.count; i++){
+		var aRow = ds_bankExcel.AddRow();
+		ds_bankExcel.CopyRow(aRow,"ds_bankExcel2",i);
+	}
+	ds_bankExcel.OnColumnChanged = "ds_bankExcel_OnColumnChanged";
+	ds_bankExcel.CanColumnChange = "ds_bankExcel_CanColumnChange";
+}
+
+function btn_New_high_edt_OnClick(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	// 계좌번호의 마지막 잔고 정보를 가져온다.
+	var last_balance = "0";
+    this.ds_search02.SetColumn(0, "ACCN_NUM", this.cob_banklist.Value);
+
+    gfn_syncCall("get_Last_balance","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=get_Last_balance","S=ds_search02","ds_LastBalance=SEL1","","fn_CallBack");
+
+	if (ds_LastBalance.rowcount > 0) {
+		last_balance = ds_LastBalance.GetColumn(0, "BALANCE");
+	}
+	
+/*	
+	if(ds_bankExcel.count == 0 && state != 0){
+        gfn_Confirm("MB_OK", "이전 데이터 확인 후 추가가 가능합니다", "경고", "0");
+	    return;
+	}
+*/	
+	var aRow = ds_bankExcel.AddRow();
+	//ds_bankExcel.SetColumn(aRow,"BALANCE",ds_bankExcel.GetColumn(aRow-1,"BALANCE"));
+	var balance = toNumber(ds_bankExcel.GetColumn(ds_bankExcel.currow-1,"BALANCE"))
+	            + toNumber(ds_bankExcel.getcolumn(ds_bankExcel.currow,"REPT_AMT"))
+	            - toNumber(ds_bankExcel.getcolumn(ds_bankExcel.currow,"OUT_AMT"));
+	ds_bankExcel.SetColumn(aRow,"BALANCE" , last_balance);
+	ds_bankExcel.SetColumn(aRow,"EXCEL_YN", "N");
+	ds_bankExcel.SetColumn(aRow,"BRAN_CD" , cob_BRAN_CD.Value);
+	ds_bankExcel.SetColumn(aRow,"ACCN_NUM", cob_banklist.Value);
+	ds_bankExcel.SetColumn(aRow,"FROM_DAY", cal_startday.Value);
+	ds_bankExcel.SetColumn(aRow,"DISTR_YN", "0");
+}
+
+function btn_Delete_sel_OnClick(obj)
+{
+    ds_delCheckSearch.SetColumn(0,"REPT_DAY",ds_bankExcel.GetColumn(ds_bankExcel.currow,"REPT_DAY"));
+    ds_delCheckSearch.SetColumn(0,"REPT_NUM",ds_bankExcel.GetColumn(ds_bankExcel.currow,"REPT_NUM"));
+    ds_delCheckSearch.SetColumn(0,"BRAN_CD",ds_bankExcel.GetColumn(ds_bankExcel.currow,"BRAN_CD"));
+    
+    gfn_syncCall("bra04_s13_delCheck","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_delCheck","S=ds_delCheckSearch","ds_delCheckResult=SEL1","","fn_CallBack");
+    //trace(ds_delCheckResult.SaveXML());
+    
+    if(ds_delCheckResult.count != 0){
+		if(ds_delCheckResult.GetColumn(ds_delCheckResult.currow,"REPT_NUM") != ds_bankExcel.GetColumn(ds_bankExcel.currow,"REPT_NUM")
+		|| ds_delCheckResult.GetColumn(ds_delCheckResult.currow,"REPT_DAY") != ds_bankExcel.GetColumn(ds_bankExcel.currow,"REPT_DAY")){
+			gfn_Confirm("MB_OK", "마지막 행만 삭제 가능합니다.", "경고", "0");
+			return;
+		}
+		
+		if(ds_delCheckResult.GetColumn(ds_delCheckResult.currow,"UPSO_CD") != 0){
+			gfn_Confirm("MB_OK", "맵핑된 입금정보는 삭제할 수 없습니다.", "경고", "0");
+			return;
+		}
+		
+		this.ds_search.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value );
+		this.ds_search.SetColumn(0, "REPT_DAY", this.cal_startday.Value );
+		gfn_syncCall("rept_closing","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=rept_closing","S=ds_search","ds_closingYn=SEL1","","fn_CallBack");
+	
+		if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+			gfn_Confirm("MB_OK", "해당기간중 마감내역이 존재합니다. 마감내역을 확인하세요.", "경고", "0");
+			return;
+		}
+		
+		
+		if(ds_bankExcel.GetRowType(ds_bankExcel.currow) != "insert" && ds_bankExcel.GetColumn(ds_bankExcel.currow,"EXCEL_YN") == "Y"){
+			gfn_Confirm("MB_OK", "엑셀파일에서 읽어온 데이터는 삭제할 수 없습니다.", "경고", "0");
+			return;
+		}					
+		if(!confirm("삭제하시겠습니까?")){
+			return;
+		}
+		var nRow = ds_bankExcel.currow ;
+		ds_bankExcel.DeleteRow(ds_bankExcel.currow);
+		for(var i=nRow; i < ds_bankExcel.count; i++){
+			var balance = toNumber(ds_bankExcel.GetColumn(i-1,"BALANCE"))
+						+ toNumber(ds_bankExcel.getcolumn(i,"REPT_AMT"))
+						- toNumber(ds_bankExcel.getcolumn(i,"OUT_AMT"));
+			ds_bankExcel.SetColumn(i,"BALANCE",balance);
+		}
+		gfn_syncCall("bra04_s13_save02","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_save02","S=ds_search S1=ds_bankExcel:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);		
+    }else{
+		if(ds_bankExcel.count-1 != ds_bankExcel.currow && ds_bankExcel.GetRowType(ds_bankExcel.currow) != "insert"){
+			gfn_Confirm("MB_OK", "마지막 행만 삭제 가능합니다.", "경고", "0");
+			return;
+		}
+		//if(ds_bankExcel.GetRowType(ds_bankExcel.currow) != "insert" || ds_bankExcel.GetColumn(ds_bankExcel.currow,"EXCEL_YN") == "Y"){
+		if(ds_bankExcel.GetRowType(ds_bankExcel.currow) != "insert" && ds_bankExcel.GetColumn(ds_bankExcel.currow,"EXCEL_YN") == "Y"){
+			gfn_Confirm("MB_OK", "엑셀파일에서 읽어온 데이터는 삭제할 수 없습니다.", "경고", "0");
+			return;
+		}else if(ds_bankExcel.count != 0){
+			var nRow = ds_bankExcel.currow ;
+			ds_bankExcel.DeleteRow(ds_bankExcel.currow);
+			for(var i=nRow; i < ds_bankExcel.count; i++){
+				var balance = toNumber(ds_bankExcel.GetColumn(i-1,"BALANCE"))
+							+ toNumber(ds_bankExcel.getcolumn(i,"REPT_AMT"))
+							- toNumber(ds_bankExcel.getcolumn(i,"OUT_AMT"));
+				ds_bankExcel.SetColumn(i,"BALANCE",balance);
+			}
+		}		
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	 gfn_SetPermission(strCode);
+	 gfn_SetInnerPermission("btn_FILE_sel,btn_fileSample_sel,btn_New_high_sel,btn_Delete_sel,chk_excelupload");
+
+	 this.ds_search.SetColumn(0, "BRAN_CD" , strCode);
+	 this.ds_search.SetColumn(0, "USE_TYPE", gfn_GetAccountUsage("03"));
+	 gfn_syncCall("find_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=accn_num_select","S=ds_search","ds_banklist=SEL1","","fn_CallBack");
+	 ds_bankExcel.DeleteAll();	 
+	 
+	 chk_excelupload.Value = 0 ;
+	 this.cal_endday.BKColor = "User13";
+	 this.edt_fileName.BKColor = "";
+	 edt_fileName.Text = "";
+	
+	 //this.cal_startday02.Enable = false;
+	 this.edt_fileName.Enable = false;
+	 btn_FILE_sel.Enable = false;
+	
+ 	 cal_endday.Enable = true;
+	 cal_endday.BKColor = "User13";
+	 state = 1;
+}
+
+function cob_banklist_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_search.SetColumn(0,"BANK_CD",ds_banklist.GetColumn(nNewIndex,"BANK_CD"));
+	ds_bankExcel.DeleteAll();
+}
+
+function Checkbox0_OnClick(obj,strValue)
+{
+	if(chk_excelupload.Value == 1){
+		this.cal_endday.BKColor = "";
+		this.edt_fileName.BKColor = "User13";
+		
+		//this.cal_startday02.Enable = true;
+		this.edt_fileName.Enable = true;
+		btn_FILE_sel.Enable = true;
+		
+		cal_endday.Enable = false;
+		cal_endday.BKColor = "";
+	}else{
+		this.cal_endday.BKColor = "User13";		
+		this.edt_fileName.BKColor = "";
+		
+		//this.cal_startday02.Enable = false;
+		this.edt_fileName.Enable = false;
+		btn_FILE_sel.Enable = false;
+		
+		cal_endday.Enable = true;
+		cal_endday.BKColor = "User13";
+	}
+}
+
+function btn_fileSample_sel_OnClick(obj)
+{
+	gfn_fileDownLoad("/home/jeus/webdocs/fileupload/fi/bra","sample.xls",fil_Auto,fdg_Auto);
+}
+
+function ds_bankExcel_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "REPT_AMT" || strColumnID == "OUT_AMT"){
+		var balance = toNumber(ds_LastBalance.GetColumn(0,"BALANCE"))
+					+ toNumber(ds_bankExcel.getcolumn(ds_bankExcel.currow,"REPT_AMT"))
+					- toNumber(ds_bankExcel.getcolumn(ds_bankExcel.currow,"OUT_AMT"));
+		ds_bankExcel.SetColumn(nRow,"BALANCE",balance);
+		
+		for(var i=nRow; i < ds_bankExcel.count; i++){
+			var balance = toNumber(ds_LastBalance.GetColumn(0,"BALANCE"))
+						+ toNumber(ds_bankExcel.getcolumn(i,"REPT_AMT"))
+						- toNumber(ds_bankExcel.getcolumn(i,"OUT_AMT"));
+			ds_bankExcel.SetColumn(i,"BALANCE",balance);
+		}
+	}else if(strColumnID = "RECV_DAY"){
+	    endRecv_day = varNewValue;
+	}
+}
+
+
+function ds_bankExcel_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+    if(strColumnID == "RECV_DAY"){
+        //if(endRecv_day == "" || endRecv_day == null){
+			if(toNumber(ds_bankExcel.GetColumn(nRow-1,"RECV_DAY")) > toNumber(varNewValue)){
+                gfn_Confirm("MB_OK", "영수일 보다 같거나 커야 합니다.", "경고", "0");
+				return false;
+			}
+		//}
+	}else if(strColumnID == "DISTR_GBN"){
+	    ds_delCheckSearch.SetColumn(0,"REPT_DAY",ds_bankExcel.GetColumn(ds_bankExcel.currow,"REPT_DAY"));
+		ds_delCheckSearch.SetColumn(0,"REPT_NUM",ds_bankExcel.GetColumn(ds_bankExcel.currow,"REPT_NUM"));
+		ds_delCheckSearch.SetColumn(0,"BRAN_CD",ds_bankExcel.GetColumn(ds_bankExcel.currow,"BRAN_CD"));
+		
+		gfn_syncCall("bra04_s13_delCheck","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001001&EVENTID=bra04_s13_delCheck","S=ds_delCheckSearch","ds_delCheckResult=SEL1","","fn_CallBack");
+		//trace(ds_delCheckResult.SaveXML());
+		
+		if(ds_delCheckResult.count != 0){
+			if(ds_delCheckResult.GetColumn(ds_delCheckResult.currow,"UPSO_CD") != 0){
+			    ds_bankExcel.SetColumn(ds_bankExcel.currow,"DISTR_GBN",varOldValue);
+				gfn_Confirm("MB_OK", "맵핑된 입금정보는 변경할 수 없습니다.", "경고", "0");
+			    grd_bank.MoveToPrevCell();
+				return false;
+			}
+		}
+	}
+}
+
+//CallBack
+function fn_callback(srvId,ErrorCode,ErrorMsg){
+    if(srvId == "bra04_s13_save01" || srvId == "bra04_s13_save02"){
+        edt_fileName.Text = "";
+        ExcelUploadYN = "N";
+    }
+}
+
+]]></Script>
+</Window>

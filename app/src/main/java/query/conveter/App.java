@@ -5,14 +5,14 @@ import java.util.*;
 import java.util.regex.*;
 
 public class App {
-    //static String createLocation = "D:\\kosmos\\query-conveter\\app\\src\\main\\java\\query\\conveter\\";
-    //static String xmlLocation = "D:\\\\kosmos\\\\query-conveter\\\\app\\\\src\\\\main\\\\resources\\\\";
-    //static String filePath = "D:\\kosmos\\spring-example\\demo\\src\\main\\resources\\static\\miplatform\\java\\bra\\";
+    static String createLocation = "C:\\komca\\workspace\\query-conveter\\app\\src\\main\\java\\query\\conveter\\";
+    static String xmlLocation = "C:\\\\komca\\\\workspace\\\\query-conveter\\\\app\\\\src\\\\main\\\\resources\\\\";
+    static String filePath = "C:\\\\komca\\\\workspace\\\\kosmos-demo\\\\src\\\\main\\\\resources\\\\static\\\\miplatform\\\\java\\\\bra\\\\";
 
-    static String createLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/java/query/conveter/";
-    static String xmlLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/resources/";
-    static String filePath = "/Users/pp01713/cursor-workspace/kosmos-demo/src/main/resources/static/miplatform/java/bra/";
-    static String fileName = "bra01_s01";
+    //static String createLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/java/query/conveter/";
+    //static String xmlLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/resources/";
+    //static String filePath = "/Users/pp01713/cursor-workspace/kosmos-demo/src/main/resources/static/miplatform/java/bra/";
+    static String fileName = "bra04_s24";
     
         public static void main(String[] args) {
     

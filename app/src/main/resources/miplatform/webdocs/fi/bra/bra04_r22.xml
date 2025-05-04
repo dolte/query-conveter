@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="720" Id="bra04_r22" Left="8" OnLoadCompleted="bra04_r22_OnLoadCompleted" OnSize="bra04_r22_OnSize" PidAttrib="7" Title="가수금&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_radioList">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>못찾은&#32;리스트</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>월&#32;매칭&#32;리스트</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TmpAccountList" UseClientLayout="1">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRANS_REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OVER_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TmpAccountMappingList" UseClientLayout="1">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TmpAccountIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM></ACCN_NUM>
+						<BRAN_CD></BRAN_CD>
+						<REPT_YRMN></REPT_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_AccnNumIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ALL_TYPE" size="256" summ="default" type="STRING"/>
+					<record>
+						<ALL_TYPE></ALL_TYPE>
+						<BRAN_CD></BRAN_CD>
+						<USE_TYPE></USE_TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bankList">
+				<Contents>
+					<colinfo id="ACCN_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM></ACCN_NUM>
+						<ACCN_SEQ></ACCN_SEQ>
+						<BANK_NM></BANK_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1023" TabOrder="7" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="9" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="8" TabStop="FALSE" Top="11" Width="1006"></Image>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="22" TabOrder="2" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="38" Style="tx_left_bold" TabOrder="5" Text="&#32;센터명" Top="27" Width="45"></Static>
+		<Static Color="user12" Height="11" Id="Static3" Left="560" Style="tx_left_bold" TabOrder="5" Text="계좌번호" Top="27" Width="62"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="542" TabOrder="4" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM" Height="20" Id="cal_REPT_YRMN" Left="627" LeftMargin="15" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="5" Top="22" Visible="FALSE" Width="101"></Calendar>
+		<Combo BKColor="user13" Border="Flat" BorderColor="GRAYTEXT" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="96" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="22" Width="123"></Combo>
+		<Radio BKColor="whitesmoke" CodeColumn="code" ColumnCount="3" DataColumn="value" Height="21" Id="rad_option" INDEX="-1" InnerDataset="ds_radioList" Left="248" OnChanged="rad_option_OnChanged" Style="radio" TabOrder="3" Top="22" Width="264"></Radio>
+		<Grid AreaSelect="true" AutoScrollBar="AlwaysVert" BindDataset="ds_TmpAccountList" BkColor2="default" BoldHead="true" Border="Flat" Bottom="696" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="632" Id="grd_TmpAccountList" InputPanel="FALSE" Left="8" LineColor="default" MultiSelect="TRUE" Right="1032" RowHeight="20" Style="grid" TabOrder="10" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="90"/>
+						<col width="80"/>
+						<col width="107"/>
+						<col width="80"/>
+						<col width="84"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="140"/>
+						<col width="145"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" color="user12" display="text" text="입금일자" Valign="Center"/>
+						<cell col="1" color="user12" display="text" text="입금번호" Valign="Center"/>
+						<cell col="2" color="user12" display="text" text="입금구분"/>
+						<cell col="3" color="user12" display="text" text="영수일자"/>
+						<cell col="4" color="user12" display="text" text="적&#32;&#32;요"/>
+						<cell col="5" color="user12" display="text" text="입금금액"/>
+						<cell col="6" color="user12" display="text" text="잔&#32;&#32;&#32;액"/>
+						<cell col="7" color="user12" display="text" text="입금자명"/>
+						<cell col="8" color="user12" display="text" text="은행"/>
+						<cell col="9" color="user12" display="text" text="계좌번호"/>
+						<cell col="10" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="REPT_DAY" display="date"/>
+						<cell align="center" col="1" colid="REPT_NUM" display="normal"/>
+						<cell align="center" col="2" colid="CODE_NM" display="normal"/>
+						<cell align="center" col="3" colid="RECV_DAY" display="date"/>
+						<cell col="4" colid="REMAK" display="text"/>
+						<cell align="right" col="5" colid="REPT_AMT" display="number"/>
+						<cell align="right" col="6" colid="OVER_AMT" display="number"/>
+						<cell align="center" col="7" colid="REPTPRES" display="normal"/>
+						<cell align="center" col="8" colid="BANK_NM" display="normal"/>
+						<cell align="center" col="9" colid="ACCN_NUM" display="normal"/>
+						<cell align="left" col="10" colid="TRANS_REMAK" display="normal"/>
+					</body>
+					<summary>
+						<cell col="0" display="text" text="건수"/>
+						<cell col="1" display="number" expr='COUNT(&quot;REPT_DAY&quot;)'/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text" text="총금액"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="number" expr='SUM(&quot;REPT_AMT&quot;)'/>
+						<cell col="6" display="number" expr='SUM(&quot;OVER_AMT&quot;)'/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AreaSelect="true" AutoScrollBar="AlwaysVert" BindDataset="ds_TmpAccountMappingList" BkColor2="default" BoldHead="true" Border="Flat" Bottom="696" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="632" Id="grd_TmpAccountMappingList" InputPanel="FALSE" Left="16" LineColor="default" MultiSelect="TRUE" Right="1040" RowHeight="20" Style="grid" TabOrder="6" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="120"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" color="user12" display="text" text="입금일자" Valign="Center"/>
+						<cell col="1" color="user12" display="text" text="입금번호" Valign="Center"/>
+						<cell col="2" color="user12" display="text" text="입금구분"/>
+						<cell col="3" color="user12" display="text" text="업소코드"/>
+						<cell col="4" color="user12" display="text" text="업소&#32;명"/>
+						<cell col="5" color="user12" display="text" text="매칭일자"/>
+						<cell col="6" color="user12" display="text" text="영수일자"/>
+						<cell col="7" color="user12" display="text" text="시작년월"/>
+						<cell col="8" color="user12" display="text" text="종료년월"/>
+						<cell col="9" color="user12" display="text" text="입금금액"/>
+						<cell col="10" color="user12" display="text" text="입금자명"/>
+						<cell col="11" color="user12" display="text" text="은행명"/>
+						<cell col="12" color="user12" display="text" text="계좌번호"/>
+						<cell col="13" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="REPT_DAY" display="date"/>
+						<cell align="center" col="1" colid="REPT_NUM" display="normal"/>
+						<cell align="center" col="2" colid="CODE_NM" display="normal"/>
+						<cell align="center" col="3" colid="UPSO_CD" display="normal"/>
+						<cell align="left" col="4" colid="UPSO_NM" display="normal"/>
+						<cell align="center" col="5" colid="MAPPING_DAY" display="date"/>
+						<cell align="center" col="6" colid="RECV_DAY" display="date"/>
+						<cell align="center" col="7" colid="START_YRMN" display="text" Mask="####/##"/>
+						<cell align="center" col="8" colid="END_YRMN" display="text" Mask="####/##"/>
+						<cell align="right" col="9" colid="REPT_AMT" display="number"/>
+						<cell align="center" col="10" colid="REPTPRES" display="normal"/>
+						<cell align="center" col="11" colid="BANK_NM" display="normal"/>
+						<cell align="center" col="12" colid="ACCN_NUM" display="normal"/>
+						<cell align="left" col="13" colid="REMAK" display="normal"/>
+					</body>
+					<summary>
+						<cell col="0" display="text" text="건수"/>
+						<cell col="1" display="number" expr='COUNT(&quot;REPT_DAY&quot;)'/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text" text="총금액"/>
+						<cell col="9" display="number" expr='SUM(&quot;REPT_AMT&quot;)'/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Combo Border="Flat" BorderColor="user3" CodeColumn="ACCN_NUM" DataColumn="BANK_NM" Height="21" Id="cob_ACCN_NUM" InnerDataset="ds_banklist" Left="624" TabOrder="13" Top="21" Width="216"></Combo>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra04_r22_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	gfn_ObjreSize(grd_TmpAccountMappingList,this,1,1); 
+	gfn_ObjreSize(grd_TmpAccountList,this,1,1); 
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);	
+	
+	this.rad_option.Index = 0;
+	this.cal_REPT_YRMN.Visible = false;
+	this.cal_REPT_YRMN.BKColor = "";
+	this.grd_TmpAccountList.Visible = true;
+	this.grd_TmpAccountMappingList.Visible = false;
+	
+	this.Static3.Text = "계좌번호";
+	this.cob_ACCN_NUM.Visible = true;
+	this.cal_REPT_YRMN.Value = today();
+
+	this.ds_AccnNumIn.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+	this.ds_AccnNumIn.SetColumn(0, "USE_TYPE", gfn_GetAccountUsage("03"));	
+	this.ds_AccnNumIn.SetColumn(0, "ALL_TYPE", "1");	
+	gfn_syncCall("find_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=accn_num_select","S=ds_AccnNumIn","ds_bankList=SEL1","","fn_CallBack");
+	this.cob_ACCN_NUM.Index = 0;
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		close();
+    }
+
+	return;
+}
+ 
+function fn_New() {}
+function fn_Search() 
+{
+	// 입력 필수 항목 검사
+	if (!gfn_CheckFormNull(this)) return;
+
+	// 가수금 리스트
+	if (this.rad_option.Value == "01") {
+		this.ds_TmpAccountIn.SetColumn(0, "BRAN_CD"  , this.cob_BRAN_CD.Value);
+		this.ds_TmpAccountIn.SetColumn(0, "REPT_YRMN", "");
+		this.ds_TmpAccountIn.SetColumn(0, "ACCN_NUM" , this.cob_ACCN_NUM.Value);
+//trace(ds_TmpAccountIn.SaveXML());
+		gfn_syncCall("select_tmp_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001013&EVENTID=select_tmp_account", "S=ds_TmpAccountIn", "ds_TmpAccountList=SEL1","","fn_CallBack");
+		this.grd_TmpAccountList.Visible = true;
+		this.grd_TmpAccountMappingList.Visible = false;
+	}
+	// 매핑내역 리스트
+	else {
+		this.ds_TmpAccountIn.SetColumn(0, "BRAN_CD"  , this.cob_BRAN_CD.Value);
+		this.ds_TmpAccountIn.SetColumn(0, "REPT_YRMN", substr(this.cal_REPT_YRMN.Value, 0, 6));
+		this.ds_TmpAccountIn.SetColumn(0, "ACCN_NUM" , "");
+//trace(ds_TmpAccountIn.SaveXML());
+		gfn_syncCall("select_tmp_account_mapping","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001013&EVENTID=select_tmp_account_mapping", "S=ds_TmpAccountIn", "ds_TmpAccountMappingList=SEL1","","fn_CallBack");
+		this.grd_TmpAccountList.Visible = false;
+		this.grd_TmpAccountMappingList.Visible = true;
+	}
+	
+}
+
+function fn_Save() {}
+function fn_Delete() {}
+function fn_Excel() {
+	// 못찾은 리스트
+	if (this.rad_option.Value == "01") {
+		this.grd_TmpAccountList.ExportExcelEx("못찾은 리스트");
+	}
+	// 월매칭 리스트
+	else {
+		this.grd_TmpAccountMappingList.ExportExcelEx("월매칭 리스트");
+	}
+}
+function fn_Print() {}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	
+	if (srvId == "select_tmp_account") {
+		gfn_SetStatusMsg(this.ds_TmpAccountList.rowcount + " 건이 조회되었습니다.");
+	}
+	else if (srvId == "select_tmp_account_mapping") {
+		gfn_SetStatusMsg(this.ds_TmpAccountMappingList.rowcount + " 건이 조회되었습니다.");
+	}
+}
+
+function rad_option_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "01") {
+		this.Static3.Text = "계좌번호";
+		this.cob_ACCN_NUM.Visible = true;
+		this.cal_REPT_YRMN.Visible = false;
+		this.cal_REPT_YRMN.BKColor = "";
+		this.grd_TmpAccountList.Visible = true;
+		this.grd_TmpAccountMappingList.Visible = false;
+	}
+	else {
+		this.Static3.Text = "매칭년월";
+		this.cob_ACCN_NUM.Visible = false;
+		this.cal_REPT_YRMN.Visible = true;
+		this.cal_REPT_YRMN.BKColor = "user13";
+		this.grd_TmpAccountList.Visible = false;
+		this.grd_TmpAccountMappingList.Visible = true;
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+
+	this.ds_AccnNumIn.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+	this.ds_AccnNumIn.SetColumn(0, "USE_TYPE", gfn_GetAccountUsage("03"));	
+	this.ds_AccnNumIn.SetColumn(0, "ALL_TYPE", "1");	
+	gfn_syncCall("find_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=accn_num_select","S=ds_AccnNumIn","ds_bankList=SEL1","","fn_CallBack");
+	this.cob_ACCN_NUM.Index = 0;
+}
+
+function bra04_r22_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_TmpAccountMappingList,this,1,1); 
+	gfn_ObjreSize(grd_TmpAccountList,this,1,1); 
+}
+]]></Script>
+</Window>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="960" Id="dupCheck" Left="8" PidAttrib="7" Title="dupCheck" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<colinfo id="JUMINNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="GANGENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="HAKLYUK" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIGUP" size="256" summ="default" type="STRING"/>
+					<colinfo id="SAWONNO" size="256" summ="default" type="STRING"/>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+					<record>
+						<GANGENM></GANGENM>
+						<GIGUP></GIGUP>
+						<HAKLYUK></HAKLYUK>
+						<JUMINNO></JUMINNO>
+						<NAME></NAME>
+						<SAWONNO></SAWONNO>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="Dataset1"></Dataset>
+			<Dataset DataSetType="Dataset" Id="Dataset2"></Dataset>
+		</Datasets>
+		<Button Height="21" Id="Button0" Left="16" OnClick="Button0_OnClick" TabOrder="1" Text="조회" Top="21" Width="64"></Button>
+		<Button Height="21" Id="Button1" Left="96" OnClick="Button1_OnClick" TabOrder="2" Text="추가" Top="20" Width="64"></Button>
+		<Button Height="21" Id="Button2" Left="176" OnClick="Button2_OnClick" TabOrder="3" Text="삭제" Top="20" Width="64"></Button>
+		<Button Height="21" Id="Button3" Left="256" OnClick="Button3_OnClick" TabOrder="4" Text="저장" Top="20" Width="64"></Button>
+		<Grid BindDataset="Dataset0" BkColor2="default" BoldHead="true" Bottom="414" Editable="TRUE" Enable="true" EndLineColor="default" Height="342" Id="Grid0" InputPanel="FALSE" Left="16" LineColor="default" OnExpandEdit="Grid0_OnExpandEdit" Right="717" TabOrder="5" TabStop="true" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="701">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="172"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="JUMINNO"/>
+						<cell col="1" display="text" text="GANGENM"/>
+						<cell col="2" display="text" text="NAME"/>
+						<cell col="3" display="text" text="HAKLYUK"/>
+						<cell col="4" display="text" text="GIGUP"/>
+						<cell col="5" display="text" text="SAWONNO"/>
+					</head>
+					<body>
+						<cell col="0" colid="JUMINNO" display="text" edit="normal"/>
+						<cell col="1" colid="GANGENM" display="text" edit="normal"/>
+						<cell col="2" colid="NAME" display="text" edit="normal"/>
+						<cell col="3" colid="HAKLYUK" display="text" edit="normal"/>
+						<cell col="4" colid="GIGUP" display="date" edit="normal" expandimage="C_icon1" expandshow="true"/>
+						<cell col="5" colid="SAWONNO" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Edit BindDataset="Dataset0" Height="31" Id="Edit0" Left="438" TabOrder="6" Text="Edit0" Top="18" Width="274"></Edit>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+#include "script::global.js"	// 글로벌 js
+
+function Button0_OnClick(obj)
+{
+	gfn_AsyncCall("search","KOMCA?SYSID=PATHFINDER&MENUID=1000004010&EVENTID=search","ddd","Dataset0=SEL1 dd=SEL2 cc=SEL3","","CallBack");
+}
+
+function Button1_OnClick(obj)
+{
+	Dataset0.AddRow();
+}
+
+function Button2_OnClick(obj)
+{
+	Dataset0.DeleteRow(Dataset0.currow);
+}
+
+function Button3_OnClick(obj)
+{
+    Dataset2.DeleteAll();
+    Dataset1.Assign(Dataset0);
+    trace(Dataset1.SaveXML());
+	gfn_syncCall("dupcheck","KOMCA?SYSID=PATHFINDER&MENUID=1000004010&EVENTID=dupcheck","S=Dataset1:U-+","Dataset2=SEL5","","CallBack");
+	trace(Dataset2.SaveXML());
+	if(Dataset2.GetColumn(0,"CNT") == 1){
+        gfn_Confirm("MB_OK", "중복된 데이터가 있습니다.", "경고", "0");
+	    //gfn_setGridFocus(Grid0,2,"JUMINNO");
+	    //Edit0.Text = Ds_a.SearchRow("DS_COMPANY=\"TOBE\"",0,10);
+	    //Dataset2.GetColumn(0,"JUMINNO");
+	    var dupRow = Dataset0.SearchRow("rowtype=='insert' && JUMINNO = "+Dataset2.GetColumn(0,"JUMINNO"));
+ 	    gfn_setGridFocus(Grid0,dupRow,"JUMINNO");
+	}
+	if(Dataset2.GetColumn(0,"CNT") == 0){
+	    gfn_syncCall("save","KOMCA?SYSID=PATHFINDER&MENUID=1000004010&EVENTID=save","S=Dataset0:U","","","CallBack");
+	}
+}
+
+
+function CallBack(srvId,ErrorCode,ErrorMsg){
+}
+
+//2008-06-13추가
+//그리드 포커스 주기
+function gfn_setGridFocus(obj, nRow, nCellId) {
+	var objDs = object(obj.BindDataset);
+	var nCellIdx = obj.GetBindCellIndex("body",nCellId);
+	objDs.RowPos = nRow;
+	obj.SetCellPos(nCellIdx);
+	obj.SetFocus();
+}
+
+function Grid0_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+    if(nCell == 4){
+        if(toUpper(obj.GetCellProp("body",nCell,"Edit")) == "NONE") return;
+		
+	    var strDate = gfn_SetCalendar(obj, nRow, nCell);
+	    if(strDate.length() > 0){
+	        Dataset0.SetColumn(nRow,"GIGUP",strDate);
+	    }
+    }
+}
+]]></Script>
+</Window>

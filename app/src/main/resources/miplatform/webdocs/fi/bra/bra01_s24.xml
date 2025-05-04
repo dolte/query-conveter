@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="bra01_s24" Left="8" OnLoadCompleted="bra01_s24_OnLoadCompleted" OnSize="bra01_s24_OnSize" PidAttrib="7" Title="문자발송" Top="8" Ver="1.0" Width="1208" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_list1"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_excel">
+				<Contents>
+					<colinfo id="CHECK" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AUTO_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMS_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMS_TOTCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_TOTCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CALL_TOTCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_YN6" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BOND" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCOUNT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM3" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM3" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CALLBACK" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM1></ACCN_NUM1>
+						<ACCN_NUM2></ACCN_NUM2>
+						<ACCN_NUM3></ACCN_NUM3>
+						<ACCOUNT_NM></ACCOUNT_NM>
+						<AUTO_YN></AUTO_YN>
+						<BANK_NM1></BANK_NM1>
+						<BANK_NM2></BANK_NM2>
+						<BANK_NM3></BANK_NM3>
+						<BOND></BOND>
+						<BRAN_CD></BRAN_CD>
+						<BRAN_PHON_NUM></BRAN_PHON_NUM>
+						<CALL_TOTCNT></CALL_TOTCNT>
+						<CALLBACK></CALLBACK>
+						<CHECK></CHECK>
+						<CHK_RESINUM></CHK_RESINUM>
+						<CLIENT_NUM></CLIENT_NUM>
+						<DEMD_MMCNT></DEMD_MMCNT>
+						<DONG></DONG>
+						<ERR_CHK></ERR_CHK>
+						<GRADNM></GRADNM>
+						<MNGEMSTR_HPNUM></MNGEMSTR_HPNUM>
+						<MNGEMSTR_NM></MNGEMSTR_NM>
+						<MONPRNCFEE></MONPRNCFEE>
+						<MONPRNCFEE2></MONPRNCFEE2>
+						<MSG></MSG>
+						<REMAK></REMAK>
+						<SMS_CNT></SMS_CNT>
+						<SMS_TOTCNT></SMS_TOTCNT>
+						<STAFF_CD></STAFF_CD>
+						<STAFF_NM></STAFF_NM>
+						<START_YRMN></START_YRMN>
+						<STOMU_YN></STOMU_YN>
+						<TOT_ADDT_AMT></TOT_ADDT_AMT>
+						<TOT_AMT></TOT_AMT>
+						<TOT_USE_AMT></TOT_USE_AMT>
+						<UPSO_ADDR></UPSO_ADDR>
+						<UPSO_CD>7215048A</UPSO_CD>
+						<UPSO_NM></UPSO_NM>
+						<UPSO_PHON></UPSO_PHON>
+						<UPSO_ZIP></UPSO_ZIP>
+						<VISIT_TOTCNT></VISIT_TOTCNT>
+						<VISIT_YN6></VISIT_YN6>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_PHON_NUM" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<BRAN_PHON_NUM></BRAN_PHON_NUM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_save_sms_format">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Virtual_temp">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Virtual_In">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<FileDialog Bottom="32" Filter="Excel&#32;File(*.xlsx)|*.xlsx|" Height="24" Id="fdg_Auto" Left="1055" Right="1079" TabOrder="26" Top="8" Width="24"></FileDialog>
+		<File Bottom="32" Height="24" Id="fil_Auto" Left="1088" Right="1112" TabOrder="25" Top="8" Width="24"></File>
+		<Image Height="41" Id="Image0" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="1" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="3" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="img_sawon" ImageID="C_icon" Left="265" TabOrder="5" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="txt_sawon" Left="281" Style="tx_left_bold" TabOrder="6" Text="대상엑셀파일" Top="28" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" BorderColor="user10" Enable="FALSE" Height="20" Id="edt_fileName" Left="366" LeftMargin="4" Readonly="TRUE" RightMargin="2" Style="edit" TabOrder="4" Top="23" Width="538"></Edit>
+		<Button Cursor="HAND" Height="21" Id="btn_FILE_sel" ImageID="C_btn_search" Left="910" OnClick="btn_FILE_sel_OnClick" TabOrder="7" TabStop="FALSE" Top="24" Width="58"></Button>
+		<Static Height="13" Id="st_label" Left="24" TabOrder="8" Text="*&#32;미징수리스트를&#32;저장한&#32;파일을&#32;대상&#32;엑파일로&#32;이용해주세요." Top="61" Width="736"></Static>
+		<Grid AutoEnter="TRUE" AutoEnterType="Key" BindDataset="ds_excel" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user7" Bottom="500" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="385" Id="grd_excel" InputPanel="FALSE" Left="11" LineColor="default" OnCellClick="grd_excel_OnCellClick" OnHeadClick="grd_excel_OnHeadClick" OnHeadDBLClick="grd_excel_OnHeadDblClick" Right="1192" Style="grid" TabOrder="9" TabStop="FALSE" Top="115" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1181">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="26"/>
+						<col width="57"/>
+						<col width="100"/>
+						<col width="31"/>
+						<col width="29"/>
+						<col width="100"/>
+						<col width="73"/>
+						<col width="56"/>
+						<col width="100"/>
+						<col width="72"/>
+						<col width="71"/>
+						<col width="175"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="78"/>
+						<col width="62"/>
+						<col width="117"/>
+						<col width="0"/>
+						<col width="0"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="월"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="업소코드"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="업소명"/>
+						<cell bkcolor="user8" col="3" color="user12" display="text" text="자동"/>
+						<cell bkcolor="user8" col="4" color="user12" display="text" text="주번"/>
+						<cell bkcolor="user8" col="5" color="user12" display="text" text="업주명"/>
+						<cell bkcolor="user8" col="6" color="user12" display="text" text="등급"/>
+						<cell bkcolor="user8" col="7" color="user12" display="text" text="미수채권"/>
+						<cell bkcolor="user8" col="8" color="user12" display="text" text="기준월정료"/>
+						<cell bkcolor="user8" col="9" color="user12" display="text" text="월사용료"/>
+						<cell bkcolor="user8" col="10" color="user12" display="text" text="시작년월"/>
+						<cell bkcolor="user8" col="11" color="user12" display="text" text="주소"/>
+						<cell bkcolor="user8" col="12" color="user12" display="text" text="동명"/>
+						<cell bkcolor="user8" col="13" color="user12" display="text" text="전화번호"/>
+						<cell bkcolor="user8" col="14" color="user12" display="text" text="핸드폰번호"/>
+						<cell bkcolor="user8" col="15" color="user12" display="text" text="미징수금액"/>
+						<cell bkcolor="user8" col="16" color="user12" display="text" text="가산금"/>
+						<cell bkcolor="user8" col="17" color="user12" display="text" text="합계"/>
+						<cell bkcolor="user8" col="18" color="user12" display="text" text="비고"/>
+						<cell bkcolor="user8" col="19" color="user12" display="text" text="우편번호"/>
+						<cell bkcolor="user8" col="20" color="user12" display="text" text="자동이체고객번호"/>
+						<cell bkcolor="user8" col="21" color="user12" display="text" text="회신전화번호"/>
+						<cell bkcolor="user8" col="22" color="user12" display="text" text="Error"/>
+					</head>
+					<body>
+						<cell col="0" colid="DEMD_MMCNT" display="text"/>
+						<cell col="1" colid="UPSO_CD" display="text"/>
+						<cell col="2" colid="UPSO_NM" display="text"/>
+						<cell col="3" colid="AUTO_YN" display="text"/>
+						<cell col="4" colid="CHK_RESINUM" display="text"/>
+						<cell col="5" colid="MNGEMSTR_NM" display="text"/>
+						<cell col="6" colid="GRADNM" display="text"/>
+						<cell col="7" colid="BOND" display="text"/>
+						<cell col="8" colid="MONPRNCFEE" display="number"/>
+						<cell col="9" colid="MONPRNCFEE2" display="number"/>
+						<cell col="10" colid="START_YRMN" display="text"/>
+						<cell col="11" colid="UPSO_ADDR" display="text"/>
+						<cell col="12" colid="DONG" display="text"/>
+						<cell col="13" colid="UPSO_PHON" display="text"/>
+						<cell col="14" colid="MNGEMSTR_HPNUM" display="text"/>
+						<cell col="15" colid="TOT_USE_AMT" display="number"/>
+						<cell col="16" colid="TOT_ADDT_AMT" display="number"/>
+						<cell col="17" colid="TOT_AMT" display="number"/>
+						<cell col="18" colid="REMAK" display="text"/>
+						<cell col="19" colid="UPSO_ZIP" display="text"/>
+						<cell col="20" colid="CLIENT_NUM" display="text"/>
+						<cell col="21" colid="CALLBACK" display="text"/>
+						<cell col="22" colid="ERR_CHK" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text" text="총&#32;:&#32;"/>
+						<cell align="right" col="2" display="number" expr="count(&apos;UPSO_CD&apos;)"/>
+						<cell col="3" display="text" text="건"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="14" TabOrder="12" TabStop="FALSE" Top="509" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static0" Left="28" TabOrder="11" Text="발송메세지" Top="509" Width="80"></Static>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_msg" ImeMode="none" Left="13" MaxLength="1000" OnClick="txt_msg_OnClick" OnKeyDown="txt_msg_OnKeyDown" TabOrder="10" Top="528" Width="190"></TextArea>
+		<TextArea Border="Flat" BorderColor="user3" Font="굴림체,10" Height="179" Id="TextArea2" Left="904" Readonly="TRUE" TabOrder="15" Text="가나다라&#32;마바사아자" Top="512" Visible="FALSE" Width="280"></TextArea>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="907" TabOrder="14" TabStop="FALSE" Top="501" Visible="FALSE" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static1" Left="921" TabOrder="13" Text="Error" Top="501" Visible="FALSE" Width="60"></Static>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_sample" ImeMode="none" Left="272" MaxLength="1000" OnCharChanged="txt_msg_OnChanged" TabOrder="16" Top="528" Width="190"></TextArea>
+		<Button Height="26" Id="btn_msg_apply" Left="209" OnClick="btn_msg_apply_OnClick" TabOrder="17" Text="변환" Top="595" Width="57"></Button>
+		<Static Height="13" Id="Static3" Left="24" TabOrder="18" Text="*&#32;메세지&#32;구조&#32;입력란에&#32;업소코드를&#32;넣고&#32;싶은경우,&#32;업소코드를&#32;넣고싶은&#32;위치에서&#32;위&#32;목록의&#32;업소코드&#32;머릿말을&#32;더블클릭하세요" Top="77" Width="736"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="20" TabStop="FALSE" Top="29" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="44" Style="tx_left_bold" TabOrder="21" Text="센터명" Top="29" Width="40"></Static>
+		<Combo BKColor="user13" Border="Flat" Height="20" Id="cob_BRAN_CD" Left="96" OnChanged="cob_BRAN_CD_OnChanged" Style="edit" TabOrder="19" ToolTipText="센터명" Top="23" Width="147"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,9,Bold" Height="21" Id="btn_Sms_Send" ImageID="C_btn_120" Left="341" LeftMargin="28" OnClick="btn_Sms_Send_OnClick" Style="edit" TabOrder="22" Text="&#32;문자&#32;발송" Top="704" TopMargin="1" Width="121"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_delete" ImageID="C_btn_120" Left="341" LeftMargin="28" OnClick="btn_delete_OnClick" Style="edit" TabOrder="23" Text="&#32;&#32;&#32;행&#32;삭제" Top="728" TopMargin="1" Width="121"></Button>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="274" TabOrder="25" TabStop="FALSE" Top="509" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static2" Left="288" TabOrder="24" Text="메세지&#32;미리보기" Top="509" Width="100"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_format_pop" ImageID="C_btn_120" Left="81" LeftMargin="28" OnClick="btn_format_pop_OnClick" Style="edit" TabOrder="26" Text="메세지&#32;불러오기" Top="704" TopMargin="1" Width="121"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_format_save" ImageID="C_btn_120" Left="81" LeftMargin="28" OnClick="btn_format_save_OnClick" Style="edit" TabOrder="27" Text="메시지&#32;저장" Top="728" TopMargin="1" Width="121"></Button>
+		<Static Height="203" Id="Static4" Left="496" TabOrder="28" Text="${가상계좌}&#13;&#10;를&#32;입력하시면&#32;업소별&#32;가상계좌가&#13;&#10;&#13;&#10;국민은행:&#32;12345678&#13;&#10;하나은행:&#32;23456789&#13;&#10;농협은행:&#32;34567890&#13;&#10;&#13;&#10;위와&#32;같이&#32;1줄&#32;또는&#32;3줄로&#32;변환됩니다." Top="536" Width="235"></Static>
+		<Static Height="13" Id="Static6" Left="24" TabOrder="29" Text="*&#32;엑셀파일&#32;업로드&#32;시&#32;매장음악서비스사업자&#32;위탁징수영업장은&#32;자동으로&#32;필터링(삭제)됩니다." Top="94" Width="736"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var err_cnt;
+var txt_msg_curor_pos;
+//var ar_cols_cd = ["DEMD_MMCNT","UPSO_CD","UPSO_NM","AUTO_YN","CHK_RESINUM"];
+var ar_cols_cd =["DEMD_MMCNT", "UPSO_CD", "UPSO_NM", "AUTO_YN", "CHK_RESINUM", "MNGEMSTR_NM", "GRADNM", "BOND", "MONPRNCFEE", "MONPRNCFEE2", "START_YRMN", "UPSO_ADDR", "DONG", "UPSO_PHON", "MNGEMSTR_HPNUM", "TOT_USE_AMT", "TOT_ADDT_AMT", "TOT_AMT", "REMAK", "UPSO_ZIP", "CLIENT_NUM"];
+
+//var ar_cols_nm = ["월", "업소코드", "업소명", "자동", "주번"];
+var ar_cols_nm = ["월", "업소코드", "업소명", "자동", "주번", "업주명", "등급", "미수채권", "기준월정료", "월사용료", "시작년월", "주소", "동명", "전화번호", "핸드폰번호", "미징수금액", "가산금", "합계", "비고", "우편번호", "자동이체고객번호"];
+
+function bra01_s24_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);
+	gfn_ObjreSize(grd_excel,this,1,0);
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	gfn_SetInnerPermission("btn_FILE_sel");
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		close();
+    }
+
+	return;
+}
+
+function fn_New() {
+}
+
+function fn_Search() {
+	
+	if (ds_excel_seq.GetRowCount() == 1 && ds_excel_seq.GetColumn(0, "SEQ") != "") {	
+		
+	} else {
+		alert("대상목록을 만드는데 실패하였습니다.");
+	}
+}
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+
+
+function btn_FILE_sel_OnClick(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	fn_get_bran_phone_num();	//회신용 전화번호 획득
+	
+	if(this.fdg_Auto.Open()==0)
+	{
+		return;
+	}
+	ds_excel.ClearData();
+	//ds_excel_seq.ClearData();
+	this.edt_FileName.Text = this.fdg_Auto.FilePath + "\\" + this.fdg_Auto.FileName;
+	ext_ExcelImportByIndex(this.fdg_Auto.FilePath + "\\" + this.fdg_Auto.FileName, 0, "ds_excel", 1, 1, 0, 2 );
+	
+	//trace(ds_excel.SaveXML());
+	
+	for (var i=0; i < ds_excel.GetRowCount(); i++) 
+	{
+		var temp_hp_num  = ds_excel.GetColumn(i, "MNGEMSTR_HPNUM");
+		var temp_upso_cd = ds_excel.GetColumn(i, "UPSO_CD");
+		
+		ds_excel.SetColumn(i, "BRAN_PHON_NUM", gds_sessioninfo.GetColumn(0, "IPPBX_INPHONE_NUM"));
+		
+		if (temp_hp_num == null || temp_hp_num == "") {	//널값 제거
+			ds_excel.DeleteRow(i);
+			i--;
+		}
+		if (temp_upso_cd == "" || temp_upso_cd == null) {	//널값 제거
+			ds_excel.DeleteRow(i);
+			i--;
+		}
+		if(ds_excel.GetColumn(i, "STOMU_YN") == "Y") // 매장음악 위탁 업소인 경우 문자 보내지 않음
+		{
+			ds_excel.DeleteRow(i);
+			i--;
+		}
+		for (var j=i+1; j < ds_excel.GetRowCount(); j++) 
+		{	//중복값 제거
+			if (temp_upso_cd == ds_excel.GetColumn(j, "UPSO_CD")) {
+				ds_excel.DeleteRow(j);
+				j--;
+			}
+		}
+	}
+	//trace(ds_excel.SaveXML());
+}
+
+function btn_msg_apply_OnClick(obj)
+{
+	var form_msg = this.txt_msg.Text;
+	
+	for (var i=0; i < ds_excel.GetRowCount(); i++) {
+	//for (int i=0; i < 3; i++) {
+		var temp_msg = form_msg;
+		
+		for (var j=0; j < ar_cols_cd.length(); j++) {
+			if (j == 8 || j == 9 || j == 15 || j == 16 || j == 17) {	//기준월정료, 월사용료, 미징수금액, 가산금, 합계는 콤마처리해주자.
+				temp_msg = replace(temp_msg, "${" + ar_cols_nm[j] + "}", ""+commaNum(ds_excel.GetColumn(i, ar_cols_cd[j])));
+			} else {
+				temp_msg = replace(temp_msg, "${" + ar_cols_nm[j] + "}", ds_excel.GetColumn(i, ar_cols_cd[j]));
+			}
+		}
+		
+		if(IndexOf(temp_msg, "${가상계좌}") >= 0)
+		{
+			var v_virtual = "";
+			
+			ds_Virtual_In.SetColumn(0, "UPSO_CD", ds_excel.GetColumn(i, "UPSO_CD"));
+				
+			gfn_syncCall("svcSearchInfo","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005024&EVENTID=sel_virtual_temp","S=ds_Virtual_In","ds_Virtual_temp=SEL1","","fn_CallBack");
+			
+			if(ds_Virtual_temp.rowcount < 1)
+			{
+				alert(ds_excel.GetColumn(i, "UPSO_CD") + " : " + ds_excel.GetColumn(i, "UPSO_NM") + "\n업소의 가상계좌 임시정보가 없습니다.\n가상계좌관리에서 확인하여주시기 바랍니다.\n문자에 계좌정보는 제외됩니다.");
+			}
+			else
+			{
+				v_virtual += ds_Virtual_temp.GetColumn(0, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(0, "ACCN_NUM");
+				
+				if(ds_Virtual_temp.rowcount > 1 && ds_Virtual_temp.GetColumn(1, "USE_YN") == "Y")
+				{
+					v_virtual += "\n" + ds_Virtual_temp.GetColumn(1, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(1, "ACCN_NUM");
+				}
+				if(ds_Virtual_temp.rowcount > 2 && ds_Virtual_temp.GetColumn(2, "USE_YN") == "Y")
+				{
+					v_virtual += "\n" + ds_Virtual_temp.GetColumn(2, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(2, "ACCN_NUM");
+				}
+				
+				temp_msg = replace(temp_msg, "${가상계좌}", v_virtual);
+			}
+		}
+		
+		ds_excel.SetColumn(i, "MSG", temp_msg);
+		
+		//alert(temp_msg);
+	}
+	//alert("apply end");
+	this.txt_sample.Text = ds_excel.GetColumn(ds_excel.currow, "MSG");
+}
+
+function commaNum(num) {  
+	var len, point, str;  
+	
+	num = num + "";  
+	point = num.length % 3;
+	
+	len = num.length;  
+
+	str = num.substr(0, point);  
+	while (point < len) {  
+		if (str != "") str += ",";  
+		str += num.substr(point, 3);  
+		point = point + 3;  
+	}  
+	return str;  
+}
+
+function grd_excel_OnHeadDblClick(obj,nCell,nX,nY,nPivotIndex)
+{	
+	var temp_pos;
+	if (txt_msg_curor_pos == null) {
+		temp_pos = 0;
+	} else {
+		temp_pos = txt_msg_curor_pos[0];
+	}
+	
+	if (nCell < ar_cols_nm.length()){
+		txt_msg.InsertText (temp_pos, "${"+ ar_cols_nm[nCell] +"}");
+		//txt_msg.SetFocus();
+	}
+}
+
+
+//컬럼내용을 추가할 위치를 클릭했을때 용
+function txt_msg_OnClick(obj)
+{
+	txt_msg_curor_pos = this.txt_msg.GetCursorPos();
+}
+
+//컬럼내용을 추가할 위치를 방향키, 입력키로 넣었을때 용
+function txt_msg_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	txt_msg_curor_pos = this.txt_msg.GetCursorPos();
+}
+
+function grd_excel_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	
+	var gv_BRAN_CD = gds_sessioninfo.GetColumn(0, "BRAN_CD");
+
+	if (gv_BRAN_CD == "AL" || gv_BRAN_CD == strCode || this.gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100" || this.gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100") {
+	 	this.btn_FILE_sel.Enable = true;
+	}else {
+		this.btn_FILE_sel.Enable = false;
+	}
+}
+
+function fn_get_bran_phone_num()
+{
+	this.ds_BRAN_CD.ClearData();
+	this.ds_BRAN_CD.AddRow();
+	this.ds_BRAN_CD.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	
+	gfn_syncCall("get_bran_phon_num","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=get_bran_phon_num","S=ds_BRAN_CD","ds_BRAN_CD=SEL1","","fn_CallBack");
+	//trace(ds_BRAN_CD.SaveXML());
+}
+
+function grd_excel_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	this.txt_sample.Text = ds_excel.GetColumn(nRow, "MSG");
+}
+
+function btn_delete_OnClick(obj)
+{
+	var c_row = ds_excel.currow;
+	//alert(c_row);
+	ds_excel.DeleteRow(c_row);
+}
+
+function btn_Sms_Send_OnClick(obj)
+{
+	if (this.ds_excel.GetRowCount() == 0)
+	{
+		alert("발송할 대상이 없습니다.");
+		return false;
+	}
+	else if (this.ds_excel.GetColumn(0, "MSG") == null ||this.ds_excel.GetColumn(0, "MSG") == "")
+	{
+		alert("변환 버튼을 클릭하여 주십시오.");
+		return false;
+	}
+	//gds_sms_send.ClearData();
+	
+	if(!Confirm("수신자에게 실제로 문자가 발송됩니다.\n발송 하시겠습니까?")) return;
+	
+	gds_kakao.ClearData();
+	
+	for(var i=0; i < this.ds_excel.rowcount; i++)
+	{
+		/*var arow = gds_sms_send.AddRow();
+		gds_sms_send.SetColumn(arow,"USER_ID", "U"+this.ds_excel.GetColumn(i,"UPSO_CD") );
+		gds_sms_send.SetColumn(arow,"SCHEDULE_TYPE","0"); //즉시 “0” 예약 “1”
+		gds_sms_send.SetColumn(arow,"SEND_DATE", ""); //즉시는 없음 200912182130
+		gds_sms_send.SetColumn(arow,"SUBJECT", "(사)한국음악저작권협회"); //제목:발송되지는 않음
+		gds_sms_send.SetColumn(arow,"SMS_MSG", this.ds_excel.GetColumn(i,"MSG") ); //발송문자내용
+		gds_sms_send.SetColumn(arow,"CALLBACK", this.ds_excel.GetColumn(i, "BRAN_PHON_NUM"));//회신번호
+		gds_sms_send.SetColumn(arow,"NAME", this.ds_excel.GetColumn(i, "MNGEMSTR_NM")); //수신자명
+		gds_sms_send.SetColumn(arow,"PHNUM", this.ds_excel.GetColumn(i, "MNGEMSTR_HPNUM")); //수신자핸드폰번호 ‘-‘는 생략	*/
+		
+		var aRow = gds_kakao.AddRow();
+		gds_kakao.SetColumn(aRow, "PHONE_NUM",   ds_excel.GetColumn(i, "MNGEMSTR_HPNUM")); //수신자번호
+		gds_kakao.SetColumn(aRow, "SUBJECT",     "(사)한국음악저작권협회"); //문자제목
+		gds_kakao.SetColumn(aRow, "SND_MSG",     ds_excel.GetColumn(i,"MSG")); //내용
+		gds_kakao.SetColumn(aRow, "SMS_SND_NUM", ds_excel.GetColumn(i, "BRAN_PHON_NUM")); //발신자번호
+		gds_kakao.SetColumn(aRow, "RESERVED1",   ds_excel.GetColumn(i, "MNGEMSTR_NM")); //업주명
+		gds_kakao.SetColumn(aRow, "RESERVED2",   "U");
+		gds_kakao.SetColumn(aRow, "RESERVED3",   cob_BRAN_CD.Value);
+		gds_kakao.SetColumn(aRow, "RESERVED4",   "");
+		gds_kakao.SetColumn(aRow, "RESERVED5",   "");
+		gds_kakao.SetColumn(aRow, "RESERVED6",   "bra01_s24"); //form id
+		gds_kakao.SetColumn(aRow, "USER_ID",     ds_excel.GetColumn(i,"UPSO_CD")); //업소코드
+	}
+	
+	var rtn = gfn_ChkKakao();
+	if(rtn)
+	{
+		gfn_SyncCall("svcSendKakao","KOMCA?SYSID=PATHFINDER&MENUID=1000006001010&EVENTID=send_kakao_msg","S=gds_kakao:U","","","gfn_CallBack");
+	}
+
+	/*fn_Chksms();
+	if (err_cnt == 0){
+		var btn_style = "MB_YESNO";
+		var str_msg = "수신자에게 실제로 문자가 발송됩니다.\n발송 하시겠습니까?";
+		var title = "최종 발송 확인";
+		var focus = "1";
+		var rtn = gfn_Confirm(btn_style, str_msg, title, focus);	
+		if (rtn = 6) {
+			fn_MakeSms();
+			//trace(gds_sdk_sms_send.saveXML() );
+			gfn_syncCall("sms_send_save","KOMCA?SYSID=PATHFINDER&MENUID=1000006001010&EVENTID=sms_send_save_sdk","S=gds_sdk_sms_send:U","","","gfn_CallBack");
+		}
+	}
+	else {
+		alert("발송 형식에 오류가 있습니다.\n확인후 발송 하십시오");
+	}*/
+}
+
+/*====================================================================
+* FUNCTION NAME     : fn_ChkSms()
+* FUNCTION DESC 	: sms 문자 발송할 내역을 check
+* @param            : 없음
+*          
+=====================================================================*/
+function fn_ChkSms()
+{
+	var rcnt = gds_sms_send.RowCount();
+	err_cnt = 0;
+	var err_type;
+	gds_sdk_sms_send.ClearData();
+	err_cnt =0;
+	for (var i = 0 ; i < rcnt ; i++){
+		gds_sdk_sms_send.AddRow();
+		err_type = "";
+		gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		
+		var user_id = gds_sms_send.GetColumn(i,"USER_ID");
+		if (mid(user_id,0,1) == "M" or mid(user_id,0,1) == "U" or mid(user_id,0,1) == "C"){
+			//gds_sdk_sms_send.SetColumn(i,"USER_ID",user_id);
+		} else {
+			err_cnt++;
+			err_type = "ID구분 오류 \n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var schedule_type = gds_sms_send.GetColumn(i,"SCHEDULE_TYPE");
+		if (schedule_type == "0" or schedule_type == "1"){
+			//gds_sdk_sms_send.SetColumn(i,"SCHEDULE_TYPE",schedule_type);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 예약구분 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var subject = gds_sms_send.GetColumn(i,"SUBJECT");
+		if (lengthb(subject) < 50 and lengthb(subject) > 0){
+			//gds_sdk_sms_send.SetColumn(i,"SUBJECT",subject);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 제목길이오류 1~50문자 : "+lengthb(subject)+"\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var sms_msg = gds_sms_send.GetColumn(i,"SMS_MSG");
+		if (lengthb(sms_msg) <= 1000 and lengthb(sms_msg) > 0){
+			//gds_sdk_sms_send.SetColumn(i,"SMS_MSG",sms_msg);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 메세지길이오류 1~1000문자 : "+lengthb(sms_msg)+"\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var send_date = gds_sms_send.GetColumn(i,"SEND_DATE");
+		if (schedule_type == "1") { //예약일경우만
+			if (gfn_IsDateYMD(mid(send_date,0,8)) == 0) {/* 날짜 체크 */
+				//gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+			} else {
+				err_cnt++;
+				err_type = err_type + " 날짜 오류\n";
+				gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+				ds_excel.SetColumn(i,"ERR_CHK",err_type);
+			}
+			if (gfn_IsTimeHHMM(mid(send_date,8,4)) == 0) { /* 시간 체크 */
+				//gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+			} else {
+				err_cnt++;
+				err_type = err_type + " 시간 오류\n";
+				gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+				ds_excel.SetColumn(i,"ERR_CHK",err_type);
+			}
+		} else {
+			gds_sms_send.SetColumn(i,"send_date",GetDate()); /* 즉시일경우 현재 시간 */
+		}
+		var callback = gds_sms_send.GetColumn(i,"CALLBACK");
+		if (lengthb(callback) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"CALLBACK",callback);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 회신번호없음 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+		//gds_sdk_sms_send.SetColumn(i,"KT_OFFICE_CODE","");
+		//gds_sdk_sms_send.SetColumn(i,"CDR_ID","");
+		//gds_sdk_sms_send.SetColumn(i,"DEST_TYPE","0");
+		//gds_sdk_sms_send.SetColumn(i,"DEST_COUNT","1");
+		var name = gds_sms_send.GetColumn(i,"NAME");
+		if (lengthb(name) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"name",name);
+			if (length(name) > 6) {
+				gds_sms_send.SetColumn(i,"NAME", substr(name,0,6));
+			}
+		} else {
+			err_cnt++;
+			err_type = err_type + " 이름없음 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+
+		var phnum = replace(gds_sms_send.GetColumn(i,"PHNUM"),"-","");
+		if (lengthb(phnum) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"PHNUM",PHNUM);
+		} else {
+			//err_cnt++;
+			err_type = err_type + " 전화번호없음 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			ds_excel.SetColumn(i,"ERR_CHK",err_type);
+		}
+
+		//gds_sdk_sms_send.SetColumn(i,"DEST_INFO",name+"^"+phnum);
+	}
+}
+
+function fn_MakeSms()
+{
+	var rcnt = gds_sms_send.RowCount();
+	err_cnt = 0;
+	var err_type;
+	gds_sdk_sms_send.ClearData();
+	err_cnt =0;
+	for (var i = 0 ; i < rcnt ; i++){
+		gds_sdk_sms_send.AddRow();
+		err_type = "";
+		var user_id = gds_sms_send.GetColumn(i,"USER_ID");
+		gds_sdk_sms_send.SetColumn(i,"USER_ID",mid(user_id,1,length(user_id)-1));
+
+		var schedule_type = gds_sms_send.GetColumn(i,"SCHEDULE_TYPE");
+		gds_sdk_sms_send.SetColumn(i,"SCHEDULE_TYPE",schedule_type);
+
+		var subject = gds_sms_send.GetColumn(i,"SUBJECT");
+		gds_sdk_sms_send.SetColumn(i,"SUBJECT",subject);
+
+		var sms_msg = gds_sms_send.GetColumn(i,"SMS_MSG");
+		gds_sdk_sms_send.SetColumn(i,"SMS_MSG",sms_msg);
+
+		var send_date = gds_sms_send.GetColumn(i,"SEND_DATE");
+		gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+
+		var callback = gds_sms_send.GetColumn(i,"CALLBACK");
+		gds_sdk_sms_send.SetColumn(i,"CALLBACK",callback);
+		gds_sdk_sms_send.SetColumn(i,"KT_OFFICE_CODE","");
+		gds_sdk_sms_send.SetColumn(i,"CDR_ID","");
+		gds_sdk_sms_send.SetColumn(i,"DEST_TYPE","0");
+		gds_sdk_sms_send.SetColumn(i,"DEST_COUNT","1");
+		var name = gds_sms_send.GetColumn(i,"NAME");
+		var phnum = replace(gds_sms_send.GetColumn(i,"PHNUM"),"-","");
+		gds_sdk_sms_send.SetColumn(i,"DEST_INFO",name+"^"+phnum);
+
+		gds_sdk_sms_send.SetColumn(i,"RESERVED1",gds_sessioninfo.GetColumn(0,"STAFF_NUM"));
+		gds_sdk_sms_send.SetColumn(i,"RESERVED2",mid(user_id,0,1));
+		gds_sdk_sms_send.SetColumn(i,"SEND_STATUS","0");
+		
+		gds_sdk_sms_send.SetColumn(i,"RESERVED3", ""+lengthb(gds_sms_send.GetColumn(i, "SMS_MSG")) );
+		
+		gds_sdk_sms_send.SetColumn(i,"RESERVED4", "bra01_s24");
+
+	}
+}
+
+function bra01_s24_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_excel,this,1,0);	
+}
+
+function btn_format_pop_OnClick(obj)
+{
+	if (this.cob_BRAN_CD.Value == null || this.cob_BRAN_CD.Value == "") {
+		alert("센터를 먼저 선택하십시오.");
+		return false;
+	}
+	
+	var inParam ="BRAN_CD=" + quote(this.cob_BRAN_CD.value) + " BRAN_NM=" + quote(this.cob_BRAN_CD.Text);
+	Dialog("fi_bra::pop_sms_format.xml",inParam);
+}
+
+function btn_format_save_OnClick(obj)
+{
+	if (this.cob_BRAN_CD.Value == null || this.cob_BRAN_CD.Value == "") {
+		alert("센터를 먼저 선택하십시오.");
+		return false;
+	} else if (this.txt_msg.text == "") {
+		alert("저장할 발송메세지가 없습니다.");
+		return false;
+	}
+	
+	this.ds_save_sms_format.ClearData();
+	this.ds_save_sms_format.AddRow();
+	this.ds_save_sms_format.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_save_sms_format.SetColumn(0, "MSG", this.txt_msg.text);
+	
+	gfn_syncCall("save_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=save_sms_format","S=ds_save_sms_format:U","","","gfn_CallBack");
+	alert("발송메세지를 저장하였습니다. 확인하시려면 메세지 불러오기를 눌러 확인하세요.");
+}
+]]></Script>
+</Window>

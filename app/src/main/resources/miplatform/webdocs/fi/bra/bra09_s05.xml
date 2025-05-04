@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="지역별&#32;미징수&#32;업소수" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_CNT_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_CNT_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Nonpy">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CITYCNTYDSRC" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image12" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="12" Width="1006"></Image>
+		<Grid AutoScrollBar="AlwaysVert" BindDataset="ds_Nonpy" BKColor="user11" BkColor2="user9" BoldHead="true" Border="Flat" BorderColor="ACTIVEBORDER" Bottom="824" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="760" Id="grd_Nonpy" InputPanel="FALSE" Left="8" LineColor="silver" Right="1032" SuppressSameLevel="Skip" TabOrder="-3" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="200"/>
+						<col width="200"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell col="0" color="user19" display="text" text="도/시"/>
+						<cell col="1" color="user19" display="text" text="구/군"/>
+						<cell col="2" color="user19" display="text" text="업소수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="ATTE" display="text"/>
+						<cell align="center" col="1" colid="CITYCNTYDSRC" display="text"/>
+						<cell align="right" col="2" colid="UPSO_CNT" display="number"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text" text="총계"/>
+						<cell align="right" col="2" display="number" expr='SUM(&quot;UPSO_CNT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="41" Id="Image10" ImageID="C_search_left" Left="8" TabOrder="3" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image11" ImageID="C_search_right" Left="1024" TabOrder="4" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="35" TabOrder="9" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="52" Style="tx_left_bold" TabOrder="6" Text="센터명" Top="28" Width="79"></Static>
+		<Combo BKColor="user13" Height="21" Id="cob_BRAN_CD" Left="96" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="5" ToolTipText="센터명" Top="23" Width="112"></Combo>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="228" TabOrder="10" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="248" Style="tx_left_bold" TabOrder="11" Text="기준년월" Top="28" Width="60"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_YRMN" Left="306" LeftMargin="10" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="6" ToolTipText="기준년월" Top="22" Width="88"></Calendar>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="663" TabOrder="12" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="680" Style="tx_left_bold" TabOrder="13" Text="미징수개월수" Top="26" Width="79"></Static>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="darkgray" Height="20" Id="mae_START_MON" Left="764" MaxLength="3" TabOrder="7" ToolTipText="미징수&#32;시작&#32;개월수" Top="23" Width="25"></MaskEdit>
+		<Static Color="user1" Height="16" Id="Static3" Left="795" TabOrder="14" Text="~" Top="26" Width="16"></Static>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="darkgray" Height="20" Id="mae_END_MON" Left="811" MaxLength="3" TabOrder="8" ToolTipText="미징수&#32;종료&#32;개월수" Top="23" Width="25"></MaskEdit>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="866" TabOrder="17" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static1" Left="883" Style="tx_left_bold" TabOrder="18" Text="업종" Top="26" Width="31"></Static>
+		<Combo Border="Flat" Font="굴림체,9" Height="20" Id="cob_BSTYP_CD" Left="916" Style="edit" TabOrder="16" Top="20" Width="110"></Combo>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);	// 센터코드 가져오기
+	gfn_GetDataBSTYP(cob_BSTYP_CD, 0);	// 업종 정보 가져오기
+	
+	this.cal_YRMN.Text = today();		//  기준년도 설정
+	this.cob_BSTYP_CD.Index = 0;
+	
+	gfn_SetPermission(cob_BRAN_CD.Value);
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+
+	if (srvId == "LOAD_ATTE") {
+	}
+}	
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_search();
+    }
+    //저장
+    else if(strCode == "SAVE"){}
+    //추가
+    else if(strCode == "EXCEL"){
+		fn_excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){}
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_Search() 
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_In.ClearData();
+	this.ds_In.AddRow();
+	this.ds_In.SetColumn(0, "BRAN_CD"      , this.cob_BRAN_CD.Value);
+	this.ds_In.SetColumn(0, "DEMD_YRMN"    , substr(this.cal_YRMN.Value, 0, 6));
+	this.ds_In.SetColumn(0, "START_CNT_MON", this.mae_START_MON.Value);
+	this.ds_In.SetColumn(0, "END_CNT_MON"  , this.mae_END_MON.Value);
+	this.ds_In.SetColumn(0, "BSTYP_CD"     , this.cob_BSTYP_CD.Value);
+	
+	trace(ds_In.SaveXML());
+	gfn_syncCall("NONPY_SELECT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012005&EVENTID=nonpy_upso_cnt","S=ds_In","ds_Nonpy=SEL1","","fn_CallBack");
+	//trace(ds_NONPY.SaveXML());	
+}
+
+function fn_excel()
+{
+	if(ds_NONPY.count== 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+	this.grd_Nonpy.ExportExcelEX("지역별미징수업소수_"+ substr(this.cal_YRMN.Value, 0, 6) +"_"+ this.cob_BRAN_CD.Value);
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="392" Id="bra01_p14" Left="8" OnLoadCompleted="bra01_p14_OnLoadCompleted" PidAttrib="7" Title="로그기&#32;할인이력" Top="8" Ver="1.0" Width="632" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_result" OnRowPosChanged="ds_result_OnRowPosChanged">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMMENTS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="17" Id="Image1" ImageID="C_icon2" Left="9" TabOrder="2" Top="11" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static9" Left="32" Style="tx_bold" TabOrder="1" Text="업소&#32;할인&#32;이력" Top="14" Width="112"></Static>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_result" BkColor2="default" BkSelColor="user2" BoldHead="true" Border="Flat" Bottom="383" DisableBKColor="user6" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="343" Id="grd_result" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" Right="360" RowHeight="20" SelColor="user1" Style="grid" TabOrder="3" TabStop="true" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="344">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="46"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="할인시작월"/>
+						<cell col="2" color="user12" display="text" text="할인종료월"/>
+						<cell col="3" color="user12" display="text" text="최종수정일"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="currow+1"/>
+						<cell align="center" col="1" colid="DSCT_START" display="text" Mask="####/##"/>
+						<cell align="center" col="2" colid="DSCT_END" display="text" Mask="####/##"/>
+						<cell align="center" col="3" colid="MOD_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="40" Height="3" Id="Shape0" Left="16" LineColor="user7" Right="616" TabOrder="4" Top="37" Type="Rectangle" Width="600"></Shape>
+		<TextArea Border="Flat" BorderColor="user10" Font="굴림,9" Height="320" Id="txt_comments" Left="359" TabOrder="5" Top="63" Width="257"></TextArea>
+		<Static Align="Center" BKColor="user8" Border="SunkenEdge" Color="user19" Font="굴림,9,Bold" Height="25" Id="Static7" Left="359" Style="box_tx" TabOrder="6" Text="비고" Top="40" VAlign="Middle" Width="257"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="544" LeftMargin="26" OnClick="btn_close_OnClick" TabOrder="7" Text="닫기" Top="8" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra01_p14_OnLoadCompleted(obj)
+{
+	ds_search.SetColumn(0, "UPSO_CD", P_UPSO_CD);
+	
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004014&EVENTID=sel_log_dsct_hist","S=ds_search","ds_result=SEL1","","fn_CallBack");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0 || length(ErrorMsg) > 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	switch(srvId)
+	{
+		case "svcSearch" :
+			if(ds_result.rowcount > 0)
+			{
+				ds_result_OnRowPosChanged(this, 0, 0);
+			}
+			break;
+		default :
+			break;
+	}
+}
+
+function ds_result_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	txt_comments.Text = ds_result.GetColumn(nRow, "COMMENTS");
+}
+
+
+function btn_close_OnClick(obj)
+{
+	close();
+}
+]]></Script>
+</Window>

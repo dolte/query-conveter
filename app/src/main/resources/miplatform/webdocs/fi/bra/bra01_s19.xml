@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="864" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="무선로그데이터&#32;분배자료&#32;전송" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_history">
+				<Contents>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="START_YRMN" size="256" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dup_exec_cnt">
+				<Contents>
+					<colinfo id="CNT" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dup_data_cnt">
+				<Contents>
+					<colinfo id="CNT" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ubi_data">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" type="STRING"/>
+					<colinfo id="UPSO_CNT" size="256" type="STRING"/>
+					<colinfo id="COL_UPSO_CNT" size="256" type="STRING"/>
+					<colinfo id="COL_UPSO_RATE" size="256" type="STRING"/>
+					<colinfo id="COL_LOG_CNT" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="1" TabStop="FALSE" Top="11" Width="990"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1016" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="44" TabOrder="1" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="60" Style="tx_left_bold" TabOrder="1" Text="기준년월" Top="24" VAlign="Middle" Width="56"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_START_YRMN" Left="120" LeftMargin="17" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="생성년월" Top="20" Width="102"></Calendar>
+		<Grid AutoFit="TRUE" BindDataset="ds_history" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="456" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="368" Id="grd_history" InputPanel="FALSE" Left="768" LineColor="silver" MinWidth="100" Right="1024" RowHeight="20" Style="grid" TabOrder="7" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="256">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="59"/>
+						<col width="59"/>
+						<col width="129"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="현황년월"/>
+						<cell col="1" color="user12" display="text" text="등록사원"/>
+						<cell col="2" color="user12" display="text" text="등록일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="YRMN" display="text"/>
+						<cell align="center" col="1" colid="INSPRES_NM" display="text"/>
+						<cell align="center" col="2" colid="INS_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="767" TabOrder="8" TabStop="FALSE" Top="67" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static9" Left="793" Style="tx_bold" TabOrder="9" Text="저장이력정보" Top="71" Width="80"></Static>
+		<ubiviewer Bottom="856" FontRevision="true" Height="768" Id="ubi0" IsDeflater="true" Left="16" Right="760" Top="88" Width="744">
+			<_PersistData>&#13;&#10;/6y20+AD/wAAAQDlTAAA92BPAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI7/C9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUD0PjypwH59Q8DAekE8L8u+vVTAGjUAGVlARAD&#13;&#10;/vn1A3StvLm0zNrmCGT78w1JXQBGAHdyAG9dAHQAT9YA1VTUAHhlAAEiEmgAaW3cABADFPr0AjAJB8MBMa4BhRLgBiIJAAA=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Image Height="17" Id="Image2" ImageID="C_icon2" Left="31" TabOrder="11" TabStop="FALSE" Top="67" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static0" Left="57" Style="tx_bold" TabOrder="12" Text="조회&#32;결과&#32;:&#32;무선로그데이터&#32;수신&#32;현황" Top="71" Width="230"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	// 검색일자 설정
+	this.cal_START_YRMN.Value = today();
+	
+	fn_history_search();	//이력조회 실행
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{	
+	if (srvId == "DemdAuto") {
+	}
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "ADD"){}
+    //삭제
+    else if(strCode == "DELETE"){}
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_search() {
+	if (!gfn_CheckFormNull(this)) return;
+	
+	var t_yrmn = substr(this.cal_START_YRMN.Value,0,6);
+	
+	this.ds_search.ClearData();
+	this.ds_search.AddRow();
+	this.ds_search.SetColumn(0, "START_YRMN", t_yrmn );
+	this.ds_search.SetColumn(0, "END_YRMN",   t_yrmn );
+	
+	ubi0.setPageScale("120");
+	ubi0.FontRevision = true;
+	ubi0.IsDeflater = true;
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setServletURL2(gv_ReportUrl2);	
+	ubi0.setDatasource("fidu#jdbc/FIDU");
+	ubi0.SetVariable("usePDF2", "true");
+	
+	var find_yn = false;
+	var v_ins_date = "";
+	
+	for (var i=0; i < this.ds_history.rowcount; i++) {
+		if (t_yrmn == this.ds_history.GetColumn(i, "YRMN") && this.ds_history.GetColumn(i, "CNT") > 0) {
+			find_yn = true;
+			v_ins_date = substr(this.ds_history.GetColumn(i, "INS_DATE"), 0, 10);
+		}
+	}
+	
+	if (find_yn) {
+		alert("저장된 이력을 가져옵니다.");
+		ubi0.setJrfFileName("bra01_s19_3.jrf");
+		ubi0.SetArgument("YRMN", t_yrmn);
+		ubi0.SetArgument("INS_DATE",   v_ins_date);
+		
+	} else {
+		ubi0.setJrfFileName("bra01_s19.jrf");
+		ubi0.SetArgument("START_YRMN", t_yrmn );
+		ubi0.SetArgument("END_YRMN",   t_yrmn );
+	}
+	ubi0.Retrieve();
+}
+
+function fn_save() {
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_search.ClearData();
+	this.ds_search.AddRow();
+	this.ds_search.SetColumn(0, "START_YRMN", substr(this.cal_START_YRMN.Value,0,6));
+	this.ds_search.SetColumn(0, "END_YRMN",   substr(this.cal_START_YRMN.Value,0,6));
+	this.ds_search.SetColumn(0, "STAFF_CD",   gv_USER_ID);
+	
+	//1. 중복실행 방지
+	gfn_syncCall("dup_exec_check", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006004019&EVENTID=dup_exec_check", "S=ds_search","ds_dup_exec_cnt=SEL1","","fn_CallBack");
+	if (this.ds_dup_exec_cnt.GetColumn(0, "CNT") > 0) {
+		gfn_Confirm("MB_OK", "중복실행을 시도하였습니다. 기준년월을 다시 지정하십시오.", "실패", "0");
+		return;
+	}
+	
+	gfn_SetStatusMsg("자료전달 시작");
+	gfn_syncCall("log_trans_exec", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006004019&EVENTID=log_trans_exec", "S=ds_search","ds_dup_data_cnt=SEL9","","fn_CallBack");
+	gfn_SetStatusMsg("자료전달 종료");
+
+	//동일한 데이터가 두번 수집된 경우. 금영측에 이야기해서 프로그램 수정을 한 적이 있음. 재발방지용
+	if (this.ds_dup_data_cnt.GetColumn(0, "CNT") > 0) {
+		gfn_Confirm("MB_OK", "데이터 중복 발견!\n전산팀에 알림요망", "알림", "0");
+	}
+	
+	fn_history_search();	//이력조회 실행
+}
+
+//이력조회
+function fn_history_search() {
+	gfn_syncCall("history_search", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006004019&EVENTID=history_search", "","ds_history=SEL1","","fn_CallBack");
+}]]></Script>
+</Window>

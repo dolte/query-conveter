@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="400" Id="find_accu_code" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="코드찾기" Top="8" Ver="1.0" Width="585" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_cd_search">
+				<Contents>
+					<colinfo id="CODE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cd_info">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="564" TabOrder="9" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" OnClick="Image15_OnClick" TabOrder="7" TabStop="FALSE" Top="12" Width="550"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="8" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Shape BKColor="user7" Bottom="65" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="574" TabOrder="0" Top="62" Type="Rectangle" Width="566"></Shape>
+		<Grid BindDataset="ds_cd_info" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="352" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="288" Id="grd_Data" InputPanel="FALSE" Left="8" LineColor="silver" OnCellDBLClick="grd_Data_OnCellDBLClick" Right="574" RowHeight="20" Style="grid" TabOrder="4" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="566">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="86"/>
+						<col width="451"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="코드"/>
+						<cell col="1" color="user12" display="text" text="명칭"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CODE_CD" display="text"/>
+						<cell col="1" colid="CODE_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="26" TabOrder="6" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="44" Style="tx_left_bold" TabOrder="6" Text="코드/명" Top="27" Width="57"></Static>
+		<Edit BindDataset="ds_cd_search" Border="Flat" BorderColor="user10" Column="CODE_CD" Height="20" Id="edt_code_cd" Left="113" OnChar="edt_OnChar" OnKeyDown="edt_code_cd_OnKeyDown" Style="edit" TabOrder="1" Top="23" Width="52"></Edit>
+		<Edit BindDataset="ds_cd_search" Border="Flat" BorderColor="user10" Column="CODE_NM" Height="20" Id="edt_code_nm" Left="169" OnChar="edt_OnChar" OnKeyDown="edt_code_nm_OnKeyDown" Style="edit" TabOrder="2" Top="23" Width="303"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Search" ImageID="C_btn_70" Left="488" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="3" TabStop="FALSE" Text="조회" Top="22" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="256" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="5" TabStop="FALSE" Text="닫기" Top="360" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"	// 공통 js
+
+
+function form_OnLoadCompleted(obj)
+{
+	this.ds_cd_search.ClearData();
+	this.ds_cd_search.AddRow();
+
+	
+	if( length(CODE_GBN) == 0 ) {
+        //gfn_Confirm("MB_OK", "코드 조회에 필수정보가 존재하지 않습니다. 종료합니다.", "경고", "0");
+		return;
+	}else{
+		if(CODE_GBN == "P"){
+			find_accu_code.Title = "경찰서코드 찾기";
+		}else{
+			find_accu_code.Title = "법원코드 찾기";
+		}
+	}
+
+	this.edt_code_cd.Text = CODE;	
+	this.edt_code_nm.Text = CODE_NM;
+
+	//파라미터로 넘어논 코드구분 값을 ds_cd_search에 설정
+	this.ds_cd_search.SetColumn(0,"CODE_GBN",CODE_GBN);
+	this.ds_cd_search.SetColumn(0,"CODE_CD",CODE);
+	this.ds_cd_search.SetColumn(0,"CODE_NM",CODE_NM);
+
+	if( length(CODE) > 0 ) {
+		edt_code_cd.Text = CODE;
+		fn_search();
+	}
+}
+
+function btn_Search_OnClick(obj)
+{
+	fn_Search();
+}
+
+function edt_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam) 
+{
+	if (nChar == 13)
+	{
+		btn_Search_OnClick();
+	}
+}
+
+
+function fn_Search() 
+{	
+	gfn_SyncCall("svcSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=p_plcst_judg", "S=ds_cd_search",
+			"ds_cd_info=MRG5", "", "fn_CallBack");	
+}
+
+function fn_CallBack(svcid,errCode,errMsg) {
+
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcSearch" :
+			
+				if (ds_cd_info.GetRowCount() == 0)
+				{
+                    gfn_Confirm("MB_OK", "조회결과가 없습니다.", "경고", "0");
+				}
+				break;
+							
+			default : break;			
+		}		
+	}
+	
+}
+
+// 선택된 코드와 코드명을 부모창의 해당 오브켁트에 설정 처리
+ function grd_Data_OnCellDBLClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var nRow = ds_cd_info.currow;
+	
+	if (ds_cd_search.GetColumn(0,"CODE_GBN") == "P" ){
+		Parent.edt_plcst_cd.Text = ds_cd_info.GetColumn(nRow, "CODE_CD");
+		Parent.edt_plcst_nm.Text = ds_cd_info.GetColumn(nRow, "CODE_NM");
+	}else{
+		Parent.edt_plcst_cd.Text = ds_cd_info.GetColumn(nRow, "CODE_CD");
+		Parent.edt_plcst_nm.Text = ds_cd_info.GetColumn(nRow, "CODE_NM");
+	//	Parent.edt_judg_cd.Text = ds_cd_info.GetColumn(nRow, "CODE_CD");
+	//	Parent.edt_judg_nm.Text = ds_cd_info.GetColumn(nRow, "CODE_NM");
+	}
+	close();
+}
+
+function btn_close_OnClick(obj)
+{
+	close();
+}
+
+function edt_code_nm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar == '13'){
+	//trace(this.ds_cd_search.SaveXML());
+	/*
+	alert(this.ds_cd_search.RowCount());
+		gfn_SyncCall("svcSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=p_plcst_judg", "S=ds_cd_search",
+			"ds_cd_info=MRG5", "", "fn_CallBack");
+		
+	}
+	*/
+	    btn_Search.SetFocus();
+	    btn_Search.Click();
+	}
+}
+
+function edt_code_cd_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+/*
+	if(nChar == '13'){
+		gfn_SyncCall("svcSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=p_plcst_judg", "S=ds_cd_search",
+			"ds_cd_info=MRG5", "", "fn_CallBack");
+		
+	}
+*/
+		if(nChar == '13'){
+			btn_Search.SetFocus();
+			btn_Search.Click();
+		}
+}
+]]></Script>
+</Window>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="272" Id="bra01_p01" Left="8" OnLoadCompleted="bra01_p01_OnLoadCompleted" PidAttrib="7" Title="개발서류&#32;업로드" Top="8" Ver="1.0" Width="632" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_result" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TYPE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="17" Id="Image1" ImageID="C_icon2" Left="9" TabOrder="2" Top="11" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static9" Left="32" Style="tx_bold" TabOrder="1" Text="서류&#32;등록&#32;내역" Top="14" Width="112"></Static>
+		<Shape BKColor="user7" Bottom="46" Height="3" Id="Shape0" Left="14" LineColor="user7" Right="614" TabOrder="3" Top="43" Type="Rectangle" Width="600"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="544" LeftMargin="26" OnClick="btn_close_OnClick" TabOrder="4" Text="닫기" Top="10" TopMargin="1" Width="71"></Button>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static2" Left="14" Style="box_tx" TabOrder="5" Text="사업자등록증" Top="46" VAlign="Middle" Width="110"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static8" Left="14" Style="box_tx" TabOrder="4" Text="영업허가증" Top="71" VAlign="Middle" Width="110"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static0" Left="14" Style="box_tx" TabOrder="7" Text="기타서류" Top="96" VAlign="Middle" Width="110"></Static>
+		<Shape BKColor="white" Bottom="72" Height="26" Id="Shape1" Left="123" LineColor="user3" Right="614" TabOrder="8" Top="46" Type="Rectangle" Width="491"></Shape>
+		<Shape BKColor="white" Bottom="97" Height="26" Id="Shape2" Left="123" LineColor="user3" Right="614" TabOrder="9" Top="71" Type="Rectangle" Width="491"></Shape>
+		<Shape BKColor="white" Bottom="122" Height="26" Id="Shape3" Left="123" LineColor="user3" Right="614" TabOrder="10" Top="96" Type="Rectangle" Width="491"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="f1" ImageID="C_btn_70" Left="466" LeftMargin="23" OnClick="btn_up_OnClick" TabOrder="11" Text="업로드" Top="48" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="f1_down" ImageID="C_btn_70" Left="540" LeftMargin="23" OnClick="btn_down_OnClick" TabOrder="12" Text="&#32;다운" Top="48" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="f2" ImageID="C_btn_70" Left="466" LeftMargin="23" OnClick="btn_up_OnClick" TabOrder="13" Text="업로드" Top="73" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="f2_down" ImageID="C_btn_70" Left="540" LeftMargin="23" OnClick="btn_down_OnClick" TabOrder="14" Text="&#32;다운" Top="73" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="f9" ImageID="C_btn_70" Left="466" LeftMargin="23" OnClick="btn_up_OnClick" TabOrder="15" Text="업로드" Top="99" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="f9_down" ImageID="C_btn_70" Left="540" LeftMargin="23" OnClick="btn_down_OnClick" TabOrder="16" Text="&#32;다운" Top="99" TopMargin="1" Width="71"></Button>
+		<Edit Border="Flat" Height="20" Id="f1_nm" ImeMode="native" Left="126" Readonly="TRUE" Style="edit" TabOrder="17" TabStop="FALSE" Top="49" Width="338"></Edit>
+		<Edit Border="Flat" Height="20" Id="f2_nm" ImeMode="native" Left="126" Readonly="TRUE" Style="edit" TabOrder="18" TabStop="FALSE" Top="74" Width="338"></Edit>
+		<Edit Border="Flat" Height="20" Id="f9_nm" ImeMode="native" Left="126" Readonly="TRUE" Style="edit" TabOrder="19" TabStop="FALSE" Top="99" Width="338"></Edit>
+		<Static Align="Right" Color="red" Height="16" Id="Static1" Left="136" TabOrder="20" Text="업로드&#32;시&#32;&#32;바로&#32;저장됩니다." Top="16" Width="404"></Static>
+		<FileDialog Bottom="32" Height="24" Id="FileDialog0" Left="272" Right="296" TabOrder="21" Top="8" Width="24"></FileDialog>
+		<File Bottom="34" Height="24" Id="File0" Left="248" Right="272" TabOrder="21" Top="10" Width="24"></File>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static3" Left="14" Style="box_tx" TabOrder="21" Text="계약서1" Top="120" VAlign="Middle" Width="110"></Static>
+		<Shape BKColor="white" Bottom="146" Height="26" Id="Shape4" Left="123" LineColor="user3" Right="614" TabOrder="22" Top="120" Type="Rectangle" Width="491"></Shape>
+		<Edit Border="Flat" Height="20" Id="f3_nm" ImeMode="native" Left="126" Readonly="TRUE" Style="edit" TabOrder="23" TabStop="FALSE" Top="123" Width="338"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="f3" ImageID="C_btn_70" Left="466" LeftMargin="23" OnClick="btn_up_OnClick" TabOrder="24" Text="업로드" Top="123" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="f3_down" ImageID="C_btn_70" Left="540" LeftMargin="23" OnClick="btn_down_OnClick" TabOrder="25" Text="&#32;다운" Top="123" TopMargin="1" Width="71"></Button>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static4" Left="14" Style="box_tx" TabOrder="26" Text="계약서2" Top="144" VAlign="Middle" Width="110"></Static>
+		<Edit Border="Flat" Height="20" Id="f4_nm" ImeMode="native" Left="126" Readonly="TRUE" Style="edit" TabOrder="27" TabStop="FALSE" Top="147" Width="338"></Edit>
+		<Shape BKColor="white" Bottom="170" Height="26" Id="Shape5" Left="123" LineColor="user3" Right="614" TabOrder="28" Top="144" Type="Rectangle" Width="491"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="f4" ImageID="C_btn_70" Left="466" LeftMargin="23" OnClick="btn_up_OnClick" TabOrder="29" Text="업로드" Top="147" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="f4_down" ImageID="C_btn_70" Left="540" LeftMargin="23" OnClick="btn_down_OnClick" TabOrder="30" Text="&#32;다운" Top="147" TopMargin="1" Width="71"></Button>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static5" Left="14" Style="box_tx" TabOrder="31" Text="계약서3" Top="168" VAlign="Middle" Width="110"></Static>
+		<Shape BKColor="white" Bottom="194" Height="26" Id="Shape6" Left="123" LineColor="user3" Right="614" TabOrder="32" Top="168" Type="Rectangle" Width="491"></Shape>
+		<Edit Border="Flat" Height="20" Id="f5_nm" ImeMode="native" Left="126" Readonly="TRUE" Style="edit" TabOrder="33" TabStop="FALSE" Top="171" Width="338"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="f5" ImageID="C_btn_70" Left="466" LeftMargin="23" OnClick="btn_up_OnClick" TabOrder="34" Text="업로드" Top="171" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="f5_down" ImageID="C_btn_70" Left="540" LeftMargin="23" OnClick="btn_down_OnClick" TabOrder="35" Text="&#32;다운" Top="171" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var v_object = "";
+var v_iud = "";
+
+function bra01_p01_OnLoadCompleted(obj)
+{
+	v_object = "";
+	v_iud = "";
+	
+	ds_search.SetColumn(0, "UPSO_CD", P_UPSO_CD);
+	ds_search.SetColumn(0, "BRAN_CD", P_BRAN_CD);
+	
+	fn_Search();
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0 || length(ErrorMsg) > 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	switch(srvId)
+	{
+		case "svcSearch" :
+			if(ds_result.rowcount > 0)
+			{
+				f1_down.Enable = false;
+				f2_down.Enable = false;
+				f9_down.Enable = false;
+				
+				for(var i = 0; i < ds_result.rowcount; i++)
+				{
+					if(ds_result.GetColumn(i, "FILE_TYPE") == "F1")
+					{
+						f1_nm.Text = ds_result.GetColumn(i, "FILE_NM");
+						f1_down.Enable = true;
+					}
+					else if(ds_result.GetColumn(i, "FILE_TYPE") == "F2")
+					{
+						f2_nm.Text = ds_result.GetColumn(i, "FILE_NM");
+						f2_down.Enable = true;
+					}
+					else if(ds_result.GetColumn(i, "FILE_TYPE") == "F9")
+					{
+						f9_nm.Text = ds_result.GetColumn(i, "FILE_NM");
+						f9_down.Enable = true;
+					}
+					else if(ds_result.GetColumn(i, "FILE_TYPE") == "F3")
+					{
+						f3_nm.Text = ds_result.GetColumn(i, "FILE_NM");
+						f3_down.Enable = true;
+					}
+					else if(ds_result.GetColumn(i, "FILE_TYPE") == "F4")
+					{
+						f4_nm.Text = ds_result.GetColumn(i, "FILE_NM");
+						f4_down.Enable = true;
+					}							
+					else if(ds_result.GetColumn(i, "FILE_TYPE") == "F5")
+					{
+						f5_nm.Text = ds_result.GetColumn(i, "FILE_NM");
+						f5_down.Enable = true;
+					}																		
+				}
+			}
+			break;
+		case "svcSave_file" :
+			v_object = "";
+			v_iud = "";
+			fn_Search();
+			break;
+		default :
+			break;
+	}
+}
+
+function fn_Search()
+{
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004031&EVENTID=sel_upso_doc","S=ds_search","ds_result=SEL1","","fn_CallBack");
+}
+
+function btn_close_OnClick(obj)
+{
+	close();
+}
+
+function btn_up_OnClick(obj)
+{
+	v_object = obj.ID;
+	
+	if(ds_result.FindRow("FILE_TYPE", toUpper(v_object)) >= 0)
+	{
+		v_iud = "U";
+	}
+	
+	gfn_fileUpSelect(15728640,File0,FileDialog0,"setFileUploadData","","ds_boarddataset");
+}
+
+function setFileUploadData(path,filename,filesize)
+{
+    gfn_fileUpLoad("dsUploadFile","tr_result","ds_boarddataset");
+}
+
+function tr_result(serid,errid,errmsg)
+{
+	if(trim(serid) == "fileup")
+	{
+		var filerout 	= dsUploadFile.getcolumn(0,"PATH"); //업로트임시파일위치
+		var filenm 	 	= dsUploadFile.getcolumn(0,"UNIFILENAME"); //timestamp파일명
+		var upfilename 	= dsUploadFile.getcolumn(0,"UPFILENAME"); //원본파일명
+		
+		if(v_iud == "U")
+		{
+			var idx = ds_result.FindRow("FILE_TYPE", toUpper(v_object));
+			ds_result.SetColumn(idx, "FILE_NM", upfilename);
+			ds_result.SetColumn(idx, "SVR_FILE_NM", filenm);
+			ds_result.SetColumn(idx, "SVR_FILE_ROUT", filerout);
+		}
+		else
+		{
+			var idx = ds_result.AddRow();
+			ds_result.SetColumn(idx, "FILE_TYPE", toUpper(v_object));
+			ds_result.SetColumn(idx, "FILE_NM", upfilename);
+			ds_result.SetColumn(idx, "SVR_FILE_NM", filenm);
+			ds_result.SetColumn(idx, "SVR_FILE_ROUT", filerout);
+		}
+		
+		object(v_object + "_nm").Text = upfilename;
+	    
+	    gfn_SyncCall("svcSave_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004031&EVENTID=mng_upso_doc","S=ds_search S1=ds_result:U","", "", "fn_CallBack");
+	} 
+}
+
+function btn_down_OnClick(obj)
+{
+	var idx = ds_result.FindRow("FILE_TYPE", substr(toUpper(obj.ID), 0, 2));
+	var rout = ds_result.GetColumn(idx, "SVR_FILE_ROUT");
+	var file = ds_result.GetColumn(idx, "SVR_FILE_NM");
+	var org  = ds_result.GetColumn(idx, "FILE_NM");
+	
+	gfn_fileDownLoad(rout, file, File0, FileDialog0, org);
+}
+]]></Script>
+</Window>

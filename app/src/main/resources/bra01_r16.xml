@@ -1,0 +1,136 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLcng_karaoke_sel_SEL1" parameterType="" resultType="">
+SELECT
+	ZB.BRAN_CD,
+	GIBU.GET_BRAN_NM(ZB.BRAN_CD) AS BRAN_NM,
+	ZB.UPSO_CD,
+	ZB.UPSO_NM,
+	ZC.SERIAL_NO,
+	ZC.CO_STATUS,
+	ZE.CO_NAME,
+	FIDU.GET_STAFF_NM(ZB.STAFF_CD) AS STAFF_NM
+FROM
+	(
+		SELECT
+			UPSO_CD
+		FROM
+			(
+				SELECT
+					/*+  PARALLEL(TA)  */
+					TA.UPSO_CD,
+					KARAOKE_NO
+				FROM
+					LOG.KDS_STATISTICS TA,
+					GIBU.TBRA_UPSO TB
+				WHERE
+					PLAY_SDATE BETWEEN TO_DATE(# { yrmn } || '01000000', 'YYYYMMDDHH24MISS')
+					AND TO_DATE(
+						TO_CHAR(LAST_DAY(TO_DATE(# { yrmn }, 'YYYYMM')), 'YYYYMMDD') || '235959',
+						'YYYYMMDDHH24MISS'
+					)
+					AND TA.UPSO_CD = TB.UPSO_CD
+					AND TB.BRAN_CD = DECODE(# { branCd }, 'AL', TB.BRAN_CD, # { branCd })
+				GROUP BY
+					TA.UPSO_CD,
+					KARAOKE_NO
+			)
+		GROUP BY
+			UPSO_CD
+		HAVING
+			COUNT(1) > 1
+	) ZA,
+	GIBU.TBRA_UPSO ZB,
+	LOG.KDS_SHOPROOM ZC,
+	LOG.KDS_CODE ZE
+WHERE
+	ZA.UPSO_CD = ZB.UPSO_CD
+	AND ZC.UPSO_CD = ZA.UPSO_CD
+	AND ZC.SEQ = (
+		SELECT
+			MAX(SEQ)
+		FROM
+			LOG.KDS_SHOPROOM
+		WHERE
+			UPSO_CD = ZA.UPSO_CD
+	)
+	AND ZE.CO_TYPE || ZE.CO_CODE = ZC.CO_STATUS
+ORDER BY
+	CO_STATUS,
+	BRAN_CD,
+	UPSO_CD
+</select>
+
+<select id="SQLdtl_karaoke_sel_SEL1" parameterType="" resultType="">
+SELECT
+	UPSO_CD,
+	ROOM_NAME,
+	SERIAL_NO,
+	(
+		SELECT
+			CO_NAME
+		FROM
+			LOG.KDS_CODE
+		WHERE
+			CO_TYPE || CO_CODE = A.CO_STATUS
+	) AS CO_NAME,
+	REG_DATE
+FROM
+	LOG.KDS_SHOPROOM A
+WHERE
+	SERIAL_NO = # { serialNo }
+	AND SEQ >= (
+		SELECT
+			MIN(SEQ)
+		FROM
+			LOG.KDS_SHOPROOM
+		WHERE
+			SERIAL_NO = # { serialNo }
+			AND UPSO_CD = # { upsoCd }
+	)
+ORDER BY
+	SEQ
+</select>
+
+<select id="SQLdtl_karaoke_sel_SEL4" parameterType="" resultType="">
+SELECT
+	/*+  PARALLEL(A)  */
+	UPSO_CD,
+	SERIAL_NO,
+	KARAOKE_NO,
+	MIN(PLAY_SDATE) AS MIN_PLAY,
+	MAX(PLAY_SDATE) AS MAX_PLAY
+FROM
+	LOG.KDS_STATISTICS A
+WHERE
+	UPSO_CD IN (
+		SELECT
+			UPSO_CD
+		FROM
+			LOG.KDS_SHOPROOM A
+		WHERE
+			SERIAL_NO = # { serialNo }
+			AND SEQ >= (
+				SELECT
+					MIN(SEQ)
+				FROM
+					LOG.KDS_SHOPROOM
+				WHERE
+					SERIAL_NO = # { serialNo }
+					AND UPSO_CD = # { upsoCd }
+			)
+	)
+	AND PLAY_SDATE BETWEEN TO_DATE(# { yrmn } || '01000000', 'YYYYMMDDHH24MISS')
+	AND TO_DATE(
+		TO_CHAR(LAST_DAY(TO_DATE(# { yrmn }, 'YYYYMM')), 'YYYYMMDD') || '235959',
+		'YYYYMMDDHH24MISS'
+	)
+GROUP BY
+	UPSO_CD,
+	SERIAL_NO,
+	KARAOKE_NO
+ORDER BY
+	3,
+	4
+</select>
+
+</mapper>

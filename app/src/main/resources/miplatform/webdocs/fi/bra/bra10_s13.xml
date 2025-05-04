@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="720" Id="bra10_s13" Left="8" OnLoadCompleted="bra10_s13_OnLoadCompleted" PidAttrib="7" Title="타단체&#32;청구내역&#32;UPLOAD" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_filelist_c">
+				<Contents>
+					<colinfo id="FILE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SHORT_FILE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_SIZE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREATE_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPDATE_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCESS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_ARCHIVE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_SYSTEM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_HIDDEN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_READONLY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_DIRECTORY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_PATH" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_filelist">
+				<Contents>
+					<colinfo id="FILE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SHORT_FILE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_SIZE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREATE_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPDATE_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCESS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_ARCHIVE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_SYSTEM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_HIDDEN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_READONLY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_DIRECTORY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEST" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cvtlist">
+				<Contents>
+					<colinfo id="ORG_PATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="TGT_PATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="TGT_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UP_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<BSCON_CD></BSCON_CD>
+						<BSCON_NM></BSCON_NM>
+						<DEMD_YRMN></DEMD_YRMN>
+						<ORG_CHK></ORG_CHK>
+						<ORG_FILE></ORG_FILE>
+						<ORG_PATH></ORG_PATH>
+						<TGT_FILE></TGT_FILE>
+						<TGT_PATH></TGT_PATH>
+						<UP_CHK></UP_CHK>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cvtlist_err">
+				<Contents>
+					<colinfo id="ORG_PATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="TGT_PATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="TGT_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UP_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MESSAGE" size="256" summ="default" type="STRING"/>
+					<record>
+						<BSCON_CD></BSCON_CD>
+						<BSCON_NM></BSCON_NM>
+						<DEMD_YRMN></DEMD_YRMN>
+						<MESSAGE></MESSAGE>
+						<ORG_CHK></ORG_CHK>
+						<ORG_FILE></ORG_FILE>
+						<ORG_PATH></ORG_PATH>
+						<TGT_FILE></TGT_FILE>
+						<TGT_PATH></TGT_PATH>
+						<UP_CHK></UP_CHK>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bscon">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_proc">
+				<Contents>
+					<colinfo id="CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE>2</CODE>
+						<NAME>DELETE</NAME>
+					</record>
+					<record>
+						<CODE>0</CODE>
+						<NAME>SKIP</NAME>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cnt">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_tfilelist">
+				<Contents>
+					<colinfo id="FILE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SHORT_FILE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_SIZE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREATE_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPDATE_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCESS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_ARCHIVE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_SYSTEM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_HIDDEN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_READONLY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTR_DIRECTORY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cnt2">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cntchk">
+				<Contents>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_up">
+				<Contents>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<record>
+						<DEMD_YRMN></DEMD_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="1" TabStop="FALSE" Top="8" Width="1018"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" HeaderFont="Default,-1" Height="21" Id="cal_yrmn" Left="117" SaturdayTextColor="blue" SelectedDayFont="Default,-1" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="청구년월" Top="18" Value="TODAY" WeeksFont="Default,-1" Width="88"></Calendar>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="1" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Static Height="15" Id="static_2" Left="50" Style="tx_left_bold" TabOrder="2" Text="청구년월" Top="23" Width="52"></Static>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="34" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Grid AreaSelect="true" BindDataset="ds_cvtlist" BkColor2="default" BoldHead="true" Border="Flat" Bottom="453" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="392" Id="grd_filelist" InputPanel="FALSE" Left="8" LineColor="default" Right="1036" RowHeight="20" Style="grid" TabOrder="10" TabStop="true" Top="61" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="36"/>
+						<col width="400"/>
+						<col width="80"/>
+						<col width="99"/>
+						<col width="200"/>
+						<col width="24"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="No"/>
+						<cell col="1" display="text" text="파일명"/>
+						<cell col="2" display="text" text="청구년월"/>
+						<cell col="3" display="text" text="거래처코드"/>
+						<cell col="4" display="text" text="거래처명"/>
+						<cell col="5" display="text" text="UP"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell col="1" colid="ORG_FILE" display="text"/>
+						<cell align="center" col="2" colid="DEMD_YRMN" display="text"/>
+						<cell align="center" col="3" colid="BSCON_CD" display="text"/>
+						<cell align="left" col="4" colid="BSCON_CD" combocol="BSCON_CD" combodataset="ds_bscon" combotext="BSCONHAN_NM" display="combo"/>
+						<cell align="center" col="5" colid="ORG_CHK" display="checkbox" edit="checkbox"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<FileDialog Bottom="36" Height="24" Id="FileDialog_off" Left="836" Right="860" TabOrder="11" Top="12" Width="24"></FileDialog>
+		<File Bottom="36" Height="24" Id="fil_Txt2" Left="868" Right="892" TabOrder="10" Top="12" Width="24"></File>
+		<Button ButtonStyle="TRUE" Height="21" Id="Btn_FSelect" ImageID="C_btn_90" Left="928" LeftMargin="23" OnClick="Btn_FSelect_OnClick" Style="edit" TabOrder="8" Text="자료찾기" Top="18" TopMargin="1" Width="90"></Button>
+		<Edit DisableBKColor="white" DisableColor="black" Enable="FALSE" Height="23" Id="Edt_Path" Left="8" TabOrder="9" Top="673" Width="1028"></Edit>
+		<Grid AreaSelect="true" BindDataset="ds_cvtlist_err" BkColor2="default" BoldHead="true" Border="Flat" Bottom="673" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="221" Id="Grd_error" InputPanel="FALSE" Left="8" LineColor="default" Right="1036" RowHeight="20" Style="grid" TabOrder="9" TabStop="true" Top="452" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="31"/>
+						<col width="259"/>
+						<col width="61"/>
+						<col width="82"/>
+						<col width="126"/>
+						<col width="443"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="No"/>
+						<cell col="1" display="text" text="파일명"/>
+						<cell col="2" display="text" text="청구년월"/>
+						<cell col="3" display="text" text="타단체코드"/>
+						<cell col="4" display="text" text="단체명"/>
+						<cell align="center" col="5" display="text" text="Message"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell col="1" colid="ORG_FILE" display="text"/>
+						<cell align="center" col="2" colid="DISTR_YRMN" display="text"/>
+						<cell align="center" col="3" colid="BSCON_CD" display="text"/>
+						<cell align="left" col="4" colid="BSCON_CD" combocol="BSCON_CD" combodataset="ds_bscon" combotext="BSCONHAN_NM" display="combo"/>
+						<cell col="5" colid="MESSAGE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="239" TabOrder="11" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="256" Style="tx_left_bold" TabOrder="10" Text="처리" Top="23" Width="32"></Static>
+		<Combo BKColor="user13" Border="Flat" CodeColumn="CODE" DataColumn="NAME" Height="20" Id="Cbo_proc" INDEX="0" InnerDataset="ds_proc" Left="296" ResetIndex="FIRST" Style="edit" TabOrder="12" ToolTipText="서비스코드" Top="18" Value="82" Width="100"></Combo>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="edt_proc" Left="754" TabOrder="13" Top="18" Width="70"></Edit>
+		<Shape BKColor="user7" Bottom="61" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1036" TabOrder="14" Top="58" Type="Rectangle" Width="1028"></Shape>
+		<Checkbox BKColor="MENU" Height="16" Id="chk_utf" Left="426" TabOrder="15" Text="UTF-8" Top="21" Width="60"></Checkbox>
+		<Static Height="22" Id="Static0" Left="544" TabOrder="17" Text="※&#32;입금처리&#32;된&#32;청구자료는&#32;선납인&#32;경우가&#32;있으니,&#32;로그파일에&#32;제외된&#32;업소라면&#32;무관합니다." Top="701" Width="501"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")        { fn_New();    }//신규
+    else if(strCode == "SEARCH"){ fn_Search(); }//조회
+    else if(strCode == "SAVE")  { fn_Save();   }//저장
+    else if(strCode == "DELETE"){ fn_Delete(); }//삭제
+    else if(strCode == "EXCEL") { fn_Excel();  }//Excel
+    else if(strCode == "PRINT") { fn_Print();  }//출력
+    else if(strCode == "CLOSE") { close();     }//닫기
+	return;
+}
+
+/*
+ * 기      능: Callback함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(svcid,errCode,errMsg)
+{
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcSearch" :
+				break;
+			case "svcSave" :
+				break;
+			case "svcBsconSearch" :
+				break;
+			case "scvCNTchk" :
+				break;
+			default : break;
+		}
+	}
+}
+
+function bra10_s13_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_SyncCall("svcBsconSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=sel_bscon_cd", "", "ds_bscon=SEL1", "", "fn_CallBack");
+}
+
+function fn_Save()
+{
+	if(ds_cvtlist.rowcount < 1)
+	{
+		alert("저장할 자료가 선택되지 않았습니다.");
+		return;
+	}
+	if(!Confirm("저장하시겠습니까?"))
+	{
+		return;
+	}
+	
+	ds_bsconList.ClearData();
+	ds_cvtlist_ERR.ClearData();
+	if (!IsValid("FileDialog_off") && !IsValid("fil_Txt2"))
+	{
+		Create("FileDialog", "FileDialog_off");
+		Create("File", "fil_Txt2");
+	}
+	var var_logFile;
+	var var_Ctl;
+	var org_file;	
+	var proc_chk;
+	var	r_cnt = 0;
+	var c_cnt = 0;
+	var	errmsg;
+	var B_ROW;
+	
+	ds_up.SetColumn(0, "DEMD_YRMN", substr(cal_yrmn.Value, 0, 6));
+
+	for(var i = 0; i <= ds_cvtlist.rowcount - 1 ; i++)
+	{		if(ds_cvtlist.GetColumn(I, "ORG_CHK") == "1")
+		{
+			r_cnt = r_cnt + 1;
+		}	}
+	
+	for(var i = 0; i <= ds_cvtlist.rowcount - 1 ; i++)
+	{		if(ds_cvtlist.GetColumn(I,"ORG_CHK") == "1")
+		{			g_cnt = i;
+			ds_cvtlist.SetColumn(i, "ORG_CHK", "0");
+			c_cnt = c_cnt + 1;
+			edt_proc.text = c_cnt + " / " + r_cnt;			proc_chk = "0";						ds_cntchk.ClearData();			ds_cntchk.AddRow();
+
+			ds_cntchk.SetColumn(0, "DEMD_YRMN", ds_cvtlist.GetColumn(i, "DEMD_YRMN"));
+			ds_cntchk.SetColumn(0, "BSCON_CD", ds_cvtlist.GetColumn(i, "BSCON_CD"));
+			ds_cntchk.SetColumn(0, "FILE_NM", ds_cvtlist.GetColumn(i, "ORG_FILE"));
+			ds_cntchk.SetColumn(0, "ERR_CNT", 0);
+
+			gfn_SyncCall("scvCNTchk", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006013001&EVENTID=chk_demd_upload","S=ds_cntchk","ds_cnt=SEL1 ds_cnt2=SEL2", "", "fn_CallBack");
+			
+			if(ds_cnt.getColumn(0, "CNT") == 0 && ds_cnt2.rowcount == 0)
+			{   // 신규 업로드 처리				proc_chk = "1";			}
+			else
+			{				proc_chk = cbo_proc.Value;
+				
+				if(ds_cnt2.rowcount > 0)
+				{
+					for(var j = 0; j < ds_cnt2.rowcount; j++)
+					{
+						errmsg = "입금처리 된 청구자료가 있습니다." + " " + ds_cnt2.GetColumn(j, "BSCON_CD") + " " + ds_cnt2.GetColumn(j, "BSCON_UPSO_CD");
+						errmsg += " " + ds_cnt2.GetColumn(j, "UPSO_CD") + " " + ds_cnt2.GetColumn(j, "REPT_YRMN") + " " + ds_cnt2.GetColumn(j, "PROC_AMT");
+						
+						B_ROW = ds_cvtlist_ERR.AddRow();
+						ds_cvtlist_ERR.CopyRow(B_ROW, ds_cvtlist, i);
+						ds_cvtlist_ERR.SetColumn(B_ROW, "MESSAGE", ERRMSG);
+					}
+					//proc_chk = "0";
+				}
+				
+				if(ds_cnt.GetColumn(0, "CNT") > 0)
+				{
+					B_ROW = ds_cvtlist_ERR.AddRow();
+					if (proc_chk == "2")
+					{
+						errmsg = "이미 업로드된 자료 -Delete-";
+					}
+					else
+					{
+						errmsg = "이미 업로드된 자료 -Skip-";
+					}
+					ds_cvtlist_ERR.CopyRow(B_ROW, ds_cvtlist, i);
+					ds_cvtlist_ERR.SetColumn(B_ROW, "MESSAGE", ERRMSG);
+				}
+			}
+			
+			if (proc_chk == "2")
+			{   // 올려진 로그 삭제
+				gfn_SyncCall("scvRCNT", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006013001&EVENTID=del_bscon_demd","S=ds_cntchk","", "", "fn_CallBack");				proc_chk = "1";			}
+						if (proc_chk == "1")
+			{
+				var var_Ctl = "";
+				var_logFile = ds_cvtlist.GetColumn(i, "ORG_PATH") + ds_cvtlist.GetColumn(i, "ORG_FILE");
+				var var_ctlfilenm = var_logFile + ".ctl";	
+
+				//var_Ctl += "OPTIONS(SKIP=1) LOAD DATA CHARACTERSET UTF8 INFILE '" + var_logFile;
+				if(chk_utf.Value == "1")
+				{
+					var_Ctl += "LOAD DATA CHARACTERSET UTF8 INFILE '" + var_logFile + "'";
+				}
+				else
+				{
+					var_Ctl += "LOAD DATA INFILE '" + var_logFile + "'";
+				}
+				var_Ctl += " TRUNCATE INTO TABLE TBRA_BSCON_DEMD_UPLOAD_TEMP FIELDS TERMINATED BY '" + chr(9) + "'";// OPTIONALLY ENCLOSED BY '\"'
+				var_Ctl += " TRAILING NULLCOLS (";
+				var_Ctl += "BSCON_UPSO_CD";
+				var_Ctl += ",BSCON_UPSO_NM";
+				var_Ctl += ",UPSO_ZIP CHAR(6) \"TRIM(REPLACE(:UPSO_ZIP,'-',''))\"";
+				var_Ctl += ",UPSO_ADDR1 CHAR(100) \"SUBSTR(:UPSO_ADDR1,1,34)\"";
+				var_Ctl += ",UPSO_ADDR2 CHAR(100) \"SUBSTR(:UPSO_ADDR2,1,34)\"";
+				var_Ctl += ",DEMD_AMT \"TRIM(REPLACE(:DEMD_AMT,',',''))\"";
+				var_Ctl += ",USE_AMT \"TRIM(REPLACE(:USE_AMT,',',''))\"";
+				var_Ctl += ",ADDT_AMT \"TRIM(REPLACE(:ADDT_AMT,',',''))\"";
+				var_Ctl += ",EADDT_AMT \"TRIM(REPLACE(:EADDT_AMT,',',''))\"";
+				var_Ctl += ",ATAX_AMT \"TRIM(REPLACE(:ATAX_AMT,',',''))\"";
+				var_Ctl += ",DEMD_YRMN \"'" + ds_cvtlist.GetColumn(i,"DEMD_YRMN") + "'\"";
+				var_Ctl += ",BSCON_CD \"'" + ds_cvtlist.GetColumn(i,"BSCON_CD") + "'\"";
+				var_Ctl += ",INSPRES_ID \"'" + gds_sessioninfo.GetColumn(0,"STAFF_NUM") + "'\"";
+				var_Ctl += ",INS_DATE \"SYSDATE\"";
+				var_Ctl += ",FILE_NM \"'" + ds_cvtlist.GetColumn(i,"ORG_FILE")+"'\")" + "\n";
+
+				fil_Txt2.FileName = var_ctlfilenm;
+				fil_Txt2.Open("wt");
+				fil_Txt2.Write(var_Ctl);
+				fil_Txt2.Close();
+				
+				var strargs  = "";
+				
+				if(gv_DbId == "KOMCA_DEV")
+				{
+					strargs = " gibu/oracle@" + gv_DbId+" control='" + var_logFile + ".ctl' log='" + var_logFile + ".log'"; // 개발
+				}
+				else
+				{
+				    strargs = " gibu/WJSTKSXLAGIBU!@" + gv_DbId+" control='" + var_logFile + ".ctl' log='" + var_logFile + ".log'"; // 운영
+				}
+				var ret = ExecProcEx("sqlldr.exe", strargs);
+				if (ret == null)
+				{
+					B_ROW 	= 	ds_cvtlist_ERR.AddRow();
+					errmsg = "업로드 오류 프로그램 확인";
+					ds_cvtlist_ERR.CopyRow(B_ROW, ds_cvtlist, i);
+					ds_cvtlist_ERR.SetColumn(B_ROW, "MESSAGE", ERRMSG);
+				}
+				
+				var ext = ".TXT";
+				var var_badFile = replace(toupper(var_logFile), ext, ".bad");
+				
+				if (fil_Txt2.isexistfile(var_badFile))
+				{
+					fil_Txt2.FileName = var_badFile;
+					fil_Txt2.Open("t+"); // t: text 모드, +: 읽기/쓰기
+					var strTxt = fil_Txt2.Read();
+					var arrTxt = split(strTxt, "\n", "");
+					fil_Txt2.Close();
+					ds_cntchk.SetColumn(0, "ERR_CNT", arrTxt.length - 1); // 오류건수 셋팅
+								
+					B_ROW = ds_cvtlist_ERR.AddRow();
+					errmsg = "업로드 오류 데이타 확인";
+					ds_cvtlist_ERR.CopyRow(B_ROW, ds_cvtlist, i);
+					ds_cvtlist_ERR.SetColumn(B_ROW, "MESSAGE", ERRMSG);
+				}
+				
+				gfn_SyncCall("summary", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006013001&EVENTID=demd_match_upload","S=ds_up","", "","fn_CallBack");
+			}
+		}
+	}
+    
+    alert("청구자료 업로드가 완료되었습니다.");
+}
+
+function Btn_FSelect_OnClick(obj)
+{
+	FileDialog_off.Type = "Dir";	var v_Ret = FileDialog_off.Open();	if (v_Ret = false)
+	{		return;	}		edt_path.text = FileDialog_off.FilePath;	strFilePath = FileDialog_off.FilePath;
+	FileDialog_off.GetFileList(ds_filelist, strFilePath, "*.TXT");		ds_filelist_c.ClearData();
+		for(i = 0; i < ds_filelist.rowcount; i++)	{		ds_filelist_c.AddRow();		ds_filelist_c.setcolumn(i, "FILE_NAME", ds_filelist.GetColumn(i, "FILE_NAME"));		ds_filelist_c.setcolumn(i, "SHORT_FILE_NAME", ds_filelist.GetColumn(i, "SHORT_FILE_NAME"));		ds_filelist_c.setcolumn(i, "FILE_SIZE", ds_filelist.GetColumn(i, "FILE_SIZE"));		ds_filelist_c.setcolumn(i, "CREATE_DATE", ds_filelist.GetColumn(i, "CREATE_DATE"));		ds_filelist_c.setcolumn(i, "UPDATE_DATE", ds_filelist.GetColumn(i, "UPDATE_DATE"));		ds_filelist_c.setcolumn(i, "ACCESS_DATE", ds_filelist.GetColumn(i, "ACCESS_DATE"));		ds_filelist_c.setcolumn(i, "ATTR_ARCHIVE", ds_filelist.GetColumn(i, "ATTR_ARCHIVE"));		ds_filelist_c.setcolumn(i, "ATTR_SYSTEM", ds_filelist.GetColumn(i, "ATTR_SYSTEM"));		ds_filelist_c.setcolumn(i, "ATTR_HIDDEN", ds_filelist.GetColumn(i, "ATTR_HIDDEN"));		ds_filelist_c.setcolumn(i, "ATTR_READONLY", ds_filelist.GetColumn(i, "ATTR_READONLY"));		ds_filelist_c.setcolumn(i, "ATTR_DIRECTORY", ds_filelist.GetColumn(i, "ATTR_DIRECTORY"));		ds_filelist_c.SetColumn(i, "FILE_CHK", "0");		ds_filelist_c.SetColumn(i, "FILE_PATH", FileDialog_off.FilePath + "\\");	}
+	ds_cvtlist.ClearData();		grd_filelist.Redraw = false;	while(true)
+	{		var var_ret = fn_dirchk();		if (ds_filelist_c.rowcount == var_ret)
+		{			break;		}	}	grd_filelist.Redraw = true;
+	
+	for(var i = 0; i < ds_cvtlist.rowcount; i++)
+	{
+		if(ds_cvtlist.GetColumn(i, "DEMD_YRMN") != substr(cal_yrmn.Value, 0, 6))
+		{
+			ds_cvtlist.DeleteRow(i);
+			i--;
+		}
+	}
+}
+
+function fn_dirchk(){	for(i = 0; i < ds_filelist_c.rowcount; i++)	{		strFilePath = ds_filelist_c.GetColumn(i, "FILE_PATH") + ds_filelist_c.GetColumn(i, "FILE_NAME");
+				if(ds_filelist_c.GetColumn(i, "ATTR_DIRECTORY") == 1)
+		{		    // 디렉토리면 하위 디렉토리에서 파일을 찾는다.		    if (ds_filelist_c.GetColumn(i, "FILE_CHK") == "0")
+		    {				ds_filelist_c.SetColumn(i, "FILE_CHK", "1");				fn_getdir(strFilePath);				return i;			}		}
+		else
+		{			// 로그파일이면 ds_cvtlist에 넣는다
+			var k = ds_cvtlist.AddRow();
+			var fArr = ds_filelist_c.GetColumn(i, "FILE_NAME").split("_");
+						ds_cvtlist.setcolumn(k, "ORG_PATH", ds_filelist_c.GetColumn(i, "FILE_PATH"));			ds_cvtlist.setcolumn(k, "ORG_FILE", ds_filelist_c.GetColumn(i, "FILE_NAME"));			ds_cvtlist.SetColumn(k, "ORG_CHK", true);
+			ds_cvtlist.SetColumn(k, "DEMD_YRMN", fArr[0]);  // 청구년월
+			ds_cvtlist.SetColumn(k, "BSCON_CD", fArr[1]); // 거래처코드
+			ds_cvtlist.SetColumn(k, "BSCON_NM", ds_bscon.GetColumn(ds_bscon.FindRow("BSCON_CD", fArr[1]), "BSCONHAN_NM"));
+			ds_cvtlist.SetColumn(k, "TGT_PATH", ds_filelist_c.GetColumn(i, "FILE_PATH"));			ds_cvtlist.SetColumn(k, "TGT_FILE", ds_filelist_c.GetColumn(i, "FILE_NAME"));		}	}	return i;}
+
+function fn_getdir(strFilePath){	FileDialog_off.GetFileList(ds_tfilelist, strFilePath, "*.*");	for(i = 0; i < ds_tfilelist.rowcount; i++)	{		ds_filelist_c.AddRow();		c_row = ds_filelist_c.currow;		ds_filelist_c.setcolumn(c_row, "FILE_NAME", ds_tfilelist.GetColumn(i, "FILE_NAME"));		ds_filelist_c.setcolumn(c_row, "SHORT_FILE_NAME", ds_tfilelist.GetColumn(i, "SHORT_FILE_NAME"));		ds_filelist_c.setcolumn(c_row, "FILE_SIZE", ds_tfilelist.GetColumn(i, "FILE_SIZE"));		ds_filelist_c.setcolumn(c_row, "CREATE_DATE", ds_tfilelist.GetColumn(i, "CREATE_DATE"));		ds_filelist_c.setcolumn(c_row, "UPDATE_DATE", ds_tfilelist.GetColumn(i, "UPDATE_DATE"));		ds_filelist_c.setcolumn(c_row, "ACCESS_DATE", ds_tfilelist.GetColumn(i, "ACCESS_DATE"));		ds_filelist_c.setcolumn(c_row, "ATTR_ARCHIVE", ds_tfilelist.GetColumn(i, "ATTR_ARCHIVE"));		ds_filelist_c.setcolumn(c_row, "ATTR_SYSTEM", ds_tfilelist.GetColumn(i, "ATTR_SYSTEM"));		ds_filelist_c.setcolumn(c_row, "ATTR_HIDDEN", ds_tfilelist.GetColumn(i, "ATTR_HIDDEN"));		ds_filelist_c.setcolumn(c_row, "ATTR_READONLY", ds_tfilelist.GetColumn(i, "ATTR_READONLY"));		ds_filelist_c.setcolumn(c_row, "ATTR_DIRECTORY", ds_tfilelist.GetColumn(i, "ATTR_DIRECTORY"));		ds_filelist_c.SetColumn(c_row, "FILE_CHK", "0");		ds_filelist_c.SetColumn(c_row, "FILE_PATH", strFilePath + "\\");	}}
+]]></Script>
+</Window>

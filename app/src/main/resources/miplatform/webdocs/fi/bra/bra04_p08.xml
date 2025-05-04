@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업종별미징수통계" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Nonpy">
+				<Contents>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UPSOTYPE">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>관리업소미징수</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>개발중업소미징수</value>
+					</record>
+					<record>
+						<code>03</code>
+						<value>전체업소미징수</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_NonpyIn">
+				<Contents>
+					<colinfo id="UPSO_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_CNT_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_CNT_MON" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_NonpySum">
+				<Contents>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT3" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_CNT3" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT3" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ConvNm">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>현황조회</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>저장된데이타조회</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_history_sc">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRCON_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_CNT_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_CNT_MON" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_CNT_MON></END_CNT_MON>
+						<PRCON_YRMN></PRCON_YRMN>
+						<STAFF_CD></STAFF_CD>
+						<START_CNT_MON></START_CNT_MON>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_history_cnt">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="79" Id="Image21" ImageID="C_search2_left" Left="12" TabOrder="7" TabStop="FALSE" Top="9" Width="8"></Image>
+		<Image FillType="STRETCH" Height="79" Id="Image1" ImageID="C_search2_bg" Left="18" OnClick="Image0_OnClick" TabOrder="8" TabStop="FALSE" Top="9" Width="1015"></Image>
+		<Image FillType="STRETCH" Height="79" Id="Image2" ImageID="C_search2_right" Left="1022" TabOrder="9" TabStop="FALSE" Top="9" Width="10"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="27" TabOrder="10" TabStop="FALSE" Top="57" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="44" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="57" Width="40"></Static>
+		<Image Height="11" Id="Image12" ImageID="C_icon" Left="236" TabOrder="11" TabStop="FALSE" Top="57" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="256" Style="tx_left_bold" TabOrder="11" Text="기준년월" Top="57" Width="51"></Static>
+		<Radio BKColor="whitesmoke" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="3" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="rad_UPSOTYPE" INDEX="0" InnerDataset="ds_UPSOTYPE" Left="24" ShadowColor="user17" Style="radio" TabOrder="1" Top="18" Width="344">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_YRMN" Left="315" LeftMargin="10" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="3" ToolTipText="기준년월" Top="52" Width="97"></Calendar>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="439" TabOrder="12" TabStop="FALSE" Top="56" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="456" Style="tx_left_bold" TabOrder="13" Text="사원명" Top="56" Width="47"></Static>
+		<Static Color="user12" Height="11" Id="Static2" Left="751" Style="tx_left_bold" TabOrder="15" Text="미징수개월수" Top="55" Width="79"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="734" TabOrder="13" TabStop="FALSE" Top="55" Width="11"></Image>
+		<Static Color="user1" Height="16" Id="Static3" Left="875" TabOrder="16" Text="~" Top="55" Width="16"></Static>
+		<Combo BKColor="user13" Height="20" Id="cob_BRAN_CD" Left="92" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="센터명" Top="52" Width="112"></Combo>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="darkgray" Height="20" Id="mae_START_MON" Left="844" MaxLength="3" TabOrder="5" ToolTipText="미징수개월수_S" Top="52" Width="25"></MaskEdit>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="darkgray" Height="20" Id="mae_END_MON" Left="891" MaxLength="3" TabOrder="6" ToolTipText="미징수개월수_E" Top="52" Width="25"></MaskEdit>
+		<ubiviewer Bottom="776" Height="680" Id="ubi0" Left="14" Right="1034" Top="96" Width="1020">
+			<_PersistData>&#13;&#10;/6zzI3HM/wAAAQBsaQAA90hGAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Combo CodeColumn="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="502" TabOrder="4" ToolTipText="사원명" Top="51" Width="112"></Combo>
+		<Radio BKColor="whitesmoke" Border="None" CodeColumn="code" ColumnCount="2" DataColumn="value" Height="20" Id="rad_SEARCH_GBN" INDEX="0" InnerDataset="ds_ConvNm" Left="661" OnChanged="rad_SEARCH_GBN_OnChanged" Style="radio" TabOrder="21" Top="21" Visible="FALSE" Width="204">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="95"/>
+				<Layout code="2" height="18" left="110" text="가등록" top="0" width="95"/>
+			</Contents>
+		</Radio>
+		<Image Cursor="HAND" Height="21" Id="btn_history_view" ImageID="C_btn_70" Left="874" LeftMargin="10" OnClick="btn_history_view_OnClick" Static="FALSE" TabOrder="22" TabStop="FALSE" Text="이력" Top="20" Visible="FALSE" Width="71"></Image>
+		<Image Cursor="HAND" Height="21" Id="btn_Save" ImageID="C_btn_70" Left="950" LeftMargin="10" OnClick="btn_Save_OnClick" Static="FALSE" TabOrder="20" TabStop="FALSE" Text="&#32;저장" Top="20" Visible="FALSE" Width="71"></Image>
+		<Radio BKColor="whitesmoke" Border="None" Height="24" Id="rad_Staff" INDEX="0" Left="400" OnChanged="rad_Staff_OnChanged" Style="radio" TabOrder="23" Top="17" Width="204">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="인사정보" top="5" width="90"/>
+				<Layout code="2" height="18" left="110" text="담당자정보" top="5" width="90"/>
+			</Contents>
+		</Radio>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);
+
+	//  기준년도 설정
+	this.cal_YRMN.Text = Today();
+	
+	// radio control 초기화
+	this.rad_UPSOTYPE.Index = 0;
+
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	this.cob_Staff_Nm.Text = "";
+	var iRow = ds_SawonInfo.InsertRow(0);
+	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+	this.cob_Staff_Nm.Value = "";
+	
+	gfn_SetPermission(cob_BRAN_CD.Value);
+	
+	if(gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100")
+	{
+		rad_SEARCH_GBN.Visible = true;
+		btn_Save.Visible = true;
+	}
+	else
+	{
+		rad_SEARCH_GBN.Visible = false;
+		btn_Save.Visible = false;
+	}
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	
+	if (srvId == "NONPY_SELECT") {
+		//gfn_SetStatusMsg("");
+	}
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New() {}
+
+function fn_search()
+{
+	if(rad_SEARCH_GBN.Value == "2")
+	{
+		alert("이력 팝업에서 조회하고자 하는 이력을 선택해주세요.");
+		return;
+	}
+	
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_NonpyIn.ClearData();
+	this.ds_NonpyIn.AddRow();
+	this.ds_NonpyIn.SetColumn(0, "UPSO_TYPE"    , this.rad_UPSOTYPE.Value);
+	this.ds_NonpyIn.SetColumn(0, "YRMN"         , substr(this.cal_YRMN.Value, 0, 6));
+	this.ds_NonpyIn.SetColumn(0, "BRAN_CD"      , this.cob_BRAN_CD.Value);
+
+	var cd_staff = this.ds_SawonInfo.GetColumn(this.cob_Staff_Nm.Index, "STAFF_CD");
+	this.ds_NonpyIn.SetColumn(0, "STAFF_CD"     , cd_staff);
+	this.ds_NonpyIn.SetColumn(0, "START_CNT_MON", this.mae_START_MON.Value);
+	this.ds_NonpyIn.SetColumn(0, "END_CNT_MON"  , this.mae_END_MON.Value);
+	
+	if (this.rad_UPSOTYPE.Value == "01" || this.rad_UPSOTYPE.Value == "02") {
+		gfn_syncCall("NONPY_SELECT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009004&EVENTID=nonpy_stat","S=ds_NonpyIn","ds_Nonpy=MRG7","","fn_CallBack");
+	}
+	else if(this.rad_UPSOTYPE.Value == "02") {
+		gfn_syncCall("NONPY_SELECT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009004&EVENTID=nonpy_stat","S=ds_NonpyIn","ds_NonpySum=MRG7","","fn_CallBack");
+
+	}
+	else if(this.rad_UPSOTYPE.Value == "03") {
+		gfn_syncCall("NONPY_SELECT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009004&EVENTID=nonpy_stat","S=ds_NonpyIn","ds_NonpySum=SEL6","","fn_CallBack");
+		
+	}
+	
+	fn_Ubicall();
+}
+
+function fn_Ubicall()
+{
+	if(length(this.cob_STAFF_NM.Value)==0){
+		ubi0.SetArgument("STAFF_NM","전체");
+	}
+	else{
+		ubi0.SetArgument("STAFF_NM", this.cob_STAFF_NM.Text );
+	}
+	
+	//ubiReport연결
+	ubi0.setArgument("BRAN_NM",this.cob_BRAN_CD.Text);		// 센터명
+	ubi0.setArgument("UN_MONTH1",this.mae_START_MON.Text);	// 미징수 개월수시작
+	ubi0.setArgument("UN_MONTH2",this.mae_END_MON.Text);	// 미징수 개월수시작
+	ubi0.setArgument("STAND_MONTH",THIS.cal_YRMN.Text);		// 기준년월	
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+
+	if(this.rad_UPSOTYPE.Value=='01' or this.rad_UPSOTYPE.Value=='02' ){
+		ubi0.SetDataset("sql_mngupso","ds_NONPY");
+		ubi0.setArgument("TITLE",this.rad_UPSOTYPE.Text );		// 센터명
+		ubi0.setJrfFileName("bra04_p08.jrf");
+	}else{
+		ubi0.SetDataset("ds_NonpySum","ds_NonpySum");
+		ubi0.setJrfFileName("bra04_p08_2.jrf");
+	}
+	
+	ubi0.Retrieve();
+}
+
+function fn_Save() {}
+function fn_Excel() {}
+function fn_Delete() {}
+function fn_Print() {}
+
+function tab_UpsoInfo_UPSO_edt_STAFF_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == "112") {
+		var result = Dialog("fi_bra::find_sawon.xml","");
+		var vArr = result.split(",");
+		
+		this.edt_STAFF_CD.Text = vArr[0];
+		this.edt_STAFF_NM.Text = vArr[1];
+	}
+}
+
+function img_empSearch_OnClick(obj,nX,nY)
+{
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		return;
+	}
+
+	var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+		
+		if (length(result ) > 0) {
+			var vArr = result.Split(",");
+			edt_staff_cd.Text = vArr[0];
+			edt_staff_nm.Text = vArr[1];
+		}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+
+	fn_Staff_Search();
+}
+
+function btn_Save_OnClick(obj,nX,nY)
+{
+	ds_history_sc.SetColumn(0, "BRAN_CD", cob_BRAN_CD.Value);
+	ds_history_sc.SetColumn(0, "STAFF_CD", "");
+	ds_history_sc.SetColumn(0, "PRCON_YRMN", substr(cal_YRMN.Value, 0, 6));
+	ds_history_sc.SetColumn(0, "START_CNT_MON", 0);
+	ds_history_sc.SetColumn(0, "END_CNT_MON", 999);
+	
+	gfn_syncCall("svcIsHistory","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009004&EVENTID=chk_is_history","S=ds_history_sc","ds_history_cnt=SEL1","","fn_CallBack");
+	
+	if(toNumber(ds_history_cnt.GetColumn(0, "CNT")) > 0)
+	{
+		if(!confirm(cob_BRAN_CD.Text + "의 " + cal_YRMN.Text + "월 데이터가 있습니다.\n삭제하시고 새로 저장하시겠습니까?"))
+		{
+			return;
+		}
+	}
+	else
+	{
+		if(!confirm(cob_BRAN_CD.Text + "의 " + cal_YRMN.Text + "월 전체 데이터를 저장하시겠습니까?"))
+		{
+			return;
+		}
+	}
+	
+	rad_UPSOTYPE.Value = "03";
+	mae_START_MON.Text = 0;
+	mae_END_MON.Text = 999;
+	cob_Staff_Nm.Index = 0;
+	
+	gfn_syncCall("svcSaveHistory","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009004&EVENTID=save_nonpy_history","S=ds_history_sc","","","fn_CallBack");
+	alert(cal_YRMN.Text +"월의 이력이 저장되었습니다.");
+}
+
+function btn_history_view_OnClick(obj,nX,nY)
+{
+	if(Dialog("fi_bra::pop_bstyp_nonpy_history.xml", ""))
+	{
+		fn_History_Search();
+	}
+}
+
+function rad_SEARCH_GBN_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(rad_SEARCH_GBN.Value == "1")
+	{
+		btn_history_view.Visible = false;
+	}
+	else if(rad_SEARCH_GBN.Value == "2")
+	{
+		btn_history_view.Visible = true;
+		
+		if(Dialog("fi_bra::pop_bstyp_nonpy_history.xml", ""))
+		{
+			fn_History_Search();
+		}
+	}
+}
+
+function fn_History_Search()
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	ds_history_sc.SetColumn(0, "BRAN_CD", cob_BRAN_CD.Value);
+	ds_history_sc.SetColumn(0, "PRCON_YRMN", substr(cal_YRMN.Value, 0, 6));
+	
+	rad_UPSOTYPE.Value = "03";
+	mae_START_MON.Text = 0;
+	mae_END_MON.Text = 999;
+	cob_Staff_Nm.Index = 0;
+	
+	gfn_syncCall("svcSearchHistory","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009004&EVENTID=sel_nonpy_history","S=ds_history_sc","ds_NonpySum=SEL1","","fn_CallBack");
+	
+	fn_Ubicall();
+}
+
+function rad_Staff_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	fn_Staff_Search();
+}
+
+function fn_Staff_Search()
+{
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	if(rad_Staff.Index == 0)
+		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	else
+		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=sel_bran_staff","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	var iRow = ds_SawonInfo.InsertRow(0);
+	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+	
+	this.cob_Staff_Nm.Value = "";
+	this.cob_Staff_Nm.Enable = true;
+}]]></Script>
+</Window>

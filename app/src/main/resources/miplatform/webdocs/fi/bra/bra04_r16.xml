@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="440" Id="upso_visit" Left="8" OnLoadCompleted="upso_visit_OnLoadCompleted" PidAttrib="7" Title="저작권&#32;사용료&#32;납입증명서&#32;발행대장" Top="8" Ver="1.0" Width="680" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_TBRA_REPT_ACK_ISS" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQUEST_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACT_FLAG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_IN">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISS_YEAR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_use_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>세금계산용</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>기타</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_request_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>B</CODE_CD>
+						<CODE_NM>경영주</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>O</CODE_CD>
+						<CODE_NM>허가주</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="19" TabOrder="2" TabStop="FALSE" Top="12" Width="638"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="27" TabOrder="2" TabStop="FALSE" Top="28" Width="12"></Image>
+		<Static Height="15" Id="Static1" Left="42" Style="tx_left_bold" TabOrder="3" Text="센터명" Top="29" Width="40"></Static>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="9" TabOrder="3" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" Left="87" TabOrder="1" ToolTipText="센터명" Top="23" Width="109"></Combo>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="656" TabOrder="4" TabStop="FALSE" Top="12" Width="12"></Image>
+		<Grid AreaSelect="true" AutoFit="TRUE" BindDataset="ds_TBRA_REPT_ACK_ISS" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="424" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="360" Id="grd_OrgNote" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" Right="664" RowHeight="20" ScrollCell="true" Style="grid" TabOrder="7" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="656">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="65"/>
+						<col width="151"/>
+						<col width="55"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="85"/>
+						<col width="75"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="No."/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="신청인"/>
+						<cell col="4" color="user12" display="text" text="사용목적"/>
+						<cell col="5" color="user12" display="text" text="영수시작월"/>
+						<cell col="6" color="user12" display="text" text="영수종료월"/>
+						<cell col="7" color="user12" display="text" text="입금금액"/>
+						<cell col="8" color="user12" display="text" text="발행일자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="ISS_NUM" display="text"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text" edit="normal"/>
+						<cell col="2" colid="UPSO_NM" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="REQUEST_GBN" combocol="CODE_CD" combodataset="ds_code_request_gbn" combodisplaynltext="true" combodisplayrowcnt="2" combotext="CODE_NM" display="combo" edit="combo"/>
+						<cell align="center" col="4" colid="USE_GBN" combocol="CODE_CD" combodataset="ds_code_use_gbn" combodisplaynltext="true" combodisplayrowcnt="2" combotext="CODE_NM" display="combo" edit="combo"/>
+						<cell align="center" col="5" colid="START_YRMN" display="text" edit="normal" Mask="9999/99"/>
+						<cell align="center" col="6" colid="END_YRMN" display="text" edit="normal" Mask="9999/99"/>
+						<cell align="right" col="7" colid="ISS_AMT" display="currency" edit="normal"/>
+						<cell align="center" col="8" colid="INS_DATE" display="date" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="223" TabOrder="9" TabStop="FALSE" Top="28" Width="12"></Image>
+		<Static Height="15" Id="Static3" Left="237" Style="tx_left_bold" TabOrder="10" Text="조회년도" Top="29" Width="70"></Static>
+		<Spin BKColor="user13" Border="Flat" Height="21" Id="cal_YEAR" Left="294" Style="edit" TabOrder="8" Text="1" Top="23" Width="72"></Spin>
+		<Button Cursor="HAND" Height="21" Id="btn_Find" ImageID="C_btn_search" Left="509" OnClick="btn_Find_OnClick" TabOrder="11" TabStop="FALSE" Top="23" Width="58"></Button>
+		<Button Cursor="HAND" Height="21" Id="btn_excel" ImageID="C_btn_excel" Left="581" OnClick="btn_excel_OnClick" TabOrder="12" TabStop="FALSE" Top="23" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var CONST_JOB_GBN = "M";		// 잡구분은 "M"으로 고정, M:메모
+var result;		//업소이름을 구하기 위한 변수
+var p_check;		//출력을 두 번 못하게 한다.
+
+/*
+아직 중복체크 안함 
+저장 시 금액 자동계산
+*/
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+	if(strCode == "CLOSE"){
+		close();
+    }	return;}
+
+function upso_visit_OnLoadCompleted(obj)
+{
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	this.cal_YEAR.Text = substr(today(),0,4);
+	
+	this.cob_BRAN_CD.Value = p_bran_cd;
+	
+	if (cob_BRAN_CD.Value != "" && cob_BRAN_CD.Value != null) {
+		fn_search();
+	}
+}
+
+function fn_search() 
+{
+	//ds 삭제
+	this.ds_IN.ClearData();
+	this.ds_TBRA_REPT_ACK_ISS.ClearData();
+	//조회조건 넣기
+	
+	if (!gfn_CheckFormNull(this)) return;
+	this.ds_IN.AddRow();
+	this.ds_IN.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value );	this.ds_IN.SetColumn(0,"ISS_YEAR",this.cal_YEAR.Text );
+
+	gfn_syncCall("search_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001004&EVENTID=iss_list_per_branch","S=ds_in","ds_TBRA_REPT_ACK_ISS=SEL1","","fn_CallBack");
+
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+}
+
+
+
+function btn_Find_OnClick(obj)
+{
+	if (cob_BRAN_CD.Value != "" && cob_BRAN_CD.Value != null) {
+		fn_search();
+	}
+}
+
+
+
+function btn_excel_OnClick(obj)
+{
+	grd_OrgNote.ExportExcelEx("퇴직금 계산 내역");
+}
+]]></Script>
+</Window>

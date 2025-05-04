@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra13_s01" Left="8" OnLoadCompleted="bra13_s01_OnLoadCompleted" OnSize="bra13_s01_OnSize" PidAttrib="7" Title="센터&#32;직원별&#32;목표관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_end_view" OnColumnChanged="ds_end_view_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="YYYY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON1_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON2_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON3_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON4_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON5_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON6_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON7_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON8_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON9_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON10_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON11_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="MON12_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="YYYY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bran">
+				<Contents>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>전매체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>유단노</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="2" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<Spin BKColor="user13" Border="Flat" Height="20" Id="sp_year" Left="105" Style="edit" TabOrder="1" Text="2017" Top="27" Width="100"></Spin>
+		<Static Height="15" Id="Static0" Left="40" Style="tx_left_bold" TabOrder="6" Text="예산&#32;년도" Top="32" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="24" TabOrder="5" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="6" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="3" TabStop="FALSE" Top="16" Width="11"></Image>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_end_view" BKColor="user11" BkColor2="default" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="824" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="752" Id="grd_end_view" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnKeyDown="grd_end_view_OnKeyDown" Right="1039" RowHeight="25" Style="grid" TabOrder="4" TabStop="FALSE" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="36"/>
+						<col width="53"/>
+						<col width="51"/>
+						<col width="51"/>
+						<col width="86"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="년도"/>
+						<cell col="1" color="user12" display="text" text="센터명"/>
+						<cell col="2" color="user12" display="text" text="사원명"/>
+						<cell col="3" color="user12" display="text" text="구분"/>
+						<cell col="4" color="user12" display="text" text="년간&#32;예산"/>
+						<cell col="5" color="user12" display="text" text="1월"/>
+						<cell col="6" color="user12" display="text" text="2월"/>
+						<cell col="7" color="user12" display="text" text="3월"/>
+						<cell col="8" color="user12" display="text" text="4월"/>
+						<cell col="9" color="user12" display="text" text="5월"/>
+						<cell col="10" color="user12" display="text" text="6월"/>
+						<cell col="11" color="user12" display="text" text="7월"/>
+						<cell col="12" color="user12" display="text" text="8월"/>
+						<cell col="13" color="user12" display="text" text="9월"/>
+						<cell col="14" color="user12" display="text" text="10월"/>
+						<cell col="15" color="user12" display="text" text="11월"/>
+						<cell col="16" color="user12" display="text" text="12월"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user13" col="0" colid="YYYY" display="text" expandsize="14"/>
+						<cell align="center" bkcolor="user13" col="1" colid="BRAN_CD" combocol="GIBU" combodataset="ds_bran" combotext="DEPT_NM" display="combo" edit="expr:iif((rowtype&#32;==&#32;&apos;insert&apos;&#32;),&#32;&apos;combo&apos;,&#32;&apos;none&apos;&#32;)" expandsize="14"/>
+						<cell align="center" bkcolor="user13" col="2" colid="STAFF_NM" display="text" expandsize="14"/>
+						<cell align="center" bkcolor="user13" col="3" colid="GBN" combocol="CODE_CD" combodataset="ds_gbn" combotext="CODE_NM" display="combo" edit="expr:iif((rowtype&#32;==&#32;&apos;insert&apos;&#32;),&#32;&apos;combo&apos;,&#32;&apos;none&apos;&#32;)"/>
+						<cell align="right" col="4" colid="TOTAL_AMT" display="number" expandsize="14"/>
+						<cell align="right" col="5" colid="MON1_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="6" colid="MON2_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="7" colid="MON3_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="8" colid="MON4_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="9" colid="MON5_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="10" colid="MON6_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="11" colid="MON7_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="12" colid="MON8_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="13" colid="MON9_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="14" colid="MON10_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" col="15" colid="MON11_AMT" display="number" edit="number" expandsize="14"/>
+						<cell align="right" autosizing="none" col="16" colid="MON12_AMT" display="number" edit="number" expandsize="14"/>
+					</body>
+					<summary>
+						<cell align="center" col="0" colspan="4" display="text" rowspan="2" text="합계"/>
+						<cell align="center" col="4" display="text" text="전매체"/>
+						<cell align="center" col="4" display="text" row="1" text="유단노"/>
+						<cell align="right" col="5" display="number"/>
+						<cell align="right" col="6" display="number"/>
+						<cell align="right" col="7" display="number"/>
+						<cell align="right" col="8" display="number"/>
+						<cell align="right" col="9" display="number"/>
+						<cell align="right" col="10" display="number"/>
+						<cell align="right" col="11" display="number"/>
+						<cell align="right" col="12" display="number"/>
+						<cell align="right" col="13" display="number"/>
+						<cell align="right" col="14" display="number"/>
+						<cell align="right" col="15" display="number"/>
+						<cell align="right" col="16" display="number"/>
+						<cell align="right" col="5" display="number" row="1"/>
+						<cell align="right" col="6" display="number" row="1"/>
+						<cell align="right" col="7" display="number" row="1"/>
+						<cell align="right" col="8" display="number" row="1"/>
+						<cell align="right" col="9" display="number" row="1"/>
+						<cell align="right" col="10" display="number" row="1"/>
+						<cell align="right" col="11" display="number" row="1"/>
+						<cell align="right" col="12" display="number" row="1"/>
+						<cell align="right" col="13" display="number" row="1"/>
+						<cell align="right" col="14" display="number" row="1"/>
+						<cell align="right" col="15" display="number" row="1"/>
+						<cell align="right" col="16" display="number" row="1"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Combo Border="Flat" Height="20" Id="cob_BRAN_CD" ImeMode="none" Left="312" OnChanged="cob_BRAN_CD_OnChanged" Style="edit" TabOrder="8" ToolTipText="센터명" Top="27" Width="112"></Combo>
+		<Static Height="13" Id="Static3" Left="264" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="32" Width="48"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="248" TabOrder="9" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Shape BKColor="user7" Bottom="72" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1039" TabOrder="11" Top="69" Type="Rectangle" Width="1031"></Shape>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"  
+
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    } 
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		if(gfn_changeAction("CLOSE", "ds_end_view")){
+			close();
+		}
+    }
+
+	return;
+}
+ 
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "staff_plan_search") 
+	{
+		gfn_SetStatusMsg(ds_end_view.count + " 건이 조회되었습니다.");
+		
+		if	(ds_end_view.rowcount <= 0)
+		{
+			if	(confirm("해당 년도 예산 정보가 등록돼지 않았습니다.\n 초기화 하시겠습니까?"))
+			{
+				gfn_SyncCall("gibu_staff_reg","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008011&EVENTID=gibu_staff_reg","S=ds_search","","","fn_CallBack", gv_TraceLog, gv_formid);
+			}
+		}
+		
+		ds_end_view_OnColumnChanged();
+	}
+	else if(srvId == "gibu_staff_reg") 
+	{
+		gfn_SetStatusMsg("생성이 완료되었습니다.");
+		
+		fn_search();
+	}
+	else if(srvId == "staff_plan_save") 
+	{
+		gfn_SetStatusMsg("저장이 완료되었습니다.");
+		
+		fn_search();
+	}
+}
+
+
+function bra13_s01_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);
+	
+	//현재년도 조건 설정
+	sp_year.Value = substr(today(),0,4);
+	
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	//this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	
+	gfn_AsyncCall("c_gibu_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_gibu_select","","ds_bran=SEL1","","fn_CallBack");
+	
+	bra13_s01_OnSize();
+}
+
+
+function fn_New() 
+{
+	var nRow = ds_end_view.InsertRow(ds_end_view.currow);
+	
+	ds_end_view.SetColumn(nRow, "YYYY", sp_year.Value);
+	ds_end_view.SetColumn(nRow, "TOTAL_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON1_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON2_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON3_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON4_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON5_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON6_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON7_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON8_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON9_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON10_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON11_AMT", 0);
+	ds_end_view.SetColumn(nRow, "MON12_AMT", 0);
+}
+
+//------- 조회
+function fn_Search() 
+{
+	if(!gfn_changeAction("SEARCH", "ds_end_view")) return;
+
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0, "YYYY", sp_year.Value);
+	ds_search.SetColumn(0, "BRAN_CD", cob_BRAN_CD.Value);
+		
+	//trace(ds_search.SaveXML());
+	gfn_SyncCall("staff_plan_search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008011&EVENTID=staff_plan_search","S=ds_search","ds_end_view=SEL1","","fn_CallBack");
+	
+}
+
+function fn_Save() 
+{	
+	//필수입력 체크
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if	(confirm("저장 하시겠습니까?"))
+	{
+		//trace(ds_end_rec.SaveXML());
+		gfn_SyncCall("staff_plan_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008011&EVENTID=staff_plan_save","S=ds_end_view:U","","","fn_CallBack", gv_TraceLog, gv_formid);
+		
+	}
+}
+
+function fn_Delete() 
+{
+	if	(confirm(ds_end_view.GetColumn(ds_end_view.currow,"STAFF_NM") + " 직원의 예산정보를 삭제하시겠습니까?"))
+	{
+		ds_end_view.DeleteRow(ds_end_view.currow);
+	}
+}
+
+function fn_Excel() 
+{
+	var str1 = "직원별 예산 조회";
+	var str2 = sp_year.Value;
+	
+	gfn_setExcelGridHeader(grd_end_view,str1,str2);
+}
+
+function fn_Print() {}
+
+
+function ds_end_view_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if	(strColumnID == "MON1_AMT"||strColumnID == "MON2_AMT"||strColumnID == "MON3_AMT"||strColumnID == "MON4_AMT"||
+	     strColumnID == "MON5_AMT"||strColumnID == "MON6_AMT"||strColumnID == "MON7_AMT"||strColumnID == "MON8_AMT"||
+	     strColumnID == "MON9_AMT"||strColumnID == "MON10_AMT"||strColumnID == "MON11_AMT"||strColumnID == "MON12_AMT")
+	{
+		var vAmt = parseFloat(ds_end_view.GetColumn(nRow, "MON1_AMT")) + parseFloat(ds_end_view.GetColumn(nRow, "MON2_AMT")) + 
+				   parseFloat(ds_end_view.GetColumn(nRow, "MON3_AMT")) + parseFloat(ds_end_view.GetColumn(nRow, "MON4_AMT")) + 
+				   parseFloat(ds_end_view.GetColumn(nRow, "MON5_AMT")) + parseFloat(ds_end_view.GetColumn(nRow, "MON6_AMT")) + 
+				   parseFloat(ds_end_view.GetColumn(nRow, "MON7_AMT")) + parseFloat(ds_end_view.GetColumn(nRow, "MON8_AMT")) + 
+				   parseFloat(ds_end_view.GetColumn(nRow, "MON9_AMT")) + parseFloat(ds_end_view.GetColumn(nRow, "MON10_AMT")) +
+				   parseFloat(ds_end_view.GetColumn(nRow, "MON11_AMT")) + parseFloat(ds_end_view.GetColumn(nRow, "MON12_AMT"));
+		
+		ds_end_view.SetColumn(nRow, "TOTAL_AMT", vAmt);
+	}
+	
+	grd_end_view.SetCellProp("summ", 3, "text", (ds_end_view.CaseSum("GBN = '1'", "MON1_AMT")));
+	grd_end_view.SetCellProp("summ", 4, "text", (ds_end_view.CaseSum("GBN = '1'", "MON2_AMT")));
+	grd_end_view.SetCellProp("summ", 5, "text", (ds_end_view.CaseSum("GBN = '1'", "MON3_AMT")));
+	grd_end_view.SetCellProp("summ", 6, "text", (ds_end_view.CaseSum("GBN = '1'", "MON4_AMT")));
+	grd_end_view.SetCellProp("summ", 7, "text", (ds_end_view.CaseSum("GBN = '1'", "MON5_AMT")));
+	grd_end_view.SetCellProp("summ", 8, "text", (ds_end_view.CaseSum("GBN = '1'", "MON6_AMT")));
+	grd_end_view.SetCellProp("summ", 9, "text", (ds_end_view.CaseSum("GBN = '1'", "MON7_AMT")));
+	grd_end_view.SetCellProp("summ", 10, "text", (ds_end_view.CaseSum("GBN = '1'", "MON8_AMT")));
+	grd_end_view.SetCellProp("summ", 11, "text", (ds_end_view.CaseSum("GBN = '1'", "MON9_AMT")));
+	grd_end_view.SetCellProp("summ", 12, "text", (ds_end_view.CaseSum("GBN = '1'", "MON10_AMT")));
+	grd_end_view.SetCellProp("summ", 13, "text", (ds_end_view.CaseSum("GBN = '1'", "MON11_AMT")));
+	grd_end_view.SetCellProp("summ", 14, "text", (ds_end_view.CaseSum("GBN = '1'", "MON12_AMT")));
+	
+	grd_end_view.SetCellProp("summ", 15, "text", (ds_end_view.CaseSum("GBN = '2'", "MON1_AMT")));
+	grd_end_view.SetCellProp("summ", 16, "text", (ds_end_view.CaseSum("GBN = '2'", "MON2_AMT")));
+	grd_end_view.SetCellProp("summ", 17, "text", (ds_end_view.CaseSum("GBN = '2'", "MON3_AMT")));
+	grd_end_view.SetCellProp("summ", 18, "text", (ds_end_view.CaseSum("GBN = '2'", "MON4_AMT")));
+	grd_end_view.SetCellProp("summ", 19, "text", (ds_end_view.CaseSum("GBN = '2'", "MON5_AMT")));
+	grd_end_view.SetCellProp("summ", 20, "text", (ds_end_view.CaseSum("GBN = '2'", "MON6_AMT")));
+	grd_end_view.SetCellProp("summ", 21, "text", (ds_end_view.CaseSum("GBN = '2'", "MON7_AMT")));
+	grd_end_view.SetCellProp("summ", 22, "text", (ds_end_view.CaseSum("GBN = '2'", "MON8_AMT")));
+	grd_end_view.SetCellProp("summ", 23, "text", (ds_end_view.CaseSum("GBN = '2'", "MON9_AMT")));
+	grd_end_view.SetCellProp("summ", 24, "text", (ds_end_view.CaseSum("GBN = '2'", "MON10_AMT")));
+	grd_end_view.SetCellProp("summ", 25, "text", (ds_end_view.CaseSum("GBN = '2'", "MON11_AMT")));
+	grd_end_view.SetCellProp("summ", 26, "text", (ds_end_view.CaseSum("GBN = '2'", "MON12_AMT")));
+}
+
+function grd_end_view_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if	(nChar==112 && ds_end_view.GetRowType(ds_end_view.currow)=="insert")
+	{
+		var params = "BIPLC_CD=2";
+		
+		var retString = gfn_InsaFindForm_Employee(params, false); 
+		//trace(retString);
+		if	(retString.length() > 0)
+		{
+			ds_end_view.SetColumn(ds_end_view.currow, "STAFF_CD", gfn_GetRetValue(retString,"STAFF_NUM"));
+			ds_end_view.SetColumn(ds_end_view.currow, "STAFF_NM", gfn_GetRetValue(retString,"HAN_NM"));
+			//ds_end_view.SetColumn(ds_end_view.currow, "GIBU_NM",  gfn_GetRetValue(retString,"DEPT_NM"));
+		}
+	}
+	else if (nChar == 13) 
+	{
+		grd_end_view.MoveToNextCell();
+	}
+}
+
+function gfn_setExcelGridHeader(grdObj,strText1,strText2)
+{
+	Destroy("grdExcel");
+	create("grid","grdExcel",'BindDataSet="' + grdObj.BindDataset +'"');
+	//alert(grdObj.BindDataset);
+	grdExcel.contents = grdObj.Contents;
+	
+	var headCnt = gfn_getHeadCount(grdExcel);
+	var totCol  = grdExcel.GetColCount();
+	
+	var irow;
+	
+	for(var i = 0 ; i < headCnt ; i++ )
+	{
+		irow = toInteger(grdExcel.GetCellProp("head",i,"row"));
+		grdExcel.SetCellProp("head",i,"row",irow+2);
+	}
+
+	var str_temp = grdExcel.GetCurContents();
+	var str_Head = '<cell col="0" display="text" colspan="' + totCol + '" rowspan="2">';
+	str_Head += '<cell align="center" row="0" col ="0" colspan="' + totCol + '" font="굴림,18" display="text" text="' + strText1 + '" />';
+	str_Head += '<cell align="center" row="1" col ="0" colspan="' + totCol + '" font="굴림,9" display="text" text="' + strText2 + '" />';
+	str_Head += '</cell>';
+	str_temp = replace(str_temp, '</head>',str_Head +'</head>');
+	
+	grdExcel.contents = str_temp;
+	
+	grdExcel.ExportExcelEx("sheet1","A1",false,true,true);
+}
+
+function gfn_getHeadCount(grdObj)
+{
+	var strConts = grdObj.Contents;
+	
+	var iPos = pos(strConts,"<head>");
+
+	var strHead = Mid(strConts,iPos);
+	
+	iPos = pos(strHead,"</head>");
+	
+	strHead = Mid(strHead,0,iPos+7);
+	
+	//trace(strHead);
+	
+	var spObj = split(strHead,chr(10),"webstyle");
+	
+	return spObj.length()-2;
+}
+
+function bra13_s01_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_end_view, this, 1, 0);
+	gfn_ObjreSize(Shape0, this, 1, 0);
+}
+]]></Script>
+</Window>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="No" size="100" type="STRING"/>
+					<colinfo id="작성자" size="300" type="STRING"/>
+					<colinfo id="제목" size="300" type="STRING"/>
+					<colinfo id="작성일" size="300" type="STRING"/>
+					<record>
+						<No>1</No>
+						<작성일>1</작성일>
+						<작성자>1</작성자>
+						<제목>1</제목>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="70" Id="Image21" ImageID="C_search2_left" Left="8" TabOrder="23" Top="16" Width="10"></Image>
+		<Image Height="70" Id="Image18" ImageID="C_search2_right" Left="1030" TabOrder="25" Top="16" Width="10"></Image>
+		<Image FillType="STRETCH" Height="70" Id="Image17" ImageID="C_search2_bg" Left="18" TabOrder="24" Top="16" Width="1012"></Image>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo0" INDEX="1" InnerDataset="ds_Dvsn" Left="100" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="1" Text="거래처명" Top="27" Width="100"></Combo>
+		<Combo Border="Flat" Height="20" Id="Combo2" Left="100" Style="edit" TabOrder="2" Text="&#32;2008-10-15" Top="55" Width="100"></Combo>
+		<Image Height="16" Id="Image2" ImageID="s_04" Left="203" LeftMargin="0" TabOrder="6" TabStop="FALSE" Top="58" Width="14"></Image>
+		<Static Color="user1" Height="15" Id="Static8" Left="225" Style="tx_left_bold" TabOrder="3" Text="~" Top="60" Width="30"></Static>
+		<Combo Border="Flat" Height="20" Id="Combo3" Left="240" Style="edit" TabOrder="4" Text="&#32;2008-10-20" Top="55" Width="100"></Combo>
+		<Image Height="16" Id="Image3" ImageID="s_04" Left="342" LeftMargin="0" TabOrder="5" TabStop="FALSE" Top="58" Width="14"></Image>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit10" Left="202" LeftMargin="2" Style="edit" TabOrder="7" Top="28" Width="155"></Edit>
+		<Shape BKColor="user3" Bottom="73" Height="49" Id="Shape10" Left="581" LineColor="user4" LineKind="Vertical" Right="616" RoundHeight="0" RoundUnit="Pixel" RoundWidth="0" TabOrder="8" Top="24" Width="35"></Shape>
+		<Shape BKColor="user3" Bottom="73" Height="49" Id="Shape11" Left="357" LineColor="user4" LineKind="Vertical" Right="392" RoundHeight="0" RoundUnit="Pixel" RoundWidth="0" TabOrder="9" Top="24" Width="35"></Shape>
+		<Shape BKColor="user3" Bottom="73" Height="49" Id="Shape12" Left="763" LineColor="user4" LineKind="Vertical" Right="798" RoundHeight="0" RoundUnit="Pixel" RoundWidth="0" TabOrder="10" Top="24" Width="35"></Shape>
+		<Static Color="user1" Font="굴림,10,Bold" Height="16" Id="Static17" Left="42" Style="tx_bold" TabOrder="11" Text="승인내역&#32;목록" Top="99" Width="156"></Static>
+		<Image Height="17" Id="Image13" ImageID="C_icon2" Left="15" TabOrder="12" TabStop="FALSE" Top="96" Width="18"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="28" TabOrder="14" Top="33" Width="11"></Image>
+		<Static Color="user1" Height="13" Id="Static3" Left="44" TabOrder="13" Text="통합검색" Top="33" Width="54"></Static>
+		<Image Height="11" Id="Image9" ImageID="C_icon" Left="386" TabOrder="16" Top="33" Width="11"></Image>
+		<Static Color="user1" Height="13" Id="Static5" Left="400" TabOrder="15" Text="매체별" Top="33" Width="120"></Static>
+		<Image Height="11" Id="Image14" ImageID="C_icon" Left="619" TabOrder="17" Top="33" Width="11"></Image>
+		<Image Height="11" Id="Image15" ImageID="C_icon" Left="28" TabOrder="19" Top="60" Width="11"></Image>
+		<Static Color="user1" Height="12" Id="Static7" Left="44" TabOrder="18" Text="조회기간" Top="61" Width="54"></Static>
+		<Image Height="11" Id="Image19" ImageID="C_icon" Left="386" TabOrder="21" Top="60" Width="11"></Image>
+		<Static Color="user1" Height="13" Id="Static1" Left="400" TabOrder="20" Text="부문별" Top="60" Width="120"></Static>
+		<Image Height="11" Id="Image20" ImageID="C_icon" Left="619" TabOrder="22" Top="60" Width="11"></Image>
+		<Static Color="user1" Height="13" Id="Static6" Left="633" TabOrder="26" Text="가등록" Top="33" Width="47"></Static>
+		<Static Color="user1" Height="13" Id="Static2" Left="633" TabOrder="27" Text="신보구분" Top="60" Width="47"></Static>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo4" INDEX="1" InnerDataset="ds_Dvsn" Left="448" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="28" Text="공연승인내역현황" Top="28" Width="126"></Combo>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo5" INDEX="1" InnerDataset="ds_Dvsn" Left="448" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="29" Text="녹음/복제" Top="54" Width="126"></Combo>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo6" INDEX="1" InnerDataset="ds_Dvsn" Left="693" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="30" Text="가등록" Top="28" Width="70"></Combo>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo7" INDEX="1" InnerDataset="ds_Dvsn" Left="693" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="31" Text="신보" Top="54" Width="70"></Combo>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="794" TabOrder="32" Top="33" Width="11"></Image>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="794" TabOrder="33" Top="60" Width="11"></Image>
+		<Static Color="user1" Height="13" Id="Static0" Left="808" TabOrder="34" Text="입금" Top="33" Width="47"></Static>
+		<Static Color="user1" Height="13" Id="Static4" Left="808" TabOrder="35" Text="지역" Top="60" Width="47"></Static>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo8" INDEX="1" InnerDataset="ds_Dvsn" Left="844" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="36" Text="입금" Top="28" Width="70"></Combo>
+		<Combo BindDataset="ds_Member" Border="Flat" CodeColumn="CODE_CD" Column="USER_GB" DataColumn="CODE_NM" Height="20" Id="Combo9" INDEX="1" InnerDataset="ds_Dvsn" Left="844" OnChanged="cmb_MemberDvsn_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="37" Text="국내" Top="54" Width="70"></Combo>
+		<Tab Border="Flat" Height="682" HilightColor="white" HilightTextColor="white" Id="Tab00" Left="8" MouseOverColor="white" SelColor="white" Style="tab" TabOrder="38" Top="121" Width="1032">
+			<Contents>
+				<TabPage BorderColor="black" Height="653" Id="tab1" ImageID="C_tab" Left="2" Style="tab" TabOrder="1" Text="매체별" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="25" Height="3" Id="Shape2" Left="11" LineColor="user7" Right="1019" TabOrder="1" Top="22" Type="Rectangle" Width="1008"></Shape>
+					<Grid BindDataset="Dataset1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="627" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="602" Id="Grid1" InputPanel="FALSE" Left="11" LineColor="silver" Right="1019" RowHeight="20" Style="grid" SuppressSameLevel="Skip" TabOrder="2" TabStop="true" Top="25" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1008">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="90"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="120"/>
+									<col width="80"/>
+									<col width="180"/>
+									<col width="70"/>
+									<col width="70"/>
+									<col width="80"/>
+									<col width="100"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="승인번호"/>
+									<cell col="1" color="user12" display="text" text="거래선명"/>
+									<cell col="2" color="user12" display="text" text="제조회사"/>
+									<cell col="3" color="user12" display="text" text="매체"/>
+									<cell col="4" color="user12" display="text" text="부문"/>
+									<cell col="5" color="user12" display="text" text="제목"/>
+									<cell col="6" color="user12" display="text" text="구분"/>
+									<cell col="7" color="user12" display="text" text="수량"/>
+									<cell col="8" color="user12" display="text" text="총&#32;사용료"/>
+									<cell col="9" color="user12" display="text" text="입금일자"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="column0" display="text" SuppressAlign="Middle" text="1"/>
+									<cell align="center" col="1" colid="column1" display="text"/>
+									<cell col="2" display="text"/>
+									<cell col="3" display="text"/>
+									<cell col="4" display="text"/>
+									<cell col="5" display="text"/>
+									<cell col="6" display="text"/>
+									<cell col="7" display="text"/>
+									<cell col="8" display="text"/>
+									<cell col="9" display="text"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" color="user12" colspan="5" display="text" font="굴림,9,Bold" text="수&#32;&#32;량&#32;&#32;합&#32;&#32;계&#32;:"/>
+									<cell align="center" col="5" color="user12" colspan="5" display="text" font="굴림,9,Bold" text="전&#32;&#32;체&#32;&#32;합&#32;&#32;계&#32;:"/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="653" Id="tab2" ImageID="C_tab" Left="2" Style="tab" TabOrder="1" Text="저작자별" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="25" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1019" TabOrder="1" Top="22" Type="Rectangle" Width="1011"></Shape>
+					<Grid BindDataset="Dataset1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="638" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="613" Id="Grid1" InputPanel="FALSE" Left="8" LineColor="silver" Right="1019" RowHeight="20" Style="grid" SuppressSameLevel="Skip" TabOrder="2" TabStop="true" Top="25" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1011">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="100"/>
+									<col width="120"/>
+									<col width="150"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="70"/>
+									<col width="50"/>
+									<col width="100"/>
+									<col width="80"/>
+									<col width="120"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="성명"/>
+									<cell col="1" color="user12" display="text" text="승인번호"/>
+									<cell col="2" color="user12" display="text" text="제목"/>
+									<cell col="3" color="user12" display="text" text="작품명"/>
+									<cell col="4" color="user12" display="text" text="음반사"/>
+									<cell col="5" color="user12" display="text" text="매체"/>
+									<cell col="6" color="user12" display="text" text="구분"/>
+									<cell col="7" color="user12" display="text" text="사용료"/>
+									<cell col="8" color="user12" display="text" text="양도/승계"/>
+									<cell col="9" color="user12" display="text" text="출판사"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="column0" display="text" SuppressAlign="Middle" text="1"/>
+									<cell align="center" col="1" colid="column1" display="text"/>
+									<cell col="2" display="text"/>
+									<cell col="3" display="text"/>
+									<cell col="4" display="text"/>
+									<cell col="5" display="text"/>
+									<cell col="6" display="text"/>
+									<cell col="7" display="text"/>
+									<cell col="8" display="text"/>
+									<cell col="9" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="653" Id="tab3" ImageID="C_tab" Left="2" Style="tab" TabOrder="1" Text="승인구분별" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="25" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1019" TabOrder="1" Top="22" Type="Rectangle" Width="1011"></Shape>
+					<Grid BindDataset="Dataset0_0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="641" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="617" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1019" RowHeight="20" Style="grid" SuppressSameLevel="Skip" TabOrder="2" TabStop="true" Top="24" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1011">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="180"/>
+									<col width="120"/>
+									<col width="90"/>
+									<col width="80"/>
+									<col width="60"/>
+									<col width="70"/>
+									<col width="80"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="승인번호"/>
+									<cell col="1" color="user12" display="text" text="사용회사"/>
+									<cell col="2" color="user12" display="text" text="제목"/>
+									<cell col="3" color="user12" display="text" text="작품명"/>
+									<cell col="4" color="user12" display="text" text="매체"/>
+									<cell col="5" color="user12" display="text" text="제작수량"/>
+									<cell col="6" color="user12" display="text" text="구분"/>
+									<cell col="7" color="user12" display="text" text="회원코드"/>
+									<cell col="8" color="user12" display="text" text="회원명"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="column0" display="text" SuppressAlign="Middle" text="1"/>
+									<cell align="center" col="1" colid="column1" display="text"/>
+									<cell col="2" display="text"/>
+									<cell col="3" display="text"/>
+									<cell col="4" display="text"/>
+									<cell col="5" display="text"/>
+									<cell col="6" display="text"/>
+									<cell col="7" display="text"/>
+									<cell col="8" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[
+function Edit0_OnChanged(obj,strText)
+{
+	
+}
+
+function Edit4_OnChanged(obj,strText)
+{
+	
+}
+
+
+]]></Script>
+</Window>

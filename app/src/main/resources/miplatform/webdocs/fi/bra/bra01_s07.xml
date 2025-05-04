@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="960" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+					<colinfo id="column1" size="256" summ="default" type="STRING"/>
+					<colinfo id="column2" size="256" summ="default" type="STRING"/>
+					<colinfo id="column3" size="256" summ="default" type="STRING"/>
+					<colinfo id="column4" size="256" summ="default" type="STRING"/>
+					<colinfo id="column5" size="256" summ="default" type="STRING"/>
+					<colinfo id="column6" size="256" summ="default" type="STRING"/>
+					<colinfo id="column7" size="256" summ="default" type="STRING"/>
+					<colinfo id="column8" size="256" summ="default" type="STRING"/>
+					<colinfo id="column9" size="256" summ="default" type="STRING"/>
+					<colinfo id="column10" size="256" summ="default" type="STRING"/>
+					<colinfo id="column11" size="256" summ="default" type="STRING"/>
+					<colinfo id="column12" size="256" summ="default" type="STRING"/>
+					<colinfo id="column13" size="256" summ="default" type="STRING"/>
+					<colinfo id="column14" size="256" summ="default" type="STRING"/>
+					<colinfo id="column15" size="256" summ="default" type="STRING"/>
+					<record>
+						<column0>두리노래방</column0>
+						<column1>이은자</column1>
+						<column10></column10>
+						<column11></column11>
+						<column12></column12>
+						<column13>2009.05.12</column13>
+						<column14>2009.06.12</column14>
+						<column15>업종변경</column15>
+						<column2>000000-0000000</column2>
+						<column3>충남&#32;연기군&#32;소정면&#32;대곡리</column3>
+						<column4>1</column4>
+						<column5>02-111-1234</column5>
+						<column6>011-1234-1234</column6>
+						<column7></column7>
+						<column8></column8>
+						<column9></column9>
+					</record>
+					<record>
+						<column0>님프노래방</column0>
+						<column1>전미경</column1>
+						<column10></column10>
+						<column11></column11>
+						<column12></column12>
+						<column13>2008.06.13</column13>
+						<column14>2009.07.12</column14>
+						<column15>경영</column15>
+						<column2>000000-0000000</column2>
+						<column3>충남&#32;연기군&#32;전동면&#32;노장리</column3>
+						<column4>3</column4>
+						<column5>02-123-4567</column5>
+						<column6>011-2345-7891</column6>
+						<column7></column7>
+						<column8></column8>
+						<column9></column9>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="CLSD_GBN">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>내부공사</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>영업정지</value>
+					</record>
+					<record>
+						<code>03</code>
+						<value>기타</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="gbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>업주변경</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>등급변경</value>
+					</record>
+					<record>
+						<code>03</code>
+						<value>휴업</value>
+					</record>
+					<record>
+						<code>04</code>
+						<value>폐업</value>
+					</record>
+					<record>
+						<code>05</code>
+						<value>기타</value>
+					</record>
+					<record>
+						<code>06</code>
+						<value>신규</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="2" TabStop="FALSE" Top="20" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="2" TabStop="FALSE" Top="20" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1038" TabOrder="3" TabStop="FALSE" Top="20" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="354" TabOrder="3" TabStop="FALSE" Top="36" Width="11"></Image>
+		<Shape BKColor="user7" Bottom="72" Height="3" Id="Shape0" Left="16" LineColor="user7" Right="1048" TabOrder="4" Top="69" Type="Rectangle" Width="1032"></Shape>
+		<Static Height="15" Id="Static0" Left="370" Style="tx_left_bold" TabOrder="6" Text="기준년월" Top="36" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="36" TabOrder="5" TabStop="FALSE" Top="36" Width="11"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button5" ImageID="C_btn_90" Left="938" LeftMargin="23" OnClick="Button2_OnClick" Style="edit" TabOrder="7" Text="Excel생성" Top="30" TopMargin="1" Width="90"></Button>
+		<Image Height="11" Id="Image8" ImageID="C_icon" Left="587" TabOrder="8" TabStop="FALSE" Top="36" Width="11"></Image>
+		<Static Height="15" Id="Static6" Left="603" Style="tx_left_bold" TabOrder="9" Text="미징수개월수" Top="36" Width="82"></Static>
+		<Static Color="user6" Height="13" Id="Static7" Left="752" Style="style0" TabOrder="10" Text="~" Top="32" Width="9"></Static>
+		<Combo Height="21" Id="Combo1" Left="105" TabOrder="12" Top="30" Width="109"></Combo>
+		<Static Height="15" Id="Static1" Left="54" Style="tx_left_bold" TabOrder="11" Text="센터명" Top="36" Width="81"></Static>
+		<Calendar Dateformat="yyyy/MM" FocusIndex="0" Height="22" Id="cal_Yrmn" Left="432" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="13" Top="29" Width="102"></Calendar>
+		<Ubi Bottom="621" Height="534" Id="Ubi0" Left="22" Right="1043" Top="87" Width="1021">
+			<_PersistData>&#13;&#10;/6yIMy2v/wAAAQCGaQAAdzE3APjy//7//fL4/fYLDwACBVQAWQBfUABFADD48gH+8C8DMQAyLgABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGGPAHUAbFcDnAf48AgBQA==&#13;&#10;</_PersistData>
+		</Ubi>
+		<Edit Height="21" Id="Edit0" Left="688" TabOrder="14" Top="32" Width="50"></Edit>
+		<Edit Height="24" Id="Edit1" Left="768" TabOrder="15" Top="32" Width="50"></Edit>
+	</Form>
+	<Script></Script>
+</Window>

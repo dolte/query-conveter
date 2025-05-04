@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="568" Id="upjong_search" Left="8" OnLoadCompleted="upjong_search_OnLoadCompleted" PidAttrib="7" Title="반주기&#32;모델&#32;검색" Top="8" Ver="1.0" Width="440" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Acmcn">
+				<Contents>
+					<colinfo id="MCHN_COMPY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEL_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEL_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHN_COMPYNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Font="굴림,12,Bold" Height="28" Id="Static0" Left="16" TabOrder="1" Text="기기모델조회&#32;-&#32;POP-UP" Top="24" Width="303"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_90" Left="320" OnClick="btn_Close_OnClick" TabOrder="2" Text="닫&#32;기" Top="24" Width="104"></Button>
+		<Grid BindDataset="ds_Acmcn" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="544" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="488" Id="grd_ACMCN" InputPanel="FALSE" Left="16" LineColor="silver" OnCellDBLClick="grd_ACMCN_OnCellDblClick" Right="416" RowHeight="20" Style="grid" TabOrder="3" TabStop="FALSE" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="400">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="129"/>
+						<col width="62"/>
+						<col width="200"/>
+						<col width="1"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="기계회사"/>
+						<cell col="1" color="user12" display="text" text="모델코드"/>
+						<cell col="2" color="user12" display="text" text="모델명"/>
+						<cell col="3" color="user12" display="text" text="구분"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="MCHN_COMPYNM" display="text"/>
+						<cell align="center" col="1" colid="MODEL_CD" display="text"/>
+						<cell align="left" col="2" colid="MODEL_NM" display="text"/>
+						<cell align="right" col="3" colid="GBN" display="numberexp" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function upjong_search_OnLoadCompleted(obj)
+{
+	this.ds_Acmcn.ClearData();
+	this.ds_Acmcn.AddRow();
+	this.ds_Acmcn.SetColumn(0, "MCHN_COMPY", MCHN_COMPY);
+
+	gfn_syncCall("acmcn_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004007&EVENTID=acmcn_select","S=ds_Acmcn","ds_Acmcn=MRG1","","fn_CallBack");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		return;
+	}	
+}
+
+function grd_ACMCN_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var MODEL_CD     = this.ds_Acmcn.GetColumn(nRow, "MODEL_CD");
+	var MODEL_NM     = this.ds_Acmcn.GetColumn(nRow, "MODEL_NM");
+	var MCHN_COMPY   = this.ds_Acmcn.GetColumn(nRow, "MCHN_COMPY");
+	var MCHN_COMPYNM = this.ds_Acmcn.GetColumn(nRow, "MCHN_COMPYNM");
+
+	Close(MODEL_CD + "," + MODEL_NM + "," + MCHN_COMPY + "," + MCHN_COMPYNM); 
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+]]></Script>
+</Window>

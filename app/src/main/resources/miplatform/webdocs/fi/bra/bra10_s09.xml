@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_s09" Left="8" OnLoadCompleted="bra10_s09_OnLoadCompleted" PidAttrib="7" Title="스마트앱&#32;IMEI승인" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_GIBU_CD">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRV_GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<APPRV_GBN></APPRV_GBN>
+						<BRAN_CD></BRAN_CD>
+						<STAFF_CD></STAFF_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Apprv_Gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_List" OnColumnChanged="ds_List_OnColumnChanged">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IMEI_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRV_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRV_STAFF" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEL_NO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Apprv_Auth">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Apprv_Gbn_copy">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image1" ImageID="C_search_bg" Left="18" OnClick="Image0_OnClick" TabOrder="1" Top="9" Width="1015"></Image>
+		<Image Height="41" Id="Image21" ImageID="C_search_left" Left="8" TabOrder="2" Top="9" Width="10"></Image>
+		<Image Height="41" Id="Image2" ImageID="C_search_right" Left="1024" TabOrder="3" Top="9" Width="16"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="4" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="42" Style="tx_left_bold" TabOrder="5" Text="센터명" Top="24" Width="40"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" DisableBKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="0" Left="90" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="4" ToolTipText="센터명" Top="20" Width="110"></Combo>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="228" TabOrder="7" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="16" Id="Static0" Left="242" Style="tx_left_bold" TabOrder="8" Text="사원명" Top="24" Width="40"></Static>
+		<Combo BindDataset="ds_search" CodeColumn="STAFF_CD" Column="STAFF_CD" DataColumn="STAFF_NM" Height="18" Id="cob_Staff_Nm" ImeMode="none" INDEX="0" InnerDataset="ds_SawonInfo" Left="290" TabOrder="7" ToolTipText="센터명" Top="20" Width="110"></Combo>
+		<Combo BindDataset="ds_search" CodeColumn="CODE_CD" Column="APPRV_GBN" DataColumn="CODE_NM" Height="18" Id="cob_Gbn" ImeMode="none" INDEX="0" InnerDataset="ds_Apprv_Gbn" Left="510" TabOrder="10" ToolTipText="센터명" Top="20" Width="110"></Combo>
+		<Static Height="16" Id="Static1" Left="450" Style="tx_left_bold" TabOrder="11" Text="승인구분" Top="24" Width="52"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="436" TabOrder="10" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Grid AutoEnter="TRUE" BindDataset="ds_List" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="784" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="719" Id="grd_List" InputPanel="FALSE" Left="8" LineColor="silver" NoDataText="조회&#32;결과가&#32;없습니다." Right="1034" RowHeight="22" Style="grid" TabOrder="13" TabStop="FALSE" Top="65" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1026">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="130"/>
+						<col width="85"/>
+						<col width="180"/>
+						<col width="125"/>
+						<col width="150"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="150"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터명"/>
+						<cell col="1" color="user12" display="text" text="사원명"/>
+						<cell col="2" color="user12" display="text" text="IMEI"/>
+						<cell col="3" color="user12" display="text" text="모델명"/>
+						<cell col="4" color="user12" display="text" text="신청일시"/>
+						<cell col="5" color="user12" display="text" text="승인여부"/>
+						<cell col="6" color="user12" display="text" text="처리자"/>
+						<cell col="7" color="user12" display="text" text="처리일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DEPT_CD" combocol="DEPT_CD" combodataset="ds_GIBU_CD" combotext="DEPT_NM" display="combo" edit="combo"/>
+						<cell align="center" col="1" colid="STAFF_NM" display="text"/>
+						<cell align="center" col="2" colid="IMEI_NUM" display="text"/>
+						<cell align="center" col="3" colid="MODEL_NO" display="text"/>
+						<cell align="center" col="4" colid="INS_DATE" display="text"/>
+						<cell align="center" col="5" colid="APPRV_GBN" combocol="CODE_CD" combodataset="ds_Apprv_Gbn_copy" combotext="CODE_NM" display="combo" edit="combo"/>
+						<cell align="center" col="6" colid="APPRV_STAFF_NM" display="text"/>
+						<cell align="center" col="7" colid="APPRV_DAY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="65" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1034" TabOrder="14" Top="62" Type="Rectangle" Width="1026"></Shape>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")
+    {///신규  
+		//fn_new();
+	}
+	else if(strCode == "SEARCH")
+	{///조회
+		fn_search();
+    }
+    else if(strCode == "SAVE")
+    {///저장 
+		fn_save();
+    }
+    else if(strCode == "EXCEL")
+    {///엑셀저장
+		//fn_excel();
+    }
+    else if(strCode == "DELETE")
+    {///삭제
+		//fn_delete();
+    }
+    else if(strCode == "PRINT")
+    {///출력
+		//fn_print();
+    }
+    else if(strCode == "CLOSE")
+    {///닫기
+		close();
+    }
+}
+
+function fn_CallBack(svcid,errCode,errMsg)
+{	if(errCode < 0 )	{		alert("Error =======>" + svcid + '  ' + errMsg);	}	else	{		switch (svcid)		{			case "svcSearch" :				break;
+			case "svcSave" :
+				alert("저장되었습니다.");
+				fn_Search();
+				break;
+			case "SAWON_CLICK" :
+				ds_SawonInfo.InsertRow(0);
+				ds_SawonInfo.SetColumn(0, "STAFF_NM", "--ALL--");
+				ds_SawonInfo.SetColumn(0, "STAFF_CD", "");
+				cob_Staff_Nm.Index = 0;
+				break;
+			case "svcAuthSearch" :
+				break;			default : break;		}	}}
+
+function bra10_s09_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);
+	gfn_PubCode("ds_Apprv_Gbn", 1, "00246");
+	ds_Apprv_Gbn.SetColumn(0, "CODE_CD", "");
+	gfn_PubCode("ds_Apprv_Gbn_copy", 2, "00246");
+	cob_Gbn.Index = 0;
+	
+	cob_BRAN_CD.Value = gds_Sessioninfo.GetColumn(0, "BRAN_CD");
+	
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	gfn_syncCall("svcAuthSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008008&EVENTID=sel_udtkpres","","ds_Apprv_Auth=SEL1","","fn_CallBack");
+	var v_find_auth = ds_Apprv_Auth.FindRow("UDTKPRES_ID", gds_Sessioninfo.GetColumn(0, "STAFF_NUM"));
+	
+	if(gds_Sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_Sessioninfo.GetColumn(0, "DEPT_CD") == "122040100" || v_find_auth >= 0)
+	{
+		grd_List.Editable = true;
+	}
+}
+
+function fn_Search()
+{
+	//trace(ds_Search.SaveXML());
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008010&EVENTID=sel_imei","S=ds_Search","ds_List=SEL1","","fn_CallBack");
+}
+
+function fn_Save()
+{
+	if(!confirm("저장하시겠습니까?")) return;
+	
+	//trace(ds_List.SaveXML());
+	gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008010&EVENTID=mng_imei","S=ds_List:U","","","fn_CallBack");
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	if(cob_BRAN_CD.Value == "AL")
+	{
+		ds_SawonInfo.ClearData();
+		ds_SawonInfo.AddRow();
+		ds_SawonInfo.SetColumn(0, "STAFF_NM", "--ALL--");
+		ds_SawonInfo.SetColumn(0, "STAFF_CD", "");
+		cob_Staff_Nm.Index = 0;
+	}
+	else
+	{
+		ds_BRAN_CD.setcolumn(0, "BRAN_CD", cob_BRAN_CD.value);
+		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	}
+}
+
+function ds_List_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "APPRV_GBN")
+	{
+		if((varOldValue == "2" || varOldValue == "3") && varNewValue == "1" && length(ds_List.GetColumn(nRow, "APPRV_DAY")) > 0)
+		{
+			alert("승인/불가된 IMEI정보는 신청으로 돌릴 수 없습니다.");
+			ds_List.SetColumn(nRow, strColumnID, varOldValue);
+			return;
+		}
+		if(varNewValue == "2")
+		{
+			var staffCd = ds_List.GetColumn(nRow, "STAFF_CD");
+			
+			for(var i = 0; i < ds_List.rowcount; i++)
+			{
+				if(i != nRow && ds_List.GetColumn(i, "STAFF_CD") == staffCd && ds_List.GetColumn(i, "APPRV_GBN") == "2")
+				{
+					alert("한 명의 사용자가 두 개의 기기를 등록할 수 없습니다.\n" + ds_List.GetColumn(nRow, "STAFF_NM"));
+					ds_List.SetColumn(nRow, strColumnID, varOldValue);
+					return;
+				}
+			}
+		}
+	}
+	else if(strColumnID == "DEPT_CD")
+	{
+		ds_List.SetColumn(nRow, "BRAN_CD", ds_GIBU_CD.GetColumn(ds_GIBU_CD.FindRow("DEPT_CD", varNewValue), "GIBU"));
+	}
+}
+]]></Script>
+</Window>

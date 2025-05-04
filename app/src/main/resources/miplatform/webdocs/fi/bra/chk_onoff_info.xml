@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="600" Id="chk_onoff_info" Left="8" OnLoadCompleted="chk_onoff_info_OnLoadCompleted" PidAttrib="7" Title="온오프&#32;정보&#32;없는&#32;업소리스트" Top="8" Ver="1.0" Width="520" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoFit="TRUE" BindDataset="ds_search" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="544" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="532" Id="grd_search" InputPanel="FALSE" Left="19" LineColor="silver" MinWidth="100" Right="499" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="12" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="480">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="160"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" color="user12" display="text" text="지부명" Valign="Center"/>
+						<cell align="center" col="1" color="user12" display="text" text="업소코드" Valign="Center"/>
+						<cell align="center" col="2" color="user12" display="text" text="업소명" Valign="Center"/>
+						<cell align="center" col="3" color="user12" display="text" text="업종" Valign="Center"/>
+						<cell align="center" col="4" color="user12" display="text" text="기기대수" Valign="Center"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text" edit="normal"/>
+						<cell align="left" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="left" col="3" colid="GRADNM" display="text"/>
+						<cell align="center" col="4" colid="MCHNDAESU" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" color="user12" display="text" font="굴림,8,Bold"/>
+						<cell col="1" color="user12" display="normal" font="굴림,8,Bold" text="총"/>
+						<cell col="2" color="user12" display="number" expr='count(&quot;UPSO_CD&quot;)' font="굴림,8,Bold"/>
+						<cell col="3" color="user12" display="text" font="굴림,8,Bold"/>
+						<cell col="4" color="user12" display="text" font="굴림,8,Bold"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="216" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="2" TabStop="FALSE" Text="닫기" Top="560" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  // 공통 js
+#include "script::commDs.js"
+
+function chk_onoff_info_OnLoadCompleted(obj){
+	ds_In.AddRow();
+	this.ds_In.SetColumn(0,"BRAN_CD", BRAN_CD);
+	this.ds_In.SetColumn(0,"GBN", "2");
+	
+	gfn_syncCall("ONOFF_CHECK_LIST","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=onoff_check_list","S=ds_In", "ds_search=SEL2", "", "");
+}
+
+function btn_close_OnClick(obj){
+	close();
+}
+
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra04_p20" Left="8" OnLoadCompleted="bra04_p20_OnLoadCompleted" PidAttrib="7" Title="업소원장내역서" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_ZIP></END_ZIP>
+						<NOTE_GBN></NOTE_GBN>
+						<NOTE_YEAR></NOTE_YEAR>
+						<STAFF_CD></STAFF_CD>
+						<START_ZIP></START_ZIP>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_REPORTTYPE">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>A</code>
+						<value>징수원장내역</value>
+					</record>
+					<record>
+						<code>B</code>
+						<value>징수메모원장내역</value>
+					</record>
+					<record>
+						<code>D</code>
+						<value>징수상세원장내역</value>
+					</record>
+					<record>
+						<code>E</code>
+						<value>징수원장내역2</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list01">
+				<Contents>
+					<colinfo id="MNGEMSTR_HPNUM" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="255" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MCH_CNT" size="255" summ="default" type="STRING"/>
+					<colinfo id="REMAK_1" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MONPRNCFEE" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="REMAK_2" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="BPAP_DAY" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM_OX" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIOWN_NUM_OX" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_LAST_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_01" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_02" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_03" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_04" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_05" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_06" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_07" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_08" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_09" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_10" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_11" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY_12" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_01" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_02" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_03" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_04" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_05" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_06" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_07" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_08" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_09" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_10" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_11" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY_12" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_01" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_02" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_03" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_04" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_05" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_06" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_07" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_08" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_09" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_10" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_11" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY_12" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list02">
+				<Contents>
+					<colinfo id="BB_MM_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_12" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_11" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_07" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="255" summ="default" type="STRING"/>
+					<colinfo id="MCH_CNT" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_10" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MONPRNCFEE" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_08" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_02" size="255" summ="default" type="STRING"/>
+					<colinfo id="B_MM_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_09" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_03" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN_05" size="255" summ="default" type="STRING"/>
+					<colinfo id="BB_MM_04" size="255" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_06" size="255" summ="default" type="STRING"/>
+					<colinfo id="MM_01" size="255" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="255" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sort1">
+				<Contents>
+					<colinfo id="CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="VALUE" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE>GRADNM</CODE>
+						<VALUE>등급</VALUE>
+					</record>
+					<record>
+						<CODE>UPSO_NM</CODE>
+						<VALUE>업소명</VALUE>
+					</record>
+					<record>
+						<CODE>UPSO_CD</CODE>
+						<VALUE>업소코드</VALUE>
+					</record>
+					<record>
+						<CODE>UPSO_ADDR</CODE>
+						<VALUE>주소</VALUE>
+					</record>
+					<record>
+						<CODE>DONG</CODE>
+						<VALUE>업소동명</VALUE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sort2">
+				<Contents>
+					<colinfo id="CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="VALUE" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE>GRADNM</CODE>
+						<VALUE>등급</VALUE>
+					</record>
+					<record>
+						<CODE>UPSO_NM</CODE>
+						<VALUE>업소명</VALUE>
+					</record>
+					<record>
+						<CODE>UPSO_CD</CODE>
+						<VALUE>업소코드</VALUE>
+					</record>
+					<record>
+						<CODE>UPSO_ADDR</CODE>
+						<VALUE>주소</VALUE>
+					</record>
+					<record>
+						<CODE>DONG</CODE>
+						<VALUE>업소동명</VALUE>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="95" Id="Image18" ImageID="C_search3_right" Left="1029" TabOrder="10" TabStop="FALSE" Top="11" Width="18"></Image>
+		<Image FillType="STRETCH" Height="95" Id="Image15" ImageID="C_search3_bg" Left="16" TabOrder="11" TabStop="FALSE" Top="11" Width="1015"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="245" TabOrder="9" TabStop="FALSE" Top="51" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="264" Style="tx_left_bold" TabOrder="9" Text="센터명" Top="51" Width="48"></Static>
+		<Image Height="103" Id="Image1" ImageID="C_search3_left" Left="8" TabOrder="12" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="314" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="3" ToolTipText="센터명" Top="47" Width="138"></Combo>
+		<Spin BindDataset="ds_search" BKColor="user13" Border="Flat" CanChange="spn_YYYY_CanChange" Column="NOTE_YEAR" Height="20" Id="spn_YYYY" Left="138" Style="edit" TabOrder="2" Text="2009" ToolTipText="기준년도" Top="47" Width="83"></Spin>
+		<Static Height="17" Id="Static24" Left="48" Style="tx_left_bold" TabOrder="15" Text="기준년도" Top="51" Width="53"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="31" TabOrder="14" TabStop="FALSE" Top="51" Width="11"></Image>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="474" TabOrder="16" TabStop="FALSE" Top="51" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="491" Style="tx_left_bold" TabOrder="17" Text="사원명" Top="51" Width="47"></Static>
+		<Combo BindDataset="ds_search" BorderColor="user3" CodeColumn="STAFF_CD" Column="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="556" OnChanged="cob_Staff_Nm_OnChanged" TabOrder="4" ToolTipText="담당직원" Top="46" Width="141"></Combo>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="31" TabOrder="18" TabStop="FALSE" Top="79" Width="12"></Image>
+		<Static Height="15" Id="Static1" Left="47" Style="tx_left_bold" TabOrder="19" Text="업소코드/명" Top="79" Width="70"></Static>
+		<Edit Align="CENTER" BindDataset="ds_search" Border="Flat" BorderColor="user10" Column="UPSO_CD" Height="20" Id="edt_UPSO_CD" ImeMode="none" Left="137" LeftMargin="2" MaxLength="8" OnChar="edt_UPSO_CD_OnChar" OnClick="edt_UPSO_CD_OnClick" OnKeyDown="edt_UPSO_CD_OnKeyDown" Style="edit" TabOrder="5" ToolTipText="업소코드" Top="74" UseIME="FALSE" Width="64"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Column="UPSO_NM" Height="20" Id="edt_UPSO_NM" ImeMode="native,katakana" Left="206" MaxLength="10" OnClick="edt_UPSO_NM_OnClick" OnKeyDown="edt_UPSO_NM_OnKeyDown" Style="edit" TabOrder="6" Top="74" Width="176"></Edit>
+		<Button Cursor="HAND" Height="21" Id="btn_FindUpso" ImageID="C_btn_search" Left="393" OnClick="btn_FindUpso_OnClick" TabOrder="20" TabStop="FALSE" Top="74" Width="58"></Button>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="474" TabOrder="21" TabStop="FALSE" Top="79" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="492" Style="tx_left_bold" TabOrder="22" Text="우편번호" Top="79" Width="60"></Static>
+		<MaskEdit BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="darkgray" Column="START_ZIP" Height="20" Id="mae_START_ZIP" Left="557" LeftMargin="7" Mask="#####" MaxLength="6" TabOrder="7" ToolTipText="우편번호_S" Top="74" Type="STRING" Value="000000" Width="60"></MaskEdit>
+		<Static Color="user1" Height="16" Id="Static6" Left="621" TabOrder="23" Text="~" Top="78" Width="16"></Static>
+		<MaskEdit BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="darkgray" Column="END_ZIP" Height="20" Id="mae_END_ZIP" Left="636" LeftMargin="7" Mask="#####" MaxLength="6" TabOrder="8" ToolTipText="우편번호_E" Top="74" Type="STRING" Value="999999" Width="60"></MaskEdit>
+		<Radio BindDataset="ds_search" BKColor="white" Border="None" BorderColor="user6" CodeColumn="code" Column="NOTE_GBN" ColumnCount="4" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="rad_UPSOTYPE" INDEX="0" InnerDataset="ds_REPORTTYPE" Left="32" ShadowColor="user17" Style="radio" TabOrder="1" Top="17" Width="528">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<ubiviewer Bottom="792" Height="680" Id="ubi_View" Left="8" Right="1040" Top="112" Width="1032">
+			<_PersistData>&#13;&#10;/6zbWOpX/wAAAQCpagAA90hGAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Checkbox BKColor="user15" Color="user19" Font="굴림,9,Bold" Height="13" Id="chk_juminprint" Left="728" TabOrder="25" Text="주민번호&#32;출력" Top="77" Width="113"></Checkbox>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_sort" ImageID="C_btn_70" Left="959" LeftMargin="23" OnClick="btn_SearchFile_OnClick" Style="edit" TabOrder="26" TabStop="FALSE" Text="정&#32;렬" Top="45" TopMargin="1" Width="71"></Button>
+		<Combo BorderColor="user3" CodeColumn="CODE" DataColumn="VALUE" Height="20" Id="cob_sort1" ImeMode="none" InnerDataset="ds_sort1" Left="730" OnChanged="cob_Staff_Nm_OnChanged" TabOrder="27" ToolTipText="담당직원" Top="46" Width="100"></Combo>
+		<Combo BorderColor="user3" CodeColumn="CODE" DataColumn="VALUE" Height="20" Id="cob_sort2" ImeMode="none" InnerDataset="ds_sort2" Left="852" OnChanged="cob_Staff_Nm_OnChanged" TabOrder="28" ToolTipText="담당직원" Top="46" Width="100"></Combo>
+		<Static Color="user12" Height="11" Id="Static3" Left="713" Style="tx_left_bold" TabOrder="29" Text="1." Top="51" Width="15"></Static>
+		<Static Color="user12" Height="11" Id="Static4" Left="835" Style="tx_left_bold" TabOrder="30" Text="2." Top="51" Width="15"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+	
+	if(srvId == "bran_note_select"){
+	    fn_UbiLoad();
+	}
+}
+
+
+function bra04_p20_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);			// 공통버튼 활성화
+
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	cob_BRAN_CD_OnChanged();
+	
+	spn_YYYY.Value = substr(today(),0,4);
+	rad_UPSOTYPE.Index = 0;
+	
+	mae_START_ZIP.Value = "00000";
+	mae_END_ZIP.Value = "99999";
+}
+
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+    }
+    //출력
+    else if(strCode == "PRINT"){
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function fn_Search(){
+    if (!gfn_CheckFormNull(this)) return;
+    gfn_syncCall("bran_note_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001008003&EVENTID=bran_note_select","S=ds_search","ds_list01=SEL3 ds_list02=SEL4","","fn_CallBack");
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(cob_BRAN_CD.Value);
+    //gfn_SetInnerPermission("tab_Onwer.MNGEMSTR.btn_print,tab_Onwer.MNGEMSTR.btn_play,tab_Onwer.MNGEMSTR.btn_call_bra01_s01,tab_Onwer.MNGEMSTR.btn_add,tab_Onwer.MNGEMSTR.btn_del");
+    
+    this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	var iRow = ds_SawonInfo.InsertRow(0);
+	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+	
+	this.cob_Staff_Nm.Value = "";
+	this.cob_Staff_Nm.Enable = true;
+}
+
+function cob_Staff_Nm_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(this.cob_BRAN_CD.Value==null){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+}
+
+function edt_UPSO_CD_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+
+function edt_UPSO_CD_OnClick(obj)
+{
+	if(length(this.cob_BRAN_CD.Text)==0  ){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+}
+
+function edt_UPSO_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(this.cob_BRAN_CD.Value==null ){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	if (nChar == "13") {
+		fn_GetUPSO_CD_cd();
+	}
+	else if (nChar == "112") fn_FindUPSO();
+}
+
+function fn_GetUPSO_CD_cd()
+{
+	if(this.edt_UPSO_NM.Text == ""){
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = this.edt_UPSO_NM.Text;
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+		}
+		else {
+	
+			fn_FindUPSO();
+		}
+	}
+	else {
+
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = "";
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+		}
+		else {
+			fn_FindUPSO();
+		}
+	
+	}
+}
+
+function fn_FindUPSO()
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(this.cob_BRAN_CD.Value==null ){
+
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD;
+	if(this.edt_UPSO_NM.Text == ""){
+		UPSO_CD = this.edt_UPSO_CD.Text;
+	}
+	else{
+		UPSO_CD = "";
+	}
+
+	this.edt_UPSO_NM.SetFocus();
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra04_p20");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);
+
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	    this.edt_UPSO_CD.Text = vArr[0];
+	    this.edt_UPSO_NM.Text = vArr[1];
+	}
+}
+
+function edt_UPSO_NM_OnClick(obj)
+{
+	if(this.cob_BRAN_CD.Value==null){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+}
+
+function edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(cob_BRAN_CD.Text.Length() ==0 ) {
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		cob_BRAN_CD.SetFocus();
+		return;
+	}
+	if(nChar == "112") {
+		fn_FindUPSO();
+	}
+	return;
+}
+
+function btn_FindUpso_OnClick(obj)
+{
+	fn_FindUPSO();
+}
+
+function fn_UbiLoad()
+{
+    ubi_View.setPageScale("120");
+	ubi_View.setJrfFileDir(gv_ReportUrl + "fi/bra/");
+	ubi_View.SetArgument("BRAN_NM",cob_BRAN_CD.Text );
+	ubi_View.SetArgument("YYYY",spn_YYYY.Text );
+	ubi_View.SetArgument("juminprintgbn",chk_juminprint.Value);
+    
+    if(ds_search.GetColumn(0,"NOTE_GBN") == "A"){
+        ubi_View.setJrfFileName("bra04_p20_p01.jrf");
+        ubi_View.SetDataset("ds_sql1", "ds_list02");    // SEL4
+    }else if(ds_search.GetColumn(0,"NOTE_GBN") == "B"){
+        ubi_View.setJrfFileName("bra04_p20_p02.jrf");
+        ubi_View.SetDataset("ds_sql1", "ds_list02");    // SEL4
+    }else if(ds_search.GetColumn(0,"NOTE_GBN") == "D"){
+        ubi_View.setJrfFileName("bra04_p20_p03.jrf");
+        ubi_View.SetDataset("ds_sql1", "ds_list01");	// SEL3
+    }else if(ds_search.GetColumn(0,"NOTE_GBN") == "E"){
+        ubi_View.setJrfFileName("bra04_p20_p04.jrf");
+        ubi_View.SetDataset("ds_sql1", "ds_list01");	// SEL3
+    }
+    
+	ubi_View.Retrieve();
+}
+
+function btn_SearchFile_OnClick(obj)
+{
+	ds_list01.Sort(cob_sort1.value+","+cob_sort2.Value);
+	ds_list02.Sort(cob_sort1.value+","+cob_sort2.Value);
+	fn_UbiLoad();
+}
+
+
+]]></Script>
+</Window>

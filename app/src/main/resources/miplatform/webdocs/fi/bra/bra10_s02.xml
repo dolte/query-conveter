@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="센터별관할구역관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ATTE" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DSRCCNTY" UseClientLayout="1">
+				<Contents>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRANCHG_HISTY">
+				<Contents>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sigugun">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SaveData">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORG_BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image12" ImageID="C_search_bg" Left="18" TabOrder="19" TabStop="FALSE" Top="12" Width="590"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image1" ImageID="C_search_bg" Left="664" TabOrder="13" TabStop="FALSE" Top="69" Width="368"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="6" TabStop="FALSE" Top="68" Width="590"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="7" TabStop="FALSE" Top="68" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="608" TabOrder="8" TabStop="FALSE" Top="68" Width="10"></Image>
+		<Static Height="15" Id="Static1" Left="44" Style="tx_left_bold" TabOrder="8" Text="시군구" Top="83" Width="49"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="24" TabOrder="9" TabStop="FALSE" Top="83" Width="12"></Image>
+		<Combo BKColor="user13" CodeColumn="ATTE" DataColumn="ATTE" Height="23" Id="cob_ATTE" InnerDataset="ds_ATTE" Left="104" OnChanged="cob_ATTE_OnChanged" TabOrder="2" ToolTipText="시군구_1" Top="77" Width="111"></Combo>
+		<Combo BKColor="user13" CodeColumn="MNG_ZIP" DataColumn="DSRCCNTY" Height="23" Id="cob_DSRCCNTY" InnerDataset="ds_DSRCCNTY" Left="216" TabOrder="3" ToolTipText="시군구_2" Top="77" Width="130"></Combo>
+		<Image Height="11" Id="Image6" ImageID="C_icon" Left="696" TabOrder="10" TabStop="FALSE" Top="83" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static8" Left="717" Style="tx_left_bold" TabOrder="11" Text="변경할&#32;센터" Top="83" Width="73"></Static>
+		<Combo BKColor="user13" Height="23" Id="cob_CHGBRAN_CD" Left="806" OnChanged="cob_CHGBRAN_CD_OnChanged" TabOrder="5" ToolTipText="변경할&#32;센터" Top="77" Width="112"></Combo>
+		<Image Height="41" Id="Image0" ImageID="C_search_left" Left="654" TabOrder="11" TabStop="FALSE" Top="69" Width="10"></Image>
+		<Image Height="41" Id="Image2" ImageID="C_search_right" Left="1029" TabOrder="12" TabStop="FALSE" Top="69" Width="10"></Image>
+		<Grid AutoFit="TRUE" AutoScrollBar="AlwaysVert" BindDataset="ds_BRANCHG_HISTY" BKColor="user11" BkColor2="user9" BoldHead="true" Border="Flat" BorderColor="ACTIVEBORDER" Bottom="808" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="656" Id="grd_BRANCHG_HISTY" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" OnHeadClick="grd_BranZip_OnHeadClick" Right="1040" TabOrder="14" TabStop="FALSE" Top="152" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="90"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="200"/>
+						<col width="150"/>
+						<col width="150"/>
+						<col width="150"/>
+						<col width="154"/>
+					</columns>
+					<head>
+						<cell col="0" color="user19" display="text" text="번호"/>
+						<cell col="1" color="user19" display="text" text="관리&#32;우편번호"/>
+						<cell col="2" color="user19" display="text" text="업소코드"/>
+						<cell col="3" color="user19" display="text" text="업소명"/>
+						<cell col="4" color="user19" display="text" text="원&#32;센터코드"/>
+						<cell col="5" color="user19" display="text" text="변경&#32;센터코드"/>
+						<cell col="6" color="user19" display="text" edit="checkbox" text="등록자"/>
+						<cell col="7" color="user19" display="text" edit="checkbox" text="등록일"/>
+					</head>
+					<body>
+						<cell col="0" colid="SEQ" display="normal"/>
+						<cell col="1" colid="MNG_ZIP" display="normal"/>
+						<cell col="2" colid="UPSO_CD" display="text"/>
+						<cell col="3" colid="UPSO_NM" display="text"/>
+						<cell col="4" colid="ORG_BRAN_CD" display="text"/>
+						<cell col="5" colid="CHG_BRAN_CD" display="text"/>
+						<cell col="6" colid="INSPRES_ID" display="text"/>
+						<cell col="7" colid="INS_DATE" display="date"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="17" Id="Image4" ImageID="C_icon2" Left="13" TabOrder="15" TabStop="FALSE" Top="132" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static2" Left="36" Style="tx_bold" TabOrder="17" Text="변경&#32;결과" Top="134" Width="72"></Static>
+		<Radio BKColor="whitesmoke" Border="None" Font="Tahoma,8,Bold" Height="24" Id="Radio00" INDEX="0" Left="20" OnChanged="Radio00_OnChanged" Style="radio" TabOrder="1" Top="18" Width="384">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="관리구역별&#32;변경" top="5" width="110"/>
+				<Layout code="2" height="18" left="200" text="센터전체&#32;변경" top="5" width="120"/>
+			</Contents>
+		</Radio>
+		<Image FillType="STRETCH" Height="41" Id="Image5" ImageID="C_search_bg" Left="664" TabOrder="17" TabStop="FALSE" Top="13" Width="368"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="696" TabOrder="15" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="717" Style="tx_left_bold" TabOrder="19" Text="변경전&#32;센터" Top="27" Width="73"></Static>
+		<Image Height="41" Id="Image8" ImageID="C_search_left" Left="654" TabOrder="18" TabStop="FALSE" Top="13" Width="10"></Image>
+		<Image Height="41" Id="Image9" ImageID="C_search_right" Left="1029" TabOrder="16" TabStop="FALSE" Top="13" Width="10"></Image>
+		<Image Height="41" Id="Image10" ImageID="C_search_left" Left="8" TabOrder="20" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image11" ImageID="C_search_right" Left="608" TabOrder="21" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Combo BKColor="user13" Height="23" Id="cob_CHGBRAN_CD1" Left="806" OnChanged="cob_CHGBRAN_CD1_OnChanged" TabOrder="4" ToolTipText="변경전센터" Top="22" Width="112"></Combo>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_CHGBRAN_CD, 1);
+	gfn_GetDataGIBU_CD(this.cob_CHGBRAN_CD1, 1);
+
+
+	// 시도 정보 검색
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","","ds_ATTE=SEL1","","fn_CallBack");
+	//gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008002&EVENTID=zone_search","","ds_ATTE=SEL6","","fn_CallBack");
+	
+	//UI 초기화
+	Radio00_OnChanged();
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+
+	if (srvId == "LOAD_ATTE") {
+	}
+	else if (srvId == "LOAD_DSRCCNTY") {
+	}
+}	
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New() 
+{
+}
+
+function fn_Save() 
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if (this.Radio00.Value == 2) {
+		if(this.cob_CHGBRAN_CD.Value == "" or this.cob_CHGBRAN_CD.Value == null){
+            gfn_Confirm("MB_OK", "변경할 센터를 선택하십시오.", "경고", "0");
+			return;
+		}
+		if(this.cob_CHGBRAN_CD1.Value == "" or this.cob_CHGBRAN_CD1.Value == null){
+            gfn_Confirm("MB_OK", "변경전 센터를 선택하십시오.", "경고", "0");
+			return;
+		} 
+		if(this.cob_CHGBRAN_CD.Value == this.cob_CHGBRAN_CD1.Value) {
+            gfn_Confirm("MB_OK", "동일한 센터는 변경하실 수 없습니다.", "경고", "0");
+			return;
+		}
+		
+		if(Confirm( this.cob_CHGBRAN_CD1.Text +"를 " + this.cob_CHGBRAN_CD.Text +"로 변경하시겠습니까?")){
+			
+			this.ds_SaveData.ClearData();
+			this.ds_SaveData.AddRow();
+			this.ds_SaveData.SetColumn(0, "BRAN_CD", this.cob_CHGBRAN_CD.Value);
+			this.ds_SaveData.SetColumn(0, "ORG_BRAN_CD", this.cob_CHGBRAN_CD1.Value);
+			this.ds_SaveData.SetColumn(0, "GBN", this.Radio00.Value);
+			//this.ds_SaveData.SetColumn(0, "MNG_ZIP", this.cob_DSRCCNTY.Value);
+			trace(this.ds_SaveData.SaveXML());
+			
+			//gfn_syncCall("BRANZIPSAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008002&EVENTID=bran_cd_mng_t","S=ds_SaveData","","","fn_CallBack",gv_TraceLog,gv_formid);
+			gfn_syncCall("BRANZIPSAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008002&EVENTID=bran_cd_mng","S=ds_SaveData","","","fn_CallBack");
+			//	trace(this.ds_BRANCHG_HISTY.SaveXML());
+		}		
+	}
+	else if(this.Radio00.Value == 1){
+		if (length(this.cob_ATTE.Value) == 0) {
+			gfn_Confirm("MB_OK", "시군구_1 정보를 입력하십시오.", "경고", "0");
+			this.cob_ATTE.SetFocus();
+			return;
+		}
+	
+		if (length(this.cob_DSRCCNTY.Value) == 0) {
+			gfn_Confirm("MB_OK", "시군구_2 정보를 입력하십시오.", "경고", "0");
+			this.cob_DSRCCNTY.SetFocus();
+			return;
+		}
+	
+		if (length(this.cob_CHGBRAN_CD.Value) == 0) {
+			gfn_Confirm("MB_OK", "변경할 센터를 선택하십시오.", "경고", "0");
+			this.cob_CHGBRAN_CD.SetFocus();
+			return;
+		}
+		
+		this.ds_SaveData.ClearData();
+		this.ds_SaveData.AddRow();
+		this.ds_SaveData.SetColumn(0, "BRAN_CD", this.cob_CHGBRAN_CD.Value);
+		//this.ds_SaveData.SetColumn(0, "ORG_BRAN_CD", this.cob_CHGBRAN_CD1.Value);
+		this.ds_SaveData.SetColumn(0, "MNG_ZIP", this.cob_DSRCCNTY.Value);
+		this.ds_SaveData.SetColumn(0, "GBN", this.Radio00.Value);
+		trace(this.ds_SaveData.SaveXML());
+		
+		gfn_syncCall("BRANZIPSAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008002&EVENTID=bran_cd_mng","S=ds_SaveData","ds_BRANCHG_HISTY=SEL11","","fn_CallBack");
+	}
+}
+
+function fn_Excel() {}
+function fn_Delete() {}
+function fn_Print() {}
+
+
+function cob_ATTE_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	this.ds_sigugun.ClearData();
+	this.ds_sigugun.AddRow();
+	this.ds_sigugun.SetColumn(0, "ATTE", strCode);
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","S=ds_sigugun","ds_DSRCCNTY=SEL5","","fn_CallBack");
+}
+
+function Radio00_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(this.Radio00.Value == 1){
+
+		this.grd_BranZip.Enable = true;
+		this.Image8.Visible = false;
+		this.Image5.Visible = false;
+		this.Image9.Visible = false;
+		this.Image7.Visible = false;
+		this.Static0.Visible = false;
+		this.cob_CHGBRAN_CD1.Visible = false;
+		
+		this.cob_ATTE.Enable = true;
+		this.cob_DSRCCNTY.Enable = true;
+		this.cob_DONG.Enable = true;
+		this.btn_Search.Enable = true;
+		this.cob_CHGBRAN_CD1.BKColor = "";
+		this.cob_ATTE.BKColor = "user13";
+		this.cob_DSRCCNTY.BKColor = "user13";
+	}
+	else if(this.Radio00.Value == 2){
+
+		this.grd_BranZip.Enable = false;
+		this.Image8.Visible = true;
+		this.Image5.Visible = true;
+		this.Image9.Visible = true;
+		this.Image7.Visible = true;
+		this.Static0.Visible = true;
+		this.cob_CHGBRAN_CD1.Visible = true;
+		
+		this.cob_ATTE.Enable = false;
+		this.cob_DSRCCNTY.Enable = false;
+		this.cob_DONG.Enable = false;
+		this.btn_Search.Enable = false;
+		this.cob_CHGBRAN_CD1.BKColor = "USER13";
+		this.cob_ATTE.BKColor = "";
+		this.cob_DSRCCNTY.BKColor = "";
+	}
+}
+
+function cob_CHGBRAN_CD1_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+
+function cob_CHGBRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

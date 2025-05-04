@@ -1,0 +1,2803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="bra05_s03" Left="8" OnActivate="bra05_s03_OnActivate" OnFocus="bra05_s03_OnFocus" OnLoadCompleted="bra05_s03_OnLoadCompleted" PidAttrib="7" Title="고소등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_accu_gbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>A</code>
+						<value>형사</value>
+					</record>
+					<record>
+						<code>B</code>
+						<value>민사</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_obj">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>B</code>
+						<value>경영주</value>
+					</record>
+					<record>
+						<code>O</code>
+						<value>허가주</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_upso_info" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="cut_MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_detail" OnColumnChanged="ds_accu_detail_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_OBJ" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EVT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EVT_NUM2" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPECTOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUDG_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUDG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUDG_BRE" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_ORG_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPN_DAY2" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_ORG_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TEMPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_memo" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MEMO_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MEMO_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MEMO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_REPT_GBN" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_amt" UseClientLayout="1">
+				<Contents>
+					<colinfo id="MONTHS_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ORG_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_TOT_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_find_code" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CODE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_use_amt" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_ORG_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_TOT_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_pnt_in">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_info_print">
+				<Contents>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINT_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_staff_info_print">
+				<Contents>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESIINS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINT_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_cancel_print">
+				<Contents>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINT_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_cancel_print2">
+				<Contents>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="S_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AGE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTH_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESIINS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CP_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_NM&#32;" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_judge">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>취하:입금</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>기소중지</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>기소유예</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>구약식(벌금)</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>41</CODE_CD>
+						<CODE_NM>구약식(해결)</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>5</CODE_CD>
+						<CODE_NM>구약식(벌금)</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>6</CODE_CD>
+						<CODE_NM>구약식(해결)</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>7</CODE_CD>
+						<CODE_NM>당사자촥오</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>8</CODE_CD>
+						<CODE_NM>취소:무입금</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>9</CODE_CD>
+						<CODE_NM>고소장반송</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>10</CODE_CD>
+						<CODE_NM>구공판</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>11</CODE_CD>
+						<CODE_NM>죄가안됨</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>12</CODE_CD>
+						<CODE_NM>참고인중지</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>13</CODE_CD>
+						<CODE_NM>각하</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>14</CODE_CD>
+						<CODE_NM>처리시효지남</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>99</CODE_CD>
+						<CODE_NM>전산취소</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_closingYn">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dup_in">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dup_out">
+				<Contents>
+					<colinfo id="COUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_close">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cd_search">
+				<Contents>
+					<colinfo id="CODE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD></CODE_CD>
+						<CODE_GBN></CODE_GBN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cd_info">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_approval_result">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_state_search">
+				<Contents>
+					<colinfo id="LNK_KEY" size="256" summ="default" type="STRING"/>
+					<record>
+						<LNK_KEY></LNK_KEY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_comp_chk">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_advt_attch" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bpap_attch" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_evtd_attch" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UP" size="256" summ="default" type="STRING"/>
+					<colinfo id="DOWN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_comp_attch" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UP" size="256" summ="default" type="STRING"/>
+					<colinfo id="DOWN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_delete" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCU_BRAN></ACCU_BRAN>
+						<ACCU_DAY></ACCU_DAY>
+						<ACCU_NUM></ACCU_NUM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="white" Bottom="740" Height="27" Id="Shape12" Left="136" LineColor="user3" Right="1036" TabOrder="183" Top="713" Type="Rectangle" Width="900"></Shape>
+		<Shape BKColor="white" Bottom="607" Height="26" Id="Shape2" Left="520" LineColor="user3" Right="1039" TabOrder="162" Top="581" Type="Rectangle" Width="519"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static48" Left="8" Style="box_tx_b" TabOrder="161" Text="작품코드/명" Top="606" VAlign="Middle" Width="130"></Static>
+		<ubiviewer Bottom="664" Height="32" Id="ubi0" Left="920" Right="1040" Top="632" Visible="FALSE" Width="120">
+			<_PersistData>&#13;&#10;/6z5NXg//wAAAQBnDAAA908DAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Shape BKColor="white" Bottom="192" Height="26" Id="Shape1" Left="129" LineColor="user3" Right="693" TabOrder="138" Top="166" Type="Rectangle" Width="564"></Shape>
+		<Image FillType="STRETCH" Height="70" Id="Image17" ImageID="C_Search2_bg1" Left="16" TabOrder="60" TabStop="FALSE" Top="11" Width="1012"></Image>
+		<Shape BKColor="white" Bottom="632" Height="27" Id="Shape22" Left="136" LineColor="user3" Right="1039" TabOrder="120" Top="605" Type="Rectangle" Width="903"></Shape>
+		<Shape BKColor="white" Bottom="607" Height="27" Id="Shape21" Left="501" LineColor="user3" Right="1039" TabOrder="119" Top="580" Type="Rectangle" Width="538"></Shape>
+		<Shape BKColor="white" Bottom="582" Height="27" Id="Shape20" Left="501" LineColor="user3" Right="1039" TabOrder="118" Top="555" Type="Rectangle" Width="538"></Shape>
+		<Shape BKColor="white" Bottom="483" Height="27" Id="Shape16" Left="137" LineColor="user3" Right="1039" TabOrder="114" Top="456" Type="Rectangle" Width="902"></Shape>
+		<Shape BKColor="white" Bottom="508" Height="27" Id="Shape17" Left="137" LineColor="user3" Right="1039" TabOrder="115" Top="481" Type="Rectangle" Width="902"></Shape>
+		<Shape BKColor="white" Bottom="533" Height="27" Id="Shape18" Left="137" LineColor="user3" Right="1039" TabOrder="116" Top="506" Type="Rectangle" Width="902"></Shape>
+		<Shape BKColor="white" Bottom="557" Height="26" Id="Shape19" Left="137" LineColor="user3" Right="1039" TabOrder="117" Top="531" Type="Rectangle" Width="902"></Shape>
+		<Shape BKColor="white" Bottom="363" Height="26" Id="Shape13" Left="121" LineColor="user3" Right="1039" TabOrder="111" Top="337" Type="Rectangle" Width="918"></Shape>
+		<Shape BKColor="white" Bottom="388" Height="26" Id="Shape14" Left="121" LineColor="user3" Right="1039" TabOrder="112" Top="362" Type="Rectangle" Width="918"></Shape>
+		<Shape BKColor="white" Bottom="413" Height="26" Id="Shape15" Left="119" LineColor="user3" Right="1039" TabOrder="113" Top="387" Type="Rectangle" Width="920"></Shape>
+		<Shape BKColor="white" Bottom="142" Height="26" Id="Shape0" Left="129" LineColor="user3" Right="693" TabOrder="104" Top="116" Type="Rectangle" Width="564"></Shape>
+		<Shape BKColor="white" Bottom="167" Height="26" Id="Shape4" Left="129" LineColor="user3" Right="693" TabOrder="105" Top="141" Type="Rectangle" Width="564"></Shape>
+		<Shape BKColor="white" Bottom="226" Height="26" Id="Shape5" Left="120" LineColor="user3" Right="684" TabOrder="106" Top="200" Type="Rectangle" Width="564"></Shape>
+		<Shape BKColor="white" Bottom="217" Height="26" Id="Shape6" Left="129" LineColor="user3" Right="693" TabOrder="107" Top="191" Type="Rectangle" Width="564"></Shape>
+		<Shape BKColor="white" Bottom="242" Height="26" Id="Shape8" Left="129" LineColor="user3" Right="693" TabOrder="108" Top="216" Type="Rectangle" Width="564"></Shape>
+		<Shape BKColor="white" Bottom="267" Height="26" Id="Shape10" Left="129" LineColor="user3" Right="693" TabOrder="109" Top="241" Type="Rectangle" Width="564"></Shape>
+		<Shape BKColor="white" Bottom="292" Height="26" Id="Shape11" Left="129" LineColor="user3" Right="693" TabOrder="110" Top="266" Type="Rectangle" Width="564"></Shape>
+		<MaskEdit BindDataset="ds_accu_amt" Border="Flat" BorderColor="user3" Column="CUR_ADDT_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_cur_addt_amt" Left="856" LeftMargin="10" TabOrder="53" TabStop="FALSE" Top="534" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_amt" Border="Flat" BorderColor="user3" Column="CUR_ORG_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_cur_org_amt" Left="856" LeftMargin="10" TabOrder="52" TabStop="FALSE" Top="509" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_amt" Border="Flat" BorderColor="user3" Column="CUR_TOT_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_cur_tot_amt" Left="856" LeftMargin="10" TabOrder="51" TabStop="FALSE" Top="484" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="COMIS" DisplayMaskchar="-" Height="20" Id="mae_comis" Left="532" LeftMargin="10" TabOrder="23" TabStop="FALSE" Top="609" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="SOL_ADDT_AMT" DisplayMaskchar="-" Height="20" Id="mae_sol_addt_amt" Left="532" LeftMargin="10" OnChanged="mae_sol_addt_amt_OnChanged" TabOrder="19" ToolTipText="해결가산금" Top="584" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="SOL_ORG_AMT" DisplayMaskchar="-" Height="20" Id="mae_sol_org_amt" Left="532" LeftMargin="10" OnChanged="mae_sol_org_amt_OnChanged" TabOrder="18" ToolTipText="해결원금" Top="559" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="SOL_TOT_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_sol_tot_amt" Left="532" LeftMargin="10" TabOrder="50" TabStop="FALSE" ToolTipText="해결총금액" Top="534" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="REQ_ADDT_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_req_addt_amt" Left="141" LeftMargin="10" OnChanged="mae_req_addt_amt_OnChanged" TabOrder="22" TabStop="FALSE" Top="534" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="REQ_ORG_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_req_org_amt" Left="141" LeftMargin="10" OnChanged="mae_req_org_amt_OnChanged" TabOrder="21" TabStop="FALSE" Top="509" Width="150"></MaskEdit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static18" Left="399" Style="box_tx_b" TabOrder="72" Text="해결총금액" Top="531" VAlign="Middle" Width="130"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="38" TabOrder="26" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="53" Style="tx_left_bold" TabOrder="27" Text="센터명" Top="27" Width="40"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="256" TabOrder="27" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="Static15" Left="272" Style="tx_left_bold" TabOrder="29" Text="고소번호" Top="27" Width="56"></Static>
+		<Static Height="9" Id="Static2" Left="420" TabOrder="30" Text="-" Top="27" Width="10"></Static>
+		<Static Height="18" Id="Static14" Left="484" TabOrder="31" Text="-" Top="27" Width="10"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="608" TabOrder="28" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="Static0" Left="624" Style="tx_left_bold" TabOrder="33" Text="구분" Top="27" Width="56"></Static>
+		<Combo Border="Flat" CodeColumn="code" DataColumn="value" Editable="TRUE" Height="20" Id="cob_accu_gbn" InnerDataset="ds_accu_gbn" Left="660" Search="FILTERED" Style="edit" TabOrder="5" Text="형사" Top="22" Width="76"></Combo>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static02" Left="477" Style="box_tx_b" TabOrder="34" Text="구&#32;&#32;&#32;&#32;&#32;분" Top="337" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static03" Left="8" Style="box_tx" TabOrder="35" Text="지&#32;부&#32;명" Top="116" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static29" Left="8" Style="box_tx_b" TabOrder="34" Text="업&#32;&#32;&#32;&#32;&#32;소" Top="141" VAlign="Middle" Width="122"></Static>
+		<Combo BindDataset="ds_accu_detail" Border="Flat" CodeColumn="code" Column="ACCU_OBJ" DataColumn="value" Height="20" Id="cob_accu_obj" InnerDataset="ds_accu_obj" Left="914" OnChanged="cob_accu_obj_OnChanged" Style="edit" TabOrder="7" Top="339" Width="120"></Combo>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static3" Left="8" Style="box_tx" TabOrder="35" Text="업&#32;주&#32;명" Top="166" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static33" Left="8" Style="box_tx_b" TabOrder="36" Text="담당&#32;사원" Top="216" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static34" Left="8" Style="box_tx_b" TabOrder="37" Text="전화&#32;번호" Top="241" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static39" Left="8" Style="box_tx" TabOrder="38" Text="&#32;영업장&#32;주소" Top="266" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static11" Left="476" Style="box_tx_b" TabOrder="39" Text="월&#32;사용료" Top="141" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static30" Left="476" Style="box_tx_b" TabOrder="41" Text="주민&#32;번호" Top="166" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static13" Left="476" Style="box_tx_b" TabOrder="40" Text="신규&#32;일자" Top="191" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static35" Left="476" Style="box_tx_b" TabOrder="42" Text="폐업&#32;년월" Top="216" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static12" Left="789" Style="box_tx_b" TabOrder="43" Text="고소대상" Top="337" VAlign="Middle" Width="122"></Static>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="UPSO_NM" Enable="FALSE" Height="20" Id="edt_UPSO_NM" ImeMode="native,katakana" Left="197" LeftMargin="2" OnKeyDown="edt_UPSO_NM_OnKeyDown" Style="edit" TabOrder="29" TabStop="FALSE" Top="144" Width="198"></Edit>
+		<Combo BindDataset="ds_accu_detail" Border="Flat" CodeColumn="code" Column="ACCU_GBN" DataColumn="value" Height="20" Id="cob_accu_gbn2" InnerDataset="ds_accu_gbn" Left="601" OnChanged="cob_accu_gbn2_OnChanged" Style="edit" TabOrder="6" Top="339" Width="76"></Combo>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static21" Left="8" Style="box_tx_b" TabOrder="45" Text="고소번호" Top="337" VAlign="Middle" Width="122"></Static>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="UPSO_PHON" Enable="FALSE" Height="20" Id="edt_UPSO_PHON" Left="133" LeftMargin="2" Style="edit" TabOrder="30" TabStop="FALSE" Top="244" Width="106"></Edit>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="MNGEMSTR_NM" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_NM" Left="133" LeftMargin="2" Style="edit" TabOrder="31" TabStop="FALSE" Top="169" Width="106"></Edit>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="ADDR" Enable="FALSE" Height="20" Id="edt_ADDR" Left="133" LeftMargin="2" Style="edit" TabOrder="32" TabStop="FALSE" Top="269" Width="557"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static4" Left="8" Style="box_tx_b" TabOrder="51" Text="업&#32;&#32;&#32;&#32;&#32;종" Top="191" VAlign="Middle" Width="122"></Static>
+		<Edit Align="CENTER" BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="GRAD" Enable="FALSE" Height="20" Id="edt_GRAD" Left="133" LeftMargin="2" Style="edit" TabOrder="33" TabStop="FALSE" Top="194" Width="40"></Edit>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="GRADNM" Enable="FALSE" Height="20" Id="edt_GRADNM" Left="177" LeftMargin="2" Style="edit" TabOrder="34" TabStop="FALSE" Top="194" Width="124"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_low" ImageID="C_btn_90" Left="808" LeftMargin="23" OnClick="btn_low_OnClick" Style="edit" TabOrder="24" TabStop="FALSE" Text="고소장출력" Top="24" TopMargin="1" Visible="FALSE" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del" ImageID="C_btn_70" Left="895" LeftMargin="23" OnClick="btn_del_OnClick" Style="edit" TabOrder="25" TabStop="FALSE" Text="삭제" Top="92" TopMargin="1" Width="71"></Button>
+		<Edit Align="CENTER" BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="BRAN_CD" Enable="FALSE" Height="20" Id="edt_BRAN_CD" Left="133" LeftMargin="2" Style="edit" TabOrder="35" TabStop="FALSE" Top="119" Width="61"></Edit>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="DEPT_NM" Enable="FALSE" Height="20" Id="edt_DEPT_NM" Left="197" LeftMargin="2" Style="edit" TabOrder="36" TabStop="FALSE" Top="119" Width="108"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="st_PLCST" Left="8" Style="box_tx_b" TabOrder="56" Text="경&#32;찰&#32;서" Top="362" VAlign="Middle" Width="122"></Static>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="ACCU_DAY" DisplayComma="FALSE" Enable="FALSE" Height="20" Id="mae_ACCU_DAY_2" Left="133" LeftMargin="10" Mask="####.##.##" MaxLength="8" OnKeyDown="mae_DEMD_DAY_OnKeyDown" TabOrder="38" TabStop="FALSE" Top="340" Type="STRING" Width="80"></MaskEdit>
+		<Static Height="9" Id="Static5" Left="222" TabOrder="57" Text="-" Top="345" Width="10"></Static>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="ACCU_NUM" DisplayComma="FALSE" Enable="FALSE" Height="20" Id="mae_ACCU_NUM_2" Left="236" LeftMargin="10" Mask="####" MaxLength="4" TabOrder="39" TabStop="FALSE" Top="340" Type="STRING" Width="47"></MaskEdit>
+		<Static Height="9" Id="Static6" Left="288" TabOrder="58" Text="-" Top="345" Width="10"></Static>
+		<Edit Align="CENTER" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="ACCU_BRAN" Enable="FALSE" Height="20" Id="edt_ACCU_BRAN_2" ImeMode="none" Left="300" LeftMargin="4" MaxLength="2" RightMargin="2" Style="edit" TabOrder="37" TabStop="FALSE" Top="340" Width="24"></Edit>
+		<Edit Align="CENTER" BindDataset="ds_accu_detail" Border="Flat" Column="PLCST_CD" Height="20" Id="edt_plcst_cd" Left="133" LeftMargin="2" MaxLength="3" OnKeyDown="edt_plcst_cd_OnKeyDown" Style="edit" TabOrder="20" TabStop="FALSE" ToolTipText="경찰서/법원" Top="365" Width="40"></Edit>
+		<Edit Align="CENTER" BindDataset="ds_accu_detail" Border="Flat" Column="PLCST_NM" Enable="FALSE" Height="20" Id="edt_plcst_nm" Left="178" LeftMargin="2" OnKeyDown="edt_plcst_nm_OnKeyDown" Style="edit" TabOrder="8" ToolTipText="잘못된&#32;경찰서/법원&#32;코드" Top="365" Width="144"></Edit>
+		<Edit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="EVT_NUM" Height="20" Id="edt_EVT_NUM" Left="602" LeftMargin="2" Style="edit" TabOrder="9" Top="365" Width="184"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static7" Left="477" Style="box_tx_b" TabOrder="63" Text="사건번호(경찰)" Top="362" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="st_INSPECTOR" Left="789" Style="box_tx_b" TabOrder="64" Text="담당조사관" Top="362" VAlign="Middle" Width="122"></Static>
+		<Edit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="INSPECTOR" Height="20" Id="edt_INSPECTOR" ImeMode="native,katakana" Left="915" LeftMargin="2" Style="edit" TabOrder="10" Top="365" Width="119"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static38" Left="8" Style="box_tx_b" TabOrder="64" Text="판결내역" Top="387" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static43" Left="789" Style="box_tx_b" TabOrder="65" Text="의뢰일자" Top="387" VAlign="Middle" Width="122"></Static>
+		<Calendar BindDataset="ds_accu_detail" Border="Flat" Column="REQ_DAY" Dateformat="yyyy/MM/dd" Enable="FALSE" Height="20" Id="cal_REQ_DAY" Left="915" LeftMargin="17" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="40" TabStop="FALSE" Top="390" Width="120"></Calendar>
+		<Edit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="JUDG_BRE" Height="20" Id="edt_JUDG_BRE" Left="234" LeftMargin="2" Style="edit" TabOrder="12" Top="390" Width="240"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static9" Left="8" Style="box_tx_b" TabOrder="67" Text="&#32;의뢰총금액" Top="481" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static47" Left="8" Style="box_tx" TabOrder="68" Text="&#32;대상&#32;기간" Top="456" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static10" Left="8" Style="box_tx_b" TabOrder="69" Text="&#32;의뢰&#32;원금" Top="506" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static16" Left="399" Style="box_tx_b" TabOrder="70" Text="해결&#32;기간" Top="506" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static17" Left="8" Style="box_tx_b" TabOrder="71" Text="&#32;의뢰가산금" Top="531" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static19" Left="399" Style="box_tx_b" TabOrder="73" Text="해결&#32;원금" Top="556" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static22" Left="399" Style="box_tx_b" TabOrder="74" Text="완결&#32;일자" Top="456" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="st_cur_term" Left="723" Style="box_tx_b" TabOrder="75" Text="현재&#32;기간" Top="456" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="st_cur_tot_amt" Left="723" Style="box_tx_b" TabOrder="76" Text="현재&#32;총금액" Top="481" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="st_cur_org_amt" Left="723" Style="box_tx_b" TabOrder="77" Text="현재&#32;원금" Top="506" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="st_cur_addt_amt" Left="723" Style="box_tx_b" TabOrder="78" Text="현재&#32;가산금" Top="531" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static31" Left="399" Style="box_tx_b" TabOrder="79" Text="해결가산금" Top="581" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static32" Left="399" Style="box_tx_b" TabOrder="80" Text="입금&#32;구분" Top="481" VAlign="Middle" Width="130"></Static>
+		<Calendar AutoIncrement="1" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" CanChange="cal_START_YRMN_CanChange" Column="START_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" FocusIndex="1" Height="20" Id="cal_START_YRMN" Left="141" NullValue="____/__" OnChanged="cal_START_YRMN_OnChanged" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="41" TabStop="FALSE" Top="459" Width="80"></Calendar>
+		<Calendar AutoIncrement="1" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" CanChange="cal_END_YRMN_CanChange" Column="END_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_END_YRMN" Left="238" NullValue="____/__" OnChanged="cal_END_YRMN_OnChanged" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="13" ToolTipText="대상기간2" Top="459" Width="80"></Calendar>
+		<Static Height="20" Id="Static37" Left="224" TabOrder="82" Text="~" Top="463" Width="14"></Static>
+		<Calendar BindDataset="ds_accu_detail" Border="Flat" Column="COMPN_DAY2" Dateformat="yyyy/MM/dd" Height="20" Id="cal_COMPN_DAY" Left="532" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="14" ToolTipText="완결일자" Top="459" Width="104"></Calendar>
+		<Calendar AutoIncrement="1" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" CanChange="cal_SOL_START_CanChange" Column="SOL_START_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" DomainID="s" EditAlign="CENTER" FocusIndex="0" Height="20" Id="cal_SOL_START" Left="532" NullValue="____/__" OnChanged="cal_SOL_START_OnChanged" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="16" ToolTipText="해결기간&#32;시작월" Top="509" Width="80"></Calendar>
+		<Calendar AutoIncrement="1" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" CanChange="cal_SOL_END_CanChange" Column="SOL_END_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" FocusIndex="0" Height="20" Id="cal_SOL_END" Left="635" NullValue="____/__" OnChanged="cal_SOL_END_OnChanged" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="17" ToolTipText="해결기간&#32;종료월" Top="509" Width="80"></Calendar>
+		<Static Height="20" Id="Static36" Left="617" TabOrder="83" Text="~" Top="513" Width="14"></Static>
+		<Calendar AutoIncrement="1" BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="FROM_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" FocusIndex="1" Height="20" Id="cal_FROM_YRMN" Left="856" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="42" TabStop="FALSE" Top="459" Width="80"></Calendar>
+		<Calendar AutoIncrement="1" BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="TO_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" FocusIndex="1" Height="20" Id="cal_TO_YRMN" Left="955" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="43" TabStop="FALSE" Top="459" Width="80"></Calendar>
+		<Static Height="14" Id="st_cur_term_symbol" Left="940" TabOrder="86" Text="~" Top="464" Width="12"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static20" Left="399" Style="box_tx_b" TabOrder="87" Text="수수료" Top="606" VAlign="Middle" Width="130"></Static>
+		<Image Height="17" Id="Image2" ImageID="C_icon2" Left="716" TabOrder="44" TabStop="FALSE" Top="96" Width="18"></Image>
+		<Static Color="user1" Font="굴림,9,Bold" Height="16" Id="Static24" Left="740" Style="tx_bold" TabOrder="88" Text="사건진행과정" Top="99" Width="108"></Static>
+		<Image Height="17" Id="Image3" ImageID="C_icon2" Left="8" TabOrder="45" TabStop="FALSE" Top="96" Width="18"></Image>
+		<Static Color="user1" Font="굴림,9,Bold" Height="16" Id="Static40" Left="32" Style="tx_bold" TabOrder="90" Text="업소정보" Top="99" Width="108"></Static>
+		<Static Color="user1" Font="굴림,9,Bold" Height="16" Id="Static41" Left="32" Style="tx_bold" TabOrder="92" Text="고소정보" Top="320" Width="108"></Static>
+		<Image Height="17" Id="Image4" ImageID="C_icon2" Left="8" TabOrder="46" TabStop="FALSE" Top="317" Width="18"></Image>
+		<Image Height="17" Id="Image5" ImageID="C_icon2" Left="8" TabOrder="47" TabStop="FALSE" Top="436" Width="18"></Image>
+		<Static Color="user1" Font="굴림,9,Bold" Height="16" Id="Static44" Left="32" Style="tx_bold" TabOrder="94" Text="고소처리정보" Top="439" Width="108"></Static>
+		<Grid AutoEnter="TRUE" AutoScrollBar="FixedVert" BindDataset="ds_accu_memo" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="292" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="176" Id="grd_List" InputPanel="FALSE" Left="716" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="48" TabStop="FALSE" Top="116" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="323">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="71"/>
+						<col width="1"/>
+						<col width="231"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="기록일자"/>
+						<cell col="1" colid="MEMO_NUM" color="user12" display="text" text="NO"/>
+						<cell col="2" color="user12" display="text" text="내&#32;용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="MEMO_DAY" display="date" imemode="native"/>
+						<cell col="1" display="text"/>
+						<cell align="left" col="2" colid="MEMO" combodisplaynltext="true" display="normal" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo BindDataset="ds_accu_detail" Border="Flat" CodeColumn="CODE_CD" Column="REPT_GBN" DataColumn="CODE_NM" Enable="FALSE" Height="20" Id="cob_PERT_GBN" ImeMode="none" InnerDataset="ds_REPT_GBN" Left="531" OnChanged="cob_PERT_GBN_OnChanged" Style="edit" TabOrder="15" Top="483" Width="104"></Combo>
+		<MaskEdit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user3" Column="REQ_TOT_AMT" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_req_tot_amt" Left="141" LeftMargin="10" TabOrder="49" TabStop="FALSE" Top="484" Width="150"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso_info" Border="Flat" BorderColor="user3" Column="MONPRNCFEE" DisplayMaskchar="-" Enable="FALSE" Height="20" Id="mae_MONPRNCFEE" Left="576" LeftMargin="10" OnKeyDown="mae_DEMD_DAY_OnKeyDown" TabOrder="54" TabStop="FALSE" Top="144" Width="114"></MaskEdit>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="UPSO_CD" Enable="FALSE" Height="20" Id="edt_upso_cd" Left="133" LeftMargin="2" MaxLength="8" OnChanged="edt_upso_cd_OnChanged" OnChar="edt_upso_cd_OnChar" OnKeyDown="edt_UPSO_CD_OnKeyDown" OnKillFocus="edt_upso_cd_OnKillFocus" Style="edit" TabOrder="55" TabStop="FALSE" ToolTipText="업소코드" Top="144" UseIME="FALSE" Width="61"></Edit>
+		<Button Cursor="HAND" Height="20" Id="btn_FindUpso" ImageID="C_btn_search" Left="528" OnClick="btn_FindUpso_OnClick" TabOrder="56" TabStop="FALSE" Top="22" Width="60"></Button>
+		<Button Cursor="HAND" Enable="FALSE" Height="21" Id="btn_search" ImageID="C_btn_search" Left="399" OnClick="btn_search_OnClick" TabOrder="57" TabStop="FALSE" Top="144" Width="60"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_attorney" ImageID="C_btn_90" Left="912" LeftMargin="23" OnClick="btn_attorney_OnClick" Style="edit" TabOrder="58" TabStop="FALSE" Text="위임장출력" Top="22" TopMargin="1" Visible="FALSE" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_statement" ImageID="C_btn_90" Left="912" LeftMargin="23" OnClick="btn_statement_OnClick" Style="edit" TabOrder="61" TabStop="FALSE" Text="진&#32;&#32;술&#32;&#32;서" Top="49" TopMargin="1" Visible="FALSE" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_cancel" ImageID="C_btn_90" Left="808" LeftMargin="23" OnClick="btn_cancel_OnClick" Style="edit" TabOrder="59" TabStop="FALSE" Text="고소취소장" Top="49" TopMargin="1" Visible="FALSE" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add" ImageID="C_btn_70" Left="823" LeftMargin="23" OnClick="btn_add_OnClick" Style="edit" TabOrder="62" TabStop="FALSE" Text="추가" Top="92" TopMargin="1" Width="71"></Button>
+		<Image FillType="STRETCH" Height="70" Id="Image21" ImageID="C_Search2_left1" Left="10" TabOrder="63" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image FillType="STRETCH" Height="70" Id="Image6" ImageID="C_Search2_right1" Left="1026" TabOrder="64" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Combo BindDataset="ds_accu_detail" Border="Flat" CodeColumn="CODE_CD" Column="JUDG_CD" DataColumn="CODE_NM" Height="20" Id="cob_JUDG_CD" InnerDataset="ds_judge" Left="132" OnChanged="cob_JUDG_CD_OnChanged" Style="edit" TabOrder="11" ToolTipText="판결내역" Top="389" Width="100"></Combo>
+		<Button ButtonStyle="TRUE" Height="23" Id="btn_calc" ImageID="C_btn_70" Left="323" LeftMargin="23" OnClick="btn_calc_OnClick" Style="edit" TabOrder="65" TabStop="FALSE" Text="계산" Top="458" TopMargin="1" VAlign="Top" Width="72"></Button>
+		<Button Cursor="HAND" Height="20" Id="btn_AccuInfo" ImageID="C_btn_search" Left="328" OnClick="btn_AccuInfo_OnClick" TabOrder="66" TabStop="FALSE" Top="365" Width="60"></Button>
+		<Edit Align="CENTER" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="JUDG_CD" Height="20" Id="edt_JUDG_CD" Left="133" LeftMargin="2" MaxLength="3" OnKeyDown="edt_judg_cd_OnKeyDown" Style="edit" TabOrder="67" TabStop="FALSE" ToolTipText="경찰서" Top="307" Visible="FALSE" Width="40"></Edit>
+		<Edit Align="CENTER" BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="JUDG_NM" Height="20" Id="edt_JUDG_NM" Left="178" LeftMargin="2" OnKeyDown="edt_JUDG_NM_OnKeyDown" Style="edit" TabOrder="68" TabStop="FALSE" Top="307" Visible="FALSE" Width="144"></Edit>
+		<Combo BindDataset="ds_upso_info" Border="Flat" CodeColumn="STAFF_CD" Column="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="305" Style="edit" TabOrder="69" TabStop="FALSE" ToolTipText="담당직원" Top="219" Visible="FALSE" Width="108"></Combo>
+		<Edit Align="CENTER" BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="STAFF_CD" Enable="FALSE" Height="20" Id="edt_STAFF_CD" Left="133" LeftMargin="2" Style="edit" TabOrder="70" TabStop="FALSE" Top="219" Width="56"></Edit>
+		<Edit BindDataset="ds_upso_info" Border="Flat" BorderColor="user10" Column="STAFF_NM" Enable="FALSE" Height="20" Id="edt_STAFF_NM" Left="193" LeftMargin="2" Style="edit" TabOrder="71" TabStop="FALSE" Top="219" Width="108"></Edit>
+		<Combo BKColor="user13" Border="Flat" BorderColor="user3" Height="20" Id="cob_BRAN_CD" ImeMode="none" Left="105" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="22" Width="123"></Combo>
+		<MaskEdit BindDataset="ds_upso_info" Border="Flat" BorderColor="silver" Column="MNGEMSTR_RESINUM" Enable="FALSE" Height="20" Id="mae_MNGEMSTR_RESINUM" Left="576" LeftMargin="12" Mask="######-@@@@@@@" MaxLength="13" Readonly="TRUE" TabOrder="72" TabStop="FALSE" Top="169" Type="STRING" Width="114"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso_info" Border="Flat" BorderColor="silver" Column="NEW_DAY" Enable="FALSE" Height="20" Id="mae_NEW_DAY" Left="576" LeftMargin="24" Mask="####/##/##" Readonly="TRUE" TabOrder="73" TabStop="FALSE" Top="194" Type="STRING" Width="114"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso_info" Border="Flat" BorderColor="silver" Column="CLSBS_YRMN" Enable="FALSE" Height="20" Id="mae_CLSBS_YRMN" Left="576" LeftMargin="32" Mask="####/##" Readonly="TRUE" TabOrder="74" TabStop="FALSE" Top="219" Type="STRING" Width="114"></MaskEdit>
+		<MaskEdit AutoSkip="TRUE" BKColor="user13" Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="20" Id="mae_accu_day" Left="336" LeftMargin="8" Mask="####/##/##" MaxLength="8" OnKeyDown="mae_accu_day_OnKeyDown" TabOrder="2" ToolTipText="고소번호" Top="22" Type="STRING" Width="80"></MaskEdit>
+		<MaskEdit AutoSkip="TRUE" BKColor="user13" Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="20" Id="mae_accu_num" Left="432" LeftMargin="10" Mask="####" MaxLength="4" OnKeyDown="mae_accu_num_OnKeyDown" TabOrder="3" ToolTipText="고소번호" Top="22" Type="STRING" Width="47"></MaskEdit>
+		<Edit Align="CENTER" BKColor="user13" Border="Flat" BorderColor="user10" Height="20" Id="edt_accu_bran" ImeMode="english" Left="496" LeftMargin="4" MaxLength="2" OnChar="edt_accu_bran_OnChar" OnKeyDown="edt_accu_bran_OnKeyDown" RightMargin="2" Style="edit" TabOrder="4" ToolTipText="고소번호" Top="22" Width="24"></Edit>
+		<Static Font="굴림,9,Bold" Height="13" Id="Static8" Left="408" TabOrder="142" Text="*&#32;기소중지/구약식(벌금)인&#32;경우&#32;완결일을&#32;설정하지&#32;말고&#32;사건진행과정에&#32;기록하십시요" Top="424" Width="544"></Static>
+		<Static Font="굴림,9,Bold" Height="13" Id="Static23" Left="420" TabOrder="143" Text="완료일을&#32;설정하면&#32;입금&#32;시&#32;고소입금으로&#32;등록되지&#32;않습니다." Top="440" Width="544"></Static>
+		<Static Font="굴림,9,Bold" Height="13" Id="Static25" Left="687" TabOrder="144" Text="(수수료는&#32;해결총금액&#32;계산에서&#32;제외됩니다.)" Top="613" Width="300"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_memo_save" ImageID="C_btn_70" Left="967" LeftMargin="23" OnClick="btn_memo_save_OnClick" Style="edit" TabOrder="145" TabStop="FALSE" Text="저장" Top="92" TopMargin="1" Width="71"></Button>
+		<Combo Border="Flat" CodeColumn="CODE_CD" Color="red" DataColumn="CODE_NM" Enable="FALSE" Face3dColor="white" Font="굴림,9,Bold" Height="20" Id="Combo3" ImeMode="none" InnerDataset="ds_approval_result" Left="527" OnChanged="cob_workplace_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="147" Top="49" Value="82" Width="112"></Combo>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Kian" ImageID="C_btn_90" Left="645" LeftMargin="23" OnClick="btn_Kian_OnClick" Style="edit" TabOrder="146" Text="결재요청" Top="49" TopMargin="1" Visible="FALSE" Width="90"></Button>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="474" TabOrder="148" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="Static26" Left="490" Style="tx_left_bold" TabOrder="149" Text="결재" Top="54" Width="56"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static27" Left="16" Style="box_tx" TabOrder="151" Text="신청서첨부" Top="663" VAlign="Middle" Width="150"></Static>
+		<Shape BKColor="white" Bottom="690" Height="27" Id="Shape9" Left="16" LineColor="user3" Right="1036" TabOrder="150" Top="663" Type="Rectangle" Width="1020"></Shape>
+		<Edit BindDataset="ds_advt_attch" Border="Flat" BorderColor="user10" Column="FILE_NM" Height="21" Id="edt_advt" ImeMode="none" Left="145" Readonly="TRUE" Style="edit" TabOrder="152" TabStop="FALSE" Top="717" Width="459"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="27" Id="Static28" Left="8" Style="box_tx_b" TabOrder="153" Text="진술서" Top="712" VAlign="Middle" Width="130"></Static>
+		<Image Height="17" Id="Image8" ImageID="C_icon2" Left="8" TabOrder="154" TabStop="FALSE" Top="642" Width="18"></Image>
+		<Static Color="user1" Font="굴림,9,Bold" Height="16" Id="Static42" Left="32" Style="tx_bold" TabOrder="155" Text="고소자료&#32;첨부" Top="645" Width="108"></Static>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_advt_down" ImageID="C_btn_70" Left="680" LeftMargin="26" OnClick="btn_attch_down_OnClick" Style="edit" TabOrder="157" TabStop="FALSE" Text="다&#32;운" Top="719" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_advt_del" ImageID="C_btn_70" Left="752" LeftMargin="26" OnClick="btn_attch_del_OnClick" Style="edit" TabOrder="156" TabStop="FALSE" Text="삭&#32;제" Top="719" TopMargin="1" Width="71"></Button>
+		<Static Color="red" Height="16" Id="Static45" Left="136" TabOrder="159" Text="반드시&#32;고소내역&#32;저장&#32;후에&#32;업로드해주세요.(업로드&#32;시&#32;바로&#32;저장)" Top="645" Width="440"></Static>
+		<FileDialog Bottom="656" Filter="All(*.*)|*.*|" Height="24" Id="FileDialog0" Left="872" Right="896" TabOrder="161" Top="632" Width="24"></FileDialog>
+		<File Bottom="656" Height="24" Id="File0" Left="896" Right="920" TabOrder="162" Top="632" Width="24"></File>
+		<Image Height="17" Id="Image9" ImageID="C_icon2" Left="8" TabOrder="159" TabStop="FALSE" Top="587" Width="18"></Image>
+		<Static Color="user1" Font="굴림,9,Bold" Height="16" Id="Static46" Left="32" Style="tx_bold" TabOrder="160" Text="침해저작물정보" Top="590" Width="108"></Static>
+		<Edit BindDataset="ds_accu_detail" Border="Flat" Column="PROD_CD" Enable="FALSE" Height="20" Id="edt_Prod" Left="141" MaxLength="12" OnKeyDown="edt_Prodcds_OnKeyDown" Style="edit" TabOrder="163" Top="609" Width="112"></Edit>
+		<Edit BindDataset="ds_accu_detail" Border="Flat" Column="PROD_NM" Enable="FALSE" Height="20" Id="edt_Prodnm" ImeMode="native" Left="256" MaxLength="100" OnKeyDown="edt_Prodcds_OnKeyDown" Style="edit" TabOrder="164" Top="609" Width="140"></Edit>
+		<Shape BKColor="white" Bottom="716" Height="27" Id="Shape3" Left="136" LineColor="user3" Right="1036" TabOrder="165" Top="689" Type="Rectangle" Width="900"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="27" Id="Static49" Left="8" Style="box_tx_b" TabOrder="166" Text="최고서" Top="689" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="818" Height="79" Id="Shape7" Left="136" LineColor="user3" Right="1036" TabOrder="167" Top="739" Type="Rectangle" Width="900"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="79" Id="Static50" Left="8" Style="box_tx_b" TabOrder="168" Text="사건처분내역서" Top="739" VAlign="Middle" Width="130"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_bpap_up" ImageID="C_btn_70" Left="608" LeftMargin="23" OnClick="btn_attch_up_OnClick" TabOrder="169" Text="업로드" Top="692" TopMargin="1" Width="71"></Button>
+		<Edit BindDataset="ds_bpap_attch" Border="Flat" BorderColor="user10" Column="FILE_NM" Height="21" Id="edt_bpap" ImeMode="none" Left="144" Readonly="TRUE" Style="edit" TabOrder="170" TabStop="FALSE" Top="692" Width="459"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static51" Left="477" Style="box_tx_b" TabOrder="171" Text="사건번호(검찰)" Top="387" VAlign="Middle" Width="122"></Static>
+		<Edit BindDataset="ds_accu_detail" Border="Flat" BorderColor="user10" Column="EVT_NUM2" Height="20" Id="edt_EVT_NUM2" Left="602" LeftMargin="2" Style="edit" TabOrder="172" Top="390" Width="184"></Edit>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoScrollBar="FixedVert" BindDataset="ds_evtd_attch" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="814" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="72" Id="grd_evtd" InputPanel="FALSE" Left="144" LineColor="silver" MultiSelect="TRUE" OnExpandEdit="grd_evtd_OnExpandEdit" Right="603" RowHeight="20" Style="grid" TabOrder="173" TabStop="true" Top="742" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="459">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="41"/>
+						<col width="260"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" colspan="3" display="text" text="파일명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEQ" display="number"/>
+						<cell align="center" col="1" colid="FILE_NM" display="text"/>
+						<cell align="center" col="2" colid="UP" display="text" expandchar="&#32;&#32;업로드" expandimage="C_btn_70" expandshow="expr:decode(length(SEQ),&#32;0,&#32;&apos;true&apos;,&#32;&apos;false&apos;)" expandsize="70"/>
+						<cell align="center" col="3" colid="DOWN" display="text" expandchar="&#32;&#32;저&#32;장" expandimage="C_btn_70" expandshow="expr:decode(length(SEQ),&#32;0,&#32;&apos;false&apos;,&#32;&apos;true&apos;)" expandsize="70"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_evtd_add" ImageID="C_btn_70" Left="608" LeftMargin="26" OnClick="btn_evtd_add_OnClick" TabOrder="174" Text="추&#32;가" Top="743" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_evtd_del" ImageID="C_btn_70" Left="608" LeftMargin="26" OnClick="btn_attch_del_OnClick" TabOrder="175" Text="삭&#32;제" Top="768" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_advt_up" ImageID="C_btn_70" Left="608" LeftMargin="23" OnClick="btn_attch_up_OnClick" TabOrder="176" Text="업로드" Top="719" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_bpap_del" ImageID="C_btn_70" Left="752" LeftMargin="26" OnClick="btn_attch_del_OnClick" Style="edit" TabOrder="177" TabStop="FALSE" Text="삭&#32;제" Top="692" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_bpap_down" ImageID="C_btn_70" Left="680" LeftMargin="26" OnClick="btn_attch_down_OnClick" Style="edit" TabOrder="178" TabStop="FALSE" Text="다&#32;운" Top="692" TopMargin="1" Width="71"></Button>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="53" Id="Static52" Left="832" Style="box_tx_b" TabOrder="179" Top="663" VAlign="Middle" Width="204"></Static>
+		<Static Align="Center" Font="굴림,9,Bold" Height="13" Id="Static53" Left="836" TabOrder="180" Text="진술서와&#32;최고서는" Top="668" Width="200"></Static>
+		<Static Align="Center" Font="굴림,9,Bold" Height="13" Id="Static54" Left="832" TabOrder="181" Text="한장짜리&#32;이미지로&#32;올려야" Top="684" Width="200"></Static>
+		<Static Align="Center" Font="굴림,9,Bold" Height="13" Id="Static55" Left="835" TabOrder="182" Text="출력이&#32;가능합니다." Top="700" Width="200"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="27" Id="Static56" Left="8" Style="box_tx_b" TabOrder="184" Text="고소장원본" Top="664" VAlign="Middle" Width="130"></Static>
+		<Edit BindDataset="ds_comp_attch" Border="Flat" BorderColor="user10" Column="FILE_NM" Height="21" Id="edt_comp" ImeMode="none" Left="144" Readonly="TRUE" Style="edit" TabOrder="186" TabStop="FALSE" Top="666" Width="459"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_comp_up" ImageID="C_btn_70" Left="608" LeftMargin="23" OnClick="btn_attch_up_OnClick" TabOrder="185" Text="업로드" Top="666" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_comp_down" ImageID="C_btn_70" Left="680" LeftMargin="26" OnClick="btn_attch_down_OnClick" Style="edit" TabOrder="187" TabStop="FALSE" Text="다&#32;운" Top="666" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_accu_del" ImageID="C_btn_70" Left="403" LeftMargin="23" OnClick="btn_accu_del_OnClick" Style="edit" TabOrder="188" TabStop="FALSE" Text="삭제" Top="340" TopMargin="1" Visible="FALSE" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"
+
+var FV_MODE = "";
+var FV_MODE2 = "";
+//FV_MODE가 왜있는지 언제부터 쓰였는지 모르겠지만 이것때문에 저장시 제대로 동작하지 않아 새로운걸로 사용 20190711 장태진
+var v_flag = "s";
+var COMPN_DAY_INIT = "";
+var plcst_cd = "";
+var plcst_nm = "";
+var low_cd = "";
+var low_nm = "";
+
+var CHK_NAME_O;
+var CHK_JUMIN_O;
+var CHK_NAME_B;
+var CHK_JUMIN_B;
+
+//조회를 하였을 경우 입금구분, 해결기간, 해결총금액, 워금의 데이타를 가지고 있는다.
+var c_search;
+//조회를 할 경우 기존 데이터를 저장한다.
+var b_cal_sol_start;
+var b_cal_sol_end;
+var b_mae_sol_tot_amt;
+var b_mae_sol_org_amt;
+var b_mae_sol_addt_amt;
+var b_mae_comis;
+var b_rept_gbn;
+var b_compn_day;
+var c_judg_cd;
+
+var check_start;
+var check_end;
+
+function bra05_s03_OnLoadCompleted(obj)
+{
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	this.cob_accu_gbn.Index = 0;
+	gfn_loadForm(obj);
+	
+	this.ds_dup_in.AddRow();
+	ds_Pnt_in.AddRow();
+	
+	ds_search.ClearData();
+	ds_search.AddRow();
+	this.cob_accu_gbn.Index = 0;
+	//초기화 => 검색조건과 결과값을 받는 데이터 셋을 같이 쓰므로 
+	//         반드시 useClientLayout을 true로 설정 필요
+	ds_find_code.UseClientLayout = true;
+	ds_use_amt.UseClientLayout = true;
+		
+	// 입금구분 가져오기
+	gfn_PubCode("ds_REPT_GBN", 2, "00141", "A");
+	
+	//판결내역 가져오기
+	gfn_PubCode("ds_judge", 2, "00220");
+	var iRow = ds_judge.InsertRow(0);
+	ds_judge.SetColumn(iRow,"CODE_CD","");
+	ds_judge.SetColumn(iRow,"CODE_NM","");
+
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");	
+
+	gfn_SetPermission(this.cob_BRAN_CD.value);
+	gfn_SetInnerPermission("btn_low,btn_attorney,btn_cancel,btn_statement,btn_add,btn_del,btn_calc,btn_memo_save");
+
+	if(gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100" || gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" )
+	{
+		btn_accu_del.Visible = true;
+	}
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		//fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		close();
+    }
+
+	return;
+}
+
+function fn_New() 
+{
+	// 입력 필수 항목 검사
+	if (!gfn_RequiredCheck(this.cob_BRAN_CD, "센터코드를 선택하세요")) return;
+		
+	//초기화
+	this.edt_upso_cd.Enable = true;
+	this.edt_upso_cd.BKColor = "user13";
+
+	this.edt_plcst_cd.BKColor = "user13";
+	this.edt_plcst_nm.BKColor = "user13";
+	
+	this.btn_low.Visible = false;
+	this.btn_attorney.Visible = false;
+	this.btn_cancel.Visible = false;
+	this.btn_statement.Visible =false;
+	
+	this.btn_search.Enable = true;
+	
+	//조회시 필수 항목/ 필수가 아닌 항목
+	this.mae_accu_day.BKColor = "";
+	this.mae_accu_num.BKColor = "";
+	this.edt_accu_bran.BKColor = "";
+	
+	btn_attch_save.Enable = false;
+	btn_attch_del.Enable = false;
+	
+	fn_NewInit();
+}
+
+
+function fn_NewInit()
+{
+	if (length(this.edt_upso_cd.Text) == 0) {
+		return;
+	}
+	/*
+	this.ds_dup_in.SetColumn(0, "UPSO_CD", this.edt_upso_cd.Text);
+	gfn_SyncCall("sys_accu_dup_chk","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_dup_chk","S=ds_dup_in","ds_dup_out=SEL1","","fn_CallBack");
+	if(this.ds_dup_out.GetColumn(0,"CNT")>0){
+		gfn_Confirm("MB_OK", "이미 고소가 등록된 업소입니다.", "경고", "0");
+
+		this.ds_upso_info.ClearData();
+		this.ds_accu_detail.ClearData();
+		this.ds_accu_detail.ClearData();
+		var iRow = ds_upso_info.InsertRow(0);
+		ds_upso_info.SetColumn(iRow,"CODE_CD","");
+		ds_upso_info.SetColumn(iRow,"CODE_NM","");
+		return;
+	}
+	*/
+
+	// 고소정보가 존재하는 경우만 신규시 변경여부 체크
+	/*
+	if(ds_accu_detail.count > 0 ){
+		var strMsg = "변경된 내역이 있습니다.\n 신규건을 생성하시겠습니까?";
+		if(length(mae_ACCU_DAY_2.Value) > 0 && !gfn_changeAction("USER", "ds_accu_detail,ds_accu_memo", strMsg)) return;
+	}
+	*/
+	
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	ds_search.SetColumn(0, "UPSO_CD", this.edt_upso_cd.Text);
+	mae_accu_day.Value = "";
+	mae_accu_num.Value = "";
+	edt_accu_bran.Text = "";
+	cob_accu_gbn.Value = "";
+	ds_accu_amt.ClearData();
+
+	gfn_SyncCall("accu_init","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_init","S=ds_search","ds_upso_info=SEL2 ds_accu_amt=SEL6","","fn_CallBack");
+	
+	//고소정보 상세 초기화 처리
+	ds_accu_detail.ClearData();
+	ds_accu_detail.AddRow();
+	ds_accu_detail.SetColumn(ds_accu_detail.currow, "ACCU_DAY", today());
+	ds_accu_detail.SetColumn(ds_accu_detail.currow, "ACCU_BRAN", this.cob_BRAN_CD.Value);
+	ds_accu_detail.SetColumn(ds_accu_detail.currow, "UPSO_CD", this.edt_upso_cd.Text);
+	ds_accu_detail.SetColumn(ds_accu_detail.currow, "ACCU_GBN", "A");
+	
+	//업소정보의 현재 시작년월정보를 대상기간의 시작년월로 설정
+	var FROM_YRMN = ds_upso_info.GetColumn(ds_upso_info.currow, "FROM_YRMN");
+	ds_accu_detail.SetColumn(ds_accu_detail.currow, "START_YRMN", FROM_YRMN);
+
+	//고소정보 메모 초기화 처리
+	ds_accu_memo.ClearData();
+
+	cob_accu_gbn.Value = "A";  		// 법구분=> A:형사, B:민사 
+	this.cob_accu_obj.Value = "B";
+	fn_display_accuGbn();			//고소구분별 화면 표시 항목 변경
+	
+	
+	cal_COMPN_DAY.BKColor = "";
+	cal_COMPN_DAY.Enable = false;
+	cal_SOL_START.BKColor = "";
+	cal_SOL_START.Enable = false;
+	cal_SOL_END.BKColor = "";
+	cal_SOL_END.Enable = false;
+	mae_sol_org_amt.BKColor = "";
+	mae_sol_addt_amt.BKColor = "";
+	
+	// 입금마감이 끝난 고소해결 정보중 new를 한경우 enabled를 true로 바꿔줘야 한다. 02010/3/29
+	edt_plcst_cd.Enable = true;
+	//cal_START_YRMN.Enable = true; //2018-12-06 태진
+	cal_END_YRMN.Enable = true;
+	
+	btn_calc.Enable = true;
+	cob_accu_gbn2.Enable = true;
+	edt_EVT_NUM.Enable = true;
+	edt_EVT_NUM2.Enable = true;
+	cob_JUDG_CD.Enable = true;
+	edt_JUDG_BRE.Enable = true;
+	cob_accu_obj.Enable = true;
+	edt_INSPECTOR.Enable = true;
+	mae_sol_org_amt.Enable = true;
+	mae_sol_addt_amt.Enable = true;
+	mae_comis.Enable = true;
+	btn_AccuInfo.Enable = true;
+	
+	edt_Prod.Enable = true;
+	
+	
+	FV_MODE = "NEW";
+	FV_MODE2 = "NEW";
+	
+	c_search = "N";
+	
+	v_flag = "n";
+	
+}
+function fn_Search() {
+
+	if (this.edt_upso_cd.Enable) {
+		if(Confirm("등록을 취소하시겠습니까?")) {
+			this.edt_upso_cd.Enable = false;
+			this.edt_upso_cd.BKColor = "";
+			edt_plcst_cd.Enable = false;
+			edt_plcst_cd.BKColor = "";
+			edt_plcst_nm.BKColor = "";
+			mae_accu_day.BKColor = "user13";
+			mae_accu_num.BKColor = "user13";
+			edt_accu_bran.BKColor = "user13";
+		}
+		else {
+			return;
+		}
+	}
+	
+	if (!gfn_CheckFormNull(this)) return;
+	fn_search_m();
+}
+
+function fn_Search_m() 
+{
+	this.edt_upso_cd.BKColor = "";
+	this.edt_upso_cd.Enable = false;
+	//this.edt_plcst_cd.BKColor = "";
+	//this.edt_plcst_nm.BKColor = "";
+	//this.edt_plcst_cd.BKColor = "user13";
+
+	if(length(mae_ACCU_DAY_2.Value) > 0 && !gfn_changeAction("SEARCH", "ds_accu_detail,ds_accu_memo")){
+		 return;	
+	}
+		 
+	ds_search.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	ds_search.SetColumn(0, "ACCU_DAY", this.mae_accu_day.Value);
+	ds_search.SetColumn(0, "ACCU_NUM", this.mae_accu_num.Value);
+	ds_search.SetColumn(0, "ACCU_BRAN", this.edt_accu_bran.Text);
+	ds_search.SetColumn(0, "ACCU_GBN", this.cob_accu_gbn.Value);
+	
+//trace(this.ds_search.SaveXML());
+	
+	gfn_SyncCall("accu_detail","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_detail",
+	"S=ds_search","ds_upso_info=SEL1 ds_accu_detail=SEL2 ds_accu_memo=SEL3 ds_accu_amt=MRG9","","fn_CallBack");
+	//trace(ds_accu_amt.SaveXML());
+	// 고소대상기간 중복 방지를 위해 기존 저장된 대상기간을 저장해 놓는다. 03/23
+	check_start = this.ds_accu_detail.GetColumn(0,"START_YRMN");
+	check_end = this.ds_accu_detail.GetColumn(0,"END_YRMN");
+	
+	//trace(this.ds_upso_info.SaveXML());
+
+	if(	this.ds_accu_amt.RowCount() == 0 || 
+		length(this.mae_CLSBS_YRMN.Value) > 0) {
+		 fn_display_curAmt(false);
+	}
+	else {
+		fn_display_curAmt(true);
+	}
+		
+	b_cal_SOL_START    = this.cal_SOL_START.Value;
+	b_cal_SOL_END      = this.cal_SOL_END.Value;
+	b_mae_sol_tot_amt  = this.mae_sol_tot_amt.Value;
+	b_mae_sol_org_amt  = this.mae_sol_org_amt.Value;
+	b_mae_sol_addt_amt = this.mae_sol_addt_amt.Value;
+	b_mae_comis        = this.mae_comis.Value;
+	b_compn_day		   = this.cal_COMPN_DAY.Value;
+	b_rept_gbn         = this.cob_PERT_GBN.Value;
+	c_judg_cd          = this.cob_JUDG_CD.Value;
+	c_search           = "Y";  //서치정보를 저장해 논다.
+	
+	CHK_NAME_O = ds_upso_Info.GetColumn(0,"PERMMSTR_NM");
+	CHK_JUMIN_O = ds_upso_Info.GetColumn(0,"PERMMSTR_RESINUM");
+	
+	CHK_NAME_B = ds_upso_Info.GetColumn(0,"MNGEMSTR_NM");
+	CHK_JUMIN_B = ds_upso_Info.GetColumn(0,"MNGEMSTR_RESINUM");
+	
+	//고소대상이 경영주면 경영주 정보를, 허가주이면 허가주 정보를 보여준다.
+	if(this.ds_accu_detail.GetColumn(0,"ACCU_OBJ") == "O"){ // 경영주
+		edt_MNGEMSTR_NM.Text = CHK_NAME_O;
+		mae_MNGEMSTR_RESINUM = CHK_JUMIN_O;
+		
+	}else{
+		edt_MNGEMSTR_NM.Text = CHK_NAME_B;
+		mae_MNGEMSTR_RESINUM = CHK_JUMIN_B;
+	}
+
+	if(this.cob_JUDG_CD.Value==0){
+		cob_JUDG_CD_OnChanged(0,0);
+	}
+
+//조회 후에 고소 출력, 취소, 위임장, 진술서 쿼리를 보네기 위한 값을 입력한다.
+	this.ds_Pnt_in.SetColumn(0, "UPSO_CD", this.edt_upso_cd.Text);
+	this.ds_Pnt_in.SetColumn(0, "ACCU_DAY", this.mae_ACCU_DAY_2.value );
+	this.ds_Pnt_in.SetColumn(0, "ACCU_NUM", this.mae_ACCU_NUM_2.Text );
+	this.ds_Pnt_in.SetColumn(0, "ACCU_BRAN", this.edt_ACCU_BRAN_2.Text );
+	this.ds_Pnt_in.SetColumn(0, "ACCU_GBN", this.cob_accu_gbn2.Value);
+	
+	//고소가 등록되면 고소장, 위임장 버튼 출력버튼 보이게
+	if(length(this.mae_ACCU_DAY_2.Text) > 0){
+		this.btn_low.Visible = true;	
+		this.btn_attorney.Visible = true;
+	}
+	
+	if(this.cob_JUDG_CD.value == '1' and this.cal_COMPN_DAY.Value != "" ) {
+		this.btn_cancel.Visible = true;
+		this.btn_statement.Visible = true;
+	}else{
+	    this.btn_cancel.Visible = false;
+		this.btn_statement.Visible = false;
+	}
+	
+	//조회 결과가 없어도 빈 레코드 하나 추가 필요 => 신규입력을 위한 업소코드 입력을 위하여
+	if(ds_upso_info.count == 0 ) {
+		ds_upso_info.AddRow();
+		// 고소번호가 조회조건으로 지정되고 센터가 잘 못 지정되면 고소메모만 조회되는 경우 존재
+		// 고소메모는 업소정보와 고소정보가 없으면 무의미하므로 clear
+		if(ds_accu_memo.count > 0) {	
+			ds_accu_memo.ClearData();
+		}
+		return;
+	}
+	
+	fn_search_after();		//조회결과에 대한 화면 추가 처리
+	COMPN_DAY_INIT = cal_COMPN_DAY.value;
+	FV_MODE2 = "SEARCH";
+	
+	var strCode = cob_JUDG_CD.Value;
+	
+	if (strCode == "") {
+		this.cal_COMPN_DAY.Enable = false;
+
+		this.cal_COMPN_DAY.BKColor		= "";
+		this.cal_SOL_START.BKColor		= "";
+		this.cal_SOL_END.BKColor		= "";
+		this.mae_sol_org_amt.BKColor	= "";
+		this.mae_sol_addt_amt.BKColor	= "";
+		
+		this.cal_COMPN_DAY.Value = "";
+		cal_SOL_START.Value = cal_START_YRMN.Value;
+		cal_SOL_END.Value = "";
+		mae_sol_tot_amt.Value = "";
+		mae_sol_org_amt.Value = "";
+		mae_sol_addt_amt.Value = "";
+		mae_comis.Value = "";
+	}
+	else {
+		this.cal_COMPN_DAY.Enable = true;
+		
+//		mae_sol_org_amt.Enable = false;
+//		mae_sol_addt_amt.Enable = false;
+	}
+	
+	//판결내역이 취하입금 혹은 벌금일 경우 완결일자의 내역을 입력불가
+
+	if(this.cob_JUDG_CD.Value == 1 || this.cob_JUDG_CD.Value == 4) {
+		this.cal_COMPN_DAY.Enable = false;
+	}
+	else {
+		this.cal_COMPN_DAY.Enable = true;
+	}
+
+	this.btn_search.Enable = false;
+	
+	
+	if(length(ds_accu_detail.GetColumn(0, "COMPN_DAY2")) > 0)
+	{
+		if(length(ds_accu_detail.GetColumn(0, "COMPN_DAY")) > 0)
+		{
+			btn_Kian.Visible = false;
+		}
+		else
+		{
+			btn_Kian.Visible = true;
+		}
+		
+		ds_state_search.SetColumn(0, "LNK_KEY", ds_accu_detail.GetColumn(0, "ACCU_DAY") + "-" + ds_accu_detail.GetColumn(0, "ACCU_NUM") + "-" + ds_accu_detail.GetColumn(0, "ACCU_BRAN"));
+		gfn_syncCall("SEARCH_STAT","KOMCA?SYSID=PATHFINDER&MENUID=1000002002005&EVENTID=sel_gw_apprv_state","S=ds_state_search","ds_approval_result=SEL1","","fn_CallBack");
+	}
+	else
+	{
+		ds_state_search.SetColumn(0, "LNK_KEY", "");
+		ds_approval_result.ClearData();
+	}
+	fn_SearchEnable();
+	
+	v_flag = "s";
+}
+ 
+function fn_Save() 
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if(edt_upso_cd.Text != ds_accu_detail.GetColumn(0, "UPSO_CD") || length(edt_upso_cd.Text) != 8 || length(ds_accu_detail.GetColumn(0, "UPSO_CD")) != 8 || ds_accu_detail.rowcount < 1)
+	{
+		alert("업소코드가 변경되었습니다.\n업소 조회 후 다시 등록하여주시기 바랍니다.");
+		return;
+	}
+	
+	//해결전에 입금을 미리 잡고 계산누른 경우를 방지
+	if(mae_req_tot_amt.Text == "0" || toNumber(mae_req_tot_amt.Text) < 1)
+	{
+		alert("의뢰총금액이 0원입니다.\n고소해결인 경우, 입금을 먼저 잡은 뒤에 계산버튼을 눌렀을 수 있으니, 내역을 다시 조회하여 해결내역을 저장하여주시기 바랍니다.");
+		return;
+	}
+
+	//고소의 경우 입금마감 필요 없을 듯.
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+	ds_search.SetColumn(0, "ACCU_DAY", this.cal_COMPN_DAY.Value);
+	
+	gfn_SyncCall("accu_mng","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=bran_rept_end","S=ds_search","ds_closingYn=SEL1","","fn_CallBack");
+	
+	if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+        gfn_Confirm("MB_OK", "해당기간중 마감내역이 존재합니다. 마감내역을 확인하세요.\n사건진행과정 메모만 수정시에는 사건진행과정 버튼을 사용하세요.", "경고", "0");
+	    return;
+	}
+
+	//판결 내역(취하:입금 or 구약식(해결)이 있으나 완결일자가 없을 경우 
+
+	//alert("1 : "+this.cob_JUDG_CD.Value);
+	if(this.cob_judg_cd.Value=="1" || this.cob_JUDG_CD.Value == "41"){
+
+		if(length(toString(this.cal_COMPN_DAY.Value))==0){
+			gfn_Confirm("MB_OK", "완결일자를 입력해주세요.", "경고", "0");
+			return;
+		}
+	}
+	
+	/*
+
+	//완결일자가 있을 경우 판결내역이 없는 경우
+	if(length(toString(this.cal_COMPN_DAY.Value)) > 0){
+		if(this.cob_judg_cd.Value>0){
+			gfn_Confirm("MB_OK", "판결내역을 선택해 주세요.", "경고", "0");
+			return;
+		}
+	}
+
+	*/
+	
+	
+	if(length(this.mae_req_tot_amt.Text) ==0){
+        gfn_Confirm("MB_OK", "고소처리 정보의 계산을 눌러주세요.", "경고", "0");
+		this.Button0.SetFocus();
+		return false;
+	}
+	//완결일자가 있을경우 판결내역이 선택되어야한다. 
+	if(length(this.cal_COMPN_DAY.Value)>0 and length(this.cob_JUDG_CD.Value)==0 ){
+        gfn_Confirm("MB_OK", "완결일자가 입력되었을 경우 \n판결내역을 입력해야합니다.", "경고", "0");
+		this.cob_JUDG_CD.SetFocus();
+		return false;
+	}
+
+	
+	// 신규입력인 경우 대상기간 및 의뢰관련 금액 필수입력 체크 처리 필요
+	//if( FV_MODE == "NEW" ) {
+	if(v_flag == "n")
+	{
+		if( length(ds_accu_detail.GetColumn(ds_accu_detail.currow, "ACCU_GBN")) == 0 ){
+            gfn_Confirm("MB_OK", "고소구분을 설정하세요.", "경고", "0");
+			return;
+		}
+		if( length(ds_accu_detail.GetColumn(ds_accu_detail.currow, "START_YRMN")) == 0 
+		    || length(ds_accu_detail.GetColumn(ds_accu_detail.currow, "END_YRMN")) == 0 ){
+            gfn_Confirm("MB_OK", "대상기간이 올바로 설정되지 않았습니다.", "경고", "0");
+			return;
+		}
+		if( length(ds_accu_detail.GetColumn(ds_accu_detail.currow, "REQ_ORG_AMT")) == 0 
+		    || length(ds_accu_detail.GetColumn(ds_accu_detail.currow, "REQ_ADDT_AMT")) == 0 ){
+            gfn_Confirm("MB_OK", "의뢰원금 또는 의뢰가산금이 미설정되었습니다.", "경고", "0");
+			return;
+		}	
+	}
+
+	FV_MODE = "";
+
+	// 완결일자가 존재할 경우 다음의 경우는 저장불가 처리
+	// 판결코드가 취하:입금(1) 인 경우 => 해결시작년월, 해결종료년월, 해결총금액이 반드시 존재
+	if( length(cal_COMPN_DAY.Value) > 0 )
+	{
+		if( length(edt_judg_cd.Text) == 0 )
+		{
+            gfn_Confirm("MB_OK", "완료건에 대하여 판결코드를 설정해야 저장할 수 있습니다.", "경고", "0");
+			return;
+		}
+		if( edt_judg_cd.Text == "1" )
+		{
+			if( length(cal_SOL_START.Value) == 0 || length(cal_SOL_END.Value) == 0 )
+			{
+                gfn_Confirm("MB_OK", "판결코드가 취하:입금인 왼료건은 해결기간을 입력해야 합니다.", "경고", "0");
+				return;
+			}
+			if( length(mae_sol_tot_amt.Value) == 0 || mae_sol_tot_amt.Value == 0 )
+			{
+                gfn_Confirm("MB_OK", "판결코드가 취하:입금인 왼료건은 해결관련 금액정보를 입력해야 합니다.", "경고", "0");
+				return;
+			}
+		}
+		if(toNumber(this.cal_SOL_START.Value) > toNumber(this.cal_SOL_END.Value))
+		{
+			gfn_Confirm("MB_OK", "해결일자 기간의 시작은 종료기간보다 클 수 없습니다.", "경고", "0");
+			return false;
+		}
+	}
+	
+	// 신규모드일 경우 고소기간 중복 체크 한다.
+	//if(FV_MODE = "NEW" && FV_MODE2 = "NEW")
+	if(v_flag == "n")
+	{
+		this.ds_dup_in.SetColumn(0, "UPSO_CD", this.edt_upso_cd.Text);
+		this.ds_dup_in.SetColumn(0, "START_YRMN", substr(this.cal_START_YRMN.Value,0,6));
+		this.ds_dup_in.SetColumn(0, "END_YRMN", substr(this.cal_END_YRMN.Value,0,6));
+		
+		gfn_SyncCall("sys_accu_dup_chk","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_dup_chk","S=ds_dup_in","ds_dup_out=SEL1","","fn_CallBack");
+		
+		if(this.ds_dup_out.GetColumn(0,"CNT")>0){
+			gfn_Confirm("MB_OK", "해당기간에 이미 고소가 등록된 업소입니다.", "경고", "0");
+	
+			return;
+		}
+		
+		//해결되지 않은 고소가 남아있는지 여부 확인
+		//고소기간이 다르더라도 이전 고소내역이 해결확정까지 되지 않았으면 등록을 보류한다 2018-12-06 류선희대리 요청
+		gfn_SyncCall("sys_accu_comp_chk","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_comp_chk","S=ds_dup_in","ds_comp_chk=SEL1","","fn_CallBack");
+		
+		if(ds_comp_chk.GetColumn(0,"CNT") > 0){
+			gfn_Confirm("MB_OK", "해결되지 않은 고소가 있습니다.", "경고", "0");
+	
+			return;
+		}
+	}
+	else
+	{
+		// 수정모드일 경우 대상기간을 수정했을 경우 도 중복체크를 한다.
+		if(check_start != this.cal_START_YRMN.Value || check_end != this.cal_END_YRMN.Value)
+		{
+			this.ds_dup_in.SetColumn(0, "UPSO_CD", this.edt_upso_cd.Text);
+			this.ds_dup_in.SetColumn(0, "START_YRMN", substr(this.cal_START_YRMN.Value,0,6));
+			this.ds_dup_in.SetColumn(0, "END_YRMN", substr(this.cal_END_YRMN.Value,0,6));
+			this.ds_dup_in.SetColumn(0, "ACCU_DAY", this.ds_accu_detail.GetColumn(0,"ACCU_DAY"));
+			this.ds_dup_in.SetColumn(0, "ACCU_NUM", this.ds_accu_detail.GetColumn(0,"ACCU_NUM"));
+			this.ds_dup_in.SetColumn(0, "ACCU_BRAN", this.ds_accu_detail.GetColumn(0,"ACCU_BRAN"));
+			
+			//trace(this.ds_dup_in.SaveXML());
+			
+			gfn_SyncCall("sys_accu_dup_chk","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_dup_chk","S=ds_dup_in","ds_dup_out=SEL1","","fn_CallBack");
+			
+			if(this.ds_dup_out.GetColumn(0,"CNT")>0)
+			{
+				gfn_Confirm("MB_OK", "해당기간에 이미 고소가 등록된 업소입니다.", "경고", "0");
+
+				return;
+			}
+		}
+	}
+	
+	
+	if(gfn_Confirm("MB_YESNO", "저장 하시겠습니까?") == "6"){
+	
+		this.ds_accu_detail.SetColumn(0,"STAFF_CD", this.ds_upso_info.GetColumn(0,"STAFF_CD"));
+		this.ds_accu_detail.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value);
+		
+		//trace(this.ds_accu_detail.SaveXML());
+		
+			
+		gfn_SyncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_mng",
+		"S=ds_accu_detail:U S1=ds_accu_memo:U","ds_accu_detail=SEL42 ds_accu_memo=SEL45","","fn_CallBack", gv_TraceLog, GV_FORMID);
+
+		this.btn_low.Visible = true;
+		this.btn_attorney.Visible = true;
+		
+		
+
+		if(this.cob_judg_cd.Text == "1" && this.cal_COMPN_DAY.Value != "" ) {
+			this.btn_cancel.Visible = true;
+			this.btn_statement.Visible = true;
+		}
+		else{
+		    this.btn_cancel.Visible = false;
+			this.btn_statement.Visible = false;
+		}
+	}
+	FV_MODE2 = "SEARCH";
+}
+
+function fn_Excel() {}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "accu_detail") {
+		gfn_SetStatusMsg("정상적으로 조회되었습니다.");
+		
+		gfn_SyncCall("accu_attch_sel","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=sel_accu_attch","S=ds_accu_detail","ds_advt_attch=SEL1 ds_bpap_attch=SEL2 ds_evtd_attch=SEL3 ds_comp_attch=SEL4","","fn_CallBack");
+	}
+	else if (srvId == "accu_mng"){
+	 	gfn_SetStatusMsg(ErrorMsg);
+		if(length(ErrorMSG) >0){
+			gfn_Confirm("MB_OK", ErrorMsg, "경고", "0");
+		}
+	}
+	else if (srvId == "svcSave"){
+	 	gfn_SetStatusMsg(ErrorMsg);
+		if(length(ErrorMSG) >0){
+			gfn_Confirm("MB_OK", ErrorMsg, "경고", "0");
+		}
+		else
+		{
+			this.mae_accu_day.Value = mae_ACCU_DAY_2.Value;
+			this.mae_accu_num.Value = mae_ACCU_NUM_2.Value;
+			this.edt_accu_bran.Text = edt_ACCU_BRAN_2.Text; // 저장 후 값 clear 되지 않도록 설정 2018.01.09 이다섭
+			alert("저장되었습니다.");
+			
+			fn_Search_m();
+		}
+	}
+	else if (srvId == "accu_delete") {
+		mae_accu_day.Value = "";
+		mae_accu_num.Value = "";
+		edt_accu_bran.Text = "";
+		cob_accu_gbn.Index = 0;
+		//ds_upso_info.ClearData();
+	}
+	else if (srvId == "svcSave_file")
+	{
+		gfn_SyncCall("accu_attch_sel","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=sel_accu_attch","S=ds_accu_detail","ds_advt_attch=SEL1 ds_bpap_attch=SEL2 ds_evtd_attch=SEL3 ds_comp_attch=SEL4","","fn_CallBack");
+	}
+	else if (srvId == "svcDel_file")
+	{
+		gfn_SyncCall("accu_attch_sel","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=sel_accu_attch","S=ds_accu_detail","ds_advt_attch=SEL1 ds_bpap_attch=SEL2 ds_evtd_attch=SEL3 ds_comp_attch=SEL4","","fn_CallBack");
+	}
+	else if (srvId == "accu_attch_sel")
+	{
+		if(ds_advt_attch.rowcount > 0)
+		{
+			btn_advt_down.Enable = true;
+			btn_advt_del.Enable = true;
+		}
+		else
+		{
+			btn_advt_down.Enable = false;
+			btn_advt_del.Enable = false;
+		}
+		if(ds_bpap_attch.rowcount > 0)
+		{
+			btn_bpap_down.Enable = true;
+			btn_bpap_del.Enable = true;
+		}
+		else
+		{
+			btn_bpap_down.Enable = false;
+			btn_bpap_del.Enable = false;
+		}
+		if(ds_evtd_attch.rowcount > 0)
+		{
+			btn_evtd_del.Enable = true;
+		}
+		else
+		{
+			btn_evtd_del.Enable = false;
+		}
+		if(ds_comp_attch.rowcount > 0)
+		{
+			btn_comp_down.Enable = true;
+		}
+		else
+		{
+			btn_comp_down.Enable = false;
+		}	
+	}
+	else if(srvId == "svcDelete")
+	{
+		fn_New();
+		alert("고소내역이 삭제되었습니다.");
+	}
+}
+
+function fn_SearchEnable()
+{
+	// 완결일을 확인하여 입금마감된 경우 전체 수정 불가
+	if (length(this.ds_accu_detail.GetColumn(0, "COMPN_DAY2")) > 0) {
+		ds_search.ClearData();
+		ds_search.AddRow();
+		ds_search.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+		ds_search.SetColumn(0, "ACCU_DAY", this.ds_accu_detail.GetColumn(0, "COMPN_DAY2"));
+		
+		if(gfn_DocIsFinal(ds_approval_result.GetColumn(0, "CODE_CD")))
+		{
+			this.cob_accu_gbn2.Enable = false;
+			this.edt_EVT_NUM.Enable = false;
+			this.edt_EVT_NUM2.Enable = false;
+			this.cob_JUDG_CD.Enable = false;
+			this.edt_JUDG_BRE.Enable = false;
+			this.cob_accu_obj.Enable = false;
+			this.edt_INSPECTOR.Enable = false;
+			this.cal_SOL_START.Enable = false;
+			this.cal_SOL_END.Enable = false;
+			this.mae_sol_org_amt.enable = false;
+			this.mae_sol_addt_amt.enable = false;
+			this.edt_plcst_cd.Enable = false;
+			//this.edt_plcst_nm.Enable = false;
+			this.btn_AccuInfo.Enable = false;
+			this.cal_START_YRMN.Enable = false;
+			this.cal_END_YRMN.Enable = false;
+			this.btn_calc.Enable = false;
+			this.mae_comis.Enable = false;
+			
+			edt_Prod.Enable = false;
+		}
+		else{
+			gfn_SyncCall("accu_mng","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=bran_rept_end","S=ds_search","ds_closingYn=SEL1","","fn_CallBack");
+			
+			if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+				this.cob_accu_gbn2.Enable = false;
+				this.edt_EVT_NUM.Enable = false;
+				this.edt_EVT_NUM2.Enable = false;
+				this.cob_JUDG_CD.Enable = false;
+				this.edt_JUDG_BRE.Enable = false;
+				this.cob_accu_obj.Enable = false;
+				this.edt_INSPECTOR.Enable = false;
+				this.cal_SOL_START.Enable = false;
+				this.cal_SOL_END.Enable = false;
+				this.mae_sol_org_amt.enable = false;
+				this.mae_sol_addt_amt.enable = false;
+				this.edt_plcst_cd.Enable = false;
+				//this.edt_plcst_nm.Enable = false;
+				this.btn_AccuInfo.Enable = false;
+				this.cal_START_YRMN.Enable = false;
+				this.cal_END_YRMN.Enable = false;
+				this.btn_calc.Enable = false;
+				this.mae_comis.Enable = false;
+				
+				edt_Prod.Enable = false;
+			}	
+			else {
+				this.cob_accu_gbn2.Enable = true;
+				this.edt_EVT_NUM.Enable = true;
+				this.edt_EVT_NUM2.Enable = true;
+				this.cob_JUDG_CD.Enable = true;
+				this.edt_JUDG_BRE.Enable = true;
+				this.cob_accu_obj.Enable = true;
+				this.edt_INSPECTOR.Enable = true;
+				//this.cal_SOL_START.Enable = true;
+				this.cal_SOL_END.Enable = true;
+				this.mae_sol_org_amt.enable = true;
+				this.mae_sol_addt_amt.enable = true;
+				this.edt_plcst_cd.Enable = true;
+				//this.edt_plcst_nm.Enable = true;
+				this.btn_AccuInfo.Enable = true;
+				//this.cal_START_YRMN.Enable = true; //2018-12-06 태진
+				this.cal_END_YRMN.Enable = true;
+				this.btn_calc.Enable = true;
+				this.mae_comis.Enable = true;
+				
+				edt_Prod.Enable = true;
+			}
+		}
+	}
+	else {
+		this.cob_accu_gbn2.Enable = true;
+		this.edt_EVT_NUM.Enable = true;
+		this.edt_EVT_NUM2.Enable = true;
+		this.cob_JUDG_CD.Enable = true;
+		this.edt_JUDG_BRE.Enable = true;
+		this.cob_accu_obj.Enable = true;
+		this.edt_INSPECTOR.Enable = true;
+		//this.cal_SOL_START.Enable = true;
+		this.cal_SOL_END.Enable = true;
+		this.mae_sol_org_amt.enable = true;
+		this.mae_sol_addt_amt.enable = true;
+		this.edt_plcst_cd.Enable = true;
+		//this.edt_plcst_nm.Enable = true;
+		this.btn_AccuInfo.Enable = true;
+		//this.cal_START_YRMN.Enable = true; //2018-12-06 태진
+		this.cal_END_YRMN.Enable = true;
+		this.mae_comis.Enable = true;
+		
+		edt_Prod.Enable = true;
+
+		// 의뢰일을 확인하여 입금마감된 경우 고소 대상기간 수정 불가
+		if (length(this.ds_accu_detail.GetColumn(0, "REQ_DAY")) > 0) {
+			ds_search.ClearData();
+			ds_search.AddRow();
+			ds_search.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+			ds_search.SetColumn(0, "ACCU_DAY", this.ds_accu_detail.GetColumn(0, "REQ_DAY"));
+
+			gfn_SyncCall("accu_mng","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=bran_rept_end","S=ds_search","ds_closingYn=SEL1","","fn_CallBack");
+			
+			if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+				this.cal_START_YRMN.Enable = false;
+				this.cal_END_YRMN.Enable = false;
+				this.btn_calc.Enable = false;
+			}	
+			else {
+				//this.cal_START_YRMN.Enable = true; //2018-12-06 태진
+				this.cal_END_YRMN.Enable = true;
+				this.btn_calc.Enable = true;
+			}
+		}
+	}
+	btn_attch_save.Enable = true;
+}
+
+/*
+	 * 기      능 : 	조회후  경찰서 컬럼 초기화
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_search_after()
+{
+	if( ds_upso_info.count == 0) return;
+	
+	if( ds_accu_detail.count == 0) return;
+	
+	fn_display_accuGbn();	//고소구분별 화면 표시 항목 변경
+	
+
+	if( cob_PERT_GBN.value != "03" ) {
+		//mae_comis.Enable = true;
+	}
+	
+	plcst_cd = "";
+	plcst_nm = "";
+	low_cd = "";
+	low_nm = "";	
+}
+
+
+/*
+	 * 기      능 : 	경찰서/법원의 선택에 따른 UI변경
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_display_accuGbn(){
+	/* 고소구분이 B(민사)이면 
+	    - 경찰서=>법원
+	    - 담당조사관 관련 항목 invisible
+	    - 현재시점 기준 고소금액항목 invisible    */
+	//if( ds_accu_detail.GetColumn(ds_accu_detail.currow,"ACCU_GBN") == "B" ){
+	if( this.cob_accu_gbn2.Value == "B" ){
+		st_PLCST.Text = "법 원";
+		st_INSPECTOR.Visible = false;
+		edt_INSPECTOR.Visible = false;
+		fn_display_curAmt(false);
+	}else{
+		st_PLCST.Text = "경찰서";
+		st_INSPECTOR.Visible = true;
+		edt_INSPECTOR.Visible = true;
+		// 완결일자가 존재하면 현재시점 기준 고소금액항목 invisible
+		if( length(ds_accu_detail.GetColumn(ds_accu_detail.currow,"COMPN_DAY2")) > 0 ){
+			fn_display_curAmt(false);
+		}else{
+			fn_display_curAmt(true);
+		}
+	}
+}
+
+	
+/*
+	 * 기      능 : 	현재시점 기준 고소금액항목 UIvisible/invisible 처리함수
+						- 현재기간/현재총금액/현재원금/현재가산금  		
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_display_curAmt(flag)
+{
+	st_cur_term.Visible = flag;
+	cal_FROM_YRMN.Visible = flag;
+	st_cur_term_symbol.Visible = flag;
+	cal_TO_YRMN.Visible = flag;
+	st_cur_tot_amt.Visible = flag;
+	mae_cur_tot_amt.Visible = flag;
+	st_cur_org_amt.Visible = flag;
+	mae_cur_org_amt.Visible = flag;
+	st_cur_addt_amt.Visible = flag;
+	mae_cur_addt_amt.Visible = flag;
+}
+
+
+/*
+	 * 기      능 :  콤보의 선택값에 따른 수수료 변화
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cob_PERT_GBN_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if( strCode == "03" ){		// 무통장이면 수수료 항목 disable
+		//mae_comis.Enable = false;
+		mae_comis.value = 0;	// 초기화
+	}else{
+		//mae_comis.Enable = true;		
+	}
+}
+
+
+/*
+	 * 기      능 :  //고소대상 변경시
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cob_accu_obj_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	
+	// 고소대상 콤보박스에서 경영주나 허가주를 선택하면 해당 이름을 표시
+	if(strCode=="O"){
+		edt_MNGEMSTR_NM.Text = CHK_NAME_O;
+		mae_MNGEMSTR_RESINUM = CHK_JUMIN_O;
+	}else{
+		edt_MNGEMSTR_NM.Text = CHK_NAME_B;
+		mae_MNGEMSTR_RESINUM = CHK_JUMIN_B;
+	}
+
+}
+
+/*
+	 * 기      능 :  //콤보를 형사/민사 선택시 UI변경 
+	 * 인      수 :  STRcode: 콤보의 코드값
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cob_accu_gbn2_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{	
+	if (strCode == "A")	// 형사
+	{
+		low_cd = this.edt_plcst_cd.Text;
+		low_nm = this.edt_plcst_NM.Text;
+
+		this.edt_plcst_cd.Text = plcst_cd;
+		this.edt_plcst_nm.Text = plcst_nm;
+	}
+	else {				// 민사
+		plcst_cd = this.edt_plcst_cd.Text;
+		plcst_NM = this.edt_plcst_NM.Text;
+
+		this.edt_plcst_cd.Text = low_cd;
+		this.edt_plcst_nm.Text = low_nm;
+	}
+	
+	fn_display_accuGbn();	//고소구분별 화면 표시 항목 변경
+		
+/*	
+	this.edt_plcst_cd.Text ="";
+	this.edt_plcst_nm.Text ="";
+// 판결내역이 취하입금일 경우에 해결기간 해결원금, 해결가산금이 입력되어 있어야 한다.
+//완결일자는 판결내역이 취하:입금이 아닐경우에 무조건 입력해야한다.
+	fn_display_accuGbn();	//고소구분별 화면 표시 항목 변경
+	if(this.cob_JUDG_CD.Value ==1 || this.cob_JUDG_CD.Value == 4){
+        gfn_Confirm("MB_OK", "판결내역이 취하입금 또는 벌금일 경우 완결일자의 내역을 입력하실 수 없습니다.", "경고", "0");
+		this.cal_COMPN_DAY.Enable = false;
+	//	//this.cob_PERT_GBN.Enable = false;
+	//	this.cal_SOL_START.BKColor		= 'User13';
+	//	this.cal_SOL_END.BKColor		= 'User13';
+	//	this.mae_sol_org_amt.BKColor	= 'User13';
+	//	this.mae_sol_addt_amt.BKColor	= 'User13';			
+		
+		if(FV_MODE2 == "NEW"){
+		    cal_COMPN_DAY.Value = "";
+		}		
+		
+		if(FV_MODE2 == "SEARCH" && COMPN_DAY_INIT == ""){
+		    cal_COMPN_DAY.Value = "";
+		}else{
+		    cal_COMPN_DAY.Value = COMPN_DAY_INIT;
+		}
+		
+		mae_sol_org_amt.Enable = true;
+		mae_sol_addt_amt.Enable = true;
+	}else{
+		this.cal_COMPN_DAY.Enable = true;
+		//this.cob_PERT_GBN.Enable = true;
+		//this.cal_SOL_START.BKColor		= '';
+		//this.cal_SOL_END.BKColor		= '';
+		this.mae_sol_org_amt.BKColor	= '';
+		this.mae_sol_addt_amt.BKColor	= '';
+		
+		mae_sol_org_amt.Enable = false;
+		mae_sol_addt_amt.Enable = false;
+
+	}	
+	
+*/	
+}
+
+/*
+	 * 기      능 :  //대상기간 시작년월 설정 전(날짜 오류 체크 (시작날짜가 종료날짜보다 클 수 없음
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cal_START_YRMN_CanChange(obj,strOldText,strText)
+{
+	return fn_checkTerm(strText, cal_END_YRMN.Value);	
+}
+
+//대상기간 종료년월 설정 전
+function cal_END_YRMN_CanChange(obj,strOldText,strText)
+{
+	return fn_checkTerm(cal_START_YRMN.Value, strText);	
+}
+//대상기간 시작년월 설정 후
+function cal_START_YRMN_OnChanged(obj,strOldText,strNewText)
+{
+	fn_getRequestAmt();	
+}
+//대상기간 종료년월 설정 후
+function cal_END_YRMN_OnChanged(obj,strOldText,strNewText)
+{
+	// 입력 필수 항목 검사;
+	//fn_getRequestAmt();
+}
+
+
+
+//대상기간 기간변경에 따른 의뢰금액 조회처리
+function fn_getRequestAmt()
+{
+	if( length(cal_START_YRMN.Value) == 0 || length(cal_END_YRMN.Value) == 0 ) return;
+	
+	ds_use_amt.ClearData();
+	ds_use_amt.AddRow();
+	ds_use_amt.SetColumn(0, "UPSO_CD", ds_upso_info.GetColumn(ds_upso_info.currow,"UPSO_CD"));
+	ds_use_amt.SetColumn(0, "START_YRMN", substr(cal_START_YRMN.Value,0,6));
+	ds_use_amt.SetColumn(0, "END_YRMN", substr(cal_END_YRMN.Value,0,6));
+	ds_use_amt.SetColumn(0, "ACCU_DAY", ds_accu_detail.GetColCount(0, "ACCU_DAY"));
+	
+	gfn_SyncCall("use_amt","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=use_amt","S=ds_use_amt","ds_use_amt=MRG7","","fn_CallBack");
+	
+	if( ds_use_amt.count > 0 ){
+		ds_accu_detail.SetColumn(ds_accu_detail.currow,"REQ_ORG_AMT",ds_use_amt.GetColumn(0,"REQ_ORG_AMT"));
+		ds_accu_detail.SetColumn(ds_accu_detail.currow,"REQ_ADDT_AMT",ds_use_amt.GetColumn(0,"REQ_ADDT_AMT"));
+		ds_accu_detail.SetColumn(ds_accu_detail.currow,"REQ_TOT_AMT",ds_use_amt.GetColumn(0,"REQ_TOT_AMT"));	
+	}
+	
+}
+/* ============================================================================================
+    2009.08.14  대상기간에 해당하는 업소의 사용료를 별도로 구해서 의뢰금액을 계산해야 하며
+                계산된 의뢰금액은 변경이 불가하도록 요건이 변경되어 의뢰금액 계산은 서버에서
+                가져오도록 변경했으므로 아래의 코드는 주석처리
+                
+// 의뢰원금 변경시
+function mae_req_org_amt_OnChanged(obj,strText)
+{
+	var addt_amt = parseInt(mae_req_org_amt.value) * 0.3;				// 가산금 계산 => 원금 * 0.3
+	mae_req_addt_amt.Value = addt_amt;
+	
+	var tot_amt = parseInt(mae_req_org_amt.value) + addt_amt;			// 총금액 = 원금 + 가산금 
+	ds_accu_detail.SetColumn(ds_accu_detail.currow,"REQ_TOT_AMT",tot_amt);	
+}
+// 의뢰가산금 변경시
+function mae_req_addt_amt_OnChanged(obj,strText)
+{
+	var addt_amt = parseInt(mae_req_addt_amt.value);
+	var org_amt = parseInt(mae_req_org_amt.value);		
+
+	var tot_amt = org_amt + addt_amt;	// 총금액 = 원금 + 가산금 
+	ds_accu_detail.SetColumn(ds_accu_detail.currow,"REQ_TOT_AMT",tot_amt);	
+}
+//대상기간 기간변경 공통처리
+function fn_changeReqTerm()
+{
+	if( length(cal_START_YRMN.Value) == 0 || length(cal_END_YRMN.Value) == 0 ) return;
+
+	// 해당기간 개월수 취득
+	var mon_cnt = fn_monthsBetween(cal_START_YRMN.Value, cal_END_YRMN.Value);
+
+	//현재 업소의 월사용료 취득
+	var MONPRNCFEE = ds_upso_info.GetColumn(ds_upso_info.currow,"MONPRNCFEE");
+
+	var org_amt  = parseInt(MONPRNCFEE) * mon_cnt;	// 원금 계산 => 월사용료 * 해당기간 개월수
+	var addt_amt = org_amt * 0.3;					// 가산금 계산 => 원금 * 0.3
+	
+	mae_req_org_amt.value = org_amt;
+	mae_req_addt_amt.value = addt_amt;
+	mae_req_tot_amt.value = org_amt + addt_amt;  	// 총금액 = 원금 + 가산금 		
+}
+============================================================================================*/
+//================== 의뢰금액 관련 이벤트 처리 END =====================================
+
+
+/*
+	 * 기      능 :  //대상기간 시작년월 설정 전(날짜 오류 체크 (시작날짜가 종료날짜보다 클 수 없음
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+//================== 해결금액 관련 이벤트 처리 START =====================================
+//해결기간 시작년월 설정 전
+function cal_SOL_START_CanChange(obj,strOldText,strText)
+{
+	return fn_checkTerm(strText, cal_SOL_END.Value);	
+}
+//해결기간 종료년월 설정 전
+function cal_SOL_END_CanChange(obj,strOldText,strText)
+{
+	return fn_checkTerm(cal_SOL_START.Value, strText);	
+}
+
+//해결기간 시작년월 설정 후
+function cal_SOL_START_OnChanged(obj,strOldText,strNewText)
+{
+	fn_changeSolTerm();
+}
+//해결기간 종료년월 설정 후
+function cal_SOL_END_OnChanged(obj,strOldText,strNewText)
+{
+	fn_changeSolTerm();
+}
+
+// 해결원금 변경시
+
+function mae_sol_org_amt_OnChanged(obj,strText)
+{	
+	var tot_amt = 0;
+	/*
+	if( mae_comis.Enable == false ){		// 수수료항목이 disalbe이면 수수료 미포함
+		tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value);	// 총금액 = 원금 + 가산금 
+	}else{
+		tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value)
+					+ parseInt(mae_comis.Value);	// 총금액 = 원금 + 가산금 + 수수료	
+	}
+	*/
+	tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value);	// 총금액 = 원금 + 가산금 
+	
+	ds_accu_detail.SetColumn(ds_accu_detail.currow,"SOL_TOT_AMT",tot_amt);
+}
+
+// 해결가산금 변경시
+function mae_sol_addt_amt_OnChanged(obj,strText)
+{
+	var tot_amt = 0;
+	/*
+	if( mae_comis.Enable == false ){		// 수수료항목이 disalbe이면 수수료 미포함
+		tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value);	// 총금액 = 원금 + 가산금 
+	}else{
+		tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value)
+								+ parseInt(mae_comis.Value);	// 총금액 = 원금 + 가산금 + 수수료	
+	}
+		*/
+    tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value);	// 총금액 = 원금 + 가산금 
+    				
+	ds_accu_detail.SetColumn(ds_accu_detail.currow,"SOL_TOT_AMT",tot_amt);
+}
+
+// 해결관련 입금수수료 변경시 아무런 변경이 안일어나도 된다. 2010.03.22
+/*
+function mae_comis_OnChanged(obj,strText)
+{
+	var tot_amt = parseInt(mae_sol_org_amt.value) + parseInt(mae_sol_addt_amt.value)
+								+ parseInt(mae_comis.Value);	// 총금액 = 원금 + 가산금 + 수수료
+	ds_accu_detail.SetColumn(ds_accu_detail.currow,"SOL_TOT_AMT",tot_amt);
+}
+*/
+
+//해결기간 기간변경 공통처리
+function fn_changeSolTerm()
+{
+	if( length(cal_SOL_START.Value) == 0 || length(cal_SOL_END.Value) == 0 ) return;
+	
+	// 혐의없음인 경우 금액이 입력 안되도록 해달라는 요청 2018-08-01 박성호 요청
+	if(cob_JUDG_CD.Value == "6") return;
+	
+	// 해당기간 개월수 취득
+	var mon_cnt = fn_monthsBetween(cal_SOL_START.Value, cal_SOL_END.Value);
+
+	//현재 업소의 월사용료 취득
+	var MONPRNCFEE = ds_upso_info.GetColumn(ds_upso_info.currow,"MONPRNCFEE");
+
+	var org_amt  = parseInt(MONPRNCFEE) * mon_cnt;	// 원금 계산 => 월사용료 * 해당기간 개월수
+
+	mae_sol_org_amt.Value = org_amt;
+	// 해결가산금은 수기 입력
+	mae_sol_tot_amt.Value = org_amt + parseInt(mae_sol_addt_amt.Value);	// 총금액 = 원금 + 가산금 
+}
+//================== 해결금액 관련 이벤트 처리 END =====================================
+
+//---------- 기간설정 오류 검사 -----------------------
+function fn_checkTerm(sYMD, eYMD)
+{
+	if( length(sYMD) == 0 || length(eYMD) == 0 ) return true;
+
+	if( eYMD < sYMD ){
+        gfn_Confirm("MB_OK", "종료년월이 시작년월보다 작습니다.", "경고", "0");
+		this.cal_END_YRMN.SetFocus();
+		return false;
+	}
+	
+	return true;
+}
+
+/*  ------------------------------
+	 두날짜사이의 개월수 계산함수 		
+	------------------------------- */
+function fn_monthsBetween(sYMD, eYMD)
+{	
+	var y_cnt 	 = parseInt(substr(eYMD,0,4)) - parseInt(substr(sYMD,0,4)) ; // 년도차 계산
+	var m_months = parseInt(substr(eYMD,4,2)) - parseInt(substr(sYMD,4,2)) ; // 월차 계산
+	var y_months = y_cnt * 12;
+	var r_months = y_months + m_months ;		// 차이월수
+	r_months = abs(r_months) + 1 ;				// 차이월수의 양수값 + 1 
+	
+	return r_months;
+}
+
+
+//================== 고소메모 관련 이벤트 처리 START =====================================
+//고소메모 추가
+function btn_add_OnClick(obj)
+{
+	if( ds_accu_detail.count == 0 ) {
+		return;
+	}
+	
+	
+	ds_accu_memo.AddRow();	
+	// 고소정보 상세 ds로부터 고소번호 정보 취득 및 설정
+	ds_accu_memo.SetColumn(ds_accu_memo.currow, "ACCU_DAY", ds_accu_detail.GetColumn(ds_accu_detail.currow,"ACCU_DAY"));
+	ds_accu_memo.SetColumn(ds_accu_memo.currow, "ACCU_NUM", ds_accu_detail.GetColumn(ds_accu_detail.currow,"ACCU_NUM"));
+	ds_accu_memo.SetColumn(ds_accu_memo.currow, "ACCU_BRAN", ds_accu_detail.GetColumn(ds_accu_detail.currow,"ACCU_BRAN"));	
+	
+	//신규 추가시 MEMO_NUM의 최대값 찾아서 추가
+	var next_memo_num = toInteger(ds_accu_memo.Max("MEMO_NUM")) + 1;
+	ds_accu_memo.SetColumn(ds_accu_memo.currow, "MEMO_NUM", next_memo_num);	
+	ds_accu_memo.SetColumn(ds_accu_memo.currow, "MEMO_DAY", today());	
+}
+
+//고소메모 삭제
+function btn_del_OnClick(obj)
+{	
+	if(ds_accu_memo.currow == -1 ) return;
+	// 선택된 고소메모 삭제
+	if(gfn_Confirm("MB_YESNO", "선택된 고소메모를 삭제합니다\n삭제하시겠습니까?", "경고", "0") == "6"){
+		ds_accu_memo.DeleteRow(ds_accu_memo.currow);
+		gfn_SyncCall("accu_mng","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_memo_mng",
+		"S=ds_accu_memo:U","ds_accu_memo=SEL10","","fn_CallBack", gv_TraceLog, GV_FORMID);
+//		gfn_SyncCall("accu_delete","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_mng",
+//		"S=ds_accu_detail:U S1=ds_accu_memo:U","ds_accu_detail=SEL42 ds_accu_memo=SEL45","","fn_CallBack", gv_TraceLog, GV_FORMID);
+	}
+
+}
+//================== 고소메모 관련 이벤트 처리 END =====================================
+
+//================== 팝업 관련 이벤트 처리 START =====================================
+//------------ 업소코드 팝업 함수-----------------
+function fn_FindUPSO()
+{
+	if(length(this.edt_upso_cd.Text) > 0){
+		if(gfn_Confirm("MB_YESNO", "데이터가 없습니다.\n새로운 업소를 등록하겠습니까?") == "6"){
+			this.ds_upso_info.ClearData();
+			this.ds_accu_detail.ClearData();
+			this.ds_accu_detail.ClearData();
+			var iRow = ds_upso_info.InsertRow(0);
+			ds_upso_info.SetColumn(iRow,"CODE_CD","");
+			ds_upso_info.SetColumn(iRow,"CODE_NM","");
+		}
+		else{
+			return ;
+		}
+	}
+	
+	if(this.cob_BRAN_CD.Value == ""){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return false;
+	}
+
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD;
+	if(length(this.edt_UPSO_NM.Text) == 0){
+		UPSO_CD = this.edt_UPSO_CD.Text;
+	}
+	else{
+		UPSO_CD = "";
+	}
+
+	this.edt_UPSO_NM.SetFocus();
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	//var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra01_s01");
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra05_s03");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);
+
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	    this.edt_UPSO_CD.Text = vArr[0];
+	    this.edt_UPSO_NM.Text = vArr[1];
+	}	
+}
+
+/*
+	 * 기      능 : 센터값 가져 오기
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function edt_UPSO_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{	
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	//F1 키 눌렸을 대 업소찾기 팝업 표시
+	if (nChar == "112"){
+		fn_FindUPSO();	
+	}
+	
+	if (nChar == "13"){
+		fn_GetUPSO_CD();
+	
+	}
+}
+/*
+	 * 기      능 : 	업소 코드 구하기
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function fn_GetUPSO_CD()
+{
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+
+	if (length(result) > 0) {
+		var vArr = result.split(",");
+		this.edt_UPSO_CD.Text = vArr[0];
+		this.edt_UPSO_NM.Text = vArr[1];
+		fn_NewInit();
+	}
+	else {
+
+		fn_FindUPSO();
+	}
+}
+
+
+//------------ 경찰서 코드/판결코드 팝업 함수-----------------
+function fn_FindAccuCode(KEY_CHAR, CODE_GBN, CODE)
+{
+	if(length(CODE) > 0 ){
+		if(fn_directFindAccu(CODE_GBN, CODE)){		// 정상처리면 리턴
+			return;
+		}
+	}
+	//입력된 코드가 없거나 코드에 맞는 결과가 존재하지 않으면 팝업 표시
+	CODE = "";
+	var inParam = "CODE_GBN=" + quote(CODE_GBN) + " CODE=" + quote(CODE);
+	var result = Dialog("fi_bra::find_accu_code.xml",inParam);
+	if(0 < length(result)){
+	}
+}
+
+//------------ 경찰서 코드/판결코드 직접 조회 함수-----------------
+function fn_directFindAccu(CODE_GBN, CODE){
+	//초기화 => 검색조건과 결과값을 받는 데이터 셋을 같이 쓰므로 
+	//          반드시 useClientLayout을 true로 설정 필요
+	ds_find_code.ClearData();
+	ds_find_code.AddRow();
+	ds_find_code.SetColumn(0, "CODE_GBN", CODE_GBN);
+	ds_find_code.SetColumn(0, "CODE_CD", CODE);
+
+	gfn_SyncCall("find_code","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=p_plcst_judg","S=ds_find_code","ds_find_code=MRG5","","fn_CallBack");
+
+	if( ds_find_code.count == 0 ) return false;		// 찾은 결과가 없으면 false return
+
+	if( CODE_GBN == "P" ){			// 경찰서 코드
+		this.edt_plcst_nm.Text = ds_find_code.GetColumn(0,"CODE_NM");
+	}else if ( CODE_GBN == "J" ){	// 판결 코드
+	//@@
+	}
+	
+	return true;
+}
+
+// 경찰서 코드 항목
+function edt_plcst_cd_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,LLParam,HLParam)
+{
+	//F1 키를  눌렸을 때
+	if ( nChar == "13" ){
+		fn_GetPLST_CD();
+	}
+		
+	if (nChar == "112"){
+		fn_GetPLST_CD();
+	}
+}
+
+
+function fn_FindAccuCode_LOW(CODE_GBN, CODE, CODE_NM){
+
+	var inParam = "CODE_GBN=" + quote(CODE_GBN) + " CODE=" + quote(CODE) + " CODE_NM=" + quote(CODE_NM);
+	var result = Dialog("fi_bra::find_accu_code.xml",inParam);
+	if(0 < length(result)){
+		}
+}
+
+//------------ 고소번호 조회 팝업 함수-----------------
+function fn_FindAccuNo()
+{
+	var inParam = "BRAN_CD=" + quote(this.cob_BRAN_CD.Value) + " ACCU_GBN=" + quote(this.cob_accu_gbn.Value)
+	              + " ACCU_DAY=" + quote(this.mae_accu_day.Value) + " ACCU_NUM=" + quote(this.mae_accu_num.Value)
+	              + " ACCU_BRAN=" + quote(this.edt_accu_bran.Text)
+	              + " SGBN=" + quote("bra05_s03");
+            
+	var result = Dialog("fi_bra::find_accu_list.xml",inParam);
+	if(0 < length(result)){
+		/*
+		var vArr = result.split(",");
+		this.mae_accu_day.Value = vArr[0];
+		this.mae_accu_num.Value = vArr[1];			
+		this.edt_accu_bran.Text = vArr[2];		*/	
+	}
+}
+function mae_accu_day_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(this.cob_BRAN_CD.Text == ""){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return false;
+	}
+	//F1 키를  눌렸을 때
+	if ( nChar == "112" ){
+		fn_FindAccuNo();	
+	}
+}
+
+function mae_accu_num_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(this.cob_BRAN_CD.Text == ""){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return false;
+	}	
+	//F1 키를  눌렸을 때
+	if ( nChar == "112" ){
+		fn_FindAccuNo();	
+	}	
+}
+
+function edt_accu_bran_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(this.cob_BRAN_CD.Text == ""){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return false;
+	}
+	
+	switch(nChar)
+	{
+		case "112" : // F1
+			break;
+		case "13" : // Enter
+			fn_Search();
+			break;
+	}
+}
+
+//================== 팝업 관련 이벤트 처리 END =====================================
+
+
+
+function btn_FindUpso_OnClick(obj)
+{
+	if(this.cob_BRAN_CD.Text == ""){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return false;
+	}	
+	fn_FindAccuNo();	
+}
+
+function btn_search_OnClick(obj)
+{
+	fn_FindUPSO();	
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	gfn_SetInnerPermission("btn_low,btn_attorney,btn_cancel,btn_statement,btn_add,btn_del,btn_calc,btn_memo_save");
+
+	this.ds_upso_info.ClearData();
+	this.ds_upso_info.AddRow();
+	
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+}
+
+
+
+function edt_upso_cd_OnKillFocus(obj)
+{
+	// 입력 필수 항목 검사;
+
+	return;
+}
+
+
+
+function edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(this.cob_BRAN_CD.Text == ""){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return false;
+	}
+	if (nChar == "13") {
+		fn_GetUPSO_CD();
+	}
+	else if (nChar == "112") {
+		fn_FindUPSO();
+	}
+
+	return;
+}
+//고소장 출력
+function btn_low_OnClick(obj)
+{
+	gfn_SyncCall("sys_accu_info_print","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_info_print", "S=ds_pnt_in", "ds_accu_info_print=SEL1", "", "fn_CallBack");
+
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName(+"bra05_s03_p1.jrf");
+	ubi0.SetDataset("ds_accu_info_print", "ds_accu_info_print");
+	ubi0.Retrieve();
+	ubi0.directPrint();
+}
+//위임장 출력
+function btn_attorney_OnClick(obj)
+{
+	gfn_SyncCall("sys_ds_staff_info_print","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=staff_info_print", "S=ds_pnt_in", "ds_staff_info_print=SEL1", "", "fn_CallBack");
+
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra05_s03_p2.jrf");
+	ubi0.SetDataset("ds_staff_info_print", "ds_staff_info_print");
+	ubi0.Retrieve();
+	ubi0.directPrint();
+}
+
+//고소취소장 출력
+function btn_cancel_OnClick(obj)
+{
+	gfn_SyncCall("sys_ds_accu_cancel_print","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_cancel_print", "S=ds_pnt_in", "ds_accu_cancel_print=SEL1", "", "fn_CallBack");
+
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra05_s03_p3.jrf");
+	ubi0.SetDataset("ds_accu_cancel_print", "ds_accu_cancel_print");
+	ubi0.Retrieve();
+	ubi0.directPrint();
+}
+
+
+//진술서 출력
+function btn_statement_OnClick(obj)
+{
+	
+	gfn_SyncCall("sys_ds_accu_cancel_print","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_cancel_print2", "S=ds_pnt_in", "ds_accu_cancel_print2=SEL1", "", "fn_CallBack");
+
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra05_s03_p4.jrf");
+	
+	if(toNumber(length(this.ds_accu_cancel_print2.GetColumn(0, "BRAN_NM")))==17){
+		var temp = this.ds_accu_cancel_print2.GetColumn(0, "BRAN_NM");
+		temp_1 = substr(temp,0,1)+substr(temp,2,1)+substr(temp,4,1)+substr(temp,6,1)+substr(temp,8,1)+substr(temp,10,1)+substr(temp,12,1)+substr(temp,14,1)+substr(temp,16,1);
+		this.ds_accu_cancel_print2.SetColumn(0,"BRAN_NM",temp_1);
+	}	
+	ubi0.SetDataset("ds_accu_cancel_print2", "ds_accu_cancel_print2");
+	ubi0.Retrieve();
+	ubi0.directPrint();
+}
+
+
+function ds_accu_detail_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+    //btn_cancel
+    //btn_statement
+    if(strColumnID == "JUDG_CD"){
+        if(ds_accu_detail.GetColumn(nRow,"JUDG_CD") == ""){
+            cal_COMPN_DAY.Enable = false;
+            cal_SOL_START.Enable = false;
+            cal_SOL_END.Enable = false;
+            cob_PERT_GBN.Enable = false;
+            
+            cal_COMPN_DAY.BKColor = "";
+            cal_SOL_START.BKColor = "";
+            cal_SOL_END.BKColor = "";
+            cob_PERT_GBN.BKColor = "";
+            
+        }else{
+            cal_COMPN_DAY.Enable = true;
+            //cal_SOL_START.Enable = true;
+            cal_SOL_END.Enable = true;
+            cob_PERT_GBN.Enable = true;
+        }
+    }
+	if(strColumnID == "JUDG_CD" || strColumnID == "COMPN_DAY2"){
+//	       cal_COMPN_DAY.BKColor = "User13";
+//	       cal_SOL_START.BKColor = "User13";
+//	       cal_SOL_END.BKColor = "User13";
+	    }else{
+	        cal_COMPN_DAY.BKColor = "";
+	        cal_SOL_START.BKColor = "";
+	        cal_SOL_END.BKColor = "";
+	        cob_PERT_GBN.BKColor = "";
+	    }	    
+	}
+}
+
+function btn_calc_OnClick(obj)
+{
+	if(toNumber(this.cal_START_YRMN.Value) > toNumber(this.cal_END_YRMN.Value)){
+        gfn_Confirm("MB_OK", "대상기간의 종료날짜는 시작날짜보다 클 수 없습니다.", "경고", "0");
+		this.cal_END_YRMN.SetFocus();
+		return false;
+	}
+	fn_getRequestAmt();
+}
+
+
+function edt_plcst_nm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//엔터키를  눌렸을 때
+	if ( nChar == "13" ){
+		fn_FindAccuCode_NM(nChar, "P", edt_plcst_NM.Text);	
+	}
+	return;
+}
+
+function fn_FindAccuCode_NM(KEY_CHAR, CODE_GBN, CODE_NM){
+	//입력된 코드가 없거나 코드에 맞는 결과가 존재하지 않으면 팝업 표시
+
+	var inParam = "CODE_GBN=" + quote(CODE_GBN) + " CODE_NM=" + quote(CODE_NM);
+	var result = Dialog("fi_bra::find_accu_code.xml",inParam);
+	if(0 < length(result)){
+	}
+}
+
+
+
+function fn_FindAccuCode_NM_LOW(KEY_CHAR, CODE_GBN, CODE_NM){
+	var inParam = "CODE_GBN=" + quote(CODE_GBN) + " CODE_NM=" + quote(CODE_NM);
+	var result = Dialog("fi_bra::find_accu_code.xml",inParam);
+	if(0 < length(result)){
+	}
+}
+
+function btn_AccuInfo_OnClick(obj)	
+{
+	//형사		
+	if(this.cob_accu_gbn2.Index==0){
+		//var inParam = "CODE_GBN=" + quote("P") + " CODE=" + quote(this.edt_plcst_cd.Text)+ " CODE_NM= " + quote(this.edt_plcst_nm.Text);
+		//var inParam = "CODE_GBN=" + quote("P");
+		//var result = Dialog("fi_bra::find_accu_code.xml",inParam);
+		fn_FindAccuCode_NM(112, "P", edt_plcst_NM.Text);	
+	}
+	//민사
+	else{
+		//var inParam = "CODE_GBN=" + quote("L") + " CODE=" + quote(this.edt_plcst_cd.Text)+ " CODE_NM= " + quote(this.edt_plcst_nm.Text);
+		var inParam = "CODE_GBN=" + quote("L");
+		var result = Dialog("fi_bra::find_accu_code.xml",inParam);
+	}
+}
+
+/*
+	 * 기      능 : 	형사/민사값에 따라서 UI를 변경한다.
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function cob_JUDG_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(length(strCode) == 0)
+	{
+		this.cal_COMPN_DAY.Text = "";
+		this.cob_PERT_GBN.Text = "";
+		this.cal_SOL_START.Text = "";
+		this.cal_SOL_END.Text = "";
+		this.mae_sol_tot_amt.Value = "";
+		this.mae_sol_org_amt.Text = "";
+		this.mae_sol_addt_amt.Text = "";
+	}
+/*	
+	else if(strCode == 1)
+	{
+		this.cal_COMPN_DAY.Enable = true;
+
+		//조회라면
+		if(c_search=="Y" && c_judg_cd== this.cob_JUDG_CD.Value ){
+			//서치 정보중 해결기간, 해결총금액, 해결원금,가산금, 수수료를 저장한다.	
+			this.cal_SOL_START.Value = b_cal_SOL_START;
+			this.cal_SOL_END.Value = b_cal_SOL_END;
+			this.mae_sol_tot_amt.Value = b_mae_sol_tot_amt ;
+			this.mae_sol_org_amt.Value = b_mae_sol_org_amt ;
+			this.mae_sol_addt_amt.Value = b_mae_sol_addt_amt ;
+			this.mae_comis.Value = b_mae_comis;
+			this.cal_COMPN_DAY.Value = b_compn_day;
+			this.cob_PERT_GBN.Text = b_rept_gbn;
+		}
+	}
+	else
+	{
+		this.cal_COMPN_DAY.Enable = true;
+		
+		//서치 정보중 해결기간, 해결총금액, 해결원금,가산금, 수수료를 저장한다.	
+		this.cal_SOL_START.Value = b_cal_SOL_START;
+		this.cal_SOL_END.Value = b_cal_SOL_END;
+		this.mae_sol_tot_amt.Value = "";
+		this.mae_sol_org_amt.Value = "";
+		this.mae_sol_addt_amt.Value = "";
+		this.mae_comis.Value = "";
+	}	
+*/
+}
+/*
+	 * 기      능 : 	업소 원장조회에서  인자값을 가지고 현 페이지를 호출 시에 가져온 인자 값을 인수로 서치한다.
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function bra05_s03_OnActivate(obj)
+{
+	if(length(g_bran_cd) == 0 || length(g_upso_cd) == 0){
+        return;
+    }
+
+	gfn_SetPermission(g_bran_cd);
+	gfn_SetInnerPermission("btn_low,btn_attorney,btn_cancel,btn_statement,btn_add,btn_del,btn_calc,btn_memo_save");
+
+	this.cob_BRAN_CD.Value   = g_bran_cd;
+
+	if (length(g_accu_day) > 0 || length(g_accu_num) > 0 || length(g_accu_bran) > 0) {
+		this.edt_UPSO_CD.Text    = g_upso_cd;
+		this.mae_accu_day.Value  = g_accu_day;
+		this.mae_accu_num.Value  = g_accu_num;
+		this.edt_accu_bran.Value = g_accu_bran;
+		this.cob_accu_gbn.Value  = g_accu_gbn;
+		
+		result= gfn_GetUPSO_CD(g_bran_cd, g_upso_cd, "");
+	
+		var vArr = result.split(",");
+		this.edt_UPSO_CD.Text = vArr[0];
+		this.edt_UPSO_NM.Text = vArr[1];
+		fn_search();
+	}else{
+		if(length(g_upso_cd) >0)
+		{
+			result= gfn_GetUPSO_CD(g_bran_cd, g_upso_cd, "");
+	
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+			
+			fn_New();
+		}
+	}
+	
+	g_bran_cd   = "";
+    g_upso_cd   = "";
+	g_accu_day  = "";
+	g_accu_num  = "";
+	g_accu_bran = "";
+	g_accu_gbn  = "";
+}
+
+/*
+	 * 기      능 : 	다른 페이지에서 인자값을 가지고 현 페이지를 호출 시 해당페이지가 열려있어도 재실행시켜준다.
+	 * 인      수 : 	
+	 * Return    : 	
+	 * 예      시 :	
+*/
+function bra05_s03_OnFocus(obj)
+{
+//trace("bra05_s03_OnFocus " + g_bran_cd + "/" + g_upso_cd + "/" + this.edt_UPSO_CD.Text) ;
+	if(length(g_bran_cd) > 0 && this.edt_UPSO_CD.Text != g_upso_cd)
+	{
+		this.cob_BRAN_CD.Value = g_bran_cd;
+
+//trace("bra05_s03_OnFocus " + g_accu_day + "/" + g_accu_num + "/" + g_accu_bran) ;
+		if (length(g_accu_day) > 0 || length(g_accu_num) > 0 || length(g_accu_bran) > 0) {
+			this.edt_UPSO_CD.Text = g_upso_cd;
+			this.mae_accu_day.Value  = g_accu_day;
+			this.mae_accu_num.Value  = g_accu_num;
+			this.edt_accu_bran.Value = g_accu_bran;
+			this.cob_accu_gbn.Value  = g_accu_gbn;
+			
+			result= gfn_GetUPSO_CD(g_bran_cd, g_upso_cd, "");
+		
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+			fn_search();
+		}
+		
+		g_bran_cd = "";
+		g_upso_cd = "";
+		g_accu_day  = "";
+		g_accu_num  = "";
+		g_accu_bran = "";
+		g_accu_gbn  = "";
+    }
+    
+    if(length(ds_state_search.GetColumn(0, "LNK_KEY")) > 0)
+		gfn_syncCall("SEARCH_STAT","KOMCA?SYSID=PATHFINDER&MENUID=1000002002005&EVENTID=sel_gw_apprv_state","S=ds_state_search","ds_approval_result=SEL1","","fn_CallBack");
+}
+
+
+function edt_upso_cd_OnChanged(obj,strText)
+{
+	if (length(strText) == 0) {
+		this.edt_UPSO_NM.Text = "";
+	}
+}
+
+function edt_upso_cd_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+
+
+function fn_GetPLST_CD()
+{
+	var code_gbn = "";
+	if(this.cob_accu_gbn2.Index==0)	code_gbn = "P";		// 형사
+	else							code_gbn = "L";		// 민사
+	
+	this.ds_cd_search.SetColumn(0, "CODE_GBN", code_gbn);
+	this.ds_cd_search.SetColumn(0, "CODE_CD" , this.edt_plcst_cd.Text);
+
+	this.edt_plcst_nm.Text = "";
+	
+	gfn_SyncCall("svcPLST_CD", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=p_plcst_judg", "S=ds_cd_search",
+			"ds_cd_info=MRG5", "", "fn_CallBack");	
+
+	if (this.ds_cd_info.rowcount == 1) {
+		this.edt_plcst_nm.Text = this.ds_cd_info.GetColumn(0, "CODE_NM");
+	}
+	else {
+		var inParam = "CODE_GBN=" + code_gbn + " CODE=" + quote(this.edt_plcst_CD.Text);
+		Dialog("fi_bra::find_accu_code.xml",inParam);
+	}
+}
+
+function btn_memo_save_OnClick(obj)
+{
+	if(ds_accu_memo.currow == -1 ) return;
+	// 선택된 고소메모 저장
+	if(LENGTH(ds_accu_detail.GetColumn(0,"ACCU_NUM")) == 0) {
+		ALERT("고소정보가 등록되지 않았습니다.");
+		RETURN;
+	}
+	if(gfn_Confirm("MB_YESNO", "고소메모를 저장합니다\n저장하시겠습니까?", "확인", "0") == "6"){
+		gfn_SyncCall("accu_mng","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_memo_mng",
+		"S=ds_accu_memo:U","ds_accu_memo=SEL10","","fn_CallBack", gv_TraceLog, GV_FORMID);
+	}	
+}
+
+function btn_Kian_OnClick(obj)
+{
+	if((gds_sessioninfo.GetColumn(0, "STAFF_NUM") == ds_accu_detail.GetColumn(0, "STAFF_CD"))
+	  || (gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100"))
+	{
+		if(length(ds_accu_detail.GetColumn(0, "JUDG_CD")) > 0)
+		{
+			//https://group.komca.or.kr/customkomcaeap/sso?compSeq=10170&eapCode=FB0000&lnkKey=20190507-0002-F&loginId=K150009&deptSeq=122040100
+			var data1 = "eapCode=FB0000";
+			
+			data1 += "&lnkKey=" + ds_accu_detail.GetColumn(0, "ACCU_DAY") + "-" + lpad(ds_accu_detail.GetColumn(0, "ACCU_NUM"), 0, 4)
+				  + "-" + ds_accu_detail.GetColumn(0, "ACCU_BRAN") + "&loginId=" + gds_sessioninfo.GetColumn(0, "STAFF_NUM")
+				  + "&deptSeq=" + gds_sessioninfo.GetColumn(0, "DEPT_CD");
+			var URL = gv_GwURL + "&" + data1;
+			
+			//ExecBrowser(URL);
+			ExecShell(URL);
+			
+			//gfn_syncCall("SEARCH_STAT","KOMCA?SYSID=PATHFINDER&MENUID=1000002002005&EVENTID=sel_gw_apprv_state","S=ds_state_search","ds_approval_result=SEL1","","fn_CallBack");
+		}
+		else
+		{
+			alert("판결내역이 존재하지 않습니다.\n저장 후 결재올려주세요.");
+		}
+	}
+	else
+	{
+		alert("담당자만 결재요청할 수 있습니다.");
+		return;
+	}
+}
+
+function edt_Prodcds_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if( nChar == 112 )
+	{
+		var ddl = Dialog("fi_pub::com01_r03.xml", "formType=1 prodVal='"+edt_Prod.Text+"'"
+			+ " dsName=ds_accu_detail prNrow=0 match=Y colNm1=PROD_CD colNm2=PROD_NM prodttl='"+edt_Prodnm.Text+"'", "");
+	}	
+}
+
+function btn_evtd_add_OnClick(obj)
+{
+	//if(ds_accu_detail.rowcount < 1) { return; }
+	if(length(ds_evtd_attch.GetColumn(ds_evtd_attch.currow, "FILE_NM")) < 1 && ds_evtd_attch.rowcount > 0) { return; }
+	
+	ds_evtd_attch.AddRow();
+}
+
+var vObjId = "";
+
+function btn_attch_up_OnClick(obj)
+{
+	if(ds_accu_detail.rowcount < 1) { return; }
+	
+	vObjId = obj.ID;
+	gfn_fileUpSelect(20480000,File0,FileDialog0,"setFileUploadData","","ds_boarddataset");
+}
+
+function setFileUploadData(path,filename,filesize)
+{
+    gfn_fileUpLoad("dsUploadFile","tr_result","ds_boarddataset");
+}
+
+function tr_result(serid,errid,errmsg)
+{
+	if(serid == "fileup")
+	{
+		var filerout 	= dsUploadFile.getcolumn(0,"PATH"); //업로트임시파일위치
+		var filenm 	 	= dsUploadFile.getcolumn(0,"UNIFILENAME"); //timestamp파일명
+		var upfilename 	= dsUploadFile.getcolumn(0,"UPFILENAME"); //원본파일명
+		
+		if(vObjId == "btn_advt_up")
+		{
+			edt_advt.Text = upfilename;
+			if(ds_advt_attch.rowcount < 1)
+			{
+				ds_advt_attch.AddRow();
+			}
+			ds_advt_attch.SetColumn(0, "FILE_NM", upfilename);
+			ds_advt_attch.SetColumn(0, "FILE_TYPE", "ADVT");
+			ds_advt_attch.SetColumn(0, "SVR_FILE_NM", filenm);
+			ds_advt_attch.SetColumn(0, "SVR_FILE_ROUT", filerout);
+			
+			gfn_SyncCall("svcSave_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_advt_attch:U","", "", "fn_CallBack");
+		}
+		else if(vObjId == "btn_bpap_up")
+		{
+			edt_bpap.Text = upfilename;
+			if(ds_bpap_attch.rowcount < 1)
+			{
+				ds_bpap_attch.AddRow();
+			}
+			ds_bpap_attch.SetColumn(0, "FILE_NM", upfilename);
+			ds_bpap_attch.SetColumn(0, "FILE_TYPE", "BPAP");
+			ds_bpap_attch.SetColumn(0, "SVR_FILE_NM", filenm);
+			ds_bpap_attch.SetColumn(0, "SVR_FILE_ROUT", filerout);
+			
+			gfn_SyncCall("svcSave_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_bpap_attch:U","", "", "fn_CallBack");
+		}
+		else if(vObjId == "btn_comp_up")
+		{
+			edt_comp.Text = upfilename;
+			if(ds_comp_attch.rowcount < 1)
+			{
+				ds_comp_attch.AddRow();
+			}
+			ds_comp_attch.SetColumn(0, "FILE_NM", upfilename);
+			ds_comp_attch.SetColumn(0, "FILE_TYPE", "COMP");
+			ds_comp_attch.SetColumn(0, "SVR_FILE_NM", filenm);
+			ds_comp_attch.SetColumn(0, "SVR_FILE_ROUT", filerout);
+			
+			gfn_SyncCall("svcSave_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_comp_attch:U","", "", "fn_CallBack");
+		}		
+		else if(vObjId == "grd_evtd")
+		{
+			ds_evtd_attch.SetColumn(ds_evtd_attch.currow, "FILE_NM", upfilename);
+			ds_evtd_attch.SetColumn(ds_evtd_attch.currow, "FILE_TYPE", "EVTD");
+			ds_evtd_attch.SetColumn(ds_evtd_attch.currow, "SVR_FILE_NM", filenm);
+			ds_evtd_attch.SetColumn(ds_evtd_attch.currow, "SVR_FILE_ROUT", filerout);
+			
+			gfn_SyncCall("svcSave_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_evtd_attch:U","", "", "fn_CallBack");
+		}
+		
+		vObjId = "";
+	}
+}
+
+function btn_attch_down_OnClick(obj)
+{
+	var rout = "";
+	var file = "";
+	var file_org = "";
+	
+	if(obj.ID == "btn_advt_down")
+	{
+		rout = ds_advt_attch.GetColumn(0, "SVR_FILE_ROUT");
+		file = ds_advt_attch.GetColumn(0, "SVR_FILE_NM");
+		file_org = ds_advt_attch.GetColumn(0, "FILE_NM");
+	}
+	else if(obj.ID == "btn_bpap_down")
+	{
+		rout = ds_bpap_attch.GetColumn(0, "SVR_FILE_ROUT");
+		file = ds_bpap_attch.GetColumn(0, "SVR_FILE_NM");
+		file_org = ds_bpap_attch.GetColumn(0, "FILE_NM");
+	}
+	else if(obj.ID == "btn_comp_down")
+	{
+		rout = ds_comp_attch.GetColumn(0, "SVR_FILE_ROUT");
+		file = ds_comp_attch.GetColumn(0, "SVR_FILE_NM");
+		file_org = ds_comp_attch.GetColumn(0, "FILE_NM");
+	}	
+	else if(obj.ID == "grd_evtd")
+	{
+		rout = ds_evtd_attch.GetColumn(ds_evtd_attch.currow, "SVR_FILE_ROUT");
+		file = ds_evtd_attch.GetColumn(ds_evtd_attch.currow, "SVR_FILE_NM");
+		file_org = ds_evtd_attch.GetColumn(ds_evtd_attch.currow, "FILE_NM");
+	}
+	
+	gfn_fileDownLoad(rout, file, File0, FileDialog0, file_org);	//다운로드일때
+}
+
+function btn_attch_del_OnClick(obj)
+{
+	if(!Confirm("삭제하시겠습니까?")) { return; }
+	
+	if(obj.ID == "btn_advt_del")
+	{
+		ds_advt_attch.DeleteRow(0);
+		gfn_SyncCall("svcDel_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_advt_attch:U","", "", "fn_CallBack");
+	}
+	else if(obj.ID == "btn_bpap_del")
+	{
+		ds_bpap_attch.DeleteRow(0);
+		gfn_SyncCall("svcDel_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_bpap_attch:U","", "", "fn_CallBack");
+	}
+	else if(obj.ID == "btn_evtd_del")
+	{
+		if(length(ds_evtd_attch.GetColumn(ds_evtd_attch.currow, "FILE_NM")) < 1 && ds_evtd_attch.rowcount > 0)
+		{
+			ds_evtd_attch.DeleteRow(ds_evtd_attch.currow);
+		}
+		else
+		{
+			ds_evtd_attch.DeleteRow(ds_evtd_attch.currow);
+			gfn_SyncCall("svcDel_file","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=mng_accu_attch","S=ds_accu_detail S1=ds_evtd_attch:U","", "", "fn_CallBack");
+		}
+	}
+
+}
+
+function grd_evtd_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if(nCell == grd_evtd.GetBindCellIndex("body", "UP"))
+	{
+		btn_attch_up_OnClick(obj);
+	}
+	else if(nCell == grd_evtd.GetBindCellIndex("body", "DOWN"))
+	{
+		btn_attch_down_OnClick(obj);
+	}
+}
+
+function edt_accu_bran_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = toUpper(chr(nChar));
+		return false;
+	}
+}	
+
+function btn_accu_del_OnClick(obj){
+
+	if(confirm("고소번호 " + this.mae_accu_day_2.Value + "-" + this.mae_accu_num_2.Value + "-" + this.edt_accu_bran_2.Text + "를 삭제하시겠습니까?")){
+		ds_delete.SetColumn(0, "ACCU_DAY", this.mae_accu_day_2.Value);
+		ds_delete.SetColumn(0, "ACCU_NUM", this.mae_accu_num_2.Value);
+		ds_delete.SetColumn(0, "ACCU_BRAN", this.edt_accu_bran_2.Text);
+		//trace(ds_delete.SaveXML());
+
+		gfn_SyncCall("svcDelete","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=accu_delete", "S=ds_delete","","","fn_CallBack");
+		//trace("trace");
+	}
+	return;
+}
+]]></Script>
+</Window>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="344" Id="sawon_info" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="사원&#32;조회" Top="8" Ver="1.0" Width="416" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Font="굴림,12,Bold" Height="24" Id="Static0" Left="72" TabOrder="2" Text="사원조회&#32;-&#32;POP-UP" Top="16" Width="200"></Static>
+		<Edit Height="21" Id="edt_STAFF_CD" Left="272" TabOrder="2" TabStop="FALSE" Top="256" Visible="FALSE" Width="121"></Edit>
+		<Edit Height="21" Id="edt_STAFF_NM" Left="272" TabOrder="3" TabStop="FALSE" Top="280" Visible="FALSE" Width="121"></Edit>
+		<Image Height="12" Id="Image16" ImageID="C_icon" Left="20" TabOrder="4" TabStop="FALSE" Top="52" Width="12"></Image>
+		<Static Height="15" Id="Static1" Left="40" Style="tx_left_bold" TabOrder="6" Text="센터명" Top="52" Width="49"></Static>
+		<Combo BKColor="user13" Enable="FALSE" Height="21" Id="cob_BRAN_CD" Left="89" TabOrder="1" Top="49" Width="119"></Combo>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Search" ImageID="C_btn_70" Left="312" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="5" TabStop="FALSE" Text="조회" Top="24" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="312" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="6" TabStop="FALSE" Text="닫기" Top="56" TopMargin="1" Width="71"></Button>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_SawonInfo" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="328" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="240" Id="grd_StaffInfo" InputPanel="FALSE" Left="24" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellClick="grd_StaffInfo_OnCellClick" OnCellDBLClick="grd_StaffInfo_OnCellDblClick" Right="400" RowHeight="20" Style="grid" TabOrder="9" TabStop="FALSE" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="376">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="105"/>
+						<col width="141"/>
+						<col width="95"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="사원번호"/>
+						<cell col="1" color="user12" display="text" text="사원명"/>
+						<cell col="2" color="user12" display="text" text="입사일"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="STAFF_CD" display="text"/>
+						<cell align="center" col="1" colid="STAFF_NM" display="text"/>
+						<cell col="2" colid="ETCOM_DAY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);
+
+	if (length(BRAN_CD) >= 0)
+	{
+		this.cob_BRAN_CD.Value = BRAN_CD;
+		
+		this.ds_BRAN_CD.ClearData();
+		this.ds_BRAN_CD.AddRow();
+		this.ds_BRAN_CD.setcolumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_Bran_cd","ds_SawonInfo=SEL1","","fn_CallBack");
+	}
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+}	
+
+function grd_StaffInfo_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	this.edt_STAFF_CD.Text = this.ds_SawonInfo.GetColumn(nRow, "STAFF_CD");
+	this.edt_STAFF_NM.Text = this.ds_SawonInfo.GetColumn(nRow, "STAFF_NM");
+
+	Close(this.edt_STAFF_CD.Text + "," + this.edt_STAFF_NM.Text);
+}
+
+function btn_Close_OnClick(obj)
+{
+	var staff_cd = this.edt_STAFF_CD.Text;
+	var staff_nm = this.edt_STAFF_NM.Text;
+
+	Close(staff_cd + "," + staff_nm);
+}	
+
+function grd_StaffInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	this.edt_STAFF_CD.Text = this.ds_SawonInfo.GetColumn(nRow, "STAFF_CD");
+	this.edt_STAFF_NM.Text = this.ds_SawonInfo.GetColumn(nRow, "STAFF_NM");
+}
+
+function btn_Search_OnClick(obj)
+{
+	this.ds_BRAN_CD.ClearData();
+	this.ds_BRAN_CD.AddRow();
+	this.ds_BRAN_CD.setcolumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_Bran_cd","ds_SawonInfo=SEL1","","fn_CallBack");
+}
+]]></Script>
+</Window>

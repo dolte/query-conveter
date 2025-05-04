@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="408" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업종&#32;조회&#32;" Top="8" Ver="1.0" Width="504" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Upjong">
+				<Contents>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_END" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_rad">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>분류</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>리스트</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upjong_mst" OnRowPosChanged="ds_Upjong_mst_OnRowPosChanged">
+				<Contents>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upjong_dtl">
+				<Contents>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_END" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Set">
+				<Contents>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<record>
+						<GRAD></GRAD>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Font="굴림,12,Bold" Height="21" Id="Static0" Left="30" Style="tx_c_bold" TabOrder="1" Text="업종조회" Top="12" Width="98"></Static>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_Upjong" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="377" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="337" Id="grd_Upjong" InputPanel="FALSE" Left="352" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_Upjong_OnCellDblClick" Right="840" RowHeight="20" Style="grid" TabOrder="2" TabStop="FALSE" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="488">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="64"/>
+						<col width="135"/>
+						<col width="124"/>
+						<col width="68"/>
+						<col width="68"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업종코드"/>
+						<cell col="1" color="user12" display="text" text="업종명"/>
+						<cell col="2" color="user12" display="text" text="사용료"/>
+						<cell col="3" color="user12" display="text" text="S_면적"/>
+						<cell col="4" color="user12" display="text" text="E_면적"/>
+					</head>
+					<body>
+						<cell col="0" colid="GRAD" display="text"/>
+						<cell col="1" colid="GRADNM" display="text"/>
+						<cell col="2" colid="STNDAMT" display="number" Mask="###,###,###"/>
+						<cell col="3" colid="STNDAREA_START" display="number" Mask="###,###,##0.#㎡"/>
+						<cell col="4" colid="STNDAREA_END" display="number" Mask="###,###,##0.#㎡"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="417" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="3" TabStop="FALSE" Text="닫기" Top="380" TopMargin="1" Width="71"></Button>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="6" TabOrder="4" TabStop="FALSE" Top="11" Width="18"></Image>
+		<Shape BKColor="user7" Bottom="40" Height="3" Id="Shape3" Left="352" LineColor="user7" Right="840" TabOrder="5" Top="37" Type="Rectangle" Visible="FALSE" Width="488"></Shape>
+		<Radio CodeColumn="CODE_CD" ColumnCount="2" DataColumn="CODE_NM" Height="21" Id="rad_gbn" INDEX="0" InnerDataset="ds_rad" Left="185" OnChanged="rad_gbn_OnChanged" Style="radio" TabOrder="6" Top="10" Width="164"></Radio>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_Upjong_mst" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="377" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="337" Id="grd_Upjong_mst" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" Right="136" RowHeight="20" Style="grid" TabOrder="7" TabStop="FALSE" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="128">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="135"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업종분류"/>
+					</head>
+					<body>
+						<cell col="0" colid="GRADNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_Upjong_dtl" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="377" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="337" Id="grd_Upjong_dtl" InputPanel="FALSE" Left="144" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_Upjong_OnCellDblClick" Right="496" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="352">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="48"/>
+						<col width="116"/>
+						<col width="78"/>
+						<col width="50"/>
+						<col width="50"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="코드"/>
+						<cell col="1" color="user12" display="text" text="업종명"/>
+						<cell col="2" color="user12" display="text" text="사용료"/>
+						<cell col="3" color="user12" display="text" text="S_면적"/>
+						<cell col="4" color="user12" display="text" text="E_면적"/>
+					</head>
+					<body>
+						<cell col="0" colid="GRAD" display="text"/>
+						<cell col="1" colid="GRADNM" display="text"/>
+						<cell col="2" colid="STNDAMT" display="number" Mask="###,###,###"/>
+						<cell col="3" colid="STNDAREA_START" display="number" Mask="###,###,##0.#㎡"/>
+						<cell col="4" colid="STNDAREA_END" display="number" Mask="###,###,##0.#㎡"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="40" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="136" TabOrder="9" Top="37" Type="Rectangle" Width="128"></Shape>
+		<Shape BKColor="user7" Bottom="40" Height="3" Id="Shape1" Left="144" LineColor="user7" Right="496" TabOrder="10" Top="37" Type="Rectangle" Width="352"></Shape>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+
+function form_OnLoadCompleted(obj)
+{
+	Shape3.Left = 8;
+	grd_Upjong.Left = 8;
+	
+	ds_Upjong.AddRow();
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=m_grade_select","","ds_Upjong_mst=SEL2","","fn_CallBack");
+	gfn_syncCall("svcLogin2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_grade_select","","ds_Upjong=SEL1","","fn_CallBack");
+	
+	rad_gbn.Index = 0;
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+}
+
+function grd_Upjong_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var grad;
+	var gradnm;
+	var stndamt;
+	var ds_obj;
+	
+	if(rad_gbn.Value == "1")
+	{
+		ds_obj = ds_Upjong_dtl;
+	}
+	else
+	{
+		ds_obj = ds_Upjong;
+	}
+	
+	grad    = ds_obj.GetColumn(nRow, "GRAD"   );
+	gradnm  = ds_obj.GetColumn(nRow, "GRADNM" );
+	stndamt = ds_obj.GetColumn(nRow, "STNDAMT");
+	
+	//선택시에 선택한 값을 가지고 온다. 
+	Close(grad + "," + gradnm + "," + stndamt);
+}
+
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+
+function ds_Upjong_mst_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	ds_Set.SetColumn(0, "GRAD", ds_Upjong_mst.GetColumn(nRow, "GRAD"));
+	gfn_syncCall("svcSearchDtl","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=grade_simple_select","S=ds_Set","ds_Upjong_dtl=SEL2","","fn_CallBack");
+}
+
+function rad_gbn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "1")
+	{
+		Shape3.Visible = false;
+		grd_Upjong.Visible = false;
+		
+		Shape0.Visible = true;
+		Shape1.Visible = true;
+		grd_Upjong_mst.Visible = true;
+		grd_Upjong_dtl.Visible = true;
+	}
+	else
+	{
+		Shape3.Visible = true;
+		grd_Upjong.Visible = true;
+		
+		Shape0.Visible = false;
+		Shape1.Visible = false;
+		grd_Upjong_mst.Visible = false;
+		grd_Upjong_dtl.Visible = false;
+	}
+}
+]]></Script>
+</Window>

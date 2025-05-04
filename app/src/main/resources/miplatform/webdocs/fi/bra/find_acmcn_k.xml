@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="560" Id="upjong_search" Left="8" OnLoadCompleted="upjong_search_OnLoadCompleted" PidAttrib="7" Title="금영&#32;반주기&#32;모델&#32;검색" Top="8" Ver="1.0" Width="368" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Acmcn">
+				<Contents>
+					<colinfo id="MCHN_COMPY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEL_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEL_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Font="굴림,12,Bold" Height="16" Id="Static0" Left="24" TabOrder="1" Text="금영기기모델조회" Top="8" Width="232"></Static>
+		<Grid BindDataset="ds_Acmcn" BkColor2="default" BoldHead="true" Bottom="544" Enable="true" EndLineColor="default" Height="504" Id="grd_Noraebang" InputPanel="FALSE" Left="8" LineColor="default" OnCellDBLClick="grd_Noraebang_OnCellDblClick" Right="352" TabOrder="2" TabStop="true" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="344">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="88"/>
+						<col width="192"/>
+						<col width="61"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="모델코드"/>
+						<cell col="1" color="user12" display="text" text="모델명"/>
+						<cell col="2" color="user12" display="text" text="구분"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="MODEL_CD" display="text"/>
+						<cell align="center" bkimagealign="left" col="1" colid="MODEL_NM" display="text"/>
+						<cell align="center" col="2" colid="GBN" display="numberexp" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_90" Left="256" OnClick="btn_Close_OnClick" TabOrder="3" Text="닫&#32;기" Top="8" Width="104"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+
+
+var Kum_row = 0;
+var Tae_row = 0;
+var etc_row = 0;
+var aubry_row = 0;
+var k_row;	//가져온 금영의 row
+
+var ban_row;
+function upjong_search_OnLoadCompleted(obj)
+{
+	k_row = nRow;
+	//오브리 그리드위치를 저장한다
+	
+	this.ds_Acmcn.AddRow();
+	this.ds_Acmcn.SetColumn(0,"MCHN_COMPY",Mcn_compy);
+	
+	//trace(this.ds_Acmcn.SaveXML());
+	if(gbn=="acncm"){					//반주기 모델일 경우 
+		gfn_syncCall("svcLogin2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004007&EVENTID=acmcnModel_search","S=ds_Acmcn","ds_Acmcn=SEL1","","fn_CallBack");
+	}
+	else if(gbn=="etc"){
+		gfn_syncCall("svcLogin2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004007&EVENTID=acmcnModel_search","S=ds_Acmcn","ds_Acmcn=SEL2","","fn_CallBack");
+	}
+	else if(gbn=="aubry"){				// 오브리일 경우 
+		gfn_syncCall("svcLogin2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004007&EVENTID=AubryModel_search","S=ds_Acmcn","ds_Acmcn=SEL1","","fn_CallBack");
+	}
+	
+	
+}
+
+function grd_upjong_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(Mcn_compy=="E0006"){					//반주기: 금영
+		if( Kum_row >4){
+			alert("반주기 모델정보는 5개 이상 선택 불가");
+			close();
+		}
+		var TModel_nm = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		var tMCHN_COMPY = 
+		parent.ds_AcmModel_Kum.SetColumn(k_row,"MODEL_CD",TModel_nm);
+		
+	}
+	else if(Mcn_compy=="E0003"){			//반주기: 태진
+			if( Tae_row >4){
+			alert("반주기 모델정보는 5개 이상 선택 불가");
+			close();
+		}
+		var TModel_nm1 = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		parent.ds_AcmModel_Tae.SetColumn(Tae_row,"MODEL_CD",TModel_nm1);
+		Tae_row++;
+	}
+	else if(gbn=="aubry"){					//오브리 정보 
+		var MODEL_CD_t = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		var MODEL_NM_t = this.ds_Acmcn.GetColumn(nRow,"MODEL_NM");
+		var mchn_compy_t = this.ds_Acmcn.GetColumn(nRow,"MCHN_COMPY");
+		parent.ds_Aubry.SetColumn(aubry_row,"MODEL_CD",MODEL_CD_t);
+		parent.ds_Aubry.SetColumn(aubry_row,"MODEL_NM",MODEL_NM_t);
+		parent.ds_Aubry.SetColumn(aubry_row,"mchn_compy",mchn_compy_t);	
+	}
+	else if(Mcn_compy=="E0000"){									//반주기: 그 외
+		if( etc_row >4){
+			alert("반주기 모델정보는 5개 이상 선택 불가");
+			close();
+		}
+		var TModel_nm2 = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		parent.ds_AcmModel_Etc.SetColumn(etc_row,"MODEL_CD",TModel_nm2);
+		etc_row++;
+	}
+	close();
+}
+
+function grd_Noraebang_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(Mcn_compy=="E0006"){					//반주기: 금영
+	
+		if( Kum_row >4){
+			alert("반주기 모델정보는 5개 이상 선택 불가");
+			close();
+		}
+		var TModel_nm = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD"); 
+	
+		for(i=0; i<5; i++) {
+		
+			if(TModel_nm == parent.ds_AcmModel_Kum.getcolumn(i,"MODEL_CD")){
+				
+				alert("같은 기기모델이 존재합니다.\n해당 모델의 대수를 수정하세요.");
+				return;
+			}
+		}
+		parent.ds_AcmModel_Kum.SetColumn(k_row,"MODEL_CD",TModel_nm);
+		gfn_setGridFocus(parent.grd_AcmModel_kum,k_row,"ACMCN_DAESU");
+		close();
+
+	}
+	else if(Mcn_compy=="E0003"){			//반주기: 태진
+			if( Tae_row >4){
+			alert("반주기 모델정보는 5개 이상 선택 불가");
+			close();
+		}
+		var TModel_nm1 = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		parent.ds_AcmModel_Tae.SetColumn(Tae_row,"MODEL_CD",TModel_nm1);
+		Tae_row++;
+	}
+	else if(gbn=="aubry"){					//오브리 정보 
+		var MODEL_CD_t = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		var MODEL_NM_t = this.ds_Acmcn.GetColumn(nRow,"MODEL_NM");
+		var mchn_compy_t = this.ds_Acmcn.GetColumn(nRow,"MCHN_COMPY");
+		parent.ds_Aubry.SetColumn(aubry_row,"MODEL_CD",MODEL_CD_t);
+		parent.ds_Aubry.SetColumn(aubry_row,"MODEL_NM",MODEL_NM_t);
+		parent.ds_Aubry.SetColumn(aubry_row,"mchn_compy",mchn_compy_t);	
+	}
+	else{									//반주기: 그 외
+		if( etc_row >4){
+			alert("반주기 모델정보는 5개 이상 선택 불가");
+			close();
+		}
+		var TModel_nm2 = this.ds_Acmcn.GetColumn(nRow,"MODEL_CD");
+		parent.ds_AcmModel_Etc.SetColumn(etc_row,"MODEL_CD",TModel_nm2);
+		etc_row++;
+	}
+}
+function btn_Close_OnClick(obj)
+{
+	close();
+}
+
+]]></Script>
+</Window>

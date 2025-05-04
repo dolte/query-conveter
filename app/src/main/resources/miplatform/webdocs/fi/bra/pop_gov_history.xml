@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="304" Id="pop_gov_history" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="저장이력정보" Top="8" Ver="1.0" Width="280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_gov_History">
+				<Contents>
+					<colinfo id="CONFIRM_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BindDataset="ds_gov_History" BkColor2="default" BoldHead="true" Border="Flat" Bottom="296" Enable="true" EndLineColor="default" HeadHeight="23" Height="264" Id="ikikikik" InputPanel="true" Left="8" LineColor="default" OnCellDBLClick="ikikikik_OnCellDblClick" Right="272" RowHeight="22" Style="edit" TabOrder="66" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="264">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="132"/>
+						<col width="130"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="현황년월"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="등록사원"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CONFIRM_YRMN" display="text"/>
+						<cell align="center" col="1" colid="CONFIRM_ID" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Cursor="HAND" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="200" LeftMargin="10" OnClick="btn_Close_OnClick" Static="FALSE" TabOrder="2" TabStop="FALSE" Text="닫기" Top="8" Width="71"></Image>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_syncCall("svc_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=gov_history_list","","ds_gov_History=SEL1","","fn_CallBack");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close(false);
+}
+
+function ikikikik_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	parent.ds_history_sc.SetColumn(0, "CONFIRM_YRMN", ds_gov_History.GetColumn(ds_gov_History.currow, "CONFIRM_YRMN"));
+	
+	close(true);
+}
+]]></Script>
+</Window>

@@ -1,0 +1,2659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="upso_regist" Left="8" OnActivate="cal_SendMon_OnActivate" OnFocus="upso_regist_OnFocus" OnLoadCompleted="upso_regist_OnLoadCompleted" PidAttrib="7" Title="업소등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_UpsoInfo" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIOWN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYPRES_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAIL_RCPT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAPER_CANC_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_STAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFORE_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_DAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFORE_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BILL_ISS_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upso_Stat">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_PayerPres">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Location">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_YesNo">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_UpsoNoraebang" OnColumnChanged="ds_UpsoNoraebang_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BSTypGrad">
+				<Contents>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_END" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upso">
+				<Contents>
+					<colinfo id="upso_cd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upso_In">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upso_Search">
+				<Contents>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UpsoSearch_List">
+				<Contents>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_MailRecpt">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UpsoInfo_log" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIOWN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYPRES_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAIL_RCPT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAPER_CANC_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_STAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFORE_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_DAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFORE_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BILL_ISS_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_REMAK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_UpsoNoraebang_log" OnColumnChanged="ds_UpsoNoraebang_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BeforeUpsoInfo">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_BeforeNoraebang" OnColumnChanged="ds_UpsoNoraebang_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>B</CODE_CD>
+						<CODE_NM>경영주</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>O</CODE_CD>
+						<CODE_NM>허가주</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Tab Border="Flat" Font="굴림,8,Bold" Height="730" HilightTextColor="red" Id="tab_UpsoInfo" Left="7" MouseOverColor="white" OnChanging="tab_UpsoInfo_OnChanging" PreLoad="TRUE" SelColor="white" Style="tab" TabOrder="1" Top="63" Width="1032">
+			<Contents>
+				<TabPage BorderColor="black" Height="701" Id="UPSO" ImageID="C_tab2" Left="2" Style="tab" SyncContents="true" TabOrder="1" Text="&#32;업소&#32;정보" Top="27" Width="1028">
+					<Shape BKColor="white" Bottom="181" Height="26" Id="Shape12" Left="127" LineColor="user3" Right="1031" TabOrder="92" Top="155" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="629" Height="26" Id="Shape9" Left="126" LineColor="user3" Right="1030" TabOrder="81" Top="603" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="679" Height="26" Id="Shape11" Left="129" LineColor="user3" Right="1030" TabOrder="83" Top="653" Type="Rectangle" Width="901"></Shape>
+					<Shape BKColor="white" Bottom="654" Height="26" Id="Shape10" Left="126" LineColor="user3" Right="1030" TabOrder="82" Top="628" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="604" Height="26" Id="Shape8" Left="127" LineColor="user3" Right="1030" TabOrder="80" Top="578" Type="Rectangle" Width="903"></Shape>
+					<Shape BKColor="white" Bottom="244" Height="26" Id="Shape7" Left="126" LineColor="user3" Right="1030" TabOrder="79" Top="218" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="156" Height="26" Id="Shape6" Left="127" LineColor="user3" Right="1031" TabOrder="78" Top="130" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="132" Height="26" Id="Shape5" Left="127" LineColor="user3" Right="1031" TabOrder="77" Top="106" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="107" Height="26" Id="Shape4" Left="127" LineColor="user3" Right="1031" TabOrder="76" Top="81" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="82" Height="26" Id="Shape3" Left="127" LineColor="user3" Right="1031" TabOrder="75" Top="56" Type="Rectangle" Width="904"></Shape>
+					<Shape BKColor="white" Bottom="57" Height="26" Id="Shape2" Left="126" LineColor="user3" Right="1030" TabOrder="74" Top="31" Type="Rectangle" Width="904"></Shape>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static6" Left="14" Style="box_tx" TabOrder="20" Text="현업소&#32;코드/명" Top="31" VAlign="Middle" Width="114"></Static>
+					<Edit BindDataset="ds_UpsoInfo" BKColor="user13" Border="Flat" BorderColor="user10" Column="UPSO_CD" Enable="FALSE" Height="20" Id="edt_UPSO_CD" ImeMode="none" Left="131" MaxLength="8" OnChar="tab_UpsoInfo_UPSO_edt_UPSO_CD_OnChar" Style="edit" TabOrder="1" TabStop="FALSE" Top="34" Width="54"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static0" Left="398" Style="box_tx" TabOrder="23" Text="현업소&#32;등급" Top="31" VAlign="Middle" Width="114"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="GRAD" Enable="FALSE" Height="20" Id="edt_GRAD" Left="515" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="22" TabStop="FALSE" Top="34" Width="46"></Edit>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="GRADNM" Enable="FALSE" Height="20" Id="edt_GRADNM" Left="563" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="23" TabStop="FALSE" Top="34" Width="96"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static1" Left="793" Style="box_tx" TabOrder="27" Text="기기&#32;대수" Top="31" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static2" Left="14" Style="box_tx" TabOrder="28" Text="전업소&#32;코드/명" Top="55" VAlign="Middle" Width="114"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="BEFORE_UPSO_CD" Enable="FALSE" Height="20" Id="edt_BFRUPSO_CD" Left="131" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="25" TabStop="FALSE" Top="59" Width="54"></Edit>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="B_UPSO_NM" Enable="FALSE" Height="20" Id="edt_BEFORE_UPSO_NM" Left="187" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="26" TabStop="FALSE" Top="59" Width="176"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static3" Left="398" Style="box_tx" TabOrder="31" Text="전업소&#32;등급" Top="56" VAlign="Middle" Width="114"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="B_GRAD" Enable="FALSE" Height="20" Id="edt_B_GRAD" Left="515" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="27" TabStop="FALSE" Top="59" Width="46"></Edit>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="B_GRADNM" Enable="FALSE" Height="20" Id="edt_B_GRADNM" Left="563" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="29" TabStop="FALSE" Top="59" Width="96"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static4" Left="793" Style="box_tx" TabOrder="34" Text="기기&#32;대수" Top="56" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static5" Left="14" Style="box_tx" TabOrder="35" Text="사업자&#32;번호" Top="130" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static7" Left="14" Style="box_tx" TabOrder="36" Text="영업장&#32;전화" Top="105" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static8" Left="14" Style="box_tx" TabOrder="37" Text="영업장&#32;주소" Top="80" VAlign="Middle" Width="114"></Static>
+					<Button Cursor="HAND" Enable="FALSE" Height="20" Id="btn_FindZip" ImageID="C_btn_search" Left="131" OnClick="tab_UpsoInfo_UPSO_btn_FindZip_OnClick" TabOrder="17" TabStop="FALSE" Top="84" Width="58"></Button>
+					<Edit BKColor="user13" Border="Flat" BorderColor="user10" CheckLength="Byte" Enable="FALSE" Height="20" Id="edt_UPSO_ZIP1" ImeMode="none" Left="198" LeftMargin="2" MaxLength="3" Number="TRUE" Readonly="TRUE" Style="edit" TabOrder="30" TabStop="FALSE" ToolTipText="우편번호" Top="84" Width="40"></Edit>
+					<Edit BindDataset="DS_UpsoInfo" Border="Flat" Column="UPSO_ADDR2" Height="20" Id="edt_UPSO_ADDR2" Left="514" MaxLength="100" Style="edit" TabOrder="3" Top="84" Width="381"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static10" Left="14" Style="box_tx" TabOrder="39" Text="업종&#32;선택" Top="218" VAlign="Middle" Width="114"></Static>
+					<Button Cursor="HAND" Enable="FALSE" Height="21" Id="btn_FindUpjong" ImageID="C_btn_search" Left="230" OnClick="tab_UpsoInfo_UPSO_btn_FindUpjong_OnClick" TabOrder="18" TabStop="FALSE" Top="221" Width="58"></Button>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static11" Left="566" Style="box_tx" TabOrder="40" Text="기기&#32;대수" Top="218" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static12" Left="310" Style="box_tx" TabOrder="40" Text="금&#32;액" Top="218" VAlign="Middle" Width="114"></Static>
+					<Grid BindDataset="ds_UpsoNoraebang" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="GRAYTEXT" Bottom="378" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" Font="굴림,9" HeadHeight="23" Height="124" Id="grd_Noraebang" InputPanel="FALSE" Left="14" LineColor="default" Right="625" RowHeight="20" TabOrder="20" TabStop="true" Top="254" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="611">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="129"/>
+									<col width="86"/>
+									<col width="142"/>
+									<col width="78"/>
+									<col width="58"/>
+									<col width="113"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="방면적&#32;(단위:m)"/>
+									<cell col="1" color="user12" display="text" text="업종코드"/>
+									<cell col="2" color="user12" display="text" text="업종(등급)명"/>
+									<cell col="3" color="user12" display="text" text="대당&#32;사용료"/>
+									<cell col="4" color="user12" display="text" text="기기대수"/>
+									<cell col="5" color="user12" display="text" text="등급별&#32;사용료"/>
+								</head>
+								<body>
+									<cell align="right" bkcolor="user13" col="0" colid="AREA" display="number" edit="number" limit="4" Mask="###.#"/>
+									<cell align="center" col="1" colid="GRAD" display="text"/>
+									<cell align="center" col="2" colid="GRADNM" display="text"/>
+									<cell align="right" col="3" colid="STNDAMT" display="numberexp" edit="normal"/>
+									<cell align="right" bkcolor="user13" col="4" colid="MCHNDAESU" display="numberexp" edit="normal"/>
+									<cell align="right" col="5" colid="AMT" display="numberexp" Mask="#,###,###,###"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Radio CodeColumn="CODE_CD" DataColumn="CODE_NM" Enable="FALSE" Height="52" Id="rad_LOCATION" INDEX="0" InnerDataset="ds_location" Left="638" OnChanged="tab_UpsoInfo_UPSO_rad_LOCATION_OnChanged" Style="radio" TabOrder="21" Top="270" Value="1" Width="88">
+						<Contents>
+							<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="60"/>
+							<Layout code="2" height="18" left="70" text="가등록" top="0" width="95"/>
+						</Contents>
+					</Radio>
+					<Button ButtonStyle="TRUE" Enable="FALSE" Height="22" Id="btn_AddUseAmt" ImageID="C_btn_90" Left="734" LeftMargin="23" OnClick="tab_UpsoInfo_UPSO_btn_AddUseAmt_OnClick" Style="edit" TabOrder="31" TabStop="FALSE" Text="&#32;&#32;&#32;추&#32;가" Top="273" TopMargin="1" Width="90"></Button>
+					<Button ButtonStyle="TRUE" Enable="FALSE" Height="22" Id="btn_DelUseAmt" ImageID="C_btn_90" Left="734" LeftMargin="23" OnClick="tab_UpsoInfo_UPSO_btn_DelUseAmt_OnClick" Style="edit" TabOrder="32" TabStop="FALSE" Text="&#32;&#32;&#32;삭&#32;제" Top="297" TopMargin="1" Width="90"></Button>
+					<Tab BorderColor="white" Height="136" Id="tab_Onwer" Left="14" OnChanging="tab_UpsoInfo_UPSO_tab_Onwer_OnChanging" PreLoad="TRUE" TabOrder="9" Top="408" Width="1016">
+						<Contents>
+							<TabPage BorderColor="black" Height="107" Id="MNGEMSTR" ImageID="C_tab2" Left="2" TabOrder="13" Text="경영주&#32;정보" Top="27" Width="1012">
+								<Shape BKColor="white" Bottom="81" Height="26" Id="Shape1" Left="116" LineColor="user3" Right="1014" TabOrder="22" Top="55" Type="Rectangle" Width="898"></Shape>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" Column="MNGEMSTR_ADDR2" Height="20" Id="edt_MNGEMSTR_ADDR2" Left="526" MaxLength="100" Style="edit" TabOrder="6" Top="58" Width="485"></Edit>
+								<Shape BKColor="white" Bottom="56" Height="26" Id="Shape0" Left="116" LineColor="user3" Right="1014" TabOrder="21" Top="30" Type="Rectangle" Width="898"></Shape>
+								<Shape BKColor="white" Bottom="106" Height="26" Id="Shape2" Left="116" LineColor="user3" Right="1014" TabOrder="23" Top="80" Type="Rectangle" Width="898"></Shape>
+								<Shape BKColor="white" Bottom="31" Height="26" Id="Shape6" Left="116" LineColor="user3" Right="1014" TabOrder="20" Top="5" Type="Rectangle" Width="898"></Shape>
+								<Edit BindDataset="ds_UpsoInfo" BKColor="user13" Border="Flat" BorderColor="user10" Column="MNGEMSTR_NM" Font="굴림,9" Height="20" Id="edt_MNGEMSTR_NM" ImeMode="native,katakana" Left="120" MaxLength="20" TabOrder="1" ToolTipText="경영주" Top="8" Width="121"></Edit>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static0" Left="3" TabOrder="9" Text="경&#32;영&#32;주" Top="5" VAlign="Middle" Width="114"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static1" Left="3" TabOrder="10" Text="주민등록번호" Top="30" VAlign="Middle" Width="114"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static2" Left="3" TabOrder="11" Text="자택&#32;주소" Top="55" VAlign="Middle" Width="114"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static4" Left="3" TabOrder="12" Text="비&#32;고" Top="80" VAlign="Middle" Width="114"></Static>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="MNGEMSTR_REMAK" Font="굴림,9,Bold" Height="20" Id="edt_MNGEMSTR_REMAK" Left="120" MaxLength="200" TabOrder="7" Top="83" Width="890"></Edit>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static5" Left="526" TabOrder="13" Text="&#32;전화&#32;번호" Top="5" VAlign="Middle" Width="106"></Static>
+								<Button Cursor="HAND" Enable="FALSE" Height="21" Id="btn_FindMZip" ImageID="C_btn_search" Left="120" OnClick="tab_UpsoInfo_UPSO_tab_Onwer_MNGEMSTR_btn_FindMZip_OnClick" TabOrder="15" Top="58" Width="58"></Button>
+								<Edit BKColor="user2" Border="Flat" BorderColor="user10" CheckLength="Byte" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_ZIP1" Left="201" LeftMargin="2" MaxLength="3" Number="TRUE" Readonly="TRUE" Style="edit" TabOrder="0" Top="58" Width="40"></Edit>
+								<Edit BKColor="user2" Border="Flat" BorderColor="user10" CheckLength="Byte" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_ZIP2" Left="262" LeftMargin="2" MaxLength="3" Number="TRUE" Readonly="TRUE" Style="edit" TabOrder="16" Top="58" Width="40"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" BKColor="user2" Border="Flat" Column="MNGEMSTR_ADDR1" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_ADDR1" Left="305" MaxLength="100" Readonly="TRUE" Style="edit" TabOrder="14" Top="58" Width="217"></Edit>
+								<Static Height="8" Id="Static3" Left="248" TabOrder="17" Text="-" Top="64" Width="12"></Static>
+								<Static Height="8" Id="Static7" Left="248" TabOrder="18" Text="-" Top="37" Width="12"></Static>
+								<Edit Border="Flat" BorderColor="user10" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_RESINUM1" ImeMode="none" Left="120" MaxLength="6" Number="TRUE" TabOrder="3" Top="33" Width="121"></Edit>
+								<Edit Border="Flat" BorderColor="user10" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_RESINUM2" Left="262" MaxLength="7" Number="TRUE" TabOrder="4" Top="33" Width="121"></Edit>
+								<Shape BKColor="white" Bottom="226" Height="26" Id="Shape7" Left="142" LineColor="user3" Right="1046" TabOrder="19" Top="200" Type="Rectangle" Width="904"></Shape>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static6" Left="526" TabOrder="24" Text="핸드폰&#32;번호" Top="30" VAlign="Middle" Width="106"></Static>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="MNGEMSTR_PHONNUM" Height="20" Id="edt_MNGEMSTR_PHONNUM" Left="635" MaxLength="20" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="2" Top="8" UseIME="FALSE" Width="121"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="MNGEMSTR_HPNUM" Height="20" Id="edt_MNGEMSTR_HPNUM" Left="635" MaxLength="15" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="5" Top="33" UseIME="FALSE" Width="121"></Edit>
+							</TabPage>
+							<TabPage BorderColor="black" Height="107" Id="PERMMSTR" ImageID="C_tab2" Left="2" TabOrder="13" Text="허가주&#32;정보" Top="27" Width="1012">
+								<Shape BKColor="white" Bottom="81" Height="26" Id="Shape1" Left="116" LineColor="user3" Right="972" TabOrder="23" Top="55" Type="Rectangle" Width="856"></Shape>
+								<Shape BKColor="white" Bottom="106" Height="26" Id="Shape2" Left="116" LineColor="user3" Right="1014" TabOrder="24" Top="80" Type="Rectangle" Width="898"></Shape>
+								<Shape BKColor="white" Bottom="56" Height="26" Id="Shape0" Left="114" LineColor="user3" Right="1014" TabOrder="22" Top="30" Type="Rectangle" Width="900"></Shape>
+								<Shape BKColor="white" Bottom="31" Height="26" Id="Shape6" Left="116" LineColor="user3" Right="1014" TabOrder="21" Top="5" Type="Rectangle" Width="898"></Shape>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static6" Left="526" TabOrder="9" Text="핸드폰&#32;번호" Top="30" VAlign="Middle" Width="106"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static5" Left="526" TabOrder="8" Text="&#32;전화&#32;번호" Top="5" VAlign="Middle" Width="106"></Static>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="PERMMSTR_NM" Font="굴림,9" Height="20" Id="edt_PERMMSTR_NM" Left="120" MaxLength="20" TabOrder="1" Top="8" Width="121"></Edit>
+								<Button Cursor="HAND" Height="21" Id="btn_FindPZip" ImageID="C_btn_search" Left="120" OnClick="tab_UpsoInfo_UPSO_tab_Onwer_PERMMSTR_btn_FindPZip_OnClick" TabOrder="20" Top="58" Width="58"></Button>
+								<Edit BKColor="user2" Border="Flat" BorderColor="user10" CheckLength="Byte" Enable="FALSE" Height="20" Id="edt_PERMMSTR_ZIP1" Left="201" LeftMargin="2" MaxLength="3" Number="TRUE" OnChanged="tab_UpsoInfo_UPSO_tab_Onwer_PERMMSTR_edt_PERMMSTR_ZIP1_OnChanged" Readonly="TRUE" Style="edit" TabOrder="12" Top="58" Width="40"></Edit>
+								<Edit BKColor="user2" Border="Flat" BorderColor="user10" CheckLength="Byte" Enable="FALSE" Height="20" Id="edt_PERMMSTR_ZIP2" Left="262" LeftMargin="2" MaxLength="3" Number="TRUE" OnChanged="tab_UpsoInfo_UPSO_tab_Onwer_PERMMSTR_edt_PERMMSTR_ZIP2_OnChanged" Readonly="TRUE" Style="edit" TabOrder="11" Top="58" Width="40"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" BKColor="user2" Border="Flat" Column="PERMMSTR_ADDR1" Enable="FALSE" Height="20" Id="edt_PERMMSTR_ADDR1" ImeMode="none" Left="305" MaxLength="100" Readonly="TRUE" Style="edit" TabOrder="10" Top="58" Width="217"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" Column="PERMMSTR_ADDR2" Height="20" Id="edt_PERMMSTR_ADDR2" Left="526" MaxLength="100" Style="edit" TabOrder="6" Top="58" Width="485"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="PERMMSTR_HPNUM" Height="20" Id="e_dt_PERMMSTR_HPNUM_" Left="635" MaxLength="50" Number="TRUE" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="20" Top="33" Width="121"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="PERMMSTR_PHONNUM" Height="20" Id="edt_PERMMSTR_PHONNUM_" Left="635" MaxLength="20" Number="TRUE" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="16" Top="8" Width="121"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="PERMMSTR_REMAK" Height="20" Id="edt_PERMMSTR_REMAK" Left="120" MaxLength="200" TabOrder="7" Top="83" Width="890"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Enable="FALSE" Height="20" Id="edt_PERMMSTR_RESINUM2" Left="262" MaxLength="7" Number="TRUE" TabOrder="4" Top="33" Width="121"></Edit>
+								<Static Height="8" Id="Static7" Left="248" TabOrder="13" Text="-" Top="37" Width="12"></Static>
+								<Edit Border="Flat" BorderColor="user10" Enable="FALSE" Height="20" Id="edt_PERMMSTR_RESINUM1" Left="120" MaxLength="6" Number="TRUE" TabOrder="3" Top="33" Width="121"></Edit>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static0" Left="3" TabOrder="14" Text="허&#32;가&#32;주" Top="5" VAlign="Middle" Width="114"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static1" Left="3" TabOrder="15" Text="주민등록번호" Top="30" VAlign="Middle" Width="114"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static2" Left="3" TabOrder="17" Text="자택&#32;주소" Top="55" VAlign="Middle" Width="114"></Static>
+								<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="26" Id="Static4" Left="3" TabOrder="18" Text="비&#32;고" Top="80" VAlign="Middle" Width="114"></Static>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="PERMMSTR_PHONNUM" Height="20" Id="edt_PERMMSTR_PHONNUM" Left="635" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="2" Top="8" UseIME="FALSE" Width="121"></Edit>
+								<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="PERMMSTR_HPNUM" Height="20" Id="edt_PERMMSTR_HPNUM" Left="635" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="5" Top="33" UseIME="FALSE" Width="121"></Edit>
+								<Static Height="8" Id="Static3" Left="248" TabOrder="25" Text="-" Top="64" Width="12"></Static>
+							</TabPage>
+						</Contents>
+					</Tab>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static13" Left="16" Style="box_tx" TabOrder="44" Text="개업&#32;일자" Top="578" VAlign="Middle" Width="114"></Static>
+					<Calendar BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="OPBI_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" Font="굴림,9" Height="20" Id="cal_OPBI_DAY" Left="134" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="10" TabStop="FALSE" ToolTipText="개업일자" Top="581" Value="TODAY" Width="104"></Calendar>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static14" Left="16" Style="box_tx" TabOrder="45" Text="신규&#32;일자" Top="603" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static15" Left="16" Style="box_tx" TabOrder="46" Text="폐업&#32;년월" Top="628" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static16" Left="16" Style="box_tx" TabOrder="48" Text="등록&#32;일자" Top="653" VAlign="Middle" Width="114"></Static>
+					<Calendar BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="INS_DATE" Dateformat="yyyy/MM/dd" DayStyle="edit" Enable="FALSE" Font="굴림,9" Height="20" Id="cal_INS_DATE" Left="134" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="34" TabStop="FALSE" Top="656" Value="TODAY" Width="104"></Calendar>
+					<Calendar BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="CLSBS_YRMN" Dateformat="yyyy/MM" DayStyle="edit" Enable="FALSE" Font="굴림,9" Height="20" Id="cal_CLSBS_DAY" Left="134" LeftMargin="15" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="33" TabStop="FALSE" Top="631" Width="104"></Calendar>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static17" Left="366" Style="box_tx" TabOrder="50" Text="납부자" Top="578" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static18" Left="366" Style="box_tx" TabOrder="51" Text="우편물&#32;수령지" Top="603" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static19" Left="366" Style="box_tx" TabOrder="52" Text="담당&#32;직원" Top="628" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static20" Left="366" Style="box_tx" TabOrder="53" Text="우편발송취소" Top="653" VAlign="Middle" Width="114"></Static>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static21" Left="686" Style="box_tx" TabOrder="54" Text="자동이체번호" Top="578" VAlign="Middle" Width="121"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="CLIENT_NUM" Font="Tahoma,9,Bold" Height="20" Id="edt_AUTO_CLIENTNUM" Left="810" MaxLength="20" Readonly="TRUE" Style="edit" TabOrder="24" Top="581" Width="148"></Edit>
+					<Radio BindDataset="ds_UpsoInfo" CodeColumn="CODE_CD" Column="UPSO_STAT" ColumnCount="2" DataColumn="CODE_NM" Height="24" Id="rad_UPSO_STAT" INDEX="1" InnerDataset="ds_Upso_stat" Left="128" OnChanged="tab_UpsoInfo_UPSO_rad_UPSO_STAT_OnChanged" Style="radio" TabOrder="19" Top="7" Width="183">
+						<Contents>
+							<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="95"/>
+							<Layout code="2" height="18" left="110" text="가등록" top="0" width="95"/>
+						</Contents>
+					</Radio>
+					<Edit BKColor="user13" Border="Flat" BorderColor="user10" Enable="FALSE" Font="굴림,9" Height="20" Id="edt_UPJONG" ImeMode="english" Left="130" MaxLength="3" OnChanged="tab_UpsoInfo_UPSO_edt_UPJONG_OnChanged" OnKeyDown="tab_UpsoInfo_UPSO_edt_UPJONG_OnKeyDown" TabOrder="35" TabStop="FALSE" ToolTipText="업종" Top="221" Width="90"></Edit>
+					<Edit BKColor="user13" Border="Flat" BorderColor="user10" CheckLength="Byte" Enable="FALSE" Height="20" Id="edt_UPSO_ZIP2" Left="254" LeftMargin="2" MaxLength="3" Number="TRUE" Readonly="TRUE" Style="edit" TabOrder="36" TabStop="FALSE" ToolTipText="우편번호" Top="84" Width="40"></Edit>
+					<Static Height="20" Id="Static22" Left="242" TabOrder="57" Text="-" Top="89" Width="8"></Static>
+					<Edit Height="21" Id="per_zip" Left="958" TabOrder="37" TabStop="FALSE" Top="111" Visible="FALSE" Width="48"></Edit>
+					<Static Align="Center" Border="Flat" BorderColor="white" Height="20" Id="Static23" Left="279" Style="box_tx" TabOrder="59" Text="(&apos;-&apos;는&#32;제외입력)" Top="133" VAlign="Middle" Width="114"></Static>
+					<Calendar BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="NEW_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" Enable="FALSE" Font="굴림,9" Height="20" Id="cal_NEW_DAY" Left="134" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="28" TabStop="FALSE" Top="606" Value="TODAY" Width="104"></Calendar>
+					<MaskEdit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="BIOWN_NUM" DisplayComma="FALSE" Height="20" Id="mae_BIOWN_NUM" Left="131" LeftMargin="10" Mask="###-##-#####" MaxLength="10" OnChanged="tab_UpsoInfo_UPSO_mae_BIOWN_NUM_OnChanged" TabOrder="5" Top="134" Type="STRING" Width="134"></MaskEdit>
+					<MaskEdit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="MONPRNCFEE" Enable="FALSE" Font="굴림,9" Height="20" Id="mae_MONPRNCFEE" Left="661" LeftMargin="10" MaxLength="10" TabOrder="38" TabStop="FALSE" Top="34" Width="96"></MaskEdit>
+					<MaskEdit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="B_MONPRNCFEE" Enable="FALSE" Font="굴림,9" Height="20" Id="mae_B_MONPRNCFEE" Left="661" LeftMargin="10" MaxLength="10" TabOrder="39" TabStop="FALSE" Top="59" Width="96"></MaskEdit>
+					<MaskEdit Border="Flat" BorderColor="user3" Enable="FALSE" Font="굴림,9" Height="20" Id="mae_NMONPRNCFEE" Left="426" LeftMargin="10" MaxLength="10" OnChanged="tab_UpsoInfo_UPSO_mae_NMONPRNCFEE_OnChanged" TabOrder="7" TabStop="FALSE" Top="221" Width="138"></MaskEdit>
+					<MaskEdit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="MCHNDAESU" Enable="FALSE" Font="굴림,9" Height="20" Id="mae_NACMCN_DAESU" Left="682" LeftMargin="10" MaxLength="10" OnKillFocus="tab_UpsoInfo_UPSO_mae_NACMCN_DAESU_OnKillFocus" TabOrder="8" Top="221" Width="120"></MaskEdit>
+					<MaskEdit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="MCHNDAESU" Enable="FALSE" Font="굴림,9" Height="20" Id="mae_ACMCN_DAESU" Left="910" LeftMargin="10" MaxLength="10" TabOrder="40" TabStop="FALSE" Top="34" Width="88"></MaskEdit>
+					<MaskEdit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user3" Column="B_MCHNDAESU" Enable="FALSE" Font="굴림,9" Height="20" Id="B_MCHNDAESU" Left="910" LeftMargin="10" MaxLength="10" TabOrder="41" TabStop="FALSE" Top="59" Width="88"></MaskEdit>
+					<Combo BindDataset="ds_UpsoInfo" Border="Flat" CodeColumn="CODE_CD" Column="MAIL_RCPT" DataColumn="CODE_NM" Font="굴림,9" Height="20" Id="cob_MAIL_RCPT" INDEX="0" InnerDataset="ds_MailRecpt" Left="481" OnChanged="cob_Media_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="12" Top="606" Value="82" Width="145"></Combo>
+					<Combo BindDataset="ds_UpsoInfo" Border="Flat" CodeColumn="CODE_CD" Column="PAPER_CANC_YN" DataColumn="CODE_NM" Font="굴림,9" Height="20" Id="cob_PAPER_CANC_YN" INDEX="0" InnerDataset="ds_YesNo" Left="481" OnChanged="cob_Media_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="16" Top="655" Value="82" Width="145"></Combo>
+					<Combo BindDataset="ds_UpsoInfo" Border="Flat" CodeColumn="CODE_CD" Column="PAYPRES_GBN" DataColumn="CODE_NM" Font="굴림,9" Height="20" Id="cob_PAYPRES_GBN" ImeMode="none" INDEX="0" InnerDataset="ds_PayerPres" Left="481" OnChanged="cob_Media_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="42" Top="580" Value="82" Visible="FALSE" Width="145"></Combo>
+					<Edit BindDataset="DS_UpsoInfo" BKColor="user13" Border="Flat" BorderColor="user10" Column="UPSO_ADDR1" Enable="FALSE" Height="20" Id="edt_UPSO_ADDR1" ImeMode="none" Left="302" MaxLength="100" Readonly="TRUE" Style="edit" TabOrder="43" TabStop="FALSE" ToolTipText="우편번호" Top="84" Width="209"></Edit>
+					<Image Cursor="HAND" Enable="FALSE" Font="굴림,9" Height="21" Id="btn_OwnerCng" ImageID="C_btn_120" Left="779" LeftMargin="0" OnClick="btn_CngOwner_OnClick" Static="FALSE" TabOrder="44" TabStop="FALSE" Text="&#32;&#32;&#32;업주변경&#32;등록" Top="4" Width="120"></Image>
+					<Static Color="user1" Height="11" Id="Static9" Left="40" Style="tx_bold" TabOrder="68" Text="업소정보" Top="15" Width="64"></Static>
+					<Image Height="17" Id="Image1" ImageID="C_icon2" Left="14" TabOrder="45" TabStop="FALSE" Top="11" Width="18"></Image>
+					<Image Height="17" Id="Image0" ImageID="C_icon2" Left="14" TabOrder="46" TabStop="FALSE" Top="200" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static24" Left="37" Style="tx_bold" TabOrder="70" Text="사용료정보" Top="203" Width="72"></Static>
+					<Static Color="user1" Height="11" Id="Static25" Left="37" Style="tx_bold" TabOrder="72" Text="징수정보" Top="562" Width="72"></Static>
+					<Image Height="17" Id="Image2" ImageID="C_icon2" Left="14" TabOrder="47" TabStop="FALSE" Top="559" Width="18"></Image>
+					<Edit BindDataset="ds_UpsoInfo" Column="MNG_ZIP" Height="18" Id="edt_MNG_ZIP" Left="959" TabOrder="48" TabStop="FALSE" Top="195" Visible="FALSE" Width="52"></Edit>
+					<Edit BindDataset="ds_UpsoInfo" BKColor="user13" Border="Flat" BorderColor="user10" Column="UPSO_NM" Height="20" Id="edt_UPSO_NM" ImeMode="keep,native,katakana" Left="187" LeftMargin="2" MaxLength="100" Style="edit" TabOrder="2" Text="4000437A" ToolTipText="업소명" Top="34" Width="176"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static26" Left="686" Style="box_tx" TabOrder="85" Text="거래처코드" Top="603" VAlign="Middle" Width="121"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="BSCONHAN_NM" Enable="FALSE" Height="20" Id="edt_bscon_Nm" Left="810" MaxLength="20" OnClick="tab_UpsoInfo_UPSO_edt_bscon_Nm_OnClick" Readonly="TRUE" Style="edit" TabOrder="13" ToolTipText="거래처코드" Top="606" Width="148"></Edit>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static27" Left="686" Style="box_tx" TabOrder="86" Text="계산서발행여부&#32;체크" Top="628" VAlign="Middle" Width="121"></Static>
+					<Image Height="17" Id="Image3" ImageID="C_icon2" Left="24" TabOrder="49" TabStop="FALSE" Top="310" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static28" Left="47" Style="tx_bold" TabOrder="88" Text="사용료정보" Top="313" Width="72"></Static>
+					<Image Height="17" Id="Image4" ImageID="C_icon2" Left="14" TabOrder="50" TabStop="FALSE" Top="391" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static29" Left="37" Style="tx_bold" TabOrder="89" Text="업주정보" Top="394" Width="72"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="UPSO_PHON" Font="굴림,9" Height="20" Id="edt_MNGEMSTR_PHONNUM" Left="131" MaxLength="20" OnChar="Edit0_OnChar" OnKeyDown="Edit0_OnKeyDown" TabOrder="4" Top="109" UseIME="FALSE" Width="121"></Edit>
+					<Checkbox BindDataset="ds_UpsoInfo" Column="BILL_ISS_YN" Height="21" Id="chk_BILL_ISS_YN" Left="807" OnClick="tab_UpsoInfo_UPSO_chk_BILL_ISS_YN_OnClick" TabOrder="15" Text="Checkbox0" Top="630" Width="18"></Checkbox>
+					<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static30" Left="14" Style="box_tx" TabOrder="91" Text="비&#32;고" Top="155" VAlign="Middle" Width="114"></Static>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="UPSO_REMAK" Font="Tahoma,9" Height="20" Id="edt_MNGEMSTR_REMAK" Left="130" MaxLength="200" OnChanged="tab_UpsoInfo_UPSO_tab_Onwer_MNGEMSTR_edt_MNGEMSTR_REMAK_OnChanged" TabOrder="6" Top="158" Width="896"></Edit>
+					<Combo BindDataset="ds_UpsoInfo" BKColor="user13" Border="Flat" BorderColor="user3" CodeColumn="STAFF_CD" Color="black" Column="STAFF_CD" DataColumn="STAFF_NM" Font="굴림,9" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="481" TabOrder="14" ToolTipText="담당직원" Top="631" Width="145"></Combo>
+					<Edit BindDataset="ds_UpsoInfo" Border="Flat" BorderColor="user10" Column="BSCON_CD" Height="20" Id="edt_bscon_Cd" Left="980" MaxLength="20" OnClick="tab_UpsoInfo_UPSO_edt_bscon_cd_OnClick" Style="edit" TabOrder="51" TabStop="FALSE" ToolTipText="거래처코드" Top="630" Visible="FALSE" Width="42"></Edit>
+					<Button Cursor="HAND" Enable="FALSE" Height="21" Id="btn_code" ImageID="C_btn_search" Left="964" OnClick="tab_UpsoInfo_UPSO_btn_code_OnClick" TabOrder="52" TabStop="FALSE" Top="606" Width="58"></Button>
+					<Combo BindDataset="ds_UpsoInfo" Border="Flat" CodeColumn="CODE_CD" Column="PAYPRES_GBN" DataColumn="CODE_NM" Font="굴림,9" Height="20" Id="cob_PAY_GBN" ImeMode="none" INDEX="0" InnerDataset="ds_test" Left="481" OnChanged="cob_Media_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="11" Top="580" Value="82" Width="145"></Combo>
+					<Image Cursor="HAND" Enable="FALSE" Font="굴림,9" Height="21" Id="btn_MonFee" ImageID="C_btn_120" Left="902" LeftMargin="0" OnClick="tab_UpsoInfo_UPSO_btn_MonFee_OnClick" Static="FALSE" TabOrder="53" TabStop="FALSE" Text="사용료&#32;변경" Top="4" Width="120"></Image>
+					<Image Cursor="HAND" DragMode="TRUE" Enable="FALSE" Font="굴림,9" Height="21" Id="btn_Juso_jungbok" ImageID="C_btn_120" Left="902" LeftMargin="0" OnClick="tab_UpsoInfo_UPSO_btn_Juso_jungbok_OnClick" Static="FALSE" TabOrder="54" TabStop="FALSE" Text="&#32;&#32;&#32;주소중복&#32;검색" Top="83" Width="120"></Image>
+					<Image Cursor="HAND" Enable="FALSE" Font="굴림,9" Height="21" Id="btn_bra04_r04" ImageID="C_btn_120" Left="655" LeftMargin="0" OnClick="tab_UpsoInfo_UPSO_btn_bra04_r04_OnClick" Static="FALSE" TabOrder="97" TabStop="FALSE" Text="&#32;&#32;&#32;업소원장조회" Top="4" Width="120"></Image>
+				</TabPage>
+				<TabPage BorderColor="black" Height="701" Id="bra01_s02" ImageID="C_tab2" Left="2" SyncContents="true" TabOrder="1" Text="반주기정보" Top="27" Url="fi_bra::bra01_s02.xml" Width="1028"></TabPage>
+				<TabPage BorderColor="black" Height="701" Id="bra01_s04" ImageID="C_tab2" Left="2" SyncContents="true" TabOrder="1" Text="업소휴/폐업내역" Top="27" Url="fi_bra::bra01_s04.xml" Width="1028"></TabPage>
+			</Contents>
+		</Tab>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="5" TabStop="FALSE" Top="12" Width="1018"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="6" TabStop="FALSE" Top="12" Width="11"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="366" TabOrder="7" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Static Height="15" Id="Static0" Left="382" Style="tx_left_bold" TabOrder="8" Text="업소코드/명" Top="27" Width="70"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="26" TabOrder="9" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Static Height="15" Id="Static1" Left="46" Style="tx_left_bold" TabOrder="10" Text="지부명" Top="27" Width="40"></Static>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="11" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="106" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="지부명" Top="23" Width="109"></Combo>
+		<Edit BindDataset="ds_Upso" BKColor="user13" Border="Flat" BorderColor="user10" Column="upso_cd" Height="20" Id="edt_UPSO_CD" ImeMode="none" Left="472" LeftMargin="2" MaxLength="8" OnChar="edt_UPSO_CD_OnChar" OnClick="edt_UPSO_CD_OnClick" OnKeyDown="edt_UPSO_CD_OnKeyDown" Style="edit" TabOrder="3" Text="4000437A" ToolTipText="업소코드" Top="23" UseIME="FALSE" Width="91"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Column="UPSO_NM" Height="20" Id="edt_UPSO_NM" ImeMode="native,katakana" Left="568" MaxLength="100" OnClick="edt_UPSO_NM_OnClick" OnKeyDown="edt_UPSO_NM_OnKeyDown" Style="edit" TabOrder="4" Top="23" Width="176"></Edit>
+		<Button Cursor="HAND" Height="21" Id="btn_FindUpso" ImageID="C_btn_search" Left="752" OnClick="btn_FindUpso_OnClick" TabOrder="12" Top="22" Width="58"></Button>
+		<Edit Border="None" Height="21" Id="edt_tmp" Left="912" TabOrder="13" Top="56" Visible="FALSE" Width="121"></Edit>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  			// 공통 js
+#include "script::global.js"  			// 공통 js
+#include "script::commonGibu.js"  		// 지부 공통 js
+
+//조회시 현 업소 코드를 수정을 하면 현업소코드는 이전 업소코드로 저장되고 새로 입력한 코드는 현업소코드로 입력된다.
+var cng_upso_nm;		//사용자가 업소저장을 하려려고 신규를 누루다가 조회를 할 때 경고창을 보여준다,. 
+
+var savegbn;			//신규버튼을 클릭시에  현업소코드의 엔터 조회를 하지 않게 한다. 
+
+var sn_check;	//업소가 신규인지, 서치인지 확인
+				//신규일 때는 경영주의 주민번호가 허가주의 주민번호에 복사되게하고, 서치일때는 복사안되게 한다.
+
+var newYN = 0; // 0 이면 신규, 1 이면 수정  // 변경이력 관리에 업소코드를 넣기 위해 만듬
+
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function upso_regist_OnLoadCompleted(obj)
+{	
+	this.ds_Upso.AddRow();		//전 탭에 쓰일 업소코드
+	gfn_loadForm(obj);			// 공통버튼 활성화ㅑ
+	
+	// 지부코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	// 설정 코드 정보 가져오기
+	gfn_PubCode("ds_Upso_Stat", 2, "00174");		// 정식등록/가등록
+	gfn_PubCode("ds_PayerPres", 3, "00176");		// 납부자 정보/우편물 수령지
+	gfn_PubCode("ds_MailRecpt", 2, "00176");
+	this.ds_PayerPres.DeleteRow(0)		   ;		// 영업장을 삭제한다.
+	
+	gfn_PubCode("ds_Location" , 2, "00178");		// 도시 구분
+	gfn_PubCode("ds_YesNo"    , 2, "00179");		// 예/아니오
+
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select", 
+	"S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	
+	if (gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL") {
+		this.tab_UpsoInfo.bra01_s04.btn_Delete.Enable = true;
+	}
+	else {
+		this.tab_UpsoInfo.bra01_s04.btn_Delete.Enable = false;
+	}
+
+	gfn_SetPermission(this.cob_BRAN_CD.value);
+	gfn_SetInnerPermission("tab_UpsoInfo.UPSO.btn_OwnerCng,tab_UpsoInfo.UPSO.btn_MonFee");
+	tab_UpsoInfo.bra01_s02.fn_Permission();
+	tab_upsoinfo.bra01_s04.fn_Permission();
+}
+
+
+
+/*
+ * 기      능: 공통버튼 제어
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+	}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();	
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+ 
+/*
+ * 기      능: 신규클릭시
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_New() 
+{
+// 조회, 신규 후에 업소 버튼을 활성화 한다.
+	actbution();
+	this.tab_UpsoInfo.UPSO.cob_STAFF_NM.Enable = true;				
+	this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.BKColor = "user13";			//개업일자
+	this.edt_UPSO_CD.BKColor = "";								//업소코드	
+	this.tab_UpsoInfo.UPSO.btn_bra04_r04.Enable  = false;
+		
+	if(length(this.cob_BRAN_CD.Value)==0){
+		gfn_Confirm("MB_OK", "지부를 선택하세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	}
+
+	
+	if(tab_UpsoInfo.TabIndex == 0){		//업소등록중 탭이 업소정보 일 경우
+		fn_Edit(true);
+		
+		// DataSet 초기화
+		this.ds_UpsoInfo.ClearData();		// UpsoInfo 초기화
+		this.ds_UpsoInfo.AddRow();
+		this.ds_UpsoNoraebang.ClearData();	// Norabang 정보 초기화
+		this.tab_UpsoInfo.upso.edt_UPSO_NM.SetFocus();
+// UPSO_CD 초기화 
+		this.edt_UPSO_CD.Text = "";
+		this.edt_UPSO_NM.Text = "";
+		
+// 설정 초기화
+		fn_SetInitControl(false);
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2.Enable = false;
+		
+//가등록 보이게
+		this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Visible = true;
+		
+		
+//사용료 변경 비활성화
+		this.tab_UpsoInfo.UPSO.btn_MonFee.Enable = false;
+		
+//신규시 사용료정보를 수정가능하게 한다.
+		this.tab_UpsoInfo.UPSO.btn_FindUpjong.Enable = true;
+		this.tab_UpsoInfo.UPSO.edt_UPJONG.Enable = true;
+		this.tab_UpsoInfo.UPSO.rad_LOCATION.Enable =true;
+		this.tab_UpsoInfo.UPSO.btn_AddUseAmt.Enable = true;
+		this.tab_UpsoInfo.UPSO.btn_DelUseAmt.Enable = true;		
+		
+//개업일자의 기본은 등록한 당일로 한다,. 
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Text = today();
+		actbution();
+		
+		// 계산서 발행 관련 필수 입력값 해제
+		this.tab_UpsoInfo.UPSO.chk_BILL_ISS_YN.Value = false;
+		this.tab_UpsoInfo.UPSO.edt_bscon_Nm.BKColor = "";
+	}
+//납부자의 디폴트는 경영주[code = b]
+	this.tab_UpsoInfo.UPSO.cob_PAY_GBN.Value = "B";
+	
+	if(tab_UpsoInfo.TabIndex == 1){
+		gfn_Confirm("MB_OK", "현재 탭에서 지원하는 기능이 아닙니다.", "경고", "0");
+		return false;
+	}
+
+	if(tab_UpsoInfo.TabIndex == 2){		//업소 휴/폐업내역
+		gfn_Confirm("MB_OK", "현재 탭에서 지원하는 기능이 아닙니다.", "경고", "0");
+		return false;
+	}
+	this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable    = true;			//날짜를 수정가능하게 한다,
+	this.tab_UpsoInfo.upso.grd_Noraebang.Editable = true;			//노래방을 수정가능하게 한다. 
+	this.tab_UpsoInfo.UPSO.btn_FindUpjong.Enable  = true;			//노래방 업종조회 버튼 활성화
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Enable      = true;
+	
+	fn_SetNorabangEnabled(false);
+	this.tab_UpsoInfo.bra01_s04.ds_UpsoClsed.clearData();
+	this.tab_UpsoInfo.bra01_s04.ds_PaeupUpso.clearData();
+	this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable = false;
+	savegbn = "Y";
+	this.ds_SawonInfo.GetColumn(0,"STAFF_NM", gv_USER_NM);
+	
+	//담당직원 넣기
+	this.ds_upsoinfo.SetColumn(0,"STAFF_CD", gds_sessioninfo.GetColumn(0,"staff_NUM"));
+	
+	//경영주 주민번호를 허가주에게 복사하지 못하게 체크
+	sn_check = "n";
+	
+	this.tab_UpsoInfo.UPSO.btn_Juso_jungbok.Enable = true;
+	
+}
+
+
+/*
+ * 기      능: 신규정보를 입력 할 텍스트 활성화
+ * 인      수: gbn(True/False)로 신규입력 텍스트를 활성화 할지 여부
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Edit(gbn)
+{
+	this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Enable = gbn;			//업소명
+	this.tab_UpsoInfo.UPSO.mae_BIOWN_NUM.Enable = gbn;			//사업자코드
+	this.tab_UpsoInfo.UPSO.edt_MNGEMSTR_PHONNUM.Enable = gbn;	//영업장 전화
+	this.tab_UpsoInfo.UPSO.btn_FindZip.Enable = gbn;			//영업장 주소
+	
+// 사용료정보
+	this.tab_UpsoInfo.UPSO.edt_MNGEMSTR_PHONNUM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.btn_FindUpjong.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Enable = gbn;
+
+	
+// 경영주정보
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_PHONNUM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_HPNUM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.btn_FindMZip.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ADDR2.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_REMAK.Enable = gbn;
+//허가주정보
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_NM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_PHONNUM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_HPNUM.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.btn_FindPZip.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR2.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_REMAK.Enable = gbn;
+	
+//징수정보
+	this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.cob_PAYPRES_GBN.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.cob_MAIL_RCPT.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.cob_PAPER_CANC_YN.Enable = gbn;
+	this.tab_UpsoInfo.UPSO.edt_bscon_Nm.Enable	= gbn;
+}
+
+
+/*
+ * 기      능: 조회기능
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Search() 
+{
+
+//신규입력 후 업소코드를 입력하게 한다.
+	if(savegbn = "Y"){
+		cob_BRAN_CD_OnChanged();
+		this.edt_UPSO_CD.SetFocus();
+		this.edt_upso_cd.BKColor = "user13";
+		this.edt_UPSO_CD.Text = "";
+		savegbn = "N";
+	}
+	
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	//if (!gfn_RequiredCheck(this.edt_UPSO_CD, "업소명을 입력하세요")) return;
+
+	// 하위 페이지의 UPSO_CD, BRAN_CD 정보 설정
+	this.tab_UpsoInfo.bra01_s02.fn_SetUPOS_CD(this.cob_BRAN_CD.Value, this.edt_UPSO_CD.Text);
+	this.tab_UpsoInfo.bra01_s04.fn_SetUPOS_CD(this.cob_BRAN_CD.Value, this.edt_UPSO_CD.Text);
+	
+
+	actbution();		// 조회, 신규후에 업소 버튼을 활성화 한다.
+    if(tab_UpsoInfo.TabIndex == 0)
+    {
+		fn_SearchUpso();
+		cng_upso_nm = this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text;
+
+		// 하위 페이지 검색
+		this.tab_UpsoInfo.bra01_s02.fn_Search();
+		this.tab_UpsoInfo.bra01_s04.fn_Search();
+		
+		if(substr(this.tab_UpsoInfo.UPSO.edt_UPJONG.text,0,3) == "노래방"){
+			this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.enable = false;
+		}
+		else if(substr(this.tab_UpsoInfo.UPSO.edt_UPJONG.text,0,3) != "노래방"){
+			this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = true;
+		}
+	}
+}
+
+/*
+ * 기      능: 업소조회 상세
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+
+function fn_SearchUpso()
+{
+	// 업소 정보 조회
+	gfn_CreateDataSet("ds_UpsoIn", "UPSO_CD,8,STRING BRAN_CD,1,STRING");
+	this.ds_Upso_In.ClearData();
+	this.ds_UpsoIn.AddRow();
+	this.ds_UpsoIn.SetColumn(0, "UPSO_CD", this.edt_UPSO_CD.Text);
+	this.ds_UpsoIn.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	gfn_syncCall("UPSO_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=upsoinfo_search",
+	"S=ds_UpsoIn","ds_UpsoInfo=SEL6 ds_UpsoNoraebang=SEL4","","fn_CallBack");
+	this.tab_UpsoInfo.UPSO.cob_Staff_Nm.Text = this.ds_UpsoInfo.GetColumn(0,"STAFF_NM");
+//사용료정보의 금액을 넣어준다.
+	//if(length(this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value )>0){
+		 this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value ;
+//	}
+	
+	if (length(this.ds_UpsoInfo.GetColumn(0, "UPSO_CD")) > 0) {
+		this.tab_UpsoInfo.UPSO.btn_bra04_r04.Enable = true;
+	}
+	else {
+		this.tab_UpsoInfo.UPSO.btn_bra04_r04.Enable = false;
+	}
+	
+	this.tab_UpsoInfo.UPSO.edt_bscon_Nm.BKColor = "";
+	
+	if (this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable == true){
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = false;
+	}
+
+	else {
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = true;
+	}
+
+	if(this.ds_UpsoInfo.GetColumn(0,"UPSO_STAT")==2 ){
+
+		this.tab_UpsoInfo.UPSO.btn_MonFee.Enable = false;
+	}
+
+	fn_SetUPSO_STAT_Proc();		// 가등록 / 정식등록에 따른 control 처리
+	fn_SetVariables();			// control 업소 정보 설정
+	fn_SetCLSED_Proc();			// 페업 업소 처리
+	fn_SetNoraebang_Proc();		// 노래방 처리
+	
+	
+	// 정식등록의 경우 조회시 사용료정보를 수정못하게 한다.
+	if (this.ds_UpsoInfo.GetColumn(0, "UPSO_STAT") == "1") {
+		this.tab_UpsoInfo.UPSO.btn_FindUpjong.Enable = false;
+		this.tab_UpsoInfo.UPSO.edt_UPJONG.Enable     = false;
+		this.tab_UpsoInfo.UPSO.btn_AddUseAmt.Enable  = false;
+		this.tab_UpsoInfo.UPSO.btn_DelUseAmt.Enable  = false;
+		this.tab_UpsoInfo.UPSO.rad_LOCATION.Enable   = false;
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable   = false;
+	}
+	if(this.ds_UpsoInfo.GetColumn(0,"UPSO_STAT") ==2){
+		this.tab_UpsoInfo.UPSO.btn_MonFee.Enable = false;
+	}
+	
+
+	if(substr(this.tab_UpsoInfo.UPSO.edt_UPJONG.Text,0,3) =="노래방"){
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable=true;
+	}
+	g_bran_cd = "";
+    g_upso_cd = "";
+        
+    if(this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Value = 1){
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "user13";	//경영주 이름
+		this.tab_upsoinfo.UPSO.cal_OPBI_DAY.Enable = false;								//개업일자	
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.BKColor = "user13";						//우편번호
+		this.tab_UpsoInfo.UPSO.edt_UPJONG.BKColor = "user13";							//업종
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "user13";	//경영주
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = false;								//개업일자
+	}
+	else if(this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Value = 2){
+		
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "";	//경영주 이름
+		
+		this.tab_upsoinfo.UPSO.cal_OPBI_DAY.Enable = true;						//개업일자	
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.BKColor = "";						//우편번호
+		this.tab_UpsoInfo.UPSO.edt_UPJONG.BKColor = "";							//업종
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "";	//경영주
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = true;						//개업일자
+	}
+	//경영주 주민번호를 허가주에게 복사하지 못하게 체크
+	sn_check = "s";
+	
+	this.tab_UpsoInfo.UPSO.btn_Juso_jungbok.Enable = true;
+	
+	if(this.tab_UpsoInfo.UPSO.chk_BILL_ISS_YN.Value==1){
+		this.tab_UpsoInfo.UPSO.edt_bscon_Nm.BKColor = "user13";
+	}
+}
+
+/*
+ * 기      능: 공통버튼 제어
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_SetNoraebang_Proc()
+{
+	// 노래방
+	if (this.ds_UpsoInfo.GetColumn(0, "BSTYP_CD") == "o")
+	{
+		fn_SetNorabangEnabled(true);
+		//gfn_syncCall("NORAEBANG_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=norebang_info","S=ds_UpsoIn","ds_UpsoNoraebang=SEL1 ds_UpsoNoraebang=SEL4","","fn_CallBack");
+		this.tab_UpsoInfo.upso.grd_Noraebang.Editable  = false;
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = true;
+
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = false;
+	}
+	// 노래방 이외
+	else
+	{			
+		if (length(this.ds_UpsoInfo.GetColumn(0, "CLSBS_YRMN")) == 0 ) {
+			this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = true;
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = false;
+		}
+		fn_SetNorabangEnabled(false);
+		this.ds_UpsoNoraebang.ClearData();
+	}
+}
+
+/*
+ * 기      능: 업소상태[폐업/관리중]에 따른 설정 변경
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_SetCLSED_Proc()
+{
+	// 관리 중 업소 
+	if (length(this.ds_UpsoInfo.GetColumn(0, "CLSBS_YRMN")) !=8) {
+		fn_Edit(true);
+		this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable = false;
+		this.tab_UpsoInfo.UPSO.btn_MonFee.Enable = true;
+	}
+	// 폐업 업소
+	else{
+		fn_Edit(false);
+		this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable = true;
+		this.tab_UpsoInfo.UPSO.btn_MonFee.Enable = false;
+	}
+}
+
+/*
+ * 기      능: 업소상태[정식/가등록]에 따른 설정 변경
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_SetUPSO_STAT_Proc()
+{
+	// 정식등록 처리
+	if(this.ds_UpsoInfo.GetColumn(0,"UPSO_STAT") == "1"){
+		this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Visible = false;   // 정식등록의 경우 가등록으로 수정 불가
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = false;
+	}
+	// 가등록 처리
+	else {
+		this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Visible = true;
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = true;
+		this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable = false;
+	
+	}
+}
+
+/*
+ * 기      능: 업소신규 컨트롤
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetVariables()
+{
+	// 업소 이름
+	this.edt_UPSO_NM.Text = this.ds_UpsoInfo.GetColumn(0,"UPSO_NM");
+	
+	// Zip, 주민번호 설정
+	var UPSO_ZIP         = this.ds_UpsoInfo.GetColumn(0, "UPSO_ZIP"        );
+	var MNGEMSTR_ZIP     = this.ds_UpsoInfo.GetColumn(0, "MNGEMSTR_ZIP"    );
+	var PERMMSTR_ZIP     = this.ds_UpsoInfo.GetColumn(0, "PERMMSTR_ZIP"    );
+	var MNGEMSTR_RESINUM = this.ds_UpsoInfo.GetColumn(0, "MNGEMSTR_RESINUM");
+	var PERMMSTR_RESINUM = this.ds_UpsoInfo.GetColumn(0, "PERMMSTR_RESINUM");
+	
+	var tabUPSO = this.tab_UpsoInfo.UPSO;
+	fn_SetControlValue(UPSO_ZIP        , tabUPSO.edt_UPSO_ZIP1, tab_UpsoInfo.UPSO.edt_UPSO_ZIP2, 6, 3);
+	fn_SetControlValue(MNGEMSTR_ZIP    , tabUPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP1    , tabUPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP2    ,  6, 3);
+	fn_SetControlValue(PERMMSTR_ZIP    , tabUPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP1    , tabUPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP2    ,  6, 3);
+	fn_SetControlValue(MNGEMSTR_RESINUM, tabUPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1, tabUPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2, 13, 6);
+	fn_SetControlValue(PERMMSTR_RESINUM, tabUPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1, tabUPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2, 13, 6);
+	
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Text       = this.ds_UpsoInfo.GetColumn(0, "GRADNM"     );
+	//this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = this.ds_UpsoInfo.GetColumn(0, "MONPRNCFEE" );
+
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Enable = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Enable = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Enable = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Enable = true;
+}
+
+/*
+ * 기      능: 업소 저장시
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Save() 
+{
+
+	if(this.tab_UpsoInfo.UPSO.chk_BILL_ISS_YN.Value==0){
+		if(length(this.tab_UpsoInfo.UPSO.edt_bscon_Nm.Text)==0){
+			this.tab_UpsoInfo.UPSO.edt_bscon_Cd.Text ="";
+		}
+	}
+	
+	if (!gfn_CheckFormNull(this)) return;
+	var UPSOINFO = this.tab_UpsoInfo.UPSO;
+	if (!gfn_RequiredCheck(UPSOINFO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM, "필수항목이 누락되었습니다.\n입력하십시요.\n[경영주명]")) return;
+
+	if (toInteger(this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Value) < 0) {
+		gfn_Confirm("MB_OK", "기기대수는 0 보다 작을 수 없습니다.", "경고", "0");
+		return;
+	}
+
+	if(tab_UpsoInfo.TabIndex == 0){
+//노래방 상세내역을 미선택시
+		if (!gfn_CheckFormNull(tab_upsoinfo.UPSO, tab_upsoinfo)) return;
+		
+		if(this.ds_UpsoNoraebang.RowCount()>0 and this.ds_UpsoNoraebang.GetColumn(0,"AMT")==NULL ){
+		    gfn_Confirm("MB_OK", "노래방 정보의 상세정보를 입력해주세요.", "경고", "0");
+			return;
+		}
+		// 가등록   : 지부/ 업소 명
+		// 정식등록 : 지부/ 업소 명/ 담당코드/ 업소등급/ 우편번호(주소1)/ 징수방법/ 납부자 정보/ 경영주/ OCR 수령지
+		
+		// 필수입력 검사
+		//if (!gfn_RequiredCheck(this.cob_BRAN_CD, "지부를 선택하세요")) return;
+
+		// 정식등록
+		if (this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Value == GIBU_REGSTAT_REGU)
+		{
+			// 업종이 노래방인 경우 상세정보가 없을 때 입력 불가
+			if (IndexOf(this.tab_UpsoInfo.UPSO.edt_GRAD.Text, "o") >= 0) {
+				if (this.ds_UpsoNoraebang.count < 1) {
+        		    gfn_Confirm("MB_OK", "노래방 상세정보를 입력하세요", "경고", "0");
+					return;
+				}
+			}
+			// 사업자 번호 검사
+			var BIOWN_NUM = this.tab_UpsoInfo.UPSO.mae_BIOWN_NUM.Value;
+			if (BIOWN_NUM != null && BIOWN_NUM != "") {
+				if(!gfn_Vndr_Regno_Chk(BIOWN_NUM)) {
+					return;
+				}
+			}
+
+			// 경영자 주민번호 검사
+			var MNGEMSTR_RESINUM1 = this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Text;
+			var MNGEMSTR_RESINUM2 = this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Text;
+/*
+			if ( (MNGEMSTR_RESINUM1 != null && MNGEMSTR_RESINUM1 != "") || 
+				 (MNGEMSTR_RESINUM2 != null && MNGEMSTR_RESINUM2 != "") ) {
+				if (gfn_CheckJumin(MNGEMSTR_RESINUM1, MNGEMSTR_RESINUM2) < 0) {
+                    gfn_Confirm("MB_OK", "잘못된 경영주 주민 번호입니다.", "경고", "0");
+					//this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Text = "";
+					//this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Text = "";
+					this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.SetFocus();
+					return;
+				}
+			}
+
+			// 허가자 주민번호 검사
+			var PERMMSTR_RESINUM1 = this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Text;
+			var PERMMSTR_RESINUM2 = this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Text;
+			if(length(PERMMSTR_RESINUM1)>0 or length(PERMMSTR_RESINUM2)>0){
+				if (gfn_CheckJumin(PERMMSTR_RESINUM1, PERMMSTR_RESINUM2) < 0) {
+					gfn_Confirm("MB_OK", "잘못된 허가자 주민 번호입니다.", "경고", "0");
+					//this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Text = "";
+					//this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Text = "";
+					this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.SetFocus();
+					return;
+				}
+			}
+*/		
+			fn_CallSave();
+
+		}
+		// 가등록
+		else 
+		{
+			if (!gfn_RequiredCheck(this.tab_UpsoInfo.UPSO.edt_UPSO_NM, "업소명을 입력하세요")) return;
+			fn_CallSave();
+		}
+		
+		//정식등록일경우 업소기본정보의 정식등록, 가등록을 안 나오게 한다. 
+		if(this.ds_UpsoInfo.GetColumn(0,"UPSO_STAT") == 1) {
+			this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Visible = false ; 
+			this.tab_UpsoInfo.UPSO.btn_MonFee.Enable = true;
+		}		
+	}
+	//반주기 정보
+	else if(tab_UpsoInfo.TabIndex == 1){
+		if (!gfn_CheckFormNull(tab_upsoinfo.bra01_s02, tab_upsoinfo)) return;
+		if(this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable == true){
+		    gfn_Confirm("MB_OK", "폐업업소의 경우 내용을 수정할 수 없습니다.", "경고", "0");
+			return false;
+		}
+		tab_UpsoInfo.bra01_s02.fn_Save();
+	}
+	//업소 휴/폐업정보
+	else if(tab_UpsoInfo.TabIndex == 2){
+		if (!gfn_CheckFormNull(tab_upsoinfo.bra01_s04, tab_upsoinfo)) return;
+		this.tab_UpsoInfo.bra01_s04.fn_Save(); 
+	}
+	//녹취 메모
+	else if(tab_UpsoInfo.TabIndex == 3)
+	{
+	    
+	}
+}
+function fn_Delete() {
+}
+function fn_Excel() {}
+function fn_Print() {}
+
+
+/*
+ * 기      능: 프로세스빌더 실행 후 결과 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+	
+	if (srvId == "UPSO_INFO_SAVE") {
+		gfn_SetStatusMsg("저장이 완료 되었습니다.");
+		
+		/*
+		로그 처리
+		*/
+		//신규업소일 경우 ds_UpsoInfo_log를 추가 저장해준다.
+		if(newYN == 0){
+			for(var i=0; i < ds_UpsoInfo.count; i++){
+				var aRow = ds_UpsoInfo_log.AddRow();
+				ds_UpsoInfo_log.CopyRow(aRow,"ds_UpsoInfo",i);
+			}
+			for(var i=0; i < ds_UpsoNoraebang.count; i++){
+				var aRow = ds_UpsoNoraebang_log.AddRow();
+				ds_UpsoNoraebang_log.CopyRow(aRow,"ds_UpsoNoraebang",i);
+			}			
+		//trace(this.ds_UpsoInfo_log.SaveXML());
+			gfn_syncCall("loginfo_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=loginfo_select",
+			"S=ds_UpsoInfo_log:U S1=ds_UpsoNoraebang_log:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+		//trace(this.ds_UpsoInfo_log.SaveXML());
+			ds_UpsoInfo_log.ClearData();
+			ds_UpsoNoraebang_log.ClearData();
+		}
+		
+		
+		// 하위 탭의 정보를 reload
+		// 반주기 정보 reload
+		this.tab_UpsoInfo.bra01_s02.fn_SetUPOS_CD(
+			this.cob_BRAN_CD.Value,
+			this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text);
+		this.tab_UpsoInfo.bra01_s02.fn_Search();
+		
+		// 폐업 정보 reload
+		this.tab_UpsoInfo.bra01_s04.fn_SetUPOS_CD(	this.cob_BRAN_CD.Value,
+													this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text);
+		this.tab_UpsoInfo.bra01_s02.fn_Search();
+		
+	}
+}
+
+/*
+ * 기      능: 저장 시 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CallSave()
+{
+	var GRAD         = this.ds_UpsoInfo.GetColumn(0, "GRAD");
+	var UPSO_ZIP     = this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.Text
+				     + this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP2.Text;
+	var MNGEMSTR_ZIP = this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP1.Text
+					 + this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP2.Text;
+	var PERMMSTR_ZIP = this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP1.Text
+					 + this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP2.Text;
+
+	this.ds_UpsoInfo.SetColumn     (0, "BRAN_CD"     , this.cob_BRAN_CD.Value);
+	this.ds_UpsoInfo.SetColumn     (0, "BSTYP_CD"    , substr(GRAD, 0, 1));
+	this.ds_UpsoInfo.SetColumn     (0, "UPSO_GRAD"   , substr(GRAD, 1, 2));
+	this.ds_UpsoInfo.SetColumn     (0, "UPSO_ZIP"    , UPSO_ZIP);
+	this.ds_UpsoInfo.SetColumn     (0, "MNGEMSTR_ZIP", MNGEMSTR_ZIP);
+	this.ds_UpsoInfo.SetColumn     (0, "PERMMSTR_ZIP", PERMMSTR_ZIP);
+	this.ds_UpsoInfo.SetColumn     (0, "INSPRES_ID"  , gv_USER_ID);
+	var M_RESINUM = this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1 + this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2;
+	var P_RESINUM = this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1 + this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2;
+
+	this.ds_UpsoInfo.SetColumn(0,"MNGEMSTR_RESINUM", M_RESINUM);
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_RESINUM", P_RESINUM);
+
+	var cd_staff = this.ds_SawonInfo.GetColumn(this.tab_UpsoInfo.UPSO.cob_Staff_Nm.Index, "STAFF_CD");
+	this.ds_UpsoInfo.SetColumn(0,"STAFF_CD", cd_staff);
+
+	if (this.ds_UpsoNoraebang.GetColumn(this.ds_UpsoNoraebang.lastrow, "GRAD") == null ||
+	    this.ds_UpsoNoraebang.GetColumn(this.ds_UpsoNoraebang.lastrow, "GRAD") == "" ) {
+		this.ds_UpsoNoraebang.DeleteRow(this.ds_UpsoNoraebang.lastrow);
+	}
+
+	for (var i=0; i<this.ds_UpsoNoraebang.count; i++) {
+		GRAD = this.ds_UpsoNoraebang.GetColumn(i, "GRAD");
+
+		if (length(GRAD) == 0) {
+			this.ds_UpsoNoraebang.DeleteRow(i);
+		}
+		else {
+			this.ds_UpsoNoraebang.SetColumn(i, "BSTYP_CD"    , substr(GRAD, 0, 1));
+			this.ds_UpsoNoraebang.SetColumn(i, "GRAD_GBN"    , substr(GRAD, 1, 2));
+			this.ds_UpsoNoraebang.SetColumn(i, "INSPRES_ID"  , gv_USER_ID);
+		}
+	}
+//trace(this.ds_UpsoNoraebang.SaveXML() );
+	if(cng_upso_nm !=this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text){
+
+		this.ds_UpsoInfo.SetColumn(0,"BEFORE_UPSO_NM", cng_upso_nm) ;
+		cng_upso_nm = this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text;
+	}
+
+	var yesno = gfn_Confirm("MB_YESNO", "저장하시겠습니까 ?", "경고", "0");
+	if (yesno == "6") 
+	{
+		/*
+		    변경이력정보 로그저장을 위해 신규인지 수정인지 구분을 함
+		*/
+		if(length(tab_UpsoInfo.UPSO.edt_UPSO_CD.Text) > 0){
+		    newYN = 1; // 0 이면 신규, 1 이면 수정  // 변경이력 관리에 업소코드를 넣기 위해 만듬
+		}else{
+		    newYN = 0; // 0 이면 신규, 1 이면 수정  // 변경이력 관리에 업소코드를 넣기 위해 만듬
+		}
+		
+		if(length(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_NM.Text)==0){
+			//tab_UpsoInfo_UPSO_tab_Onwer_OnChanging(obj,0,1);
+			this.tab_UpsoInfo.UPSO.tab_Onwer.TabIndex=1;
+			this.tab_UpsoInfo.UPSO.tab_Onwer.TabIndex=0;
+		}
+		//업소를 조회후에 저장할 때(조회한 업소가 정식없고이고 업소코드가 있을 때
+		
+	//	trace(this.ds_UpsoInfo.SaveXML());
+		if(this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Value==1 && length(this.ds_UpsoInfo.GetColumn(0,"UPSO_CD"))!=0){
+			gfn_syncCall("UPSO_INFO_SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=upso_regist",
+			"S=ds_UpsoInfo:U ","ds_UpsoInfo=SEL17 ds_UpsoNoraebang=SEL24","", "fn_CallBack", gv_TraceLog, GV_FORMID);
+			//trace(this.ds_UpsoInfo.SaveXML());
+			//this.edt_UPSO_CD.Text = this.ds_UpsoInfo.GetColumn(0, "UPSO_CD");
+			//fn_search();
+		}
+		else{// 신규일 경우
+//trace(this.ds_UpsoInfo.SaveXML());
+			gfn_syncCall("UPSO_INFO_SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=upso_regist",
+			"S=ds_UpsoInfo:U S1=ds_UpsoNoraebang:U","ds_UpsoInfo=SEL17 ds_UpsoNoraebang=SEL24","", "fn_CallBack");	
+//trace(this.ds_UpsoInfo.SaveXML());
+			//this.edt_UPSO_CD.Text = this.ds_UpsoInfo.GetColumn(0, "UPSO_CD");
+	    } 
+	   // trace(this.ds_UpsoInfo.SaveXML());
+	   // alert(this.ds_UpsoInfo.SetColumn(0, "MONPRNCFEE"));
+	    
+//	trace(this.ds_UpsoInfo.SaveXML());
+		this.tab_UpsoInfo.UPSO.cob_Staff_Nm.Text = this.ds_UpsoInfo.GetColumn(0,"STAFF_NM");
+		
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1 = substr(this.ds_UpsoInfo.GetColumn(0,"MNGEMSTR_RESINUM"),0,6);
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2 = substr(this.ds_UpsoInfo.GetColumn(0,"MNGEMSTR_RESINUM"),6,13);
+		
+		this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1 = substr(this.ds_UpsoInfo.GetColumn(0,"PERMMSTR_RESINUM"),0,6);
+		this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2 = substr(this.ds_UpsoInfo.GetColumn(0,"PERMMSTR_RESINUM"),6,13);
+		
+	}else{
+	    return;
+	}
+
+	savegbn ='N';
+	if(this.ds_UpsoInfo.GetColumn(0,"UPSO_STAT")==1){
+		this.tab_upsoinfo.upso.cal_OPBI_DAY.Enable = "false";
+	}
+	else {
+		this.tab_upsoinfo.upso.cal_OPBI_DAY.Enable = "true";
+	}
+	
+	this.tab_UpsoInfo.UPSO.edt_BEFORE_UPSO_NM.Text = "";
+//현업소코드 이름을 상위 업소코드명에 입력한다.
+
+	this.edt_UPSO_CD.Text = this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text;
+	this.edt_UPSO_NM.Text = this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text;		
+
+	if (this.ds_UpsoInfo.count == 0) {
+		this.ds_UpsoInfo.AddRow();
+	}
+/*	
+	this.tab_UpsoInfo.bra01_s02.fn_SetUPOS_CD(this.cob_BRAN_CD.Value, this.edt_UPSO_CD.Text);
+	this.tab_UpsoInfo.bra01_s02.fn_Search();
+	this.tab_UpsoInfo.bra01_s04.fn_SetUPOS_CD(this.cob_BRAN_CD.Value, this.edt_UPSO_CD.Text);
+	this.tab_UpsoInfo.bra01_s04.fn_Search();
+*/
+	fn_search();								//저장 결과를 뿌려준다.
+}
+
+/*
+ * 기      능: str컬럼내역을 자른다.
+ * 인      수: str:자르려는 컬럼, obj1:자른 걸럼을 넣을 text obj1:자른 걸럼을 넣을 text1 obj2:자른 걸럼을 넣는 text2 len1 : str의 총 길이  lne2: 자를 릴이
+ * Return    : Return Value	
+ * 예     시 : fn_SetControlValue(12345, A, B, 5, 2)	 12345 다섯 자리를 12,345로 나눠서 각각 A와 B에 넣는다.
+*/
+function fn_SetControlValue(str, obj1, obj2, len1, len2)
+{
+	//if (str != "" && length(str) == len1) 
+	if (str != "" && length(str) > len2) 	// 잘못된 주민번호도 보여줌
+	{
+		obj1.Text = substr(str, 0, len2);
+		obj2.Text = substr(str,len2);
+	}
+	else
+	{
+		obj1.Text = "";
+		obj2.Text = "";
+	}
+}
+/*
+ * 기      능: 업소를 삭제한다.
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetInitControl(isInit)
+{
+	// 설정 초기화
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.Text = "";
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP2.Text = "";
+
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP2.Text = "";
+
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP2.Text = "";
+	
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Text = "";
+	this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = "";
+	this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Value = "";
+	
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Enable = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Enable = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Enable = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Enable = true;
+	
+
+	// 업소 상태 정보 설정
+	if (!isInit)
+	{
+		this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Index     = 0;
+		this.tab_UpsoInfo.UPSO.rad_LOCATION.Index      = 0;
+		this.tab_UpsoInfo.UPSO.cob_MAIL_RCPT.Index     = 0;
+		this.tab_UpsoInfo.UPSO.cob_PAYPRES_GBN.Index   = 0;
+		this.tab_UpsoInfo.UPSO.cob_PAPER_CANC_YN.Index = 1;
+	}
+}
+
+/*
+ * 기      능: 업소 이름과 코드 찾기
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_FindUPSO()
+{
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var upso_cd;
+	if(this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text == ""){
+		UPSO_CD = this.edt_UPSO_CD.Text;
+	}
+	else{
+		UPSO_CD = "";
+	}
+	
+
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra01_s01");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);				//업소 찾기팝업
+
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	    this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text = vArr[0];
+	    this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text = vArr[1];
+	}
+	//조회시 모든 텝들을 
+	this.tab_UpsoInfo.bra01_s02.fn_Search();	
+	this.tab_UpsoInfo.bra01_s04.fn_Search();
+}
+
+/*
+ * 기      능: 업소 우편번호 [3/ 3]자르기 
+ * 인      수: zipStr:우편번호 원번의 6자리 	obj1: zipStr를 자른 앞의 3자리 obj2: zipStr를 자른 뒤의 3자리
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetZip(obj1, obj2, zipStr)
+{
+	if (this.edt_tmp.Text != null && length(zipStr) == 6) {
+		obj1.Text = substr(zipStr, 0, 3);
+		obj2.Text = substr(zipStr, 3, 3);
+	}
+}
+
+/*
+ * 기      능: 노래방의 정보입력을 활성화 한다.
+ * 인      수: enable[true/false]	입력가능/ 불가
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetNorabangEnabled(enabled)
+{
+	this.tab_UpsoInfo.UPSO.grd_Noraebang.Enable = enabled;
+	this.tab_UpsoInfo.UPSO.btn_AddUseAmt.Enable = enabled;
+	this.tab_UpsoInfo.UPSO.btn_DelUseAmt.Enable = enabled;
+	this.tab_UpsoInfo.UPSO.rad_LOCATION.Enable  = enabled;
+}
+
+/*
+ * 기      능: 노래방 설정
+ * 인      수: Argument	설명
+ * Return    : grad:등긊 ,  crow: 현재 로우
+ * 예     시 : 함수 사용 예	
+*/
+function fn_IsNorabangGrad(grad, crow)
+{
+	for (var i=0; i<this.ds_UpsoNoraebang.count; i++)
+	{
+		var cGrad = this.ds_UpsoNoraebang.GetColumn(i, "GRAD");
+		if (cGrad == grad && crow != i) return true;
+	}
+	
+	return false;
+}
+
+/*
+ * 기      능: 노래방 면적에 따른 업종코드, 업종(등급)명, 대당 사용료 구함
+ * 인      수: area: 사용자가 입력한 방면적설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_GetNoraebangGrad(area)
+{
+	var grad, start, end;
+	var areaGrad = "";
+
+	for (var i=0; i<this.ds_BSTypGrad.count; i++)
+	{
+		grad  = this.ds_BSTypGrad.GetColumn(i, "GRAD");
+		
+		// 도시
+		if (this.tab_UpsoInfo.UPSO.rad_LOCATION.Value == "1")
+		{
+			if (toInteger(substr(grad,1,2)) < 10) 
+			{
+			
+				start = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_START"));	
+				
+				end   = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_END"));	
+				
+				if (start < area && area <= end)
+				{
+					areaGrad = grad;
+					break;
+				}
+			}
+		}
+		// 농촌
+		else
+		{
+			if (toInteger(substr(grad,1,2)) > 10) 
+			{
+				start = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_START"));	
+				end   = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_END"));	
+				
+				if (start < area && area <= end)
+				{
+					areaGrad = grad;
+					break;
+				}
+			}
+		}
+	}
+
+	return areaGrad;
+}
+
+/*
+ * 기      능: 노래방 등급 사용료 계산
+ * 인      수: Argument
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetGridMCHNDAESUColumn(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	var MCHNDAESU = 0;
+	var AMT = 0;
+	var STNDAMT = ds_UpsoNoraebang.GetColumn(nRow,"STNDAMT");
+
+	if (STNDAMT != null && STNDAMT != "")
+	{
+		this.ds_UpsoNoraebang.SetColumn(nRow, "AMT", toNumber(STNDAMT)*toNumber(varNewValue));
+	
+		//전체기계댓수의 값 계산
+		for(var i=0; i < this.ds_UpsoNoraebang.count; i++){
+			MCHNDAESU = MCHNDAESU + toNumber(ds_UpsoNoraebang.GetColumn(i, "MCHNDAESU"));
+			AMT = AMT + toNumber(ds_UpsoNoraebang.GetColumn(i, "AMT"));
+		}
+		
+		// Control (기계대수 / 전체 사용료 ) 값 설정
+		this.tab_UpsoInfo.UPSO.mae_ACMCN_DAESU.Value  = MCHNDAESU;
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Value = MCHNDAESU;
+		
+		this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value  = AMT;
+		this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = AMT;
+	}
+
+	if (nRow == 0) {
+		this.tab_UpsoInfo.UPSO.edt_GRAD.Text   = ds_UpsoNoraebang.GetColumn(0, "GRAD");
+		this.tab_UpsoInfo.UPSO.edt_GRADNM.Text = ds_UpsoNoraebang.GetColumn(0, "GRADNM");
+	}
+}
+/*
+ * 기      능: 업소 시디가 존재하는지 확인
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_GetUPSO_CD()
+{
+	if(this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text == ""){
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = this.edt_UPSO_NM.Text;
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+			fn_search();
+		}
+		else {
+			fn_FindUPSO();
+		}
+	}
+	else {
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = "";
+		var UPSO_NM = this.edt_UPSO_NM.Text;
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+			fn_search();
+		}
+		else {
+			fn_FindUPSO();
+		}
+	}
+}
+
+/*
+ * 기      능: 업소 코드, 이름 서치
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_GetUPSO_CD_cd()
+{
+	if(this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text == ""){
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = this.edt_UPSO_NM.Text;
+		
+
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+			fn_search();
+		}
+		else {
+			fn_FindUPSO();
+		}
+	}
+	else {
+
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = "";
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	    
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+			fn_search();
+		}
+		else {
+			fn_FindUPSO();
+		}
+	}
+}
+
+/*
+ * 기      능: 업소코드에 대한 이름 search
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Nm_GetUPSO_CD(){
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD);
+
+	if (length(result) > 0) {
+		var vArr = result.split(",");
+		this.edt_UPSO_CD.Text = vArr[0];
+		this.edt_UPSO_NM.Text = vArr[1];
+		fn_search();
+	}
+	else {
+		fn_FindUPSO();
+	}
+}
+
+/*
+ * 기      능: 업소명에서 키보드 입력시 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//지부명이 존재하는 지 확인
+	if(this.cob_BRAN_CD.Value==null){
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if (nChar == 112) {		//엔터를 입력할 시에 업소를 찾는 팝업을 생성한다.
+		fn_FindUPSO();
+	}
+	return;
+}
+
+/*
+ * 기      능: 업소 시디가 존재하는지 확인
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function btn_FindUpso_OnClick(obj)
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(this.cob_BRAN_CD.Value==null){
+	
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if(savegbn = "Y"){
+		var yesno = gfn_Confirm("MB_YESNO", "신규내용을 입력하지 않고 조회를 하시겠습니까?", "경고", "0");
+		if (yesno == "6") {
+			cob_BRAN_CD_OnChanged();
+			this.edt_UPSO_CD.SetFocus();
+			savegbn = "N";
+			fn_FindUPSO();
+			this.edt_upso_cd.BKColor = "user13";
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.edt_UPSO_NM.SetFocus();
+		}
+	}
+	else {
+		fn_FindUPSO();
+	}
+}
+
+/*
+ * 기      능: 우편번호 찾기
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_btn_FindZip_OnClick(obj)
+{
+	var UPSO_TAB = this.tab_UpsoInfo.UPSO;
+	Dialog("fi_bra::find_GibuZip.xml", "formType=1 zip=edt_tmp alladdr=tab_UpsoInfo.UPSO.edt_UPSO_ADDR1 mng_zip=this.tab_UpsoInfo.UPSO.edt_MNG_ZIP", "");
+	
+	fn_SetZip(UPSO_TAB.edt_UPSO_ZIP1, UPSO_TAB.edt_UPSO_ZIP2, this.edt_tmp.Text);
+
+	if(length(this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.Text ) >0) {
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2.Text = "";
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2.Enable = true;
+	}
+	
+}
+
+/*
+ * 기      능: 경영주의 우편번호 찾기
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_tab_Onwer_MNGEMSTR_btn_FindMZip_OnClick(obj)
+{
+	var MNGEMSTR_TAB = this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR;
+	Dialog("fi_bra::find_GibuZip.xml", "formType=1 zip=edt_tmp alladdr=tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ADDR1", "");
+	fn_SetZip(MNGEMSTR_TAB.edt_MNGEMSTR_ZIP1, MNGEMSTR_TAB.edt_MNGEMSTR_ZIP2, this.edt_tmp.Text);
+}
+
+/*
+ * 기      능: 허가주의 우편번호 찾기
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_tab_Onwer_PERMMSTR_btn_FindPZip_OnClick(obj)
+{
+	var PERMMSTR_TAB = this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR;
+	Dialog("fi_bra::find_GibuZip.xml", "formType=1 zip=edt_tmp alladdr=tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR1", "");
+	fn_SetZip(PERMMSTR_TAB.edt_PERMMSTR_ZIP1, PERMMSTR_TAB.edt_PERMMSTR_ZIP2, this.edt_tmp.Text);
+}
+
+/*
+ * 기      능: 사용료정보->조회버튼 클릭
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_btn_FindUpjong_OnClick(obj)
+{	
+	tab_UpsoInfo.UPSO.grd_Noraebang.onCellPosChanged = "";
+	var result = Dialog("fi_bra::find_upjong.xml","","100","100","",-1,-1);
+	
+	fn_ProcGrad(result);
+}
+
+function fn_ProcGrad(result)
+{
+	if (length(result) == 0) return;
+	
+	this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Text = "";
+	var vArr = result.split(",");
+
+	var GRAD    = vArr[0];		//업종코드
+	var GRADNM  = vArr[1];		//업소명
+	var STNDAMT = vArr[2];		//사용료
+	
+	// todo -- 매체코드 통합 후 수정 필요
+	this.ds_UpsoInfo.SetColumn(0, "BSTYP_CD"  , substr(GRAD, 0, 1));
+	this.ds_UpsoInfo.SetColumn(0, "UPSO_GRAD" , substr(GRAD, 1, 2));
+    this.ds_UpsoInfo.SetColumn(0, "GRADNM"    , GRADNM );
+
+    this.ds_UpsoInfo.SetColumn(0, "MONPRNCFEE", STNDAMT);
+	
+	//업종이 0,1원인 경우 금액을 입력할 수 있다.
+	if(substr(GRAD,0,1)=='k' or substr(GRAD,0,1)=='l' or substr(GRAD,0,1)=='m' or substr(GRAD,0,1)=='o' or substr(GRAD,0,1)=='p'or substr(GRAD,0,1)=='q' or substr(GRAD,0,1)=='r'){
+		this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Enable = false;
+	}
+	else this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Enable = true;
+	
+	
+	// 사용료 정보- 업종선택에 내용이 있다면, 업종선택창의 우측상단에 X를 클릭해도 업종선택의 내용이 삭제 되지 않는다.
+	
+	// 사용료 정보- 업종선택, 금액 / 업소기본 정보 - 업소등급에 택스트 입력
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Text      = GRADNM;
+	//결과값이 노래방이라면 노래방 데이터셋을 추가한다,
+/*
+	if(substr(GRAD,0,1)=="o" and this.ds_UpsoNoraebang.RowCount()==0 ){
+		this.ds_UpsoNoraebang.AddRow();
+	}
+	else{
+		this.ds_UpsoNoraebang.DeleteRow(0);
+	}
+*/
+	this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = STNDAMT;
+	this.tab_UpsoInfo.UPSO.edt_GRAD.Text 		 = vArr[0];
+	//노래방인 경우 처리
+	if (IndexOf(GRAD, "o") >= 0) 
+	{
+		if (this.ds_BSTypGrad.count == 0)		//노래방 면적당 계산하는 식을 가지고 온다. 
+		{
+			gfn_syncCall("GET_BSTYPEGRAD","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_norebang_amt","","ds_BSTypGrad=SEL1","","fn_CallBack");
+		}
+		// GRAD_GBN >= 10  : 농촌, 그외 도시
+		if (toNumber(substr(GRAD, 1, 2)) < 10) 	this.tab_UpsoInfo.UPSO.rad_LOCATION.Index = 0;
+		else									this.tab_UpsoInfo.UPSO.rad_LOCATION.Index = 1;
+		this.tab_UpsoInfo.UPSO.rad_LOCATION.Enable = false;
+		
+		fn_SetNorabangEnabled(true);
+		this.tab_UpsoInfo.UPSO.grd_Noraebang.SetFocus();
+		//기기대수확인
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = false;
+	}
+	else {
+		fn_SetNorabangEnabled(false);
+		this.ds_UpsoNoraebang.ClearData();
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.SetFocus();
+		this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = true;
+	}
+	tab_UpsoInfo.UPSO.grd_Noraebang.onCellPosChanged = "tab_UpsoInfo_UPSO_grd_Noraebang__OnCellPosChanged";
+}
+/*
+ * 기      능: 노래방의 추가버튼
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_btn_AddUseAmt_OnClick(obj)
+{
+	if (this.ds_UpsoNoraebang.rowcount == 0) {
+		this.ds_UpsoNoraebang.AddRow();
+	}
+
+	if (this.ds_UpsoNoraebang.GetColumn(this.ds_UpsoNoraebang.lastrow, "GRAD") != null &&
+	    this.ds_UpsoNoraebang.GetColumn(this.ds_UpsoNoraebang.lastrow, "GRAD") != "" ) {
+		this.ds_UpsoNoraebang.AddRow();
+	}
+}
+
+/*
+ * 기      능: 노래방의 삭제버튼
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_btn_DelUseAmt_OnClick(obj)
+{
+	this.ds_UpsoNoraebang.DeleteRow(this.ds_UpsoNoraebang.currow);
+
+	if (this.ds_UpsoNoraebang.rowcount == 0) {
+		this.ds_UpsoNoraebang.AddRow();
+	}
+}
+
+/*
+ * 기      능: 업소의 노래방 정보가 변경시 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function ds_UpsoNoraebang_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	this.ds_UpsoNoraebang.OnColumnChanged = "";
+	
+	if(strColumnID == "AREA") {
+		fn_SetGridAREAColumn(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex);
+	}
+	else if(strColumnID == "MCHNDAESU") {
+		fn_SetGridMCHNDAESUColumn(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex);
+		if(this.ds_UpsoNoraebang.GetColumn(nRow, "MCHNDAESU")==0){
+    		gfn_Confirm("MB_OK", "기계대수는 0을 입력할 수 없습니다.", "경고", "0");
+			this.ds_UpsoNoraebang.SetColumn(nRow, "MCHNDAESU","");
+			return false;
+		}
+	}
+	//trace(this.ds_UpsoNoraebang.SaveXML());
+	this.ds_UpsoNoraebang.OnColumnChanged = "ds_UpsoNoraebang_OnColumnChanged";
+}
+
+
+/*
+ * 기      능: 노래방 정보가 수정시에 체크사항
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetGridAREAColumn(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	var temparea = this.ds_UpsoNoraebang.GetColumn(nRow, "AREA");
+	if (length(temparea) == 0) temparea = varNewValue;
+
+	var grad = fn_GetNoraebangGrad(toFloat(temparea));
+	if (fn_IsNorabangGrad(grad, this.ds_UpsoNoraebang.currow))
+	{
+		gfn_Confirm("MB_OK", "이미 등록된 등급입니다. \n등록된 등급의 기계대수를 변경하세요", "경고", "0");
+		this.ds_UpsoNoraebang.SetColumn(nRow, "AREA", varOldValue);
+		return;
+	}
+	else
+	{
+		for (var i=0; i<this.ds_BSTypGrad.count; i++)
+		{
+			if (this.ds_BSTypGrad.GetColumn(i, "GRAD") == grad) 
+			{
+				this.ds_UpsoNoraebang.SetColumn(nRow,"GRAD"   , this.ds_BSTypGrad.GetColumn(i,"GRAD" ));
+				this.ds_UpsoNoraebang.SetColumn(nRow,"GRADNM" , this.ds_BSTypGrad.GetColumn(i,"GRADNM" ));
+				this.ds_UpsoNoraebang.SetColumn(nRow,"STNDAMT", this.ds_BSTypGrad.GetColumn(i,"STNDAMT"));
+				
+				//받아온 GRAD값을  GRAD_GBN과BSTYP_CD로 나눈다.
+				var BSTYP_CD1 	= substr(this.ds_UpsoNoraebang.GetColumn(i,"GRAD"),0,1);
+				var GRAD_GBN1 	= substr(this.ds_UpsoNoraebang.GetColumn(i,"GRAD"),1,2);
+				
+				this.ds_UpsoNoraebang.SetColumn(0,"BSTYP_CD",BSTYP_CD1);
+				this.ds_UpsoNoraebang.SetColumn(0,"GRAD_GBN",GRAD_GBN1);
+				
+				break;
+			}
+		}
+	}
+}
+
+
+/*
+ * 기      능: 노래방의 추가버튼
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_rad_LOCATION_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	this.tab_UpsoInfo.UPSO.rad_LOCATION.OnChanged = "";
+	if (nOldIndex == 0)
+	{
+		var yesno = gfn_Confirm("MB_YESNO", "지역구분을 농어촌으로 변경하시겠습니까? \n변경시 기입된 정보는 재입력해야 합니다.", "경고", "0");
+		if (yesno == "6") {
+			this.tab_UpsoInfo.UPSO.rad_LOCATION.Index = nNewIndex;
+			this.ds_UpsoNoraebang.ClearData();
+			this.ds_UpsoNoraebang.AddRow();
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.rad_LOCATION.Index = nOldIndex; 
+		}
+	}
+	else if (nOldIndex == 1)
+	{
+		var yesno = gfn_Confirm("MB_YESNO", "지역구분을 도시로 변경하시겠습니까? \n변경시 기입된 정보는 재입력해야 합니다.", "경고", "0");
+		if (yesno == "6") {
+			this.tab_UpsoInfo.UPSO.rad_LOCATION.Index = nNewIndex;
+			this.ds_UpsoNoraebang.ClearData();
+			this.ds_UpsoNoraebang.AddRow();
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.rad_LOCATION.Index = nOldIndex; 
+		}
+	}
+	this.tab_UpsoInfo.UPSO.rad_LOCATION.OnChanged = "tab_UpsoInfo_UPSO_rad_LOCATION_OnChanged";
+}
+
+/*
+ * 기      능: 업주 변경을 클릭시 
+				// 업주변경등록 :현업소코드, 현업소등급 등은 구업소코드/구업소등급으로 이동
+				// 주소와 담당자를 남기고 나머지 데이터 삭제
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function btn_CngOwner_OnClick(obj)
+{
+	// 이미 업주가 변경된 업소인지 검사.
+	this.ds_Upso_In.ClearData();
+	this.ds_Upso_In.AddRow();
+	this.ds_Upso_In.SetColumn(0, "UPSO_CD", this.ds_Upso.GetColumn(0, "UPSO_CD"));
+	gfn_syncCall("check_chgowner", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=check_chgowner", "S=ds_Upso_In","ds_BeforeUpsoInfo=SEL1","","fn_CallBack");
+	if (this.ds_BeforeUpsoInfo.rowcount > 0) {
+		var msg = this.ds_BeforeUpsoInfo.GetColumn(0, "UPSO_NM") + "["
+			    + this.ds_BeforeUpsoInfo.GetColumn(0, "UPSO_CD") + "]"
+			    + " 업소에 \n전업소코드로 이미 등록되었습니다."; 
+		gfn_Confirm("MB_OK", msg, "경고", "0");
+		return;
+	}
+
+	//데이터를 지우기 전에 현업소코드/등급, 영업장주소, 담당자를 저장한다, 
+	var tUpsoCd	    =	this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text;
+	var	tUpsoNm		=	this.tab_UpsoInfo.UPSO.edt_UPSO_NM.Text;
+	var tUpsoGd		=	this.tab_UpsoInfo.UPSO.edt_GRAD.Text;
+	var tUpsoGnm	=	this.tab_UpsoInfo.UPSO.edt_GRADNM.Text;
+	var tUpsoFee	=	this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value;
+	var tDaesu 		=	this.tab_UpsoInfo.UPSO.mae_ACMCN_DAESU.Value;
+	
+	var tUpsoZip1	=	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.Text;
+	var tUpsoZip2	=	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP2.Text;
+	var tUpsoAddr	=	this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR1.Text;
+	var tUpsoAddr2	=	this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2.Text;
+	var tStaff_Nm	= 	this.tab_UpsoInfo.UPSO.cob_Staff_Nm.Text;
+	
+	// 업종 정보 저장
+	var UPJONG		 = this.tab_UpsoInfo.UPSO.edt_UPJONG.Text;
+	var NMONPRNCFEE	 = this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value;
+	var NACMCN_DAESU = this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Value;
+	
+	// 노래방 정보 저장
+	this.ds_BeforeNoraebang.Copy("ds_UpsoNoraebang");
+
+	fn_New();
+	
+	this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = true;				//날짜를 수정가능하게 한다,
+	this.tab_UpsoInfo.upso.grd_Noraebang.Editable = true;			//노래방을 수정가능하게 한다. 
+	//fn_SetNorabangEnabled(false);
+
+	// 저장한  현업소 데이터를 전업소데이터에 뿌려준다.
+	this.tab_UpsoInfo.UPSO.edt_BFRUPSO_CD.Text		=	tUpsoCd;
+	this.tab_UpsoInfo.UPSO.edt_BEFORE_UPSO_NM.Text	=	tUpsoNm;
+	this.tab_UpsoInfo.UPSO.edt_B_GRAD.Text			=	tUpsoGd;
+	this.tab_UpsoInfo.UPSO.edt_B_GRADNM.Text		=	tUpsoGnm;
+	this.tab_UpsoInfo.UPSO.mae_B_MONPRNCFEE.Value	=	tUpsoFee;
+	this.tab_UpsoInfo.UPSO.B_MCHNDAESU.Value  		=	tDaesu;
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1			=	tUpsoZip1;
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP2			=	tUpsoZip2;
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR1			=	tUpsoAddr;
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2			=	tUpsoAddr2;
+	this.tab_UpsoInfo.UPSO.cob_Staff_Nm.Text  		=	tStaff_Nm;
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2.Enable 	=	true;
+	
+	// 현업소 등급 복사
+	this.tab_UpsoInfo.UPSO.edt_GRAD.Text = tUpsoGd;
+	this.tab_UpsoInfo.UPSO.edt_GRADNM.Text = tUpsoGnm;
+	this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value = tUpsoFee;
+	this.tab_UpsoInfo.UPSO.mae_ACMCN_DAESU.Value = tDaesu;
+
+	// 업종 정보 복원
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Text = UPJONG;
+	this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = NMONPRNCFEE;
+	this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Value = NACMCN_DAESU;
+
+	// 노래방 정보 복원
+	this.ds_UpsoNoraebang.Copy("ds_BeforeNoraebang");
+	this.ds_UpsoInfo.SetColumn (0, "BSTYP_CD"    , substr(tUpsoGd, 0, 1));
+	this.ds_UpsoInfo.SetColumn (0, "UPSO_GRAD"   , substr(tUpsoGd, 1, 2));
+
+	if (substr(tUpsoGd, 0, 1) == "o") {
+		if (this.ds_BSTypGrad.count == 0)		//노래방 면적당 계산하는 식을 가지고 온다. 
+		{
+			gfn_syncCall("GET_BSTYPEGRAD","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_norebang_amt","","ds_BSTypGrad=SEL1","","fn_CallBack");
+		}
+	}
+
+	fn_SetNoraebang_Proc();
+	this.tab_UpsoInfo.UPSO.grd_Noraebang.Editable  = true;
+/*
+	this.tab_UpsoInfo.UPSO.btn_AddUseAmt.Enable = false;
+	this.tab_UpsoInfo.UPSO.btn_DelUseAmt.Enable = false;
+*/
+}
+
+
+//경영주 폐업등록화면 호출
+function btn_OwnClsed_OnClick(obj)
+{
+	var BRAN_CD = this.cob_BRAN_CD.Value;	
+	var UPSO_CD = this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text;
+}	
+
+
+// 사용료 정보 기기 대수 ->	업소정보 기기 대수
+
+function tab_UpsoInfo_UPSO_edt_UPSO_NM_OnChanged(obj,strText)
+{
+	this.ds_Upso.setcolumn(0,"BEFORE_UPSO_NM","edt_UPSO_NM");
+}
+
+
+/*
+ * 기      능: 업소드록 페이지를 변경시에
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_OnChanging(obj,nOldIndex,nNewIndex)
+{
+	if(this.tab_UpsoInfo.UPSO.rad_UPSO_STAT.Value==2){
+		if(nNewIndex==2){
+    		gfn_Confirm("MB_OK", "가등록일 경우 업소휴폐업정보를 선택하실 수 없습니다.", "경고", "0");
+			return false;
+		}
+	}
+
+	// 조회가 되지 않은 경우 이동 불가
+	if (length(this.edt_UPSO_CD.Text)==0 ) {
+		//gfn_Confirm("MB_OK", "먼저 업소 정보를 검색하십시요", "경고", "0");
+		return false;
+	}
+
+	if (nNewIndex == 0) {
+		this.cob_BRAN_CD.Enable = true;
+		this.edt_UPSO_CD.Enable = true;
+		this.edt_UPSO_NM.Enable = true;
+		this.btn_FindUpso.Enable = true;
+	}
+	else {
+
+		if (nNewIndex == 1) {
+			if (this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Text==0 || length(this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Text)==0) {
+        		gfn_Confirm("MB_OK", "기계대수가 0인 경우 반주기정보를 선택하실 수 없습니다.", "경고", "0");
+				this.tab_UpsoInfo.UPSO.mae_NACMCN_DAESU.Enable = true;
+				
+				return false;
+			}
+		}
+
+		this.cob_BRAN_CD.Enable = false;
+		this.edt_UPSO_CD.Enable = false;
+		this.edt_UPSO_NM.Enable = false;
+		this.btn_FindUpso.Enable = false;
+	}
+	
+	this.tab_UpsoInfo.bra01_s02.fn_SetUPOS_CD(this.cob_BRAN_CD.Value, this.edt_UPSO_CD.Text);
+	this.tab_UpsoInfo.bra01_s02.fn_SetMCHNDAESU(this.tab_UpsoInfo.UPSO.mae_ACMCN_DAESU.Value);
+}
+
+/*
+ * 기      능: 업소코드 변경시 세팅
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	gfn_SetInnerPermission("tab_UpsoInfo.UPSO.btn_OwnerCng,tab_UpsoInfo.UPSO.btn_MonFee");
+	tab_UpsoInfo.bra01_s02.fn_Permission();
+	tab_upsoinfo.bra01_s04.fn_Permission();
+	
+	this.ds_Upso.ClearData();
+	this.ds_UpsoInfo.ClearData();
+
+	this.ds_UpsoNoraebang.ClearData();
+	this.ds_Upso.AddRow();
+	this.edt_UPSO_CD.Text = "";
+	this.edt_UPSO_NM.Text = "";	
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Text = "";
+	this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value = "";
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.Text = "";
+	this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP2.Text = "";
+
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP2.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP2.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Text = "";
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Text = "";	
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Enable = false;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Enable = false;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Enable = false;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Enable = false;
+	this.tab_UpsoInfo.UPSO.btn_MonFee.Enable   = false;
+	this.tab_UpsoInfo.UPSO.btn_OwnerCng.Enable = false;
+	//this.tab_UpsoInfo.UPSO.cob_Staff_Nm.Index = 0;
+	
+	this.ds_BRAN_CD.setcolumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select", 
+	"S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+}
+
+/*
+ * 기      능: 정식/가 업소일 경우 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_rad_UPSO_STAT_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	// 정식 업소
+	if (nNewIndex == 0) {
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "user13";	//경영주 이름
+	
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.BKColor = "user13";						//우편번호
+		this.tab_UpsoInfo.UPSO.edt_UPJONG.BKColor = "user13";							//업종
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "user13";	//경영주
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = true;								//개업일자
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.BKColor = "user13";
+	}
+	// 가업소
+	else {
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "";	//경영주 이름
+		this.tab_upsoinfo.UPSO.cal_OPBI_DAY.Enable = true;								//개업일자	
+		this.tab_UpsoInfo.UPSO.edt_UPSO_ZIP1.BKColor = "";						//우편번호
+		this.tab_UpsoInfo.UPSO.edt_UPJONG.BKColor = "";							//업종
+		this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.BKColor = "";	//경영주
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.Enable = true;						//개업일자
+		this.tab_UpsoInfo.UPSO.cal_OPBI_DAY.BKColor = "";
+		
+	}
+}
+
+/*
+ * 기      능: 업주정보, 경영주 정보를 허가주로 입력한다.
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_tab_Onwer_OnChanging(obj,nOldIndex,nNewIndex)
+{
+
+		if(nNewIndex==1 and sn_check == "n"){
+
+			if(length(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_NM.Text) == 0){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_NM.Text 			=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_NM.Text;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_PHONNUM.Text ==""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_PHONNUM.Text 	=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_PHONNUM.Text;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Text == ""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM1.Text 	=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM1.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Text ==""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_RESINUM2.Text 	=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_RESINUM2.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_HPNUM.Text == ""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_HPNUM.Text 		=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_HPNUM.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP1.Text ==""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP1.Text 		=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP1.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP2.Text ==""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ZIP2.Text 		=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ZIP2.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR1.Text ==""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR1.Text 		=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ADDR1.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR2.Text ==""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR2.Text 		=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_ADDR2.Text ;
+			}
+			if(this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_REMAK.Text == ""){
+				this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_REMAK.Text 		=	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.edt_MNGEMSTR_REMAK.Text ;
+			}
+		}
+}
+
+function tab_UpsoInfo_UPSO_img_empSearch_OnClick(obj,nX,nY)
+{
+	if(this.cob_BRAN_CD.Value < 0){
+		gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		return;
+	}
+
+	var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+		
+		if (length(result ) > 0) {
+			var vArr = result.Split(",");
+		}
+}
+
+/*
+ * 기      능: 특수문자 사용제한
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function Edit0_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+       //gfn_Confirm("MB_OK", "이름 " + strtext +"(은)는 사용할수 없습니다.", "경고", "0");
+		return false;
+	}
+	
+	if((asc(right(strPostText,1)) >= 65) && (asc(right(strPostText,1)) <= 122))
+	{
+        gfn_Confirm("MB_OK", "숫자만 입력가능합니다.", "경고", "0");
+	    return false;
+	}
+}
+
+/*
+ * 기      능: 기본키 사용불가
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function Edit0_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(bCtrl == 1)
+	{
+       gfn_Confirm("MB_OK", "Ctrl 키는 사용할 수 없습니다.", "경고", "0");
+	}
+}
+
+/*
+ * 기      능: 조회의 업소시디 클릭 시 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function edt_UPSO_CD_OnClick(obj)
+{
+	if(savegbn = "Y"){
+		var yesno = gfn_Confirm("MB_YESNO", "신규내용을 입력하지 않고, 조회를 하시겠습니까 ?", "경고", "0");
+		if (yesno == "6") {
+			cob_BRAN_CD_OnChanged();
+			this.edt_UPSO_CD.SetFocus();
+			savegbn = "N";
+			this.edt_upso_cd.BKColor = "user13";
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.edt_UPSO_NM.SetFocus();
+		}
+		
+	}
+}
+
+/*
+ * 기      능: 조회의 업소이름 클릭 시 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function edt_UPSO_NM_OnClick(obj)
+{
+	if(this.cob_BRAN_CD.Value==null){
+	
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if(savegbn = "Y"){
+		var yesno = gfn_Confirm("MB_YESNO", "신규내용을 입력하지 않고, 조회를 하시겠습니까 ?", "경고", "0");
+		if (yesno == "6") {
+			cob_BRAN_CD_OnChanged();
+			this.edt_UPSO_CD.SetFocus();
+			savegbn = "N";
+			this.edt_upso_cd.BKColor = "user13";
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.edt_UPSO_NM.SetFocus();
+		}
+	}
+}
+
+/*
+ * 기      능: 조회의 업소이름 클릭 시 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function cal_SendMon_OnActivate(obj)
+{
+    if(length(g_bran_cd) > 0 && length(g_upso_cd) > 0 ){
+        this.cob_BRAN_CD.Value = g_bran_cd;
+		this.edt_UPSO_CD.Text = g_upso_cd;
+
+		gfn_SetPermission(g_bran_cd);
+		gfn_SetInnerPermission("tab_UpsoInfo.UPSO.btn_OwnerCng,tab_UpsoInfo.UPSO.btn_MonFee");
+		
+		this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+		gfn_syncCall("SAWON_CLICK", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select", 
+			"S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	
+		fn_search();
+    }
+	/*
+	this.cob_BRAN_CD.Value = g_bran_cd;
+	this.edt_UPSO_CD.Text = g_upso_cd;
+	
+	this.ds_BRAN_CD.AddRow();
+	this.ds_BRAN_CD.setcolumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select", 
+	"S=ds_Bran_cd","ds_SawonInfo=SEL1","","fn_CallBack");
+
+	fn_search();		
+	*/
+}
+
+
+/*
+ * 기      능: 조회의 업소이름 클릭 시 특수문자 제한
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function edt_UPSO_CD_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+
+/*
+ * 기      능: 업소 전화번호 입력제한
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_edt_UPSO_PHON_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+       //gfn_Confirm("MB_OK", "이름 " + strtext +"(은)는 사용할수 없습니다.", "경고", "0");
+		return false;
+	}
+	
+	if((asc(right(strPostText,1)) >= 65) && (asc(right(strPostText,1)) <= 122))
+	{
+        gfn_Confirm("MB_OK", "영숫자만 입력가능합니다.", "경고", "0");
+	    return false;
+	}
+}
+
+/*
+ * 기      능: 업소명에 키보드 입력시
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(this.cob_BRAN_CD.Value==null){
+	
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if(savegbn = "Y"){
+		var yesno = gfn_Confirm("MB_YESNO", "신규내용을 입력하지 않고, 조회를 하시겠습니까 ?", "경고", "0");
+		if (yesno == "6") {
+			cob_BRAN_CD_OnChanged();
+			this.edt_UPSO_CD.SetFocus();
+			savegbn = "N";
+			this.edt_upso_cd.BKColor = "user13";
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.edt_UPSO_NM.SetFocus();
+		}
+	}
+	
+	if (nChar == 13 and savegbn !="Y") {
+		fn_GetUPSO_CD_cd();
+	}
+	else if (nChar == 112 and savegbn !="Y") {
+		fn_FindUPSO();
+	}
+	return;
+
+}
+
+/*
+ * 기      능: 업소코드에 키보드 입력시
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function edt_UPSO_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(this.cob_BRAN_CD.Value==null){
+	
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if(savegbn = "Y"){
+		var yesno = gfn_Confirm("MB_YESNO", "신규내용을 입력하지 않고, 조회를 하시겠습니까 ?", "경고", "0");
+		if (yesno == "6") {
+			cob_BRAN_CD_OnChanged();
+			this.edt_UPSO_CD.SetFocus();
+			savegbn = "N";
+			this.edt_upso_cd.BKColor = "user13";
+		}
+		else {
+			this.tab_UpsoInfo.UPSO.edt_UPSO_NM.SetFocus();
+		}
+	}
+	
+	if (nChar == 13 && savegbn !="Y") {
+		fn_GetUPSO_CD_cd();
+	}
+	else if (nChar == 112 && savegbn !="Y") {
+		fn_FindUPSO();
+	}
+	return;
+
+}
+
+/*
+ * 기      능: 계산서 발행시 체크시 거래처 고드 활성화
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_chk_BILL_ISS_YN_OnClick(obj,strValue)
+{
+	if(this.tab_UpsoInfo.UPSO.chk_BILL_ISS_YN.Value==1){
+		this.tab_UpsoInfo.UPSO.edt_bscon_Nm.BKColor =  'user13';
+	}
+	else {
+		this.tab_UpsoInfo.UPSO.edt_bscon_Nm.BKColor = "";
+	}
+		
+}
+
+/*
+function fn_Permmstr()
+{
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_NM", this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_NM.Text);
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_PHONNUM", this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_PHONNUM.Text );
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_RESINUM", );
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_HPNUM", this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_HPNUM.Text );
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_ZIP",);
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_ADDR1", this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR1.Text );
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_ADDR2", this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_ADDR2.Text );
+	this.ds_UpsoInfo.SetColumn(0,"PERMMSTR_REMAK", this.tab_UpsoInfo.UPSO.tab_Onwer.PERMMSTR.edt_PERMMSTR_REMAK.Text );
+
+	
+}
+*/
+
+
+
+
+
+function upso_regist_OnFocus(obj)
+{
+	if(length(g_bran_cd) > 0 && length(g_upso_cd) > 0 ){
+		
+        this.cob_BRAN_CD.Value = g_bran_cd;
+		this.edt_UPSO_CD.Text = g_upso_cd;
+		
+		this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+		gfn_syncCall("SAWON_CLICK", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select", 
+		"S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	
+		fn_search();
+    }
+}
+
+/*
+ * 기      능: 업소중복 체크
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_UpsoInfo_UPSO_btn_Juso_jungbok_OnClick(obj,nX,nY)
+{
+	var UPSO_ADDR1 = this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR1.Text;
+	var UPSO_ADDR2 = this.tab_UpsoInfo.UPSO.edt_UPSO_ADDR2.Text;
+	var inParam ="UPSO_ADDR1=" + quote(UPSO_ADDR1) + " UPSO_ADDR2=" + quote(UPSO_ADDR2) ;
+	var result = Dialog("fi_bra::chk_Jungbok.xml",inParam);
+}
+
+/*
+ * 기      능: 업소중복 체크
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function actbution(){
+	this.tab_UpsoInfo.UPSO.btn_FindZip.Enable		= true;					//업소 정보 -> 업소 주소 버튼
+	this.tab_UpsoInfo.UPSO.btn_FindUpjong.Enable	= true;					//사용료정보 -> 업종선탣 ->조회버튼
+	this.tab_UpsoInfo.UPSO.edt_UPJONG.Enable        = true;
+	this.tab_UpsoInfo.UPSO.tab_Onwer.MNGEMSTR.btn_FindMZip.Enable = true;	//업주정보 -> 자택주소정보
+	this.tab_UpsoInfo.UPSO.btn_code.Enable 			= true;					//징수정보 -> 거래처코드 버튼
+	
+}
+
+
+
+function tab_UpsoInfo_UPSO_mae_NMONPRNCFEE_OnChanged(obj,strText)
+{
+	this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value = this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Value;
+}
+
+function tab_UpsoInfo_UPSO_edt_UPJONG_OnChanged(obj,strText)
+{
+	this.ds_UpsoInfo.SetColumn(0, "MONPRNCFEE", toNumber(this.tab_UpsoInfo.UPSO.mae_MONPRNCFEE.Value));
+}
+
+
+
+function tab_UpsoInfo_UPSO_btn_code_OnClick(obj)
+{
+	Dialog("fi_pub::com01_r02.xml", "formType=1  bsconCd=this.tab_UpsoInfo.UPSO.edt_bscon_cd bsconNm=tab_UpsoInfo.UPSO.edt_bscon_Nm ", "");
+}
+
+function tab_UpsoInfo_UPSO_btn_MonFee_OnClick(obj,nX,nY)
+{
+/*
+	// 기기대수가 0이거 나 널일 경우 클릭할 수 없다.
+	if (length(UPSO_CD) ==0 or UPSO_CD=="0" or UPSO_CD==0){
+		gfn_Confirm("MB_OK", "기기대수가 0인경우 사용료 변경을 선택하실 수 없습니다.", "경고", "0");
+		return;	
+	}
+*/
+	var UPSO_CD = this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text;
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	
+
+	if (length(this.tab_UpsoInfo.UPSO.edt_UPSO_CD.Text) > 0 ) { 
+		var result = Dialog("fi_bra::bra01_s03.xml","UPSO_CD=" + quote(UPSO_CD) + " BRAN_CD=" +quote(BRAN_CD));
+	}
+}
+
+function tab_UpsoInfo_UPSO_edt_bscon_Nm_OnClick(obj)
+{
+	gfn_Confirm("MB_OK", "우측의 조회로 찾으세요.", "경고", "0");
+	this.tab_UpsoInfo.UPSO.btn_code.SetFocus();
+	return;
+}
+
+function tab_UpsoInfo_UPSO_btn_bra04_r04_OnClick(obj,nX,nY)
+{
+	g_bran_cd	= this.cob_BRAN_CD.Value;
+	g_upso_cd	= this.edt_UPSO_CD.Text;
+    gfn_OpenChildWindow("fi_bra::bra04_r04.xml", "업소 원장 조회","");
+}
+
+function tab_UpsoInfo_UPSO_edt_UPJONG_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+		var result = gfn_GetGRAD_CD(obj.Text);
+		fn_ProcGrad(result);
+	}
+	else if (nChar == 112) {
+		tab_UpsoInfo_UPSO_btn_FindUpjong_OnClick(obj);
+	}
+}
+
+function tab_UpsoInfo_UPSO_edt_UPSO_CD_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+]]></Script>
+</Window>

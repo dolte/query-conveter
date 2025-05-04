@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra09_p06" Left="8" OnLoadCompleted="bra09_p06_OnLoadCompleted" PidAttrib="7" Title="장기연체업소현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_radio01">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>휴업업소</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>폐업업소</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="236" TabOrder="2" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="251" Style="tx_left_bold" TabOrder="3" Text="주" Top="23" Width="30"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="7" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="44" Style="tx_left_bold" TabOrder="8" Text="년도" Top="23" Width="30"></Static>
+		<Spin Border="Flat" Height="20" Id="Spin0" Left="77" Style="edit" TabOrder="9" Text="2008" Top="19" Width="100"></Spin>
+		<Spin Border="Flat" Height="20" Id="Spin1" Left="277" Style="edit" TabOrder="10" Text="23" Top="19" Width="100"></Spin>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+#include "script::global.js"	// 글로벌 js
+
+function bra09_p06_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra09_p06.jrf");
+	//UbiReport0.SetDataset("ds_search", "ds_search");
+	//UbiReport0.SetDataset("ds_master", "ds_Master");
+	ubi0.SetArgument("title","휴업업소내역서");
+	ubi0.Retrieve();
+}
+]]></Script>
+</Window>

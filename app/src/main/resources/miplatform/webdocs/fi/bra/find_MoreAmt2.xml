@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="184" Id="find_MoreAmt" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="총&#32;더넣은금액&#32;상세보기" Top="8" Ver="1.0" Width="696" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_moreamt_detail">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BALANCE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_in">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_moreamt_detail" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="174" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="168" Id="grd_IndtrList" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_IndtrList_OnCellDblClick" Right="688" RowHeight="20" Style="grid" TabOrder="1" TabStop="FALSE" Top="6" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="680">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="75"/>
+						<col width="83"/>
+						<col width="126"/>
+						<col width="109"/>
+						<col width="121"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="입금일자"/>
+						<cell col="1" color="user12" display="text" text="영수일자"/>
+						<cell col="2" color="user12" display="text" text="입금번호"/>
+						<cell col="3" color="user12" display="text" text="입금구분"/>
+						<cell col="4" color="user12" display="text" text="입금합계"/>
+						<cell col="5" color="user12" display="text" text="처리금액"/>
+						<cell col="6" color="user12" display="text" text="잔고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="REPT_DAY" display="date"/>
+						<cell align="center" col="1" colid="MAPPING_DAY" display="date"/>
+						<cell align="center" col="2" colid="REPT_NUM" display="text"/>
+						<cell align="center" col="3" colid="REPT_GBN" display="text"/>
+						<cell col="4" colid="REPT_AMT" display="number"/>
+						<cell col="5" colid="PROC_AMT" display="number"/>
+						<cell col="6" colid="BALANCE" display="number"/>
+						<cell col="7" colid="DEMD_BRAN" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+
+
+function form_OnLoadCompleted(obj)
+{
+	this.ds_in.AddRow();
+	this.ds_in.SetColumn(0, 'UPSO_CD',upso_cd);
+	
+	//trace(ds_in.SaveXML());
+	gfn_syncCall("sys_balance_detail","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001008001&EVENTID=balance_detail",
+	"S=ds_in","ds_moreamt_detail=SEL1","","fn_CallBack");
+	//trace(ds_moreamt_detail.SaveXML());
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+}
+
+
+]]></Script>
+</Window>

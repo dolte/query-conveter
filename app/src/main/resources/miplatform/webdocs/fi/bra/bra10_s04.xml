@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="우편&#32;구역번호&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_BranZipIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="FROM_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BranZipList" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CHECK" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_SNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_useyn">
+				<Contents>
+					<colinfo id="CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE>Y</CODE>
+						<NAME>사용함</NAME>
+					</record>
+					<record>
+						<CODE>N</CODE>
+						<NAME>사용안함</NAME>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_BranZipList" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="793" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="729" Id="grd_BRANZIP" InputPanel="FALSE" Left="8" LineColor="silver" OnCellClick="grd_BRANZIP_OnCellClick" Right="1039" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="71"/>
+						<col width="80"/>
+						<col width="160"/>
+						<col width="293"/>
+						<col width="154"/>
+						<col width="55"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="삭제"/>
+						<cell col="1" color="user12" display="text" text="순번"/>
+						<cell col="2" color="user12" display="text" text="동구분코드"/>
+						<cell col="3" color="user12" display="text" text="우편번호"/>
+						<cell col="4" color="user12" display="text" text="시도"/>
+						<cell col="5" color="user12" display="text" text="구군"/>
+						<cell col="6" color="user12" display="text" text="동"/>
+						<cell col="7" color="user12" display="text" text="번지"/>
+						<cell col="8" color="user12" display="text" text="사용유무"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CHECK" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="POST_SNUM" display="text"/>
+						<cell align="center" bkcolor="user13" col="2" colid="MNG_ZIP" display="text" edit="numchar" limit="6" Mask="###-###"/>
+						<cell align="center" bkcolor="user13" col="3" colid="ZIP" display="text" edit="numchar" limit="6" Mask="###-###"/>
+						<cell col="4" colid="ATTE" display="text" edit="normal"/>
+						<cell col="5" colid="DSRCCNTY" display="text" edit="normal"/>
+						<cell col="6" colid="DONG" display="text" edit="normal"/>
+						<cell col="7" colid="HNM" display="text" edit="normal"/>
+						<cell col="8" colid="USE_YN" combocol="CODE" combodataset="ds_useyn" combotext="NAME" display="combo" edit="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="4" TabStop="FALSE" Top="12" Width="1022"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="5" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="6" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="12" Id="Image16" ImageID="C_icon" Left="44" TabOrder="7" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Static Height="12" Id="Static1" Left="64" Style="tx_left_bold" TabOrder="9" Text="우편번호" Top="27" Width="64"></Static>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="user3" Height="20" Id="mae_FROM_ZIP" Left="133" LeftMargin="15" Mask="###-###" TabOrder="1" ToolTipText="우편번호_S" Top="22" Type="STRING" Width="80"></MaskEdit>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="user3" Height="20" Id="mae_TO_ZIP" Left="240" LeftMargin="15" Mask="###-###" TabOrder="2" ToolTipText="우편번호_E" Top="24" Type="STRING" Width="80"></MaskEdit>
+		<Static Height="17" Id="Static0" Left="221" TabOrder="10" Text="~" Top="27" Width="8"></Static>
+		<Combo CodeColumn="CODE" DataColumn="NAME" Editable="TRUE" Height="20" Id="cob_USEYN" InnerDataset="ds_useyn" Left="432" TabOrder="3" Top="24" Width="96"></Combo>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="337" TabOrder="11" TabStop="FALSE" Top="29" Width="15"></Image>
+		<Static Height="20" Id="Static2" Left="357" Style="tx_left_bold" TabOrder="12" Text="사용유무" Top="29" Width="64"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var cell_pos;;		//셀의 위치를 기억해서  기억한 위치 다음에 새 그리드를 삽입한다.
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New() 
+{
+	this.ds_BranZipList.InsertRow(cell_pos);
+	this.ds_branziplist.SetColumn(this.ds_BranZipList.currow,"USE_YN","Y");
+}
+
+function fn_search()
+{
+	//우편번호 검사
+	if(length(this.mae_FROM_ZIP.Value ) !=6){
+		gfn_Confirm("MB_OK", "우편번호 6자리를 입력하세요.", "경고", "0");
+		this.mae_FROM_ZIP.SetFocus();
+		return;
+	}
+	if(length(this.mae_TO_ZIP.Value ) !=6){
+		gfn_Confirm("MB_OK", "우편번호 6자리를 입력하세요.", "경고", "0");
+		this.mae_TO_ZIP.SetFocus();
+		return;
+	}
+
+
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_BranZipIn.ClearData();
+	this.ds_BranZipIn.AddRow();
+	
+	this.ds_BranZipIn.SetColumn(0, "FROM_ZIP", this.mae_FROM_ZIP.Value);
+	this.ds_BranZipIn.SetColumn(0, "TO_ZIP"  , this.mae_TO_ZIP.Value  );
+	this.ds_BranZipIn.SetColumn(0, "USE_YN"  , this.cob_USEYN.Value  );
+
+	gfn_syncCall("BRANZIPLIST","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008004&EVENTID=zip_list","S=ds_BranZipIn","ds_BranZipList=SEL1","","fn_CallBack");
+}
+
+function fn_Save() 
+{
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	if (!gfn_CheckNotnullGrid(this.grd_BRANZIP, "MNG_ZIP,ZIP")) return;
+
+	this.ds_BranZipIn.ClearData();
+	this.ds_BranZipIn.AddRow();
+	
+	this.ds_BranZipIn.SetColumn(0, "FROM_ZIP", this.mae_FROM_ZIP.Value);
+	this.ds_BranZipIn.SetColumn(0, "TO_ZIP"  , this.mae_TO_ZIP.Value  );
+	this.ds_BranZipIn.SetColumn(0, "USE_YN"  , this.cob_USEYN.Value  );
+	//trace(this.ds_BranZipList.SaveXML());
+	gfn_syncCall("BRANZIPSAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008004&EVENTID=zip_mng","S=ds_BranZipList:U S1=ds_BranZipIn:U","ds_BranZipList=SEL16","","fn_CallBack",gv_TraceLog,gv_formid);
+	//trace(this.ds_BranZipList.SaveXML());
+}
+
+function fn_Excel() {}
+function fn_Delete() {
+	//gfn_SyncCall("memo_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004003&EVENTID=memo_save","S=ds_memo:U ","","","fn_CallBack",gv_TraceLog,gv_formid);
+	//gfn_syncCall("BRANZIPSAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008004&EVENTID=zip_mng","S=ds_BranZipList:D ","","fn_CallBack",gv_TraceLog,gv_formid);
+	for(var i=0; i<ds_BranZipList.RowCount(); i++){
+		if(this.ds_BranZipList.GetColumn(i, 'CHECK')==1){
+			this.ds_BranZipList.DeleteRow(i);
+		}
+	}
+}
+
+function grd_BRANZIP_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	cell_pos  = nRow;
+}
+]]></Script>
+</Window>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="160" Id="sawon_info" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="관리&#32;구역&#32;조회" Top="8" Ver="1.0" Width="488" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_DONG">
+				<Contents>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ATTE">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DSRCCNTY">
+				<Contents>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BranZipIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Font="굴림,12,Bold" Height="24" Id="Static0" Left="136" TabOrder="5" Text="관리&#32;구역&#32;조회" Top="16" Width="200"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Commit" ImageID="C_btn_70" Left="304" LeftMargin="28" OnClick="btn_Commit_OnClick" Style="edit" TabOrder="6" Text="적용" Top="96" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="392" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="7" Text="닫기" Top="96" TopMargin="1" Width="71"></Button>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="24" TabOrder="8" TabStop="FALSE" Top="59" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static1" Left="42" Style="tx_left_bold" TabOrder="9" Text="시구동" Top="59" Width="40"></Static>
+		<Combo CodeColumn="ATTE" DataColumn="ATTE" Height="23" Id="cob_ATTE" InnerDataset="ds_ATTE" Left="112" OnChanged="cob_ATTE_OnChanged" TabOrder="1" Top="53" Width="72"></Combo>
+		<Combo CodeColumn="ZIP" DataColumn="DSRCCNTY" Height="23" Id="cob_DSRCCNTY" InnerDataset="ds_DSRCCNTY" Left="184" OnChanged="cob_DSRCCNTY_OnChanged" TabOrder="2" Top="53" Width="104"></Combo>
+		<Combo CodeColumn="ZIP" DataColumn="DONG" Height="23" Id="cob_DONG" InnerDataset="ds_DONG" Left="288" OnChanged="cob_DONG_OnChanged" TabOrder="3" Top="53" Width="176"></Combo>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="24" TabOrder="10" TabStop="FALSE" Top="99" Width="11"></Image>
+		<Static Color="user12" Height="13" Id="Static2" Left="42" Style="tx_left_bold" TabOrder="11" Text="우편&#32;번호" Top="99" Width="70"></Static>
+		<MaskEdit Border="Flat" BorderColor="user3" Enable="FALSE" Height="22" Id="mae_ZIP" Left="112" LeftMargin="30" Mask="###-###" OnKeyDown="mae_ZIP_START_OnKeyDown" TabOrder="4" Top="96" Type="STRING" Width="120"></MaskEdit>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	// 시도 정보 검색
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008003&EVENTID=zone_search","","ds_ATTE=SEL6","","fn_CallBack");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+
+	if (srvId == "LOAD_ATTE") {
+		this.ds_DONG.ClearData();
+		this.cob_DSRCCNTY.Value = "";
+	}
+	else if (srvId == "LOAD_DSRCCNTY") {
+		this.cob_DONG.Value = "";
+		this.mae_ZIP.Value = this.ds_DSRCCNTY.GetColumn(this.cob_DSRCCNTY.Index, "ZIP");
+	}
+}	
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}	
+
+function cob_ATTE_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	// 구군 정보 검색
+	this.ds_BranZipIn.ClearData();
+	this.ds_BranZipIn.AddRow();
+	this.ds_BranZipIn.SetColumn(0, "ATTE", strCode);
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008003&EVENTID=zone_search","S=ds_BranZipIn","ds_DSRCCNTY=SEL5","","fn_CallBack");
+}
+
+function cob_DSRCCNTY_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	// 동 정보 검색
+	this.ds_BranZipIn.ClearData();
+	this.ds_BranZipIn.AddRow();
+	this.ds_BranZipIn.SetColumn(0, "ATTE"    , this.cob_ATTE.Text);
+	this.ds_BranZipIn.SetColumn(0, "DSRCCNTY", strText);
+	gfn_syncCall("LOAD_DSRCCNTY","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008003&EVENTID=zone_search","S=ds_BranZipIn","ds_DONG=SEL1","","fn_CallBack");
+}
+
+function cob_DONG_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (nNewIndex == 0) {
+		this.mae_ZIP.Value = this.cob_DSRCCNTY.Value;
+	}
+	else {
+		this.mae_ZIP.Value = this.ds_DONG.GetColumn(nNewIndex, "ZIP");
+	}
+}
+
+function btn_Commit_OnClick(obj)
+{
+	var ZIP = this.mae_ZIP.Value;
+	var MNG_NM  = this.cob_ATTE.Text + " " + this.cob_DSRCCNTY + " " + this.cob_DONG.Text;
+	Close(ZIP + "," + MNG_NM);
+}
+
+]]></Script>
+</Window>

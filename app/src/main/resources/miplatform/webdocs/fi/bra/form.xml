@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="360" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="테스트&#32;데이터&#32;생성" Top="8" Ver="1.0" Width="504" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="dsCode">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>자동이체</code>
+						<value>31</value>
+					</record>
+					<record>
+						<code>지로</code>
+						<value>32</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsBody">
+				<Contents>
+					<colinfo id="B" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsTail">
+				<Contents>
+					<colinfo id="T" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsIn">
+				<Contents>
+					<colinfo id="DEMD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="INT"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD>A</BRAN_CD>
+						<CNT>30</CNT>
+						<DEMD_GBN>42</DEMD_GBN>
+						<DEMD_YRMN>200904</DEMD_YRMN>
+						<RECV_DAY>20090416</RECV_DAY>
+						<REPT_DAY>20090420</REPT_DAY>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Combo BindDataset="dsIn" CodeColumn="value" Column="DEMD_GBN" DataColumn="code" Height="21" Id="cob_DemdGbn" InnerDataset="dsCode" Left="168" TabOrder="1" Text="Combo0" Top="40" Width="145"></Combo>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="72" TabOrder="4" TabStop="FALSE" Top="80" Width="11"></Image>
+		<Static Height="16" Id="Static3" Left="88" Style="tx_left_bold" TabOrder="5" Text="폴더" Top="79" VAlign="Middle" Width="36"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="edt_FileName" Left="168" MaxLength="10" Readonly="TRUE" Style="edit" TabOrder="2" Text="C:\KOMCA\" ToolTipText="폴더" Top="76" Width="168"></Edit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_SearchFile" ImageID="C_btn_70" Left="345" LeftMargin="23" OnClick="btn_SearchFile_OnClick" Style="edit" TabOrder="3" Text="찾기" Top="76" TopMargin="1" Width="71"></Button>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="72" TabOrder="6" TabStop="FALSE" Top="48" Width="11"></Image>
+		<Static Height="17" Id="Static0" Left="88" Style="tx_left_bold" TabOrder="7" Text="청구구분" Top="47" VAlign="Middle" Width="64"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="72" TabOrder="8" TabStop="FALSE" Top="114" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="88" Style="tx_left_bold" TabOrder="9" Text="청구년월" Top="113" VAlign="Middle" Width="56"></Static>
+		<Calendar Dateformat="yyyy/MM" FocusIndex="0" Height="22" Id="cal_DEMD_YRMN" Left="168" LeftMargin="17" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="10" ToolTipText="생성년월" Top="108" Width="120"></Calendar>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="72" TabOrder="11" TabStop="FALSE" Top="146" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="88" Style="tx_left_bold" TabOrder="12" Text="영수일" Top="145" VAlign="Middle" Width="56"></Static>
+		<Calendar BindDataset="dsIn" Column="RECV_DAY" Dateformat="yyyy/MM/dd" FocusIndex="0" Height="22" Id="cal_RECV_DAY" Left="168" LeftMargin="17" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="13" ToolTipText="생성년월" Top="140" Width="120"></Calendar>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_DemdProc" ImageID="C_btn_90" Left="344" LeftMargin="28" OnClick="btn_DemdProc_OnClick" Style="edit" TabOrder="16" Text="파일생성" Top="208" TopMargin="1" Width="90"></Button>
+		<FileDialog Bottom="64" Height="24" Id="fdg_Auto" Left="408" Right="432" TabOrder="14" Top="40" Type="Dir" Width="24"></FileDialog>
+		<File Bottom="64" Height="24" Id="fil_OCR" Left="440" Right="464" TabOrder="14" Top="40" Width="24"></File>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="72" TabOrder="15" TabStop="FALSE" Top="178" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="88" Style="tx_left_bold" TabOrder="16" Text="입금일" Top="177" VAlign="Middle" Width="56"></Static>
+		<Calendar BindDataset="dsIn" Column="REPT_DAY" Dateformat="yyyy/MM/dd" FocusIndex="0" Height="22" Id="cal_REPT_DAY" Left="168" LeftMargin="17" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="17" ToolTipText="생성년월" Top="172" Width="120"></Calendar>
+		<Edit BindDataset="dsIn" Column="CNT" Height="21" Id="edt_CNT" Left="168" Number="TRUE" TabOrder="18" Text="30" Top="208" Width="121"></Edit>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="72" TabOrder="19" TabStop="FALSE" Top="210" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="88" Style="tx_left_bold" TabOrder="20" Text="데이터수" Top="209" VAlign="Middle" Width="56"></Static>
+		<Combo BindDataset="dsIn" Color="user12" Column="BRAN_CD" Height="21" Id="cob_BRAN_CD" ImeMode="none" Left="168" TabOrder="23" ToolTipText="지부명" Top="8" Width="114"></Combo>
+		<Image Height="11" Id="Image6" ImageID="C_icon" Left="72" TabOrder="21" TabStop="FALSE" Top="16" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="88" Style="tx_left_bold" TabOrder="22" Text="지부명" Top="15" Width="40"></Static>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="72" TabOrder="25" TabStop="FALSE" Top="242" Width="11"></Image>
+		<Static Height="15" Id="Static6" Left="88" Style="tx_left_bold" TabOrder="26" Text="업소코드" Top="241" VAlign="Middle" Width="56"></Static>
+		<Edit BindDataset="dsIn" Column="UPSO_CD" Height="21" Id="edt_UPSO_CD" Left="168" TabOrder="24" Text="30" Top="240" Width="121"></Edit>
+		<Image Height="11" Id="Image8" ImageID="C_icon" Left="72" TabOrder="27" TabStop="FALSE" Top="306" Width="11"></Image>
+		<Static Height="15" Id="Static7" Left="88" Style="tx_left_bold" TabOrder="28" Text="입금금액" Top="305" VAlign="Middle" Width="56"></Static>
+		<MaskEdit Height="21" Id="mae_ReptAmt" Left="168" TabOrder="29" Top="304" Value="MaskEdit0" Width="121"></MaskEdit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btm_ReptAmt" ImageID="C_btn_90" Left="344" LeftMargin="28" OnClick="btm_ReptAmt_OnClick" Style="edit" TabOrder="30" Text="한글금액" Top="304" TopMargin="1" Width="90"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  		// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	
+	this.cal_DEMD_YRMN.Value = today();
+	this.cal_RECV_DAY.Value = today();
+	this.cal_REPT_DAY.Value = today();
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	
+	if(srvId == "GET_DATA"){
+	}
+}
+
+function btn_SearchFile_OnClick(obj)
+{
+	this.fdg_Auto.Open();
+	
+	if (length(this.fdg_Auto.FilePath) > 0) {
+		this.edt_FileName.Text = this.fdg_Auto.FilePath + "\\";
+	}	
+}
+
+function btn_DemdProc_OnClick(obj)
+{
+	this.dsIn.SetColumn(0, "DEMD_YRMN", substr(this.cal_DEMD_YRMN.Value, 0, 6));
+	gfn_syncCall("GET_DATA","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001002&EVENTID=make_testdata","S=dsIn","dsBody=MRG1 dsTail=MRG2","","fn_CallBack");
+
+	var preFix = "";
+
+	if (this.cob_DemdGbn.Value == "31") preFix = "GP23";
+	else								preFix = "GR15";
+
+	var fileName = this.edt_FileName.Text
+			     + preFix
+				 + substr(this.cal_REPT_DAY.Value, 2, 6);
+trace(fileName);
+	this.fil_OCR.FileName = fileName;
+	if (!this.fil_OCR.Open("w")) 
+	{
+		alert("화일을 open 하지 못했습니다.!!");
+		return;
+	}
+
+	var head = "";
+	if (this.cob_DemdGbn.Value == "41") {
+		head = "515078448（사）한국음악저작권협회　　　　　"
+			 + this.cal_REPT_DAY.Value
+			 + "                                                                                                             \n";
+	}
+	else {
+		head = "11905078448O6950320"
+			 + substr(this.cal_REPT_DAY.Value, 2, 6)
+			 + "                                                                                               \n";
+	}
+
+	var body = "";
+	for (var i=0; i<this.dsBody.rowcount; i++) {
+		body = body + this.dsBody.GetColumn(i, "B") + "\n";
+	}
+
+	var tail = this.dsTail.GetColumn(0, "T");
+	
+	this.fil_OCR.Write(head, length(head));
+	this.fil_OCR.Write(body, length(body));
+	this.fil_OCR.Write(tail, length(tail));
+		
+	this.fil_OCR.Close();
+}
+
+function btm_ReptAmt_OnClick(obj)
+{
+	var reptAmt = this.mae_ReptAmt.Value;
+	alert(this.mae_ReptAmt.Text + ": " + fn_getKrPrc(reptAmt));
+}
+]]></Script>
+</Window>

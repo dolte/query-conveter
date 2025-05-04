@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="MICR&#32;청구&#32;등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_IndtnIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRET_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UPSO_REPT" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BB_RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_REPT_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BB_MAPPING_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_REPT_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MAPPING_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_IndtnDetail" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_EADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAST_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_DAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MISU_CLOSED" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_IndtnUse" UseClientLayout="1">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_IndtnNew" UseClientLayout="1">
+				<Contents>
+					<colinfo id="DEMD_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRET_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_EADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_BALANCE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_GRAD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DemdAmt" UseClientLayout="1">
+				<Contents>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_EADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRET_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ubi" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_FAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRET_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD1" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_OWNER1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_OWNER2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM3" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM3" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search_accn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_TYPE" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<USE_TYPE></USE_TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_banklist" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCN_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_demd_num">
+				<Contents>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Virtual_temp">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Virtual_In">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="whitesmoke" Bottom="566" Height="126" Id="Shape1" Left="8" LineColor="user3" Right="1033" TabOrder="21" Top="440" Type="Rectangle" Width="1025"></Shape>
+		<Shape BKColor="white" Bottom="566" Height="26" Id="Shape8" Left="8" LineColor="user3" Right="1033" TabOrder="52" Top="540" Type="Rectangle" Width="1025"></Shape>
+		<Shape BKColor="white" Bottom="541" Height="26" Id="Shape7" Left="8" LineColor="user3" Right="1033" TabOrder="51" Top="515" Type="Rectangle" Width="1025"></Shape>
+		<Shape BKColor="white" Bottom="516" Height="26" Id="Shape5" Left="8" LineColor="user3" Right="1033" TabOrder="50" Top="490" Type="Rectangle" Width="1025"></Shape>
+		<Shape BKColor="white" Bottom="491" Height="26" Id="Shape4" Left="8" LineColor="user3" Right="1033" TabOrder="49" Top="465" Type="Rectangle" Width="1025"></Shape>
+		<Shape BKColor="white" Bottom="466" Height="26" Id="Shape2" Left="8" LineColor="user3" Right="1033" TabOrder="48" Top="440" Type="Rectangle" Width="1025"></Shape>
+		<Div Height="176" Id="div_Indtn" Left="8" TabOrder="25" TabStop="FALSE" Text="Div0" Top="576" Width="1032">
+			<Contents>
+				<Shape BKColor="whitesmoke" Bottom="168" Height="164" Id="Shape2" Left="0" LineColor="user3" Right="1025" TabOrder="12" Top="4" Type="Rectangle" Width="1025"></Shape>
+				<Shape BKColor="white" Bottom="105" Height="26" Id="Shape18" Left="129" LineColor="user3" Right="607" TabOrder="23" Top="79" Type="Rectangle" Width="478"></Shape>
+				<Shape BKColor="white" Bottom="80" Height="26" Id="Shape17" Left="129" LineColor="user3" Right="607" TabOrder="26" Top="54" Type="Rectangle" Width="478"></Shape>
+				<Shape BKColor="white" Bottom="55" Height="26" Id="Shape16" Left="129" LineColor="user3" Right="607" TabOrder="25" Top="29" Type="Rectangle" Width="478"></Shape>
+				<Shape BKColor="white" Bottom="30" Height="26" Id="Shape15" Left="129" LineColor="user3" Right="607" TabOrder="24" Top="4" Type="Rectangle" Width="478"></Shape>
+				<MaskEdit BKColor="user13" Border="Flat" BorderColor="user3" Enable="FALSE" Height="20" Id="mae_TOT_DEMD_AMT" Left="136" MaxLength="10" TabOrder="1" Top="32" Width="124"></MaskEdit>
+				<Calendar AutoIncrement="1" BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="LAST_YRMN" Dateformat="yyyy/MM" DayStyle="edit" EditAlign="CENTER" Enable="FALSE" FocusIndex="1" Height="20" Id="cal_LAST_YRMN" Left="477" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="2" Top="7" Width="125"></Calendar>
+				<Static Height="9" Id="Static19" Left="209" TabOrder="3" Text="-" Top="11" Width="10"></Static>
+				<Shape BKColor="user7" Bottom="-19" Height="3" Id="Shape4" Left="0" LineColor="user7" Right="1009" TabOrder="4" Top="-22" Type="Rectangle" Width="1009"></Shape>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static18" Style="box_tx" TabOrder="5" Text="청구&#32;금액" Top="29" VAlign="Middle" Width="130"></Static>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static17" Left="379" Style="box_tx" TabOrder="6" Text="최종납입년월" Top="4" VAlign="Middle" Width="96"></Static>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static16" Style="box_tx" TabOrder="7" Text="대상&#32;기간" Top="4" VAlign="Middle" Width="130"></Static>
+				<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="REMAK" Enable="FALSE" Height="20" Id="edt_REMAK" ImeMode="native" Left="133" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="9" Top="82" Width="468"></Edit>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static14" Style="box_tx" TabOrder="10" Text="가&#32;&#32;산&#32;&#32;금" Top="54" VAlign="Middle" Width="130"></Static>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static2" Style="box_tx" TabOrder="11" Text="비&#32;&#32;&#32;&#32;&#32;&#32;고" Top="79" VAlign="Middle" Width="130"></Static>
+				<Grid BindDataset="ds_IndtnUse" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="160" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="128" Id="Grid0" InputPanel="FALSE" Left="616" LineColor="silver" Right="1016" RowHeight="20" Style="grid" TabOrder="13" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="400">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="90"/>
+								<col width="90"/>
+								<col width="110"/>
+								<col width="90"/>
+							</columns>
+							<head>
+								<cell col="0" color="user12" display="text" text="등록일"/>
+								<cell col="1" color="user12" display="text" text="등급"/>
+								<cell col="2" color="user12" display="text" text="사용료"/>
+								<cell col="3" color="user12" display="text" text="적용일"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="CHG_DAY" display="date"/>
+								<cell align="center" col="1" colid="GRAD" display="text"/>
+								<cell align="right" col="2" colid="MONPRNCFEE" display="number"/>
+								<cell align="center" col="3" colid="APPL_DAY" display="date"/>
+							</body>
+						</format>
+					</contents>
+				</Grid>
+				<MaskEdit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="TOT_ADDT_AMT" Enable="FALSE" Height="20" Id="mae_TOT_ADDT_AMT" Left="133" MaxLength="10" TabOrder="14" Top="57" Width="124"></MaskEdit>
+				<Calendar AutoIncrement="1" BindDataset="ds_IndtnDetail" BKColor="user13" Border="Flat" BorderColor="user10" Column="END_YRMN" Dateformat="yyyy/MM" EditAlign="CENTER" Enable="FALSE" FocusIndex="1" Height="20" Id="cal_END_YRMN" Left="220" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="8" Top="7" Width="72"></Calendar>
+				<Calendar AutoIncrement="1" BindDataset="ds_IndtnDetail" BKColor="user13" Border="Flat" BorderColor="user10" Column="START_YRMN" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" FocusIndex="1" Height="20" Id="cal_START_YRMN" Left="133" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="15" Top="7" Width="72"></Calendar>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static1" Left="379" Style="box_tx" TabOrder="16" Text="중가산금" Top="54" VAlign="Middle" Width="96"></Static>
+				<MaskEdit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="TOT_EADDT_AMT" Enable="FALSE" Height="23" Id="mae_TOT_EADDT_AMT" Left="477" MaxLength="10" TabOrder="17" Top="57" Width="124"></MaskEdit>
+				<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static3" Left="379" Style="box_tx" TabOrder="19" Text="사&#32;&#32;용&#32;&#32;료" Top="29" VAlign="Middle" Width="96"></Static>
+				<MaskEdit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="TOT_USE_AMT" Enable="FALSE" Height="23" Id="mae_TOT_USE_AMT" Left="477" MaxLength="10" TabOrder="18" Top="32" Width="124"></MaskEdit>
+				<Image Height="21" Id="Image1" ImageID="C_icon2" Left="612" TabOrder="21" Top="8" Width="18"></Image>
+				<Static Color="user1" Height="15" Id="Static4" Left="636" Style="tx_bold" TabOrder="20" Text="사용료&#32;변경이력&#32;정보" Top="11" Width="129"></Static>
+				<Shape BKColor="user7" Bottom="4" Height="3" Id="Shape6" Left="0" LineColor="user7" Right="1026" TabOrder="22" Top="1" Type="Rectangle" Width="1026"></Shape>
+			</Contents>
+		</Div>
+		<Image FillType="STRETCH" Height="78" Id="Image15" ImageID="C_search2_bg" Left="24" OnClick="btn_Search_OnClick" TabOrder="8" TabStop="FALSE" Top="18" Width="992"></Image>
+		<Image FillType="STRETCH" Height="78" Id="Image17" ImageID="C_search2_left" Left="8" TabOrder="9" TabStop="FALSE" Top="18" Width="16"></Image>
+		<Image FillType="STRETCH" Height="78" Id="Image18" ImageID="C_search2_right" Left="1016" TabOrder="10" TabStop="FALSE" Top="18" Width="16"></Image>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static6" Left="8" Style="box_tx" TabOrder="12" Text="영업장주소" Top="540" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static4" Left="8" Style="box_tx" TabOrder="10" Text="등록&#32;번호" Top="440" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static7" Left="8" Style="box_tx" TabOrder="11" Text="기계&#32;대수" Top="515" VAlign="Middle" Width="130"></Static>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="ADDR" Enable="FALSE" Height="20" Id="edt_ADDR" Left="141" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="11" TabStop="FALSE" Top="543" Width="469"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static9" Left="8" Style="box_tx" TabOrder="16" Text="업&#32;&#32;주&#32;&#32;명" Top="465" VAlign="Middle" Width="130"></Static>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="MNGEMSTR_NM" Enable="FALSE" Height="20" Id="edt_MNGEMSTR_NM" Left="141" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="12" TabStop="FALSE" Top="468" Width="183"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static10" Left="637" Style="box_tx" TabOrder="17" Text="신규&#32;일자" Top="515" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static12" Left="8" Style="box_tx" TabOrder="19" Text="담당&#32;사원" Top="488" VAlign="Middle" Width="130"></Static>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="STAFF_NM" Enable="FALSE" Height="20" Id="edt_STAFF_NM" Left="212" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="13" TabStop="FALSE" Top="493" Width="112"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static13" Left="387" Style="box_tx" TabOrder="20" Text="개업&#32;일자" Top="515" VAlign="Middle" Width="96"></Static>
+		<Shape BKColor="user7" Bottom="440" Height="3" Id="Shape3" Left="8" LineColor="user7" Right="1034" TabOrder="22" Top="437" Type="Rectangle" Width="1026"></Shape>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="56" TabOrder="14" TabStop="FALSE" Top="37" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="72" Style="tx_left_bold" TabOrder="24" Text="센터명" Top="36" Width="40"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="284" TabOrder="15" TabStop="FALSE" Top="37" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="Static15" Left="300" Style="tx_left_bold" TabOrder="26" Text="등록번호" Top="37" Width="56"></Static>
+		<Static Height="9" Id="Static0" Left="246" TabOrder="27" Text="-" Top="447" Width="10"></Static>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="DEMD_NUM" Enable="FALSE" Height="20" Id="edt_DEMD_NUMD" Left="261" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="16" TabStop="FALSE" Top="443" Width="45"></Edit>
+		<Static Height="9" Id="Static11" Left="312" TabOrder="29" Text="-" Top="447" Width="10"></Static>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="BRAN_CD" Enable="FALSE" Height="20" Id="edt_DEMD_BRAND" Left="327" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="17" TabStop="FALSE" Top="443" Width="20"></Edit>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="ACMCN_DAESU" Enable="FALSE" Height="20" Id="edt_ACMCN_DAESU" Left="141" LeftMargin="4" MaxLength="10" Number="TRUE" RightMargin="2" Style="edit" TabOrder="18" TabStop="FALSE" Top="518" Width="183"></Edit>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="STAFF_CD" Enable="FALSE" Height="20" Id="edt_STAFF_CD" Left="141" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="19" TabStop="FALSE" Top="493" Width="67"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static20" Left="387" Style="box_tx" TabOrder="34" Text="업&#32;&#32;&#32;&#32;&#32;&#32;종" Top="465" VAlign="Middle" Width="96"></Static>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="GRADNM" Enable="FALSE" Height="20" Id="edt_GRADNM" Left="536" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="20" TabStop="FALSE" Top="468" Width="183"></Edit>
+		<Edit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user10" Column="GRAD" Enable="FALSE" Height="20" Id="edt_GRAD" Left="485" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="21" TabStop="FALSE" Top="468" Width="48"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static21" Left="387" Style="box_tx" TabOrder="36" Text="월사용료" Top="490" VAlign="Middle" Width="96"></Static>
+		<Combo BKColor="user13" Color="black" Height="21" Id="cob_BRAN_CD" ImeMode="none" Left="132" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="32" Width="114"></Combo>
+		<Calendar BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="OPBI_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" EditAlign="CENTER" Enable="FALSE" Height="20" Id="cal_OPBI_DAY" Left="485" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="22" TabStop="FALSE" Top="518" Width="122"></Calendar>
+		<MaskEdit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="MONPRNCFEE" Enable="FALSE" Height="20" Id="mae_MONPRNCFEE" Left="485" MaxLength="10" TabOrder="23" TabStop="FALSE" Top="493" Width="124"></MaskEdit>
+		<Calendar BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="NEW_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" EditAlign="CENTER" Enable="FALSE" Height="20" Id="cal_NEW_DAY" Left="770" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="24" TabStop="FALSE" Top="518" Width="122"></Calendar>
+		<Grid BindDataset="ds_UPSO_REPT" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="424" ColSelect="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="320" Id="grd_UPSO_REPT" InputPanel="FALSE" Left="8" LineColor="silver" OnHeadClick="grd_UPSO_REPT_OnHeadClick" Right="1032" RowHeight="20" Style="grid" TabOrder="26" TabStop="FALSE" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="43"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="월"/>
+						<cell col="1" color="user12" colspan="4" display="text" text="2007"/>
+						<cell col="5" color="user12" colspan="4" display="text" text="2008"/>
+						<cell col="9" color="user12" colspan="4" display="text" text="2009"/>
+						<cell autosizing="none" col="13" display="text" rowspan="2" text="BB입금년월"/>
+						<cell autosizing="none" col="14" display="text" rowspan="2" text="B입급년월"/>
+						<cell autosizing="none" col="15" display="text" rowspan="2" text="입금년월"/>
+						<cell col="1" color="user12" display="text" font="굴림,9,Bold" row="1" text="구분"/>
+						<cell col="2" color="user12" display="text" font="굴림,9,Bold" row="1" text="금&#32;액"/>
+						<cell col="3" color="user12" display="text" font="굴림,9,Bold" row="1" text="입금일자"/>
+						<cell col="4" color="user12" display="text" font="굴림,9,Bold" row="1" text="영수일자"/>
+						<cell col="5" color="user12" display="text" font="굴림,9,Bold" row="1" text="구분"/>
+						<cell col="6" color="user12" display="text" font="굴림,9,Bold" row="1" text="금&#32;액"/>
+						<cell col="7" color="user12" display="text" font="굴림,9,Bold" row="1" text="입금일자"/>
+						<cell col="8" color="user12" display="text" font="굴림,9,Bold" row="1" text="영수일자"/>
+						<cell col="9" color="user12" display="text" font="굴림,9,Bold" row="1" text="구분"/>
+						<cell col="10" color="user12" display="text" font="굴림,9,Bold" row="1" text="금&#32;액"/>
+						<cell col="11" color="user12" display="text" font="굴림,9,Bold" row="1" text="입금일자"/>
+						<cell col="12" color="user12" display="text" font="굴림,9,Bold" row="1" text="영수일자"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor2="user2" celltype="head" col="0" colid="MM" color="user12" display="text" font="굴림,9,Bold"/>
+						<cell align="center" bkcolor2="user2" col="1" colid="BB_CODE_NM" display="combo"/>
+						<cell bkcolor2="user2" col="2" colid="BB_USE_AMT" display="number"/>
+						<cell align="center" bkcolor2="user2" col="3" colid="BB_MAPPING_DAY" display="text" Mask="####/##/##"/>
+						<cell align="center" bkcolor2="user2" col="4" colid="BB_RECV_DAY" display="text" Mask="####/##/##"/>
+						<cell align="center" bkcolor2="user2" col="5" colid="B_CODE_NM" display="text"/>
+						<cell bkcolor2="user2" col="6" colid="B_USE_AMT" display="number"/>
+						<cell align="center" bkcolor2="user2" col="7" colid="B_MAPPING_DAY" display="text" Mask="####/##/##"/>
+						<cell align="center" bkcolor2="user2" col="8" colid="B_RECV_DAY" display="text" Mask="####/##/##"/>
+						<cell align="center" bkcolor2="user2" col="9" colid="CODE_NM" display="combo"/>
+						<cell bkcolor2="user2" col="10" colid="USE_AMT" display="number"/>
+						<cell align="center" bkcolor2="user2" col="11" colid="MAPPING_DAY" display="text" Mask="####/##/##"/>
+						<cell align="center" bkcolor2="user2" col="12" colid="RECV_DAY" display="text" Mask="####/##/##"/>
+						<cell col="13" colid="BB_REPT_YRMN" display="text"/>
+						<cell col="14" colid="B_REPT_YRMN" display="text"/>
+						<cell col="15" colid="REPT_YRMN" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="9" Id="Static2" Left="454" TabOrder="42" Text="-" Top="39" Width="10"></Static>
+		<Edit BKColor="user13" Border="Flat" BorderColor="user10" Height="20" Id="edt_DEMD_NUM" Left="465" LeftMargin="4" MaxLength="4" Number="TRUE" RightMargin="2" Style="edit" TabOrder="3" Top="33" Width="47"></Edit>
+		<Static Height="9" Id="Static14" Left="516" TabOrder="43" Text="-" Top="38" Width="10"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="edt_DEMD_BRAN" Left="528" LeftMargin="4" MaxLength="1" RightMargin="2" Style="edit" TabOrder="4" Top="33" Width="20"></Edit>
+		<Button Cursor="HAND" Height="20" Id="btn_Search" ImageID="C_btn_search" Left="562" OnClick="btn_Search_OnClick" TabOrder="27" TabStop="FALSE" Top="33" Width="58"></Button>
+		<Button Cursor="HAND" Height="20" Id="btn_UPSO_Search" ImageID="C_btn_search" Left="480" OnClick="btn_UPSO_Search_OnClick" TabOrder="28" TabStop="FALSE" Top="63" Width="58"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" BorderColor="user10" Height="20" Id="edt_UPSO_NM" ImeMode="native,katakana" Left="235" LeftMargin="4" OnKeyDown="edt_UPSO_NM_OnKeyDown" RightMargin="2" Style="edit" TabOrder="6" Top="63" Width="237"></Edit>
+		<Edit BKColor="user13" Border="Flat" BorderColor="user10" Height="20" Id="edt_UPSO_CD" Left="132" LeftMargin="4" MaxLength="8" OnChar="edt_UPSO_CD_OnChar" OnKeyDown="edt_UPSO_CD_OnKeyDown" RightMargin="2" Style="edit" TabOrder="5" ToolTipText="업소코드" Top="63" UseIME="FALSE" Width="99"></Edit>
+		<Static Height="16" Id="Static1" Left="72" Style="tx_left_bold" TabOrder="47" Text="업&#32;&#32;&#32;소" Top="68" Width="40"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="56" TabOrder="29" TabStop="FALSE" Top="68" Width="11"></Image>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="20" Id="mae_DEMD_DAY" Left="361" LeftMargin="10" Mask="####/##/##" MaxLength="8" OnKeyDown="mae_DEMD_DAY_OnKeyDown" TabOrder="2" ToolTipText="등록번호" Top="33" Type="STRING" Width="88"></MaskEdit>
+		<MaskEdit BindDataset="ds_IndtnDetail" Border="Flat" BorderColor="user3" Column="DEMD_DAY" DisplayComma="FALSE" Enable="FALSE" Height="20" Id="mae_DEMD_DAYD" Left="141" LeftMargin="18" Mask="####/##/##" MaxLength="8" OnKeyDown="mae_DEMD_DAY_OnKeyDown" TabOrder="7" ToolTipText="등록번호" Top="443" Type="STRING" Width="99"></MaskEdit>
+		<Button ButtonStyle="TRUE" DefaultButton="TRUE" DragMode="TRUE" DropMode="TRUE" Height="21" Id="btn_calc" ImageID="C_btn_70" Left="306" OnClick="btn_calc_OnClick" Style="edit" TabOrder="30" TabStop="FALSE" Text="&#32;&#32;&#32;&#32;계산" Top="582" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="report_close" ImageID="C_btn_110" Left="921" LeftMargin="28" OnClick="report_close_OnClick" Style="edit" TabOrder="55" Text="리포트&#32;닫기" Top="75" TopMargin="1" Width="111"></Button>
+		<ubiviewer Bottom="784" Height="680" Id="ubiviewer0" Left="8" Right="1032" Top="104" Visible="FALSE" Width="1024">
+			<_PersistData>&#13;&#10;/6yHKhpq/wAAAQDVaQAA90hGAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  		// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var	CRET_GBN = "M";		// 개별 MICR 청구 등록
+var	DEMD_GBN = "33";	// 개별 MICR 청구 구분 코드
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function fn_New() 
+{
+	this.mae_DEMD_DAY.BKColor = "";
+	this.edt_DEMD_NUM.BKColor = "";
+
+	if (!gfn_CheckFormNull(this)) return;
+
+	// 초기값 설정 ------------------------------------------
+	this.mae_DEMD_DAY.Value = "";
+	this.edt_DEMD_NUM.Text = "";
+	this.edt_DEMD_BRAN.Text = "";
+	
+	// 원장 정보 조회
+	fn_GetReptData(this.edt_UPSO_CD.Text, substr(today(), 0, 4));
+
+	// 청구입금 조회
+	fn_GetIndtnData(true);
+		
+	// Control 삽입모드 설정
+	fn_SetControlEnabled(true);
+	
+	ds_ubi.ClearData();
+	return;
+}
+
+function fn_Search() 
+{
+	this.mae_DEMD_DAYD.BKColor = "";
+	this.mae_DEMD_DAY.BKColor = "user13";
+	this.edt_DEMD_NUM.BKColor = "user13";
+
+	if (!gfn_CheckFormNull(this)) return;
+/*
+	if (length(this.mae_DEMD_DAY.Value) <= 0 ) {
+		this.mae_DEMD_DAY.SetFocus();
+	    gfn_Confirm("MB_OK", "청구번호를 입력하십시요.", "경고", "0");
+		return;
+	}
+
+	if (length(this.edt_DEMD_NUM.Value) <= 0 ) {
+		this.edt_DEMD_NUM.SetFocus();
+	    gfn_Confirm("MB_OK", "청구번호를 입력하십시요.", "경고", "0");
+		return;
+	}
+
+	if (length(this.edt_DEMD_BRAN.Value) <= 0 ) {
+		this.edt_DEMD_BRAN.SetFocus();
+	    gfn_Confirm("MB_OK", "청구번호를 입력하십시요.", "경고", "0");
+		return;
+	}
+*/	
+	// 원장 정보 조회
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var YEAR = substr(this.mae_DEMD_DAY.Value, 0, 4);
+	if (YEAR == "") YEAR= substr(today(), 0, 4);
+
+	fn_GetReptData(UPSO_CD, YEAR);
+
+	// 청구입금 정보 조회
+	fn_GetIndtnData(false);
+
+	// control Enable 설정
+	this.mae_DEMD_DAYD.Enable = false;
+	this.div_Indtn.cal_END_YRMN.Enable = false;
+	this.div_Indtn.edt_REMAK.Enable = false;
+
+	return;
+}
+
+function fn_Save() 
+{
+    //대상기간에 따른 계산을 저장버튼을 누를때 다시함
+    //var aa = btn_calc.Click();
+    if(!btn_calc_OnClick()){
+        return;
+    }    
+    
+    if (!gfn_CheckFormNull(this)) return;
+    if (!gfn_CheckFormNull(this.div_Indtn)) return;
+	// 등록번호는 센터 마감일 이후만 가능함
+	if (toNumber(this.mae_DEMD_DAYD.Value) < this.ds_IndtnDetail.GetColumn(0, "END_DATE")) {
+	    gfn_Confirm("MB_OK", "센터 마감이 끝난 일자입니다.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	}
+	
+	// DataSet 설정
+	fn_SetIndtnNewData();
+	if (ds_IndtnNew.GetRowType(0) == "insert") {
+		// 저장
+		gfn_syncCall("UPSO_INDTN_SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005005&EVENTID=indtnpaper_insert","S=ds_IndtnNew:U","ds_IndtnDetail=SEL19 ds_IndtnUse=SEL18 ds_demd_num=SEL20","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	}
+	return;
+}
+
+function fn_Delete() 
+{
+	// 등록번호는 센터 마감일 이후만 가능함
+	if (toNumber(this.mae_DEMD_DAYD.Value) < this.ds_IndtnDetail.GetColumn(0, "END_DATE")) {
+	    gfn_Confirm("MB_OK", "센터 마감이 끝난 일자입니다.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	} else if (this.ds_IndtnDetail.GetColumn(0, "MISU_CLOSED") == 1) {	//미수채권 시작 이전의 건은 미마감이되므로 센터마감만 체크됨. (0:마감실행할 차례, 1:마감완료, -1:미마감)
+		gfn_Confirm("MB_OK", "미수채권 일마감이 끝난 일자입니다.", "경고", "0");
+		return;
+	}
+
+	// 필수 항목 검사
+	if (this.mae_DEMD_DAYD.Value == "" || this.edt_DEMD_NUMD.Text == "" || this.edt_DEMD_BRAN.Text == "")
+	{
+	    gfn_Confirm("MB_OK", "등록번호를 검색하시기 바랍니다.", "경고", "0");
+		this.mae_DEMD_DAY.SetFocus();
+		return;
+	}
+
+	this.ds_IndtnNew.ClearData();
+	this.ds_IndtnNew.AddRow();
+	
+    this.ds_IndtnNew.SetColumn(0, "DEMD_DAY"     , this.mae_DEMD_DAYD.Value);
+    this.ds_IndtnNew.SetColumn(0, "DEMD_NUM"     , this.edt_DEMD_NUMD.Value);
+    this.ds_IndtnNew.SetColumn(0, "UPSO_CD"      , this.edt_UPSO_CD.Text);
+
+	ds_IndtnNew.UpdateControl = false;
+	ds_IndtnNew.SetRowType(0, "D");
+	
+	// 저장
+	gfn_syncCall("UPSO_INDTN_DELETE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005005&EVENTID=indtnpaper_insert","S=ds_IndtnNew:U","ds_IndtnDetail=SEL19 ds_IndtnUse=SEL18","","fn_CallBack",gv_TraceLog,gv_formid);
+
+	return;
+}
+
+function fn_Excel() {}
+
+//bra03_s10.xml참조해서 생성함.
+function fn_Print() {
+	if (this.ds_ubi.GetRowCount() == 0) {
+		gfn_Confirm("MB_OK", "출력할 MICR정보가 없습니다.", "경고", "0");
+		return;
+	} if (this.ds_ubi.GetRowCount() == 1) {
+		var yesno = gfn_Confirm("MB_YESNO", "발송현황정보에 기록됩니다.\n출력하시겠습니까?", "경고", "0");
+		if (yesno == "6") {
+			
+			//센터별 계좌정보 획득
+			this.ds_search_accn.ClearData();
+			this.ds_search_accn.AddRow();
+			this.ds_search_accn.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value);
+			this.ds_search_accn.SetColumn(0, "USE_TYPE", gfn_GetAccountUsage("03"));
+			gfn_syncCall("find_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=accn_num_select2","S=ds_search_accn","ds_banklist=SEL1","","fn_CallBack");
+			trace(ds_banklist.SaveXML());
+			//데이터 준비
+			if (this.ds_ubi.GetColumn(0,"MAIL_RCPT") != "U" ) {
+				this.ds_ubi.SetColumn(0, "UPSO_CD1", this.ds_ubi.GetColumn(0,"UPSO_CD"));
+				this.ds_ubi.SetColumn(0, "UPSO_NM1", this.ds_ubi.GetColumn(0,"UPSO_NM"));
+			}	else {
+				this.ds_ubi.SetColumn(0, "UPSO_CD1", "");
+				this.ds_ubi.SetColumn(0, "UPSO_NM1", "");
+			}
+			
+			ds_Virtual_In.SetColumn(0, "UPSO_CD", ds_ubi.GetColumn(0, "UPSO_CD"));
+			
+			gfn_syncCall("svcSearchInfo","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005024&EVENTID=sel_virtual_temp","S=ds_Virtual_In","ds_Virtual_temp=SEL1","","fn_CallBack");
+			
+			ds_ubi.SetColumn(0, "BANK_NM1", ds_Virtual_temp.GetColumn(0, "BANK_NM"));
+			ds_ubi.SetColumn(0, "ACCN_NUM1", ds_Virtual_temp.GetColumn(0, "ACCN_NUM"));
+			
+			if(ds_Virtual_temp.rowcount > 1 && ds_Virtual_temp.GetColumn(1, "USE_YN") == "Y")
+			{
+				ds_ubi.SetColumn(0, "BANK_NM2", ds_Virtual_temp.GetColumn(1, "BANK_NM"));
+				ds_ubi.SetColumn(0, "ACCN_NUM2", ds_Virtual_temp.GetColumn(1, "ACCN_NUM"));
+			}
+			if(ds_Virtual_temp.rowcount > 2 && ds_Virtual_temp.GetColumn(2, "USE_YN") == "Y")
+			{
+				ds_ubi.SetColumn(0, "BANK_NM3", ds_Virtual_temp.GetColumn(2, "BANK_NM"));
+				ds_ubi.SetColumn(0, "ACCN_NUM3", ds_Virtual_temp.GetColumn(2, "ACCN_NUM"));
+			}
+			
+			this.ds_ubi.SetColumn(0, "ACCN_OWNER1", ds_Virtual_temp.GetColumn(0, "REPTPRES"));
+			
+			ds_ubi.UpdateControl = false;
+			ds_ubi.SetRowType(0, "I");
+			
+			//저장
+			gfn_syncCall("sys_bra03_s10_P","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005009&EVENTID=indtnpaper_prnt_mng","S=ds_ubi:U","","","fn_CallBack" ,gv_TraceLog, GV_FORMID);
+			
+			//리포트 인쇄
+			this.ubiviewer0.SetDataset("ds_ubi", "ds_ubi");
+			this.ubiviewer0.SetArgument("BRAN_NM", cob_BRAN_CD.Text );
+			this.ubiviewer0.SetArgument("DATE", today() );
+	
+			ubiviewer0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+			ubiviewer0.setJrfFileName("bra03_s10.jrf");
+			ubiviewer0.Retrieve();
+			ubiviewer0.Visible = true;
+			report_close.Enable = true;
+		}
+	}
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+	
+	if (srvId == "UPSO_INDTN_SAVE")
+	{
+		this.div_Indtn.mae_TOT_DEMD_AMT.Value = this.ds_IndtnDetail.GetColumn(0, "TOT_DEMD_AMT");
+		gfn_SetStatusMsg("저장되었습니다.");
+
+		this.mae_DEMD_DAY.Value = this.mae_DEMD_DAYD.Value;
+		this.edt_DEMD_NUM.Text = this.edt_DEMD_NUMD.Text;
+		this.edt_DEMD_DAY.Text = this.edt_DEMD_DAYD.Text;
+		
+		ds_ubi.ClearData();
+		fn_Search();
+	}
+	else if (srvId == "UPSO_INDTN_DELETE")
+	{
+		gfn_SetStatusMsg("삭제되었습니다.");
+		
+		// DataSet 초기화
+		this.ds_UPSO_REPT.ClearData();
+		this.ds_IndtnDetail.ClearData();
+		this.ds_IndtnUse.ClearData();
+		this.ds_ubi.ClearData();
+		
+		// control 초기화
+		this.mae_DEMD_DAY.Value = "";
+		this.edt_DEMD_NUM.Text = "";
+		this.edt_DEMD_BRAN.Text = "";
+	}
+	else if (srvId == "UPSO_INDTN_DETAIL") {
+		if (this.ds_IndtnDetail.count == 0) gfn_SetStatusMsg("개별 청구내역이 없습니다.");
+		this.div_Indtn.mae_TOT_DEMD_AMT.Value = this.ds_IndtnDetail.GetColumn(0, "TOT_DEMD_AMT");
+	}
+
+	if (this.ds_IndtnDetail.count == 0) this.ds_IndtnDetail.AddRow();
+	//if (this.ds_UPSO_REPT.count == 0) this.ds_UPSO_REPT.AddRow();
+	
+	return;
+}
+
+// 원장정보 조회
+function fn_GetReptData(UPSO_CD, YEAR)
+{
+	ds_ReptIn.ClearData();
+	ds_ReptIn.AddRow();
+	ds_ReptIn.SetColumn(0, "UPSO_CD", UPSO_CD);
+	ds_ReptIn.SetColumn(0, "YEAR", YEAR);
+
+	gfn_syncCall("UPSO_REPT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005005&EVENTID=rept_detail","S=ds_ReptIn","ds_UPSO_REPT=SEL1","","fn_CallBack");
+
+	// Grid Header 년도 표시
+	this.grd_UPSO_REPT.SetCellProp("head", 1, "text", ToString(ToNumber(YEAR)-2));
+	this.grd_UPSO_REPT.SetCellProp("head", 2, "text", ToString(ToNumber(YEAR)-1));
+	this.grd_UPSO_REPT.SetCellProp("head", 3, "text", YEAR);
+
+	return;
+}
+
+// 청구입금 정보 조회
+function fn_GetIndtnData(isInit)
+{
+	ds_IndtnIn.ClearData();
+	ds_IndtnIn.AddRow();
+
+	if (isInit)
+	{
+		ds_IndtnIn.SetColumn(0, "UPSO_CD", this.edt_UPSO_CD.Text);
+		ds_IndtnIn.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+
+		gfn_syncCall("UPSO_INDTN_INIT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005005&EVENTID=indtnpaper_init","S=ds_IndtnIn","ds_IndtnDetail=SEL1 ds_IndtnUse=SEL3","","fn_CallBack");
+		
+		// 등록일자 설정
+		this.mae_DEMD_DAYD.Value = today();
+
+		// 대상기간에 따른 사용료 계산
+		fn_GetUseAmt();
+	}
+	else
+	{
+		ds_IndtnIn.SetColumn(0, "UPSO_CD"  , this.edt_UPSO_CD.Text);
+		ds_IndtnIn.SetColumn(0, "DEMD_DAY" , this.mae_DEMD_DAY.Value);
+		ds_IndtnIn.SetColumn(0, "DEMD_NUM" , this.edt_DEMD_NUM.Text);
+		ds_IndtnIn.SetColumn(0, "DEMD_BRAN", this.edt_DEMD_BRAN.Text);
+		ds_IndtnIn.SetColumn(0, "CRET_GBN", CRET_GBN);
+		ds_IndtnIn.SetColumn(0, "BRAN_CD"  , this.cob_BRAN_CD.Value);
+		gfn_syncCall("UPSO_INDTN_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005005&EVENTID=indtnpaper_detail","S=ds_IndtnIn","ds_IndtnDetail=SEL4 ds_IndtnUse=SEL6 ds_ubi=SEL7","","fn_CallBack");
+		//trace(this.ds_ubi.SaveXML());
+	}
+
+	this.div_Indtn.cal_START_YRMN.Value = ds_IndtnDetail.GetColumn(ds_IndtnDetail.currow,"START_YRMN");
+	
+
+	return;
+}
+
+function fn_SetControlEnabled(enabled)
+{
+	if (enabled) {
+		this.mae_DEMD_DAYD.BKColor = "user13";
+	}
+	else {
+		this.mae_DEMD_DAYD.BKColor = "";
+	}
+	this.mae_DEMD_DAYD.Enable          = enabled;
+	this.div_Indtn.cal_END_YRMN.Enable = enabled;
+	this.div_Indtn.edt_REMAK.Enable    = enabled;
+
+	return;
+}
+
+function fn_SearchIndtnPaper()
+{
+	// 등록번호 검색
+	var BRAN_CD   = this.cob_BRAN_CD.Value;
+	var DEMD_DAY  = this.mae_DEMD_DAY.Value;
+	var DEMD_NUM  = this.edt_DEMD_NUM.Text;
+	var DEMD_BRAN = this.edt_DEMD_BRAN.Text;
+
+	if (length(BRAN_CD) == 0) {
+	    gfn_Confirm("MB_OK", "센터를 선택하십시요.", "경고", "0");
+		return;
+	}
+
+	var result = Dialog("fi_bra::find_IndtnPaper.xml", 
+					 "BRAN_CD=" + quote(BRAN_CD) + " DEMD_DAY=" + quote(DEMD_DAY) + " DEMD_NUM=" + quote(DEMD_NUM) + " DEMD_BRAN=" + quote(DEMD_BRAN) + " CRET_GBN=" + quote(CRET_GBN));
+
+	var vArr = Split(result, ",");
+
+	if (vArr[0] != null && vArr[0] != "" && length(vArr[0]) == 8) 
+	{
+		this.mae_DEMD_DAY.Value = vArr[0];
+		this.edt_DEMD_NUM.Text  = vArr[1];
+		this.edt_DEMD_BRAN.Text = vArr[2];
+		this.edt_UPSO_CD.Text   = vArr[3];
+		this.edt_UPSO_NM.Text   = vArr[4];
+		
+		fn_Search();
+		
+		//if (this.mae_DEMD_DAY.Value != null && this.mae_DEMD_DAY.Value != "")	fn_Search();
+	}
+
+	return;
+}
+
+function fn_SetIndtnNewData()
+{
+	this.ds_IndtnNew.ClearData();
+	this.ds_IndtnNew.AddRow();
+	
+    this.ds_IndtnNew.SetColumn(0, "DEMD_DAY"     , this.mae_DEMD_DAYD.Value);
+    this.ds_IndtnNew.SetColumn(0, "DEMD_NUM"     , this.edt_DEMD_NUMD.Value);
+    this.ds_IndtnNew.SetColumn(0, "UPSO_CD"      , this.edt_UPSO_CD.Text);
+    this.ds_IndtnNew.SetColumn(0, "BRAN_CD"      , this.cob_BRAN_CD.Value);
+    this.ds_IndtnNew.SetColumn(0, "CRET_GBN"     , CRET_GBN);
+    this.ds_IndtnNew.SetColumn(0, "START_YRMN"   , substr(this.div_Indtn.cal_START_YRMN.Value, 0, 6));
+    this.ds_IndtnNew.SetColumn(0, "END_YRMN"     , substr(this.div_Indtn.cal_END_YRMN.Value, 0, 6));
+    this.ds_IndtnNew.SetColumn(0, "DEMD_GBN"     , DEMD_GBN);
+    this.ds_IndtnNew.SetColumn(0, "MONPRNCFEE"   , this.mae_MONPRNCFEE.Value);
+    this.ds_IndtnNew.SetColumn(0, "DEMD_MMCNT"   , this.ds_DemdAmt.GetColumn(0, "DEMD_MMCNT"));
+    this.ds_IndtnNew.SetColumn(0, "DSCT_AMT"     , this.ds_DemdAmt.GetColumn(0, "DSCT_AMT"));
+    this.ds_IndtnNew.SetColumn(0, "TOT_ADDT_AMT" , this.div_Indtn.mae_TOT_ADDT_AMT.Value);
+    this.ds_IndtnNew.SetColumn(0, "TOT_EADDT_AMT", this.div_Indtn.mae_TOT_EADDT_AMT.Value);
+    this.ds_IndtnNew.SetColumn(0, "TOT_DEMD_AMT" , this.div_Indtn.mae_TOT_DEMD_AMT.Value);
+    this.ds_IndtnNew.SetColumn(0, "BSTYP_CD"     , this.ds_IndtnDetail.GetColumn(0, "BSTYP_CD"));
+    this.ds_IndtnNew.SetColumn(0, "UPSO_GRAD"    , this.ds_IndtnDetail.GetColumn(0, "UPSO_GRAD"));
+    //this.ds_IndtnNew.SetColumn(0, "STAFF_CD"     , this.edt_STAFF_CD.Text);
+    this.ds_IndtnNew.SetColumn(0, "REMAK"        , this.div_Indtn.edt_REMAK.Value);
+    this.ds_IndtnNew.SetColumn(0, "INSPRES_ID"   , this.edt_STAFF_CD.Text);
+
+	this.ds_IndtnNew.UpdateControl = false;
+	if (this.edt_DEMD_NUMD.Value == ""){	//등록일때
+		ds_IndtnNew.SetRowType(0, "I");
+	} else {								//수정일때
+		ds_IndtnNew.SetRowType(0, "U");
+	}
+
+	return;
+}
+/*
+function fn_GetMonPrncFee(yymm)
+{
+	var monprncfee = toNumber(this.ds_IndtnDetail.GetColumn(0, "MONPRNCFEE"));
+	var appl_day = "";
+	
+	for (var i=0; i<this.ds_IndtnUse.count; i++)
+	{
+		appl_day = this.ds_IndtnUse.GetColumn(i, "APPL_DAY");
+		
+		// 적용월 기준 사용료 산정
+		if ((yymm + "32") > appl_day) {
+			monprncfee = toNumber(this.ds_IndtnUse.GetColumn(i, "MONPRNCFEE"));
+			break;
+		}
+	}
+	
+	// 개시월과 청구월이 같은 경우 일자에 따라 청구금이 틀려진다.
+	// 개시일 기준 1 ~ 10  : 전체 금액 청구
+	//            10 ~ 20  : 반액
+	//            20 이후  : 면제
+	if (this.cal_OPBI_DAY.Value != "" && length(this.cal_OPBI_DAY.Value) == 8)
+	{
+		var dpbi_yymm = toNumber(substr(this.cal_OPBI_DAY.Value, 0, 6));
+		var dpbi_dd   = toNumber(substr(this.cal_OPBI_DAY.Value, 6, 2));
+		
+		if (yymm == dpbi_yymm) {
+			if      (dpbi_dd > 20)	 monprncfee = 0;
+			else if (dpbi_dd > 10)   monprncfee = toInteger(monprncfee / 2);
+		}
+		// 개시일 이전에 대해 청구금액 요청
+		else if (yymm < dpbi_yymm) {
+			monprncfee = 0;
+		}
+	}
+
+	return monprncfee;
+}
+
+function fn_GetUseAmt()
+{
+	var start_yymm = this.div_Indtn.cal_START_YRMN.Value;
+	var end_yymm   = this.div_Indtn.cal_END_YRMN.Value;
+
+	if (length(start_yymm) == 8 && length(end_yymm) == 8) 
+	{
+		var tmp = toNumber(substr(start_yymm, 0 , 6));
+		var to = gfn_GetDiffMonth(start_yymm, end_yymm);
+
+		var	delay_mm = gfn_GetDiffMonth(start_yymm, substr(today(), 0, 6));
+		//delay_mm = delay_mm - 1;
+	
+		var tmp_amt = 0;
+		var addt_amt = 0;
+		var ext_addt_amt = 0;
+		var use_amt = 0;
+
+		for (var i=0; i<to; i++)
+		{
+			if (tmp % 13 == 0) {
+				tmp = tmp + 88;		// 200813 -> 200910 (2009101 - 200813 = 88)
+			} 
+
+			// 휴업인 경우 월정료, 가산금, 중가산금 적용 안함
+			// todo
+			
+			tmp_amt = fn_GetMonPrncFee(tmp);
+			use_amt = use_amt + tmp_amt;
+			addt_amt = addt_amt + fn_GetAddtAmt(tmp_amt, delay_mm);
+			ext_addt_amt = ext_addt_amt + fn_GetExtAddtAmt(tmp_amt, delay_mm);
+
+			tmp = tmp + 1; 
+			delay_mm = delay_mm - 1;
+		}
+
+		this.ds_IndtnDetail.SetColumn(0, "USE_AMT", use_amt);
+		this.ds_IndtnDetail.SetColumn(0, "ADDT_AMT", addt_amt);
+		this.ds_IndtnDetail.SetColumn(0, "EXT_ADDT_AMT", ext_addt_amt);
+	}
+
+	return;
+}
+
+function fn_GetAddtAmt(amt, delay)
+{
+	var result = 0;
+
+	if (delay > 1)	result = (amt * 0.05);
+	return result;
+}
+
+function fn_GetExtAddtAmt(amt, delay)
+{
+	var result = 0;
+
+	if (delay > 2)	result = amt * (delay - 2) * 0.012;
+	return result;
+}
+
+*/	
+
+function fn_GetUseAmt()
+{
+	var start_yymm = this.div_Indtn.cal_START_YRMN.Value;
+	var end_yymm   = this.div_Indtn.cal_END_YRMN.Value;
+
+	if (length(start_yymm) == 8 && length(end_yymm) == 8) 
+	{
+		this.ds_ReptIn.ClearData();
+		this.ds_ReptIn.AddRow();
+		this.ds_ReptIn.SetColumn(0, "UPSO_CD"   , this.edt_UPSO_CD.Text);
+		this.ds_ReptIn.SetColumn(0, "START_YRMN", substr(start_yymm, 0 , 6));
+		this.ds_ReptIn.SetColumn(0, "END_YRMN"  , substr(end_yymm  , 0 , 6));
+		this.ds_ReptIn.SetColumn(0, "CRET_GBN"  , "O");
+	
+		gfn_syncCall("GET_USEAMT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005005&EVENTID=indtn_demd_amt","S=ds_ReptIn","ds_DemdAmt=OSP1","","fn_CallBack");
+
+		if(this.ds_DemdAmt.rowcount == 0) {
+	        gfn_Confirm("MB_OK", "해당 기간에 청구데이터가 존재하지 않습니다.", "경고", "0");
+		}
+		else {
+			var demdAmt = toInteger(this.ds_DemdAmt.GetColumn(0, "TOT_USE_AMT"));
+			if (demdAmt > 0)
+			{
+				this.div_Indtn.mae_TOT_DEMD_AMT.Value = toInteger(this.ds_DemdAmt.GetColumn(0, "TOT_USE_AMT"))
+				                                      + toInteger(this.ds_DemdAmt.GetColumn(0, "TOT_ADDT_AMT"))
+													  + toInteger(this.ds_DemdAmt.GetColumn(0, "TOT_EADDT_AMT"));
+				this.div_Indtn.mae_TOT_USE_AMT.Value   = this.ds_DemdAmt.GetColumn(0, "TOT_USE_AMT");
+				this.div_Indtn.mae_TOT_ADDT_AMT.Value  = this.ds_DemdAmt.GetColumn(0, "TOT_ADDT_AMT");
+				this.div_Indtn.mae_TOT_EADDT_AMT.Value = this.ds_DemdAmt.GetColumn(0, "TOT_EADDT_AMT");
+			}
+			else
+			{
+				this.div_Indtn.mae_TOT_DEMD_AMT.Value = "0";
+				this.div_Indtn.mae_TOT_USE_AMT.Value = "0";
+				this.div_Indtn.mae_TOT_ADDT_AMT.Value = "0";
+				this.div_Indtn.mae_TOT_EADDT_AMT.Value = "0";
+			}
+		}
+	}
+}
+
+function btn_Search_OnClick(obj,nX,nY)
+{
+	fn_SearchIndtnPaper();
+}
+
+function mae_DEMD_DAY_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == '112') {
+		fn_SearchIndtnPaper();
+	}
+
+	return;
+}
+
+function edt_UPSO_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(length(this.cob_BRAN_CD.Value) == 0){
+	
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if (nChar == "112") {
+		fn_FindUPSO();
+	}
+	else if (nChar == "13") {
+		fn_GetUPSO_CD_cd();
+	}	
+	return;
+}
+function fn_GetUPSO_CD_cd()
+{
+	if(this.edt_UPSO_NM.Text == ""){
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = this.edt_UPSO_NM.Text;
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+		}
+		else {
+	
+			fn_FindUPSO();
+		}
+	}
+	else {
+
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = this.edt_UPSO_CD.Text;
+		var UPSO_NM = "";
+		var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+	
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+			this.edt_UPSO_CD.Text = vArr[0];
+			this.edt_UPSO_NM.Text = vArr[1];
+		}
+		else {
+			fn_FindUPSO();
+		}
+	
+	}
+}
+
+function edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(length(this.cob_BRAN_CD.Value) == 0){
+	
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	if (length(UPSO_NM) > 0 && nChar == "13") {
+		fn_FindUPSO();
+	}
+
+	return;
+}
+
+function fn_GetUPSO_CD()
+{
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+
+	if (length(result) > 0) {
+		var vArr = result.split(",");
+		this.edt_UPSO_CD.Text = vArr[0];
+		this.edt_UPSO_NM.Text = vArr[1];
+		fn_search();
+	}
+	else {
+
+		fn_FindUPSO();
+	}
+}
+
+function fn_FindUPSO()
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(length(this.cob_BRAN_CD.Value) == 0){
+	
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	this.edt_UPSO_NM.SetFocus();
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+
+	var inParam =" BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra05_s03");
+
+	var result = Dialog("fi_bra::find_upso.xml",inParam);
+}
+
+function btn_UPSO_Search_OnClick(obj)
+{
+	fn_FindUPSO();
+}
+
+//대상기간 시작년월이 바뀔때
+function div_Indtn_cal_START_YRMN_OnChanged(obj,strOldText,strNewText)
+{
+	var LAST_YRMN = toNumber(this.ds_IndtnDetail.GetColumn(0, "LAST_YRMN"));
+
+	if (toNumber(strNewText) < LAST_YRMN) {
+        gfn_Confirm("MB_OK", "이미 입금된 월입니다.", "경고", "0");
+		//this.div_Indtn.cal_START_YRMN.Value = strOldText;
+		this.div_Indtn.cal_START_YRMN.SetFocus();
+		return;
+	}
+	fn_GetUseAmt();
+	return;
+}
+
+//대상기간 종료년월이 바뀔때
+function div_Indtn_cal_END_YRMN_OnChanged(obj,strOldText,strNewText)
+{
+	var LAST_YRMN = toNumber(this.ds_IndtnDetail.GetColumn(0, "LAST_YRMN"));
+
+	if (toNumber(strNewText) < LAST_YRMN) {
+        gfn_Confirm("MB_OK", "이미 입금된 월입니다.", "경고", "0");
+		//this.div_Indtn.cal_END_YRMN.Value = strOldText;
+		this.div_Indtn.cal_END_YRMN.SetFocus();
+		return;
+	}
+	fn_GetUseAmt();
+	return;
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	ds_UPSO_REPT.ClearData();
+	ds_IndtnDetail.ClearData();
+	
+	ds_IndtnDetail.AddRow();
+	return;
+}
+
+function edt_UPSO_CD_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+
+function grd_UPSO_REPT_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+//계산
+function btn_calc_OnClick(obj)
+{
+    if(toNumber(this.div_Indtn.cal_START_YRMN.Value) > toNumber(this.div_Indtn.cal_END_YRMN.Value)){
+        gfn_Confirm("MB_OK", "대상기간의 종료날짜는 시작날짜보다 클 수 없습니다.", "경고", "0");
+		this.div_Indtn.cal_END_YRMN.SetFocus();
+		return false;
+	}
+	var LAST_YRMN = toNumber(this.ds_IndtnDetail.GetColumn(0, "LAST_YRMN"));	
+
+	var END_YRMN = toNumber(this.div_Indtn.cal_END_YRMN.Value);
+	
+	if (LAST_YRMN > 0 && END_YRMN <= LAST_YRMN) {
+        gfn_Confirm("MB_OK", "이미 입금된 월입니다.", "경고", "0");
+		//this.div_Indtn.cal_START_YRMN.Value = strOldText;
+		this.div_Indtn.cal_START_YRMN.SetFocus();
+		return false;
+	}
+	fn_GetUseAmt();
+	return true;
+}
+
+
+function report_close_OnClick(obj)
+{
+	report_close.Enable = false;
+	ubiviewer0.Visible = false;
+}
+]]></Script>
+</Window>

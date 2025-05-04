@@ -1,0 +1,181 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLsel_upso_doc_SEL1" parameterType="" resultType="">
+SELECT
+	UPSO_CD,
+	FILE_TYPE,
+	FIDU.GET_CODE_NM('00198', FILE_TYPE) AS FILE_TYPE_NM,
+	FILE_NM,
+	SVR_FILE_NM,
+	SVR_FILE_ROUT,
+	INSPRES_ID,
+	FIDU.GET_STAFF_NM(INSPRES_ID) AS INSPRES_NM,
+	INS_DATE,
+	MODPRES_ID,
+	FIDU.GET_STAFF_NM(MODPRES_ID) AS MODPRES_NM,
+	MOD_DATE
+FROM
+	GIBU.TBRA_UPSO_DOC_ATTCH
+WHERE
+	UPSO_CD = # { upsoCd }
+</select>
+
+<select id="SQLsel_upso_doc_SEL2" parameterType="" resultType="">
+SELECT
+	LISTAGG(
+		B.CODE_NM || ',' || (
+			CASE
+				WHEN A.FILE_NM IS NULL THEN 'N'
+				ELSE 'Y'
+			END
+		),
+		','
+	) WITHIN GROUP (
+		ORDER BY
+			B.CODE_CD
+	) AS RESULT
+FROM
+	GIBU.TBRA_UPSO_DOC_ATTCH A,
+	FIDU.TENV_CODE B
+WHERE
+	B.HIGH_CD = '00198'
+	AND B.CODE_ETC = 'DI'
+	AND B.CODE_CD = A.FILE_TYPE(+)
+	AND A.UPSO_CD(+) = # { upsoCd }
+</select>
+
+<select id="SQLsel_upso_doc_SEL3" parameterType="" resultType="">
+SELECT
+	FIDU.GET_CODE_NM(
+		'00198',
+		EXTRACTVALUE(FILE_TYPE_XML, '/PivotSet/item[1]/column[1]')
+	) AS TYPE1,
+	DECODE(
+		EXTRACTVALUE(FILE_TYPE_XML, '/PivotSet/item[1]/column[2]'),
+		0,
+		'N',
+		'Y'
+	) AS FILE_YN1,
+	FIDU.GET_CODE_NM(
+		'00198',
+		EXTRACTVALUE(FILE_TYPE_XML, '/PivotSet/item[2]/column[1]')
+	) AS TYPE2,
+	DECODE(
+		EXTRACTVALUE(FILE_TYPE_XML, '/PivotSet/item[2]/column[2]'),
+		0,
+		'N',
+		'Y'
+	) AS FILE_YN2,
+	FIDU.GET_CODE_NM(
+		'00198',
+		EXTRACTVALUE(FILE_TYPE_XML, '/PivotSet/item[3]/column[1]')
+	) AS TYPE3,
+	DECODE(
+		EXTRACTVALUE(FILE_TYPE_XML, '/PivotSet/item[3]/column[2]'),
+		0,
+		'N',
+		'Y'
+	) AS FILE_YN3
+FROM
+	(
+		SELECT
+			A.FILE_NM,
+			A.FILE_TYPE
+		FROM
+			GIBU.TBRA_UPSO_DOC_ATTCH A,
+			FIDU.TENV_CODE B
+		WHERE
+			B.HIGH_CD = '00198'
+			AND B.CODE_ETC = 'DI'
+			AND B.CODE_CD = A.FILE_TYPE(+)
+			AND A.UPSO_CD(+) = # { upsoCd }
+	) PIVOT XML (
+		COUNT(FILE_NM) FOR FILE_TYPE IN (
+			SELECT
+				CODE_CD
+			FROM
+				FIDU.TENV_CODE
+			WHERE
+				HIGH_CD = '00198'
+				AND CODE_ETC = 'DI'
+		)
+	)
+</select>
+
+<select id="SQLmng_upso_doc_SEL_FILE" parameterType="" resultType="">
+SELECT
+	'/upload_file/GIBU/UPSO/' || # { branCd } AS DFILEPATH
+FROM
+	DUAL
+</select>
+
+<select id="SQLmng_upso_doc_SEL31" parameterType="" resultType="">
+SELECT
+	SVR_FILE_NM,
+	SVR_FILE_ROUT
+FROM
+	GIBU.TBRA_UPSO_DOC_ATTCH
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND FILE_TYPE = # { fileType }
+</select>
+
+<select id="SQLmng_upso_doc_SEL25" parameterType="" resultType="">
+SELECT
+	'' || # { upsoCd } || '-' || # { fileType } || '-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3') || SUBSTR(# { fileNm }, INSTR(# { fileNm }, '.', '-1')) AS DFILENAME
+FROM
+	DUAL
+</select>
+
+<delete id="SQLmng_upso_doc_DEL40" parameterType="">
+Delete from
+	GIBU.TBRA_UPSO_DOC_ATTCH
+where
+	UPSO_CD = # { upsoCd }
+	and FILE_TYPE = # { fileType }
+</delete>
+
+<select id="SQLmng_upso_doc_SEL33" parameterType="" resultType="">
+SELECT
+	'' || # { upsoCd } || '-' || # { fileType } || '-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3') || SUBSTR(# { fileNm }, INSTR(# { fileNm }, '.', '-1')) AS DFILENAME
+FROM
+	DUAL
+</select>
+
+<insert id="SQLmng_upso_doc_INS31" parameterType="">
+Insert into
+	GIBU.TBRA_UPSO_DOC_ATTCH (
+		INS_DATE,
+		INSPRES_ID,
+		UPSO_CD,
+		SVR_FILE_ROUT,
+		SVR_FILE_NM,
+		FILE_TYPE,
+		FILE_NM
+	)
+values
+(
+		SYSDATE,
+		# { inspresId },
+		# { upsoCd },
+		# { svrFileRout },
+		# { svrFileNm },
+		# { fileType },
+		# { fileNm }
+	)
+</insert>
+
+<update id="SQLmng_upso_doc_UPD36" parameterType="">
+Update
+	GIBU.TBRA_UPSO_DOC_ATTCH
+set
+	MODPRES_ID = # { modpresId },
+	MOD_DATE = SYSDATE,
+	SVR_FILE_ROUT = # { svrFileRout },
+	SVR_FILE_NM = # { svrFileNm },
+	FILE_NM = # { fileNm }
+where
+	UPSO_CD = # { upsoCd }
+	and FILE_TYPE = # { fileType }
+</update>
+
+</mapper>

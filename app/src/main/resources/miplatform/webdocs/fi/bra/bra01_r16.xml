@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra01_r16" Left="8" OnLoadCompleted="bra01_r16_OnLoadCompleted" OnSize="bra01_r16_OnSize" PidAttrib="7" Title="로그기변경내역조회" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNG_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<CNG_GBN></CNG_GBN>
+						<YRMN></YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="KARAOKE_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNG_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CNG_GBN">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD></CODE_CD>
+						<CODE_NM>--ALL--</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>변경</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>미변경</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_statistics">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="KARAOKE_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MIN_PLAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAX_PLAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_shoproom_serial">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROOM_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CO_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="REG_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Set">
+				<Contents>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<record>
+						<SERIAL_NO></SERIAL_NO>
+						<UPSO_CD></UPSO_CD>
+						<YRMN></YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="496" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="26" Height="436" Id="grd_reslut" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnCellDBLClick="grd_reslut_OnCellDblClick" Right="1039" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="60" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="80"/>
+						<col width="86"/>
+						<col width="143"/>
+						<col width="207"/>
+						<col width="0"/>
+						<col width="68"/>
+						<col width="67"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="센터명"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="5" color="user12" display="text" text="반주기제조번호"/>
+						<cell col="6" color="user12" display="text" text="담당자"/>
+						<cell col="7" color="user12" display="text" text="영업상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="SERIAL_NO" display="text"/>
+						<cell align="right" col="5" colid="KARAOKE_NO" display="text"/>
+						<cell align="center" col="6" colid="STAFF_NM" display="text"/>
+						<cell align="center" col="7" colid="CO_NAME" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_shoproom_serial" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="640" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="26" Height="112" Id="grd_shoproom_serial" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnCellDBLClick="grd_reslut_OnCellDblClick" Right="744" RowHeight="20" Style="grid" TabOrder="2" TabStop="true" Top="528" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="736">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="201"/>
+						<col width="39"/>
+						<col width="227"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="방번호"/>
+						<cell col="2" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="3" color="user12" display="text" text="상태"/>
+						<cell col="4" color="user12" display="text" text="등록일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell align="center" col="1" colid="ROOM_NAME" display="text"/>
+						<cell align="center" col="2" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="3" colid="CO_NAME" display="text"/>
+						<cell align="center" col="4" colid="REG_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_statistics" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="800" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="26" Height="123" Id="grd_statistics" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnCellDBLClick="grd_reslut_OnCellDblClick" Right="744" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="677" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="736">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="76"/>
+						<col width="187"/>
+						<col width="126"/>
+						<col width="160"/>
+						<col width="160"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="2" color="user12" display="text" text="반주기제조번호"/>
+						<cell col="3" color="user12" display="text" text="최초수집일시"/>
+						<cell col="4" color="user12" display="text" text="최종수집일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell align="center" col="1" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="2" colid="KARAOKE_NO" display="text"/>
+						<cell align="center" col="3" colid="MIN_PLAY" display="text"/>
+						<cell align="center" col="4" colid="MAX_PLAY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="8" TabOrder="4" TabStop="FALSE" Top="656" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static1" Left="33" Style="tx_bold" TabOrder="5" Text="해당&#32;시리얼&#32;로그수집&#32;정보" Top="659" Width="160"></Static>
+		<Image Height="17" Id="Image2" ImageID="C_icon2" Left="8" TabOrder="6" TabStop="FALSE" Top="506" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static2" Left="33" Style="tx_bold" TabOrder="7" Text="해당&#32;시리얼&#32;개통&#32;정보" Top="509" Width="160"></Static>
+		<Shape BKColor="user7" Bottom="60" Height="3" Id="Shape3" Left="8" LineColor="user7" Right="1039" TabOrder="9" Top="57" Type="Rectangle" Width="1031"></Shape>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="10" TabStop="FALSE" Top="7" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="11" TabStop="FALSE" Top="7" Width="1015"></Image>
+		<Image Height="41" Id="Image3" ImageID="C_search_left" Left="8" TabOrder="12" TabStop="FALSE" Top="7" Width="10"></Image>
+		<Combo BindDataset="ds_search" BorderColor="user3" CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_cng_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_CNG_GBN" Left="640" TabOrder="8" ToolTipText="담당직원" Top="18" Visible="FALSE" Width="145"></Combo>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="29" TabOrder="12" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="48" Style="tx_left_bold" TabOrder="9" Text="센터명" Top="23" Width="48"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="user10" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="96" TabOrder="8" ToolTipText="센터명" Top="18" Width="109"></Combo>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="584" TabOrder="13" TabStop="FALSE" Top="23" Visible="FALSE" Width="11"></Image>
+		<Static Height="19" Id="Static0" Left="600" Style="tx_left_bold" TabOrder="14" Text="구분" Top="23" Visible="FALSE" Width="64"></Static>
+		<Static Height="15" Id="Static3" Left="251" Style="tx_left_bold" TabOrder="16" Text="조회년월" Top="24" Width="56"></Static>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="234" TabOrder="15" Top="23" Width="11"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" DaySelect="Auto" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_start_yrmn" Left="319" NullValue="____/__" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="20" Top="18" Value="TODAY" Width="80"></Calendar>
+		<TextArea Border="Flat" BorderColor="user10" Height="272" Id="TextArea0" Left="752" Readonly="TRUE" TabOrder="21" TabStop="FALSE" Top="528" UsePopupMenu="FALSE" Width="286"></TextArea>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra01_r16_OnLoadCompleted(obj)
+{	gfn_LoadForm(obj);
+	//gfn_ObjreSize(grd_reslut,this,1,0);
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);	ds_BRAN_CD.SetColumn(0,"BRAN_CD", cob_BRAN_CD.value);
+	
+	if(gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100" || gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.rowcount == 0)
+	{
+		cob_BRAN_CD.Enable = true;
+	}
+	else
+	{
+		cob_BRAN_CD.Enable = false;
+	}
+	
+	cal_start_yrmn.Value = today();
+	
+	var v_text = "1. 설정한 조회년월에 하나의 업소코드로 두개 이상의 반주기번호가 수집된 목록을 보여줍니다.\n\n";
+	v_text = v_text + "2. 목록을 더블클릭하면 해당 시리얼번호로 개통된 정보와 해당 조회년월의 로그수집 정보를 조회합니다.\n\n";
+	v_text = v_text + "3. 시리얼개통정보는 조회하려는 업소코드 이후에 등록된 정보만 표시하며, 이는 정상적으로 탈거 후 다른 업소로 옮겼을 때에도 ";
+	v_text = v_text + "리스트업이 되는 부분을 확인하기 위해 등록된 개통정보에 해당하는 정보를 모두 조회합니다.\n\n";
+	v_text = v_text + "4. 로그수집 정보에서 최초수집일시와 최종수집일시는 조회년월을 기준으로 처음과 끝이며, 반주기번호 또는 업소가 변경되었을 때 ";
+	v_text = v_text + "이전 업소의 최종수집일시와 바뀐 업소의 최초수집일시를 확인하여 정상변경임을 확인할 수 있습니다.";
+	TextArea0.Text = v_text;
+	Static4.Text = v_text;
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){}    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	return;}
+
+//조회
+function fn_Search()
+{
+    if(!gfn_CheckFormNull(this)) return;
+    
+    if(!gfn_changeAction("SEARCH", "ds_list")) return;
+
+	ds_search.SetColumn(0, "YRMN", substr(cal_start_yrmn.Value, 0, 6));
+	
+    gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004014&EVENTID=cng_karaoke_sel","S=ds_search","ds_list=SEL1","","fn_CallBack");
+    
+//    set_filter();
+}
+
+//엑셀출력
+function fn_Excel()
+{
+    grd_reslut.ExportExcelEx("로그기변경내역");
+}
+
+//CallBack
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	switch(srvId)
+	{
+		case "svcSearch" :
+			break;
+		case "svcSave" :
+			break;
+		default :
+			break;
+	}
+}
+
+function bra01_r16_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_reslut,this,1,0);
+}
+
+function set_filter()
+{
+	var gbn = this.cob_cng_gbn.Value;
+	
+	if (gbn != "")
+	{
+		this.ds_list.Filter("CNG_GBN='"+gbn+"'");
+	}
+}
+
+function grd_reslut_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_Set.SetColumn(0, "SERIAL_NO", ds_list.GetColumn(nRow, "SERIAL_NO"));
+	ds_Set.SetColumn(0, "UPSO_CD", ds_list.GetColumn(nRow, "UPSO_CD"));
+	ds_Set.SetColumn(0, "YRMN", ds_search.GetColumn(0, "YRMN"));
+	
+	gfn_syncCall("svcSearchDtl","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004014&EVENTID=dtl_karaoke_sel","S=ds_Set","ds_shoproom_serial=SEL1 ds_statistics=SEL4","","fn_CallBack");
+}
+]]></Script>
+</Window>

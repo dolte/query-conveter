@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_s07" Left="8" OnLoadCompleted="bra10_s07_OnLoadCompleted" PidAttrib="7" Title="성과급지급기준관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search" OnColumnChanged="ds_search_OnColumnChanged">
+				<Contents>
+					<colinfo id="APPL_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_COPYYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_FROMCOPYYEAR" size="256" summ="default" type="STRING"/>
+					<record>
+						<APPL_COPYYEAR></APPL_COPYYEAR>
+						<APPL_FROMCOPYYEAR></APPL_FROMCOPYYEAR>
+						<APPL_YEAR></APPL_YEAR>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset CanColumnChange="ds_list_CanColumnChange" DataSetType="Dataset" Id="ds_list" OnColumnChanged="ds_list_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="APPL_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_RATE" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="END_RATE" size="3" summ="default" type="DECIMAL"/>
+					<colinfo id="BONUS_RATE" size="3" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_copyYN" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="2" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="44" Style="tx_left_bold" TabOrder="3" Text="기준년도" Top="23" Width="54"></Static>
+		<Spin BindDataset="ds_search" BKColor="user13" Border="Flat" Column="APPL_YEAR" Height="20" Id="st_year" Left="109" OnClickUpDown="Spin0_OnClickUpDown" OnKeyDown="Spin0_OnKeyDown" Style="edit" TabOrder="4" Text="1" ToolTipText="기준년도" Top="19" Width="76"></Spin>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_copy_sel" ImageID="C_btn_70" Left="439" LeftMargin="23" OnClick="btn_copy_sel_OnClick" Style="edit" TabOrder="7" Text="&#32;복사" Top="19" TopMargin="1" Width="71"></Button>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="784" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="701" Id="grd_list" InputPanel="FALSE" Left="10" LineColor="silver" OnHeadClick="Grid0_OnHeadClick" Right="1032" RowHeight="20" Style="grid" TabOrder="8" TabStop="true" Top="83" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1022">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="150"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" colspan="2" display="text" text="징수&#32;금액"/>
+						<cell col="2" color="user12" colspan="2" display="text" rowspan="2" text="성과&#32;요율"/>
+						<cell col="0" color="user12" display="text" row="1" text="시작&#32;요율"/>
+						<cell col="1" color="user12" display="text" row="1" text="종료&#32;요율"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="START_RATE" display="text" expr='iif(START_RATE==null,&quot;&quot;,START_RATE&#32;+&#32;&apos;&#32;%&apos;)'/>
+						<cell align="center" col="1" colid="END_RATE" display="text" edit='expr:iif(currow&#32;+&#32;1&#32;==&#32;getcount(),&quot;number&quot;,&quot;none&quot;)' expr='iif(END_RATE==null,&quot;&quot;,truncate(END_RATE,2)&#32;+&#32;&apos;&#32;%&apos;)'/>
+						<cell align="center" col="2" colid="BONUS_RATE" colspan="2" display="text" edit="number" expr='iif(BONUS_RATE&#32;==null,&quot;&quot;,truncate(BONUS_RATE,2)&#32;+&#32;&quot;&#32;%&quot;)'/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add_sel" ImageID="C_btn_70" Left="362" LeftMargin="23" OnClick="btn_add_sel_OnClick" Style="edit" TabOrder="9" Text="&#32;추가" Top="55" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del_sel" ImageID="C_btn_70" Left="439" LeftMargin="23" OnClick="btn_del_sel_OnClick" Style="edit" TabOrder="10" Text="&#32;삭제" Top="55" TopMargin="1" Width="71"></Button>
+		<Spin BindDataset="ds_search" Border="Flat" Column="APPL_COPYYEAR" Height="20" Id="sp_to" Left="351" Style="edit" TabOrder="11" Text="2008" Top="19" Width="76"></Spin>
+		<Static Height="13" Id="st_label01" Left="332" TabOrder="12" Text="=&gt;" Top="24" Width="16"></Static>
+		<Spin BindDataset="ds_search" Border="Flat" Column="APPL_FROMCOPYYEAR" Height="20" Id="sp_from" Left="247" Style="edit" TabOrder="13" Text="2008" Top="19" Width="76"></Spin>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  		// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra10_s07_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	ds_search.SetColumn(0,"APPL_YEAR",substr(today(),0,4));
+	ds_search.SetColumn(0,"APPL_FROMCOPYYEAR",substr(today(),0,4));
+	ds_search.SetColumn(0,"APPL_COPYYEAR",toNumber(substr(today(),0,4)) + 1);	
+	
+	//gfn_AsyncCall("bra10_s07_select01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_select01","S=ds_search","ds_list=SEL1","","fn_CallBack");
+}
+
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function Grid0_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+//복사
+function btn_copy_sel_OnClick(obj)
+{
+	if(!blnCheckLenUp(sp_from,"복사할 년도",1,1,4)) return;
+	if(!blnCheckLenUp(sp_to,"복사대상 년도",1,1,4)) return;
+	
+	if(sp_from.Value >= sp_to.Value){
+	    gfn_Confirm("MB_OK", "복사할 년도가 복사대상 년도보다 같거나 클수 없습니다.", "경고", "0");
+	    sp_from.SetFocus();
+	    return;
+	}
+				
+	
+	gfn_syncCall("bra10_s07_copyYN","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_copyYN","S=ds_search","ds_copyYN=SEL1","","fn_CallBack");
+	var copyStr = ds_search.GetColumn(0,"APPL_FROMCOPYYEAR")+"년 데이터를 "+ds_search.GetColumn(0,"APPL_COPYYEAR")+ "년 으로 복사하겠습니까?";
+	if(ds_copyYN.GetColumn(0,"CNT") > 0){
+	    copyStr = ds_search.GetColumn(0,"APPL_COPYYEAR") +"년에 데이터가 있습니다 \n"+
+   	              ds_search.GetColumn(0,"APPL_FROMCOPYYEAR")+"년 데이터를 "+ds_search.GetColumn(0,"APPL_COPYYEAR")+ "년 으로 복사하겠습니까?";
+	}
+	if(confirm(copyStr)){
+	    gfn_syncCall("bra10_s07_copy","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_copy","S=ds_search","","","fn_CallBack");
+	}
+}
+
+//조회
+function fn_Search(){
+    if (!gfn_CheckFormNull(this.div_Save)) return;
+    gfn_AsyncCall("bra10_s07_select01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_select01","S=ds_search","ds_list=SEL1","","fn_CallBack");
+}
+
+//저장
+function fn_Save(){
+    if(ds_list.count == 0 && !ds_list.GetUpdate()){
+        gfn_Confirm("MB_OK", "저장할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+    if(ds_list.GetColumn(ds_list.currow,"END_RATE") == null && ds_list.count != 0){
+        ds_list.SetColumn(ds_list.currow,"END_RATE",0);
+        return;
+    }    
+    if(!confirm("저장하시겠습니까?")){
+        return;
+    }
+    gfn_syncCall("bra10_s07_save01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_save01","S=ds_list:U","","","fn_CallBack");
+    gfn_syncCall("bra10_s07_select01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_select01","S=ds_search","ds_list=SEL1","","fn_CallBack");
+}
+
+//엔터입력했을때
+function Spin0_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,LLParam,HLParam)
+{
+	if(nChar == 13){
+	    st_year.SetFocus();
+	    gfn_AsyncCall("bra10_s07_select01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_select01","S=ds_search","ds_list=SEL1","","fn_CallBack");
+	}
+}
+
+//추가
+function btn_add_sel_OnClick(obj)
+{
+    if(ds_list.count == 0){
+        var aRow = ds_list.AddRow();
+		ds_list.SetColumn(aRow,"START_RATE",0);
+		ds_list.SetColumn(aRow,"APPL_YEAR",ds_search.GetColumn(0,"APPL_YEAR"));
+		return;
+    }else if(ds_list.GetColumn(ds_list.currow,"END_RATE") == null){
+        ds_list.SetColumn(ds_list.currow,"END_RATE",0);
+        return;
+    }
+	var aRow = ds_list.AddRow();
+	ds_list.SetColumn(aRow,"START_RATE",ds_list.GetColumn(aRow-1,"END_RATE") + 0.01);
+	ds_list.SetColumn(aRow,"APPL_YEAR",ds_search.GetColumn(0,"APPL_YEAR"));
+}
+
+//삭제
+function btn_del_sel_OnClick(obj)
+{
+	if(ds_list.count != ds_list.currow + 1){
+        gfn_Confirm("MB_OK", "마지막 행부터 삭제 가능합니다.", "경고", "0");
+	    return;
+	}
+	ds_list.DeleteRow(ds_list.currow);
+}
+
+function ds_search_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "APPL_YEAR"){
+	    //edt_applYear.text = varNewValue;
+	    gfn_AsyncCall("bra10_s07_select01","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005002&EVENTID=bra10_s07_select01","S=ds_search","ds_list=SEL1","","fn_CallBack");
+	}
+}
+
+//ds_list 데이터셋 컬럼값이 바뀌고 난후
+function ds_list_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	//종료요율이 바뀔때
+	if(strColumnID == "END_RATE"){
+	    
+	}
+}
+
+//ds_list 데이터셋 컬럼값이 바뀌기 전
+function ds_list_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	//종료요율이 바뀔때
+	if(strColumnID == "END_RATE"){
+	    if(toNumber(ds_list.GetColumn(nRow,"START_RATE")) >= toNumber(varNewValue)){
+            gfn_Confirm("MB_OK", "시작요율보다 큰 값을 입력하세요.", "경고", "0");
+	        gfn_setGridFocus(grd_list, nRow, "END_RATE");
+	        return false;
+	    }
+	}
+}
+
+function Spin0_OnClickUpDown(obj,strOldText,strText,bUp)
+{
+	ds_search.SetColumn(0,"APPL_YEAR",strText);
+}
+
+//콜백
+function fn_CallBack(srvId,ErrorCode,ErrorMsg){
+}
+
+
+]]></Script>
+</Window>

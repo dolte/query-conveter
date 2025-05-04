@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="lev06_r01" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="징수통계" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_CompIn">
+				<Contents>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<YRMN></YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Accuse">
+				<Contents>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="5" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<ubiviewer Bottom="793" Height="730" Id="ubi0" Left="8" Right="1040" Top="63" Width="1032">
+			<_PersistData>&#13;&#10;/6yzSm9Y/wAAAQCpagAAd3NLAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="5" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="4" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Combo BKColor="user13" Height="21" Id="cob_BRAN_CD" Left="106" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="0" ToolTipText="센터명" Top="28" Width="109"></Combo>
+		<Static Height="15" Id="Static1" Left="49" Style="tx_left_bold" TabOrder="8" Text="센터명" Top="32" Width="49"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="29" TabOrder="7" TabStop="FALSE" Top="32" Width="12"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="236" TabOrder="9" TabStop="FALSE" Top="32" Width="12"></Image>
+		<Static Height="15" Id="Static0" Left="254" Style="tx_left_bold" TabOrder="10" Text="&#32;년&#32;월" Top="32" Width="49"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_Month" Left="298" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="년월" Top="27" Width="102"></Calendar>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+// 데이터셋 로우값
+var rowCnt;
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+  
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		//this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	
+	return;
+}
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	this.cal_Month.value = substr(today(),0,6)+ "01";
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+}
+
+/// 에러처리(메세지)  
+function fn_CallBack(svcid,errCode,errMsg)
+{
+
+	if(errCode < 0 ){
+	
+		return;
+
+	}else if(svcid=="SEARCH"){
+			if(ds_CompIn.rowcount > 0)
+			{
+				errMsg = "조회가 완료되었습니다.";
+				 
+			}else
+			{
+				errMsg = "조회된 내역이 없습니다.";
+			
+			}
+	}
+	
+	//trace(ds_Tree.SaveXML());
+	gfn_SetStatusMsg(errMsg,"",false,false);
+}
+/*
+ * 기      능: 리포팅 툴 로딩
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Search()
+{
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	if(length(trim(cob_BRAN_CD.Text)) == 0)
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		cob_BRAN_CD.SetFocus();
+		return false;
+
+	}
+
+	ds_CompIn.SetColumn(0,"BRAN_CD",cob_BRAN_CD.Value);
+	ds_CompIn.SetColumn(0,"YRMN",substr(this.cal_Month.Value,0,6));
+	gfn_syncCall("SEARCH","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008001&EVENTID=mon_col_graph","S=ds_CompIn","ds_Accuse=SEL1","","fn_CallBack");
+	ubi0.SetArgument("YRMN",this.cal_Month.Text);
+	ubi0.SetArgument("BRAN_NM",this.cob_BRAN_CD.Text ) ;
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra10_p01.jrf");
+	ubi0.SetDataset("ds_Accuse","ds_Accuse");
+	
+	ubi0.Retrieve();
+}
+
+function fn_print()
+{
+
+	if(ds_Accuse.rowcount = 0)
+	{
+        gfn_Confirm("MB_OK", "출력할 데이타가 없습니다.", "경고", "0");
+		return false;
+	}
+	ubi0.directPrint();
+	
+
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

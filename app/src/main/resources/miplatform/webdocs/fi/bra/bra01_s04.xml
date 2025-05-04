@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra01_s04" Left="8" OnLoadCompleted="upso_clsed_OnLoadCompleted" PidAttrib="7" Title="휴폐업&#32;내역" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset CanColumnChange="ds_UpsoClsed_CanColumnChange" DataSetType="Dataset" Editable="True" Id="ds_UpsoClsed" OnColumnChanged="ds_UpsoClsed_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CLSED_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STTNT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_In" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Upso_Closing" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_PaeupUpso" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CLSED_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSED_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STTNT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_paeup">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_manager2">
+				<Contents>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Tab Border="Flat" Font="굴림,8,Bold" Height="520" HilightColor="white" HilightTextColor="white" Id="tab_upso_info" Left="22" MouseOverColor="white" OnChanging="tab_upso_info_OnChanging" SelColor="white" Style="tab" TabOrder="0" Top="32" Width="962">
+			<Contents>
+				<TabPage BorderColor="black" Height="491" Id="tab_UpsoCLSD" ImageID="C_tab2" Left="2" TabOrder="1" Text="업소휴업내역" Top="27" Width="958">
+					<Shape BKColor="user7" Bottom="13" Height="0" Id="Shape11" Left="14" LineColor="user7" Right="654" TabOrder="2" Top="13" Type="Rectangle" Width="640"></Shape>
+					<Div Border="Flat" BorderColor="WINDOW" Height="104" Id="Div2" Left="12" TabOrder="3" Text="Div0" Top="314" Width="233">
+						<Contents></Contents>
+					</Div>
+					<Grid AreaSelect="true" AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_upsoClsed" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="493" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="494" Id="grd_Closing" InputPanel="FALSE" Left="-1" LineColor="silver" MinWidth="100" OnCellClick="tab_upso_info_tab_UpsoCLSD_grd_Closing_OnCellClick" OnChar="tab_upso_info_tab_UpsoCLSD_grd_Closing_OnChar" OnExpandEdit="tab_upso_info_tab_UpsoCLSD_grd_Closing_OnExpandEdit" Right="960" RowHeight="20" Style="grid" TabOrder="0" TabStop="true" Top="-1" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="961">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="60"/>
+									<col width="40"/>
+									<col width="15"/>
+									<col width="100"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="121"/>
+									<col width="369"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" color="user12" colspan="3" display="text" text="등록&#32;번호"/>
+									<cell col="3" color="user12" display="text" text="휴업&#32;구분"/>
+									<cell col="4" color="user12" display="text" text="휴업기간&#32;시작"/>
+									<cell col="5" color="user12" display="text" text="휴업기간&#32;종료"/>
+									<cell col="6" color="user12" display="text" text="신고일자"/>
+									<cell col="7" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="CLSED_DAY" display="text"/>
+									<cell align="center" col="1" colid="CLSED_NUM" display="text"/>
+									<cell align="center" col="2" colid="CLSED_BRAN" display="text"/>
+									<cell align="center" bkcolor="user13" col="3" colid="CLSED_GBN" combocol="CODE_CD" combodataset="ds_Upso_Closing" combotext="CODE_NM" display="combo" edit="combo" limit="100"/>
+									<cell align="center" bkcolor="user13" col="4" colid="START_DAY" display="date" edit="date" expandimage="btn_Grid_Calendar" expandshow="true" Mask="yyyy/MM/dd"/>
+									<cell align="center" bkcolor="user13" col="5" colid="END_DAY" color="user0" display="date" edit="date" expandimage="btn_Grid_Calendar" expandshow="true" Mask="yyyy/MM/dd"/>
+									<cell align="center" bkcolor="user13" col="6" colid="STTNT_DAY" display="date" expandsize="0" Mask="yyyy-MM-dd"/>
+									<cell col="7" colid="REMAK" display="text" edit="normal"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="491" Id="tab_UpsoPaeup" ImageID="C_tab2" Left="2" TabOrder="1" Text="업소폐업내역" Top="27" Width="958">
+					<Grid AreaSelect="true" AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_PaeupUpso" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="493" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="494" Id="grd_Paeup" InputPanel="FALSE" Left="-1" LineColor="silver" MinWidth="100" MultiSelect="TRUE" OnCellPosChanged="tab_upso_info_tab_UpsoPaeup_grd_Paeup_OnCellPosChanged" OnExpandEdit="tab_upso_info_tab_UpsoPaeup_grd_Paeup_OnExpandEdit" Right="960" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="-1" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="961">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="60"/>
+									<col width="40"/>
+									<col width="15"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="467"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" colspan="3" display="text" text="등록&#32;번호"/>
+									<cell col="3" color="user12" display="text" text="폐업&#32;구분"/>
+									<cell col="4" color="user12" display="text" text="폐업&#32;월"/>
+									<cell col="5" color="user12" display="text" text="신고&#32;일자"/>
+									<cell col="6" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="CLSED_DAY" display="text" edit='expr:decode(&#32;ds_PaeupUpso.getRowType(ds_PaeupUpso.currow)&#32;,&#32;&quot;insert&quot;&#32;,&#32;&quot;normal&quot;,&quot;none&quot;)' limit="8"/>
+									<cell align="center" col="1" colid="CLSED_NUM" display="text"/>
+									<cell align="center" col="2" colid="CLSED_BRAN" display="text"/>
+									<cell align="center" bkcolor="user13" col="3" colid="GBN" combocol="CODE_CD" combodataset="ds_code_paeup" combotext="CODE_NM" display="combo" edit="combo" limit="100"/>
+									<cell align="center" bkcolor="user13" col="4" colid="START_YRMN" display="date" edit="date" expandimage='expr:decode(&#32;ds_PaeupUpso.getRowType(ds_PaeupUpso.currow)&#32;,&#32;&quot;insert&quot;&#32;,&#32;&quot;btn_Grid_Calendar&quot;,&#32;iif(gv_BRAN_CD&#32;==&#32;&quot;AL&quot;&#32;,&#32;&quot;btn_Grid_Calendar&quot;&#32;,&#32;&quot;&quot;))' expandshow='expr:decode(&#32;ds_PaeupUpso.getRowType(ds_PaeupUpso.currow)&#32;,&#32;&quot;insert&quot;&#32;,&#32;&quot;True&quot;,&#32;iif(gv_BRAN_CD&#32;==&#32;&quot;AL&quot;&#32;,&#32;&quot;True&quot;&#32;,&#32;&quot;False&quot;))' Mask="yyyy/MM"/>
+									<cell align="center" bkcolor="user13" col="5" colid="STTNT_DAY" display="date" edit='expr:decode(&#32;ds_PaeupUpso.getRowType(ds_PaeupUpso.currow)&#32;,&#32;&quot;insert&quot;&#32;,&#32;&quot;date&quot;,&#32;iif(gv_BRAN_CD&#32;==&#32;&quot;AL&quot;&#32;,&#32;&quot;date&quot;&#32;,&#32;&quot;none&quot;))' expandsize="0" Mask="yyyy-MM-dd"/>
+									<cell col="6" colid="reMAK" display="text" edit="normal"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Static Expr='iif(gv_BRAN_CD,&quot;AL&quot;,&quot;신고일자&#32;수정시&#32;등록번호가&#32;신고일자와&#32;일치하는지&#32;확인해&#32;주세요&quot;,&quot;&quot;)' Height="24" Id="Static0" Left="216" TabOrder="2" Top="-27" Width="416"></Static>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Button ButtonStyle="TRUE" Font="굴림,9,Bold" Height="21" Id="btn_add" ImageID="C_btn_70" Left="662" OnClick="btn_add_OnClick" TabOrder="2" Text="&#32;&#32;&#32;추&#32;가&#32;" Top="32" Width="72"></Button>
+		<Button ButtonStyle="TRUE" Font="굴림,9,Bold" Height="21" Id="btn_cancel" ImageID="C_btn_70" Left="808" OnClick="btn_cancel_OnClick" TabOrder="3" Text="&#32;&#32;취&#32;소" Top="32" Width="79"></Button>
+		<Edit Height="21" Id="edt_UPSO_CD" Left="456" TabOrder="5" Top="24" Visible="FALSE" Width="72"></Edit>
+		<Edit Height="21" Id="edt_BRAN_CD" Left="536" TabOrder="4" Top="24" Visible="FALSE" Width="72"></Edit>
+		<Edit Height="21" Id="edt_PaeupAddIdx" Left="408" TabOrder="6" Top="24" Visible="FALSE" Width="40"></Edit>
+		<Edit Height="21" Id="edt_CLSDAddIdx" Left="360" TabOrder="7" Top="24" Visible="FALSE" Width="40"></Edit>
+		<Button ButtonStyle="TRUE" Font="굴림,9,Bold" Height="21" Id="btn_Delete" ImageID="C_btn_70" Left="735" OnClick="btn_Delete_OnClick" TabOrder="8" Text="&#32;&#32;&#32;삭&#32;제" Top="32" Width="72"></Button>
+		<Static Expr='decode(gv_BRAN_CD,&quot;AL&quot;,&quot;폐업등록:신고일자&#32;입력시&#32;등록일자와&#32;같은지&#32;확인해&#32;주시기&#32;바랍니다.&quot;,&quot;&quot;)' Height="19" Id="REMAK" Left="272" TabOrder="9" Top="37" Width="392"></Static>
+		<Static Color="user1" Font="돋움체,14,Bold" Height="100" Id="Static0" Left="32" LineSpacing="10" TabOrder="10" Text="※&#32;휴업기간은&#32;날짜가&#32;중복될&#32;수&#32;없습니다.&#13;&#10;기존에&#32;등록된&#32;기간이&#32;연장됨에따라&#32;한달치로&#32;다시&#32;채워야하는&#32;경우,&#13;&#10;센터관리팀&#32;담당자를&#32;통해&#32;해당&#32;데이터를&#32;삭제하고&#32;다시&#32;등록하시기&#32;바랍니다." Top="560" Width="838"></Static>
+	</Form>
+	<Script><![CDATA[/*
+		   * 프로그램명 :   bra01_s04 - 업소 휴/폐업
+		   * 작  성  자   :    	윤지환
+		   * 작  성  일   : 	2009
+		   * 설      명    :	    업소를 등록한다.
+		   * 수정일1     : 	
+		   * 수정자       : 	
+		   * 수정내용    : 설명 부여(여러줄 사용가능)	
+		   * 수정일2     : 	
+		   * 수정자       :	
+		   * 수정내용    : 	
+		   * 수정일3     : 	
+		   * 수정자       : 	
+		   * 수정내용    :	282 108 94 센터장부분 삭제할 것
+*/
+
+#include "script::common.js"  		// 공통 js
+#include "script::global.js"  		// 공통 js
+#include "script::commonGibu.js"  	//   공통 js
+
+var gv_BRAN_CD;
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function upso_clsed_OnLoadCompleted(obj)
+{
+	this.ds_in.AddRow();
+	gv_BRAN_CD = gds_sessioninfo.GetColumn(0, "BRAN_CD");
+	//this.ds_UpsoClsed.AddRow(); 
+		
+	gfn_PubCode("ds_YesNo"       , 2, "00179");			// 예/아니오
+	gfn_PubCode("ds_Upso_Closing", 2, "00141", "U");	// 휴업
+	gfn_PubCode("ds_code_paeup",   2, "00404");			// 폐업
+	
+	ds_Upso_Closing.DeleteRow(3);		// 폐업해제 항목 삭제
+	ds_Upso_Closing.DeleteRow(4);		// 폐업 항목 삭제
+	
+	// 센터장 확인
+	gfn_syncCall("find_GIBU","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=sel_udtkpres_dept","S=gds_sessioninfo","ds_manager2=SEL1","","fn_CallBack");
+/*
+	this.edt_BRAN_CD.Text = "T";
+	this.edt_UPSO_CD.Text = "0000029T";
+	fn_Search();
+*/
+}
+
+/*
+ * 기      능: 프로세스 빌더 실행시 결과값
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode, ErrorMsg);
+		return;
+	}	
+
+	if(srvId = "REGIST_CLOSING") {
+		if (length(ErrorMsg) > 0) {
+            gfn_Confirm("MB_OK", ErrorMsg, "오류", "0");
+			
+			//this.ds_UpsoClsed.Reset();
+			//this.ds_PaeupUpso.Reset();
+			
+			fn_Search();
+			
+		}
+		else {
+			gfn_syncCall("loginfo_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=loginfo_select","S=ds_UpsoClsed:U","","","fn_CallBack",gv_TraceLog, this.id);
+			gfn_SetStatusMsg("저장되었습니다.");
+			fn_Search();
+		}
+	}
+}
+
+/*
+ * 기      능: 저장
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Save() 
+{	
+	// 필수 필드 확인
+	// 휴업
+	var i ;
+	var str_gbn = "head";
+	if(gv_BRAN_CD != "AL" && this.ds_manager2.rowcount < 1){
+		str_gbn = "branch";
+	}
+	
+	if (this.tab_upso_info.TabIndex == 0) {
+		if (this.edt_CLSDAddIdx.Text == "D") {
+			//trace(this.ds_UpsoClsed.SaveXML("ds_UpsoClsed", "U"));
+			gfn_syncCall("REGIST_CLOSING","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004004&EVENTID=closed_mng_"+str_gbn,"S=ds_UpsoClsed:U","ds_UpsoClsed=SEL18","","fn_CallBack", gv_TraceLog, this.id);
+		}
+		else {
+			if( !gfn_CheckFormNull(this.tab_upso_info.tab_UpsoCLSD)) return; 
+			
+			if(gv_BRAN_CD != "AL" && this.ds_manager2.rowcount < 1){
+				if(ds_PaeupUpso.rowcount > 0){
+					gfn_Confirm("MB_OK", "폐업된 업소는 수정할수 없습니다.", "경고", "0");
+					return false;
+				}
+			}
+			//trace(ds_UpsoClsed.SaveXML("ds_UpsoClsed", "U"));
+			gfn_syncCall("REGIST_CLOSING","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004004&EVENTID=closed_mng_"+str_gbn,"S=ds_UpsoClsed:U","ds_UpsoClsed=SEL18","","fn_CallBack", gv_TraceLog, this.id);
+			
+			//fn_Search();
+
+		}
+		
+		this.edt_CLSDAddIdx.Text = "";
+		//parent.fn_Search();
+		//fn_Search();
+		
+	}
+	// 폐업
+	else {
+		if (this.edt_PaeupAddIdx.Text == "D") {	//삭제일때
+			//trace(this.ds_PaeupUpso.SaveXML("ds_PaeupUpso", "U"));
+			gfn_syncCall("REGIST_CLOSING","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004004&EVENTID=closed_mng_"+str_gbn,"S=ds_PaeupUpso:U","ds_PaeupUpso=SEL45","","fn_CallBack", gv_TraceLog, this.id);
+		}
+		else {
+			if( !gfn_CheckFormNull(this.tab_upso_info.tab_UpsoPaeup)) return; 
+			
+			//trace(ds_PaeupUpso.SaveXML());
+			//gfn_syncCall("REGIST_CLOSING","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004004&EVENTID=closed_mng_branch","S=ds_PaeupUpso:U","ds_PaeupUpso=SEL45","","fn_CallBack", gv_TraceLog, this.id);
+			gfn_syncCall("REGIST_CLOSING","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004004&EVENTID=closed_mng_"+str_gbn,"S=ds_PaeupUpso:U","ds_PaeupUpso=SEL45","","fn_CallBack", gv_TraceLog, this.id);
+		}
+
+		this.edt_PaeupAddIdx.Text = "";
+		//parent.fn_Search();
+	}
+}
+
+/*
+ * 기      능: 조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Search()
+{
+	//ALERT("ENTER");
+	this.ds_In.ClearData();
+	this.ds_In.AddRow();
+	this.ds_In.SetColumn(0,"BRAN_CD", this.edt_BRAN_CD.Text);
+	this.ds_In.SetColumn(0,"UPSO_CD", this.edt_UPSO_CD.Text);
+	ds_UpsoClsed.ClearData();
+	ds_PaeupUpso.ClearData();
+	gfn_syncCall("CLOSINGUPSO","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004004&EVENTID=closed_detail","S=ds_In","ds_UpsoClsed=SEL2 ds_PaeupUpso=SEL3 ","","fn_CallBack");
+	
+}
+
+
+/*
+function fn_SetYRMNColumn(dataSet, columnNM)
+{
+	var YRMN = "";
+	for (var i=0; i<dataSet.rowcount; i++) {
+		if (toUpper(dataSet.GetRowType(i)) != "NORMAL") {
+			YRMN = substr(dataSet.GetColumn(i, columnNM), 0, 6);
+			dataSet.SetColumn(i, columnNM, YRMN);
+		}
+	}
+}
+*/
+
+function fn_SetUPOS_CD(BRAN_CD, UPSO_CD)
+{
+	this.edt_BRAN_CD.Text = BRAN_CD;
+	this.edt_UPSO_CD.Text = UPSO_CD;
+}
+
+
+/*
+ * 기      능: 휴업기간의 종료값이 시작값보다 클 수 없게 한다. 
+ * 인      수: START_YRMN:휴업기간 시작 , END_YRMN: 휴업기간 종료
+ * Return    : True / False
+ * 예     시 : fn_CheckCLSDDay(20000101, 20100101) 경우 휴업기간 시작이 종료보다 먼저이기 때문에 true
+				fn_CheckCLSDDay(20100101, 20000101) 경우 휴업기간 시작이 종료보다 나중이기에 false
+*/
+function fn_CheckCLSDDay(START_YRMN, END_YRMN)
+{
+	if (length(START_YRMN) > 0 && length(START_YRMN) != 8) return false;
+	if (length(END_YRMN) > 0 && length(END_YRMN) != 8) return false;
+
+	if (length(START_YRMN) == 8 && length(END_YRMN) == 8) {
+	
+		if(toNumber(START_YRMN) > toNumber(END_YRMN)) return false;
+	
+	}
+	
+	return true;
+
+}
+
+
+/*
+ * 기      능: 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_IsAavailableUpdate(nRow)
+{
+	// 추가된 row 가 있는 경우
+	var idx = -1;
+	
+	// 휴업인 경우만 처리
+	if (this.tab_upso_info.TabIndex == 0) {
+		if (length(this.edt_CLSDAddIdx.Text) > 0) {
+			idx = toNumber(this.edt_CLSDAddIdx.Text);
+			
+			if (nRow != idx) return false;
+			else			 return true;
+		}
+		else {
+			for(var i=0; i<this.ds_UpsoClsed.rowcount; i++) {
+				if (toUpper(this.ds_UpsoClsed.GetRowType(i)) != "NORMAL") {
+					idx = i;
+					break;
+				}
+			}
+			
+			// 수정된 항목이 있는 경우
+			if (idx >= 0) {
+				if (idx == nRow) return true;
+				else			 return false;
+			}
+			else {
+				return true;
+			}
+		}	
+	} 
+}
+
+/*
+ * 기      능: 업소가 폐업인 경우 추가 할 수 없다.
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_upso_info_OnChanging(obj,nOldIndex,nNewIndex)
+{
+	// 휴업 또는 폐업 정보가 등록된 경우 더 이상 추가할 수 없다.
+	if (length(this.edt_CLSDAddIdx.Text) > 0 ||
+		length(this.edt_PaeupAddIdx.Text) > 0) {
+        gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+	    return false;
+	}
+}
+
+
+/*
+ * 기      능: 업소 휴/폐업 추가
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function btn_add_OnClick()
+{
+	// 폐업인 경우에는 1건이 등록되어 있을 경우 더이상 추가할수 없다.
+	if(tab_upso_info.TabIndex == 1) {
+		if(ds_PaeupUpso.rowcount > 0)
+		{
+			gfn_Confirm("MB_OK", "이미 폐업된 업소입니다.\n더이상 추가 할 수 없습니다.", "경고", "0");
+			return;
+		}
+	}
+	
+	// 센터 관리부는 폐업된 경우라도 휴업을 등록할수 있다. 2010.05.13
+	if (gv_BRAN_CD != "AL" && this.ds_manager2.rowcount < 1){
+		// 폐업 확인
+		if (this.ds_PaeupUpso.rowcount > 0 && length(this.edt_PaeupAddIdx.Text) == 0) {
+			gfn_Confirm("MB_OK", "폐업된 업소입니다.", "경고", "0");
+			return;
+		}
+	}
+
+	// 휴업 또는 폐업 정보가 등록된 경우 더 이상 추가할 수 없다.
+	if (length(this.edt_CLSDAddIdx.Text) > 0 ||
+		length(this.edt_PaeupAddIdx.Text) > 0) {
+        gfn_Confirm("MB_OK", "먼저 입력된 정보를 저장하십시요.", "경고", "0");
+	    return;
+	}
+
+	//업소 휴업내역
+	if(tab_upso_info.TabIndex == 0) 
+	{	
+		if (!fn_IsAavailableUpdate(-1)) {
+            gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+			return;
+		}
+
+		var idx = this.ds_UpsoClsed.AddRow();
+		this.edt_CLSDAddIdx.Text = idx;
+		
+		this.ds_UpsoClsed.setColumn(idx, "CLSED_DAY" , today());
+		this.ds_UpsoClsed.setColumn(idx, "STTNT_DAY" , today());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+		this.ds_UpsoClsed.setColumn(idx, "CLSED_BRAN", this.edt_BRAN_CD.Text);
+		this.ds_UpsoClsed.setColumn(idx, "UPSO_CD"   , this.edt_UPSO_CD.Text);
+		this.ds_UpsoClsed.SetColumn(idx, "BRAN_CD"   , this.edt_BRAN_CD.Text);
+	}
+	else if(tab_upso_info.TabIndex == 1) 
+	{			
+		var idx = this.ds_PaeupUpso.AddRow();
+		this.edt_PaeupAddIdx.Text = idx;
+		
+		this.ds_PaeupUpso.setColumn(idx, "CLSED_DAY" , today());
+		this.ds_PaeupUpso.setColumn(idx, "STTNT_DAY" , today());
+		
+		this.ds_PaeupUpso.setColumn(idx, "CLSED_BRAN", this.edt_BRAN_CD.Text);
+		this.ds_PaeupUpso.setColumn(idx, "UPSO_CD"   , this.edt_UPSO_CD.text);
+		this.ds_PaeupUpso.SetColumn(idx, "CLSED_GBN" , "14");
+		this.ds_PaeupUpso.SetColumn(idx, "BRAN_CD"   , this.edt_BRAN_CD.Text);
+	}
+}
+
+/*
+ * 기      능: 취소 버튼 클릭시 
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function btn_cancel_OnClick(obj)
+{
+	// 휴업
+	if (this.tab_upso_info.TabIndex == 0) {
+		if (length(this.edt_CLSDAddIdx.Text) > 0) {
+			this.ds_UpsoClsed.Reset();
+			this.edt_CLSDAddIdx.Text = "";
+		}
+	}
+	// 폐업
+	else {
+		if (length(this.edt_PaeupAddIdx.Text) > 0) {
+			this.ds_PaeupUpso.Reset();
+			this.edt_PaeupAddIdx.Text = "";
+		}
+	}
+}
+
+/*
+ * 기      능: 휴업업소 컨트롤
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_upso_info_tab_UpsoCLSD_grd_Closing_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if (!fn_IsAavailableUpdate(nRow)) {
+        gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+		return false;
+	}
+
+	//  휴업기간 시작 년월
+	if(ncell == tab_upso_info.tab_UpsoCLSD.grd_Closing.GetBindCellIndex("body", "START_DAY"))
+	{
+		//if(toUpper(obj.GetCellProp("body", nCell, "Edit")) == "NONE") return;
+		gfn_SetCalendar(obj, nRow, nCell);
+	}
+	//  휴업기간 종료 년월
+	else if(ncell == tab_upso_info.tab_UpsoCLSD.grd_Closing.GetBindCellIndex("body", "END_DAY"))
+	{
+		//if(toUpper(obj.GetCellProp("body", nCell, "Edit")) == "NONE") return;
+		gfn_SetCalendar(obj, nRow, nCell);
+	}
+	// 신고일자
+	else if(ncell == tab_upso_info.tab_UpsoCLSD.grd_Closing.GetBindCellIndex("body", "STTNT_DAY"))
+	{
+	/*
+		//if(toUpper(obj.GetCellProp("body", nCell, "Edit")) == "NONE") return;
+		var STTNT_DAY = gfn_SetCalendar(obj, nRow, nCell);	
+		if(length(STTNT_DAY) > 0)
+		{
+			this.ds_UpsoClsed.SetColumn(nRow, "STTNT_DAY", STTNT_DAY);		
+		}
+	*/
+	}
+}
+/*
+ * 기      능: 폐업업소컨트롤
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function tab_upso_info_tab_UpsoPaeup_grd_Paeup_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	// 폐업기간 시작		
+	if(ncell == tab_upso_info.tab_UpsoPaeup.grd_Paeup.GetBindCellIndex("body", "START_YRMN")) 
+	{	
+		if(toUpper(obj.GetCellProp("body", nCell, "Edit")) == "NONE") return;
+		var YRMN = gfn_SetMonth(obj, nRow, nCell);
+		if(length(YRMN) > 0)
+		{
+			this.ds_PaeupUpso.SetColumn(nRow, "START_YRMN", YRMN + "01");
+		}
+	}
+}
+
+/*
+ * 기      능: 업소 추가조건
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function ds_UpsoClsed_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if (!fn_IsAavailableUpdate(nRow)) {
+        gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+		return false;
+	}
+
+	/*// 일자확인
+	if(strColumnID == "START_DAY")
+	{
+		if(!fn_CheckCLSDDay(varNewValue, this.ds_UpsoClsed.GetColumn(nRow, "END_DAY")))
+		{
+            gfn_Confirm("MB_OK", "시작일자를 확인하십시요.", "경고", "0");
+			return false;
+		}
+	}
+	else if(strColumnID == "END_DAY")
+	{
+		if(!fn_CheckCLSDDay(this.ds_UpsoClsed.GetColumn(nRow, "START_DAY"), varNewValue))
+		{
+            gfn_Confirm("MB_OK", "종료일자를 확인하십시요.", "경고", "0");
+			return false;
+		}
+	}*/
+}
+
+function tab_upso_info_tab_UpsoCLSD_grd_Closing_OnChar(obj,strPreText,nChar,strPostText,nLLParam,nHLParam,nRow,nCell,nPivotIndex)
+{
+	if (!fn_IsAavailableUpdate(nRow)) {
+		return false;
+	}
+}
+
+/*
+ * 기      능: 로그인한 정보에 따른 버튼권한 설정
+ * 인      수: True / fasle
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Permission(){
+	gfn_SetPermission(parent.cob_BRAN_CD.Value);
+	//gfn_SetInnerPermission("btn_add,btn_cancel");
+}
+
+function btn_Delete_OnClick(obj)
+{
+	//업소 휴업내역
+	if(tab_upso_info.TabIndex == 0) 
+	{	
+		if (!fn_IsAavailableUpdate(-1)) {
+            gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+			return;
+		}
+
+		this.edt_CLSDAddIdx.Text = "D";
+		this.ds_UpsoClsed.DeleteRow(this.ds_UpsoClsed.currow);
+	}
+	else if(tab_upso_info.TabIndex == 1) 
+	{			
+		this.ds_PaeupUpso.DeleteRow(this.ds_PaeupUpso.currow);
+		this.edt_PaeupAddIdx.Text = "D";
+	}
+}
+
+// 관리부에서 폐업 삭제후 등록시 이전 등록되었던 날짜로 등록이 되어야 할경우 신고일자가 입력되면  그 신고일자를 등록일자로 해준다.
+// 2010.05.20
+function tab_upso_info_tab_UpsoPaeup_grd_Paeup_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	if(nOldCell == 4)
+	{
+		if(ds_PaeupUpso.GetColumn(nOldRow,"STTNT_DAY") != ds_PaeupUpso.GetColumn(nOldRow,"CLSED_DAY")  &&
+		   ds_PaeupUpso.GetRowType(nOldRow) == "insert"
+		  )
+		{
+			ds_PaeupUpso.SetColumn(nOldRow, "CLSED_DAY" , ds_PaeupUpso.GetColumn(nOldRow,"STTNT_DAY"));
+		}
+	}
+}
+
+
+
+function ds_UpsoClsed_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// 일자확인
+	if(strColumnID == "START_DAY")
+	{
+		if(!fn_CheckCLSDDay(varNewValue, this.ds_UpsoClsed.GetColumn(nRow, "END_DAY")))
+		{
+			ds_UpsoClsed.FireEvent = false;
+            gfn_Confirm("MB_OK", "시작일자를 확인하십시요.", "경고", "0");
+            ds_UpsoClsed.SetColumn(nRow, "START_DAY", varOldValue);
+            ds_UpsoClsed.SetColumn(nRow, "START_YRMN", substr(varOldValue, 0, 6));
+            ds_UpsoClsed.FireEvent = true;
+			return false;
+		}
+		ds_UpsoClsed.SetColumn(nRow, "START_YRMN", substr(varNewValue, 0, 6));
+		ds_UpsoClsed.SetColumn(nRow, "END_YRMN", substr(ds_UpsoClsed.GetColumn(nRow, "END_DAY"), 0, 6));
+	}
+	else if(strColumnID == "END_DAY")
+	{
+		if(!fn_CheckCLSDDay(this.ds_UpsoClsed.GetColumn(nRow, "START_DAY"), varNewValue))
+		{
+			ds_UpsoClsed.FireEvent = false;
+            gfn_Confirm("MB_OK", "종료일자를 확인하십시요.", "경고", "0");
+            ds_UpsoClsed.SetColumn(nRow, "END_DAY", varOldValue);
+            ds_UpsoClsed.SetColumn(nRow, "END_YRMN", substr(varOldValue, 0, 6));
+            ds_UpsoClsed.FireEvent = true;
+			return false;
+		}
+		ds_UpsoClsed.SetColumn(nRow, "START_YRMN", substr(ds_UpsoClsed.GetColumn(nRow, "START_DAY"), 0, 6));
+		ds_UpsoClsed.SetColumn(nRow, "END_YRMN", substr(varNewValue, 0, 6));
+	}
+	
+	//날짜 중복 확인
+	if((strColumnID == "START_DAY" || strColumnID == "END_DAY") && (length(ds_UpsoClsed.GetColumn(nRow, "START_DAY")) == 8 && length(ds_UpsoClsed.GetColumn(nRow, "END_DAY")) == 8))
+	{
+		for(var i = 0; i < ds_UpsoClsed.rowcount - 1; i++)
+		{
+			if(   (toNumber(ds_UpsoClsed.GetColumn(nRow, "START_DAY")) >= toNumber(ds_UpsoClsed.GetColumn(i, "START_DAY")) && toNumber(ds_UpsoClsed.GetColumn(nRow, "START_DAY")) <= toNumber(ds_UpsoClsed.GetColumn(i, "END_DAY")))
+			   || (toNumber(ds_UpsoClsed.GetColumn(nRow, "END_DAY")) >= toNumber(ds_UpsoClsed.GetColumn(i, "START_DAY")) && toNumber(ds_UpsoClsed.GetColumn(nRow, "START_DAY")) <= toNumber(ds_UpsoClsed.GetColumn(i, "END_DAY")))
+			   || (toNumber(ds_UpsoClsed.GetColumn(nRow, "START_DAY")) <= toNumber(ds_UpsoClsed.GetColumn(i, "START_DAY")) && toNumber(ds_UpsoClsed.GetColumn(nRow, "END_DAY")) >= toNumber(ds_UpsoClsed.GetColumn(i, "END_DAY"))))
+			{
+				alert("휴업기간이 기존에 등록된 기간과 중복되어 휴업기간을 초기화합니다.");
+				ds_UpsoClsed.FireEvent = false;
+				ds_UpsoClsed.SetColumn(nRow, "START_DAY", "");
+				ds_UpsoClsed.SetColumn(nRow, "START_YRMN", "");
+				ds_UpsoClsed.SetColumn(nRow, "END_DAY", "");
+				ds_UpsoClsed.SetColumn(nRow, "END_YRMN", "");
+				ds_UpsoClsed.FireEvent = true;
+			}
+		}
+	}
+}
+
+]]></Script>
+</Window>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="830" Id="onoff_col_list" Left="8" OnLoadCompleted="off_upso_list_OnLoadCompleted" PidAttrib="7" Title="온오프라인데이타&#32;데이터&#32;징수금액" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Col_LIST">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ONOFF_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOSCAP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FKMP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RIAK_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOMCA_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ConvNm">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>현황조회</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>저장된데이타조회</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<ubiviewer Bottom="793" Height="729" Id="ubi0" Left="16" Right="1026" Top="64" Width="1010">
+			<_PersistData>&#13;&#10;/6wiA3hS/wAAAQBjaAAA91hLAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="2" TabStop="FALSE" Top="12" Width="990"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="2" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1014" TabOrder="2" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="32" TabOrder="5" TabStop="FALSE" Top="30" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="48" Style="tx_left_bold" TabOrder="5" Text="현황년월" Top="30" Width="54"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="21" Id="cal_YRMN" Left="113" LeftMargin="15" OnChanged="cal_YRMN_OnChanged" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="현황년월" Top="24" Width="102"></Calendar>
+		<Image Cursor="HAND" Height="21" Id="btn_Save" ImageID="C_btn_70" Left="936" LeftMargin="0" OnClick="btn_Save_OnClick" Static="FALSE" TabOrder="8" TabStop="FALSE" Text="&#32;저장" Top="16" Width="72"></Image>
+		<Radio BKColor="whitesmoke" CodeColumn="code" ColumnCount="2" DataColumn="value" Height="20" Id="rad_SEARCH_GBN" INDEX="1" InnerDataset="ds_ConvNm" Left="248" Style="radio" TabOrder="9" Top="24" Width="304">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="95"/>
+				<Layout code="2" height="18" left="110" text="가등록" top="0" width="95"/>
+			</Contents>
+		</Radio>
+		<Static Color="brown" Height="12" Id="Static1" Left="798" TabOrder="10" Text="월데이터&#32;저장후&#32;바로&#32;회계팀에&#32;통보할것" Top="38" Width="218"></Static>
+		<Image Cursor="HAND" Height="21" Id="btn_history_view" ImageID="C_btn_70" Left="848" LeftMargin="0" OnClick="btn_history_view_OnClick" Static="FALSE" TabOrder="11" TabStop="FALSE" Text="이력" Top="16" Width="72"></Image>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var gv_BRAN_CD = "";
+
+function off_upso_list_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	this.ds_In.AddRow();
+	cal_YRMN.Value = today();
+	
+	this.rad_SEARCH_GBN.Value = 1;
+	
+	gv_BRAN_CD = gds_sessioninfo.GetColumn(0, "BRAN_CD");
+
+}
+
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+//조회
+    if(strCode == "SEARCH"){
+		fn_Search();
+    }
+  
+//닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	
+}
+
+
+function fn_search() {
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_In.SetColumn(0, "YRMN", substr(this.cal_YRMN.Value,0,6));	
+	this.ds_in.SetColumn(0, "GBN" , this.rad_SEARCH_GBN.Value);
+	
+	//trace(ds_in.SaveXML());
+	
+	gfn_syncCall("sys_onoff_col_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012003&EVENTID=onoff_col_list","S=ds_In","ds_Col_LIST=SEL1","","fn_CallBack");
+	
+	if(this.ds_Col_LIST.GetRowCount() > 0) {
+		ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+		ubi0.setJrfFileName("bra09_p11.jrf");
+		ubi0.SetDataset("ds_Col_LIST", "ds_Col_LIST");
+		ubi0.SetArgument("YRMN", this.cal_YRMN.Text);
+		ubi0.Retrieve();
+		
+		if((gv_BRAN_CD == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100") && this.rad_SEARCH_GBN.Value == "1"){
+			this.btn_Save.Visible = true;
+		}else{
+			this.btn_Save.Visible = false;
+		}
+	}else{
+		this.btn_Save.Visible = false;
+		
+		this.ds_Col_LIST.ClearData();
+		ubi0.refresh();
+		
+		gfn_Confirm("MB_OK", "저장된 데이타가 없습니다.", "경고", "0");
+		return;
+	}
+	
+	/*
+	if(this.ds_Col_LIST.count > 0){
+		this.btn_Save.Visible = true;
+	}
+	else {
+		this.btn_Save.Visible = false;
+	}
+	*/
+	
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+	
+	if (srvId == "sys_onoff_col_list") {
+		if(length(ErrorMsg) > 0) {
+			gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		}
+	}
+	else if (srvId == "sys_onoff_col_save") {
+		if(length(ErrorMsg)>0){
+			gfn_Confirm("MB_OK", ErrorMsg, "경고", "0");
+			return;
+		}
+		else{
+			gfn_SetStatusMsg("저장이 완료 되었습니다.");
+			
+		}
+	}
+
+}
+
+function btn_Save_OnClick(obj,nX,nY)
+{
+	if(this.ds_Col_LIST.rowcount == 0) {
+		gfn_Confirm("MB_OK", "조회를 먼저 해주세요.", "경고", "0");
+		return;
+	}
+	
+	alert('월1데이터 저장후 즉시 회계팀에 연락후 센터 자동전표발행토록 조치 바랍니다.'); 
+	
+	if(confirm( this.cal_YRMN.Text +"월의 데이터를  저장하시겠습니까?")){
+		this.ds_In.SetColumn(0, "YRMN", substr(this.cal_YRMN.Value,0,6));	
+		this.ds_In.SetColumn(0, "INSPRES_ID", gds_sessioninfo.GetColumn(0, "STAFF_NUM"));	
+		
+		gfn_syncCall("sys_onoff_col_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012003&EVENTID=onoff_col_save","S=ds_In:N","","","fn_CallBack", gv_TraceLog, GV_FORMID);
+		
+	}	
+}
+
+
+function cal_YRMN_OnChanged(obj,strOldText,strNewText)
+{
+	this.ds_Col_LIST.DeleteAll();
+}
+
+
+function btn_history_view_OnClick(obj,nX,nY)
+{
+	var result = Dialog("fi_bra::pop_onoff_levy_history.xml", "");
+}
+]]></Script>
+</Window>

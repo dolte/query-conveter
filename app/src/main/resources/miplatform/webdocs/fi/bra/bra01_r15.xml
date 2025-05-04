@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업소&#32;주소&#32;스티커&#32;출력" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_sticker" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="R_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_stickerIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_stickerList" OnColumnChanged="ds_stickerList_OnColumnChanged" OnRowPosChanged="ds_stickerList_OnRowPosChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="R_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_stickerPrint" OnColumnChanged="ds_stickerList_OnColumnChanged" OnRowPosChanged="ds_stickerList_OnRowPosChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="R_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_excelupload">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoFit="TRUE" BindDataset="ds_stickerList" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="768" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="704" Id="grd_stikcerList" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnExpandEdit="grd_stikcerList_OnExpandEdit" OnHeadClick="grd_stikcerList_OnHeadClick" Right="1038" RowHeight="20" Style="grid" TabOrder="7" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1030">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="370"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="업소명"/>
+						<cell col="2" color="user12" display="text" text="수신이름"/>
+						<cell col="3" color="user12" display="text" text="우편번호"/>
+						<cell col="4" color="user12" display="text" text="주소"/>
+						<cell col="5" color="user12" display="normal" edit="normal" text="출력"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user13" col="0" colid="UPSO_CD" display="normal" edit='expr:iif(getrowtype(currow)&#32;==&#32;&quot;insert&quot;,&quot;normal&quot;,&quot;none&quot;)' expandimage="rbt_search01" expandshow='expr:iif(getrowtype(currow)&#32;==&#32;&quot;insert&quot;,true,false)'/>
+						<cell align="left" col="1" colid="UPSO_NM" display="normal"/>
+						<cell col="2" colid="RECV_NM" display="normal"/>
+						<cell col="3" colid="POST_NO" display="text" Mask="#####"/>
+						<cell align="left" col="4" colid="ADDR" display="normal"/>
+						<cell align="center" col="5" colid="CHECK" display="checkbox" edit="checkbox"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="1" TabStop="FALSE" Top="12" Width="9"></Image>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="29" TabOrder="3" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="44" Style="tx_left_bold" TabOrder="4" Text="센터명" Top="27" Width="86"></Static>
+		<Combo BKColor="user13" Height="20" Id="cob_BRAN_CD" Left="96" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="5" ToolTipText="센터명" Top="23" Width="145"></Combo>
+		<ubiviewer Bottom="56" Height="39" Id="ubi0" Left="679" Right="784" Top="17" Visible="FALSE" Width="105">
+			<_PersistData>&#13;&#10;/6xZT449/wAAAQDaCgAAdwgEAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Button ButtonStyle="TRUE" Height="21" Id="Btn_ExlUpload" ImageID="C_btn_110" Left="920" LeftMargin="28" OnClick="Btn_ExlUpload_OnClick" Style="edit" TabOrder="9" Text="Excel&#32;Upload" Top="24" TopMargin="1" Width="111"></Button>
+		<Static Color="red" Font="Default,10,Bold" Height="21" Id="Static0" Left="266" TabOrder="10" Text="&lt;&#32;용지&#32;:&#32;A4&#32;&#32;규격&#32;:&#32;2&#32;x&#32;8&#32;&gt;" Top="28" Width="270"></Static>
+		<File Bottom="48" Height="24" Id="fil_Excel" Left="856" Right="880" TabOrder="10" Top="24" Width="24"></File>
+		<FileDialog Bottom="48" Filter="MS&#32;Excel&#32;File(*.xls)|*.xls|MS&#32;Excel&#32;File(*.xlsx)|*.xlsx|" Height="24" Id="fdg_Excel" Left="888" Right="912" TabOrder="10" Top="24" Width="24"></FileDialog>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  		// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var isPrinted = false;
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+		// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+
+function fn_Search()
+{
+}
+
+
+function fn_Print()
+{
+	if(ds_stickerList.RowCount() == 0){
+		gfn_Confirm("MB_OK", "출력할 데이터가 없습니다.", "경고", "0");
+		return;
+	}
+	else {
+		this.ds_stickerPrint.ClearData();
+		for(var i=0; i<this.ds_stickerList.rowcount; i++) {
+			if(length(this.ds_stickerList.GetColumn(i,"UPSO_CD")) > 0 && 
+			   this.ds_stickerList.GetColumn(i,"CHECK") == "1") 
+			{
+				var nRow = ds_stickerPrint.AddRow();
+				this.ds_stickerPrint.SetColumn(nRow, "UPSO_CD"  , this.ds_stickerList.GetColumn(i, "UPSO_CD"  ));
+				this.ds_stickerPrint.SetColumn(nRow, "UPSO_NM"  , this.ds_stickerList.GetColumn(i, "UPSO_NM"  ));
+				this.ds_stickerPrint.SetColumn(nRow, "R_UPSO_NM", this.ds_stickerList.GetColumn(i, "R_UPSO_NM"));
+				this.ds_stickerPrint.SetColumn(nRow, "RECV_NM"  , this.ds_stickerList.GetColumn(i, "RECV_NM"  ));
+				this.ds_stickerPrint.SetColumn(nRow, "POST_NO"  , this.ds_stickerList.GetColumn(i, "POST_NO"  ));
+				this.ds_stickerPrint.SetColumn(nRow, "ADDR"     , this.ds_stickerList.GetColumn(i, "ADDR"     ));
+			}
+		}
+
+		if(ds_stickerPrint.rowcount == 0) {
+			gfn_Confirm("MB_OK", "출력을 체크하세요", "경고", "0");
+			return;
+		}else{
+			//trace(this.ds_stickerPrint.SaveXML());
+			ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+			ubi0.setJrfFileName("bra01_r15.jrf");
+			// 레포트 데이타셋 /마이플랫폼 데이타셋 정의
+			ubi0.SetDataset("sql_stickerPrint", "ds_stickerPrint");
+			ubi0.Retrieve();
+			ubi0.directPrint();
+		}
+	}
+}
+
+function fn_save()
+{
+}
+
+
+function fn_New() {
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	ds_stickerList.AddRow();
+}
+
+function fn_Delete() {}
+function fn_Excel() {}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode, ErrorMsg);
+	}
+}
+
+function fn_SetGridUPSO_CD(result, nRow)
+{
+	var vArr = result.split(",");
+	this.ds_stickerList.SetColumn(nRow, "UPSO_CD", vArr[0]);
+	this.ds_stickerList.SetColumn(nRow, "UPSO_NM", vArr[1]);
+
+	if(gfn_CheckDupDs2(ds_stickerList, "UPSO_CD") > 0) 
+	{
+		gfn_Confirm("MB_OK", "이미 등록되어 있습니다.", "경고", "0");
+		this.ds_stickerList.DeleteRow(this.ds_stickerList.lastrow);
+		return;
+	}
+
+	this.ds_stickerIn.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_stickerIn.SetColumn(0, "UPSO_CD", vArr[0]);	
+
+	gfn_syncCall("upso_info","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004011&EVENTID=upso_info","S=ds_stickerIn","ds_sticker=SEL1","","fn_CallBack");
+
+	this.ds_stickerList.SetColumn(nRow, "R_UPSO_NM", ds_sticker.GetColumn(0,"R_UPSO_NM"));
+	this.ds_stickerList.SetColumn(nRow, "RECV_NM"  , ds_sticker.GetColumn(0,"RECV_NM"  ));
+	this.ds_stickerList.SetColumn(nRow, "POST_NO"  , ds_sticker.GetColumn(0,"POST_NO"  ));
+	this.ds_stickerList.SetColumn(nRow, "ADDR"     , ds_sticker.GetColumn(0,"ADDR"     ));
+}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	this.ds_stickerList.ClearData();
+}
+
+function grd_stikcerList_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if ( nCell==0 && this.ds_stickerList.getRowType(nRow)=="insert" ) 
+	{
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var UPSO_CD = "";
+		var UPSO_NM = "";
+
+		var inParam = " BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra01_r15");
+		var result = Dialog("fi_bra::find_upso.xml",inParam);
+		
+		this.ds_stickerList_OnColumnChanged = "";
+		if(0 < length(result)){
+			fn_SetGridUPSO_CD(result, nRow);
+		}
+		this.ds_stickerList_OnColumnChanged = "ds_stickerList_OnColumnChanged";
+	}
+}
+
+function ds_stickerList_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "UPSO_CD") {
+		if (length(varNewValue) > 0) {
+			var BRAN_CD = this.cob_BRAN_CD.Value;
+			var result = gfn_GetUPSO_CD(BRAN_CD, varNewValue, "");
+
+			if (length(result ) > 0) {
+				fn_SetGridUPSO_CD(result, nRow);
+			}
+		}
+	}	
+}
+
+function ds_stickerList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	if( length(ds_stickerList.GetColumn(nOldRow,"UPSO_CD")) == 0 )
+	{
+		ds_stickerList.DeleteRow(nOldRow);
+	}
+}
+
+function grd_stikcerList_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 출력 header 클릭 시
+	if (nCell == 5) {
+		isPrinted = !isPrinted;
+		for (var i=0; i<this.ds_stickerList.rowcount; i++) {
+			this.ds_stickerList.SetColumn(i, "CHECK", isPrinted);
+		}
+	}
+}
+
+function Btn_ExlUpload_OnClick(obj)
+{
+	if (!fdg_Excel.Open())		return;			fil_Excel.FileName = fdg_Excel.FilePath + "\\" + fdg_Excel.FileName;	var ext = ext_ExcelImportByIndex(fil_Excel.FileName, 0, 'ds_excelupload', 1, 1, 0, 1);	
+	ds_stickerList.ClearData();
+	for (var i=0; i<this.ds_excelupload.rowcount; i++) {
+		this.ds_stickerList.AddRow();
+		ds_stickerList.SetColumn(ds_stickerList.currow,"UPSO_CD",this.ds_excelupload.getColumn(i, "UPSO_CD"));
+		ds_stickerList.SetColumn(ds_stickerList.currow,"CHECK","1");
+		//fn_SetGridUPSO_CD(this.ds_excelupload.getColumn(i, "UPSO_CD"),I);
+	}
+}
+]]></Script>
+</Window>

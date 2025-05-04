@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra08_s09" Left="8" OnLoadCompleted="bra08_s09_OnLoadCompleted" PidAttrib="7" Title="정부3.0&#32;노래방&#32;개폐업&#32;업소목록" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SI_GUN_GU" size="256" summ="default" type="STRING"/>
+					<record>
+						<END_YRMN></END_YRMN>
+						<GBN></GBN>
+						<SI_GUN_GU></SI_GUN_GU>
+						<START_YRMN></START_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_open_close_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_no_list1" UseClientLayout="1">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BPLC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDN_WHL_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APV_PERM_YMD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FACIL_AR" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOROOM_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BGROOM_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_no_list2">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ATTE">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DSRCCNTY">
+				<Contents>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BranZipIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSRCCNTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_addr_in">
+				<Contents>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_stat_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_dan_list1" UseClientLayout="1">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BPLC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDN_WHL_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APV_PERM_YMD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FACIL_TOT_SCP" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_dan_list2">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_yu_list1" UseClientLayout="1">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN1" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BPLC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDN_WHL_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APV_PERM_YMD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FACIL_TOT_SCP" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNT_COB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_yu_list2">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Div Height="64" Id="Div0" Left="8" TabOrder="1" Text="Div0" Top="-8" Width="1032">
+			<Contents>
+				<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1021" TabOrder="0" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="8" TabOrder="3" TabStop="FALSE" Top="19" Width="1015"></Image>
+				<Image Height="41" Id="Image17" ImageID="C_search_left" Left="-16" TabOrder="0" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image Height="41" Id="Image1" ImageID="C_search_left" TabOrder="6" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Static Height="19" Id="Static0" Left="448" Style="tx_left_bold" TabOrder="10" Text="개/폐업&#32;구분" Top="35" Width="75"></Static>
+				<Image Height="11" Id="Image3" ImageID="C_icon" Left="432" TabOrder="9" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Image Height="11" Id="Image2" ImageID="C_icon" Left="16" TabOrder="11" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="19" Id="Static1" Left="32" Style="tx_left_bold" TabOrder="12" Text="정부3.0데이터&#32;월기준월" Top="35" Width="140"></Static>
+				<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_start" Left="182" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="현황년월" Top="30" Width="102"></Calendar>
+				<Static Color="user1" Height="16" Id="Static3" Left="288" TabOrder="13" Text="~" Top="36" Width="16"></Static>
+				<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_end" Left="302" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="현황년월" Top="30" Width="102"></Calendar>
+				<Image Height="11" Id="Image0" ImageID="C_icon" Left="770" TabOrder="14" TabStop="FALSE" Top="34" Width="11"></Image>
+				<Combo CodeColumn="ATTE" DataColumn="ATTE" Height="23" Id="cob_ATTE" InnerDataset="ds_ATTE" Left="840" OnChanged="cob_ATTE_OnChanged" TabOrder="4" Top="28" Width="72"></Combo>
+				<Static Color="user12" Height="11" Id="Static2" Left="788" Style="tx_left_bold" TabOrder="15" Text="시군구구" Top="34" Width="40"></Static>
+				<Combo CodeColumn="MNG_ZIP" DataColumn="DSRCCNTY" Height="23" Id="cob_DSRCCNTY" InnerDataset="ds_DSRCCNTY" Left="912" TabOrder="5" Top="28" Width="104"></Combo>
+				<Combo BorderColor="user3" CodeColumn="CODE_CD" DataColumn="CODE_NM" Editable="TRUE" Height="20" Id="cob_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_open_close_gbn" Left="536" TabOrder="16" ToolTipText="담당직원" Top="30" Width="100"></Combo>
+			</Contents>
+		</Div>
+		<Tab BorderColor="white" Height="728" Id="tab_Onwer" Left="8" PreLoad="TRUE" TabOrder="2" Top="72" Width="1248">
+			<Contents>
+				<TabPage BorderColor="black" Height="699" Id="NOREBANG" ImageID="C_tab2" Left="2" TabOrder="13" Text="노래방" Top="27" Width="1244">
+					<Image Height="17" Id="Image1" ImageID="C_icon2" Left="30" TabOrder="1" TabStop="FALSE" Top="19" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static9" Left="56" Style="tx_bold" TabOrder="2" Text="정부3.0데이터&#32;-&#32;노래방&#32;-&#32;개업,&#32;폐업&#32;업소목록" Top="23" Width="300"></Static>
+					<Image Height="17" Id="Image0" ImageID="C_icon2" Left="770" TabOrder="3" TabStop="FALSE" Top="21" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static0" Left="794" Style="tx_bold" TabOrder="4" Text="협회데이터&#32;-&#32;동일주소&#32;리스트" Top="23" Width="200"></Static>
+					<Grid AutoEnter="TRUE" BindDataset="ds_no_list1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="677" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="629" Id="grd_no_result1" InputPanel="FALSE" Left="8" LineColor="silver" OnCellClick="tab_Onwer_NOREBANG_grd_no_result1_OnCellClick" Right="736" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="728">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="29"/>
+									<col width="30"/>
+									<col width="45"/>
+									<col width="105"/>
+									<col width="193"/>
+									<col width="76"/>
+									<col width="44"/>
+									<col width="42"/>
+									<col width="41"/>
+									<col width="51"/>
+									<col width="55"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="NO"/>
+									<cell col="1" color="user12" display="text" text="구분"/>
+									<cell col="2" color="user12" display="text" text="월"/>
+									<cell col="3" color="user12" display="text" text="업소명"/>
+									<cell col="4" color="user12" display="text" text="주소"/>
+									<cell col="5" color="user12" display="text" expr='&quot;인허가/폐업\n날짜&quot;'/>
+									<cell col="6" color="user12" display="text" expr='&quot;시설\n면적&quot;'/>
+									<cell col="7" color="user12" display="text" expr='&quot;노래방\n실수&quot;' text="적"/>
+									<cell col="8" color="user12" display="text" expr='&quot;청소년\n실수&quot;'/>
+									<cell col="9" color="user12" display="text" text="상태"/>
+									<cell col="10" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow+1"/>
+									<cell align="center" col="1" colid="GBN" combocol="CODE_CD" combodataset="ds_open_close_gbn" combotext="CODE_NM" display="combo"/>
+									<cell align="center" col="2" colid="YRMN" display="text"/>
+									<cell align="left" col="3" colid="BPLC_NM" display="text"/>
+									<cell align="left" col="4" colid="RDN_WHL_ADDR" display="text"/>
+									<cell align="center" col="5" colid="APV_PERM_YMD" display="text"/>
+									<cell align="center" col="6" colid="FACIL_AR" display="text"/>
+									<cell align="center" col="7" colid="NOROOM_CNT" display="text"/>
+									<cell align="center" col="8" colid="BGROOM_CNT" display="text"/>
+									<cell align="center" col="9" colid="STAT_GBN" combocol="CODE_CD" combodataset="ds_stat_gbn" combotext="CODE_NM" display="combo" edit="combo"/>
+									<cell align="center" col="10" colid="BIGO" display="text" edit="normal"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Grid AutoEnter="TRUE" BindDataset="ds_no_list2" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="674" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="629" Id="grd_no_result2" InputPanel="FALSE" Left="750" LineColor="silver" OnCellClick="tab_Onwer_NOREBANG_grd_no_result2_OnCellClick" Right="1214" RowHeight="20" Style="grid" TabOrder="6" TabStop="true" Top="45" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="464">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="29"/>
+									<col width="56"/>
+									<col width="127"/>
+									<col width="57"/>
+									<col width="48"/>
+									<col width="60"/>
+									<col width="324"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="NO"/>
+									<cell col="1" color="user12" display="text" text="업소코드"/>
+									<cell col="2" color="user12" display="text" text="업소명"/>
+									<cell col="3" color="user12" display="text" text="개업일자"/>
+									<cell col="4" color="user12" display="text" text="폐업월"/>
+									<cell col="5" color="user12" display="text" text="선택"/>
+									<cell col="6" color="user12" display="text" text="주소"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow+1"/>
+									<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+									<cell align="center" col="2" colid="UPSO_NM" display="text"/>
+									<cell align="center" col="3" colid="OPBI_DAY" display="text"/>
+									<cell align="center" col="4" colid="CLSBS_YRMN" display="text"/>
+									<cell col="5" color="user0" display="image" expandchar="&#32;&#32;선택" expandimage="C_btn_90" expandshow="true" expandsize="90"/>
+									<cell align="left" col="6" colid="ADDR" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="699" Id="DANRAN" ImageID="C_tab2" Left="2" TabOrder="13" Text="단란" Top="27" Width="1244">
+					<Image Height="17" Id="Image1" ImageID="C_icon2" Left="30" TabOrder="1" TabStop="FALSE" Top="19" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static9" Left="56" Style="tx_bold" TabOrder="2" Text="정부3.0데이터&#32;-&#32;단란&#32;-&#32;개업,&#32;폐업&#32;업소목록" Top="23" Width="300"></Static>
+					<Image Height="17" Id="Image0" ImageID="C_icon2" Left="770" TabOrder="3" TabStop="FALSE" Top="21" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static0" Left="794" Style="tx_bold" TabOrder="4" Text="협회데이터&#32;-&#32;동일주소&#32;리스트" Top="23" Width="200"></Static>
+					<Grid AutoEnter="TRUE" BindDataset="ds_dan_list1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="677" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="629" Id="grd_dan_result1" InputPanel="FALSE" Left="8" LineColor="silver" OnCellClick="tab_Onwer_DANRAN_grd_dan_result1_OnCellClick" Right="736" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="728">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="29"/>
+									<col width="30"/>
+									<col width="45"/>
+									<col width="105"/>
+									<col width="212"/>
+									<col width="76"/>
+									<col width="57"/>
+									<col width="57"/>
+									<col width="90"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="NO"/>
+									<cell col="1" color="user12" display="text" text="구분"/>
+									<cell col="2" color="user12" display="text" text="월"/>
+									<cell col="3" color="user12" display="text" text="업소명"/>
+									<cell col="4" color="user12" display="text" text="주소"/>
+									<cell col="5" color="user12" display="text" expr='&quot;인허가/폐업\n날짜&quot;'/>
+									<cell col="6" color="user12" display="text" expr='&quot;시설\n총규모&quot;'/>
+									<cell col="7" color="user12" display="text" text="상태"/>
+									<cell col="8" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow+1"/>
+									<cell align="center" col="1" colid="GBN" combocol="CODE_CD" combodataset="ds_open_close_gbn" combotext="CODE_NM" display="combo"/>
+									<cell align="center" col="2" colid="YRMN" display="text"/>
+									<cell align="left" col="3" colid="BPLC_NM" display="text"/>
+									<cell align="left" col="4" colid="RDN_WHL_ADDR" display="text"/>
+									<cell align="center" col="5" colid="APV_PERM_YMD" display="text"/>
+									<cell align="center" col="6" colid="FACIL_TOT_SCP" display="text"/>
+									<cell align="center" col="7" colid="STAT_GBN" combocol="CODE_CD" combodataset="ds_stat_gbn" combotext="CODE_NM" display="combo" edit="combo"/>
+									<cell align="center" col="8" colid="BIGO" display="text" edit="normal"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Grid AutoEnter="TRUE" BindDataset="ds_dan_list2" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="674" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="629" Id="grd_dan_result2" InputPanel="FALSE" Left="750" LineColor="silver" OnCellClick="tab_Onwer_DANRAN_grd_dan_result2_OnCellClick" Right="1214" RowHeight="20" Style="grid" TabOrder="6" TabStop="true" Top="45" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="464">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="29"/>
+									<col width="56"/>
+									<col width="127"/>
+									<col width="57"/>
+									<col width="48"/>
+									<col width="60"/>
+									<col width="324"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="NO"/>
+									<cell col="1" color="user12" display="text" text="업소코드"/>
+									<cell col="2" color="user12" display="text" text="업소명"/>
+									<cell col="3" color="user12" display="text" text="개업일자"/>
+									<cell col="4" color="user12" display="text" text="폐업월"/>
+									<cell col="5" color="user12" display="text" text="선택"/>
+									<cell col="6" color="user12" display="text" text="주소"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow+1"/>
+									<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+									<cell align="center" col="2" colid="UPSO_NM" display="text"/>
+									<cell align="center" col="3" colid="OPBI_DAY" display="text"/>
+									<cell align="center" col="4" colid="CLSBS_YRMN" display="text"/>
+									<cell col="5" color="user0" display="image" expandchar="&#32;&#32;선택" expandimage="C_btn_90" expandshow="true" expandsize="90"/>
+									<cell align="left" col="6" colid="ADDR" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="699" Id="YUHEONG" ImageID="C_tab2" Left="2" TabOrder="13" Text="유흥" Top="27" Width="1244">
+					<Image Height="17" Id="Image1" ImageID="C_icon2" Left="30" TabOrder="1" TabStop="FALSE" Top="19" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static9" Left="56" Style="tx_bold" TabOrder="2" Text="정부3.0데이터&#32;-&#32;유흥&#32;-&#32;개업,&#32;폐업&#32;업소목록" Top="23" Width="300"></Static>
+					<Image Height="17" Id="Image0" ImageID="C_icon2" Left="770" TabOrder="3" TabStop="FALSE" Top="21" Width="18"></Image>
+					<Static Color="user1" Height="11" Id="Static0" Left="794" Style="tx_bold" TabOrder="4" Text="협회데이터&#32;-&#32;동일주소&#32;리스트" Top="23" Width="200"></Static>
+					<Grid AutoEnter="TRUE" BindDataset="ds_yu_list1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="677" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="629" Id="grd_yu_result1" InputPanel="FALSE" Left="8" LineColor="silver" OnCellClick="tab_Onwer_YUHEONG_grd_yu_result1_OnCellClick" Right="736" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="728">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="29"/>
+									<col width="30"/>
+									<col width="45"/>
+									<col width="105"/>
+									<col width="182"/>
+									<col width="76"/>
+									<col width="57"/>
+									<col width="57"/>
+									<col width="57"/>
+									<col width="90"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="NO"/>
+									<cell col="1" color="user12" display="text" text="구분"/>
+									<cell col="2" color="user12" display="text" text="월"/>
+									<cell col="3" color="user12" display="text" text="업소명"/>
+									<cell col="4" color="user12" display="text" text="주소"/>
+									<cell col="5" color="user12" display="text" expr='&quot;인허가/폐업\n날짜&quot;'/>
+									<cell col="6" color="user12" display="text" expr='&quot;시설\n총규모&quot;'/>
+									<cell col="7" color="user12" display="text" expr='&quot;위생\n업종명&quot;'/>
+									<cell col="8" color="user12" display="text" text="상태"/>
+									<cell col="9" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow+1"/>
+									<cell align="center" col="1" colid="GBN1" combocol="CODE_CD" combodataset="ds_open_close_gbn" combotext="CODE_NM" display="combo"/>
+									<cell align="center" col="2" colid="YRMN" display="text"/>
+									<cell align="left" col="3" colid="BPLC_NM" display="text"/>
+									<cell align="left" col="4" colid="RDN_WHL_ADDR" display="text"/>
+									<cell align="center" col="5" colid="APV_PERM_YMD" display="text"/>
+									<cell align="center" col="6" colid="FACIL_TOT_SCP" display="text"/>
+									<cell align="center" col="7" colid="SNT_COB_NM" display="text"/>
+									<cell align="center" col="8" colid="STAT_GBN" combocol="CODE_CD" combodataset="ds_stat_gbn" combotext="CODE_NM" display="combo" edit="combo"/>
+									<cell align="center" col="9" colid="BIGO" display="text" edit="normal"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Grid AutoEnter="TRUE" BindDataset="ds_yu_list2" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="674" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="629" Id="grd_yu_result2" InputPanel="FALSE" Left="750" LineColor="silver" OnCellClick="tab_Onwer_YUHEONG_grd_yu_result2_OnCellClick" Right="1214" RowHeight="20" Style="grid" TabOrder="6" TabStop="true" Top="45" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="464">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="29"/>
+									<col width="56"/>
+									<col width="127"/>
+									<col width="57"/>
+									<col width="48"/>
+									<col width="60"/>
+									<col width="324"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="NO"/>
+									<cell col="1" color="user12" display="text" text="업소코드"/>
+									<cell col="2" color="user12" display="text" text="업소명"/>
+									<cell col="3" color="user12" display="text" text="개업일자"/>
+									<cell col="4" color="user12" display="text" text="폐업월"/>
+									<cell col="5" color="user12" display="text" text="선택"/>
+									<cell col="6" color="user12" display="text" text="주소"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow+1"/>
+									<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+									<cell align="center" col="2" colid="UPSO_NM" display="text"/>
+									<cell align="center" col="3" colid="OPBI_DAY" display="text"/>
+									<cell align="center" col="4" colid="CLSBS_YRMN" display="text"/>
+									<cell col="5" color="user0" display="image" expandchar="&#32;&#32;선택" expandimage="C_btn_90" expandshow="true" expandsize="90"/>
+									<cell align="left" col="6" colid="ADDR" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+function bra08_s09_OnLoadCompleted(obj)
+{	gfn_LoadForm(obj);
+	
+	this.div0.cal_start.Value = addMonth(today(), -3);
+	this.div0.cal_end.value = today();
+	
+	gfn_PubCode('ds_open_close_gbn', '1', '00433', 'OPEN');
+	gfn_PubCode('ds_stat_gbn', '2', '00433', 'STAT');
+	
+	trace(ds_open_close_gbn.SaveXML());
+	trace(ds_stat_gbn.SaveXML());
+	
+	this.Div0.cob_gbn.value = "%";
+		// 시도 정보 검색
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","","ds_ATTE=SEL1","","fn_CallBack");
+}
+
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	return;}
+
+//조회
+function fn_Search(){
+    if (!gfn_CheckFormNull(Div0)) return;
+    
+    this.ds_search.SetColumn(0, "START_YRMN", substr(this.div0.cal_start.Value, 0,6));
+    this.ds_search.SetColumn(0, "END_YRMN", substr(this.div0.cal_end.Value, 0,6));
+    this.ds_search.SetColumn(0, "GBN", this.div0.cob_gbn.value);
+    
+    if (this.div0.cob_ATTE.text == "" ) {
+		this.ds_search.SetColumn(0, "SI_GUN_GU", "");
+    } else if (this.div0.cob_ATTE.text == "세종특별자치시" ) {
+		this.ds_search.SetColumn(0, "SI_GUN_GU", this.div0.cob_ATTE.value);
+    } else {
+		this.ds_search.SetColumn(0, "SI_GUN_GU", this.div0.cob_ATTE.value + " " + this.div0.cob_DSRCCNTY.text);
+	}
+    
+    if (this.tab_Onwer.TabIndex == 0) { 	//노래방 일때
+		this.ds_no_list1.ClearData();
+		this.ds_no_list2.ClearData();
+		//trace(this.ds_search.SaveXML());
+		gfn_syncCall("get_gov_data","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=get_gov_data","S=ds_search","ds_no_list1=MRG6","","fn_CallBack");
+		//trace(this.ds_no_list1.SaveXML());
+	} else if (this.tab_Onwer.TabIndex == 1) {	//단란 일때
+		this.ds_dan_list1.ClearData();
+		this.ds_dan_list2.ClearData();
+		//trace(this.ds_search.SaveXML());
+		gfn_syncCall("get_gov_danran","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=get_gov_danran","S=ds_search","ds_dan_list1=MRG6","","fn_CallBack");
+		//trace(this.ds_dan_list1.SaveXML());
+	} else if (this.tab_Onwer.TabIndex == 2) {	//유흥 일때
+		this.ds_yu_list1.ClearData();
+		this.ds_yu_list2.ClearData();
+		//trace(this.ds_search.SaveXML());
+		gfn_syncCall("get_gov_yuheong","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=get_gov_yuheong","S=ds_search","ds_yu_list1=MRG6","","fn_CallBack");
+		//trace(this.ds_yu_list1.SaveXML());
+	}
+}
+
+//저장
+function fn_Save() {
+	
+	if (this.tab_Onwer.TabIndex == 0) { 	//노래방 일때
+		gfn_syncCall("save_stat_bigo","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=save_stat_bigo","S=ds_no_list1:U","","","fn_CallBack", gv_TraceLog, gv_formid);
+	} else if (this.tab_Onwer.TabIndex == 1) { 	//단란 일때
+		gfn_syncCall("save_stat_bigo_danran","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=save_stat_bigo_danran","S=ds_dan_list1:U","","","fn_CallBack", gv_TraceLog, gv_formid);
+	} else if (this.tab_Onwer.TabIndex == 2) { 	//유흥 일때
+		gfn_syncCall("save_stat_bigo_yuheong","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=save_stat_bigo_yuheong","S=ds_yu_list1:U","","","fn_CallBack", gv_TraceLog, gv_formid);
+	}
+	
+    fn_Search();
+}
+
+
+//엑셀출력
+function fn_Excel(){
+	if (this.tab_Onwer.TabIndex == 0) { 	//노래방 일때
+		this.tab_Onwer.NOREBANG.grd_no_result1.ExportExcelEx("정부3.0데이터노래방_개폐업");
+	} else if (this.tab_Onwer.TabIndex == 1) { 	//단란 일때
+		this.tab_Onwer.DANRAN.grd_dan_result1.ExportExcelEx("정부3.0데이터단란_개폐업");
+	} else if (this.tab_Onwer.TabIndex == 2) { 	//유흥 일때
+		this.tab_Onwer.YUHEONG.grd_yu_result1.ExportExcelEx("정부3.0데이터유흥_개폐업");
+	}
+}
+
+
+//CallBack
+function fn_CallBack(srvId,ErrorCode,ErrorMsg){
+}
+
+function cob_ATTE_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	UPSO_CD = "";
+	// 구군 정보 검색
+	this.ds_BranZipIn.ClearData();
+	this.ds_BranZipIn.AddRow();
+	this.ds_BranZipIn.SetColumn(0, "ATTE", strCode);
+	gfn_syncCall("LOAD_ATTE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_popup_sigudong","S=ds_BranZipIn","ds_DSRCCNTY=SEL5","","fn_CallBack");
+}
+
+
+
+function tab_Onwer_NOREBANG_grd_no_result1_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(length(ds_no_list1.GetColumn(nRow, "ADDR1")) < 1) return;
+	
+	this.ds_addr_in.ClearData();
+	this.ds_addr_in.AddRow();
+	this.ds_addr_in.SetColumn(0, "ADDR", this.ds_no_list1.GetColumn(nRow, "ADDR1"));
+	
+	//trace(this.ds_addr_in.SaveXML());
+	gfn_syncCall("get_komca_data","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=get_komca_data","S=ds_addr_in","ds_no_list2=SEL1","","fn_CallBack");
+	//trace(this.ds_no_list2.SaveXML());
+}
+
+function tab_Onwer_NOREBANG_grd_no_result2_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if( nCell == 5)
+	{
+		//alert("test : " + this.ds_no_list2.GetColumn(nRow, "UPSO_CD"));
+		this.ds_no_list1.SetColumn(this.ds_no_list1.currow, "STAT_GBN", "1");	//기등록으로 지정
+		this.ds_no_list1.SetColumn(this.ds_no_list1.currow, "BIGO", this.ds_no_list2.GetColumn(nRow, "UPSO_CD"));
+		this.ds_no_list1.SetColumn(this.ds_no_list1.currow, "INSPRES_ID", gv_USER_ID);
+	}
+}
+
+function tab_Onwer_DANRAN_grd_dan_result1_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(length(ds_dan_list1.GetColumn(nRow, "ADDR1")) < 1) return;
+	
+	this.ds_addr_in.ClearData();
+	this.ds_addr_in.AddRow();
+	this.ds_addr_in.SetColumn(0, "ADDR", this.ds_dan_list1.GetColumn(nRow, "ADDR1"));
+	
+	trace(this.ds_addr_in.SaveXML());
+	gfn_syncCall("get_komca_data","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=get_komca_data","S=ds_addr_in","ds_dan_list2=SEL1","","fn_CallBack");
+	//trace(this.ds_no_list2.SaveXML());
+}
+
+function tab_Onwer_DANRAN_grd_dan_result2_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if( nCell == 5)
+	{
+		//alert("test : " + this.ds_no_list2.GetColumn(nRow, "UPSO_CD"));
+		this.ds_dan_list1.SetColumn(this.ds_dan_list1.currow, "STAT_GBN", "1");	//기등록으로 지정
+		this.ds_dan_list1.SetColumn(this.ds_dan_list1.currow, "BIGO", this.ds_dan_list2.GetColumn(nRow, "UPSO_CD"));
+		this.ds_dan_list1.SetColumn(this.ds_dan_list1.currow, "INSPRES_ID", gv_USER_ID);
+	}
+}
+
+
+function tab_Onwer_YUHEONG_grd_yu_result1_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(length(ds_yu_list1.GetColumn(nRow, "ADDR1")) < 1) return;
+	
+	this.ds_addr_in.ClearData();
+	this.ds_addr_in.AddRow();
+	this.ds_addr_in.SetColumn(0, "ADDR", this.ds_yu_list1.GetColumn(nRow, "ADDR1"));
+	
+	trace(this.ds_addr_in.SaveXML());
+	gfn_syncCall("get_komca_data","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=get_komca_data","S=ds_addr_in","ds_yu_list2=SEL1","","fn_CallBack");
+	//trace(this.ds_yu_list2.SaveXML());
+}
+
+function tab_Onwer_YUHEONG_grd_yu_result2_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if( nCell == 5)
+	{
+		//alert("test : " + this.ds_yu_list2.GetColumn(nRow, "UPSO_CD"));
+		this.ds_yu_list1.SetColumn(this.ds_yu_list1.currow, "STAT_GBN", "1");	//기등록으로 지정
+		this.ds_yu_list1.SetColumn(this.ds_yu_list1.currow, "BIGO", this.ds_yu_list2.GetColumn(nRow, "UPSO_CD"));
+		this.ds_yu_list1.SetColumn(this.ds_yu_list1.currow, "INSPRES_ID", gv_USER_ID);
+	}
+}
+]]></Script>
+</Window>

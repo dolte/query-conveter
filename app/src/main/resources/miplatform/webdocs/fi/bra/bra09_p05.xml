@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra09_p05" Left="8" OnLoadCompleted="bra09_p05_OnLoadCompleted" PidAttrib="7" Title="업소입금현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_radio01">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>전체업소입금내역</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>휴업업소입금내역</value>
+					</record>
+					<record>
+						<code>03</code>
+						<value>폐업업소입금내역</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="70" Id="Image21" ImageID="C_search2_left" Left="8" TabOrder="0" Top="9" Width="10"></Image>
+		<Image FillType="STRETCH" Height="70" Id="Image1" ImageID="C_search2_bg" Left="18" OnClick="Image0_OnClick" TabOrder="1" Top="9" Width="1015"></Image>
+		<Image Height="70" Id="Image2" ImageID="C_search2_right" Left="1030" TabOrder="3" Top="9" Width="10"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="379" TabOrder="2" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="396" Style="tx_left_bold" TabOrder="3" Text="센터명" Top="54" Width="79"></Static>
+		<Image Height="11" Id="Image12" ImageID="C_icon" Left="26" TabOrder="2" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="46" Style="tx_left_bold" TabOrder="4" Text="입금기간" Top="54" Width="60"></Static>
+		<Radio BKColor="white" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="3" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="Radio2" INDEX="0" InnerDataset="ds_radio01" Left="24" ShadowColor="user17" Style="radio" TabOrder="8" Top="18" Width="400">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<Combo Border="Flat" Height="20" Id="Combo0" Left="445" Style="edit" TabOrder="9" Top="48" Width="130"></Combo>
+		<Calendar Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Sday" Left="110" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="11" Top="50" Width="101"></Calendar>
+		<Static Height="20" Id="Static5" Left="225" TabOrder="13" Text="~" Top="53" Width="14"></Static>
+		<Calendar Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Eday" Left="248" OnChanged="cal_Eday_OnChanged" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="12" Top="50" Width="101"></Calendar>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+#include "script::global.js"	// 글로벌 js
+
+function bra09_p05_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra09_p05.jrf");
+	//UbiReport0.SetDataset("ds_search", "ds_search");
+	//UbiReport0.SetDataset("ds_master", "ds_Master");
+	ubi0.SetArgument("title","전체업소 입금 내역서");
+	ubi0.Retrieve();
+}
+]]></Script>
+</Window>

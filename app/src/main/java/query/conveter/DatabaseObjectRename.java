@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DatabaseObjectRename {
-    static String filePath = "/Users/pp01713/cursor-workspace/komca-center-api/src/main/resources/mapper/";
-    static String directory = "procedure/command";
-    static String fileName = "UpsoRentalProcedureMapper";
-    static String tableNameListFile = "/Users/pp01713/cursor-workspace/komca-center-api/src/main/resources/references/db/table-rename.txt";
-    static String columnNameListFile = "/Users/pp01713/cursor-workspace/komca-center-api/src/main/resources/references/db/column-rename.txt";
-    static String paramNameListFile = "/Users/pp01713/cursor-workspace/komca-center-api/src/main/resources/references/db/param-rename.txt";
+    static String filePath = "C:\\komca\\workspace\\komca-center-api\\src\\main\\resources";
+    //static String filePath = "/Users/pp01713/cursor-workspace/komca-center-api/src/main/resources/mapper/";
+    static String directory = "\\mapper\\upso\\command";
+    static String fileName = "UpsoRouterCommandMapper";
+    static String tableNameListFile = filePath + "\\references\\db\\table-rename.txt";
+    static String columnNameListFile = filePath + "\\references\\db\\column-rename.txt";
+    static String paramNameListFile = filePath + "\\references\\db\\param-rename.txt";
 
     public static void main(String[] args) {
         try {
             // 원본 XML 파일 읽기
-            String content = readFile(filePath + directory + "/" + fileName + ".xml");
+            String content = readFile(filePath + directory + File.separator + fileName + ".xml");
             
             // 테이블명 변경
             String tableModifiedContent = replaceTableName(content);
@@ -33,7 +34,7 @@ public class DatabaseObjectRename {
             String finalModifiedContent = replaceSpecialCharsWithCDATA(schemaModifiedContent);
             
             // 변경된 내용 저장
-            writeFile(filePath + directory + "/" + fileName + "-rename.xml", finalModifiedContent);
+            writeFile(filePath + directory + File.separator + fileName + "-rename.xml", finalModifiedContent);
             System.out.println("File successfully processed and saved as " + fileName + "-rename.xml");
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +43,7 @@ public class DatabaseObjectRename {
 
     private static String readFile(String filePath) throws IOException {
         StringBuilder content = new StringBuilder();
-        // EUC-KR 인코딩으로 파일 읽기
+        // UTF-8 인코딩으로 파일 읽기
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(filePath), "UTF-8"))) {
             String line;
@@ -171,16 +172,21 @@ public class DatabaseObjectRename {
             modifiedContent = modifiedContent.replace(" as " + oldColumnName, " as " + newColumnName);
             
             // 4. XML 요소로 사용될 경우 (특히 select, update, insert 문에서)
+            modifiedContent = modifiedContent.replace("\t" + oldColumnName + ",", "\t" + newColumnName + ",");
             modifiedContent = modifiedContent.replace("\t" + oldColumnName + "\n", "\t" + newColumnName + "\n");
             modifiedContent = modifiedContent.replace("\t" + oldColumnName + " ", "\t" + newColumnName + " ");
+            modifiedContent = modifiedContent.replace("\t\t" + oldColumnName + ",", "\t\t" + newColumnName + ",");
             modifiedContent = modifiedContent.replace("\t\t" + oldColumnName + "\n", "\t\t" + newColumnName + "\n");
             modifiedContent = modifiedContent.replace("\t\t" + oldColumnName + " ", "\t\t" + newColumnName + " ");
+            modifiedContent = modifiedContent.replace("\t\t\t" + oldColumnName + ",", "\t\t\t" + newColumnName + ",");
             modifiedContent = modifiedContent.replace("\t\t\t" + oldColumnName + "\n", "\t\t\t" + newColumnName + "\n");
             modifiedContent = modifiedContent.replace("\t\t\t" + oldColumnName + " ", "\t\t\t" + newColumnName + " ");
             
             // 5. 들여쓰기가 있는 경우
+            modifiedContent = modifiedContent.replace("    " + oldColumnName + ",", "    " + newColumnName + ",");
             modifiedContent = modifiedContent.replace("    " + oldColumnName + "\n", "    " + newColumnName + "\n");
             modifiedContent = modifiedContent.replace("    " + oldColumnName + " ", "    " + newColumnName + " ");
+            modifiedContent = modifiedContent.replace("        " + oldColumnName + ",", "        " + newColumnName + ",");
             modifiedContent = modifiedContent.replace("        " + oldColumnName + "\n", "        " + newColumnName + "\n");
             modifiedContent = modifiedContent.replace("        " + oldColumnName + " ", "        " + newColumnName + " ");
             
@@ -388,7 +394,9 @@ public class DatabaseObjectRename {
     }
     
     private static void writeFile(String filePath, String content) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+        // UTF-8 인코딩으로 파일 쓰기
+        try (BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(filePath), "UTF-8"))) {
             writer.write(content);
         }
     }

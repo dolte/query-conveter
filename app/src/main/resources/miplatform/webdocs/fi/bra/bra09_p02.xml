@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="912" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" OnSize="form_OnSize" PidAttrib="7" Title="월징수현황" Top="8" Ver="1.0" Width="1056" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_MonIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_MonCollect">
+				<Contents>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOMCA_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOSCAP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOMCA_MAP" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOSCAP_MAP" size="256" summ="default" type="STRING"/>
+					<colinfo id="FKMP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FKMP_MAP" size="256" summ="default" type="STRING"/>
+					<colinfo id="RIAK_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RIAK_MAP" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Ipkum">
+				<Contents>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UPSO_IPGUM">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Stomu_detail">
+				<Contents>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_COL" size="256" summ="default" type="STRING"/>
+					<colinfo id="STOMU_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Stomu_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<BSTYP_NM></BSTYP_NM>
+						<FROM_YRMN></FROM_YRMN>
+						<REPT_GBN></REPT_GBN>
+						<TO_YRMN></TO_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="44" Id="Image15" ImageID="C_search_bg" Left="13" TabOrder="4" TabStop="FALSE" Top="7" Width="1017"></Image>
+		<Image FillType="STRETCH" Height="44" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="5" TabStop="FALSE" Top="7" Width="10"></Image>
+		<Image FillType="STRETCH" Height="44" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="5" TabStop="FALSE" Top="7" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="292" TabOrder="5" TabStop="FALSE" Top="22" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="307" Style="tx_left_bold" TabOrder="8" Text="센터명" Top="23" Width="40"></Static>
+		<Static Height="15" Id="Static0" Left="34" Style="tx_left_bold" TabOrder="10" Text="현황년월" Top="23" Width="55"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="18" TabOrder="9" TabStop="FALSE" Top="22" Width="11"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="450" TabOrder="11" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="466" Style="tx_left_bold" TabOrder="12" Text="입금구분" Top="23" Width="66"></Static>
+		<Combo BKColor="user13" Height="20" Id="cob_BRAN_CD" ImeMode="none" Left="347" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="센터명" Top="19" Width="90"></Combo>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_month1" Left="91" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="현황년월" Top="19" Width="90"></Calendar>
+		<Radio CodeColumn="CODE_CD" ColumnCount="9" DataColumn="CODE_NM" Font="굴림,8" Height="29" Id="rad_UPSO_IPGUM" INDEX="0" InnerDataset="ds_UPSO_IPGUM" Left="520" Style="radio" TabOrder="3" Top="16" Width="536"></Radio>
+		<Grid AutoScrollBar="AlwaysVert" BindDataset="ds_MonCollect" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="528" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="472" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" OnCellDBLClick="Stomu_Amt_OnCellDblClick" Right="1040" RowHeight="20" Style="grid" TabOrder="13" TabStop="FALSE" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="108"/>
+						<col width="68"/>
+						<col width="92"/>
+						<col width="68"/>
+						<col width="92"/>
+						<col width="92"/>
+						<col width="84"/>
+						<col width="84"/>
+						<col width="84"/>
+						<col width="60"/>
+						<col width="72"/>
+						<col width="72"/>
+						<col width="72"/>
+						<col width="72"/>
+						<col width="72"/>
+						<col width="108"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="구분"/>
+						<cell col="1" color="user12" display="text" rowspan="2" text="관리업소"/>
+						<cell col="2" color="user12" display="text" rowspan="2" text="사용료총액"/>
+						<cell col="3" color="user12" display="text" rowspan="2" text="징수업소"/>
+						<cell col="4" color="user12" colspan="5" display="text" text="징수금액"/>
+						<cell col="9" color="user12" display="text" rowspan="2" text="가수매핑&#10;업소"/>
+						<cell col="10" color="user12" colspan="5" display="text" text="가수매핑금액"/>
+						<cell col="4" color="user12" display="text" row="1" text="전체"/>
+						<cell col="5" color="user12" display="text" row="1" text="KOMCA"/>
+						<cell col="6" color="user12" display="text" row="1" text="KOSCAP"/>
+						<cell col="7" color="user12" display="text" row="1" text="FKMP"/>
+						<cell col="8" color="user12" display="text" row="1" text="KEPA"/>
+						<cell col="10" color="user12" display="text" row="1" text="전체"/>
+						<cell col="11" color="user12" display="text" row="1" text="KOMCA"/>
+						<cell col="12" color="user12" display="text" row="1" text="KOSCAP"/>
+						<cell col="13" color="user12" display="text" row="1" text="FKMP"/>
+						<cell col="14" color="user12" display="text" row="1" text="KEPA"/>
+						<cell col="15" color="user12" display="text" rowspan="2" text="매장음악사업자"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user8" col="0" colid="BSTYP_NM" display="text"/>
+						<cell align="right" col="1" colid="MNG_CNT" display="number"/>
+						<cell align="right" col="2" colid="TOT_AMT" display="number"/>
+						<cell align="right" col="3" colid="COL_UPSO" display="number"/>
+						<cell align="right" col="4" colid="COL_AMT" display="number"/>
+						<cell align="right" col="5" colid="KOMCA_AMT" display="number"/>
+						<cell align="right" col="6" colid="KOSCAP_AMT" display="number"/>
+						<cell align="right" col="7" colid="FKMP_AMT" display="number"/>
+						<cell align="right" col="8" colid="RIAK_AMT" display="number"/>
+						<cell align="right" col="9" colid="MAP_UPSO" display="number"/>
+						<cell align="right" col="10" colid="MAP_AMT" display="number"/>
+						<cell align="right" col="11" colid="KOMCA_MAP" display="number"/>
+						<cell align="right" col="12" colid="KOSCAP_MAP" display="number"/>
+						<cell align="right" col="13" colid="FKMP_MAP" display="number"/>
+						<cell align="right" col="14" colid="RIAK_MAP" display="number"/>
+						<cell align="right" col="15" colid="STOMU_AMT" display="number"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell align="right" col="1" display="number" expr='sum(&quot;MNG_CNT&quot;)'/>
+						<cell align="right" col="2" display="number" expr='sum(&quot;TOT_AMT&quot;)'/>
+						<cell align="right" col="3" display="number" expr='sum(&quot;COL_UPSO&quot;)'/>
+						<cell align="right" col="4" display="number" expr='sum(&quot;COL_AMT&quot;)'/>
+						<cell align="right" col="5" display="number" expr='sum(&quot;KOMCA_AMT&quot;)'/>
+						<cell align="right" col="6" display="number" expr='sum(&quot;KOSCAP_AMT&quot;)'/>
+						<cell align="right" col="7" display="number" expr='sum(&quot;FKMP_AMT&quot;)'/>
+						<cell align="right" col="8" display="number" expr='sum(&quot;RIAK_AMT&quot;)'/>
+						<cell align="right" col="9" display="number" expr='sum(&quot;MAP_UPSO&quot;)'/>
+						<cell align="right" col="10" display="number" expr='sum(&quot;MAP_AMT&quot;)'/>
+						<cell align="right" col="11" display="number" expr='sum(&quot;KOMCA_MAP&quot;)'/>
+						<cell align="right" col="12" display="number" expr='sum(&quot;KOSCAP_MAP&quot;)'/>
+						<cell align="right" col="13" display="number" expr='sum(&quot;FKMP_MAP&quot;)'/>
+						<cell align="right" col="14" display="number" expr='sum(&quot;RIAK_MAP&quot;)'/>
+						<cell align="right" col="15" display="number" expr='sum(&quot;STOMU_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoScrollBar="AlwaysVert" BindDataset="ds_Ipkum" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="832" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="296" Id="Grid1" InputPanel="FALSE" Left="8" LineColor="silver" Right="552" RowHeight="20" Style="grid" TabOrder="14" TabStop="FALSE" Top="536" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="544">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="95"/>
+						<col width="24"/>
+						<col width="24"/>
+						<col width="92"/>
+						<col width="92"/>
+						<col width="92"/>
+						<col width="92"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="구분"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" color="user12" display="text" text="징수업소"/>
+						<cell col="4" color="user12" display="text" text="징수금액"/>
+						<cell col="5" color="user12" display="text" text="가수매핑업소"/>
+						<cell col="6" color="user12" display="text" text="가수매핑금액"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BSTYP_NM" display="text"/>
+						<cell align="right" col="1" display="number"/>
+						<cell align="right" col="2" display="number"/>
+						<cell align="right" col="3" colid="COL_UPSO" display="number"/>
+						<cell align="right" col="4" colid="COL_AMT" display="number"/>
+						<cell align="right" col="5" colid="MAP_UPSO" display="number"/>
+						<cell align="right" col="6" colid="MAP_AMT" display="number"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell align="right" col="3" display="number" expr='sum(&quot;COL_UPSO&quot;)'/>
+						<cell align="right" col="4" display="number" expr='sum(&quot;COL_AMT&quot;)'/>
+						<cell align="right" col="5" display="number" expr='sum(&quot;MAP_UPSO&quot;)'/>
+						<cell align="right" col="6" display="number" expr='sum(&quot;MAP_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static3" Left="8" TabOrder="15" Text="1.&#32;한&#32;업소에&#32;2번&#32;이상&#32;입금이&#32;발생한&#32;경우&#32;징수&#32;업소수는&#32;1로&#32;카운트합니다." Top="841" Width="448"></Static>
+		<Static Font="굴림,9,Bold" Height="24" Id="Static5" Left="8" TabOrder="16" Text="3.&#32;한&#32;업소에&#32;2번&#32;이상&#32;입금이&#32;발생하고&#32;입금구분이&#32;틀린&#32;경우,&#32;징수&#32;업소수&#32;매체별&#32;총계와&#32;입금구분별&#32;총계는&#32;다를&#32;수&#32;있습니다." Top="888" Width="776"></Static>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static8" Left="8" TabOrder="17" Text="2.&#32;징수업소,&#32;징수금액은&#32;해당월의&#32;가수매핑업소,&#32;가수매핑금액을&#32;포함합니다." Top="864" Width="472"></Static>
+		<ubiviewer Bottom="80" Height="64" Id="ubi0" Left="864" Right="1016" Top="16" Visible="FALSE" Width="152">
+			<_PersistData>&#13;&#10;/6xSVMvK/wAAAQC2DwAA950GAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<FileDialog Bottom="67" Height="24" Id="FileDialog0" Left="598" Right="622" TabOrder="24" Top="43" Type="Save" Width="24"></FileDialog>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_month2" Left="195" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="19" ToolTipText="현황년월" Top="19" Width="90"></Calendar>
+		<Static Height="15" Id="Static12" Left="182" Style="tx_left_bold" TabOrder="20" Text="~" Top="27" Width="20"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_report_close" ImageID="C_btn_110" Left="930" LeftMargin="26" OnClick="btn_report_close_OnClick" Style="edit" TabOrder="21" Text="리포트&#32;닫기" Top="32" TopMargin="1" Visible="FALSE" Width="110"></Button>
+		<Grid AutoScrollBar="AlwaysVert" BindDataset="ds_Stomu_detail" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="880" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="344" Id="grd_stomu" InputPanel="FALSE" Left="568" LineColor="silver" Right="952" RowHeight="20" Style="grid" TabOrder="22" TabStop="FALSE" Top="536" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="384">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="152"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="매장음악사업자명"/>
+						<cell col="1" color="user12" display="text" text="징수업소"/>
+						<cell col="2" color="user12" display="text" text="징수금액"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BSCONHAN_NM" display="text"/>
+						<cell align="right" col="1" colid="STOMU_COL" display="number"/>
+						<cell align="right" col="2" colid="STOMU_AMT" display="number"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell align="right" col="1" display="number" expr='sum(&quot;STOMU_COL&quot;)'/>
+						<cell align="right" col="2" display="number" expr='sum(&quot;STOMU_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_PubCode("ds_UPSO_IPGUM", 2, "00141");
+	this.ds_UPSO_IPGUM.Filter("           CODE_ETC==\"A\"       ");
+	//입금 라디오 입력	
+
+	// 반환 / 기타 삭제
+	this.ds_UPSO_IPGUM.DeleteRow(ds_UPSO_IPGUM.lastrow);
+	this.ds_UPSO_IPGUM.DeleteRow(ds_UPSO_IPGUM.lastrow);
+	
+	var insRow = ds_UPSO_IPGUM.InsertRow(0);
+	ds_UPSO_IPGUM.SetColumn(insRow,"CODE_CD","");
+	ds_UPSO_IPGUM.SetColumn(insRow,"CODE_NM","전체");
+	ds_UPSO_IPGUM.SetColumn(insRow,"CODE_ETC","A");
+
+	//라디오 디폴트는 전체
+	this.rad_UPSO_IPGUM.Index = 0;
+	//this.ds_MonCollect.AddRow()	;
+	this.ds_MonIn.AddRow();
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	
+	this.cal_month1.Value 		= 	today();
+	this.cal_month2.Value 		= 	today();
+	
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	ubi0.Left = 8;
+	ubi0.Top = 56;
+	ubi0.Width = 1032;
+	ubi0.Height = 778;
+	
+	//회계팀 권한 추가
+	if(gds_sessioninfo.GetColumn(0,"DEPT_CD")="119040000")
+	{
+		cob_BRAN_CD.Enable=true;
+	}
+}
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+function fn_Excel()
+{
+
+	FileDialog0.Type = "SAVE";
+    FileDialog0.FileName = "월징수현황_" + substr(this.cal_month1.value,0,6) + "_" + substr(this.cal_month2.value,0,6) + "_" + this.cob_BRAN_CD.Value + ".xlsx";
+
+    if (!FileDialog0.open()){
+      return;
+    }
+
+    var strFileName = FileDialog0.FilePath + "\\" + FileDialog0.FileName;
+
+
+	
+	var ExportObject1;
+	ExportObject1 = CreateExportObject();
+	ExportObject1.ExportType  = "Excel";
+	ExportObject1.ExportFileName = strFileName;
+	
+	ExportObject1.AddExportGrid(("매체별")   + "!" + "A1", Grid1, true, false);
+	ExportObject1.AddExportGrid(("업종별")       + "!" + "A1", Grid0, true, false);
+	
+	ExportObject1.ActiveSheetName   = "업종별";
+	ExportObject1.MakeEmptyFileWhenNotExist = true;
+	ExportObject1.Export(true, false);
+	ExportObject1.Save();
+    ExportObject1.CloseWorkbook(); 
+	ExportObject1.Close();
+	ExportObject1 = null;
+	
+}
+
+function fn_Search() {
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+//필수키 체크
+	if(this.cal_month1.Value=="" or this.cal_month1.Value==null or this.cal_month2.Value=="" or this.cal_month2.Value==null) 
+	{
+        gfn_Confirm("MB_OK", "현황년월을 입력하세요.", "경고", "0");
+		return;
+	}
+	if((this.cal_month1.Value < "201207" or this.cal_month2.Value < "201207") && this.cal_month1.Value != this.cal_month2.Value)
+	{
+        gfn_Confirm("MB_OK", "2012년 6월 이전의 징수현황은 1개월씩 조회할 수 있습니다.", "경고", "0");
+        this.cal_month2.Value = this.cal_month1.Value;
+		return;
+	}
+	
+	if(this.cob_BRAN_CD.Value == "" or this.cob_BRAN_CD.Value == null){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return;
+	}
+	
+
+	this.ds_MonIn.SetColumn(0,"FROM_YRMN",substr(this.cal_month1.value,0,6));	
+	this.ds_MonIn.SetColumn(0,"TO_YRMN",substr(this.cal_month2.value,0,6));
+	this.ds_MonIn.SetColumn(0,"BRAN_CD",this.cob_BRAN_CD.Value);
+	this.ds_MonIn.SetColumn(0,"REPT_GBN",this.rad_UPSO_IPGUM.value);
+//	alert(this.rad_UPSO_IPGUM.value);
+	
+	ds_Stomu_detail.ClearData();
+
+	//trace(this.ds_MonIn.SaveXML());
+	gfn_syncCall("sys_Mon_status_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012002&EVENTID=mon_collect_list","S=ds_MonIn","ds_MonCollect=SEL1 ds_Ipkum=SEL2","","fn_CallBack");
+
+}
+
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0 || length(ErrorMsg) > 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	switch(srvId)
+	{
+		case "sys_Mon_status_Search" :
+			gfn_SetStatusMsg(ds_MonCollect.count + " 건이 조회되었습니다.");
+			break;
+		case "stomu_Search" :
+			grd_stomu.SetCellProp('Summ', 0, 'text', '구분 : ' + ds_MonCollect.GetColumn(ds_MonCollect.currow, "BSTYP_NM"));
+			break;
+		default :
+			break;
+	}
+}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+
+function fn_Print()
+{
+
+	if(ds_MonCollect.rowcount = 0 && ds_Ipkum.rowcount == 0 )
+	{
+        gfn_Confirm("MB_OK", "출력할 데이타가 없습니다.", "경고", "0");
+		return false;
+	}
+	
+	ubi0.Visible = true;
+	btn_report_close.Visible = true;
+	
+	this.ubi0.SetDataset("sql_MonCollect","ds_MonCollect");
+	this.ubi0.SetDataset("sql_Ipkum","ds_Ipkum");
+	this.ubi0.SetArgument("BRAN_NM",this.cob_BRAN_CD.Text);
+	this.ubi0.SetArgument("FROM_MONTH",substr(this.cal_month1.value,0,6));
+	this.ubi0.SetArgument("TO_MONTH",substr(this.cal_month2.value,0,6));
+
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra09_p02.jrf");
+	ubi0.Retrieve();
+	//ubi0.directPrint();
+
+}
+
+function form_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(Grid0,this,1,0);
+}
+
+function btn_report_close_OnClick(obj)
+{
+	ubi0.Visible = false;
+	btn_report_close.Visible = false;
+}
+
+function Stomu_Amt_OnCellDblClick(obj, nRow, nCell, nX, nY){
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	//필수키 체크
+	if(this.cal_month1.Value=="" or this.cal_month1.Value==null or this.cal_month2.Value=="" or this.cal_month2.Value==null) 
+	{
+        gfn_Confirm("MB_OK", "현황년월을 입력하세요.", "경고", "0");
+		return;
+	}
+	if((this.cal_month1.Value < "201207" or this.cal_month2.Value < "201207") && this.cal_month1.Value != this.cal_month2.Value)
+	{
+        gfn_Confirm("MB_OK", "2012년 6월 이전의 징수현황은 1개월씩 조회할 수 있습니다.", "경고", "0");
+        this.cal_month2.Value = this.cal_month1.Value;
+		return;
+	}
+	
+	if(this.cob_BRAN_CD.Value == "" or this.cob_BRAN_CD.Value == null){
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return;
+	}
+	
+	this.ds_Stomu_search.SetColumn(0,"FROM_YRMN", substr(this.cal_month1.value,0,6));	
+	this.ds_Stomu_search.SetColumn(0,"TO_YRMN", substr(this.cal_month2.value,0,6));
+	this.ds_Stomu_search.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_Stomu_search.SetColumn(0,"REPT_GBN", this.rad_UPSO_IPGUM.value);
+	this.ds_Stomu_search.SetColumn(0,"BSTYP_NM", this.ds_MonCollect.GetColumn(nRow, "BSTYP_NM"));	
+	gfn_syncCall("stomu_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012002&EVENTID=stomu_list","S=ds_Stomu_search","ds_Stomu_detail=SEL1","","fn_CallBack");
+}
+
+]]></Script>
+</Window>

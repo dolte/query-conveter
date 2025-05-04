@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra04_s10" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="채권&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_upso_condi">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPTN_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_upso" OnColumnChanged="ds_upso_OnColumnChanged" OnRowPosChanged="ds_upso_OnRowPosChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIOWN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_check">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_upso_ins" OnRowPosChanged="ds_upso_OnRowPosChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIOWN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_upso_excel" OnColumnChanged="ds_upso_OnColumnChanged" OnRowPosChanged="ds_upso_OnRowPosChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIOWN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_PHONNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<ubiviewer Bottom="736" Height="352" Id="ubi0" Left="48" Right="968" Top="384" Width="920">
+			<_PersistData>&#13;&#10;/6xt2mFW/wAAAQAWXwAAd2EkAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Grid AutoEnter="TRUE" BindDataset="ds_upso" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="785" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="721" Id="grd_upso_list" InputPanel="FALSE" Left="8" LineColor="default" OnExpandEdit="grd_upso_list_OnExpandEdit" Right="1039" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="101"/>
+						<col width="69"/>
+						<col width="89"/>
+						<col width="58"/>
+						<col width="267"/>
+						<col width="48"/>
+						<col width="66"/>
+						<col width="63"/>
+						<col width="74"/>
+						<col width="63"/>
+						<col width="57"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="업소명"/>
+						<cell col="2" color="user12" display="text" text="업주명"/>
+						<cell col="3" color="user12" display="text" text="업&#32;종"/>
+						<cell col="4" color="user12" display="text" text="월정료"/>
+						<cell col="5" color="user12" display="text" text="주소"/>
+						<cell col="6" color="user12" display="text" text="미납월"/>
+						<cell col="7" color="user12" display="text" text="시작기간"/>
+						<cell col="8" color="user12" display="text" text="종료기간"/>
+						<cell col="9" color="user12" display="text" text="미징수금액"/>
+						<cell col="10" color="user12" display="text" text="가산금"/>
+						<cell col="11" color="user12" display="text" text="미수금"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user13" col="0" colid="UPSO_CD" display="text" edit='expr:iif(getrowtype(currow)&#32;==&#32;&quot;insert&quot;,&quot;normal&quot;,&quot;none&quot;)' expandimage="rbt_search01" expandshow='expr:iif(getrowtype(currow)&#32;==&#32;&quot;insert&quot;,true,false)'/>
+						<cell col="1" colid="UPSO_NM" display="text"/>
+						<cell col="2" colid="MNGEMSTR_NM" display="normal"/>
+						<cell col="3" colid="GRADNM" display="normal"/>
+						<cell col="4" colid="MONPRNCFEE" display="number"/>
+						<cell col="5" colid="UPSO_ADDR" display="text"/>
+						<cell col="6" colid="DEMD_MMCNT" display="number"/>
+						<cell col="7" colid="START_YRMN" display="date" Mask="yyyy/MM"/>
+						<cell col="8" colid="END_YRMN" display="date" Mask="yyyy/MM"/>
+						<cell col="9" colid="TOT_USE_AMT" display="number"/>
+						<cell col="10" colid="TOT_ADDT_AMT" display="number"/>
+						<cell col="11" colid="TOT_DEMD_AMT" display="number"/>
+					</body>
+					<summary>
+						<cell col="0" colspan="11" display="text">
+							<cell col="0" display="text"/>
+							<cell col="1" display="text"/>
+							<cell col="2" display="text"/>
+							<cell col="3" display="text"/>
+							<cell col="4" display="text"/>
+							<cell col="5" display="text"/>
+							<cell col="6" display="text"/>
+							<cell col="7" display="text"/>
+							<cell col="8" display="text"/>
+							<cell col="9" display="text"/>
+							<cell col="10" display="text"/>
+						</cell>
+						<cell align="right" col="11" display="number" expr='SUM(&quot;TOT_DEMD_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="3" TabStop="FALSE" Top="15" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="4" TabStop="FALSE" Top="15" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="5" TabStop="FALSE" Top="15" Width="10"></Image>
+		<Static Height="15" Id="Static0" Left="300" Style="tx_left_bold" TabOrder="7" Text="입력년월" Top="30" Width="50"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="284" TabOrder="6" TabStop="FALSE" Top="30" Width="11"></Image>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="29" TabOrder="7" TabStop="FALSE" Top="30" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="44" Style="tx_left_bold" TabOrder="9" Text="지부명" Top="30" Width="40"></Static>
+		<Combo BKColor="user13" Height="21" Id="cob_BRAN_CD" Left="95" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="지부명" Top="25" Width="145"></Combo>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_YRMN" Left="365" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="입력년월" Top="24" Width="102"></Calendar>
+		<FileDialog Bottom="48" Height="24" Id="fdg_Auto" Left="872" Right="896" TabOrder="12" Top="24" Width="24"></FileDialog>
+		<File Bottom="48" Height="24" Id="fil_Auto" Left="905" Right="929" TabOrder="12" Top="24" Width="24"></File>
+		<ubiviewer Bottom="992" Height="720" Id="ubiviewer0" Left="8" Right="984" Top="272" Visible="FALSE" Width="976">
+			<_PersistData>&#13;&#10;/6xoj0Z2/wAAAQDfZAAAd2pKAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Grid AutoEnter="TRUE" BindDataset="ds_upso_excel" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="385" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="113" Id="grd_upso_list_excel" InputPanel="FALSE" Left="984" LineColor="default" Right="1040" RowHeight="20" Style="grid" TabOrder="13" TabStop="FALSE" Top="272" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="56">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="43"/>
+						<col width="120"/>
+						<col width="154"/>
+						<col width="108"/>
+						<col width="242"/>
+						<col width="102"/>
+						<col width="64"/>
+						<col width="94"/>
+						<col width="84"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="번호"/>
+						<cell align="center" col="1" color="user12" display="text" rowspan="2" text="지부" Valign="Center"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="대표자명"/>
+						<cell col="4" color="user12" display="text" text="사업장주소"/>
+						<cell col="5" color="user12" display="text" text="사업장전화"/>
+						<cell col="6" color="user12" display="text" rowspan="2" text="월사용료"/>
+						<cell col="7" color="user12" display="text" text="연체개월"/>
+						<cell col="8" color="user12" display="text" text="고소유무"/>
+						<cell col="2" color="user12" display="text" row="1" text="사업자&#32;번호"/>
+						<cell col="3" color="user12" display="text" row="1" text="주민번호"/>
+						<cell col="4" color="user12" display="text" row="1" text="대표주소"/>
+						<cell col="5" color="user12" display="text" row="1" text="대표자전화"/>
+						<cell col="7" color="user12" display="text" row="1" text="미수금액"/>
+						<cell col="8" color="user12" display="text" row="1" text="폐업유무"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1" rowspan="2" Valign="Center"/>
+						<cell align="center" col="1" colid="BRAN_NM" display="text" rowspan="2" Valign="Center"/>
+						<cell align="left" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="left" col="3" colid="MNGEMSTR_NM" display="normal"/>
+						<cell align="left" col="4" colid="UPSO_ADDR" display="text"/>
+						<cell align="left" col="5" colid="UPSO_PHON" display="text"/>
+						<cell align="right" col="6" colid="MONPRNCFEE" display="number" rowspan="2" Valign="Center"/>
+						<cell align="right" col="7" colid="DEMD_MMCNT" display="number"/>
+						<cell align="center" col="8" colid="ACCU" display="text"/>
+						<cell align="left" col="2" colid="BIOWN_NUM" display="text" row="1"/>
+						<cell align="left" col="3" colid="MNGEMSTR_RESINUM" display="text" row="1"/>
+						<cell align="left" col="4" colid="MNGEMSTR_ADDR" display="text" row="1"/>
+						<cell align="left" col="5" colid="MNGEMSTR_PHONNUM" display="text" row="1"/>
+						<cell align="right" col="7" colid="TOT_DEMD_AMT" display="number" row="1"/>
+						<cell align="center" col="8" colid="CLSBS" display="text" row="1"/>
+					</body>
+					<summary>
+						<cell align="right" col="0" colspan="7" display="number"/>
+						<cell align="center" col="7" display="text" text="미수합계" Valign="Center"/>
+						<cell align="right" col="8" display="number" expr='sum(&quot;TOT_DEMD_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  		// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+		
+	// 지부코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	this.cal_YRMN = substr(getdate(),0,8);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+
+
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+
+
+function fn_Print()
+{
+	if(ds_upso_excel.rowcount > 0) {
+		ubiviewer0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+		ubiviewer0.setJrfFileName("bra04_s10.jrf");
+		ubiviewer0.SetDataset("ds_upso", "ds_upso_excel");
+		ubiviewer0.Retrieve();
+		ubiviewer0.directPrint();
+		
+	}else {
+        gfn_Confirm("MB_OK", "출력 대상이 없습니다.", "경고", "0");
+		return;
+	}
+
+}
+
+function fn_save()
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	this.ds_upso_condi.ClearData();
+	this.ds_upso_condi.AddRow();
+	this.ds_upso_condi.SetColumn(0,"BRAN_CD"   , this.cob_BRAN_CD.Value  );
+	this.ds_upso_condi.SetColumn(0,"APPTN_YRMN", substr(this.cal_YRMN.Value, 0, 6));
+
+	gfn_syncCall("UPSO_REPT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009003&EVENTID=claim_ins","S=ds_upso:U S1=ds_upso_condi:N","ds_check=SEL1","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	
+	if(ds_check.GetColumn(0, "CNT") != "0" ){
+        gfn_Confirm("MB_OK", "이미 마감되었습니다.", "경고", "0");
+		return;
+	}
+	
+	fn_search();
+}
+
+
+function fn_Delete()
+{
+	ds_upso.DeleteRow(ds_upso.currow);
+}
+
+function fn_New() 
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if(length(trim(this.cob_BRAN_CD.Value)) ==0)
+	{
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	}
+	if(ds_upso.count == 0){
+		fn_search();
+	}
+	
+	var nRow = ds_upso.AddRow();
+}
+
+function fn_isFindedUpdateRow()
+{
+	for ( var i = 0 ; i < dsObj.rowcount ; i++ )
+	{
+		if ( ds_upso.getRowType(i) == "insert" ) 
+			return 1;
+		else if ( ds_upso.getRowType(i) == "update" )
+			return 1;
+	}
+}
+
+function fn_Search() 
+{
+	if (!gfn_CheckFormNull(this)) return;
+
+	/*
+	if(this.cob_BRAN_CD.Value.Length() == 0) 
+	{
+        gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	}
+	*/
+	
+	this.ds_upso_condi.ClearData();
+	this.ds_upso_condi.AddRow();
+	this.ds_upso_condi.SetColumn(0,"BRAN_CD"  , this.cob_BRAN_CD.Value  );
+	this.ds_upso_condi.SetColumn(0,"APPTN_YRMN", substr(this.cal_YRMN.Value,0,6));
+
+	gfn_syncCall("UPSO_REPT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009003&EVENTID=bran_select","S=ds_upso_condi","ds_upso=SEL1","","fn_CallBack");
+	// 엑셀저장시 리포트 형식대로 저장해달라는 요구사항이 있기 때문에 리포트 형식과 같이 보이지 않은 그리드를 하나 추가한다. 2010.05.27
+	ds_upso_excel.Copy(ds_upso);
+}
+
+function fn_Excel() 
+{
+    if(ds_upso_excel.rowcount == 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+	this.grd_upso_list_excel.ExportExcelEX("채권관리");
+	//this.grd_upso_list.ExportExcelEx("aaa.xsl","채권관리");
+    //SaveExcel(strFileName,strDocName);
+}
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+
+function ds_upso_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	if( length(ds_upso.GetColumn(nOldRow,"UPSO_CD")) == 0 )
+	{
+		ds_upso.DeleteRow(nOldRow);
+	}
+}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	this.ds_upso.ClearData();
+}
+
+function grd_upso_list_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+/*
+	if(this.cal_YRMN.Value.Length() ==0 ) 
+	{
+        gfn_Confirm("MB_OK", "입력년월을 입력을 설정하십시오.", "경고", "0");
+		return;
+	}
+*/	
+	if ( nCell==0 && this.ds_upso.getRowType(nRow) == "insert" ) 
+	{
+	
+		if(this.cob_BRAN_CD.Value.Length() == 0) 
+		{
+            gfn_Confirm("MB_OK", "지부를 선택해주세요.", "경고", "0");
+			this.cob_BRAN_CD.SetFocus();
+			return;
+		}
+		
+		var BRAN_CD = this.cob_BRAN_CD.Value;
+		var inParam = "SGBN=bra04_s10" + " BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD='' UPSO_NM=''";
+
+		var result = Dialog("fi_bra::find_upso.xml",inParam);        
+		if(0 < length(result)){
+			fn_SetGridUPSO_CD(result, nRow);
+		}
+	}
+}
+
+function fn_SetGridUPSO_CD(result, nRow)
+{
+	var vArr = result.split(",");
+	this.ds_upso.SetColumn(nRow,"UPSO_CD",vArr[0]);
+	this.ds_upso.SetColumn(nRow,"UPSO_NM",vArr[1]);
+
+	if(gfn_CheckDupDs2(ds_upso,"UPSO_CD") > 0) 
+	{
+		gfn_Confirm("MB_OK", "이미 등록되어 있습니다.", "경고", "0");
+		this.ds_upso.SetColumn(nRow,"UPSO_CD","");
+		this.ds_upso.SetColumn(nRow,"UPSO_NM","");
+		return;
+	}
+
+	this.ds_upso_condi.ClearData();
+	this.ds_upso_condi.AddRow();
+	this.ds_upso_condi.SetColumn(0,"BRAN_CD"   , this.cob_BRAN_CD.Value);
+	this.ds_upso_condi.SetColumn(0,"APPTN_YRMN", substr(this.cal_YRMN.Value,0,6) );		
+	this.ds_upso_condi.SetColumn(0,"UPSO_CD"   , this.ds_upso.GetColumn(nRow,"UPSO_CD") );	
+
+	gfn_syncCall("UPSO_REPT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001009003&EVENTID=upso_select_20101207","S=ds_upso_condi","ds_upso_ins=SEL1","","fn_CallBack");
+	
+	this.ds_upso.SetColumn(nRow, "BRAN_CD"         , this.ds_upso_ins.GetColumn(0, "BRAN_CD"         ));
+	this.ds_upso.SetColumn(nRow, "BRAN_NM"         , this.cob_BRAN_CD.Text                            );
+	this.ds_upso.SetColumn(nRow, "UPSO_CD"         , this.ds_upso_ins.GetColumn(0, "UPSO_CD"         ));
+	this.ds_upso.SetColumn(nRow, "UPSO_NM"         , this.ds_upso_ins.GetColumn(0, "UPSO_NM"         ));
+	this.ds_upso.SetColumn(nRow, "BIOWN_NUM"       , this.ds_upso_ins.GetColumn(0, "BIOWN_NUM"       ));
+	this.ds_upso.SetColumn(nRow, "UPSO_ADDR"       , this.ds_upso_ins.GetColumn(0, "UPSO_ADDR"       ));
+	this.ds_upso.SetColumn(nRow, "MONPRNCFEE"      , this.ds_upso_ins.GetColumn(0, "MONPRNCFEE"      ));
+	this.ds_upso.SetColumn(nRow, "MNGEMSTR_ADDR"   , this.ds_upso_ins.GetColumn(0, "MNGEMSTR_ADDR"   ));
+	this.ds_upso.SetColumn(nRow, "MNGEMSTR_NM"     , this.ds_upso_ins.GetColumn(0, "MNGEMSTR_NM"     ));
+	this.ds_upso.SetColumn(nRow, "STAFF_CD"        , this.ds_upso_ins.GetColumn(0, "STAFF_CD"        ));
+	this.ds_upso.SetColumn(nRow, "UPSO_PHON"       , this.ds_upso_ins.GetColumn(0, "UPSO_PHON"       ));
+	this.ds_upso.SetColumn(nRow, "MNGEMSTR_PHONNUM", this.ds_upso_ins.GetColumn(0, "MNGEMSTR_PHONNUM"));
+	this.ds_upso.SetColumn(nRow, "MNGEMSTR_RESINUM", this.ds_upso_ins.GetColumn(0, "MNGEMSTR_RESINUM"));
+	this.ds_upso.SetColumn(nRow, "GRADNM"          , this.ds_upso_ins.GetColumn(0, "GRADNM"          ));
+	this.ds_upso.SetColumn(nRow, "DEMD_MMCNT"      , this.ds_upso_ins.GetColumn(0, "DEMD_MMCNT"      ));
+	this.ds_upso.SetColumn(nRow, "START_YRMN"      , this.ds_upso_ins.GetColumn(0, "START_YRMN"      ));
+	this.ds_upso.SetColumn(nRow, "END_YRMN"        , this.ds_upso_ins.GetColumn(0, "END_YRMN"        ));
+	this.ds_upso.SetColumn(nRow, "TOT_USE_AMT"     , this.ds_upso_ins.GetColumn(0, "TOT_USE_AMT"     ));
+	this.ds_upso.SetColumn(nRow, "TOT_ADDT_AMT"    , this.ds_upso_ins.GetColumn(0, "TOT_ADDT_AMT"    ));
+	this.ds_upso.SetColumn(nRow, "TOT_DEMD_AMT"    , this.ds_upso_ins.GetColumn(0, "TOT_DEMD_AMT"    ));		
+}
+
+function ds_upso_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "UPSO_CD") {
+		if (length(varNewValue) > 0) {
+			var BRAN_CD = this.cob_BRAN_CD.Value;
+			var result = gfn_GetUPSO_CD(BRAN_CD, varNewValue, "");
+		
+			if (length(result ) > 0) {
+				fn_SetGridUPSO_CD(result, nRow);
+			}
+		}
+	}
+}
+]]></Script>
+</Window>

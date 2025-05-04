@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="lev02_s05" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="미등록곡&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_USEWRTG">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SINA_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="YETINS_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SECT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="LRC_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERFM_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMK_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMK_FORM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMK_FORM_ETC_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COUR_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_MB_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_RESIINS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPS_MB_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPS_RESIINS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUCST_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUNEUNCO_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPS_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Apprv">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="7" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="3" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Shape BKColor="user3" Bottom="67" Height="1" Id="Shape17" Left="8" LineColor="user2" Right="1040" TabOrder="4" Top="66" Width="1032"></Shape>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="27" TabOrder="5" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Color="user12" Height="14" Id="Static1" Left="43" Style="tx_left_bold" TabOrder="5" Text="승인번호/제목" Top="24" Width="109"></Static>
+		<Shape BKColor="user7" Bottom="65" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1040" TabOrder="7" Top="62" Type="Rectangle" Width="1032"></Shape>
+		<Grid AreaSelect="true" BindDataset="ds_TLEV_USEWRTG" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="768" ColSelect="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="704" Id="grd_Data" InputPanel="FALSE" Left="8" LineColor="default" MultiSelect="TRUE" OnCellDBLClick="grd_Data_OnCellDBLClick" Right="1038" RowHeight="20" Style="grid" TabOrder="8" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1030">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="81"/>
+						<col width="185"/>
+						<col width="89"/>
+						<col width="80"/>
+						<col width="233"/>
+						<col width="69"/>
+						<col width="111"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="승인번호"/>
+						<cell col="1" color="user12" display="text" text="매체코드"/>
+						<cell col="2" color="user12" display="text" text="매체"/>
+						<cell col="3" color="user12" display="text" text="거래처명"/>
+						<cell col="4" color="user12" display="text" text="제목"/>
+						<cell col="5" color="user12" display="text" text="처리상태"/>
+						<cell col="6" color="user12" display="text" text="계약체결일"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="PROD_CD" display="text"/>
+						<cell align="center" col="1" colid="PROD_NM" display="text"/>
+						<cell align="center" col="2" colid="SINA_NM" display="text"/>
+						<cell align="center" col="3" colid="YETINS_YN" display="text"/>
+						<cell align="center" col="4" colid="LRC_CTENT" display="text"/>
+						<cell col="5" colid="RMK_YN" display="text"/>
+						<cell col="6" colid="RMK_FORM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Edit BindDataset="ds_Apprv" Border="Flat" BorderColor="user10" Column="APPRV_NUM" Height="20" Id="edt_Apprvnm" Left="146" MaxLength="10" OnChanged="edt_Apprvnm_OnChanged" Style="edit" TabOrder="9" Top="20" Width="160"></Edit>
+		<Edit BindDataset="ds_Apprv" Border="Flat" BorderColor="user10" Column="APPRV_NUM" Height="20" Id="Edit0" Left="336" MaxLength="10" OnChanged="edt_Apprvnm_OnChanged" Style="edit" TabOrder="10" Top="20" Width="160"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : lev02_s05.xml
+ * 작  성  자 :    	
+ * 작  성  일 : 	
+ * 설      명 :	미등록곡 관리
+ * 수정일1    : 	
+ * 수정자     : 	
+ * 수정내용   : 설명 부여(여러줄 사용가능)	
+ * 수정일2    : 	
+ * 수정자     :	
+ * 수정내용   : 	
+ * 수정일3    : 	
+ * 수정자     : 	
+ * 수정내용   :	
+ */
+ 
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+// 데이터셋 로우값
+var rowCnt;
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	ds_Apprv.DeleteAll();
+	rowCnt = ds_Apprv.AddRow();
+}
+
+/*
+ * 기      능: 공통버튼 제어
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CommmonButtonClick(strCode)
+{
+    if (strCode == "NEW")	///신규    
+    {
+		
+    }
+    else if (strCode == "SEARCH")	///조회
+    {
+		if (Length(edt_Apprvnm.Text) > 0)
+		{
+			ds_Apprv.SetColumn(rowCnt, "APPRV_NUM", Trim(edt_Apprvnm.Text));
+		}
+		fn_Search();
+    }
+    else if (strCode == "SAVE")	///저장
+    {
+		if (Confirm("매칭결과를 반영하시겠습니까?"))
+		{
+			fn_Save();
+		}
+	}
+	else if (strCode == "EXCEL")	///엑셀저장
+	{
+    
+    }
+    else if (strCode == "DELETE")	///삭제
+    {
+		
+    }
+    else if (strCode == "PRINT")	///출력
+    {
+    
+    }
+    else if (strCode == "CLOSE")	///닫기
+    {
+		close();
+    }
+    
+}
+
+/*
+ * 기      능: 그리드 더블클릭시 저작물조회 팝업 호출
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function grd_Data_OnCellDBLClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	Dialog("fi_pub::com01_r03.xml", "formType=1 prodVal='" + ds_TLEV_USEWRTG.GetColumn(nRow, "PROD_NM") + 
+		"' dsName=ds_TLEV_USEWRTG prNrow=" + nRow + " colNm1=PROD_CD colNm2=YETINS_YN match=N", "");
+}
+
+/*
+ * 기      능: 승인저작물 조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Search()
+{
+	ds_TLEV_USEWRTG.DeleteAll();
+	gfn_SyncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001009004&EVENTID=insyet_select","S=ds_Apprv",
+			"ds_TLEV_USEWRTG=SEL1", "", "fn_CallBack");
+}
+
+/*
+ * 기      능: 저작물 매칭결과 저장
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Save()
+{
+	gfn_SyncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001009004&EVENTID=insyet_update","S=ds_TLEV_USEWRTG:U",
+			"", "", "fn_CallBack");
+}
+
+/*
+ * 기      능: Callback함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(svcid,errCode,errMsg) {
+	
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcSearch" :
+				if (ds_TLEV_USEWRTG.rowcount == 0)
+				{
+					gfn_SetStatusMsg("조회 결과가 존재하지 않습니다.");
+				}
+				break;
+			
+			case "svcSave" :
+				gfn_SetStatusMsg("매칭이 완료되었습니다.");
+				break;
+							
+			default : break;			
+		}		
+	}
+	
+}
+function edt_Apprvnm_OnChanged(obj,strText)
+{
+	
+}
+]]></Script>
+</Window>

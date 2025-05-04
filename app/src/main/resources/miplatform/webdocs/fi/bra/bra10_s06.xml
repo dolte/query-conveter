@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="lev06_r01" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="년별&#32;성과&#32;목표금액&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="APPL_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_YEAR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LEVY_TARGET">
+				<Contents>
+					<colinfo id="APPL_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON_TARGET_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LEVY_TARGET_SAVE">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON_TARGET_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LevyCnt">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="17" TabOrder="2" TabStop="FALSE" Top="11" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="7" TabOrder="4" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="3" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Static Height="14" Id="Static1" Left="48" Style="tx_left_bold" TabOrder="6" Text="기준년월" Top="26" Width="64"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="5" TabStop="FALSE" Top="26" Width="12"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_APPL_YRMN" Left="121" LeftMargin="20" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="기준년월" Top="22" Width="102"></Calendar>
+		<Div Height="480" Id="div_Search" Left="8" TabOrder="6" Text="Div0" Top="64" Width="1024">
+			<Contents>
+				<Grid BindDataset="ds_LEVY_TARGET" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="464" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="440" Id="grd_LEVY_TARGET" InputPanel="FALSE" Left="16" LineColor="silver" Right="1008" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="24" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="992">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="107"/>
+								<col width="69"/>
+								<col width="80"/>
+								<col width="147"/>
+								<col width="80"/>
+								<col width="160"/>
+							</columns>
+							<head>
+								<cell col="0" color="user12" display="text" text="기준년월"/>
+								<cell col="1" color="user12" display="text" text="센터코드"/>
+								<cell col="2" color="user12" display="text" text="센터&#32;명"/>
+								<cell col="3" color="user12" display="text" text="목표금액"/>
+								<cell col="4" color="user12" display="text" text="등록자"/>
+								<cell col="5" color="user12" display="text" text="등록일시"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="APPL_YRMN" display="text" Mask="####/##"/>
+								<cell align="center" col="1" colid="BRAN_CD" display="text"/>
+								<cell align="center" col="2" colid="DEPT_NM" display="text"/>
+								<cell align="center" col="3" colid="MON_TARGET_AMT" display="number"/>
+								<cell align="center" col="4" colid="STAFF_NM" display="text"/>
+								<cell col="5" colid="INS_DATE" display="date"/>
+							</body>
+						</format>
+					</contents>
+				</Grid>
+			</Contents>
+		</Div>
+		<Div Height="488" Id="div_Save" Left="8" TabOrder="7" Text="Div0" Top="64" Width="1024">
+			<Contents>
+				<Grid BindDataset="ds_LEVY_TARGET_SAVE" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="384" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="344" Id="grd_LEVY_TARGET_SAVE" InputPanel="FALSE" Left="144" LineColor="silver" Right="480" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="336">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="87"/>
+								<col width="90"/>
+								<col width="147"/>
+							</columns>
+							<head>
+								<cell col="0" color="user12" display="text" text="센터코드"/>
+								<cell col="1" color="user12" display="text" text="센터&#32;명"/>
+								<cell col="2" color="user12" display="text" text="년&#32;목표금액"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="BRAN_CD" display="text" edit="combo"/>
+								<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+								<cell align="right" col="2" colid="MON_TARGET_AMT" display="number" edit="number"/>
+							</body>
+							<summary>
+								<cell align="center" col="0" color="user12" colspan="2" display="text" font="굴림,9,Bold" text="전센터&#32;목표&#32;금액"/>
+								<cell align="right" col="2" display="number" expr='sum(&quot;MON_TARGET_AMT&quot;)'/>
+							</summary>
+						</format>
+					</contents>
+				</Grid>
+				<Static Font="굴림,9,Bold" Height="24" Id="Static0" Left="568" TabOrder="2" Text="2.&#32;센터별로&#32;1년&#32;목표금액을&#32;입력하십시요." Top="168" Width="293"></Static>
+				<Static Font="굴림,9,Bold" Height="24" Id="Static1" Left="568" TabOrder="3" Text="1.&#32;신규&#32;목표를&#32;적용할&#32;년도를&#32;확인하십시요." Top="144" Width="293"></Static>
+				<Image Height="11" Id="Image16" ImageID="C_icon" Left="564" TabOrder="4" TabStop="FALSE" Top="72" Width="12"></Image>
+				<Static Height="14" Id="Static2" Left="584" Style="tx_left_bold" TabOrder="5" Text="적용&#32;년도" Top="72" Width="64"></Static>
+				<Calendar BKColor="user13" Dateformat="yyyy" FocusIndex="0" Height="22" Id="cal_APPL_YEAR" Left="657" LeftMargin="20" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="6" ToolTipText="적용&#32;년도" Top="68" Width="87"></Calendar>
+				<Static Font="굴림,9,Bold" Height="24" Id="Static3" Left="568" TabOrder="7" Text="3.&#32;1년&#32;목표금액은&#32;월별로&#32;" Top="192" Width="293"></Static>
+				<Static Font="굴림,9,Bold" Height="24" Id="Static4" Left="601" TabOrder="8" Text="월별&#32;목표금액&#32;=&#32;목표금액&#32;/&#32;12&#32;" Top="216" Width="215"></Static>
+				<Static Font="굴림,9,Bold" Height="24" Id="Static5" Left="585" TabOrder="9" Text="로&#32;계산하여&#32;저장됩니다." Top="240" Width="293"></Static>
+				<Static Font="굴림,9,Bold" Height="24" Id="Static6" Left="568" TabOrder="10" Text="4.&#32;목표금액이&#32;0&#32;인&#32;경우는&#32;입력에서&#32;제외됩니다." Top="264" Width="293"></Static>
+			</Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_cancel" ImageID="C_btn_70" Left="912" OnClick="btn_cancel_OnClick" TabOrder="8" TabStop="FALSE" Text="&#32;&#32;&#32;취소" Top="24" Width="72"></Button>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	gfn_syncCall("find_GIBU","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_gibu_select","","ds_BRAN_CD=SEL1","","fn_CallBack");
+	
+	this.ds_In.AddRow();
+	this.cal_APPL_YRMN.value = today();
+	this.div_Save.cal_APPL_YEAR.value = today();
+
+	this.btn_cancel.Visible = false;
+	this.div_Save.Visible = false;
+	this.div_Search.Visible = true;
+}
+
+function fn_New() 
+{
+	if (this.ds_LEVY_TARGET_SAVE.rowcount == 0) {
+		var rIdx = 0;
+		for (var i=0; i<this.ds_BRAN_CD.rowcount; i++) {
+			rIdx = this.ds_LEVY_TARGET_SAVE.AddRow();
+			this.ds_LEVY_TARGET_SAVE.SetColumn(rIdx, "APPL_YEAR"     , this.div_Save.cal_APPL_YEAR.Value );
+			this.ds_LEVY_TARGET_SAVE.SetColumn(rIdx, "BRAN_CD"       , this.ds_BRAN_CD.GetColumn(rIdx, "GIBU"   ));
+			this.ds_LEVY_TARGET_SAVE.SetColumn(rIdx, "BRAN_NM"       , this.ds_BRAN_CD.GetColumn(rIdx, "DEPT_NM"));
+			this.ds_LEVY_TARGET_SAVE.SetColumn(rIdx, "MON_TARGET_AMT", 0);
+			this.ds_LEVY_TARGET_SAVE.SetColumn(rIdx, "INSPRES_ID"    , gv_USER_ID);
+		}
+	}
+
+	this.btn_cancel.Visible = true;
+	this.div_Save.Visible = true;
+	this.div_Search.Visible = false;
+}
+
+function fn_Save()
+{
+	if (!gfn_CheckFormNull(this.div_Save)) return;
+
+	this.ds_In.setcolumn(0, "APPL_YEAR", substr(this.div_Save.cal_APPL_YEAR.value, 0, 4));
+	gfn_syncCall("levy_target_confirm","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005003&EVENTID=levy_target_confirm","S=ds_In" ,"ds_LevyCnt=SEL1","","fn_CallBack");
+
+	if (toInteger(this.ds_LevyCnt.GetColumn(0, "CNT"))  > 0) {
+		if (confirm ( substr(this.div_Save.cal_APPL_YEAR.value, 0, 4) + " 년도에 등록된 내역이 존재합니다. 덮어쓰시겠습니까?"))
+		{
+			gfn_syncCall("levy_target_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005003&EVENTID=levy_target_save","S=ds_LEVY_TARGET_SAVE:U S1=ds_In" ,"","","fn_CallBack");
+		}
+	}
+	else {
+		gfn_syncCall("levy_target_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005003&EVENTID=levy_target_save","S=ds_LEVY_TARGET_SAVE:U S1=ds_In" ,"","","fn_CallBack");
+	}
+}
+
+function fn_Search()
+{
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.btn_cancel.Visible = false;
+	this.div_Save.Visible = false;
+	this.div_Search.Visible = true;
+	this.ds_In.setcolumn(0, "APPL_YRMN", substr(this.cal_APPL_YRMN.value, 0, 6));
+
+	gfn_syncCall("levy_target_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005003&EVENTID=levy_target_select","S=ds_In" ,"ds_LEVY_TARGET=SEL1","","fn_CallBack");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "find_GIBU") {
+		// AL 삭제
+		this.ds_BRAN_CD.DeleteRow(0);
+	}
+}
+
+
+function btn_cancel_OnClick(obj)
+{
+	this.btn_cancel.Visible = false;
+	this.div_Save.Visible = false;
+	this.div_Search.Visible = true;
+}
+]]></Script>
+</Window>

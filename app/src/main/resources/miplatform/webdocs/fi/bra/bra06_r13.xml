@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="720" Id="bra06_r13" Left="8" OnLoadCompleted="bra06_r13_OnLoadCompleted" PidAttrib="7" Title="전국센터업소현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<record>
+						<END_DAY></END_DAY>
+						<START_DAY></START_DAY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_List">
+				<Contents>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="N_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PM_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="T_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="D_UPSO_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AreaSelect="true" AutoScrollBar="AlwaysVert" BindDataset="ds_List" BkColor2="default" BoldHead="true" Border="Flat" Bottom="384" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="320" Id="grd_List" InputPanel="FALSE" Left="8" LineColor="default" MultiSelect="TRUE" Right="1032" RowHeight="20" Style="grid" TabOrder="1" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터명"/>
+						<cell col="1" color="user12" display="text" text="전주업소수"/>
+						<cell col="2" color="user12" display="text" text="신규업소수"/>
+						<cell col="3" color="user12" display="text" text="폐업업소수"/>
+						<cell col="4" color="user12" display="text" text="증감업소수"/>
+						<cell col="5" color="user12" display="text" text="현재업소수"/>
+						<cell col="6" color="user12" display="text" text="전산업소수"/>
+						<cell col="7" color="user12" display="text" text="차이"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="DEPT_NM" display="normal"/>
+						<cell align="right" col="1" colid="B_UPSO_CNT" display="number"/>
+						<cell align="right" col="2" colid="N_UPSO_CNT" display="number"/>
+						<cell align="right" col="3" colid="C_UPSO_CNT" display="number"/>
+						<cell align="right" col="4" colid="PM_UPSO_CNT" display="number"/>
+						<cell align="right" col="5" colid="T_UPSO_CNT" display="number"/>
+						<cell align="right" col="6" colid="I_UPSO_CNT" display="number"/>
+						<cell align="right" col="7" colid="D_UPSO_CNT" display="number"/>
+					</body>
+					<summary>
+						<cell align="center" col="0" color="user12" display="text" font="굴림,8,Bold" text="계"/>
+						<cell align="right" col="1" color="user12" display="number" expr='sum(&quot;B_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="2" color="user12" display="number" expr='sum(&quot;N_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="3" color="user12" display="number" expr='sum(&quot;C_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="4" color="user12" display="number" expr='sum(&quot;PM_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="5" color="user12" display="number" expr='sum(&quot;T_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="6" color="user12" display="number" expr='sum(&quot;I_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="7" color="user12" display="number" expr='sum(&quot;D_UPSO_CNT&quot;)' font="굴림,9,Bold"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1023" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="3" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="2" TabStop="FALSE" Top="11" Width="1006"></Image>
+		<Image Height="11" Id="Image12" ImageID="C_icon" Left="25" TabOrder="7" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="45" Style="tx_left_bold" TabOrder="8" Text="기간" Top="26" Width="40"></Static>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Sday" Left="85" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="5" ToolTipText="기간_S" Top="22" Width="101"></Calendar>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Eday" Left="206" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="6" ToolTipText="기간_E" Top="22" Width="101"></Calendar>
+		<ubiviewer Bottom="508" Height="100" Id="ubiviewer0" Left="16" Right="296" Top="408" Visible="FALSE" Width="280">
+			<_PersistData>&#13;&#10;/6y70F3F/wAAAQDwHAAAd1YKAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Static Height="14" Id="Static0" Left="189" TabOrder="10" Text="~" Top="27" Width="13"></Static>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra06_r13_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	this.cal_Sday.Value = adddate(today(), -7);
+	this.cal_Eday.Value = today();
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+    if(strCode == "NEW"){ }
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    else if(strCode == "SAVE"){}
+    else if(strCode == "DELETE"){}
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    else if(strCode == "CLOSE"){
+		close();
+    }
+
+	return;
+}
+ 
+function fn_New() {}
+
+function fn_Search() {
+	// 입력 필수 항목 검사
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_In.SetColumn(0, "START_DAY", this.cal_Sday.Value);
+	this.ds_In.SetColumn(0, "END_DAY"  , this.cal_Eday.Value); 
+
+	//trace(ds_In.SaveXML());
+	gfn_syncCall("bran_progress","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009010&EVENTID=bran_progress", "S=ds_In", "ds_List=SEL1","","fn_CallBack");
+}
+
+function fn_Save() {}
+function fn_Delete() {}
+function fn_Excel() 
+{
+	this.grd_List.ExportExcelEx("전국센터 업소현황");
+}
+
+function fn_Print() {
+	
+	ubiviewer0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubiviewer0.setJrfFileName("bra06_r13.jrf");
+	ubiviewer0.SetDataset("ds_List_Print", "ds_List");
+	
+	this.ubiviewer0.SetArgument("SEARCH_DAY1",this.cal_Sday.Value);
+	this.ubiviewer0.SetArgument("SEARCH_DAY2",this.cal_Eday.Value);
+	
+	ubiviewer0.Retrieve();
+	ubiviewer0.directPrint();
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "bran_progress") {
+		gfn_SetStatusMsg(this.ds_List.rowcount + " 건이 조회되었습니다.");
+	}
+}
+
+
+]]></Script>
+</Window>

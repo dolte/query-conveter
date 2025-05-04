@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="432" Id="pop_sms_format" Left="8" OnLoadCompleted="pop_sms_format_OnLoadCompleted" PidAttrib="7" Title="저장된&#32;메세지&#32;불러오기" Top="8" Ver="1.0" Width="624" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sms_format">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="MSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_sms_format_0" ImeMode="none" Left="16" MaxLength="1000" OnClick="txt_sms_format_0_OnClick" TabOrder="1" Top="48" Width="190"></TextArea>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_sms_format_1" ImeMode="none" Left="216" MaxLength="1000" OnClick="txt_sms_format_1_OnClick" TabOrder="2" Top="48" Width="190"></TextArea>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_sms_format_2" ImeMode="none" Left="416" MaxLength="1000" OnClick="txt_sms_format_2_OnClick" TabOrder="3" Top="48" Width="190"></TextArea>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_sms_format_3" ImeMode="none" Left="16" MaxLength="1000" OnClick="txt_sms_format_3_OnClick" TabOrder="4" Top="256" Width="190"></TextArea>
+		<TextArea Border="Flat" BorderColor="user3" CheckLength="Byte" Font="굴림체,10" Height="168" Id="txt_sms_format_4" ImeMode="none" Left="216" MaxLength="1000" OnClick="txt_sms_format_4_OnClick" TabOrder="5" Top="256" Width="190"></TextArea>
+		<Static Color="user0" Font="굴림,10,Bold" Height="19" Id="sta_no_0" Left="20" TabOrder="6" Text="1." Top="32" Width="15"></Static>
+		<Button Height="22" Id="btn_del_0" Left="149" OnClick="btn_del_0_OnClick" TabOrder="7" Text="삭제" Top="24" Width="57"></Button>
+		<Static Color="user0" Font="굴림,10,Bold" Height="19" Id="sta_no_1" Left="220" TabOrder="8" Text="2." Top="32" Width="15"></Static>
+		<Button Height="22" Id="btn_del_1" Left="349" OnClick="btn_del_1_OnClick" TabOrder="9" Text="삭제" Top="24" Width="57"></Button>
+		<Static Color="user0" Font="굴림,10,Bold" Height="19" Id="sta_no_2" Left="420" TabOrder="10" Text="3." Top="32" Width="15"></Static>
+		<Button Height="22" Id="btn_del_2" Left="549" OnClick="btn_del_2_OnClick" TabOrder="11" Text="삭제" Top="24" Width="57"></Button>
+		<Static Color="user0" Font="굴림,10,Bold" Height="19" Id="sta_no_3" Left="20" TabOrder="12" Text="4." Top="240" Width="15"></Static>
+		<Button Height="22" Id="btn_del_3" Left="149" OnClick="btn_del_3_OnClick" TabOrder="13" Text="삭제" Top="232" Width="57"></Button>
+		<Static Color="user0" Font="굴림,10,Bold" Height="19" Id="sta_no_4" Left="220" TabOrder="14" Text="5." Top="240" Width="15"></Static>
+		<Button Height="22" Id="btn_del_4" Left="349" OnClick="btn_del_4_OnClick" TabOrder="15" Text="삭제" Top="232" Width="57"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="C_btn_70" Left="534" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="16" Text="닫기" Top="395" TopMargin="1" Width="71"></Button>
+		<Static Color="user0" Height="19" Id="Static0" Left="20" TabOrder="17" Text="불러오기&#32;할&#32;메세지를&#32;클릭하세요.&#32;&#32;5개의&#32;메세지만&#32;조회할&#32;수&#32;있습니다." Top="6" Width="450"></Static>
+	</Form>
+	<Script><![CDATA[/* include */#include "script::common.js"  // 공통 js (프로그램 수행중 사용될 함수를 모아둔곳)#include "script::commDs.js"
+var p_bran_cd = "";
+var p_bran_nm = "";
+
+function pop_sms_format_OnLoadCompleted(obj)
+{
+	p_bran_cd = BRAN_CD;
+	p_bran_nm = BRAN_NM;
+	//p_bran_cd = "O";
+	//p_bran_nm = "제주센터";
+	
+	this.pop_sms_format.title = p_bran_nm + "의 저장된 메세지 불러오기";
+	fn_get_sms_format();	//조회
+}
+
+function fn_get_sms_format()
+{
+	this.ds_search.ClearData();
+	this.ds_search.AddRow();
+	this.ds_search.SetColumn(0, "BRAN_CD", p_bran_cd);
+	
+	gfn_syncCall("get_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=get_sms_format","S=ds_search","ds_sms_format=SEL1","","fn_CallBack");
+	//trace(ds_sms_format.SaveXML());
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "get_sms_format") {
+		set_sms_format();
+	}
+}
+
+function set_sms_format()
+{
+	if (this.ds_sms_format.GetRowCount() == 0) {
+		alert("저장된 메세지가 없습니다.");
+		Close();
+		return false;
+	}
+
+	for (var i=0; i < 5; i++) {
+		if (this.ds_sms_format.GetRowCount() > i) {
+			eval("sta_no_"+ i).Visible = true;
+			eval("btn_del_"+ i).Visible = true;
+			eval("txt_sms_format_"+ i).Visible = true;
+			eval("txt_sms_format_"+ i).Text = this.ds_sms_format.GetColumn(i, "MSG");
+		} else {
+			eval("sta_no_"+ i).Visible = false;
+			eval("btn_del_"+ i).Visible = false;
+			eval("txt_sms_format_"+ i).Visible = false;
+			eval("txt_sms_format_"+ i).Text = "";
+		}
+	}
+}
+
+function btn_close_OnClick(obj)
+{
+	Close();
+}
+
+function txt_sms_format_0_OnClick(obj)
+{
+	parent.txt_msg.Text = obj.Text;
+	Close();
+}
+
+function txt_sms_format_1_OnClick(obj)
+{
+	parent.txt_msg.Text = obj.Text;
+	Close();
+}
+
+function txt_sms_format_2_OnClick(obj)
+{
+	parent.txt_msg.Text = obj.Text;
+	Close();
+}
+
+function txt_sms_format_3_OnClick(obj)
+{
+	parent.txt_msg.Text = obj.Text;
+	Close();
+}
+
+function txt_sms_format_4_OnClick(obj)
+{
+	parent.txt_msg.Text = obj.Text;
+	Close();
+}
+
+function btn_del_0_OnClick(obj)
+{
+	this.ds_sms_format.DeleteRow(0);
+	gfn_syncCall("save_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=save_sms_format","S=ds_sms_format:U","","","gfn_CallBack");
+	fn_get_sms_format();	//조회
+}
+
+function btn_del_1_OnClick(obj)
+{
+	this.ds_sms_format.DeleteRow(1);
+	gfn_syncCall("save_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=save_sms_format","S=ds_sms_format:U","","","gfn_CallBack");
+	fn_get_sms_format();	//조회	
+}
+
+function btn_del_2_OnClick(obj)
+{
+	this.ds_sms_format.DeleteRow(2);
+	gfn_syncCall("save_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=save_sms_format","S=ds_sms_format:U","","","gfn_CallBack");
+	fn_get_sms_format();	//조회
+}
+
+function btn_del_3_OnClick(obj)
+{
+	this.ds_sms_format.DeleteRow(3);
+	gfn_syncCall("save_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=save_sms_format","S=ds_sms_format:U","","","gfn_CallBack");
+	fn_get_sms_format();	//조회
+}
+
+function btn_del_4_OnClick(obj)
+{
+	this.ds_sms_format.DeleteRow(4);
+	gfn_syncCall("save_sms_format","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004024&EVENTID=save_sms_format","S=ds_sms_format:U","","","gfn_CallBack");
+	fn_get_sms_format();	//조회
+
+}
+]]></Script>
+</Window>

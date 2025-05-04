@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra06_p06" Left="8" OnLoadCompleted="bra06_p06_OnLoadCompleted" PidAttrib="7" Title="신규휴업폐업업소내역서" Top="8" Ver="1.0" Width="1056" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_NewUpso">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_S_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_E_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_NewUpso_1">
+				<Contents>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_PaeUpso" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_CHK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLAIM_CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLAIM_CHK_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Tab Border="Flat" FixedFont="굴림체,9" Font="굴림,8,Bold" Height="776" HilightColor="white" HilightTextColor="black" Id="tab" Left="8" MouseOverColor="white" SelColor="white" Style="tab" TabOrder="11" TabStop="FALSE" Top="56" Width="1040">
+			<Contents>
+				<TabPage BorderColor="black" Font="굴림,8" Height="747" Id="tab_new" ImageID="C_tab2" Left="2" SyncContents="true" TabOrder="1" Text="&#32;신규업소" Top="27" Width="1036">
+					<Grid AutoEnter="TRUE" BindDataset="ds_NewUpso_1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="744" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="160" Id="grd_new_upso_list2" InputPanel="FALSE" Left="5" LineColor="default" Right="1036" RowHeight="20" Style="grid" TabOrder="1" TabStop="FALSE" Top="584" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="743"/>
+									<col width="160"/>
+									<col width="120"/>
+								</columns>
+								<body>
+									<cell align="right" col="0" colid="TOT_AMT" display="number"/>
+									<cell align="center" col="1" colid="STAFF_NM" display="text"/>
+									<cell align="center" col="2" colid="NAME" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Grid AutoEnter="TRUE" BindDataset="ds_NewUpso" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="588" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="583" Id="grd_new_upso_list" InputPanel="FALSE" Left="6" LineColor="default" Right="1034" RowHeight="20" Style="grid" TabOrder="2" TabStop="FALSE" Top="5" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="70"/>
+									<col width="70"/>
+									<col width="63"/>
+									<col width="162"/>
+									<col width="70"/>
+									<col width="217"/>
+									<col width="70"/>
+									<col width="120"/>
+									<col width="77"/>
+									<col width="120"/>
+									<col width="81"/>
+									<col width="74"/>
+									<col width="114"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="업소코드"/>
+									<cell col="1" color="user12" display="text" text="등급"/>
+									<cell col="2" color="user12" display="text" text="월정료"/>
+									<cell col="3" color="user12" display="text" text="업소명"/>
+									<cell col="4" color="user12" display="text" text="업주명"/>
+									<cell col="5" color="user12" display="text" text="주소"/>
+									<cell col="6" color="user12" display="text" text="전화번호"/>
+									<cell col="7" color="user12" display="text" text="연체기간"/>
+									<cell col="8" color="user12" display="text" text="연체금"/>
+									<cell col="9" color="user12" display="text" text="납입기간"/>
+									<cell col="10" color="user12" display="text" text="입금액"/>
+									<cell col="11" color="user12" display="text" text="담당자"/>
+									<cell col="12" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+									<cell align="left" col="1" colid="GRADNM" display="text"/>
+									<cell align="right" col="2" colid="MONPRNCFEE" display="number"/>
+									<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+									<cell align="left" col="4" colid="MNGEMSTR_NM" display="text"/>
+									<cell align="left" col="5" colid="UPSO_ADDR" display="text"/>
+									<cell align="left" col="6" colid="UPSO_PHON" display="text"/>
+									<cell align="center" col="7" colid="NONPY_YRMN" display="text"/>
+									<cell align="right" col="8" colid="NONPY_AMT" display="number"/>
+									<cell align="center" col="9" colid="YRMN" display="text"/>
+									<cell align="right" col="10" colid="TOT_AMT" display="number"/>
+									<cell align="center" col="11" colid="STAFF_NM" display="text"/>
+									<cell align="left" col="12" colid="BIGO" display="text"/>
+								</body>
+								<summary>
+									<cell col="0" colspan="6" display="text">
+										<cell col="0" display="text"/>
+										<cell col="1" display="text"/>
+										<cell col="2" display="text"/>
+										<cell col="3" display="text"/>
+										<cell col="4" display="text"/>
+										<cell align="right" col="5" display="text" text="총&#32;"/>
+									</cell>
+									<cell align="center" col="6" display="number" expr='COUNT(&quot;UPSO_CD&quot;)'/>
+									<cell align="right" col="7" display="text" text="연체합계&#32;"/>
+									<cell align="right" col="8" display="number" expr='SUM(&quot;NONPY_AMT&quot;)'/>
+									<cell align="right" col="9" display="text" text="입금합계&#32;"/>
+									<cell align="right" col="10" display="number" expr='SUM(&quot;TOT_AMT&quot;)'/>
+									<cell align="right" col="11" display="text" text="업주변경&#32;"/>
+									<cell align="center" col="12" display="number" expr='ds_NewUpso.CaseCount(&#32;&quot;BIGO!=&apos;&apos;&quot;&#32;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="747" Id="tab_stop" ImageID="C_tab2" Left="2" TabOrder="17" Text="폐업업소" Top="27" Width="1036">
+					<Grid AutoEnter="TRUE" BindDataset="ds_PaeUpso" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="725" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="720" Id="grd_stop_upso_list" InputPanel="FALSE" Left="4" LineColor="default" Right="1032" RowHeight="20" Style="grid" TabOrder="1" TabStop="FALSE" Top="5" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="70"/>
+									<col width="70"/>
+									<col width="63"/>
+									<col width="162"/>
+									<col width="83"/>
+									<col width="217"/>
+									<col width="86"/>
+									<col width="86"/>
+									<col width="82"/>
+									<col width="74"/>
+									<col width="64"/>
+									<col width="90"/>
+									<col width="68"/>
+									<col width="74"/>
+									<col width="42"/>
+									<col width="40"/>
+									<col width="76"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="업소코드"/>
+									<cell col="1" color="user12" display="text" text="등급"/>
+									<cell col="2" color="user12" display="text" text="월정료"/>
+									<cell col="3" color="user12" display="text" text="업소명"/>
+									<cell col="4" color="user12" display="text" text="업주명"/>
+									<cell col="5" color="user12" display="text" text="주소"/>
+									<cell col="6" color="user12" display="text" text="전화번호"/>
+									<cell col="7" color="user12" display="text" text="기간S"/>
+									<cell col="8" color="user12" display="text" text="기간E"/>
+									<cell col="9" color="user12" display="text" text="미납원금"/>
+									<cell col="10" color="user12" display="text" text="가산금"/>
+									<cell col="11" color="user12" display="text" text="미납금"/>
+									<cell col="12" color="user12" display="text" text="적용월"/>
+									<cell col="13" color="user12" display="text" text="담당자"/>
+									<cell col="14" color="user12" display="text" text="고소"/>
+									<cell col="15" color="user12" display="text" text="채권"/>
+									<cell col="16" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+									<cell align="left" col="1" colid="GRADNM" display="text"/>
+									<cell align="right" col="2" colid="MONPRNCFEE" display="number"/>
+									<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+									<cell align="left" col="4" colid="MNGEMSTR_NM" display="text"/>
+									<cell align="left" col="5" colid="UPSO_ADDR" display="text"/>
+									<cell align="left" col="6" colid="UPSO_PHON" display="text"/>
+									<cell align="center" col="7" colid="START_YRMN" display="date" Mask="yyyy/MM"/>
+									<cell align="center" col="8" colid="END_YRMN" display="date" Mask="yyyy/MM"/>
+									<cell align="right" col="9" colid="NONPY_AMT" display="number"/>
+									<cell align="right" col="10" colid="ADDT_AMT" display="number"/>
+									<cell align="right" col="11" colid="TOT_AMT" display="number"/>
+									<cell align="center" col="12" colid="CLSBS_YRMN" display="date" Mask="yyyy/MM"/>
+									<cell align="center" col="13" colid="STAFF_NM" display="text"/>
+									<cell align="center" col="14" colid="ACCU_CHK_NM" display="text"/>
+									<cell align="center" col="15" colid="CLAIM_CHK_NM" display="text"/>
+									<cell align="left" col="16" colid="REMAK" display="text"/>
+								</body>
+								<summary>
+									<cell align="right" col="0" display="text" text="미납업소수"/>
+									<cell align="center" col="1" display="number" expr='ds_PaeUpso.CaseCount(&#32;&quot;TOT_AMT&gt;0&quot;&#32;)'/>
+									<cell col="2" display="text"/>
+									<cell align="right" col="3" display="text" text="고소미해결업소"/>
+									<cell align="center" col="4" display="number" expr='ds_PaeUpso.CaseCount(&#32;&quot;ACCU_CHK&#32;!=&apos;&apos;&quot;&#32;)'/>
+									<cell align="right" col="5" display="text" text="고소미해결금액"/>
+									<cell align="right" col="6" display="number" expr='ds_PaeUpso.CaseSum(&#32;&quot;ACCU_CHK&#32;!=&apos;&apos;&quot;,&#32;&quot;TOT_AMT&quot;&#32;)'/>
+									<cell align="right" col="7" display="text" text="제외금액"/>
+									<cell align="right" col="8" display="number" expr='SUM(&quot;TOT_AMT&quot;)&#32;-&#32;ds_PaeUpso.CaseSum(&#32;&quot;ACCU_CHK&#32;!=&apos;&apos;&quot;,&#32;&quot;TOT_AMT&quot;&#32;)'/>
+									<cell align="right" col="9" display="number" expr='sum(&quot;NONPY_AMT&quot;)'/>
+									<cell align="right" col="10" display="number" expr='SUM(&quot;ADDT_AMT&quot;)'/>
+									<cell align="right" col="11" display="number" expr='SUM(&quot;TOT_AMT&quot;)'/>
+									<cell col="12" display="number"/>
+									<cell col="13" display="text"/>
+									<cell align="center" col="14" display="text"/>
+									<cell align="center" col="15" display="text" text="총"/>
+									<cell align="center" col="16" display="number" expr='COUNT(&quot;UPSO_CD&quot;)'/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Image FillType="STRETCH" Height="41" Id="rad_gbn" ImageID="C_search_bg" Left="18" TabOrder="3" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="4" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="4" TabStop="FALSE" Top="12" Width="9"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="380" TabOrder="4" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="395" Style="tx_left_bold" TabOrder="5" Text="지부명" Top="27" Width="70"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="8" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="44" Style="tx_left_bold" TabOrder="9" Text="현황년월" Top="27" Width="51"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_start" Left="112" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="현황년월" Top="22" Width="102"></Calendar>
+		<ubiviewer Bottom="56" Height="56" Id="ubiviewer0" Left="848" Right="960" Visible="FALSE" Width="112">
+			<_PersistData>&#13;&#10;/6ziJIHW/wAAAQCTCwAAd8oFAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Combo BKColor="user13" Border="Flat" BorderColor="GRAYTEXT" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="447" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="지부명" Top="22" Width="123"></Combo>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_end" Left="232" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="12" ToolTipText="현황년월" Top="22" Width="102"></Calendar>
+		<Static Color="user1" Height="16" Id="Static3" Left="218" TabOrder="13" Text="~" Top="28" Width="16"></Static>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+var s_nonpy_amt=0;	//미납금의 개수
+var s_show_goso=0;	//고소미해결 업소수
+var s_show_goso_amt=0;	//고소미해결금액
+
+function bra06_p06_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	
+	// 지부코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	//날짜 세팅 		
+	this.cal_start.value = today();
+	this.cal_end.value = today();
+	
+	gfn_SetPermission(this.cob_BRAN_CD.value);
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){}
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+
+function fn_Excel(){
+	if(this.tab.TabIndex == 0){
+		tab.tab_new.grd_new_upso_list.ExportExcelEX("신규업소내역서");
+		tab.tab_new.grd_new_upso_list2.ExportExcelEX("신규업소내역서 요약");
+	}else{
+		tab.tab_stop.grd_stop_upso_list.ExportExcelEX("폐업업소내역서");
+	}
+}
+
+function fn_Search(){
+	
+	s_nonpy_amt=0;	//미납금의 개수
+	s_show_goso=0;	//고소미해결 업소수
+	s_show_goso_amt=0;	//고소미해결금액
+	
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_In.AddRow();
+	
+	this.ds_In.setcolumn(0,"START_YRMN",substr(this.cal_start.Value,0,6));
+	this.ds_In.setcolumn(0,"END_YRMN",substr(this.cal_end.Value,0,6));
+	this.ds_In.SetColumn(0,"BRAN_CD",this.cob_BRAN_CD.Value);
+	
+	if(this.tab.TabIndex == 0){		this.ds_In.SetColumn(0,"GBN", "1");
+		gfn_syncCall("sync_upso_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009009&EVENTID=upso_list2","S=ds_In","ds_NewUpso=SEL1 ds_NewUpso_1=SEL2","","");
+
+	}	else{
+		this.ds_In.SetColumn(0,"GBN", "3");
+
+		gfn_syncCall("sync_PaeUpso","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009009&EVENTID=upso_list2","S=ds_In","ds_PaeUpso=SEL7","","");
+
+		for( var i=0; i<this.ds_PaeUpso.RowCount(); i++){
+			if(this.ds_PaeUpso.GetColumn(i, "ACCU_CHK") == 1){
+				s_show_goso = s_show_goso+1;
+				s_show_goso_amt = toNumber(s_show_goso_amt) + toNumber(this.ds_PaeUpso.GetColumn(i, "TOT_AMT"));
+			}
+			
+			if(this.ds_PaeUpso.GetColumn(i,"NONPY_AMT") >0){
+				s_nonpy_amt = s_nonpy_amt+1;		
+			}
+		}
+		
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+} 
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}]]></Script>
+</Window>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra06_p08" Left="8" OnLoadCompleted="bra06_p08_OnLoadCompleted" PidAttrib="7" Title="센터별&#32;업소방문현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_rad_option">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>일자별</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>담당자별</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORDER_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_btrip" LastLoadDataOnly="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL_FEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_PROVCITY_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_START_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_USE_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_USE_KILO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD></CODE_CD>
+						<CODE_NM>전체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>업소출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>고소출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>동행출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>단체출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>5</CODE_CD>
+						<CODE_NM>교육출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>6</CODE_CD>
+						<CODE_NM>무대공연출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>7</CODE_CD>
+						<CODE_NM>로고송출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>8</CODE_CD>
+						<CODE_NM>기타</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="5" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="6" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="7" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="294" TabOrder="8" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="307" Style="tx_left_bold" TabOrder="7" Text="센터명" Top="23" Width="46"></Static>
+		<Image Height="11" Id="Image12" ImageID="C_icon" Left="18" TabOrder="9" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="32" Style="tx_left_bold" TabOrder="11" Text="기간" Top="23" Width="60"></Static>
+		<Static Height="20" Id="Static5" Left="165" TabOrder="12" Text="~" Top="22" Width="14"></Static>
+		<Radio BKColor="whitesmoke" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="3" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="rad_option" INDEX="0" InnerDataset="ds_rad_option" Left="856" ShadowColor="user17" Style="radio" TabOrder="4" Top="17" Width="176">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<ubiviewer Bottom="793" Height="737" Id="ubi_list" Left="8" Right="1035" scale="140" Top="56" Width="1027">
+			<_PersistData>&#13;&#10;/6xPGabl/wAAAQAlagAAdyxMAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQA0LwABNQH99S8CXgBuSQR0+vn+8G8L&#13;&#10;MgA1agAsAGkLBGUPbwUB+/SYBv7yrgQ0Av8HRABlAGYAYQ8AdQBsVwP495gC+PB7CED78wVTAGi9AAFlVwECAw==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Sday" Left="62" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="1" ToolTipText="기간_S" Top="18" Width="101"></Calendar>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Eday" Left="180" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="2" ToolTipText="기간_E" Top="18" Width="101"></Calendar>
+		<Combo BKColor="user13" Border="Flat" BorderColor="GRAYTEXT" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="348" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="3" ToolTipText="센터명" Top="18" Width="123"></Combo>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="484" TabOrder="15" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="14" Id="Static0" Left="497" Style="tx_left_bold" TabOrder="16" Text="구분" Top="24" Width="38"></Static>
+		<Combo CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_code_gbn" Left="528" TabOrder="14" ToolTipText="사원명" Top="18" Width="72"></Combo>
+	</Form>
+	<Script><![CDATA[/* include */
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function bra06_p08_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);
+
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	// 초기설정
+	var curYMD = today();
+	cal_SDay.Value = substr(curYMD, 0, 6) + "01" ;  // 현재월의 첫날 부터
+	cal_EDay.Value = curYMD;						// 현재일자 까지
+	
+	rad_option.Value = "01"; // 01:일자별, 02:담당자별
+	
+	ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value );
+}
+
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		//fn_Search();
+		fn_ubiview();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		close();
+    }
+
+	return;
+}
+ 
+function fn_New() {}
+function fn_Search() {}
+function fn_Save() {}
+function fn_Delete() {}
+function fn_Excel() {}
+
+function fn_Print() {}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "bran_visit_info") {
+		gfn_SetStatusMsg(ds_btrip.count + " 건이 조회되었습니다.");
+	}
+}
+
+function fn_ubiview(){// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;	
+	// 입력 필수 항목 검사
+	if (!gfn_RequiredCheck(this.cal_SDay, "시작일자를 선택하세요")) return;
+	if (!gfn_RequiredCheck(this.cal_EDay, "종료일자를 선택하세요")) return;
+	if (!gfn_RequiredCheck(this.cob_BRAN_CD, "센터코드를 선택하세요")) return;
+	
+	if(cal_SDay.Value > cal_EDay.Value){
+		alert("기간 설정을 올바르게 지정해 주세요");
+		return;
+	}
+
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0, "START_YRMN", this.cal_SDay.Value);
+	ds_search.SetColumn(0, "END_YRMN", this.cal_EDay.Value);
+	ds_search.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	ds_search.SetColumn(0, "GBN", this.ds_code_gbn.GetColumn(cob_gbn.Index ,"CODE_CD"));
+	ds_search.SetColumn(0, "ORDER_GBN", substr(this.rad_option.Value,1,2));
+	trace(ds_search.SaveXML());
+	
+	//trace(this.ds_search.SaveXML());
+	gfn_SyncCall("bran_visit_info","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009011&EVENTID=btrip_list","S=ds_search","ds_btrip=SEL1 ds_staff_cnt=SEL2","","fn_CallBack");
+	//trace(this.ds_btrip.SaveXML());
+	setUbiReport();
+}
+
+function setUbiReport(){
+    ubi_list.setPageScale("140");
+	ubi_list.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	//ubi_list.setJrfFileDir("D:\\Temp\\jrf\\");
+	
+	ubi_list.setJrfFileName("bra06_r11.jrf");
+	ubi_list.setDataset("SQL_BTRIP", "ds_btrip");
+	ubi_list.setArgument("BRAN_NM",this.cob_BRAN_CD.Text);	// 센터명	ubi_list.setArgument("START_YRMN",this.cal_SDay.Value);	// 시작일자	ubi_list.setArgument("END_YRMN",this.cal_EDay.Value);	// 종료일자	
+	// font보정속성을 true로 지정하고 jrf파일에서도 동일하게 설정해야 
+	// 텍스트 상자서식의 여백지정이 올바로 동작함.
+	ubi_list.FontRevision = true;
+	
+	ubi_list.Retrieve();
+}
+]]></Script>
+</Window>

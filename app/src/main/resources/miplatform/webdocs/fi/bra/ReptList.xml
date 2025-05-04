@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="488" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="입금내역&#32;리스트" Top="8" Ver="1.0" Width="784" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ReptList" UseClientLayout="1">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_REPT_GBN" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptListIn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DISTR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="ALL_TYPE" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM></ACCN_NUM>
+						<ALL_TYPE></ALL_TYPE>
+						<BRAN_CD></BRAN_CD>
+						<DISTR_GBN></DISTR_GBN>
+						<END_DAY></END_DAY>
+						<REPT_GBN></REPT_GBN>
+						<REPTPRES></REPTPRES>
+						<START_DAY></START_DAY>
+						<USE_TYPE></USE_TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bankList">
+				<Contents>
+					<colinfo id="ACCN_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<record>
+						<ACCN_NUM></ACCN_NUM>
+						<ACCN_SEQ></ACCN_SEQ>
+						<BANK_NM></BANK_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DISTR_GBN">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code></code>
+						<value>일반</value>
+					</record>
+					<record>
+						<code>41</code>
+						<value>지부분배</value>
+					</record>
+					<record>
+						<code>42</code>
+						<value>업소분배</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="69" Id="Image18" ImageID="C_search_right" Left="758" TabOrder="13" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image FillType="STRETCH" Height="69" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="15" TabStop="FALSE" Top="11" Width="734"></Image>
+		<Image FillType="STRETCH" Height="69" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="14" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="32" TabOrder="3" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="48" Style="tx_left_bold" TabOrder="0" Text="지부명" Top="27" Width="40"></Static>
+		<Combo BKColor="user13" Color="user12" Enable="FALSE" Height="21" Id="cob_BRAN_CD" ImeMode="none" Left="104" TabOrder="1" Top="21" Width="114"></Combo>
+		<Static Height="16" Id="Static1" Left="48" Style="tx_left_bold" TabOrder="11" Text="계좌번호" Top="56" Width="56"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="32" TabOrder="11" TabStop="FALSE" Top="56" Width="11"></Image>
+		<Combo BKColor="user13" CodeColumn="ACCN_NUM" DataColumn="BANK_NM" Height="21" Id="cob_ACCN_NUM" InnerDataset="ds_banklist" Left="104" TabOrder="5" Top="48" Width="184"></Combo>
+		<Static Height="15" Id="Static0" Left="313" Style="tx_left_bold" TabOrder="12" Text="영수일" Top="27" Width="54"></Static>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="295" TabOrder="12" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" Height="23" Id="cal_END_DAY" Left="483" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="4" ToolTipText="입금&#32;종료일" Top="21" Width="89"></Calendar>
+		<Static Color="user0" Height="13" Id="st_CNTMON_2" Left="465" Style="style0" TabOrder="14" Text="~" Top="24" Width="9"></Static>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" Height="23" Id="cal_START_DAY" Left="368" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="2" ToolTipText="입금&#32;시작일" Top="21" Width="89"></Calendar>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="294" TabOrder="16" TabStop="FALSE" Top="56" Width="11"></Image>
+		<Static Height="16" Id="Static2" Left="312" Style="tx_left_bold" TabOrder="21" Text="입금자명" Top="56" Width="87"></Static>
+		<Combo CodeColumn="CODE_CD" Color="user12" DataColumn="CODE_NM" Enable="FALSE" Height="21" Id="cob_REPT_GBN" ImeMode="none" InnerDataset="ds_REPT_GBN" Left="640" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="8" TabStop="FALSE" Top="24" Visible="FALSE" Width="108"></Combo>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Search" ImageID="C_btn_70" Left="656" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="9" TabStop="FALSE" Text="조회" Top="21" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="656" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="10" TabStop="FALSE" Text="닫기" Top="48" TopMargin="1" Width="71"></Button>
+		<Combo CodeColumn="code" DataColumn="value" Enable="FALSE" Height="21" Id="cob_DISTR_GBN" InnerDataset="ds_DISTR_GBN" Left="528" TabOrder="7" Top="48" Width="96"></Combo>
+		<Edit Border="Flat" BorderColor="user10" Height="23" Id="edt_REPTPRES" ImeMode="native" Left="368" LeftMargin="2" MaxLength="20" OnKeyDown="edt_REPTPRES_OnKeyDown" Style="edit" TabOrder="6" Top="48" Width="154"></Edit>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_ReptList" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="464" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="376" Id="grd_ReptList" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_UpsoList_OnCellDblClick" Right="768" RowHeight="20" Style="grid" TabOrder="22" TabStop="FALSE" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="752">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="75"/>
+						<col width="70"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="150"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="입금일자"/>
+						<cell col="1" color="user12" display="text" text="입금번호"/>
+						<cell col="2" color="user12" display="text" text="입금자명"/>
+						<cell col="3" color="user12" display="text" text="입금금액"/>
+						<cell col="4" color="user12" display="text" text="수수료"/>
+						<cell col="5" color="user12" display="text" text="영수일자"/>
+						<cell col="6" color="user12" display="text" text="업소코드"/>
+						<cell col="7" color="user12" display="text" text="업소명"/>
+						<cell col="8" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="REPT_DAY" display="date" Mask="yyyy/MM/dd"/>
+						<cell align="center" col="1" colid="REPT_NUM" display="text"/>
+						<cell col="2" colid="REPTPRES" display="text"/>
+						<cell col="3" colid="REPT_AMT" display="number"/>
+						<cell col="4" colid="COMIS" display="number"/>
+						<cell col="5" colid="RECV_DAY" display="date"/>
+						<cell align="center" col="6" colid="UPSO_CD" display="text"/>
+						<cell col="7" colid="UPSO_NM" display="text"/>
+						<cell col="8" colid="REMAK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+ 
+
+function form_OnLoadCompleted(obj)
+{
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+
+	// 입금구분 가져오기
+	gfn_PubCode("ds_REPT_GBN", 1, "00141", "A");
+
+	if (length(BRAN_CD) > 0) {
+		this.cob_BRAN_CD.Value = BRAN_CD;
+		this.ds_ReptListIn.SetColumn(0, "BRAN_CD" , this.cob_BRAN_CD.Value  );
+		this.ds_ReptListIn.SetColumn(0, "USE_TYPE", gfn_GetAccountUsage(REPT_GBN));
+		this.ds_ReptListIn.SetColumn(0, "ALL_TYPE", "1");
+		gfn_syncCall("find_account","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=accn_num_select","S=ds_ReptListIn","ds_bankList=SEL1","","fn_CallBack");
+		
+		if (this.ds_bankList.rowcount == 1) {
+			this.cob_ACCN_NUM.Index = 0;
+		}
+	}
+
+	if ( length(REPT_GBN)  > 0 ) this.cob_REPT_GBN.Value  = REPT_GBN;
+	if ( length(DISTR_GBN) > 0 ) this.cob_DISTR_GBN.Value = DISTR_GBN;
+
+	// 일자설정
+	this.cal_START_DAY.Value = today();
+	this.cal_END_DAY.Value = today();
+
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) 
+	{
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function btn_Search_OnClick(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_ReptListIn.SetColumn(0, "BRAN_CD"   , this.cob_BRAN_CD.Value  );
+	this.ds_ReptListIn.SetColumn(0, "START_DAY" , this.cal_START_DAY.Value);
+	this.ds_ReptListIn.SetColumn(0, "END_DAY"   , this.cal_END_DAY.Value  );
+	this.ds_ReptListIn.SetColumn(0, "ACCN_NUM"  , this.cob_ACCN_NUM.Value );
+	this.ds_ReptListIn.SetColumn(0, "REPT_GBN"  , this.cob_REPT_GBN.Value );
+	this.ds_ReptListIn.SetColumn(0, "DISTR_GBN" , this.cob_DISTR_GBN.Value);
+	this.ds_ReptListIn.SetColumn(0, "REPTPRES"  , this.edt_REPTPRES.Text  );
+
+	gfn_syncCall("REPT_LIST","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=rept_list","S=ds_ReptListIn","ds_ReptList=MRG6","","fn_CallBack");
+}
+
+function btn_Close_OnClick(obj)
+{
+	var UPSO_NM = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "UPSO_NM");
+	var DISTR_GBN = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "DISTR_GBN");
+	if (length(DISTR_GBN) > 0 || (length(DISTR_GBN) == 0 && length(UPSO_NM) == 0)) {
+		var REPT_DAY  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_DAY");
+		var REPT_NUM  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_NUM");
+		var REPT_GBN  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_GBN");
+		var REPT_BRAN = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "BRAN_CD");
+		var BANK_CD   = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "BANK_CD");
+		var ACCN_NUM  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "ACCN_NUM");
+		var REPT_AMT  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_AMT");
+		var RECV_DAY  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "RECV_DAY");
+		var DISTR_SEQ = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "DISTR_SEQ");
+	
+		close(REPT_DAY + "," + REPT_NUM + "," + REPT_GBN + "," + REPT_BRAN + "," + BANK_CD + "," + ACCN_NUM + "," + REPT_AMT + "," + RECV_DAY + "," + DISTR_GBN + "," + DISTR_SEQ);
+	}
+	else {
+        gfn_Confirm("MB_OK", "업소가 매핑된 입금정보입니다.", "경고", "0");
+	}
+}
+
+function grd_UpsoList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var UPSO_NM = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "UPSO_NM");
+	var DISTR_GBN = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "DISTR_GBN");
+	if (length(DISTR_GBN) > 0 || (length(DISTR_GBN) == 0 && length(UPSO_NM) == 0)) {
+		var REPT_DAY  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_DAY");
+		var REPT_NUM  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_NUM");
+		var REPT_GBN  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_GBN");
+		var REPT_BRAN = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "BRAN_CD");
+		var BANK_CD   = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "BANK_CD");
+		var ACCN_NUM  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "ACCN_NUM");
+		var REPT_AMT  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "REPT_AMT");
+		var RECV_DAY  = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "RECV_DAY");
+		var DISTR_SEQ = this.ds_ReptList.GetColumn(this.ds_ReptList.currow, "DISTR_SEQ");
+	
+		close(REPT_DAY + "," + REPT_NUM + "," + REPT_GBN + "," + REPT_BRAN + "," + BANK_CD + "," + ACCN_NUM + "," + REPT_AMT + "," + RECV_DAY + "," + DISTR_GBN + "," + DISTR_SEQ);
+	}
+	else {
+        gfn_Confirm("MB_OK", "업소가 매핑된 입금정보입니다.", "경고", "0");
+	}
+}
+
+function edt_REPTPRES_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == '13') {
+		btn_Search_OnClick(obj);
+	}
+}
+]]></Script>
+</Window>

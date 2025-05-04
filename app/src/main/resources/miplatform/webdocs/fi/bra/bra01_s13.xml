@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업소출장등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_btrip" LastLoadDataOnly="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" type="STRING"/>
+					<colinfo id="BTRIP_DAY" size="256" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" type="STRING"/>
+					<colinfo id="GBN" size="256" type="STRING"/>
+					<colinfo id="GBN_NM" size="256" type="STRING"/>
+					<colinfo id="TOTAL_FEE" size="256" type="STRING"/>
+					<colinfo id="BTRIP_STAFF_NM" size="256" type="STRING"/>
+					<colinfo id="BTRIP_PROVCITY_NM" size="256" type="STRING"/>
+					<colinfo id="BTRIP_USE_TIME" size="256" type="STRING"/>
+					<colinfo id="BTRIP_USE_KILO" size="256" type="STRING"/>
+					<colinfo id="CHIT_CD" size="256" type="STRING"/>
+					<colinfo id="CHIT_SEQ" size="256" type="STRING"/>
+					<colinfo id="CHIT_GBN" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD></CODE_CD>
+						<CODE_NM>전체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>업소출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>고소출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>동행출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>단체출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>5</CODE_CD>
+						<CODE_NM>교육출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>6</CODE_CD>
+						<CODE_NM>무대공연출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>7</CODE_CD>
+						<CODE_NM>로고송출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>8</CODE_CD>
+						<CODE_NM>기타출장</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search_detail">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_detail">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL_FEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_PROVCITY_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_START_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_USE_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTRIP_USE_KILO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHIT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHIT_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_TEMPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_ROUT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo_search">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_nomatch_chit">
+				<Contents>
+					<colinfo id="CHIT_CD" size="256" type="STRING"/>
+					<colinfo id="CHIT_SEQ" size="256" type="STRING"/>
+					<colinfo id="SYNOP" size="256" type="STRING"/>
+					<colinfo id="DR_AMT" size="256" type="STRING"/>
+					<colinfo id="MNG_ITEM_CD" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="1" TabStop="FALSE" Top="8" Width="1000"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="9" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1016" TabOrder="3" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="40" TabOrder="1" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="51" Style="tx_left_bold" TabOrder="6" Text="센터명" Top="24" Width="40"></Static>
+		<Combo BKColor="user13" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" Left="96" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="4" ToolTipText="센터명" Top="16" Width="100"></Combo>
+		<Grid BindDataset="ds_btrip" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" BorderColor="user3" Bottom="320" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="232" Id="grd_btrip" InputPanel="FALSE" Left="16" LineColor="default" OnCellDBLClick="grd_btrip_OnCellDblClick" OnHeadClick="grd_btrip_OnHeadClick" Right="1014" RowHeight="20" Style="grid" SuppressSameLevel="Skip" TabOrder="13" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="998">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="65"/>
+						<col width="120"/>
+						<col width="160"/>
+						<col width="65"/>
+						<col width="90"/>
+						<col width="100"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="등록일자"/>
+						<cell col="1" color="user12" display="text" text="출장일자"/>
+						<cell col="2" color="user12" display="text" text="담당자"/>
+						<cell col="3" color="user12" display="text" text="출장구분"/>
+						<cell col="4" color="user12" display="text" text="출장금액"/>
+						<cell col="5" color="user12" display="text" text="출장자"/>
+						<cell col="6" color="user12" display="text" text="출장지역"/>
+						<cell col="7" color="user12" display="text" text="소요시간"/>
+						<cell col="8" color="user12" display="text" text="출장거리(Km)"/>
+						<cell col="9" color="user12" display="text" text="회계발의번호"/>
+						<cell col="10" color="user12" display="text" text="전표상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="INS_DATE" display="text" edit="normal"/>
+						<cell align="center" col="1" colid="BTRIP_DAY" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="STAFF_NM" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="GBN_NM" display="text" edit="normal"/>
+						<cell align="right" col="4" colid="TOTAL_FEE" display="number" edit="number"/>
+						<cell align="left" col="5" colid="BTRIP_STAFF_NM" display="text" edit="normal"/>
+						<cell align="left" col="6" colid="BTRIP_PROVCITY_NM" display="text" edit="normal"/>
+						<cell align="center" col="7" colid="BTRIP_USE_TIME" display="text" edit="normal"/>
+						<cell align="center" col="8" colid="BTRIP_USE_KILO" display="text" edit="normal"/>
+						<cell align="center" col="9" colid="CHIT_CD" display="text" edit="normal"/>
+						<cell align="left" col="10" colid="CHIT_GBN" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="374" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1028" TabOrder="15" Top="371" Type="Rectangle" Width="1020"></Shape>
+		<Shape BKColor="white" Bottom="400" Height="26" Id="Shape5" Left="8" LineColor="user3" Right="1028" TabOrder="16" Top="374" Type="Rectangle" Width="1020"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static9" Left="8" Style="box_tx" TabOrder="17" Text="등록일자" Top="374" VAlign="Middle" Width="150"></Static>
+		<Shape BKColor="white" Bottom="425" Height="26" Id="Shape6" Left="8" LineColor="user3" Right="1028" TabOrder="18" Top="399" Type="Rectangle" Width="1020"></Shape>
+		<Shape BKColor="white" Bottom="450" Height="26" Id="Shape7" Left="8" LineColor="user3" Right="1028" TabOrder="19" Top="424" Type="Rectangle" Width="1020"></Shape>
+		<Shape BKColor="white" Bottom="475" Height="26" Id="Shape8" Left="8" LineColor="user3" Right="1028" TabOrder="20" Top="449" Type="Rectangle" Width="1020"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="stat_bank_nm" Left="8" Style="box_tx" TabOrder="21" Text="출장구분" Top="399" VAlign="Middle" Width="150"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static6" Left="352" Style="box_tx" TabOrder="22" Text="출장자" Top="424" VAlign="Middle" Width="150"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static7" Left="352" Style="box_tx" TabOrder="23" Text="계좌번호" Top="399" VAlign="Middle" Width="150"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static8" Left="352" Style="box_tx" TabOrder="31" Text="출장일자" Top="374" VAlign="Middle" Width="150"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static10" Left="8" Style="box_tx" TabOrder="32" Text="출장시작시간" Top="449" VAlign="Middle" Width="150"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static12" Left="352" Style="box_tx" TabOrder="38" Text="출장소요시간" Top="449" VAlign="Middle" Width="150"></Static>
+		<Edit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="BTRIP_STAFF_NM" Enable="FALSE" Height="20" Id="element_8" Left="712" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="30" ToolTipText="출장차" Top="428" Width="220"></Edit>
+		<Shape BKColor="user7" Bottom="528" Height="3" Id="Shape11" Left="8" LineColor="user7" Right="1028" TabOrder="39" Top="525" Type="Rectangle" Width="1020"></Shape>
+		<Static Color="user1" Height="11" Id="Static23" Left="54" Style="tx_bold" TabOrder="41" Text="출장정보&#32;이력" Top="69" Width="200"></Static>
+		<Image Height="17" Id="Image4" ImageID="C_icon2" Left="30" TabOrder="40" TabStop="FALSE" Top="66" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static24" Left="55" Style="tx_bold" TabOrder="43" Text="출장내역&#32;등록&#32;(출장일자,&#32;담당자,&#32;출장구분이&#32;같은&#32;두&#32;개의&#32;출장내역은&#32;등록하실&#32;수&#32;없습니다.)" Top="341" Width="600"></Static>
+		<Image Height="17" Id="Image5" ImageID="C_icon2" Left="30" TabOrder="42" TabStop="FALSE" Top="338" Width="18"></Image>
+		<Calendar BindDataset="ds_detail" BKColor="user13" Border="Flat" BorderColor="user10" Column="BTRIP_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" Font="굴림,9" Height="20" Id="element_2" Left="512" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="25" ToolTipText="출장일자" Top="377" Value="TODAY" Width="114"></Calendar>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static27" Left="680" Style="box_tx" TabOrder="44" Text="담당자" Top="374" VAlign="Middle" Width="150"></Static>
+		<MaskEdit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="BTRIP_START_TIME" DisplayComma="FALSE" Height="20" Id="element_9" Left="168" Mask="##:##:##" TabOrder="33" TabStop="FALSE" ToolTipText="출장시간s" Top="452" Type="STRING" Width="114"></MaskEdit>
+		<FileDialog Bottom="668" Height="24" Id="FileDialog0" Left="984" Right="1008" TabOrder="93" Top="644" Width="24"></FileDialog>
+		<File Bottom="668" Height="24" Id="File0" Left="1016" Right="1040" TabOrder="94" Top="644" Width="24"></File>
+		<Shape BKColor="white" Bottom="500" Height="26" Id="Shape9" Left="8" LineColor="user3" Right="1028" TabOrder="45" Top="474" Type="Rectangle" Width="1020"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static13" Left="8" Style="box_tx" TabOrder="46" Text="출장경로첨부" Top="474" VAlign="Middle" Width="150"></Static>
+		<Edit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="FILE_TEMPNM" Enable="FALSE" Height="20" Id="element_13" ImeMode="none" Left="168" MaxLength="5" Style="edit" TabOrder="35" TabStop="FALSE" ToolTipText="출장경로첨부" Top="477" Width="459"></Edit>
+		<Image Cursor="HAND" Height="18" Id="btnFileSch" ImageID="C_s_img" Left="633" OnClick="file_search_Onclick" Static="FALSE" TabOrder="36" Top="478" Width="18"></Image>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="stat_expire_day" Left="8" Style="box_tx" TabOrder="47" Text="출장지역" Top="424" VAlign="Middle" Width="150"></Static>
+		<Combo BindDataset="ds_detail" BKColor="user13" CodeColumn="CODE_CD" Color="black" Column="GBN" DataColumn="CODE_NM" Editable="TRUE" Height="21" Id="element_4" ImeMode="none" InnerDataset="ds_code_gbn" Left="168" TabOrder="27" ToolTipText="출장구분" Top="401" Width="114"></Combo>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="stat_accn_num" Left="352" Style="box_tx" TabOrder="48" Text="회계전표정보" Top="399" VAlign="Middle" Width="150"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="239" TabOrder="0" Top="24" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="256" Style="tx_left_bold" TabOrder="49" Text="조회기간" Top="24" Width="56"></Static>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" Height="20" Id="cal_StartDate" Left="318" LeftMargin="9" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="5" ToolTipText="조회기간&#32;시작" Top="20" Value="19990101" Width="104"></Calendar>
+		<Static Height="20" Id="Static0" Left="426" TabOrder="50" Text="~" Top="25" Width="14"></Static>
+		<Calendar BKColor="user13" Dateformat="yyyy/MM/dd" Height="20" Id="cal_EndDate" Left="440" LeftMargin="9" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="6" ToolTipText="조회기간&#32;종료" Top="20" Value="TODAY" Width="104"></Calendar>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="614" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="627" Style="tx_left_bold" TabOrder="51" Text="출장구분" Top="24" Width="50"></Static>
+		<Combo CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_gbn" InnerDataset="ds_code_gbn" Left="688" TabOrder="7" ToolTipText="센터명" Top="16" Width="100"></Combo>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="816" TabOrder="2" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="827" Style="tx_left_bold" TabOrder="52" Text="사원명" Top="24" Width="50"></Static>
+		<Combo CodeColumn="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" InnerDataset="ds_SawonInfo_search" Left="871" TabOrder="8" ToolTipText="센터명" Top="16" Width="100"></Combo>
+		<Calendar BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="INS_DATE" Dateformat="yyyy/MM/dd" DayStyle="edit" Enable="FALSE" Font="굴림,9" Height="20" Id="element_1" Left="168" LeftMargin="10" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="24" ToolTipText="등록일자" Top="377" Value="TODAY" Width="114"></Calendar>
+		<Combo BindDataset="ds_detail" BKColor="user13" CodeColumn="STAFF_CD" Column="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="element_3" InnerDataset="ds_SawonInfo_search" Left="841" TabOrder="26" ToolTipText="담당자" Top="376" Width="100"></Combo>
+		<Combo CodeColumn="STAFF_CD" DataColumn="STAFF_NM" Editable="TRUE" Height="20" Id="element_7" InnerDataset="ds_SawonInfo" Left="512" TabOrder="29" ToolTipText="출장자선택" Top="427" Width="114"></Combo>
+		<Shape BKColor="white" Bottom="525" Height="26" Id="Shape1" Left="8" LineColor="user3" Right="1028" TabOrder="53" Top="499" Type="Rectangle" Width="1020"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static3" Left="8" Style="box_tx" TabOrder="54" Text="비고" Top="499" VAlign="Middle" Width="150"></Static>
+		<Edit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="BIGO" Height="20" Id="element_14" Left="168" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="37" ToolTipText="비고" Top="502" Width="459"></Edit>
+		<MaskEdit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="BTRIP_USE_TIME" DisplayComma="FALSE" Height="20" Id="element_10" Left="513" Mask="##:##:##" TabOrder="34" TabStop="FALSE" ToolTipText="출장시간e" Top="452" Type="STRING" Width="114"></MaskEdit>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_add" ImageID="C_btn_70" Left="631" OnClick="btn_add_OnClick" TabOrder="55" Text="추가" Top="427" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="22" Id="Button0" ImageID="C_btn_90" Left="935" OnClick="Button0_OnClick" TabOrder="56" Text="&#32;&#32;모두삭제" Top="427" Width="91"></Button>
+		<Edit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="BTRIP_PROVCITY_NM" Height="20" Id="element_6" ImeMode="none" Left="168" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="28" ToolTipText="비고" Top="428" Width="175"></Edit>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_file_download" ImageID="C_btn_90" Left="672" OnClick="btn_file_download_OnClick" TabOrder="57" Text="&#32;&#32;다운로드" Top="476" Width="91"></Button>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_file_view" ImageID="C_btn_70" Left="767" OnClick="btn_file_view_OnClick" TabOrder="58" Text="보기" Top="477" Width="71"></Button>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static15" Left="680" Style="box_tx" TabOrder="60" Text="출장금액" Top="399" VAlign="Middle" Width="150"></Static>
+		<MaskEdit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="TOTAL_FEE" Enable="FALSE" Height="20" Id="edt_total_fee" Left="840" TabOrder="59" TabStop="FALSE" ToolTipText="출장금액" Top="402" Width="114"></MaskEdit>
+		<Static Height="20" Id="Static16" Left="629" TabOrder="61" Text="-" Top="407" Width="14"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static11" Left="680" Style="box_tx" TabOrder="63" Text="총출장거리(Km)" Top="449" VAlign="Middle" Width="150"></Static>
+		<MaskEdit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="BTRIP_USE_KILO" DisplayComma="FALSE" Height="20" Id="MaskEdit2" Left="840" Mask="##" TabOrder="62" TabStop="FALSE" ToolTipText="출장거리s" Top="452" Width="114"></MaskEdit>
+		<Edit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="CHIT_CD" Enable="FALSE" Height="20" Id="edt_chit_cd" ImeMode="none" Left="512" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="64" ToolTipText="비고" Top="402" Width="110"></Edit>
+		<Edit BindDataset="ds_detail" Border="Flat" BorderColor="user10" Column="CHIT_SEQ" Enable="FALSE" Height="20" Id="edt_chit_seq" ImeMode="none" Left="640" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="65" ToolTipText="비고" Top="402" Width="30"></Edit>
+		<Grid BindDataset="ds_nomatch_chit" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" BorderColor="user3" Bottom="780" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="224" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="default" OnCellDBLClick="Grid0_OnCellDblClick" Right="696" RowHeight="20" Style="grid" SuppressSameLevel="Skip" TabOrder="66" TabStop="true" Top="556" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="688">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="84"/>
+						<col width="65"/>
+						<col width="380"/>
+						<col width="65"/>
+						<col width="65"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="전표발의번호"/>
+						<cell col="1" color="user12" display="text" text="순번"/>
+						<cell col="2" color="user12" display="text" text="적요"/>
+						<cell col="3" color="user12" display="text" text="금액"/>
+						<cell col="4" color="user12" display="text" text="담당사원"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CHIT_CD" display="text" edit="normal"/>
+						<cell align="center" col="1" colid="CHIT_SEQ" display="text" edit="normal"/>
+						<cell align="left" col="2" colid="SYNOP" display="text" edit="normal"/>
+						<cell col="3" colid="DR_AMT" display="text" edit="normal"/>
+						<cell align="center" col="4" colid="MNG_ITEM_CD" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="17" Id="Image3" ImageID="C_icon2" Left="30" TabOrder="67" TabStop="FALSE" Top="537" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static14" Left="55" Style="tx_bold" TabOrder="68" Text="출장내역으로&#32;등록안한&#32;전표" Top="540" Width="200"></Static>
+		<Static Color="user1" Height="11" Id="Static17" Left="55" Style="tx_bold" TabOrder="69" Text="등록&#32;시&#32;무결성제성약조건이라는&#32;메세지는&#32;출장일자,&#32;담당자,&#32;출장구분이&#32;같은&#32;출장정보가&#32;이미&#32;있는경우니,&#32;먼저&#32;등록한&#32;출장정보와&#32;회계전표를&#32;확인하십시오." Top="355" Width="950"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"
+
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	cob_BRAN_CD_OnChanged(null, this.cob_BRAN_CD.Value, null, null);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	/*this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	var iRow = ds_SawonInfo.InsertRow(0);	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+	this.cob_Staff_Nm.Value = "";
+	this.cob_gbn.Value = "";*/
+	
+	this.cal_StartDate.Value 	= left( AddMonth( Getdate(),-1) , 8 );
+	this.cal_endDate.Value 	= left( Getdate() , 8 );	
+}
+
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		this.grd_btrip.ExportExcelEx("업소출장목록");
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);	//에러 공통 팝업
+	}
+}
+
+function fn_New() 
+{
+	fn_Search();
+	
+	this.dsUploadFile.ClearData();
+	this.ds_detail.ClearData();
+	this.ds_detail.AddRow();
+	
+	this.ds_detail.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.value);
+	this.element_1.Value = today();
+	this.element_7.value = "";
+	
+	set_form_enable(true);
+	
+}
+
+function fn_Search() 
+{
+	// 입력 필수 항목 검사;
+	if (this.cob_BRAN_CD.value == null) {
+		alert("센터명을 선택하여 주시오.");
+		return;
+	}
+	
+	this.ds_detail.ClearData();
+	this.ds_nomatch_chit.ClearData();
+	this.ds_search.ClearData();
+	this.ds_search.AddRow();
+	this.ds_search.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	this.ds_search.SetColumn(0,"START_YRMN", this.cal_StartDate.value);
+	this.ds_search.SetColumn(0,"END_YRMN", this.cal_EndDate.value);
+	this.ds_search.SetColumn(0,"GBN", this.cob_gbn.value);
+	this.ds_search.SetColumn(0,"STAFF_CD", this.cob_Staff_Nm.value);
+	
+	trace(this.ds_search.SaveXML());
+	gfn_syncCall("BTRAP_LIST","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004013&EVENTID=btrip_list","S=ds_search","ds_btrip=SEL1 ds_nomatch_chit=SEL4","","fn_CallBack");
+	trace(this.ds_btrip.SaveXML());
+}
+
+
+function fn_Save() 
+{
+	if (!gfn_CheckFormNull(this)) return;
+
+	if(!confirm("저장하시겠습니까?")){
+	    return;
+	}
+	
+	if (this.edt_chit_cd.Text == "" || this.edt_chit_seq.Text == "" || this.edt_total_fee.Text == "") {
+		alert("목록의 회계발의번호를 선택하여 전표정보와 출장금액을 입력해주세요");
+		return;
+	}
+	//trace(this.ds_detail.SaveXML());
+	gfn_syncCall("SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004013&EVENTID=btrip_save","S=ds_detail:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	
+	if (dsUploadFile.rowcount == 1) {
+		gfn_syncCall("FILE_SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004013&EVENTID=btrip_file_save","S=ds_detail S1=dsUploadFile","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	}
+	fn_Search();
+}
+
+function fn_Delete()
+{
+	if (this.ds_detail.rowcount == 1) {
+		this.ds_detail.DeleteRow(0);
+		gfn_syncCall("SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004013&EVENTID=btrip_save","S=ds_detail:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+		fn_Search();
+	} else {
+		alert("삭제할 대상이 없습니다.");
+	}
+	
+}
+
+
+function file_search_Onclick(obj,nX,nY)
+{
+	gfn_fileUpSelect(5000000,File0,FileDialog0,"setFileUploadData","","ds_boarddataset");
+	gfn_fileUpLoad("dsUploadFile","tr_result","ds_boarddataset");
+}
+
+
+
+function tr_result(serid,errid,errmsg){	if(serid == "fileup")	{
+		var str_nm = dsUploadFile.getcolumn(0,"UPFILENAME");
+		var str_ext =substr(str_nm, length(str_nm)-3);
+
+		if (str_ext == "jpg" || str_ext == "JPG" || str_ext == "bmp" || str_ext == "BMP" || str_ext == "gif" || str_ext == "GIF" || str_ext == "pdf" || str_ext == "PDF" || str_ext == "png" || str_ext == "PNG" ) {
+			this.element_13.Text = str_nm;
+		} else if (length(str_nm) != 0){
+			alert("확장자가 jpg, bmp, gif, pdf, png인 이미지만 업로드할 수 있습니다.");
+			dsUploadFile.ClearData();
+		}
+	}}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);		this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	
+	if (gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100") {		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+		
+		var iRow = ds_SawonInfo.InsertRow(0);		ds_SawonInfo.SetColumn(iRow,"STAFF_CD","");		ds_SawonInfo.SetColumn(iRow,"STAFF_NM","");
+		this.cob_Staff_Nm.Value = "";		this.cob_Staff_Nm.Enable = true;
+		
+		this.ds_SawonInfo_search.Copy("ds_SawonInfo");
+	} else {
+		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+		
+		var iRow = ds_SawonInfo.InsertRow(0);		ds_SawonInfo.SetColumn(iRow,"STAFF_CD","");		ds_SawonInfo.SetColumn(iRow,"STAFF_NM","");
+		this.cob_Staff_Nm.Value = "";		this.cob_Staff_Nm.Enable = true;
+		
+		this.ds_SawonInfo_search.ClearData();
+		var iRow = ds_SawonInfo_search.InsertRow(0);		ds_SawonInfo_search.SetColumn(iRow,"STAFF_CD", gds_sessioninfo.GetColumn(0, "USER_ID"));		ds_SawonInfo_search.SetColumn(iRow,"STAFF_NM", gv_USER_NM);
+		this.cob_Staff_Nm.Value = gv_USER_NM;		this.cob_Staff_Nm.Enable = true;
+		
+	}
+}
+
+
+function grd_btrip_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+	this.ds_search_detail.ClearData();
+	this.ds_search_detail.AddRow();
+	
+	this.ds_search_detail.SetColumn(0,"BRAN_CD",   this.ds_btrip.GetColumn(nRow, "BRAN_CD"));
+	this.ds_search_detail.SetColumn(0,"BTRIP_DAY", this.ds_btrip.GetColumn(nRow, "BTRIP_DAY"));
+	this.ds_search_detail.SetColumn(0,"STAFF_CD",  this.ds_btrip.GetColumn(nRow, "STAFF_CD"));
+	this.ds_search_detail.SetColumn(0,"GBN", this.ds_btrip.GetColumn(nRow, "GBN"));
+	
+	gfn_syncCall("SEARCH_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004013&EVENTID=btrip_detail","S=ds_search_detail","ds_detail=SEL1","","fn_CallBack");
+	set_form_enable(false);
+}
+
+function grd_btrip_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+function btn_add_OnClick(obj)
+{
+	this.element_8.Text += this.element_7.Text + ", ";
+}
+
+function Button0_OnClick(obj)
+{
+	this.element_8.Text = "";
+}
+
+
+function set_form_enable( value )
+{
+	this.element_2.Enable = value;	//출장일자
+	this.element_3.Enable = value;	//담당자
+	this.element_4.Enable = value;	//출장구분
+}
+
+function btn_file_download_OnClick(obj)
+{
+	if (this.ds_detail.rowcount==1)
+	{
+		var rout = ds_detail.GetColumn( 0, "FILE_ROUT" );
+		var file = ds_detail.GetColumn( 0, "FILE_TEMPNM" ); 
+		gfn_fileDownLoad( rout , file , File0 , FileDialog0 );
+	}
+}
+
+function btn_file_view_OnClick(obj)
+{
+	if (this.ds_detail.rowcount==1)
+	{
+		var rout = ds_detail.GetColumn( 0, "FILE_ROUT" );
+		var file = ds_detail.GetColumn( 0, "FILE_TEMPNM" ); 
+		
+		ExecBrowser("http://112.175.137.147/upload/"+file);
+		ExecBrowser("http://112.175.137.148/upload/"+file);
+	}
+}
+
+
+function Grid0_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	this.ds_detail.SetColumn(0, "CHIT_CD", 	this.ds_nomatch_chit.GetColumn(nRow, "CHIT_CD"));
+	this.ds_detail.SetColumn(0, "CHIT_SEQ",	this.ds_nomatch_chit.GetColumn(nRow, "CHIT_SEQ"));
+	this.ds_detail.SetColumn(0, "TOTAL_FEE",this.ds_nomatch_chit.GetColumn(nRow, "DR_AMT"));
+	this.ds_detail.SetColumn(0, "STAFF_CD",	this.ds_nomatch_chit.GetColumn(nRow, "MNG_ITEM_CD"));
+	
+}
+]]></Script>
+</Window>

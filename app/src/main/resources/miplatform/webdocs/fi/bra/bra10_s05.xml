@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="lev06_r01" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="신규업소&#32;성과급산출&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_IN">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_NEW_BONUS_CALL">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO_TOTAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_UPSO_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BindDataset="DS_NEW_BONUS_CALL" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="601" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="537" Id="grd_DS_NEW_BONUS_CALL" InputPanel="FALSE" Left="8" LineColor="silver" Right="705" RowHeight="20" Style="grid" TabOrder="16" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="697">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="110"/>
+						<col width="110"/>
+						<col width="110"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터코드/명"/>
+						<cell col="1" color="user12" display="text" text="센터명"/>
+						<cell col="2" color="user12" display="text" text="사원코드"/>
+						<cell col="3" color="user12" display="text" text="사원명"/>
+						<cell col="4" color="user12" display="text" text="신규개발&#32;업소수"/>
+						<cell col="5" color="user12" display="text" text="신규개발&#32;총금액"/>
+						<cell col="6" color="user12" display="text" text="신규개발급"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_CD" display="text"/>
+						<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="2" colid="STAFF_CD" display="text"/>
+						<cell align="center" col="3" colid="STAFF_NM" display="text"/>
+						<cell align="right" col="4" colid="NEW_UPSO_CNT" display="numberexp" Mask="###,###"/>
+						<cell align="right" col="5" colid="NEW_UPSO_TOTAMT" display="numberexp" Mask="###,###"/>
+						<cell align="right" col="6" colid="NEW_UPSO_AMT" display="numberexp" Mask="###,###"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell align="right" col="4" display="numberexp" expr='sum(&quot;NEW_UPSO_CNT&quot;)'/>
+						<cell align="right" col="5" display="numberexp" expr='sum(&quot;NEW_UPSO_TOTAMT&quot;)'/>
+						<cell align="right" col="6" display="numberexp" expr='sum(&quot;NEW_UPSO_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="17" TabOrder="2" TabStop="FALSE" Top="11" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="7" TabOrder="2" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Combo BindDataset="ds_IN" Column="BRAN_CD" Height="21" Id="cob_BRAN_CD" Left="104" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="6" Top="22" Width="109"></Combo>
+		<Static Height="15" Id="Static1" Left="48" Style="tx_left_bold" TabOrder="5" Text="센터명" Top="26" Width="49"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="4" TabStop="FALSE" Top="26" Width="12"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="235" TabOrder="7" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Static Height="15" Id="Static0" Left="253" Style="tx_left_bold" TabOrder="8" Text="&#32;년&#32;월" Top="27" Width="49"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="21" Id="cal_Month" Left="305" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="9" ToolTipText="년&#32;월" Top="22" Width="102"></Calendar>
+		<Static Height="15" Id="Static2" Left="445" Style="tx_left_bold" TabOrder="11" Text="요&#32;율" Top="27" Width="49"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="427" TabOrder="10" TabStop="FALSE" Top="27" Width="12"></Image>
+		<Edit BindDataset="ds_IN" Column="RATE" Height="21" Id="edt_RATE" Left="490" MaxLength="3" Number="TRUE" OnKillFocus="edt_RATE_OnKillFocus" TabOrder="12" Top="22" Width="49"></Edit>
+		<Static Height="13" Id="Static3" Left="541" TabOrder="13" Text="(%)" Top="27" Width="40"></Static>
+		<Button ButtonStyle="TRUE" DefaultButton="TRUE" EscapeButton="TRUE" Height="21" Id="btn_Search" ImageID="C_btn_110" Left="576" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="14" Text="성과급산출" Top="22" TopMargin="1" Transparent="TRUE" Width="112"></Button>
+		<Grid BindDataset="DS_NEW_BONUS_CALL" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="601" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="537" Id="grd_DS_NEW_BONUS_CALL_1" InputPanel="FALSE" Left="8" LineColor="silver" Right="784" RowHeight="20" Style="grid" TabOrder="15" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="776">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="110"/>
+						<col width="110"/>
+						<col width="110"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터코드/명"/>
+						<cell col="1" color="user12" display="text" text="센터명"/>
+						<cell col="2" color="user12" display="text" text="사원코드"/>
+						<cell col="3" color="user12" display="text" text="사원명"/>
+						<cell col="4" color="user12" display="text" text="신규개발&#32;업소수"/>
+						<cell col="5" color="user12" display="text" text="신규개발&#32;총금액"/>
+						<cell col="6" color="user12" display="text" text="신규개발급"/>
+						<cell col="7" color="user12" display="text" text="요율"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_CD" display="text"/>
+						<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="2" colid="STAFF_CD" display="text"/>
+						<cell align="center" col="3" colid="STAFF_NM" display="text"/>
+						<cell align="right" col="4" colid="NEW_UPSO_CNT" display="numberexp"/>
+						<cell align="right" col="5" colid="NEW_UPSO_TOTAMT" display="numberexp"/>
+						<cell align="right" col="6" colid="NEW_UPSO_AMT" display="numberexp"/>
+						<cell align="center" col="7" colid="rate" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell align="right" col="4" display="numberexp" expr='sum(&quot;NEW_UPSO_CNT&quot;)'/>
+						<cell align="right" col="5" display="numberexp" expr='sum(&quot;NEW_UPSO_TOTAMT&quot;)'/>
+						<cell align="right" col="6" display="numberexp" expr='sum(&quot;NEW_UPSO_AMT&quot;)'/>
+						<cell col="7" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+     if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		//this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	this.DS_IN.AddRow();
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	this.cal_Month.value = substr(today(),0,6)+ "01";
+	this.grd_DS_NEW_BONUS_CALL.Visible = true;
+	this.grd_DS_NEW_BONUS_CALL_1.Visible = false;
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+function btn_Search_OnClick(obj)
+{
+	if(this.edt_RATE.Text ==""){
+        gfn_Confirm("MB_OK", "요율을 입력해주세요.", "경고", "0");
+		return false;
+	}
+	this.DS_IN.SetColumn(0,"NEW_YRMN",substr(this.cal_Month.Value, 0, 6  ));
+	gfn_syncCall("sys_new_bonus_cal","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005001&EVENTID=new_bonus_cal","S=DS_IN","DS_NEW_BONUS_CALL=SEL1","","fn_CallBack");
+	this.grd_DS_NEW_BONUS_CALL.Visible = true;
+	this.grd_DS_NEW_BONUS_CALL_1.Visible = false;
+}
+
+
+function edt_RATE_OnKillFocus(obj)
+{
+
+	if(ToNumber(this.edt_RATE.Text) > 100 ){
+        gfn_Confirm("MB_OK", "요율은 0에서 100까지만 입력가능합니다.", "경고", "0");
+		this.edt_RATE="";
+		this.edt_RATE.SetFocus();
+	}
+}
+
+function fn_Save(){
+	if(this.DS_NEW_BONUS_CALL.RowCount() == 0){
+        gfn_Confirm("MB_OK", "먼저 성과급산출을 하세요.", "경고", "0");
+		return false;
+	}
+	this.DS_IN.SetColumn(0,"NEW_YRMN", substr(this.cal_Month.Value,0,6));
+	this.DS_NEW_BONUS_CALL.AddColumn("NEW_YRMN", 0);
+	this.DS_NEW_BONUS_CALL.AddColumn("RATE", 0);
+	
+	
+	for( var i=0; i<this.DS_NEW_BONUS_CALL.RowCount(); i++){
+		this.DS_NEW_BONUS_CALL.SetColumn(i, "NEW_YRMN", substr(this.cal_Month.Value,0,6) );
+		this.DS_NEW_BONUS_CALL.SetColumn(i, "RATE", this.edt_RATE.Text);
+	}
+	
+	
+	//trace(this.DS_IN.SaveXML());
+	//trace(this.DS_NEW_BONUS_CALL.SaveXML());
+	gfn_syncCall("sys_new_bonus_insert","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005001&EVENTID=new_bonus_insert",
+	"S=DS_NEW_BONUS_CALL:N S1=DS_IN" ,"","","fn_CallBack", gv_TraceLog, gv_formid);
+}
+
+function fn_Search(){
+	
+	if (!gfn_CheckFormNull(this)) return;
+	
+	
+	this.DS_IN.SetColumn(0,"NEW_YRMN", substr(this.cal_Month.Value,0,6));
+//trace(this.ds_In.SaveXML());
+	gfn_syncCall("sys_new_bonus_sel","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008005001&EVENTID=new_bonus_sel","S=DS_IN", "DS_NEW_BONUS_CALL=SEL1","","fn_CallBack");
+	//trace(this.DS_NEW_BONUS_CALL.SaveXML());
+	this.grd_DS_NEW_BONUS_CALL.Visible = false;
+	this.grd_DS_NEW_BONUS_CALL_1.Visible = true;
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "sys_new_bonus_insert") {
+		gfn_SetStatusMsg("저장이 완료 되었습니다.");
+	}
+}
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

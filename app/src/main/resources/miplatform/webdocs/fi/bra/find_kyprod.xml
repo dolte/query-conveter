@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="464" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="금영저작물조회" Top="8" Ver="1.0" Width="856" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In" UseClientLayout="1">
+				<Contents>
+					<colinfo id="PROD_NM" size="256" type="STRING"/>
+					<colinfo id="SINA_NM" size="256" type="STRING"/>
+					<colinfo id="JAKSAPRES_NM" size="256" type="STRING"/>
+					<colinfo id="PRDUCPRES_NM" size="256" type="STRING"/>
+					<colinfo id="PROD_CD" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_List" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" type="STRING"/>
+					<colinfo id="PROD_CD" size="256" type="STRING"/>
+					<colinfo id="PROD_NM" size="256" type="STRING"/>
+					<colinfo id="SINA_NM" size="256" type="STRING"/>
+					<colinfo id="JAKSAPRES_NM" size="256" type="STRING"/>
+					<colinfo id="PRDUCPRES_NM" size="256" type="STRING"/>
+					<colinfo id="RM_YN" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="80" Id="Image1" ImageID="C_search2_bg" Left="16" TabOrder="8" TabStop="FALSE" Top="8" Width="816"></Image>
+		<Edit Border="None" Height="21" Id="edt_SGBN" Left="640" TabOrder="11" TabStop="FALSE" Top="216" Visible="FALSE" Width="121"></Edit>
+		<Image FillType="STRETCH" Height="80" Id="Image2" ImageID="C_search2_right" Left="832" TabOrder="7" TabStop="FALSE" Top="8" Width="8"></Image>
+		<Image FillType="STRETCH" Height="80" Id="Image21" ImageID="C_search2_left" Left="8" TabOrder="7" TabStop="FALSE" Top="8" Width="8"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="25" TabOrder="7" TabStop="FALSE" Top="57" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="41" Style="tx_left_bold" TabOrder="9" Text="가수명" Top="57" Width="73"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="23" Id="edt_SINA_NM" ImeMode="native" Left="98" LeftMargin="2" MaxLength="20" OnChanged="common_OnChanged" OnKeyDown="edt_SINA_NM_OnKeyDown" Style="edit" TabOrder="2" Top="52" Width="100"></Edit>
+		<Static Color="user12" Height="11" Id="Static0" Left="40" Style="tx_left_bold" TabOrder="11" Text="저작물명" Top="28" Width="55"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="23" Id="edt_PROD_NM" ImeMode="native" Left="98" LeftMargin="2" MaxLength="100" OnChanged="common_OnChanged" OnKeyDown="edt_PROD_NM_OnKeyDown" Style="edit" TabOrder="1" Top="22" Width="494"></Edit>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="24" TabOrder="9" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Search" ImageID="C_btn_70" Left="744" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="5" TabStop="FALSE" Text="조회" Top="20" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="744" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="6" TabStop="FALSE" Text="닫기" Top="52" TopMargin="1" Width="71"></Button>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" BindDataset="ds_List" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="456" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="352" Id="ds_List" InputPanel="FALSE" Left="8" LineColor="silver" NoDataText="No&#32;Data" OnCellDBLClick="ds_List_OnCellDblClick" OnHeadClick="grd_Data_OnHeadClick" Right="840" RowHeight="20" Style="grid" TabOrder="10" TabStop="FALSE" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="832">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="312"/>
+						<col width="122"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="74"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="금영저작물코드"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="금영저작물명"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="가수명"/>
+						<cell bkcolor="user8" col="3" color="user12" display="text" text="작사가"/>
+						<cell bkcolor="user8" col="4" color="user12" display="text" text="작곡가"/>
+						<cell bkcolor="user8" col="5" color="user12" display="text" text="경음악여부"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="PROD_CD" display="text"/>
+						<cell col="1" colid="PROD_NM" display="text"/>
+						<cell col="2" colid="SINA_NM" display="text"/>
+						<cell col="3" colid="JAKSAPRES_NM" display="text"/>
+						<cell col="4" colid="PRDUCPRES_NM" display="text"/>
+						<cell align="center" col="5" colid="RM_YN" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="233" TabOrder="16" TabStop="FALSE" Top="57" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static1" Left="249" Style="tx_left_bold" TabOrder="17" Text="작사가명" Top="57" Width="73"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="23" Id="edt_JAKSAPRES_NM" ImeMode="native" Left="304" LeftMargin="2" MaxLength="20" OnChanged="common_OnChanged" OnKeyDown="edt_JAKSAPRES_NM_OnKeyDown" Style="edit" TabOrder="3" Top="52" Width="100"></Edit>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="421" TabOrder="18" TabStop="FALSE" Top="57" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="437" Style="tx_left_bold" TabOrder="19" Text="작곡가명" Top="57" Width="73"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="23" Id="edt_PRDUCPRES_NM" ImeMode="native" Left="492" LeftMargin="2" MaxLength="20" OnChanged="common_OnChanged" OnKeyDown="edt_PRDUCPRES_NM_OnKeyDown" Style="edit" TabOrder="4" Top="52" Width="100"></Edit>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function form_OnLoadCompleted(obj)
+{	
+	
+	if(length(PROD_NM) > 0){
+		this.edt_PROD_NM.Text = PROD_NM;
+	}
+
+	// 저작물코드와 명이 없으면 널로		
+	if(PROD_CD == "" and PROD_NM == "")	
+	{
+		return;
+	}
+
+	this.ds_In.AddRow();
+	this.ds_In.SetColumn(0, "PROD_CD", PROD_CD);
+	this.ds_In.SetColumn(0, "PROD_NM", PROD_NM);
+
+	if (length(PROD_NM) > 0) {
+		fn_GetProdList();	//조회함수 실행
+	}
+
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	
+	if (srvId == "find_PROD") {
+		if (this.ds_List.rowcount == 0) {
+			PROD_CD = "";
+		}
+	}
+}
+
+
+function btn_Close_OnClick(obj) { Close(); }
+
+
+function fn_GetProdList()
+{
+	this.ds_In.ClearData();
+	this.ds_In.AddRow();
+
+	this.ds_In.SetColumn(0, "PROD_CD"  , PROD_CD);
+	this.ds_In.SetColumn(0, "PROD_NM"  , this.edt_PROD_NM.Text);
+	this.ds_In.SetColumn(0, "SINA_NM"  , this.edt_SINA_NM.Text);
+	this.ds_In.SetColumn(0, "JAKSAPRES_NM"  , this.edt_JAKSAPRES_NM.Text);
+	this.ds_In.SetColumn(0, "PRDUCPRES_NM"  , this.edt_PRDUCPRES_NM.Text);
+	
+	
+	// 너무 많은 조회결과 리스트를 줄이기 위한 조건 추가 2010/03/31
+	if (edt_PROD_NM.Text == "" &&  edt_SINA_NM.Text == "" && this.edt_JAKSAPRES_NM.Text = "" && edt_PRDUCPRES_NM.Text = "")	
+	{
+		gfn_Confirm("MB_OK", "검색어를 입력해 주세요.", "경고", "0");
+		return;
+	} else if (edt_PROD_NM.Text != "" && length(edt_PROD_NM.Text) < 2) {
+		gfn_Confirm("MB_OK", "저작물 명은 두 글자 이상 입력해주세요.", "경고", "0");
+		return;
+	}else{
+		gfn_syncCall("find_PROD","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004018&EVENTID=ky_prod_popup_search","S=ds_In","ds_List=SEL1","","fn_CallBack");
+		trace(ds_List.SaveXML());
+    }				
+    
+}
+
+function btn_Search_OnClick(obj)
+{
+	fn_GetProdList();
+}
+
+
+function common_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	PROD_CD = "";
+}
+
+function edt_PROD_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){		
+		fn_GetProdList();
+	}
+}
+
+function edt_SINA_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		fn_GetProdList();
+	}
+}
+
+function edt_JAKSAPRES_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		fn_GetProdList();
+	}
+}
+
+function edt_PRDUCPRES_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		fn_GetProdList();
+	}
+}
+
+function grd_Data_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(obj,nCell);
+}
+
+function ds_List_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	parent.edt_PROD_CD.Text = this.ds_List.GetColumn(nRow,	"PROD_CD");
+	parent.edt_PROD_NM.Text = this.ds_List.GetColumn(nRow,	"PROD_NM");
+}
+]]></Script>
+</Window>

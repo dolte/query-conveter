@@ -1,0 +1,207 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<update id="SQLsatn_num_del_XIUD1" parameterType="">
+UPDATE
+	GIBU.TBRA_CONFIRM_DOC
+SET
+	SATN_NUM = ''
+WHERE
+	SATN_NUM = # { lnkKey }
+</update>
+
+<update id="SQLsatn_num_del_XIUD2" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSO_CLSED
+SET
+	SATN_NUM = ''
+WHERE
+	SATN_NUM = # { lnkKey }
+</update>
+
+<select id="SQLsatn_num_del_SEL6" parameterType="" resultType="">
+SELECT
+	# { lnkKey } AS LNK_KEY
+FROM
+	DUAL
+</select>
+
+<select id="SQLapprv_stat_SEL2" parameterType="" resultType="">
+SELECT
+	LNK_KEY,
+	DOC_STS AS STATUS_CD,
+	# { upsoCd } AS UPSO_CD,
+	# { seq } AS SEQ,
+	# { clsedGbn } AS CLSED_GBN,
+	# { gbn } AS GBN
+FROM
+	TRGW.TEAG_APPDOC
+WHERE
+	LNK_KEY = # { satnNum }
+	AND DOC_STS IN ('20', '90')
+</select>
+
+<select id="SQLsel_satn_list_SEL1" parameterType="" resultType="">
+SELECT
+	'0' AS CHK,
+	A.UPSO_CD,
+	A.SEQ,
+	B.UPSO_NM,
+	TO_CHAR(A.INS_DATE, 'YYYY-MM-DD') AS INS_DATE,
+	A.GBN AS CLSED_GBN,
+	DECODE(
+		A.GBN,
+		'2',
+		TO_CHAR(TO_DATE(A.START_YRMN, 'YYYYMM'), 'YYYY/MM'),
+		''
+	) AS CLSBS_YRMN,
+	'' AS CLSED_DAY,
+	DECODE(
+		A.GBN,
+		'1',
+		NVL(
+			TO_CHAR(TO_DATE(A.START_DAY, 'YYYYMMDD'), 'YYYY/MM/DD'),
+			TO_CHAR(TO_DATE(A.START_YRMN, 'YYYYMM'), 'YYYY/MM')
+		),
+		''
+	) AS START_DAY,
+	DECODE(
+		A.GBN,
+		'1',
+		NVL(
+			TO_CHAR(TO_DATE(A.END_DAY, 'YYYYMMDD'), 'YYYY/MM/DD'),
+			TO_CHAR(TO_DATE(A.END_YRMN, 'YYYYMM'), 'YYYY/MM')
+		),
+		''
+	) AS END_DAY,
+	A.SATN_NUM,
+	'' AS SATN_STAT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_CONFIRM_DOC_ATTCH
+		WHERE
+			UPSO_CD = A.UPSO_CD
+			AND SEQ = A.SEQ
+			AND LENGTH(FILES) > 0
+	) AS ATTCH_CHK,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_CONFIRM_DOC_ATTCH
+		WHERE
+			UPSO_CD = A.UPSO_CD
+			AND SEQ = A.SEQ
+	) AS ATTCH_CNT,
+	B.STAFF_CD,
+	FIDU.GET_STAFF_NM(B.STAFF_CD) AS STAFF_NM,
+	'D' AS GBN
+FROM
+	GIBU.TBRA_CONFIRM_DOC A,
+	GIBU.TBRA_UPSO B
+WHERE
+	A.UPSO_CD = B.UPSO_CD
+	AND B.BRAN_CD = DECODE(# { branCd }, 'AL', B.BRAN_CD, # { branCd })
+	AND B.STAFF_CD = NVL(# { staffNum }, B.STAFF_CD)
+	AND A.GBN = NVL(# { clsedGbn }, A.GBN)
+	AND TO_CHAR(A.INS_DATE, 'YYYYMMDD') BETWEEN # { startDay }
+	AND # { endDay }
+UNION ALL
+SELECT
+	'0' AS CHK,
+	TA.UPSO_CD,
+	1 AS SEQ,
+	TA.UPSO_NM,
+	TO_CHAR(TA.INS_DATE, 'YYYY-MM-DD') AS INS_DATE,
+	'3' AS CLSED_GBN,
+	TO_CHAR(TO_DATE (TA.START_YRMN, 'YYYYMM'), 'YYYY/MM') AS CLSBS_YRMN,
+	TA.START_YRMN AS CLSED_DAY,
+	'' AS START_YRMN,
+	'' AS END_YRMN,
+	TA.SATN_NUM,
+	'' AS SATN_STAT,
+	TO_NUMBER('') AS ATTCH_CHK,
+	TO_NUMBER('') AS ATTCH_CNT,
+	TA.STAFF_CD,
+	FIDU.GET_STAFF_NM(TA.STAFF_CD) AS STAFF_NM,
+	'C' AS GBN
+FROM
+	(
+		SELECT
+			A.UPSO_CD,
+			A.UPSO_NM,
+			A.CLSBS_YRMN,
+			A.STAFF_CD,
+			B.START_YRMN,
+			B.INS_DATE,
+			B.SATN_NUM
+		FROM
+			GIBU.TBRA_UPSO A,
+			GIBU.TBRA_UPSO_CLSED B
+		WHERE
+			A.UPSO_CD = B.UPSO_CD
+			AND B.CLSED_GBN IN ('02', '03', '04')
+			AND TO_CHAR(B.INS_DATE, 'YYYYMMDD') BETWEEN # { startDay }
+			AND # { endDay }
+			AND A.BRAN_CD = DECODE(# { branCd }, 'AL', A.BRAN_CD, # { branCd })
+			AND A.STAFF_CD = NVL(# { staffNum }, A.STAFF_CD)
+			AND (
+				# { clsedGbn } = '3'
+				OR # { clsedGbn } IS NULL
+			)
+	) TA,
+	GIBU.TBRA_UPSO XC
+WHERE
+	XC.BEFORE_UPSO_CD = TA.UPSO_CD
+ORDER BY
+	STAFF_CD,
+	UPSO_CD,
+	SEQ
+</select>
+
+<select id="SQLapprv_all_satn_SEL1" parameterType="" resultType="">
+SELECT
+	MAX(SATN_NUM) AS SATN_NUM
+FROM
+	(
+		SELECT
+			TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || # { staffCd } || '-' || LPAD(NVL(MAX(SUBSTR(SATN_NUM, 18, 3)), 0) + 1, 3, '0') AS SATN_NUM
+		FROM
+			GIBU.TBRA_CONFIRM_DOC A,
+			GIBU.TBRA_UPSO B
+		WHERE
+			A.UPSO_CD = B.UPSO_CD
+			AND A.SATN_NUM LIKE TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || # { staffCd } || '%'
+		UNION ALL
+		SELECT
+			TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || # { staffCd } || '-' || LPAD(NVL(MAX(SUBSTR(SATN_NUM, 18, 3)), 0) + 1, 3, '0') AS SATN_NUM
+		FROM
+			GIBU.TBRA_UPSO_CLSED A,
+			GIBU.TBRA_UPSO B
+		WHERE
+			A.UPSO_CD = B.UPSO_CD
+			AND A.SATN_NUM LIKE TO_CHAR(SYSDATE, 'YYYYMMDD') || '-' || # { staffCd } || '%'
+	)
+</select>
+
+<update id="SQLapprv_all_satn_XIUD1" parameterType="">
+UPDATE
+	GIBU.TBRA_CONFIRM_DOC
+SET
+	SATN_NUM = # { satnNum }
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND SEQ = # { seq }
+</update>
+
+<update id="SQLapprv_all_satn_XIUD6" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSO_CLSED
+SET
+	SATN_NUM = # { satnNum }
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND START_YRMN = # { clsedDay }
+</update>
+
+</mapper>

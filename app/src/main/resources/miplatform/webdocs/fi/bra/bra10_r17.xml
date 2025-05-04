@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra10_r17" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="사용료&#32;징수율&#32;변경이력" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_feerate" UseClientLayout="1">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" type="STRING"/>
+					<colinfo id="RATE" size="256" type="STRING"/>
+					<colinfo id="REMAK" size="256" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_err">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_s_err">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bstyp_search">
+				<Contents>
+					<colinfo id="GRAD_GBN" size="256" type="STRING"/>
+					<colinfo id="GRAD_NM" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bstyp">
+				<Contents>
+					<colinfo id="GRAD_GBN" size="256" type="STRING"/>
+					<colinfo id="GRAD_NM" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="START_YRMN" size="256" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" type="STRING"/>
+					<record>
+						<BSTYP_CD></BSTYP_CD>
+						<END_YRMN></END_YRMN>
+						<START_YRMN></START_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="2" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="1" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Grid BindDataset="ds_feerate" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="400" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="304" Id="grd_feerate" InputPanel="FALSE" Left="16" LineColor="silver" OnCellClick="grd_FeeInfo_OnCellClick" OnEnterEdit="grd_feerate_OnExpandEdit" OnExpandEdit="grd_feerate_OnExpandEdit" Right="785" RowHeight="20" SelColor="user0" TabOrder="4" TabStop="true" Top="96" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="769">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="83"/>
+						<col width="122"/>
+						<col width="62"/>
+						<col width="325"/>
+						<col width="74"/>
+						<col width="79"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="적용일자"/>
+						<cell col="1" color="user12" display="text" text="업종"/>
+						<cell col="2" color="user12" display="text" text="지분율"/>
+						<cell col="3" color="user12" display="text" text="적용내역"/>
+						<cell col="4" color="user12" display="text" text="등록자"/>
+						<cell col="5" color="user12" display="text" text="등록일시"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user13" col="0" colid="APPL_DAY" display="text" edit="normal" expandimage="btn_Grid_Calendar" expandshow="true" Mask="####-##-##"/>
+						<cell bkcolor="user13" col="1" colid="BSTYP_CD" combocol="GRAD_GBN" combodataset="ds_bstyp" combotext="GRAD_NM" display="combo" edit="combo"/>
+						<cell align="center" bkcolor="user13" col="2" colid="RATE" display="text" edit="normal"/>
+						<cell align="left" col="3" colid="REMAK" display="text" edit="normal"/>
+						<cell align="center" col="4" colid="INSPRES_NM" display="text"/>
+						<cell align="center" col="5" colid="INS_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid BindDataset="ds_err" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="832" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="384" Id="grd_err" InputPanel="FALSE" Left="8" LineColor="default" Right="776" RowHeight="20" TabOrder="5" TabStop="true" Top="448" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="768">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="73"/>
+						<col width="223"/>
+						<col width="297"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="적용일자"/>
+						<cell col="1" color="user12" display="text" text="센터코드"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="사유"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="APPL_DAY" display="text"/>
+						<cell align="center" col="1" colid="BRAN_CD" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="center" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="REMAK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="17" Id="Image1" ImageID="C_icon2" Left="22" TabOrder="6" TabStop="FALSE" Top="75" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static9" Left="48" Style="tx_bold" TabOrder="7" Text="사용료&#32;지분율&#32;변경이력" Top="80" Width="150"></Static>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="22" TabOrder="8" TabStop="FALSE" Top="427" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static0" Left="48" Style="tx_bold" TabOrder="9" Text="자동적용&#32;실패업소&#32;:&#32;업소등록의&#32;사용료&#32;변경에서&#32;직접&#32;변경해야함" Top="431" Width="400"></Static>
+		<Static Color="user1" Height="152" Id="Static1" Left="808" Style="tx_bold" TabOrder="10" Text="모든&#32;직원이&#32;아래의&#32;작업을&#32;하지&#32;&#10;않을&#32;때&#32;실행하십시오.&#10;&#10;1)&#32;업소등록&#10;2)&#32;사용료&#32;수정&#10;3)&#32;노래방정보&#32;수정" Top="80" Width="224"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="394" TabOrder="13" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="410" Style="tx_left_bold" TabOrder="14" Text="업종" Top="32" Width="40"></Static>
+		<Combo BKColor="user13" Font="굴림체,9" Height="20" Id="cob_BSTYP_CD" Left="448" TabOrder="12" ToolTipText="센터명" Top="24" Width="100"></Combo>
+		<Image Height="11" Id="Image12" ImageID="C_icon" Left="29" TabOrder="16" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="46" Style="tx_left_bold" TabOrder="17" Text="기간" Top="32" Width="60"></Static>
+		<Calendar BindDataset="ds_search" BKColor="user13" Column="START_YRMN" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Sday" Left="90" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="15" ToolTipText="기간_S" Top="26" Width="90"></Calendar>
+		<Static Enable="FALSE" Height="20" Id="Static2" Left="183" TabOrder="18" Text="~" Top="31" Width="14"></Static>
+		<Calendar BindDataset="ds_search" BKColor="user13" Column="END_YRMN" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Eday" Left="197" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="11" ToolTipText="기간_E" Top="26" Width="90"></Calendar>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+  
+    if(strCode == "NEW"){
+		fn_new();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){}
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	
+	return;
+}
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_syncCall("get_code","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008006&EVENTID=get_code","","ds_bstyp=SEL2","","fn_CallBack");	
+	//trace(ds_bstyp.SaveXML());
+	
+	gfn_GetDataBSTYP(cob_BSTYP_CD, 0);
+	this.cob_BSTYP_CD.Index = 0;
+	
+	//검색조건 초기화
+	this.cal_Sday = "19000101";
+	this.cal_Eday = today();
+}
+
+/// 에러처리(메세지)  
+function fn_CallBack(svcid,errCode,errMsg)
+{
+
+	if(errCode < 0 ){
+		return;
+	}else if(svcid=="SEARCH"){
+
+	}
+	//trace(ds_Tree.SaveXML());
+	gfn_SetStatusMsg(errMsg,"",false,false);
+}
+
+
+function fn_Search()
+{
+	ds_search.SetColumn(0, "BSTYP_CD", cob_BSTYP_CD.Value);
+	gfn_syncCall("SEARCH","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008006&EVENTID=select_feerate_histy","S=ds_search","ds_feerate=SEL1","","fn_CallBack");	
+}
+
+
+function fn_new()
+{
+	nRow = this.ds_feerate.AddRow();
+	this.ds_feerate.SetColumn(nRow, "INSPRES_ID", gv_USER_ID);
+	this.ds_feerate.SetColumn(nRow, "INSPRES_NM", gv_USER_NM);
+	
+	//alert(this.ds_feerate.currow + ", " + nRow);
+	//alert(gv_USER_ID);
+}
+
+function grd_FeeInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if (this.ds_feerate.GetRowType(nRow) == "normal")
+	{
+		this.ds_s_err.ClearData();
+		this.ds_s_err.AddRow();
+		this.ds_s_err.SetColumn(0,"APPL_DAY", this.ds_feerate.getcolumn(nRow,"APPL_DAY"));
+		this.ds_s_err.SetColumn(0,"BSTYP_CD", this.ds_feerate.getcolumn(nRow,"BSTYP_CD"));
+		
+		trace(ds_s_err.SaveXML());
+		gfn_syncCall("SEARCH","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008006&EVENTID=select_feerate_err","S=ds_s_err","ds_err=SEL1","","fn_CallBack");	
+	}
+}
+
+function grd_feerate_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if (this.ds_feerate.GetRowType(nRow) == "insert") {	//적용일자
+		if (nCell == 0) {
+			if(toUpper(obj.GetCellProp("body", nCell, "Edit")) == "NONE") return;
+			gfn_SetCalendar(obj, nRow, nCell);
+		}
+	} else {
+		alert("수정 불가");
+	}
+}
+
+function fn_save()
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	gfn_syncCall("SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008006&EVENTID=save_feerate_histy","S=ds_feerate:U","","","fn_CallBack", gv_TraceLog, GV_FORMID);
+	alert("종료되었습니다.");
+	fn_Search();
+}
+
+function fn_Excel()
+{
+	alert("자동적용 실패업소 내역을 엑셀로 출력합니다.");
+	if(ds_err.count== 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+	this.grd_err.ExportExcelEX("월사용료지분율_자동적용실패");
+}
+
+function fn_Print()
+{
+	alert("사용료 지분 변경이력을 엑셀로 출력합니다.");
+	if(ds_feerate.count== 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+	this.grd_feerate.ExportExcelEX("월사용료지분율_자동적용실패");
+}]]></Script>
+</Window>

@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="680" Id="pop_bra01_s30" Left="8" OnLoadCompleted="pop_bra01_s30_OnLoadCompleted" PidAttrib="7" Style="tx_left_bold" Title="오프라인&#32;로그데이터&#32;이력관리" Top="8" Ver="1.0" Width="776" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_List_bef">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROOM_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROUTER_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAST_REC_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTACH_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CHG" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CHG_D" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REP_OBJ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_List_aft" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROOM_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROUTER_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAST_REC_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTACH_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CHG" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CHG_D" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REP_OBJ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_staff">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_file" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO_SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_bscon">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>E0003</CODE_CD>
+						<CODE_NM>태진</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>E0006</CODE_CD>
+						<CODE_NM>금영</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_remak">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>RC</CODE_CD>
+						<CODE_NM>라우터&#32;교체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>NR</CODE_CD>
+						<CODE_NM>미수신</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>CLS</CODE_CD>
+						<CODE_NM>폐업</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>EXP</CODE_CD>
+						<CODE_NM>4년만기</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>REF</CODE_CD>
+						<CODE_NM>설치거부</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>ETC</CODE_CD>
+						<CODE_NM>기타</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search_file">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO_SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_file_aft">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVR_FILE_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO_SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_conf">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEF_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEF_STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO_SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_chk_bef">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_upso_info" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROOM_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACMCN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROUTER_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAST_REC_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTACH_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CHG" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CHG_D" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CONFIRM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REP_OBJ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_chk_acm">
+				<Contents>
+					<colinfo id="ACM_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="white" Bottom="648" Height="560" Id="Shape1" Left="8" LineColor="user3" Right="392" TabOrder="7" Top="88" Type="Rectangle" Width="384"></Shape>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="REMAK_CHG_D" Enable="FALSE" Height="30" Id="edt_chg_d" Left="154" TabOrder="52" Top="595" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="BSTYP_NM" Enable="FALSE" Height="30" Id="edt_bef_bstyp_cd" Left="154" TabOrder="51" Top="174" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="UPSO_NM" Enable="FALSE" Height="30" Id="edt_bef_upso_nm" Left="154" TabOrder="50" Top="204" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="UPSO_ADDR" Enable="FALSE" Font="2,-1" Height="30" Id="edt_bef_upso_addr" Left="154" TabOrder="49" Top="234" Width="238"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="STAFF_NM" Enable="FALSE" Height="30" Id="edt_bef_staff_nm" Left="154" TabOrder="48" Top="264" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="ROOM_NUM" Enable="FALSE" Height="30" Id="edt_bef_room_num" Left="154" TabOrder="47" Top="354" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="SERIAL_NO" Enable="FALSE" Height="30" Id="edt_bef_serial_no" Left="154" TabOrder="46" Top="384" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="ROUTER_CD" Enable="FALSE" Height="30" Id="edt_bef_router_cd" Left="154" TabOrder="45" Top="414" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="ACMCN_CD" Enable="FALSE" Height="30" Id="edt_bef_ACMCN_CD" Left="154" TabOrder="44" Top="444" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="UPSO_CD" Enable="FALSE" Height="30" Id="edt_bef_upso_cd" Left="154" TabOrder="43" Top="144" Width="170"></Edit>
+		<Edit BindDataset="ds_List_bef" Border="Flat" BorderColor="user7" Column="BRAN_NM" Enable="FALSE" Height="30" Id="edt_bef_bran_nm" Left="154" TabOrder="42" Top="114" Width="170"></Edit>
+		<Static Height="16" Id="Static0" Left="19" TabOrder="1" Text="동일&#32;업소&#32;정보&#32;변경" Top="18" Width="130"></Static>
+		<Static Height="16" Id="Static1" Left="21" TabOrder="2" Text="라우터&#32;이전&#32;설치&#32;변경" Top="46" Width="130"></Static>
+		<Checkbox Height="14" Id="chk_1" Left="168" OnClick="chk_1_OnClick" TabOrder="3" Top="15" Value="FALSE" Width="11"></Checkbox>
+		<Checkbox Height="14" Id="chk_2" Left="168" OnClick="chk_2_OnClick" TabOrder="4" Top="43" Value="FALSE" Width="11"></Checkbox>
+		<Shape Bottom="75" Height="75" Id="Shape0" Left="11" Right="155" TabOrder="5" Top="0" Width="144"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_apply" ImageID="C_btn_90" Left="603" LeftMargin="28" OnClick="btn_apply_OnClick" Style="edit" TabOrder="6" TabStop="FALSE" Text="결재요청" Top="651" TopMargin="1" Width="91"></Button>
+		<Static Align="Center" BKColor="user5" Border="None" Font="굴림,11,Bold" Height="26" Id="Static2" Left="24" Style="box_tx" TabOrder="7" Text="Before" Top="76" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static3" Left="24" Style="box_tx" TabOrder="8" Text="센터명" Top="114" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static4" Left="24" Style="box_tx" TabOrder="8" Text="업소코드" Top="144" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static5" Left="24" Style="box_tx" TabOrder="9" Text="업종" Top="174" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static6" Left="24" Style="box_tx" TabOrder="11" Text="업소명" Top="204" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static7" Left="24" Style="box_tx" TabOrder="12" Text="반주기업체" Top="325" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static8" Left="24" Style="box_tx" TabOrder="13" Text="주소" Top="234" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static9" Left="24" Style="box_tx" TabOrder="14" Text="담당자명" Top="264" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static10" Left="24" Style="box_tx" TabOrder="15" Text="방이름" Top="354" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static11" Left="24" Style="box_tx" TabOrder="16" Text="로그수집기번호" Top="384" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static12" Left="24" Style="box_tx" TabOrder="17" Text="라우터번호" Top="414" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static13" Left="24" Style="box_tx" TabOrder="18" Text="반주기제조번호" Top="444" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static14" Left="24" Style="box_tx" TabOrder="19" Text="할인시작월" Top="474" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static15" Left="24" Style="box_tx" TabOrder="19" Text="할인종료월" Top="504" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static16" Left="24" Style="box_tx" TabOrder="19" Text="적용여부" Top="534" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="60" Id="Static17" Left="24" Style="box_tx" TabOrder="19" Text="변경사유" Top="564" VAlign="Middle" Width="130"></Static>
+		<Shape BKColor="white" Bottom="648" Height="560" Id="Shape2" Left="400" LineColor="user3" Right="768" TabOrder="19" Top="88" Type="Rectangle" Width="368"></Shape>
+		<Static Align="Center" BKColor="user5" Border="None" Font="굴림,11,Bold" Height="26" Id="Static18" Left="416" Style="box_tx" TabOrder="19" Text="After" Top="76" VAlign="Middle" Width="104"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_upso_search" ImageID="C_btn_70" Left="656" LeftMargin="28" OnClick="btn_upso_search_OnClick" Style="edit" TabOrder="26" TabStop="FALSE" Text="조회" Top="64" TopMargin="1" Width="71"></Button>
+		<Button Appearance="FLAT" ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="699" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="27" TabStop="FALSE" Text="닫기" Top="651" TopMargin="1" Width="71"></Button>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static19" Left="416" Style="box_tx" TabOrder="28" Text="센터명" Top="114" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static20" Left="416" Style="box_tx" TabOrder="28" Text="업소코드" Top="144" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static21" Left="416" Style="box_tx" TabOrder="29" Text="업종" Top="174" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static22" Left="416" Style="box_tx" TabOrder="30" Text="업소명" Top="204" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static23" Left="416" Style="box_tx" TabOrder="31" Text="반주기업체" Top="324" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static24" Left="416" Style="box_tx" TabOrder="32" Text="주소" Top="234" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static25" Left="416" Style="box_tx" TabOrder="33" Text="담당자명" Top="264" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static26" Left="416" Style="box_tx" TabOrder="34" Text="방이름" Top="354" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static27" Left="416" Style="box_tx" TabOrder="35" Top="384" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static28" Left="416" Style="box_tx" TabOrder="36" Text="라우터번호" Top="414" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static29" Left="416" Style="box_tx" TabOrder="37" Text="반주기제조번호" Top="444" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static30" Left="416" Style="box_tx" TabOrder="38" Text="할인시작월" Top="474" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static31" Left="416" Style="box_tx" TabOrder="39" Text="할인종료월" Top="504" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static32" Left="416" Style="box_tx" TabOrder="39" Text="적용여부" Top="534" VAlign="Middle" Width="130"></Static>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="BRAN_NM" Enable="FALSE" Height="30" Id="edt_aft_bran_nm" Left="546" TabOrder="53" Top="114" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="UPSO_CD" Height="30" Id="edt_aft_upso_cd" Left="546" OnKeyDown="edt_aft_upso_cd_OnKeyDown" TabOrder="55" Top="144" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" BKColor="user13" Border="Flat" BorderColor="user7" Column="ACMCN_CD" Enable="FALSE" Height="30" Id="edt_aft_ACMCN_CD" Left="546" TabOrder="56" Top="444" UpperOnly="TRUE" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" BKColor="user13" Border="Flat" BorderColor="user7" Column="ROUTER_CD" Enable="FALSE" Height="30" Id="edt_aft_router_cd" Left="546" OnClick="edt_aft_router_cd_OnClick" Readonly="TRUE" TabOrder="56" Top="414" Width="170"></Edit>
+		<Edit Border="Flat" BorderColor="user7" Enable="FALSE" Height="30" Id="edt_aft_serial_no" Left="546" TabOrder="57" Top="384" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" BKColor="user13" Border="Flat" BorderColor="user7" Column="ROOM_NUM" Enable="FALSE" Height="30" Id="edt_aft_room_num" Left="546" TabOrder="58" Top="354" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="STAFF_NM" Enable="FALSE" Height="30" Id="edt_aft_staff_nm" Left="546" TabOrder="59" Top="264" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="UPSO_ADDR" Enable="FALSE" Font="2,-1" Height="30" Id="edt_aft_upso_addr" Left="546" TabOrder="60" Top="234" Width="222"></Edit>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="UPSO_NM" Enable="FALSE" Height="30" Id="edt_aft_upso_nm" Left="546" TabOrder="61" Top="204" Width="170"></Edit>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="BSTYP_NM" Enable="FALSE" Height="30" Id="edt_aft_bstyp_cd" Left="546" TabOrder="62" Top="174" Width="170"></Edit>
+		<File Bottom="32" Height="24" Id="File0" Left="625" Right="649" TabOrder="75" Top="8" Width="24"></File>
+		<FileDialog Bottom="32" Height="24" Id="FileDialog0" Left="648" Right="672" TabOrder="75" Top="8" Width="24"></FileDialog>
+		<Edit Align="CENTER" Border="Flat" BorderColor="user7" Height="30" Id="edt_bef_down" Left="24" OnClick="edt_bef_down_OnClick" Readonly="TRUE" TabOrder="64" Text="Download" Top="295" Width="296"></Edit>
+		<Edit Align="CENTER" Border="Flat" BorderColor="user7" Height="30" Id="edt_upload" Left="583" OnClick="edt_upload_OnClick" Readonly="TRUE" TabOrder="65" Text="Upload" Top="294" Width="56"></Edit>
+		<Combo BindDataset="ds_List_bef" BKColor="user13" CodeColumn="CODE_CD" Column="REMAK_CHG" DataColumn="CODE_NM" Enable="FALSE" Height="28" Id="cob_remark_chg" InnerDataset="ds_code_remak" Left="153" OnChanged="cob_remark_chg_OnChanged" TabOrder="66" Top="564" Width="175"></Combo>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_conf_bran" ImageID="C_btn_90" Left="503" LeftMargin="28" OnClick="btn_conf_bran_OnClick" Style="edit" TabOrder="67" TabStop="FALSE" Text="센터장&#32;결재" Top="651" TopMargin="1" Width="95"></Button>
+		<Edit BindDataset="ds_List_aft" Border="Flat" BorderColor="user7" Column="BRAN_CONFIRM_DATE" Enable="FALSE" Height="30" Id="edt_CONFIRM_DATE" Left="546" TabOrder="69" Top="563" Width="170"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="30" Id="Static33" Left="416" Style="box_tx" TabOrder="68" Text="센터장확인일자" Top="563" VAlign="Middle" Width="130"></Static>
+		<Combo BindDataset="ds_List_bef" CodeColumn="CODE_CD" Column="BSCON_CD" DataColumn="CODE_NM" Enable="FALSE" Height="28" Id="cob_bef_bscon_cd" InnerDataset="ds_code_bscon" Left="153" TabOrder="70" Top="325" Width="175"></Combo>
+		<Combo BindDataset="ds_List_aft" CodeColumn="CODE_CD" Column="BSCON_CD" DataColumn="CODE_NM" Enable="FALSE" Height="28" Id="cob_aft_bscon_cd" InnerDataset="ds_code_bscon" Left="545" OnChanged="cob_aft_bscon_cd_OnChanged" TabOrder="71" Top="324" Width="175"></Combo>
+		<Checkbox BindDataset="ds_List_bef" BKColor="user13" Column="DSCT_YN" Enable="FALSE" Height="28" Id="chk_bef_dsct_yn" Left="160" TabOrder="72" Top="536" Width="16"></Checkbox>
+		<Checkbox BindDataset="ds_List_aft" BKColor="user13" Column="DSCT_YN" Enable="FALSE" Height="28" Id="chk_aft_dsct_yn" Left="552" TabOrder="73" Top="535" Width="16"></Checkbox>
+		<Edit Align="CENTER" Border="Flat" BorderColor="user7" Height="30" Id="edt_aft_down" Left="640" OnClick="edt_aft_down_OnClick" Readonly="TRUE" TabOrder="74" Text="download" Top="295" Width="76"></Edit>
+		<Button ButtonStyle="TRUE" Enable="FALSE" Height="21" Id="btn_conf_mng" ImageID="C_btn_90" Left="403" LeftMargin="28" OnClick="btn_conf_mng_OnClick" Style="edit" TabOrder="75" TabStop="FALSE" Text="관리팀&#32;결재" Top="651" TopMargin="1" Width="95"></Button>
+		<Static Align="Center" BKColor="user5" Border="None" Color="crimson" Font="굴림,11,Bold" Height="26" Id="Static34" Left="280" Style="box_tx" TabOrder="76" Top="36" VAlign="Middle" Visible="FALSE" Width="150"></Static>
+		<Edit Align="CENTER" Border="Flat" BorderColor="user7" Font="4,-1" Height="30" Id="edt_aft_file_nm" Left="416" OnClick="edt_upload_OnClick" Readonly="TRUE" TabOrder="77" Top="294" Width="161"></Edit>
+		<MaskEdit Align="Left" BindDataset="ds_List_bef" Border="SunkenEdge" Column="DSCT_START" DisplayComma="FALSE" Enable="FALSE" Height="30" Id="edt_bef_dsct_start" Left="154" Mask="####/##" MaxLength="6" TabOrder="78" Top="475" Type="STRING" Width="170"></MaskEdit>
+		<MaskEdit Align="Left" BindDataset="ds_List_bef" BKColor="user13" Border="SunkenEdge" Column="DSCT_END" DisplayComma="FALSE" Enable="FALSE" Height="30" Id="edt_bef_dsct_end" Left="154" Mask="####/##" MaxLength="6" TabOrder="79" Top="503" Type="STRING" Width="170"></MaskEdit>
+		<MaskEdit Align="Left" BindDataset="ds_List_aft" BKColor="user13" Border="SunkenEdge" Column="DSCT_START" DisplayComma="FALSE" Enable="FALSE" Height="30" Id="edt_aft_dsct_start" Left="546" Mask="####/##" MaxLength="6" TabOrder="80" Top="475" Type="STRING" Width="170"></MaskEdit>
+		<MaskEdit Align="Left" BindDataset="ds_List_aft" BKColor="user13" Border="SunkenEdge" Column="DSCT_END" DisplayComma="FALSE" Enable="FALSE" Height="30" Id="edt_aft_dsct_end" Left="546" Mask="####/##" MaxLength="6" TabOrder="81" Top="503" Type="STRING" Width="170"></MaskEdit>
+		<Edit Align="CENTER" Border="Flat" BorderColor="user7" Height="30" Id="edt_view" Left="718" OnClick="edt_view_OnClick" Readonly="TRUE" TabOrder="82" Text="view" Top="295" Width="52"></Edit>
+		<Edit Border="Flat" BorderColor="user7" Enable="FALSE" Height="616" Id="edt_cover" Left="-1" TabOrder="63" Top="61" Width="774"></Edit>
+	</Form>
+	<Script><![CDATA[
+/**
+ * 프로그램명    : 라우터 관리 팝업
+ * 프로그램ID    :  bra01_s30_pop
+*/
+/* include */
+
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"
+
+function pop_bra01_s30_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	gfn_getComboCode("1000002001001003","cb_staff_cd","ds_code_staff");   //  사원정보 가져오기
+	
+	ds_List_bef.AddRow();
+	ds_List_bef.CopyRow(0,parent.ds_List,parent.ds_List.currow);
+	
+	fn_search_n();
+	
+	if(ds_List_aft.rowcount>0)
+	{//변경신청중
+		edt_cover.Left=800;
+		enable_check(0);
+		edt_aft_upso_cd.Enable=false;
+		
+		Static34.Visible=true;
+		Static34.Text="변경절차 진행중";
+		
+		ds_List_bef.SetColumn(0,"PROC_STS","M");
+		
+		chk_1.Enable=false;
+		chk_2.Enable=false;
+		
+		if(ds_List_aft.GetColumn(0,"UPSO_CD") = ds_List_bef.GetColumn(0,"UPSO_CD"))
+		{
+			chk_1.Value=1;
+		}
+		else
+		{
+			chk_2.Value=1;
+		}
+		
+	}
+	else {
+		edt_aft_upso_cd.Enable=true;
+	}
+	
+	gfn_syncCall("svcAuth","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008008&EVENTID=sel_udtkpres","","ds_Auth=SEL1","","fn_CallBack");
+	
+	if(gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100" )
+	{
+		btn_conf_mng.Enable=true;
+		btn_conf_bran.Enable=true; //임시
+		edt_view.Visible=true;
+	}	
+	else if(gds_sessioninfo.GetColumn(0, "DEPT_CD") == "121020000")
+	{//센터관리, 전산팀 권한
+		btn_conf_bran.Enable=true; //임시
+		edt_view.Visible=true;
+		
+		if(length(ds_List_aft.GetColumn(0,"BRAN_CONFIRM_ID"))!=0)
+		{
+			btn_conf_mng.Enable=true;
+		}
+	}
+	else if ( ds_AUTH.FindRow("UDTKPRES_ID",gds_sessioninfo.GetColumn(0,"USER_ID"))>=0)
+	{ //센터장 권한
+		btn_conf_bran.Enable=true;
+	}
+	else
+	{//일반직원
+		if(length(ds_List_aft.GetColumn(0,"BRAN_CONFIRM_ID"))!=0)
+		{
+			enable_check(2);
+		}
+	}
+}
+
+/*
+ * 기      능: Callback함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(svcid,errCode,errMsg) {
+	
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+
+			case "svcNSearch" :
+
+				break;
+			case "svcSave" :
+				alert("저장 완료되었습니다.");
+				gfn_syncCall("svcfileSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004032&EVENTID=router_file_upload","S=ds_file:U","","","fn_CallBack");
+				fn_search_n();
+
+				break;
+				
+			case "svcfileSave" :
+				alert("파일저장이 완료되었습니다.");
+				fn_search_n();
+				break;				
+				
+			default : break;	
+		
+			case "svcUpdate" :
+				alert("승인이 완료되었습니다.");
+				fn_search_n();
+				break;				
+				
+			default : break;						
+					
+		}		
+	}
+}
+
+function fn_search_n(obj)
+{//미매칭 이력 조회, 변경신청 여부 파악
+
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0,"SERIAL_NO",ds_List_bef.GetColumn(0,"SERIAL_NO"));
+	
+	gfn_syncCall("svcNSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004032&EVENTID=router_n_search","S=ds_search","ds_List_aft=SEL1 ds_file=SEL2","","fn_CallBack");
+	
+	edt_aft_file_nm.Text = ds_file.GetColumn(0,"file_NM");
+			
+}
+
+
+function btn_upso_search_OnClick(obj)
+{// 업소 조회
+
+	if (edt_aft_upso_cd.Text="")
+	{
+		alert("업소코드를 먼저 입력해주세요");
+		return;		
+	}
+	
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0,"UPSO_CD",edt_aft_upso_cd.Text);
+	ds_search.SetColumn(0,"BSCON_CD",cob_bef_bscon_cd.Value);
+	
+	
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004032&EVENTID=router_upso_info","S=ds_search","ds_upso_info=SEL1 ds_chk_bef=SEL2 ds_chk_acm=SEL3","","fn_CallBack");
+	
+	if(ds_chk_bef.GetColumn(0,"CNT")>0)
+	{
+		alert("변경신청 중이거나 매칭이력이 있는 업소는 등록불가합니다.");
+		ds_List_aft.ClearData();
+		ds_List_aft.AddRow();
+		return;
+	}
+
+	if(ds_upso_info.rowcount=0)
+	{
+		alert("업소 정보를 불러올 수 없습니다. 업소코드를 다시 확인해주세요.");
+		return;
+	}
+
+
+	var flat_p=0;
+
+	if( (ds_List_bef.GetColumn(0,"BSTYP_CD") != ds_upso_info.GetColumn(0,"BSTYP_CD"))
+		|| (ds_List_bef.GetColumn(0,"BRAN_CD") != ds_upso_info.GetColumn(0,"BRAN_CD")) 
+		|| (ds_chk_acm.GetColumn(0,"ACM_CNT")<=0))
+	{
+		flat_p=1;
+	}
+		
+	if(flat_p==1)
+	{
+		alert("센터명, 업종코드, 오프라인 반주기 정보가 일치해야합니다.");
+		ds_List_aft.ClearData();
+		ds_List_aft.AddRow();
+		return;
+	}
+	
+	ds_List_aft.CopyRow(0,ds_upso_info,0);
+		
+	ds_List_aft.SetColumn(0,"SERIAL_NO",ds_List_bef.GetColumn(0,"SERIAL_NO"));
+	ds_List_aft.SetColumn(0,"BSCON_CD",ds_List_bef.GetColumn(0,"BSCON_CD"));
+	
+	enable_check(0);
+	
+}
+
+
+function cob_aft_bscon_cd_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if( cob_bef_bscon_cd.Value != cob_aft_bscon_cd.Value)
+	{
+		alert("반주기제조업체가 달라질순 없습니다.");
+		cob_aft_bscon_cd.Value ="";
+		return;
+	}
+			
+}
+
+
+
+function enable_check(flat)
+{
+	if (flat==0)
+	{//일반등록
+		// 데이터 입력 , 반주기업체, 방이름, 라우터번호, 반주기제조번호, 할인시작월, 할인종료원, 적용여부, 변경사유
+		cob_aft_bscon_cd.Enable=false;
+		edt_aft_room_num.Enable=true;
+		edt_aft_router_cd.Enable=true;
+		edt_aft_acmcn_cd.Enable=true;
+		edt_aft_dsct_start.Enable=true;
+		edt_aft_dsct_end.Enable=false;
+		chk_aft_dsct_YN.Enable=true;
+		cob_remark_chg.Enable=true;	
+		edt_aft_upso_cd.Enable=true;
+		
+		edt_bef_dsct_end.Enable=true;
+		chk_bef_dsct_YN.Enable=true;
+	}
+	else if(flat==1)
+	{//동일업소변경 방이름, 라우터번호, 반주기제조번호, 변경사유. bef
+		
+		edt_aft_upso_cd.Enable=false;
+		edt_aft_room_num.Enable=true;
+		edt_aft_router_cd.Enable=true;
+		edt_aft_acmcn_cd.Enable=true;
+		cob_remark_chg.Enable=true;	
+		
+		edt_bef_dsct_end.Enable=false;
+		chk_bef_dsct_YN.Enable=false;
+		
+		edt_aft_dsct_end.Enable=true;
+		chk_aft_dsct_YN.Enable=true;		
+	}
+	else if(flat==2)
+	{
+		//센터장 승인이후 센터직원들 수정 불가
+		cob_aft_bscon_cd.Enable=false;
+		edt_aft_room_num.Enable=false;
+		edt_aft_router_cd.Enable=false;
+		edt_aft_ACMCN_CD.Enable=false;
+		edt_aft_DSCT_START.Enable=false;
+		edt_aft_DSCT_END.Enable=false;
+		chk_aft_DSCT_YN.Enable=false;
+		cob_remark_chg.Enable=false;
+		edt_chg_d.Enable=false;
+		btn_apply.Enable=false;
+	}
+}
+
+function btn_apply_OnClick(obj)
+{ // 센터직원 신청용
+	
+	//
+	if(ds_file.rowcount==0)
+	{
+		alert("파일 업로드와 같이 진행해야합니다.");
+		return;
+	}
+	
+	if(edt_aft_acmcn_cd.Text=="")
+	{
+		alert("반주기제조번호는 필수로 입력해야합니다.");
+		edt_aft_acmcn_cd.SetFocus();
+		
+		return;
+	}
+	
+	if(edt_aft_router_cd.Text=="")
+	{
+		alert("라우터번호는 필수로 입력해야합니다.");
+		edt_aft_router_cd.SetFocus();
+		
+		return;
+	}
+	
+	if(cob_remark_chg.Text=="")
+	{
+		alert("변경사유는 필수로 입력해야합니다.");
+		cob_remark_chg.SetFocus();
+		
+		return;
+	}
+	
+
+	gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004032&EVENTID=router_n_save","S=ds_List_aft:U S1=ds_List_bef","","","fn_CallBack");
+	
+}
+
+
+function btn_conf_bran_OnClick(obj)
+{
+	btn_conf_OnClick("BRAN");
+}
+
+function btn_conf_mng_OnClick(obj)
+{
+	btn_conf_OnClick("MNG");
+}
+
+function btn_conf_OnClick(obj)
+{//관리자 승인용
+
+	ds_conf.ClearData();
+	ds_conf.AddRow();
+	ds_conf_bef.ClearData();
+	ds_conf_bef.AddRow();
+	
+	var chg_gbn;
+	
+	if(chk_1.Value==1)
+	{
+		chg_gbn='1';
+	}
+	else 
+	{
+		chg_gbn='2';
+	}
+	
+	
+	ds_conf.SetColumn(0,"GBN",obj);
+	ds_conf.SetColumn(0,"UPSO_CD",ds_List_aft.GetColumn(0,"UPSO_CD"));
+	ds_conf.SetColumn(0,"PROC_STS","N");
+	
+	ds_conf.SetColumn(0,"BEF_UPSO_CD",ds_List_bef.GetColumn(0,"UPSO_CD"));
+	ds_conf.SetColumn(0,"BEF_STAFF_CD",ds_List_bef.GetColumn(0,"STAFF_CD"));
+	ds_conf.SetColumn(0,"CHG_GBN",chg_gbn);
+	
+	ds_conf.SetColumn(0,"SERIAL_NO",ds_List_aft.GetColumn(0,"SERIAL_NO"));
+	ds_conf.SetColumn(0,"SERIAL_NO_SEQ",ds_List_aft.GetColumn(0,"SERIAL_NO_SEQ"));
+	
+	gfn_syncCall("svcUpdate","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004032&EVENTID=router_conf","S=ds_conf","","","fn_CallBack");
+	
+	if(obj=="MNG")
+	{
+		alert("최종승인이 완료되었습니다. 화면이 종료됩니다.");
+		btn_close_OnClick();
+	}
+	if(obj=="BRAN")
+	{
+		alert("센터장 승인이 완료되었습니다.");
+	}	
+}
+
+function btn_close_OnClick(obj)
+{
+	close();
+}
+
+function chk_1_OnClick(obj,strValue)
+{ 
+
+	if(chk_2.Value==1)
+	{
+		alert("이미 다른 옵션을 선택했습니다.");
+		chk_1.Value=0;
+		return;
+	}
+	edt_cover.Left=800;
+	
+	if(chk_1.Value==0 && chk_2.Value==0)
+	{
+		edt_cover.Left=2;
+	}
+	
+	if(chk_1.Value==1)
+	{ // 방이름, 라우터번호, 반주기제조번호, 변경사유만 남겨두고 동일하게
+		ds_List_aft.ClearData();
+		ds_List_aft.AddRow();
+		
+		ds_List_aft.CopyRow(0,ds_List_bef,0);
+		
+		ds_List_aft.SetColumn(0,"ROOM_NUM","");
+		ds_List_aft.SetColumn(0,"ROTUER_CD","");
+		ds_List_aft.SetColumn(0,"ACMCN_CD","");
+		ds_List_aft.SetColumn(0,"REMAK_CHG","");
+		ds_List_aft.SetColumn(0,"REMAK_CHG_D","");
+		ds_List_aft.SetColumn(0,"BRAN_CONFIRM_ID","");
+		ds_List_aft.SetColumn(0,"BRAN_CONFIRM_DATE","");
+		ds_List_aft.SetColumn(0,"MNG_CONFIRM_ID","");
+		ds_List_aft.SetColumn(0,"MNG_CONFIRM_DATE","");
+
+		ds_List_aft.SetColumn(0,"STAFF_CD","");
+		
+		enable_check(1);
+		btn_upso_search.Enable=false;
+	}		
+	
+	
+}
+
+function chk_2_OnClick(obj,strValue)
+{
+
+	if(chk_1.Value==1)
+	{
+		alert("이미 다른 옵션을 선택했습니다.");
+		chk_2.Value=0;
+		return;
+	}
+	edt_cover.Left=800;
+	
+	if(chk_1.Value==0 && chk_2.Value==0)
+	{
+		edt_cover.Left=2;
+	}
+	
+	if(chk_2.Value==1)
+	{
+		ds_List_aft.ClearData();
+		ds_List_aft.AddRow();
+		enable_check(0);
+	}
+}
+
+function cob_remark_chg_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{ //반주기변경 기타일때
+	if(cob_remark_chg.Value="ETC")
+	{
+		edt_chg_d.Text="";
+		edt_chg_d.Enable=true;
+	}
+	else
+	{
+		edt_chg_d.Text="";
+		edt_chg_d.Enable=false;
+	}
+}
+
+
+
+function fn_download_file(upso_cd)
+{
+	
+	ds_search_file.ClearData();
+	ds_search_file.AddRow();
+		
+	ds_search_file.SetColumn(0,"UPSO_CD",upso_cd);
+	ds_search_file.SetColumn(0,"SERIAL_NO",ds_List_aft.GetColumn(0,"SERIAL_NO"));
+	ds_search_file.SetColumn(0,"SERIAL_NO_SEQ",ds_List_aft.GetColumn(0,"SERIAL_NO_SEQ"));
+		
+	gfn_syncCall("svcdown","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004032&EVENTID=router_file_search","S=ds_search_file","ds_file=SEL1","","fn_CallBack");
+		
+	var rout = ds_file.GetColumn(0, "SVR_FILE_ROUT");
+	var file = ds_file.GetColumn(0, "SVR_FILE_NM");
+	var org  = ds_file.GetColumn(0, "FILE_NM");
+	
+	gfn_fileDownLoad(rout, file, File0, FileDialog0, org);	
+
+}
+
+
+
+function edt_bef_down_OnClick(obj)
+{
+
+	fn_download_file(edt_bef_upso_cd.Text);
+}
+
+
+
+function edt_aft_down_OnClick(obj)
+{
+	fn_download_file(edt_aft_upso_cd.Text);
+}
+
+
+function edt_upload_OnClick(obj)
+{
+	if(length(ds_List_aft.GetColumn(0,"UPSO_CD"))==0)
+	{
+		alert("업소 먼저 입력후 업로드 가능합니다.");
+		return;
+	}
+	gfn_fileUpSelect(15728640,File0,FileDialog0,"setFileUploadData","","ds_boarddataset");				
+}
+
+function setFileUploadData(path,filename,filesize)
+{
+    gfn_fileUpLoad("dsUploadFile","tr_result","ds_boarddataset");
+}
+
+
+function tr_result(serid,errid,errmsg)
+{
+	if(trim(serid) == "fileup")
+	{
+		var filerout 	= dsUploadFile.getcolumn(0,"PATH"); //업로트임시파일위치
+		var filenm 	 	= dsUploadFile.getcolumn(0,"UNIFILENAME"); //timestamp파일명
+		var upfilename 	= dsUploadFile.getcolumn(0,"UPFILENAME"); //원본파일명
+		
+		ds_file.ClearData();
+		ds_file.AddRow();
+		
+		ds_file.SetColumn(0, "UPSO_CD", ds_List_aft.GetColumn(0,"UPSO_CD"));
+		ds_file.SetColumn(0, "SERIAL_NO", ds_List_aft.GetColumn(0,"SERIAL_NO"));
+		ds_file.SetColumn(0, "SERIAL_NO_SEQ", ds_List_aft.GetColumn(0,"SERIAL_NO_SEQ"));
+		ds_file.SetColumn(0, "SVR_FILE_ROUT", filerout);
+		ds_file.SetColumn(0, "FILE_NM", upfilename);
+		ds_file.SetColumn(0, "SVR_FILE_NM", filenm);
+		
+		edt_aft_file_nm.Text =upfilename;
+
+	} 
+}
+
+
+function edt_aft_router_cd_OnClick(obj)
+{ // 라우터 번호 팝업
+	var result = Dialog("fi_bra::find_router.xml","");
+	
+	if (result != null && result != "" && result != "0") {
+		edt_aft_router_cd.Text=result;
+	
+	}
+}
+
+
+// 업소코드 조회 관련함수 시작 --------
+
+function edt_aft_upso_cd_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{ // 업소코드 조회
+
+	if (nChar == 13 ) {
+		fn_GetUPSO_CD_cd();
+	}
+	else if (nChar == 112 ) {
+		fn_FindUPSO();
+	}
+	return;
+}
+
+
+function fn_GetUPSO_CD_cd()
+{
+	var BRAN_CD = ds_List_bef.GetColumn(0,"BRAN_CD");
+	var UPSO_CD = edt_aft_upso_cd.Text;
+	
+	var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, "");
+	
+	if (length(result) > 0) {
+			var vArr = result.split(",");
+			edt_aft_upso_cd.Text = vArr[0];
+			edt_aft_upso_nm.Text = vArr[1];
+			btn_upso_search_OnClick();
+		}
+		else {
+			fn_FindUPSO();
+		}
+}
+
+function fn_FindUPSO()
+{
+	var BRAN_CD = ds_List_bef.GetColumn(0,"BRAN_CD");
+	var UPSO_CD = edt_aft_upso_cd.Text;
+	var UPSO_NM ="";
+	
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra01_s30");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);				//업소 찾기팝업
+
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	    edt_aft_upso_cd.Text = vArr[0];
+		edt_aft_upso_nm.Text = vArr[1];
+		btn_upso_search_OnClick();
+
+	}
+	
+}
+
+
+function edt_view_OnClick(obj)
+{
+	var path = 'http://komca.or.kr' + ds_file.getcolumn(0,"SVR_FILE_ROUT") +'/'+ ds_file.getcolumn(0,"SVR_FILE_NM") ; 
+	
+	Dialog("fi_bra::pop_show_url.xml","path='"+path+"'");
+	
+}
+
+
+// 업소코드 조회 관련함수 끝 --------
+
+
+  /* 개발 복사용
+  	
+	edt_bef_bran_nm = ds_List_bef.GetColumn(0,"");
+	edt_bef_upso_cd = ds_List_bef.GetColumn(0,"");
+	edt_bef_bstyp_cd = ds_List_bef.GetColumn(0,"");
+	edt_bef_upso_nm = ds_List_bef.GetColumn(0,"");
+	edt_bef_bscon_nm = ds_List_bef.GetColumn(0,"");
+	edt_bef_upso_addr = ds_List_bef.GetColumn(0,"");
+	edt_bef_staff_nm = ds_List_bef.GetColumn(0,"");
+	edt_bef_room_num = ds_List_bef.GetColumn(0,"");
+	edt_bef_serial_no = ds_List_bef.GetColumn(0,"");
+	edt_bef_router_cd = ds_List_bef.GetColumn(0,"");
+	edt_bef_ACMCN_CD = ds_List_bef.GetColumn(0,"");
+	edt_bef_dsct_start = ds_List_bef.GetColumn(0,"");
+	edt_bef_dsct_end = ds_List_bef.GetColumn(0,"");
+	edt_bef_dsct_YN = ds_List_bef.GetColumn(0,"");
+	edt_bef_chg = ds_List_bef.GetColumn(0,"");
+	
+	edt_aft_bran_nm
+	edt_aft_upso_cd
+	edt_aft_bstyp_cd
+	edt_aft_upso_nm
+	edt_aft_bscon_nm
+	edt_aft_upso_addr
+	edt_aft_staff_nm
+	edt_aft_room_num
+	edt_aft_serial_no
+	edt_aft_router_cd
+	edt_aft_ACMCN_CD
+	edt_aft_dsct_start
+	edt_aft_dsct_end
+	edt_aft_dsct_YN
+	edt_aft_chg */
+
+
+
+]]></Script>
+</Window>

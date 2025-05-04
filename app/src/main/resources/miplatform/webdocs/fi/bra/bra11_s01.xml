@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="bra11_s01" Left="8" OnLoadCompleted="bra11_s01_OnLoadCompleted" PidAttrib="7" Title="센터별&#32;입금마감" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset CanColumnChange="ds_end_view_CanColumnChange" DataSetType="Dataset" Id="ds_end_view" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="M01" size="256" summ="default" type="STRING"/>
+					<colinfo id="M02" size="256" summ="default" type="STRING"/>
+					<colinfo id="M03" size="256" summ="default" type="STRING"/>
+					<colinfo id="M04" size="256" summ="default" type="STRING"/>
+					<colinfo id="M05" size="256" summ="default" type="STRING"/>
+					<colinfo id="M06" size="256" summ="default" type="STRING"/>
+					<colinfo id="M07" size="256" summ="default" type="STRING"/>
+					<colinfo id="M08" size="256" summ="default" type="STRING"/>
+					<colinfo id="M09" size="256" summ="default" type="STRING"/>
+					<colinfo id="M10" size="256" summ="default" type="STRING"/>
+					<colinfo id="M11" size="256" summ="default" type="STRING"/>
+					<colinfo id="M12" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_end_rec">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="OLD_END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACT_FLAG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset CanColumnChange="ds_end_view_CanColumnChange" DataSetType="Dataset" Id="ds_end_view_org" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="M01" size="256" summ="default" type="STRING"/>
+					<colinfo id="M02" size="256" summ="default" type="STRING"/>
+					<colinfo id="M03" size="256" summ="default" type="STRING"/>
+					<colinfo id="M04" size="256" summ="default" type="STRING"/>
+					<colinfo id="M05" size="256" summ="default" type="STRING"/>
+					<colinfo id="M06" size="256" summ="default" type="STRING"/>
+					<colinfo id="M07" size="256" summ="default" type="STRING"/>
+					<colinfo id="M08" size="256" summ="default" type="STRING"/>
+					<colinfo id="M09" size="256" summ="default" type="STRING"/>
+					<colinfo id="M10" size="256" summ="default" type="STRING"/>
+					<colinfo id="M11" size="256" summ="default" type="STRING"/>
+					<colinfo id="M12" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD>강북센터</BRAN_CD>
+						<DEPT_NM>DDD</DEPT_NM>
+						<M01>20090131</M01>
+						<M02>20090228</M02>
+						<M03>20090331</M03>
+						<M04></M04>
+						<M05></M05>
+						<M06></M06>
+						<M07></M07>
+						<M08></M08>
+						<M09></M09>
+						<M10></M10>
+						<M11></M11>
+						<M12></M12>
+					</record>
+					<record>
+						<BRAN_CD>ㅇㅇㅇ</BRAN_CD>
+						<DEPT_NM></DEPT_NM>
+						<M01>ㅇ</M01>
+						<M02></M02>
+						<M03></M03>
+						<M04></M04>
+						<M05></M05>
+						<M06></M06>
+						<M07></M07>
+						<M08></M08>
+						<M09></M09>
+						<M10></M10>
+						<M11></M11>
+						<M12></M12>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_End_Day" OnColumnChanged="ds_End_Day_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="END_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="M01" size="256" summ="default" type="STRING"/>
+					<colinfo id="M02" size="256" summ="default" type="STRING"/>
+					<colinfo id="M03" size="256" summ="default" type="STRING"/>
+					<colinfo id="M04" size="256" summ="default" type="STRING"/>
+					<colinfo id="M05" size="256" summ="default" type="STRING"/>
+					<colinfo id="M06" size="256" summ="default" type="STRING"/>
+					<colinfo id="M07" size="256" summ="default" type="STRING"/>
+					<colinfo id="M08" size="256" summ="default" type="STRING"/>
+					<colinfo id="M09" size="256" summ="default" type="STRING"/>
+					<colinfo id="M10" size="256" summ="default" type="STRING"/>
+					<colinfo id="M11" size="256" summ="default" type="STRING"/>
+					<colinfo id="M12" size="256" summ="default" type="STRING"/>
+					<colinfo id="U01" size="256" summ="default" type="STRING"/>
+					<colinfo id="U02" size="256" summ="default" type="STRING"/>
+					<colinfo id="U03" size="256" summ="default" type="STRING"/>
+					<colinfo id="U04" size="256" summ="default" type="STRING"/>
+					<colinfo id="U05" size="256" summ="default" type="STRING"/>
+					<colinfo id="U06" size="256" summ="default" type="STRING"/>
+					<colinfo id="U07" size="256" summ="default" type="STRING"/>
+					<colinfo id="U08" size="256" summ="default" type="STRING"/>
+					<colinfo id="U09" size="256" summ="default" type="STRING"/>
+					<colinfo id="U10" size="256" summ="default" type="STRING"/>
+					<colinfo id="U11" size="256" summ="default" type="STRING"/>
+					<colinfo id="U12" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Set_End_Day">
+				<Contents>
+					<colinfo id="END_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="2" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<Spin BKColor="user13" Border="Flat" Height="20" Id="sp_year" Left="113" Style="edit" TabOrder="1" Text="2009" Top="28" Width="100"></Spin>
+		<Static Height="15" Id="Static0" Left="40" Style="tx_left_bold" TabOrder="6" Text="마감&#32;년도" Top="32" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="24" TabOrder="5" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="6" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="3" TabStop="FALSE" Top="16" Width="11"></Image>
+		<Grid BindDataset="ds_end_view" BKColor="user11" BkColor2="default" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="475" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="403" Id="grd_end_view" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="30" Style="grid" TabOrder="4" TabStop="FALSE" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="92"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터"/>
+						<cell col="1" color="user12" display="text" text="1월"/>
+						<cell col="2" color="user12" display="text" text="2월"/>
+						<cell col="3" color="user12" display="text" text="3월"/>
+						<cell col="4" color="user12" display="text" text="4월"/>
+						<cell col="5" color="user12" display="text" text="5월"/>
+						<cell col="6" color="user12" display="text" text="6월"/>
+						<cell col="7" color="user12" display="text" text="7월"/>
+						<cell col="8" color="user12" display="text" text="8월"/>
+						<cell col="9" color="user12" display="text" text="9월"/>
+						<cell col="10" color="user12" display="text" text="10월"/>
+						<cell col="11" color="user12" display="text" text="11월"/>
+						<cell col="12" color="user12" display="text" text="12월"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DEPT_NM" display="text"/>
+						<cell align="center" col="1" colid="M01" display="date" edit="date"/>
+						<cell align="center" col="2" colid="M02" display="date" edit="date"/>
+						<cell align="center" col="3" colid="M03" display="date" edit="date"/>
+						<cell align="center" col="4" colid="M04" display="date" edit="date"/>
+						<cell align="center" col="5" colid="M05" display="date" edit="date"/>
+						<cell align="center" col="6" colid="M06" display="date" edit="date"/>
+						<cell align="center" col="7" colid="M07" display="date" edit="date"/>
+						<cell align="center" col="8" colid="M08" display="date" edit="date"/>
+						<cell align="center" col="9" colid="M09" display="date" edit="date"/>
+						<cell align="center" col="10" colid="M10" display="date" edit="date"/>
+						<cell align="center" col="11" colid="M11" display="date" edit="date"/>
+						<cell align="center" col="12" colid="M12" display="date" edit="date"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="14" Id="Static1" Left="224" TabOrder="8" Text='전국센터&#32;월&#32;입금마감후&#32;&quot;징수현황&gt;온오프라인데이타징수금액현황&quot;&#32;데이타를&#32;꼭!!!&#32;저장해&#32;주시기&#32;바랍니다.' Top="32" Width="624"></Static>
+		<Grid AutoEnter="TRUE" BindDataset="ds_End_Day" BKColor="user11" BkColor2="default" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="576" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="56" Id="grd_Depo_Day" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="30" Style="grid" TabOrder="9" TabStop="FALSE" Top="520" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="92"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="78"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="년도"/>
+						<cell col="1" color="user12" display="text" text="1월"/>
+						<cell col="2" color="user12" display="text" text="2월"/>
+						<cell col="3" color="user12" display="text" text="3월"/>
+						<cell col="4" color="user12" display="text" text="4월"/>
+						<cell col="5" color="user12" display="text" text="5월"/>
+						<cell col="6" color="user12" display="text" text="6월"/>
+						<cell col="7" color="user12" display="text" text="7월"/>
+						<cell col="8" color="user12" display="text" text="8월"/>
+						<cell col="9" color="user12" display="text" text="9월"/>
+						<cell col="10" color="user12" display="text" text="10월"/>
+						<cell col="11" color="user12" display="text" text="11월"/>
+						<cell col="12" color="user12" display="text" text="12월"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="END_YEAR" display="text"/>
+						<cell align="center" col="1" colid="M01" display="date" edit="expr:decode(U01,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="2" colid="M02" display="date" edit="expr:decode(U02,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="3" colid="M03" display="date" edit="expr:decode(U03,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="4" colid="M04" display="date" edit="expr:decode(U04,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="5" colid="M05" display="date" edit="expr:decode(U05,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="6" colid="M06" display="date" edit="expr:decode(U06,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="7" colid="M07" display="date" edit="expr:decode(U07,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="8" colid="M08" display="date" edit="expr:decode(U08,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="9" colid="M09" display="date" edit="expr:decode(U09,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="10" colid="M10" display="date" edit="expr:decode(U10,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="11" colid="M11" display="date" edit="expr:decode(U11,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="12" colid="M12" display="date" edit="expr:decode(U12,&apos;Y&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="16" Id="Image1" ImageID="C_icon2" Left="13" TabOrder="10" Top="495" Width="18"></Image>
+		<Static Height="18" Id="Static2" Left="39" Style="tx_left_bold" TabOrder="11" Text="입금기준일" Top="495" VAlign="Middle" Width="86"></Static>
+		<Static Align="Right" Height="19" Id="Static3" Left="552" TabOrder="12" Text="*&#32;금일을&#32;기준일로&#32;설정&#32;시&#32;저장버튼을&#32;누르는&#32;시간&#32;이후로는&#32;다음&#32;월로&#32;입금이&#32;잡힙니다." Top="586" Width="489"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Depo_Save" ImageID="C_btn_70" Left="968" LeftMargin="28" OnClick="btn_Depo_Save_OnClick" Style="edit" TabOrder="13" TabStop="FALSE" Text="저장" Top="496" TopMargin="1" Width="71"></Button>
+		<Static Align="Right" Height="19" Id="Static4" Left="552" TabOrder="14" Text="*&#32;ex)&#32;7월에&#32;입력한&#32;입금기준일은&#32;8월의&#32;일자입니다." Top="603" Width="489"></Static>
+		<Static Align="Right" Color="red" Height="19" Id="Static5" Left="472" TabOrder="15" Text="*&#32;마감일자&#32;저장&#32;후&#32;입금기준일을&#32;변경하여&#32;주십시오." Top="501" Width="489"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+//입금기준일 설정은 매월 25일 오후 10시에 GIBU계정 JOB에서 다음달 내용을 미리 등록하도록 처리
+
+function bra11_s01_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);
+	
+	//현재년도 조건 설정
+	sp_year.Value = substr(today(),0,4);
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    } 
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		if(gfn_changeAction("CLOSE", "ds_end_view")){
+			close();
+		}
+    }
+
+	return;
+}
+ 
+function fn_New() {}
+//------- 조회
+function fn_Search() 
+{
+	if(!gfn_changeAction("SEARCH", "ds_end_view")) return;
+
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0, "YEAR", this.sp_year.Value);
+		
+	//trace(ds_search.SaveXML());
+	gfn_SyncCall("gibu_end_view","KOMCA?SYSID=PATHFINDER&MENUID=1000001006006&EVENTID=gibu_end_search","S=ds_search","ds_end_view=SEL1 ds_End_Day=SEL2","","fn_CallBack");
+	
+	//조회된 원본 데이터를 ds_end_view_org로 복사
+	ds_end_view_org.Copy(ds_end_view);
+	//trace(ds_end_view_org.SaveXML());	
+}
+
+function fn_Save() 
+{	
+	//필수입력 체크
+	
+	if(confirm("저장 하시겠습니까?")){
+		//변경된 내용을 저장처리할 ds 생성
+		fn_changeRecCreate();
+		
+		//trace(ds_end_rec.SaveXML());
+		gfn_SyncCall("gibu_end_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006006&EVENTID=gibu_end_regist","S=ds_end_rec:U S1=ds_search:N","ds_end_view=SEL11","","fn_CallBack", gv_TraceLog, gv_formid);
+		// 재조회된 원본 데이터를 ds_end_view_org로 복사
+		ds_end_view_org.Copy(ds_end_view);
+	}
+}
+function fn_Delete() {}
+function fn_Excel() {}
+function fn_Print() {}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "gibu_end_view") {
+		gfn_SetStatusMsg(ds_end_view.count + " 건이 조회되었습니다.");
+	}else if(srvId == "gibu_end_save") {
+		gfn_SetStatusMsg("저장이 완료되었습니다.");
+	}
+}
+
+
+//-------------------------------------------------------------------------------------------
+//	변경된 마감 데이터 추출
+//  => 조회했을 때 복사해둔 원본과 비교하여 변경된 내용을 저장하기 위한
+//     별도의 데이터셋을 생성
+//-------------------------------------------------------------------------------------------
+function fn_changeRecCreate(){
+var strBranCd = "";
+var strEndYear = "";
+var strEndMon = "";
+var strOldEndDay = "";
+var strNewEndDay = "";
+var strIUDFLAG = "";
+var m01_idx = 0;
+var m12_idx = 0;
+
+	m01_idx = ds_end_view.GetColIndex("M01");	// ds_end_view의 컬럼ID가 "M01"건의 index 취득
+	m12_idx = ds_end_view.GetColIndex("M12");	// ds_end_view의 컬럼ID가 "M12"건의 index 취득
+	//저장 처리할 데이터셋 초기화
+	ds_end_rec.ClearData();
+	
+	// 변경대상 테이블 전체 대상 루핑
+	for ( var i = 0 ; i < ds_end_view.count; i++ ){	
+		strBranCd = ds_end_view.GetColumn(i, "BRAN_CD");
+		strEndYear = ds_end_view.GetColumn(i, "END_YEAR");
+		for( var j = m01_idx; j < m12_idx+1; j++ ){		// j는 3 ~ 14까지 루핑
+			//컬럼명으로 부터 월 정보 추출 
+			strEndMon = substr(ds_end_view.GetColID(j),1,2);
+			strNewEndDay = ds_end_view.GetColumn(i,j);		// 최신값 
+			strOldEndDay = ds_end_view_org.GetColumn(i,j);	// 원본값
+			//최신값과 원본값이 틀리면 
+			if(strNewEndDay != strOldEndDay){
+				if(length(strOldEndDay)==0 && length(strNewEndDay)==8){
+					// 원본값이 존재하지 않고 최신값이 존재하면 Insert
+					strIUDFLAG = "Insert";
+				}else if(length(strOldEndDay)==8 && length(strNewEndDay)==0){
+					// 원본값이 존재하고 최신값이 존재하지 않으면 Delete
+					strIUDFLAG = "Delete";		
+				}else{
+					//원본값과 쵠신값이 틀리고 둘다 존재하는 경우는 Update
+					strIUDFLAG = "Update";	
+				}
+				// IUD처리할 데이터를 ds_end_rec에 추가
+				ds_end_rec.AddRow();
+				ds_end_rec.SetColumn(ds_end_rec.currow,"BRAN_CD",		strBranCd);
+				ds_end_rec.SetColumn(ds_end_rec.currow,"END_YEAR",		strEndYear);
+				ds_end_rec.SetColumn(ds_end_rec.currow,"END_MON",		strEndMon);
+				ds_end_rec.SetColumn(ds_end_rec.currow,"END_DAY",		substr(strNewEndDay,6,2));
+				ds_end_rec.SetColumn(ds_end_rec.currow,"OLD_END_DAY",	strOldEndDay);
+				ds_end_rec.SetColumn(ds_end_rec.currow,"ACT_FLAG",		strIUDFLAG);			
+			}
+		
+		}
+	}
+
+}
+
+
+//--- 해당 마감년월의 마감일자가 아닌 값 체크
+function ds_end_view_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	var curr_YEAR = ds_search.GetColumn(0,"YEAR");
+	if (length(curr_YEAR) = 0) return;
+	if (length(varNewValue) = 0) return;		// 신규 입력값이 없으면 삭제처리이므로 체크 안함
+	
+	var curr_YYYYMM = curr_YEAR +substr(strColumnId,1,2);	// 입력되어야 할 컬럼의 년월 데이터
+	var input_YYYYMM = substr(varNewValue,0,6);				// 실제 입력된 년월 데이터
+	
+	if(curr_YYYYMM != input_YYYYMM){
+        gfn_Confirm("MB_OK", "마감일자는 해당 마감년월 내에서만 설정 가능합니다.", "경고", "0");
+		return false;
+	}
+}
+
+function btn_Depo_Save_OnClick(obj)
+{
+	gfn_SyncCall("update_depo_day","KOMCA?SYSID=PATHFINDER&MENUID=1000001006006&EVENTID=update_depo_day","S=ds_Set_End_Day","","","fn_CallBack");
+	fn_Search();
+}
+
+function ds_End_Day_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(parseInt(substr(ds_End_Day.GetColumn(0, strColumnID), 0, 4)) < parseInt(ds_search.GetColumn(0, "YEAR")))
+	{
+		ds_End_Day.FireEvent = false;
+		alert("입금기준일이 당해보다 이전일 수 없습니다.");
+		ds_End_Day.SetColumn(nRow, strColumnID, varOldValue);
+		ds_End_Day.FireEvent = true;
+		return;
+	}
+	else if((parseInt(substr(ds_End_Day.GetColumn(0, strColumnID), 4, 2)) < parseInt(substr(strColumnID, 1, 2))) && (parseInt(substr(ds_End_Day.GetColumn(0, strColumnID), 0, 4)) == parseInt(ds_search.GetColumn(0, "YEAR"))))
+	{
+		ds_End_Day.FireEvent = false;
+		alert("입금기준일이 당월보다 이전일 수 없습니다.");
+		ds_End_Day.SetColumn(nRow, strColumnID, varOldValue);
+		ds_End_Day.FireEvent = true;
+		return;
+	}
+	
+	ds_Set_End_Day.ClearData();
+	ds_Set_End_Day.AddRow();
+	ds_Set_End_Day.SetColumn(0, "END_YEAR", substr(varNewValue, 0, 4));
+	ds_Set_End_Day.SetColumn(0, "YEAR", ds_search.GetColumn(0, "YEAR"));
+	ds_Set_End_Day.SetColumn(0, "MON", substr(strColumnID, 1, 2));
+	ds_Set_End_Day.SetColumn(0, "END_MON", substr(varNewValue, 4, 2));
+	ds_Set_End_Day.SetColumn(0, "END_DAY", substr(varNewValue, 6, 2));
+	//trace(ds_Set_End_Day.SaveXML());
+}
+]]></Script>
+</Window>

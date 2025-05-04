@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra03_s23" Left="8" OnLoadCompleted="bra03_s23_OnLoadCompleted" OnSize="bra03_s23_OnSize" PidAttrib="7" Title="청구내역메일전송" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<DEMD_YRMN></DEMD_YRMN>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_target">
+				<Contents>
+					<colinfo id="R_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMAIL_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDER_MAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDER_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUBJECT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOMCA_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="KOSCAP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RIAK_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FKMP_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TARGET_FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEND_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="DELIVER_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPEN_TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEND_STATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERROR_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUB_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP_CONTENT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_GIBU_CD">
+				<Contents>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="63" Height="4" Id="Shape20" Left="11" LineColor="user21" Right="1035" RoundHeight="0" RoundWidth="0" TabOrder="1" Top="59" Type="RoundRect" Width="1024"></Shape>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="5" TabStop="FALSE" Top="7" Width="1018"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="6" TabStop="FALSE" Top="7" Width="11"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="494" TabOrder="7" TabStop="FALSE" Top="22" Width="12"></Image>
+		<Static Height="15" Id="Static5" Left="510" Style="tx_left_bold" TabOrder="8" Text="업소코드/명" Top="22" Width="70"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="26" TabOrder="9" TabStop="FALSE" Top="22" Width="12"></Image>
+		<Static Height="15" Id="Static9" Left="46" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="22" Width="40"></Static>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="11" TabStop="FALSE" Top="7" Width="10"></Image>
+		<Combo BKColor="user13" Border="Flat" BorderColor="user10" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="100" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="센터명" Top="17" Width="109"></Combo>
+		<Edit BindDataset="ds_search" Border="Flat" BorderColor="user10" Column="UPSO_CD" Height="20" Id="edt_UPSO_CD" ImeMode="none" Left="600" LeftMargin="2" MaxLength="8" OnChar="edt_UPSO_CD_OnChar" OnClick="edt_UPSO_CD_OnClick" OnKeyDown="edt_UPSO_CD_OnKeyDown" Style="edit" TabOrder="3" ToolTipText="업소코드" Top="18" UseIME="FALSE" Width="72"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Column="UPSO_NM" Height="20" Id="edt_UPSO_NM" ImeMode="native,katakana" Left="674" MaxLength="100" OnClick="edt_UPSO_NM_OnClick" OnKeyDown="edt_UPSO_NM_OnKeyDown" Style="edit" TabOrder="4" Top="18" Width="176"></Edit>
+		<Button Cursor="HAND" Height="21" Id="btn_FindUpso" ImageID="C_btn_search" Left="852" OnClick="btn_FindUpso_OnClick" TabOrder="12" Top="18" Width="58"></Button>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="256" TabOrder="13" TabStop="FALSE" Top="22" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="277" Style="tx_left_bold" TabOrder="14" Text="청구년월" Top="22" Width="50"></Static>
+		<Calendar BKColor="user13" Border="Flat" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_YRMN" Left="349" MonthPickerFormat="yyyy" SaturdayTextColor="blue" SpinStyle="1" Style="edit" SundayTextColor="red" TabOrder="14" Top="17" Value="TODAY" Width="90"></Calendar>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_sendmail" ImageID="C_btn_90" Left="936" LeftMargin="28" OnClick="btn_sendmail_OnClick" Style="edit" TabOrder="16" Text="메일발송" Top="17" TopMargin="1" Width="90"></Button>
+		<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_target" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="784" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="722" Id="grd_target" InputPanel="FALSE" Left="11" LineColor="silver" MultiSelect="TRUE" Right="1035" RowHeight="20" Style="grid" TabOrder="17" TabStop="true" Top="62" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1024">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="44"/>
+						<col width="68"/>
+						<col width="72"/>
+						<col width="60"/>
+						<col width="76"/>
+						<col width="124"/>
+						<col width="76"/>
+						<col width="116"/>
+						<col width="122"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="76"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="센터"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="청구년월"/>
+						<cell col="4" color="user12" display="text" text="수신자"/>
+						<cell col="5" color="user12" display="text" text="수신메일주소"/>
+						<cell col="6" color="user12" display="text" text="발신자"/>
+						<cell col="7" color="user12" display="text" text="발신메일주소"/>
+						<cell col="8" color="user12" display="text" text="메일제목"/>
+						<cell col="9" color="user12" display="text" text="합계금액"/>
+						<cell col="10" color="user12" display="text" text="협회금액"/>
+						<cell col="11" color="user12" display="text" text="함저협금액"/>
+						<cell col="12" color="user12" display="text" text="음실련금액"/>
+						<cell col="13" color="user12" display="text" text="음산협금액"/>
+						<cell col="14" color="user12" display="text" text="발송여부"/>
+						<cell col="15" color="user12" display="text" text="발송시간"/>
+						<cell col="16" color="user12" display="text" text="도착시간"/>
+						<cell col="17" color="user12" display="text" text="열람시간"/>
+						<cell col="18" color="user12" display="text" text="발송결과"/>
+						<cell col="19" color="user12" display="text" text="에러사유"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="R_NUM" display="text" expr="currow&#32;+&#32;1"/>
+						<cell bkcolor="user13" col="1" colid="BRAN_CD" combocol="GIBU" combodataset="ds_GIBU_CD" combotext="DEPT_NM" display="combo" edit="normal" limit="12"/>
+						<cell bkcolor="user13" col="2" colid="UPSO_CD" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="3" colid="DEMD_YRMN" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="4" colid="UPSO_NM" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="5" colid="EMAIL_ADDR" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="6" colid="SENDER_NM" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="7" colid="SENDER_MAIL" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="8" colid="SUBJECT" display="text" edit="normal"/>
+						<cell bkcolor="user13" col="9" colid="TOTAL_AMT" display="text"/>
+						<cell bkcolor="user13" col="10" colid="KOMCA_AMT" display="text"/>
+						<cell bkcolor="user13" col="11" colid="KOSCAP_AMT" display="text"/>
+						<cell bkcolor="user13" col="12" colid="RIAK_AMT" display="text"/>
+						<cell bkcolor="user13" col="13" colid="FKMP_AMT" display="text"/>
+						<cell col="14" colid="TARGET_FLAG" display="text"/>
+						<cell col="15" colid="SEND_TIME" display="text"/>
+						<cell col="16" colid="DELIVER_TIME" display="text"/>
+						<cell col="17" colid="OPEN_TIME" display="text"/>
+						<cell col="18" colid="SEND_STATE" display="text"/>
+						<cell col="19" colid="ERROR_CODE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  			// 공통 js
+#include "script::global.js"  			// 공통 js
+#include "script::commonGibu.js"  		// 센터 공통 js
+
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")//신규
+    {
+		fn_New();
+    }
+    else if(strCode == "SEARCH")//조회
+    {
+		fn_Search();
+    }
+    else if(strCode == "SAVE")//저장
+    {
+    }    
+    else if(strCode == "DELETE")//삭제
+    {
+    }
+    else if(strCode == "EXCEL")//Excel
+    {
+    }
+    else if(strCode == "PRINT")//출력
+    {
+    }
+    else if(strCode == "CLOSE")//닫기
+    {
+        close();
+    }	return;}
+
+function bra03_s23_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_ObjreSize(grd_target, this, 1, 0);
+		
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);
+	gfn_syncCall("find_GIBU","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_gibu_select","","ds_GIBU_CD=SEL1","","fn_CallBack");
+	gfn_SetPermission(cob_BRAN_CD.Value);
+}
+
+function fn_CallBack(svcid,errCode,errMsg) 
+{
+	if (errCode = 0)
+	{
+		switch(svcid)
+		{
+			default: break;
+		}
+	}
+}
+
+function fn_New()
+{
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_target.ClearData();
+}
+
+function fn_Search()
+{
+	ds_search.SetColumn(0, "BRAN_CD", cob_BRAN_CD.Value);
+	ds_search.SetColumn(0, "DEMD_YRMN", substr(cal_YRMN.Value, 0, 6));
+	
+	gfn_SyncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005022&EVENTID=sel_mail_target","S=ds_Search","ds_target=SEL1", "", "fn_CallBack");
+}
+
+function btn_sendmail_OnClick(obj)
+{
+	gfn_syncCall("svcSendmail","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005022&EVENTID=send_mail","S=ds_target","","","fn_CallBack");
+	
+	fn_Search();
+}
+
+function bra03_s23_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_target, this, 1, 0);
+}
+]]></Script>
+</Window>

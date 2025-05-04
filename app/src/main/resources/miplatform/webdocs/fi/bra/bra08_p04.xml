@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="방송청구입금등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0_0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<colinfo id="column1" size="256" type="STRING"/>
+					<colinfo id="column2" size="256" type="STRING"/>
+					<colinfo id="column3" size="256" type="STRING"/>
+					<colinfo id="column4" size="256" type="STRING"/>
+					<colinfo id="column5" size="256" type="STRING"/>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+					</record>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="15" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="15" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="15" Width="10"></Image>
+		<Shape BKColor="user7" Bottom="67" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="3" Top="64" Type="Rectangle" Width="1032"></Shape>
+		<Static Height="15" Id="Static0" Left="348" Style="tx_left_bold" TabOrder="6" Text="입력년월" Top="30" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="332" TabOrder="5" TabStop="FALSE" Top="30" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="588" Style="tx_left_bold" TabOrder="8" Text="방송일자" Top="30" Width="86"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="572" TabOrder="7" TabStop="FALSE" Top="30" Width="11"></Image>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="29" TabOrder="9" TabStop="FALSE" Top="30" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="44" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="30" Width="86"></Static>
+		<Combo Height="21" Id="Combo0" Left="100" TabOrder="11" Top="25" Width="145"></Combo>
+		<Calendar BindDataset="DS_Upso" Column="PRESDONGTRNF_APPTN_DAY" Height="21" Id="Calendar2" Left="640" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="12" Top="24" Width="145"></Calendar>
+		<Calendar Dateformat="yyyy/MM" FocusIndex="0" Height="22" Id="Calendar1" Left="408" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="13" Top="24" Width="102"></Calendar>
+		<Ubi Bottom="613" Height="534" Id="Ubi0" Left="7" Right="1039" Top="79" Width="1032">
+			<_PersistData>&#13;&#10;/6wYOPDa/wAAAQCpagAAdzE3APjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwAwhA&#13;&#10;</_PersistData>
+		</Ubi>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+
+
+function form_OnLoadCompleted(obj)
+{
+	Ubi0.setJrfFileDir("http://192.168.1.192:8080/report_file/fi/bra/");
+	//Ubi0.setJrfFileName("w_gibu803.jrf");
+	Ubi0.setJrfFileName("bra08_p03.jrf");
+	Ubi0.Retrieve();
+	gfn_LoadForm(obj);
+}
+]]></Script>
+</Window>

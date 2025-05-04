@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="600" Id="off_upso_excel_save_histy" Left="8" OnLoadCompleted="off_upso_excel_save_histy_OnLoadCompleted" PidAttrib="7" Title="오프라인등록업소&#32;엑셀저장&#32;이력" Top="8" Ver="1.0" Width="528" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="SAVE_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="SAVE_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoFit="TRUE" BindDataset="ds_search" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="540" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="532" Id="grd_search" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" Right="512" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="8" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="496">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="116"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" color="user12" display="text" text="저장일자" Valign="Center"/>
+						<cell align="center" col="1" color="user12" display="text" text="저장순번" Valign="Center"/>
+						<cell align="center" col="2" color="user12" display="text" text="사원명" Valign="Center"/>
+						<cell align="center" col="3" color="user12" display="text" text="부서명" Valign="Center"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SAVE_DAY" display="date" Mask="yyyy/MM/dd"/>
+						<cell align="center" col="1" colid="SAVE_SEQ" display="text"/>
+						<cell align="left" col="2" colid="STAFF_NM" display="text"/>
+						<cell align="left" col="3" colid="DEPT_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="224" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="2" TabStop="FALSE" Text="닫기" Top="560" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  // 공통 js
+#include "script::commDs.js"
+
+function off_upso_excel_save_histy_OnLoadCompleted(obj){
+	gfn_syncCall("ONOFF_CHECK_LIST","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004005&EVENTID=excel_save_list","", "ds_search=SEL1", "", "");
+}
+
+function btn_close_OnClick(obj){
+	close();
+}]]></Script>
+</Window>

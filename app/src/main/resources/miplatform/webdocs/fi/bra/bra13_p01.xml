@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra13_p01" Left="8" OnLoadCompleted="bra13_s01_OnLoadCompleted" OnSize="bra13_p01_OnSize" PidAttrib="7" Title="센터&#32;성과&#32;조회" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_staff_report" OnColumnChanged="ds_end_view_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH_NT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_8MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHONE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AUTO_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="PRCON_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USER_ID" size="256" summ="default" type="STRING"/>
+					<record>
+						<PRCON_YRMN></PRCON_YRMN>
+						<USER_ID></USER_ID>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bran_report" OnColumnChanged="ds_end_view_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH_NT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_8MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHONE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AUTO_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_rad1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>사원별</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>센터별</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_rad2">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>유단노</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>전매체</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_staff_report_all" OnColumnChanged="ds_end_view_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH_NT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_8MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHONE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AUTO_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bran_report_all" OnColumnChanged="ds_end_view_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_3MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_6MONTH_NT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_6MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE_ACCU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_8MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHONE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AUTO_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_manager" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_statistic" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_TEXT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAN_STAFF" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAN_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="YDN_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAN_LOC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_F" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search2">
+				<Contents>
+					<colinfo id="PRCON_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USER_ID" size="256" summ="default" type="STRING"/>
+					<record>
+						<PRCON_YRMN></PRCON_YRMN>
+						<USER_ID></USER_ID>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_statistic_all" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="C_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_TEXT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAN_STAFF" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAN_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="YDN_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAN_LOC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_F" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_staff_report" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="792" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="440" Id="grd_staff_report" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnCellClick="grd_NONPY_OnCellClick" OnCellDBLClick="grd_NONPY_OnCellDblClick" OnHeadClick="grd_NONPY_OnHeadClick" Right="1040" RowHeight="20" Style="grid" TabOrder="9" TabStop="FALSE" Top="352" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="53"/>
+						<col width="59"/>
+						<col width="81"/>
+						<col width="88"/>
+						<col width="66"/>
+						<col width="71"/>
+						<col width="68"/>
+						<col width="75"/>
+						<col width="127"/>
+						<col width="71"/>
+						<col width="88"/>
+						<col width="75"/>
+						<col width="93"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="센터명"/>
+						<cell col="1" color="user12" display="text" rowspan="2" text="담당자"/>
+						<cell col="2" color="user12" display="text" rowspan="2" text="유단노&#10;총업소수"/>
+						<cell col="3" color="user12" display="text" rowspan="2" text="예산"/>
+						<cell col="4" color="user12" display="text" rowspan="2" text="징수실적"/>
+						<cell col="5" color="user12" display="text" rowspan="2" text="징수율(%)"/>
+						<cell col="6" color="user12" colspan="6" display="text" text="연체업소수"/>
+						<cell col="6" color="user12" display="text" row="1" text="3개월이상"/>
+						<cell col="7" color="user12" display="text" row="1" text="연체율"/>
+						<cell col="8" color="user12" display="text" row="1" text="6개월이상"/>
+						<cell col="9" color="user12" display="text" row="1" text="6개월이상(고소제외)"/>
+						<cell col="10" color="user12" display="text" row="1" text="연체율"/>
+						<cell col="11" color="user12" display="text" row="1" text="8개월이상"/>
+						<cell col="12" color="user12" colspan="2" display="text" text="고소업소수"/>
+						<cell col="12" color="user12" display="text" row="1" text="고소업소"/>
+						<cell col="13" color="user12" display="text" row="1" text="고소율(8개월)"/>
+						<cell col="14" color="user12" display="text" rowspan="2" text="출장업소수"/>
+						<cell col="15" color="user12" display="text" rowspan="2" text="전화업소수"/>
+						<cell col="16" color="user12" display="text" rowspan="2" text="자동이체율"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_NM" display="text" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" col="1" colid="STAFF_NM" display="text"/>
+						<cell col="2" colid="CNT_UPSO" display="number"/>
+						<cell align="right" col="3" colid="PLAN_AMT" display="number"/>
+						<cell align="right" col="4" colid="COL_AMT" display="number"/>
+						<cell align="right" col="5" colid="C_RATE" display="text"/>
+						<cell col="6" colid="CNT_3MONTH" display="number"/>
+						<cell align="right" col="7" colid="RATE_3MONTH" display="normal" expr='RATE_3MONTH&#32;+&#32;&quot;%&quot;'/>
+						<cell col="8" colid="CNT_6MONTH" display="number"/>
+						<cell col="9" colid="CNT_6MONTH_NT" display="number"/>
+						<cell align="right" col="10" colid="RATE_6MONTH" display="normal" expr='RATE_6MONTH&#32;+&#32;&quot;%&quot;'/>
+						<cell col="11" colid="CNT_8MONTH" display="number"/>
+						<cell col="12" colid="CNT_ACCU" display="number"/>
+						<cell align="right" col="13" colid="RATE_ACCU" display="normal" expr='RATE_ACCU&#32;+&#32;&quot;%&quot;'/>
+						<cell col="14" colid="VISIT_CNT" display="number"/>
+						<cell col="15" colid="PHONE_CNT" display="number"/>
+						<cell align="right" col="16" colid="AUTO_RATE" display="text" expr='AUTO_RATE&#32;+&#32;&quot;%&quot;'/>
+					</body>
+					<summary>
+						<cell align="right" col="0" color="user12" colspan="2" display="text" font="굴림,9,Bold" text="계"/>
+						<cell align="right" col="2" color="user12" display="number" expr='SUM(&quot;CNT_UPSO&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="3" color="user12" display="number" expr='SUM(&quot;PLAN_AMT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="4" color="user12" display="number" expr='SUM(&quot;COL_AMT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="5" color="user12" display="text" expr='TRUNCATE(SUM(&quot;COL_AMT&quot;)&#32;/&#32;SUM(&quot;PLAN_AMT&quot;)&#32;*&#32;100,&#32;2)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="6" color="user12" display="number" expr='SUM(&quot;CNT_3MONTH&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="7" color="user12" display="text" expr='Truncate(SUM(&quot;CNT_3MONTH&quot;)&#32;/&#32;SUM(&quot;CNT_UPSO&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="8" color="user12" display="number" expr='SUM(&quot;CNT_6MONTH&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="9" color="user12" display="number" expr='SUM(&quot;CNT_6MONTH_NT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="10" color="user12" display="text" expr='Truncate(SUM(&quot;CNT_6MONTH_NT&quot;)&#32;/&#32;SUM(&quot;CNT_UPSO&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="11" color="user12" display="number" expr='SUM(&quot;CNT_8MONTH&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="12" color="user12" display="number" expr='SUM(&quot;CNT_ACCU&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="13" color="user12" display="text" expr='Truncate(SUM(&quot;CNT_ACCU&quot;)&#32;/&#32;SUM(&quot;CNT_8MONTH&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="14" color="user12" display="number" expr='SUM(&quot;VISIT_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="15" color="user12" display="number" expr='SUM(&quot;PHONE_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="16" color="user12" display="number" font="굴림,9,Bold"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<ubiviewer Bottom="832" Height="272" Id="ubi0" Left="7" Right="688" scale="100" Top="560" Visible="FALSE" Width="681">
+			<_PersistData>&#13;&#10;/6yPYl0v/wAAAQBiRgAA9x0cAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PDtAf7wAzEJADAAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBEAdwtzD30FARME7vGvB/giBsUEQgIHRABlAH9mAGEAdQBsZQNg+PKnAfn1qgj48PC/+vUXUwBo1ABlZQEQA/n1&#13;&#10;fwN0rby5tMzmCO1k+/MNSV0ARgByuwBvXQB0AE/WAFTq1AB4ZQABIhJoAG2U3AAQAxT69AJKAQwEAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="2" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="3" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="3" TabStop="FALSE" Top="16" Width="11"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_Month" Left="319" LeftMargin="4" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="5" ToolTipText="징수년월" Top="27" Width="76"></Calendar>
+		<Static Height="15" Id="Static1" Left="252" Style="tx_left_bold" TabOrder="7" Text="징수년월" Top="32" Width="55"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="235" TabOrder="6" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Radio BKColor="whitesmoke" Border="None" CodeColumn="CODE_CD" ColumnCount="2" DataColumn="CODE_NM" Font="Tahoma,11,Bold" Height="24" Id="rad_gbn1" INDEX="0" InnerDataset="ds_rad1" Left="503" OnChanged="rad_gbn1_OnChanged" Style="radio" TabOrder="10" Top="26" Width="136"></Radio>
+		<Grid AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_bran_report" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="639" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="248" Id="grd_bran_report" InputPanel="FALSE" Left="96" LineColor="silver" MinWidth="100" OnCellClick="grd_NONPY_OnCellClick" OnCellDBLClick="grd_NONPY_OnCellDblClick" OnHeadClick="grd_NONPY_OnHeadClick" Right="904" RowHeight="20" Style="grid" TabOrder="11" TabStop="FALSE" Top="391" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="808">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="59"/>
+						<col width="81"/>
+						<col width="88"/>
+						<col width="66"/>
+						<col width="71"/>
+						<col width="68"/>
+						<col width="75"/>
+						<col width="127"/>
+						<col width="71"/>
+						<col width="75"/>
+						<col width="75"/>
+						<col width="92"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="센터명"/>
+						<cell col="1" color="user12" display="text" rowspan="2" text="유단노&#10;총업소수"/>
+						<cell col="2" color="user12" display="text" rowspan="2" text="예산"/>
+						<cell col="3" color="user12" display="text" rowspan="2" text="징수실적"/>
+						<cell col="4" color="user12" display="text" rowspan="2" text="징수율(%)"/>
+						<cell col="5" color="user12" colspan="6" display="text" text="연체업소수"/>
+						<cell col="5" color="user12" display="text" row="1" text="3개월이상"/>
+						<cell col="6" color="user12" display="text" row="1" text="연체율"/>
+						<cell col="7" color="user12" display="text" row="1" text="6개월이상"/>
+						<cell col="8" color="user12" display="text" row="1" text="6개월이상(고소제외)"/>
+						<cell col="9" color="user12" display="text" row="1" text="연체율"/>
+						<cell col="10" color="user12" display="text" row="1" text="8개월이상"/>
+						<cell col="11" color="user12" colspan="2" display="text" text="고소업소수"/>
+						<cell col="11" color="user12" display="text" row="1" text="고소업소"/>
+						<cell col="12" color="user12" display="text" row="1" text="고소율(8개월)"/>
+						<cell col="13" color="user12" display="text" rowspan="2" text="출장업소수"/>
+						<cell col="14" color="user12" display="text" rowspan="2" text="전화업소수"/>
+						<cell col="15" color="user12" display="text" rowspan="2" text="자동이체율"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_NM" display="text" suppress="1" SuppressAlign="Middle"/>
+						<cell col="1" colid="CNT_UPSO" display="number"/>
+						<cell align="right" col="2" colid="PLAN_AMT" display="number"/>
+						<cell align="right" col="3" colid="COL_AMT" display="number"/>
+						<cell align="right" col="4" colid="C_RATE" display="text"/>
+						<cell col="5" colid="CNT_3MONTH" display="number"/>
+						<cell align="right" col="6" colid="RATE_3MONTH" display="normal" expr='RATE_3MONTH&#32;+&#32;&quot;%&quot;'/>
+						<cell col="7" colid="CNT_6MONTH" display="number"/>
+						<cell col="8" colid="CNT_6MONTH_NT" display="number"/>
+						<cell align="right" col="9" colid="RATE_6MONTH" display="normal" expr='RATE_6MONTH&#32;+&#32;&quot;%&quot;'/>
+						<cell col="10" colid="CNT_8MONTH" display="number"/>
+						<cell col="11" colid="CNT_ACCU" display="number"/>
+						<cell align="right" col="12" colid="RATE_ACCU" display="normal" expr='RATE_ACCU&#32;+&#32;&quot;%&quot;'/>
+						<cell col="13" colid="VISIT_CNT" display="number"/>
+						<cell col="14" colid="PHONE_CNT" display="number"/>
+						<cell align="right" col="15" colid="AUTO_RATE" display="text" expr='AUTO_RATE+&quot;%&quot;'/>
+					</body>
+					<summary>
+						<cell align="right" col="0" color="user12" display="text" font="굴림,9,Bold" text="계"/>
+						<cell align="right" col="1" color="user12" display="number" expr='SUM(&quot;CNT_UPSO&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="2" color="user12" display="number" expr='SUM(&quot;PLAN_AMT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="3" color="user12" display="number" expr='SUM(&quot;COL_AMT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="4" color="user12" display="text" expr='TRUNCATE(SUM(&quot;COL_AMT&quot;)&#32;/&#32;SUM(&quot;PLAN_AMT&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="5" color="user12" display="number" expr='SUM(&quot;CNT_3MONTH&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="6" color="user12" display="text" expr='Truncate(SUM(&quot;CNT_3MONTH&quot;)&#32;/&#32;SUM(&quot;CNT_UPSO&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="7" color="user12" display="number" expr='SUM(&quot;CNT_6MONTH&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="8" color="user12" display="number" expr='SUM(&quot;CNT_6MONTH_NT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="9" color="user12" display="text" expr='Truncate(SUM(&quot;CNT_6MONTH_NT&quot;)&#32;/&#32;SUM(&quot;CNT_UPSO&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="10" color="user12" display="number" expr='SUM(&quot;CNT_8MONTH&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="11" color="user12" display="number" expr='SUM(&quot;CNT_ACCU&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="12" color="user12" display="text" expr='Truncate(SUM(&quot;CNT_ACCU&quot;)&#32;/&#32;SUM(&quot;CNT_8MONTH&quot;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&quot;' font="굴림,9,Bold"/>
+						<cell align="right" col="13" color="user12" display="number" expr='SUM(&quot;VISIT_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="14" color="user12" display="number" expr='SUM(&quot;PHONE_CNT&quot;)' font="굴림,9,Bold"/>
+						<cell align="right" col="15" color="user12" display="number" font="굴림,9,Bold"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Radio BKColor="whitesmoke" Border="None" CodeColumn="CODE_CD" ColumnCount="2" DataColumn="CODE_NM" Font="Tahoma,11,Bold" Height="24" Id="rad_gbn2" INDEX="0" InnerDataset="ds_rad2" Left="755" OnChanged="rad_gbn2_OnChanged" Style="radio" TabOrder="12" Top="26" Width="136"></Radio>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="435" TabOrder="13" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="452" Style="tx_left_bold" TabOrder="14" Text="구분1" Top="32" Width="55"></Static>
+		<Static Height="15" Id="Static2" Left="700" Style="tx_left_bold" TabOrder="16" Text="구분2" Top="32" Width="55"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="683" TabOrder="15" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="32" TabOrder="17" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Static Height="15" Id="Static3" Left="49" Style="tx_left_bold" TabOrder="18" Text="관리자" Top="32" Width="55"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="user10" CodeColumn="UDTKPRES_ID" Column="USER_ID" DataColumn="UDTKPRES_NM" Height="20" Id="cob_manager" ImeMode="none" INDEX="0" InnerDataset="ds_manager" Left="104" TabOrder="1" ToolTipText="센터명" Top="26" Width="96"></Combo>
+		<Grid AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_statistic" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="342" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" Font="굴림,9,Bold" HeadHeight="46" Height="278" Id="grd_statistic" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" OnCellDBLClick="grd_statistic_OnCellDblClick" Right="1040" RowHeight="46" Style="grid" TabOrder="19" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="205"/>
+						<col width="81"/>
+						<col width="98"/>
+						<col width="120"/>
+						<col width="154"/>
+						<col width="68"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="관리자"/>
+						<cell col="1" color="user12" display="text" text="유단노&#32;징수실적"/>
+						<cell col="2" color="user12" display="text" text="관리직원&#32;수"/>
+						<cell col="3" color="user12" display="text" text="총&#32;관리업소&#32;수"/>
+						<cell col="4" color="user12" display="text" text="유단노&#32;관리업소&#32;수"/>
+						<cell col="5" color="user12" display="text" text="관리지역"/>
+						<cell col="6" color="user12" display="text" text="상세보기"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UDTKPRES_NM" display="text"/>
+						<cell align="center" col="1" colid="COL_TEXT" display="text"/>
+						<cell align="right" col="2" colid="MAN_STAFF" display="number"/>
+						<cell align="right" col="3" colid="MAN_UPSO" display="number"/>
+						<cell align="right" col="4" colid="YDN_UPSO" display="number"/>
+						<cell align="center" col="5" colid="MAN_LOC" display="text"/>
+						<cell align="center" col="6" display="normal" text="[더블클릭]"/>
+					</body>
+					<summary>
+						<cell align="center" col="0" display="text" text="합계"/>
+						<cell align="center" col="1" display="text" expr='&quot;달성율&#32;:&#32;&quot;&#32;+&#32;TRUNCATE(SUM(&apos;COL_AMT&apos;)&#32;/&#32;SUM(&apos;PLAN_AMT&apos;)&#32;*&#32;100,&#32;1)&#32;+&#32;&quot;%&#10;징수예산&#32;:&#32;&quot;&#32;+&#32;NumFormat(SUM(&apos;PLAN_AMT&apos;))&#32;+&#32;&quot;&#10;징수금액&#32;:&#32;&quot;&#32;+&#32;NumFormat(SUM(&apos;COL_AMT&apos;))' font="돋움,10,Bold"/>
+						<cell align="right" col="2" display="number" expr="sum(&apos;MAN_STAFF&apos;)"/>
+						<cell align="right" col="3" display="number" expr="sum(&apos;MAN_UPSO&apos;)"/>
+						<cell align="right" col="4" display="number" expr="sum(&apos;YDN_UPSO&apos;)"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="64" Height="3" Id="Shape3" Left="8" LineColor="user7" Right="1040" TabOrder="20" Top="61" Type="Rectangle" Width="1032"></Shape>
+		<Shape BKColor="user7" Bottom="352" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="21" Top="349" Type="Rectangle" Width="1032"></Shape>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"  
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		//fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		//fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    } 
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		if(gfn_changeAction("CLOSE", "ds_end_view")){
+			close();
+		}
+    }
+
+	return;
+}
+ 
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "plan_vs_col_select") 
+	{
+		/*gfn_SetStatusMsg(ds_end_view.count + " 건이 조회되었습니다.");
+		
+		ubi0.setJrfFileName("bra13_p01.jrf");
+		ubi0.SetDataset("sql1", grd_bran_report.BindDataset);
+		ubi0.Retrieve();*/
+	}
+}
+
+function bra13_s01_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);
+	
+	gfn_GetManager_CD(this.cob_manager);
+	
+	//현재년도 조건 설정
+	cal_Month.Value = substr(today(),0,6)+ "01";
+	
+	grd_bran_report.Visible = false;
+	grd_bran_report.Left = 8;
+	grd_bran_report.Top = 352;
+	grd_bran_report.Width = 1032;
+	grd_bran_report.Height = 440;
+	
+	ubi0.Left = 7;
+	ubi0.Top = 332;
+	ubi0.Width = 1032;
+	ubi0.Height = 485;
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.Visible = false;
+	
+	bra13_p01_OnSize();
+}
+
+//------- 조회
+function fn_Search() 
+{
+	ds_search.SetColumn(0, "PRCON_YRMN", mid(cal_Month.Value,0,6));
+	
+	//trace(ds_search.SaveXML());
+	gfn_SyncCall("plan_vs_col_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008011&EVENTID=plan_vs_col_select","S=ds_search","ds_staff_report_all=SEL1 ds_bran_report_all=SEL2 ds_statistic_all=SEL3 ds_statistic=SEL6 ds_staff_report=SEL4 ds_bran_report=SEL5","","fn_CallBack");
+}
+
+function fn_Excel() 
+{
+	gfn_setExcelGridHeader(grd_staff_report, rad_gbn1.Text + " 실적 조회(" + rad_gbn2.Text + ")", substr(cal_Month.Value, 0, 6));
+}
+
+function gfn_setExcelGridHeader(grdObj,strText1,strText2)
+{
+	Destroy("grdExcel");
+	create("grid","grdExcel",'BindDataSet="' + grdObj.BindDataset +'"');
+	//alert(grdObj.BindDataset);
+	grdExcel.contents = grdObj.Contents;
+	
+	var headCnt = gfn_getHeadCount(grdExcel);
+	var totCol  = grdExcel.GetColCount();
+	
+	var irow;
+	
+	for(var i = 0 ; i < headCnt ; i++ )
+	{
+		irow = toInteger(grdExcel.GetCellProp("head",i,"row"));
+		grdExcel.SetCellProp("head",i,"row",irow+2);
+	}
+
+	var str_temp = grdExcel.GetCurContents();
+	var str_Head = '<cell col="0" display="text" colspan="' + totCol + '" rowspan="2">';
+	str_Head += '<cell align="center" row="0" col ="0" colspan="' + totCol + '" font="굴림,18" display="text" text="' + strText1 + '" />';
+	str_Head += '<cell align="center" row="1" col ="0" colspan="' + totCol + '" font="굴림,9" display="text" text="' + strText2 + '" />';
+	str_Head += '</cell>';
+	str_temp = replace(str_temp, '</head>',str_Head +'</head>');
+	
+	grdExcel.contents = str_temp;
+	
+	grdExcel.ExportExcelEx("sheet1","A1",false,true,true);
+
+}
+
+function gfn_getHeadCount(grdObj)
+{
+	var strConts = grdObj.Contents;
+	
+	var iPos = pos(strConts,"<head>");
+
+	var strHead = Mid(strConts,iPos);
+	
+	iPos = pos(strHead,"</head>");
+	
+	strHead = Mid(strHead,0,iPos+7);
+	
+	//trace(strHead);
+	
+	var spObj = split(strHead,chr(10),"webstyle");
+	
+	return spObj.length()-2;
+}
+
+function bra13_p01_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_staff_report, bra13_p01, 1, 0);
+	gfn_ObjreSize(grd_bran_report, bra13_p01, 1, 0);
+	gfn_ObjreSize(Shape0, bra13_p01, 1, 0);
+	
+	//gfn_ObjreSize(ubi0, bra13_p01, 1, 0);
+}
+
+function rad_gbn1_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "1")
+	{
+		grd_staff_report.Visible = true;
+		grd_bran_report.Visible = false;
+		//ubi0.Visible = false;
+	}
+	else
+	{
+		grd_staff_report.Visible = false;
+		grd_bran_report.Visible = true;
+		//ubi0.Visible = true;
+	}
+}
+
+function rad_gbn2_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "1")
+	{
+		grd_staff_report.BindDataset = "ds_staff_report";
+		grd_bran_report.BindDataset = "ds_bran_report";
+		grd_statistic.BindDataset = "ds_statistic";
+		grd_staff_report.SetCellProp("head", 2, "text", "유단노\n총업소수");
+		grd_bran_report.SetCellProp("head", 1, "text", "유단노\n총업소수");
+		grd_statistic.SetCellProp("head", 1, "text", "유단노 징수실적");
+	}
+	else
+	{
+		grd_staff_report.BindDataset = "ds_staff_report_all";
+		grd_bran_report.BindDataset = "ds_bran_report_all";
+		grd_statistic.BindDataset = "ds_statistic_all";
+		grd_staff_report.SetCellProp("head", 2, "text", "전매체\n총업소수");
+		grd_bran_report.SetCellProp("head", 1, "text", "전매체\n총업소수");
+		grd_statistic.SetCellProp("head", 1, "text", "전매체 징수실적");
+	}
+}
+
+function grd_statistic_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_search2.SetColumn(0, "PRCON_YRMN", ds_search.GetColumn(0, "PRCON_YRMN"));
+	ds_search2.SetColumn(0, "USER_ID", ds_statistic.GetColumn(nRow, "UDTKPRES_ID"));
+	gfn_SyncCall("plan_vs_col_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008011&EVENTID=plan_vs_col_select","S=ds_search2","ds_staff_report_all=SEL1 ds_bran_report_all=SEL2 ds_staff_report=SEL4 ds_bran_report=SEL5","","fn_CallBack");
+}
+]]></Script>
+</Window>

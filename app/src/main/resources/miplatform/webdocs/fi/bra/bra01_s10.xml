@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="메모템플릿관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_memo" OnRowPosChanged="ds_memo_OnRowPosChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="MEMO_CD" size="256" type="STRING"/>
+					<colinfo id="MEMO_GBN" size="256" type="STRING"/>
+					<colinfo id="CTENT" size="256" type="STRING"/>
+					<colinfo id="IO_CHK" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="white" Bottom="771" Height="756" Id="Shape1" Left="568" LineColor="user3" Right="1039" TabOrder="4" Top="15" Type="Rectangle" Width="471"></Shape>
+		<Shape BKColor="white" Bottom="70" Height="26" Id="Shape2" Left="704" LineColor="user3" Right="1039" TabOrder="8" Top="44" Type="Rectangle" Width="335"></Shape>
+		<Shape BKColor="white" Bottom="45" Height="26" Id="Shape3" Left="705" LineColor="user3" Right="1039" TabOrder="9" Top="19" Type="Rectangle" Width="334"></Shape>
+		<Grid AutoFit="TRUE" BindDataset="ds_memo" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="770" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="754" Id="grd_visitInfo" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" Right="560" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="16" UseAutoSizing="Row" UseDBuff="true" UseExSizing="Row" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="544">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="86"/>
+						<col width="180"/>
+						<col width="170"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="코드"/>
+						<cell col="1" color="user12" display="text" text="구분"/>
+						<cell col="2" color="user12" display="text" text="내용"/>
+					</head>
+					<body>
+						<cell col="0" colid="MEMO_CD" display="text"/>
+						<cell align="center" col="1" colid="MEMO_GBN" display="text"/>
+						<cell col="2" colid="CTENT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<TextArea BindDataset="ds_memo" BKColor="user13" Border="Flat" BorderColor="user3" Column="CTENT" Height="636" Id="Edt_Ctent" ImeMode="none" Left="576" TabOrder="2" ToolTipText="내용" Top="112" VScroll="TRUE" Width="458"></TextArea>
+		<Edit BindDataset="ds_memo" Border="Flat" BorderColor="user3" Column="MEMO_CD" Enable="FALSE" Height="20" Id="Edt_Memo_CD" Left="709" TabOrder="5" Top="22" Width="326"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static9" Left="576" Style="box_tx" TabOrder="6" Text="코드" Top="19" VAlign="Middle" Width="130"></Static>
+		<Edit BindDataset="ds_memo" BKColor="user13" Border="Flat" BorderColor="user3" Column="MEMO_GBN" Height="20" Id="Edt_Memo_Gbn" Left="709" TabOrder="1" ToolTipText="구분" Top="47" Width="326"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static0" Left="576" Style="box_tx" TabOrder="7" Text="구분" Top="44" VAlign="Middle" Width="130"></Static>
+		<Static Color="user1" Height="23" Id="Static17" Left="598" Style="tx_bold" TabOrder="10" Text="내용" Top="96" Width="81"></Static>
+		<Image Height="29" Id="Image2" ImageID="C_icon2" Left="574" TabOrder="11" Top="93" Width="18"></Image>
+		<Shape BKColor="user7" Bottom="17" Height="3" Id="Shape0" Left="16" LineColor="user7" Right="560" TabOrder="4" Top="14" Type="Rectangle" Width="544"></Shape>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		//fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		//fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		if(gfn_changeAction("CLOSE", "ds_memo")){
+			close();
+		}
+    }
+
+	return;
+}
+ 
+function fn_New() 
+{
+	ds_memo.AddRow();
+}
+function fn_Search() 
+{
+	if(!gfn_changeAction("SEARCH", "ds_memo")) return;
+
+	//trace(ds_search.SaveXML());
+	gfn_AsyncCall("memo_search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004003&EVENTID=memo_search","","ds_memo=SEL1","","fn_CallBack");
+
+	
+}
+
+function fn_Save() 
+{	
+	//필수입력 체크
+	if(!gfn_CheckFormNull(this)) return;
+/*
+	//내용이 공백인 것을 체크
+	if(length(this.Edt_Ctent.Text) ==0 ){
+		alert("내용을 입력하세요.");
+		this.Edt_Ctent.SetFocus();
+		return;
+	}
+*/
+	if(confirm("저장 하시겠습니까?")){
+		gfn_SyncCall("memo_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004003&EVENTID=memo_save","S=ds_memo:U ","","","fn_CallBack", gv_TraceLog, gv_formid);
+	}
+}
+function fn_Delete() 
+{	
+	ds_memo.DeleteRow(ds_memo.currow);
+}
+function fn_Excel() {}
+function fn_Print() {}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "memo_search") {
+		gfn_SetStatusMsg(ds_memo.count + " 건이 조회되었습니다.");
+		
+	}else if(srvId == "memo_save") {
+		gfn_SetStatusMsg("저장이 완료되었습니다.");
+		gfn_AsyncCall("memo_search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004003&EVENTID=memo_search","","ds_memo=SEL1","","fn_CallBack");
+
+	}
+}
+
+function ds_memo_OnRowPosChanged(obj,nOldRow,nRow)
+{
+/*
+	IF (ds_memo.GetColumn(nRow,"IO_CHK") == "1") {
+		edt_memo_cd.Enable = false;
+	} else {
+		edt_memo_cd.Enable = true;
+	}
+*/
+}
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_loadForm(obj);	
+}
+]]></Script>
+</Window>

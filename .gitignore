@@ -11,3 +11,5 @@ build
 .cursorconfig
 .cursorrules
 build/
+bin/
+.gradle

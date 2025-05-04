@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnKeyDown="form_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="지역징수업소수현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN1" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN2" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mng_Si">
+				<Contents>
+					<colinfo id="GUGUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="O" size="256" summ="default" type="STRING"/>
+					<colinfo id="K" size="256" summ="default" type="STRING"/>
+					<colinfo id="L" size="256" summ="default" type="STRING"/>
+					<colinfo id="Q" size="256" summ="default" type="STRING"/>
+					<colinfo id="R" size="256" summ="default" type="STRING"/>
+					<colinfo id="U" size="256" summ="default" type="STRING"/>
+					<colinfo id="S" size="256" summ="default" type="STRING"/>
+					<colinfo id="N" size="256" summ="default" type="STRING"/>
+					<colinfo id="M" size="256" summ="default" type="STRING"/>
+					<colinfo id="P" size="256" summ="default" type="STRING"/>
+					<colinfo id="W" size="256" summ="default" type="STRING"/>
+					<colinfo id="X" size="256" summ="default" type="STRING"/>
+					<colinfo id="V" size="256" summ="default" type="STRING"/>
+					<colinfo id="Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETC" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mng_Umn">
+				<Contents>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUGUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="O" size="256" summ="default" type="STRING"/>
+					<colinfo id="K" size="256" summ="default" type="STRING"/>
+					<colinfo id="L" size="256" summ="default" type="STRING"/>
+					<colinfo id="Q" size="256" summ="default" type="STRING"/>
+					<colinfo id="R" size="256" summ="default" type="STRING"/>
+					<colinfo id="U" size="256" summ="default" type="STRING"/>
+					<colinfo id="S" size="256" summ="default" type="STRING"/>
+					<colinfo id="N" size="256" summ="default" type="STRING"/>
+					<colinfo id="M" size="256" summ="default" type="STRING"/>
+					<colinfo id="P" size="256" summ="default" type="STRING"/>
+					<colinfo id="W" size="256" summ="default" type="STRING"/>
+					<colinfo id="X" size="256" summ="default" type="STRING"/>
+					<colinfo id="V" size="256" summ="default" type="STRING"/>
+					<colinfo id="Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETC" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Dev_Umn">
+				<Contents>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUGUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="O" size="256" summ="default" type="STRING"/>
+					<colinfo id="K" size="256" summ="default" type="STRING"/>
+					<colinfo id="L" size="256" summ="default" type="STRING"/>
+					<colinfo id="Q" size="256" summ="default" type="STRING"/>
+					<colinfo id="R" size="256" summ="default" type="STRING"/>
+					<colinfo id="U" size="256" summ="default" type="STRING"/>
+					<colinfo id="S" size="256" summ="default" type="STRING"/>
+					<colinfo id="N" size="256" summ="default" type="STRING"/>
+					<colinfo id="M" size="256" summ="default" type="STRING"/>
+					<colinfo id="P" size="256" summ="default" type="STRING"/>
+					<colinfo id="W" size="256" summ="default" type="STRING"/>
+					<colinfo id="X" size="256" summ="default" type="STRING"/>
+					<colinfo id="V" size="256" summ="default" type="STRING"/>
+					<colinfo id="Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETC" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Dev_Si">
+				<Contents>
+					<colinfo id="GUGUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_UPSO" size="256" summ="default" type="STRING"/>
+					<colinfo id="O" size="256" summ="default" type="STRING"/>
+					<colinfo id="K" size="256" summ="default" type="STRING"/>
+					<colinfo id="L" size="256" summ="default" type="STRING"/>
+					<colinfo id="Q" size="256" summ="default" type="STRING"/>
+					<colinfo id="R" size="256" summ="default" type="STRING"/>
+					<colinfo id="U" size="256" summ="default" type="STRING"/>
+					<colinfo id="S" size="256" summ="default" type="STRING"/>
+					<colinfo id="N" size="256" summ="default" type="STRING"/>
+					<colinfo id="M" size="256" summ="default" type="STRING"/>
+					<colinfo id="P" size="256" summ="default" type="STRING"/>
+					<colinfo id="W" size="256" summ="default" type="STRING"/>
+					<colinfo id="X" size="256" summ="default" type="STRING"/>
+					<colinfo id="V" size="256" summ="default" type="STRING"/>
+					<colinfo id="Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETC" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="70" Id="Image17" ImageID="C_search2_bg" Left="18" TabOrder="7" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="70" Id="Image5" ImageID="C_search2_left" Left="8" TabOrder="6" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="70" Id="Image18" ImageID="C_search2_right" Left="1029" TabOrder="8" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Radio BindDataset="ds_In" BKColor="whitesmoke" Border="None" Column="GBN1" Height="24" Id="Radio00" INDEX="0" Left="28" Style="radio" TabOrder="1" Top="24" Width="236">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="관리업소수현황" top="5" width="110"/>
+				<Layout code="2" height="18" left="120" text="개발중업소수현황" top="5" width="120"/>
+			</Contents>
+		</Radio>
+		<Radio BindDataset="ds_In" BKColor="whitesmoke" Border="None" Column="GBN2" Height="24" Id="Radio0" INDEX="0" Left="28" Style="radio" TabOrder="2" Top="47" Width="204">
+			<Contents>
+				<Layout code="A" default="true" height="18" left="0" text="시/군/구별" top="5" width="90"/>
+				<Layout code="B" height="18" left="120" text="읍/면/동별" top="5" width="90"/>
+			</Contents>
+		</Radio>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="506" TabOrder="9" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="522" Style="tx_left_bold" TabOrder="10" Text="사원명" Top="53" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="280" TabOrder="10" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Static Height="13" Id="Static0" Left="296" Style="tx_left_bold" TabOrder="12" Text="센터명" Top="53" Width="48"></Static>
+		<ubiviewer Bottom="793" Height="701" Id="ubi0" Left="8" Right="1039" Top="92" Width="1031">
+			<_PersistData>&#13;&#10;/6zMJayq/wAAAQCPagAAd3NIAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Static Height="13" Id="Static2" Left="824" Style="tx_left_bold" TabOrder="15" Text="기준년월" Top="54" Width="56"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="808" TabOrder="11" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Combo CodeColumn="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="568" TabOrder="4" ToolTipText="사원명" Top="47" Width="112"></Combo>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_YRMN" Left="887" LeftMargin="10" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="5" ToolTipText="기준년월" Top="50" Width="89"></Calendar>
+		<Combo BKColor="user13" Height="20" Id="cob_BRAN_CD" ImeMode="none" Left="352" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="3" ToolTipText="센터명" Top="47" Width="112"></Combo>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "Acuse_states_Search") {
+		gfn_SetStatusMsg(ds_Accuse.count + " 건이 조회되었습니다.");
+	}
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+  
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		//this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		
+        close();
+    }
+	
+	return;
+}
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	this.ds_In.AddRow();
+
+	this.Radio00.Value = '1';
+	this.Radio0.Value ='A';
+	this.cal_YRMN.Value = today();
+
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+
+	var iRow = ds_SawonInfo.InsertRow(0);
+	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+
+	this.cob_Staff_Nm.Value = "";
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+
+function fn_Search(){
+
+	if(length(this.cob_Staff_Nm.Value)==0){
+		ubi0.SetArgument("Staff_NM","");
+	}
+	else{
+		ubi0.SetArgument("Staff_NM", this.cob_Staff_Nm.Text );
+	}
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if(length(trim(cob_BRAN_CD.Text)) == 0)
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		cob_BRAN_CD.SetFocus();
+		return false;
+
+	}
+	if( this.cal_YRMN.Value == "" or this.cal_YRMN.Value == null){
+        gfn_Confirm("MB_OK", "일자를 선택해주세요.", "경고", "0");
+		cob_BRAN_CD.SetFocus();
+		return;
+	}
+	
+	this.ds_In.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_In.SetColumn(0, "YRMN", substr(this.cal_YRMN.Value, 0, 6));
+	var cd_staff = this.ds_SawonInfo.GetColumn(this.cob_Staff_Nm.Index, "STAFF_CD");
+	this.ds_In.SetColumn(0, "STAFF_CD"     , cd_staff);
+	ubi0.SetArgument("YRMN",this.cal_YRMN.Value);
+
+	
+	ubi0.SetArgument("NM",decode(Radio00.Value,1,'관리',2,'개발',3,'전체'));
+	ubi0.SetArgument("BRAN_NM",this.cob_BRAN_CD.Text ) ;
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/"); 
+	
+	
+	
+	if(this.Radio00.Value==1)
+	{
+		if(this.Radio0.Value=='A'){
+			gfn_syncCall("sync_Mng_Si","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012004&EVENTID=zip_mng_colupso","S=ds_In","ds_Mng_Si=SEL1","","fn_CallBack");
+			ubi0.SetDataset("sql_Mng_Si","ds_Mng_Si");
+				//alert("bra09_p04");
+			ubi0.setJrfFileName("bra09_p04.jrf");
+		}
+		else if(this.Radio0.Value=='B'){
+
+			gfn_syncCall("sync_Mng_Umn","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012004&EVENTID=zip_mng_colupso","S=ds_In","ds_Mng_Umn=SEL3","","fn_CallBack");
+			ubi0.SetDataset("sql_Mng_Umn","ds_Mng_Umn");
+			//	alert("bra09_p04_01");
+			ubi0.setJrfFileName("bra09_p04_01.jrf");
+			//trace(this.ds_in.SaveXML());
+		}
+	}
+	else if(this.Radio00.Value == 2)
+	{
+		if(this.Radio0.Value=='A'){
+			gfn_syncCall("sync_Dev_Mng","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012004&EVENTID=zip_mng_colupso","S=ds_In","ds_Dev_Si=SEL2","","fn_CallBack");
+			ubi0.SetDataset("sql_Dev_Mng","ds_Dev_Si");
+			//	alert("bra09_p04_02");
+			ubi0.setJrfFileName("bra09_p04_02.jrf");			
+		}
+		else if(this.Radio0.Value=='B'){
+			gfn_syncCall("sync_Dev_Umn","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012004&EVENTID=zip_mng_colupso","S=ds_In","ds_Dev_Umn=SEL4","","fn_CallBack");
+			ubi0.SetDataset("sql_Dev_Umn","ds_Dev_Umn");
+		//	alert("bra09_p04_03");
+			ubi0.setJrfFileName("bra09_p04_03.jrf");	
+		}
+	}
+
+
+	ubi0.Retrieve();
+	
+	
+	
+}
+
+function fn_Print()
+{
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	if(ds_Accuse.rowcount = 0)
+	{
+        gfn_Confirm("MB_OK", "출력할 데이타가 없습니다.", "경고", "0");
+		return false;
+	
+	}
+	
+	ubi0.directPrint();
+
+}
+
+function form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+
+	 if (nChar == "112") {
+	  var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+	  
+	  if (length(result ) > 0) {
+	   var vArr = result.Split(",");
+	   this.cob_STAFF_CD.Text = vArr[0];
+	   this.cob_STAFF_NM.Text = vArr[1];
+	  }
+	 }
+
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+
+	var iRow = ds_SawonInfo.InsertRow(0);
+	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+
+	this.cob_Staff_Nm.Value = "";
+	this.cob_Staff_Nm.Enable = true;
+	
+}
+
+]]></Script>
+</Window>

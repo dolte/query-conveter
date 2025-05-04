@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="392" Id="bra01_s03" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="사용료&#32;변경" Top="8" Ver="1.0" Width="928" WorkArea="true">
+		<Datasets>
+			<Dataset CanColumnChange="ds_UPSORTAL_INFO_CanColumnChange" CanRowPosChange="ds_UPSORTAL_INFO_CanRowPosChange" DataSetType="Dataset" Editable="True" Id="ds_UPSORTAL_INFO" OnColumnChanged="ds_UPSORTAL_INFO_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="3" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_TIME" size="2" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UPSORTAL_IN">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BSTypGrad">
+				<Contents>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA_END" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Location">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_ETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_UpsoNoraebang" OnColumnChanged="ds_UpsoNoraebang_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Noraebang_In">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_UpsoNoraebang2" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_in_appl_day">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_feerate">
+				<Contents>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_set_rate">
+				<Contents>
+					<colinfo id="RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_UPSORTAL_INFO" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="208" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="168" Id="grd_FeeInfo" InputPanel="FALSE" Left="24" LineColor="silver" OnCellClick="grd_FeeInfo_OnCellClick" OnCellDBLClick="grd_FeeInfo_OnCellDblClick" OnExpandEdit="grd_FeeInfo_OnExpandEdit" Right="793" RowHeight="20" SelColor="user0" TabOrder="1" TabStop="true" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="769">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="60"/>
+						<col width="30"/>
+						<col width="15"/>
+						<col width="80"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="301"/>
+						<col width="1"/>
+						<col width="1"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" colspan="3" display="text" text="변경번호"/>
+						<cell col="3" color="user12" display="text" text="업종"/>
+						<cell col="4" color="user12" display="text" text="댓수"/>
+						<cell col="5" color="user12" display="text" text="사용시간"/>
+						<cell col="6" color="user12" display="text" text="기준월정료"/>
+						<cell col="7" color="user12" display="text" text="월사용료"/>
+						<cell col="8" color="user12" display="text" text="적용일자"/>
+						<cell col="9" color="user12" display="text" text="사유"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CHG_DAY" color="user0" display="text"/>
+						<cell align="center" col="1" colid="CHG_NUM" display="text"/>
+						<cell align="center" col="2" colid="CHG_BRAN" display="text"/>
+						<cell align="center" bkcolor="user13" col="3" colid="GRAD" display="text" edit='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;,&quot;normal&quot;,&quot;none&quot;)' expandimage="rbt_search01" expandshow='expr:iif(getRowtype(currow)==&quot;insert&quot;&#32;,&quot;true&quot;,&quot;false&quot;)'/>
+						<cell align="center" col="4" colid="MCHNDAESU" display="text"/>
+						<cell align="center" col="5" colid="USE_TIME" display="text" edit="normal"/>
+						<cell align="right" col="6" colid="MONPRNCFEE2" display="numberexp" edit='expr:iif(substr(GRAD,0,1)&#32;==&#32;&quot;A&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;B&quot;&#32;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;C&quot;&#32;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;D&quot;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;E&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;G&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;H&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;I&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;J&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;g&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;s&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;t&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;u&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;v&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;w&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;x&quot;&#32;||&#32;substr(GRAD,0,1)&#32;==&#32;&quot;y&quot;,&quot;normal&quot;,&quot;none&quot;)'/>
+						<cell align="right" col="7" colid="MONPRNCFEE" display="numberexp"/>
+						<cell align="center" bkcolor="user13" col="8" colid="APPL_DAY" display="text" edit="normal" expandimage="btn_Grid_Calendar" expandshow="true" Mask="####-##-##"/>
+						<cell align="left" col="9" colid="REMAK" display="text" edit="normal"/>
+						<cell col="10" colid="GRADNM" display="text"/>
+						<cell col="11" display="text" expr="getrowtype(currow)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_addRTAL" ImageID="C_btn_90" Left="321" OnClick="btn_addRTAL_OnClick" TabOrder="2" Text="추가" Top="16" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_saveRTAL" ImageID="C_btn_90" Left="416" OnClick="btn_saveRTAL_OnClick" TabOrder="3" Text="저장" Top="16" Width="90"></Button>
+		<Grid BindDataset="ds_UpsoNoraebang" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="376" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="144" Id="grd_Noraebang" InputPanel="FALSE" Left="24" LineColor="default" Right="792" RowHeight="20" TabOrder="4" TabStop="true" Top="232" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="768">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="130"/>
+						<col width="96"/>
+						<col width="159"/>
+						<col width="106"/>
+						<col width="124"/>
+						<col width="139"/>
+						<col width="1"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="방면적[단위:m]"/>
+						<cell col="1" color="user12" display="text" text="업종코드"/>
+						<cell col="2" color="user12" display="text" text="업종(등급)명"/>
+						<cell col="3" color="user12" display="text" text="대당&#32;사용료"/>
+						<cell col="4" color="user12" display="text" text="기기대수"/>
+						<cell col="5" color="user12" display="text" text="등급별&#32;사용료"/>
+						<cell col="6" display="text"/>
+					</head>
+					<body>
+						<cell align="right" bkcolor="user13" col="0" colid="AREA" display="number" edit="number" Mask="###.#"/>
+						<cell align="center" col="1" colid="GRAD" display="text"/>
+						<cell align="center" col="2" colid="GRADNM" display="text"/>
+						<cell align="right" col="3" colid="STNDAMT" display="numberexp"/>
+						<cell align="right" bkcolor="user13" col="4" colid="MCHNDAESU" display="numberexp" edit="normal"/>
+						<cell align="right" bkcolor="user13" col="5" colid="AMT" display="numberexp" Mask="#,###,###,###"/>
+						<cell col="6" display="text" expr="getrowtype(currow)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Radio CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="48" Id="rad_LOCATION" INDEX="0" InnerDataset="ds_location" Left="824" OnChanged="rad_LOCATION_OnChanged" Style="radio" TabOrder="5" Top="248" Value="1" Visible="FALSE" Width="88">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="60"/>
+				<Layout code="2" height="18" left="70" text="가등록" top="0" width="95"/>
+			</Contents>
+		</Radio>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_AddUseAmt" ImageID="C_btn_90" Left="824" LeftMargin="23" OnClick="btn_AddUseAmt_OnClick" Style="edit" TabOrder="6" Text="&#32;&#32;&#32;추&#32;가" Top="304" TopMargin="1" Visible="FALSE" Width="93"></Button>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_DelUseAmt" ImageID="C_btn_90" Left="824" LeftMargin="23" OnClick="btn_DelUseAmt_OnClick" Style="edit" TabOrder="7" Text="&#32;&#32;&#32;삭&#32;제" Top="328" TopMargin="1" Visible="FALSE" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_90" Left="701" OnClick="btn_close_OnClick" TabOrder="8" Text="닫기" Top="16" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_cancelRTAL" ImageID="C_btn_90" Left="511" OnClick="btn_cancelRTAL_OnClick" TabOrder="9" Text="취소" Top="16" Width="90"></Button>
+		<Edit Height="21" Id="edt_UPSO_CD" Left="71" TabOrder="10" Top="17" Visible="FALSE" Width="40"></Edit>
+		<Edit Height="21" Id="edt_BRAN_CD" Left="120" TabOrder="11" Top="16" Visible="FALSE" Width="40"></Edit>
+		<Edit Height="21" Id="edt_AddIdx" Left="168" TabOrder="12" Top="16" Visible="FALSE" Width="40"></Edit>
+		<Edit Height="21" Id="edt_CurrIdx" Left="216" TabOrder="13" Top="16" Visible="FALSE" Width="40"></Edit>
+		<Edit Height="21" Id="edt_NoraeIdx" Left="264" TabOrder="14" Top="16" Visible="FALSE" Width="40"></Edit>
+		<Static Border="Flat" BorderColor="white" Height="20" Id="Static23" Left="24" Style="box_tx" TabOrder="15" Text="업종은&#32;변경할수&#32;없습니다.&#32;등급변경만&#32;가능합니다." Top="16" VAlign="Middle" Width="288"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_deleteRTAL" ImageID="C_btn_90" Left="606" OnClick="btn_deleteRTAL_OnClick" TabOrder="16" Text="삭제" Top="16" Width="90"></Button>
+		<Grid BindDataset="ds_feerate" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user10" Bottom="208" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="168" Id="grd_rate" InputPanel="FALSE" Left="800" LineColor="default" Right="920" RowHeight="20" TabOrder="17" TabStop="true" Top="40" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="120">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="지분율"/>
+						<cell col="1" color="user12" display="text" text="적용일자"/>
+					</head>
+					<body>
+						<cell col="0" colid="RATE" display="text"/>
+						<cell col="1" colid="APPL_DAY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Color="user1" Height="11" Id="Static9" Left="811" Style="tx_bold" TabOrder="18" Text="월사용료&#32;지분율" Top="23" Width="100"></Static>
+		<Static Border="Flat" BorderColor="white" Color="tomato" Height="20" Id="Static0" Left="24" Style="box_tx" TabOrder="19" Text="현재일자보다&#32;개업일자가&#32;미래인&#32;경우,&#32;개업일자&#32;이전으로&#32;변경번호&#32;또는&#32;적용일자를&#32;등록할&#32;수&#32;없습니다." Top="211" VAlign="Middle" Width="600"></Static>
+	</Form>
+	<Script><![CDATA[/*
+		   * 프로그램명 	:   bra01_s03 - 사용료변경
+		   * 작  성  자     :   윤지환
+		   * 작  성  일     : 	2009
+		   * 설      명     :	사용료를 변경한다.
+		   * 수정일1     	: 	
+		   * 수정자       	: 	
+		   * 수정내용    	: 	설명 부여(여러줄 사용가능)	
+		   * 수정일2     	: 	
+		   * 수정자       	:	
+		   * 수정내용    	:	 	
+		   * 수정일3     	: 	
+		   * 수정자       	: 	
+		   * 수정내용    	:	
+*/
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+
+//노래방의 row를 삭제할 경우 사용료 변경사항을 적용시키지 못하기에 체크하는 변수
+var del_chk;	
+
+// 현재 업소의 최종 업종을 확인한다. 등급변경은 가능하나 업종 변경은 안된다. 2010/04/08
+var last_upjong_chk="";
+
+var v_opbi_day = "";
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function form_OnLoadCompleted(obj)
+{
+
+	//var UPSO_CD = "0000040T";
+	//var BRAN_CD = "T";
+	
+	var gv_BRAN_CD = gds_sessioninfo.GetColumn(0, "BRAN_CD");
+	
+	if (gv_BRAN_CD != "AL"){
+		btn_deleteRTAL.Enable = false;
+	}
+
+	if (length(UPSO_CD) == 0) {
+		return;
+	}
+	else {
+		this.edt_UPSO_CD.Text = UPSO_CD;
+		this.edt_BRAN_CD.Text = BRAN_CD;
+		v_opbi_day = OPBI_DAY;
+	}
+	
+	// 업소 사용료 정보 검색
+	this.ds_UPSORTAL_IN.ClearData();
+	this.ds_UPSORTAL_IN.AddRow();
+	this.ds_UPSORTAL_IN.SetColumn(0, "UPSO_CD", UPSO_CD);
+	gfn_syncCall("UPSO_RTAT_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_amt_select","S=ds_UPSORTAL_IN","ds_UPSORTAL_INFO=SEL1 ds_UpsoNoraebang=SEL2 ds_feerate=SEL4","","fn_CallBack");
+	//grd_FeeInfo_OnCellClick(obj,0,nCell,nX,nY,nPivotIndex);
+	fn_SetFee(0);
+	if(length(this.ds_UpsoNoraebang.GetColumn(0,"UPSO_CD"))==0){
+		fn_SetNoreInfoVisible(false);
+	}
+	else{
+		fn_SetNoreInfoVisible(true);
+	}
+}
+
+/*
+ * 기      능: 프로세스빌더 실행 후 결과 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	
+	if (length(ErrorMsg)>0) {
+		gfn_Confirm("MB_OK", ErrorMsg, "경고", "0");
+		//USEFEE_SAVE
+	}
+	if(srvId == "USEFEE_SAVE"){
+	    ds_UpsoNoraebang.Copy("ds_UpsoNoraebang2");
+	} 
+}
+
+/*
+ * 기      능: 업종이 노래방일 경우 노래방 상세입력을 보이게 한다.
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetNoreInfoVisible(Enabled)
+{
+	this.grd_Noraebang.Visible = Enabled;
+	this.rad_LOCATION.Visible  = Enabled;
+	this.btn_AddUseAmt.Visible = Enabled;
+	this.btn_DelUseAmt.Visible = Enabled;
+
+	if(enabled != 1){
+		this.window.width = 940;
+		this.window.height = 300;
+	}
+	else {
+		this.window.width = 940;
+		this.window.height = 430;
+	}
+}
+
+
+function fn_IsNorabangGrad(nRow, grad)
+{
+	for (var i=0; i<this.ds_UpsoNoraebang.rowcount; i++)
+	{
+		if (i == nRow) continue;
+		var cGrad = this.ds_UpsoNoraebang.GetColumn(i, "GRAD");
+		if (cGrad == grad) 	return true;
+	}
+	return false;
+}
+
+/*
+ * 기      능: 노래방의 면적 중복체크
+ * 인      수: nRow : 현재 로우 , varOldValue: 로우의 이전값
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetGridAREAColumn(nRow, varOldValue)
+{
+	var temparea = this.ds_UpsoNoraebang.GetColumn(nRow, "AREA");
+
+	var grad = fn_GetNoraebangGrad(toFloat(temparea));
+
+	if (fn_IsNorabangGrad(nRow, grad))		//선택한 노래방업소가 기존에 중복되었는지 검사
+	{
+        gfn_Confirm("MB_OK", "이미 등록된 등급입니다. \n등록된 등급의 기계대수를 변경하세요", "경고", "0");
+		this.ds_UpsoNoraebang.SetColumn(nRow, "AREA", varOldValue);
+		return;
+	}
+	else		//선택한 노래방업소가 기존에 없을 경우 
+	{
+		for (var i=0; i<this.ds_BSTypGrad.count; i++)
+		{
+			if (this.ds_BSTypGrad.GetColumn(i, "GRAD") == grad) 
+			{
+				this.ds_UpsoNoraebang.SetColumn(nRow, "GRAD"    , this.ds_BSTypGrad.GetColumn(i,"GRAD" ));
+				this.ds_UpsoNoraebang.SetColumn(nRow, "GRADNM"  , this.ds_BSTypGrad.GetColumn(i,"GRADNM" ));
+				this.ds_UpsoNoraebang.SetColumn(nRow, "STNDAMT" , this.ds_BSTypGrad.GetColumn(i,"STNDAMT"));			
+				this.ds_UpsoNoraebang.SetColumn(nRow, "BSTYP_CD", substr(grad, 0, 1));
+				this.ds_UpsoNoraebang.SetColumn(nRow, "GRAD_GBN", substr(grad, 1, 2));
+				this.ds_UpsoNoraebang.SetColumn(nRow, "AMT" , parseInt(this.ds_UpsoNoraebang.GetColumn(nRow, "MCHNDAESU"))* parseInt(this.ds_BSTypGrad.GetColumn(i,"STNDAMT")));
+
+				break;
+			}
+		}
+	}
+}
+
+/*
+ * 기      능: 노래방의 면적에 따른 중복 체크
+ * 인      수: area [면적]값을 가져와서 면적에 따른 업종값을 구해온다.
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_GetNoraebangGrad(area)
+{
+	var grad, start, end;
+	var areaGrad = "";
+
+	// 노래방 등급정보를 가져온다.
+	if (this.ds_BSTypGrad.rowcount == 0) {
+		gfn_syncCall("GET_BSTYPEGRAD","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_norebang_amt","","ds_BSTypGrad=SEL1","","fn_CallBack");
+	}
+
+	for (var i=0; i<this.ds_BSTypGrad.count; i++)
+	{
+		grad  = this.ds_BSTypGrad.GetColumn(i, "GRAD");
+
+		// 도시
+		if (this.rad_LOCATION.Value == "1")
+		{
+			if (toInteger(substr(grad,1,2)) < 10) 
+			{
+			
+				start = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_START"));	
+				end   = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_END"));	
+				
+				if (start < area && area <= end)
+				{
+					areaGrad = grad;
+					break;
+				}
+			}
+		}
+		// 농촌
+
+		if (this.rad_LOCATION.Value == "2")
+		{
+			if (toInteger(substr(grad,1,2)) > 10) 
+			{
+			
+				start = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_START"));	
+				end   = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_END"));	
+				
+				if (start < area && area <= end)
+				{
+					areaGrad = grad;
+					break;
+				}
+			}
+		}		
+	
+		/*
+		else (this.tab_UpsoInfo.UPSO.rad_LOCATION.Value == "2")
+		{
+			if (toInteger(substr(grad,1,2)) > 10) 
+			{
+				start = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_START"));	
+				end   = toFloat(this.ds_BSTypGrad.GetColumn(i, "STNDAREA_END"));	
+				
+				if (start < area && area <= end)
+				{
+					areaGrad = grad;
+					break;
+				}
+			}
+		}
+		*/
+	}
+
+	return areaGrad;
+}
+
+/*
+ * 기      능: 업종추가
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function btn_addRTAL_OnClick(obj)
+{
+	// 수정이 발생한 경우 새로운 항목을 삽입할 수 없다.
+	// 이미 수정된 정보가 있는 경우 수정 불가
+	
+	// 도시 구분[도시, 농촌 확인)
+	gfn_PubCode("ds_Location" , 2, "00178");	
+	
+	if (!fn_IsAavailableUpdate(-1)) {
+        gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+		return;
+	}
+
+	// 추가된 항목이 있는지 검사
+	var inserted = this.ds_UPSORTAL_INFO.GetRowType(this.ds_UPSORTAL_INFO.rowcount - 1);
+
+	if (toUpper(inserted) == "INSERT") {
+		return;
+	}
+	//업소노래방을 추가할 때 이전 row의 갯수를 가져온다.
+	var last_row = this.ds_UPSORTAL_INFO.lastrow;
+	var pre_daesu = this.ds_UPSORTAL_INFO.GetColumn(last_row,"MCHNDAESU");
+	
+
+	// 업소의 현재 업종을 저장한다. 다른 업종을 선택하는걸 방지하기 위해서 2010/04/08
+	last_upjong_chk = this.ds_UPSORTAL_INFO.GetColumn(last_row, "BSTYP_CD");
+	
+	var idx = this.ds_UPSORTAL_INFO.AddRow();
+	this.edt_AddIdx.Text = idx;
+	
+	// 기본정보 설정
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "UPSO_CD"    , this.edt_UPSO_CD.Text); 		// 변경일자
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "CHG_DAY"    , today()); 		// 변경일자
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "APPL_DAY"   , today());		// 적용일자
+	if(parseInt(v_opbi_day) > parseInt(substr(today(), 0, 8)))
+	{
+		this.ds_UPSORTAL_INFO.SetColumn(idx, "CHG_DAY"    , v_opbi_day); 		// 변경일자
+		this.ds_UPSORTAL_INFO.SetColumn(idx, "APPL_DAY"   , v_opbi_day);		// 적용일자
+	}
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "CHG_BRAN"   , this.edt_BRAN_CD.Text);		// 적용일자
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "MCHNDAESU"  , pre_daesu);
+	
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "USE_TIME"   , "0");
+	
+	
+	
+	// 노래방 정보 초기화
+	this.ds_UpsoNoraebang.ClearData();
+	fn_SetNoreInfoVisible(false);
+}
+
+
+/*
+ * 기      능: 저장
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function btn_saveRTAL_OnClick(obj)
+{
+	for(var i=0; i<this.ds_UpsoNoraebang.rowcount; i++){
+		if(ds_UpsoNoraebang.GetColumn(i,"MCHNDAESU")==0){
+			gfn_Confirm("MB_OK", "대수는 0을 입력하실 수 없습니다.", "경고", "0");
+			return;
+		}
+	}
+	
+	// 수정된 사항이 없으면 return
+	if (fn_IsAavailableUpdate(-1)) {
+		return;
+	}
+
+	del_chk = "N";
+	// 필수항목 검사
+	var rowType    = "";
+
+	// 필수 입력 검사
+	if (!gfn_CheckFormNull(this)) {
+		return;
+	}
+	
+	var chk_i = this.ds_UPSORTAL_INFO.rowcount;
+	
+	// 사용료 추가가 아닌 기존 등록된 정보를 수정시 수정하고자 하는 
+	
+	
+	// 추가된 사용료 정보의 업종이 기존 업종과 다를경우 저장할수 없다. 2010/04/08
+	// 기존 정보를 수정하고자 할경우에는 업종체크는 안한다.
+	if(last_upjong_chk != "" && (last_upjong_chk != this.ds_UPSORTAL_INFO.GetColumn(chk_i-1, "BSTYP_CD")))
+	{
+		gfn_Confirm("MB_OK", "업종은 변경할수 없습니다.", "경고", "0");
+		return;
+	}
+	
+	for (var i=0; i<this.ds_UPSORTAL_INFO.rowcount; i++) {
+		rowType = this.ds_UPSORTAL_INFO.GetRowType(i);
+		
+		// 수정, 삭제, 입력이 발생한 경우
+		if (toUpper(rowType) != "NORMAL") {
+		
+			// 수정된 항목의 업종이이 노래방인 경우 노래방 정보가 있어야 한다.
+			if (this.ds_UPSORTAL_INFO.GetColumn(i, "BSTYP_CD") == "o") {
+				if (this.ds_UpsoNoraebang.rowcount == 0) {
+                    gfn_Confirm("MB_OK", "노래방 등급 정보를 입력하십시요", "경고", "0");
+					return;
+				} 
+			} else { //	노래방이 아닌 경우는 노래방 정보를 삭제한다.
+				this.ds_UpsoNoraebang.ClearData();
+			}
+			
+			//수정된 항목의 업종이 에어로빅(m01~m10), 노래교실(m11~m20), 무도장(n01~n10)인 경우 사용시간이 있어야 한다.
+			if (this.ds_UPSORTAL_INFO.GetColumn(i, "BSTYP_CD") == "m" || this.ds_UPSORTAL_INFO.GetColumn(i, "BSTYP_CD") == "n" || this.ds_UPSORTAL_INFO.GetColumn(i, "BSTYP_CD") == "J") {
+				var v_use_time = this.ds_UPSORTAL_INFO.GetColumn(i, "USE_TIME");
+				if (toNumber(v_use_time) < 1 || toNumber(v_use_time) > 15) {
+					gfn_Confirm("MB_OK", "에어로빅, 노래교실, 무도장의 사용시간은 1~15사이의 값을 입력하십시요", "경고", "0");
+					return;
+				}
+			} else {
+				this.ds_UPSORTAL_INFO.SetColumn(i, "USE_TIME", "0");
+			}
+		}
+	}
+
+	// 저장
+	//trace(this.ds_UPSORTAL_INFO.SaveXML("ds_UPSORTAL_INFO", "U"));
+	//trace(this.ds_UpsoNoraebang.SaveXML("ds_UpsoNoraebang","U") );
+
+	gfn_syncCall("USEFEE_SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_amt_change",
+	"S1=ds_UpsoNoraebang:U S=ds_UPSORTAL_INFO:U","ds_UPSORTAL_INFO=SEL9 ds_UpsoNoraebang2=SEL19","","fn_CallBack", gv_TraceLog, this.id);
+	
+	gfn_syncCall("UPSO_RTAT_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_amt_select","S=ds_UPSORTAL_IN",
+	"ds_UPSORTAL_INFO=SEL1 ds_UpsoNoraebang=SEL2 ds_feerate=SEL4","","fn_CallBack");
+
+	this.edt_AddIdx.Text = "";
+	//trace("=======================================" );
+	//저장한 사용료 정보를 업소정보의 사용료 정보에 업데이트 한다.
+	parent.fn_Search();
+}
+
+
+/*
+ * 기      능: 업종을 저장하기 전에 컬럼을 선택 후 삭제한다.
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function btn_cancelRTAL_OnClick(obj)
+{
+	// 업소 사용료 정보 검색
+	this.ds_UPSORTAL_IN.ClearData();
+	this.ds_UPSORTAL_IN.AddRow();
+	this.ds_UPSORTAL_IN.SetColumn(0, "UPSO_CD", UPSO_CD);
+	this.ds_UpsoNoraebang.ClearData();
+	fn_SetNoreInfoVisible(false);
+	
+	gfn_syncCall("UPSO_RTAT_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_amt_select","S=ds_UPSORTAL_IN","ds_UPSORTAL_INFO=SEL1 ds_UpsoNoraebang=SEL2 ds_feerate=SEL4","","fn_CallBack");
+	//gfn_SyncCall("memo_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004003&EVENTID=memo_save","S=ds_memo:U ","","","fn_CallBack",gv_TraceLog, this.id);
+	this.edt_AddIdx.Text = "";
+}
+
+
+/*
+ * 기      능: 닫기
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function btn_close_OnClick(obj)
+{
+	close();
+}
+
+/*
+ * 기      능: 업종이 추가된 경우
+ * 인      수: row : 변경이 된 row
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function fn_IsAavailableUpdate(nRow)
+{
+	if(del_chk=="Y"){
+	
+		return false;
+	}
+	// 추가된 row 가 있는 경우
+	var idx = -1;
+
+	if (length(this.edt_AddIdx.Text) > 0) {
+		idx = toNumber(this.edt_AddIdx.Text);
+		
+		if (nRow != idx) return false;
+		else			 return true;
+	}
+	else {
+		for(var i=0; i<this.ds_UPSORTAL_INFO.rowcount; i++) {
+			if (toUpper(this.ds_UPSORTAL_INFO.GetRowType(i)) != "NORMAL") {
+				idx = i;
+				break;
+			}
+		}
+		
+		// 수정된 항목이 있는 경우
+		if (idx >= 0) {
+			if (idx == nRow) {
+				var norebangUpdated = false;
+				for (var j=0; j<this.ds_UpsoNoraebang.rowcount; j++) {
+					if (toUpper(this.ds_UpsoNoraebang.GetRowType(j)) != "NORMAL") {
+						norebangUpdated = true;
+						break;
+					}
+				}
+			
+				if (norebangUpdated) return false;
+				else				 return true;
+			}
+			else return false;
+		}
+		else {	
+			var norebangUpdated = false;
+			for (var j=0; j<this.ds_UpsoNoraebang.rowcount; j++) {
+				if (toUpper(this.ds_UpsoNoraebang.GetRowType(j)) != "NORMAL") {
+					norebangUpdated = true;
+					break;
+				}
+			}
+
+			if (norebangUpdated) return false;
+			else				 return true;
+		}
+	}
+}
+
+/*
+ * 기      능: 그리드를 클릭시 처리 사항
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function grd_FeeInfo_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	// 이미 수정된 정보가 있는 경우 수정 불가
+	if (!fn_IsAavailableUpdate(nRow)) 
+	{
+        gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+		return;
+	}
+	
+	
+	
+	if (nCell == 3) 	// 업종
+	{
+		var result = Dialog("fi_bra::find_upjong.xml","","100","100","",-1,-1);
+		
+		var vArr = result.split(",");
+
+		this.ds_UPSORTAL_INFO.SetColumn(nRow,"GRAD"      , vArr[0]);	
+		this.ds_UPSORTAL_INFO.SetColumn(nRow,"GRADNM"    , vArr[1]);
+		this.ds_UPSORTAL_INFO.SetColumn(nRow,"MONPRNCFEE2", vArr[2]);
+		this.ds_UPSORTAL_INFO.SetColumn(nRow,"BSTYP_CD"  , substr(vArr[0], 0, 1));
+		this.ds_UPSORTAL_INFO.SetColumn(nRow,"UPSO_GRAD" , substr(vArr[0], 1, 2));
+		calculate_MONPRNCFEE(nRow);
+		
+		/*
+		if(substr(GRAD,0,1)=='k' or substr(GRAD,0,1)=='l' or substr(GRAD,0,1)=='m'
+		or substr(GRAD,0,1)=='o' or substr(GRAD,0,1)=='p'or substr(GRAD,0,1)=='q' or substr(GRAD,0,1)=='r'){
+		this.tab_UpsoInfo.UPSO.mae_NMONPRNCFEE.Enable = false;
+		}
+		*/
+		//도시
+		if(substr(vArr[0], 1,3) < 10)
+		{
+			this.rad_LOCATION.Value =1;
+		}
+		else if(substr(vArr[0], 1,3) > 10)
+		{
+			this.rad_LOCATION.Value =2;
+		}
+		
+		// 노래방이 아닌 경우 기계 대수 입력 가능함
+		if(substr(vArr[0], 0, 1) == "o") 
+		{
+			this.grd_FeeInfo.SetCellProp("body", 4, "Edit", "NONE");
+			
+			if (length(this.edt_AddIdx.Text) == 0) 
+			{
+				// 수정 모드인 경우 이전 정보가 노래방이고 같은 등급일때 이전 데이터 복구 
+				var orgGRAD = this.ds_UPSORTAL_INFO.GetOrgColumn(nRow, "GRAD");
+				if (orgGRAD == vArr[0]) 
+				{
+
+					this.ds_Noraebang_In.ClearData();
+					this.ds_Noraebang_In.AddRow();
+					this.ds_Noraebang_In.SetColumn(0,"UPSO_CD" , this.edt_UPSO_CD.Text);
+					this.ds_Noraebang_In.SetColumn(0,"CHG_DAY" , this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_DAY"));
+					this.ds_Noraebang_In.SetColumn(0,"CHG_NUM" , this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_NUM"));
+					this.ds_Noraebang_In.SetColumn(0,"CHG_BRAN", this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_BRAN"));
+		
+					//this.ds_UpsoNoraebang.ClearData();
+					gfn_syncCall("search_noraebang","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_noraebang_select","S=ds_Noraebang_In","ds_UpsoNoraebang=SEL1","","fn_CallBack");
+
+/*
+					this.ds_UPSORTAL_INFO.Reset();
+					this.ds_UpsoNoraebang.Reset();
+*/					
+				}
+				else 
+				{
+					//this.ds_UpsoNoraebang.DeleteAll();
+					this.ds_UpsoNoraebang.ClearData();
+				}
+			}
+		}
+	}
+	else if(nCell == 8)	//적용일자
+	{
+		if(toUpper(obj.GetCellProp("body", nCell, "Edit")) == "NONE") return;
+		gfn_SetCalendar(obj, nRow, nCell);
+		
+		calculate_MONPRNCFEE(nRow);
+	}
+
+}
+
+/*
+ * 기      능: 라디오값 변경 시 [농촌/도시]
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function rad_LOCATION_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	var msg = "";
+	
+	if (nNewIndex == 0) {
+		msg = "지역구분을 도시로 변경하시겠습니까? \n변경시 기입된 정보는 재입력해야 합니다.";
+	}
+	else {
+		msg = "지역구분을 농어촌으로 변경하시겠습니까? \n변경시 기입된 정보는 재입력해야 합니다.";
+	}
+	
+	if (confirm(msg))
+	{
+		this.rad_LOCATION.Index = nOldIndex;
+		this.rad_LOCATION.Index = nNewIndex;
+		this.ds_UpsoNoraebang.ClearData();
+		btn_AddUseAmt_OnClick(obj);
+	}
+	else {
+		this.rad_LOCATION.Index = nOldIndex;
+	}
+}
+/*
+ * 기      능: 노래방 row 추가
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function btn_AddUseAmt_OnClick(obj)
+{
+	var idx = this.ds_UpsoNoraebang.AddRow();
+	this.edt_NoraeIdx.Text = idx;
+	
+	var rIdx = toNumber(this.edt_AddIdx.Text);
+	this.ds_UpsoNoraebang.SetColumn(idx, "UPSO_CD" , this.ds_UPSORTAL_INFO.GetColumn(ds_UPSORTAL_INFO.currow, "UPSO_CD"));
+	this.ds_UpsoNoraebang.SetColumn(idx, "CHG_DAY" , this.ds_UPSORTAL_INFO.GetColumn(ds_UPSORTAL_INFO.currow, "CHG_DAY"));
+	this.ds_UpsoNoraebang.SetColumn(idx, "CHG_NUM" , this.ds_UPSORTAL_INFO.GetColumn(ds_UPSORTAL_INFO.currow, "CHG_NUM"));
+	this.ds_UpsoNoraebang.SetColumn(idx, "CHG_BRAN", this.ds_UPSORTAL_INFO.GetColumn(ds_UPSORTAL_INFO.currow, "CHG_BRAN"));
+}
+
+/*
+ * 기      능: 노래방 row 삭제
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function btn_DelUseAmt_OnClick(obj)
+{
+	if(this.ds_UpsoNoraebang.RowCount()==1){
+		//alert("업종이 노래방일경우 상세 내용이 필요합니다.");
+		gfn_Confirm("MB_OK", "업종이 노래방일경우 상세 내용이 필요합니다", "경고", "0");
+		return;
+	}
+	
+	this.ds_UpsoNoraebang.DeleteRow(this.ds_UpsoNoraebang.rowcount - 1);
+	del_chk = "Y";
+}
+
+/*
+ * 기      능: 노래방 컬럼값 변경시
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function ds_UpsoNoraebang_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "AREA") {
+		fn_SetGridAREAColumn(nRow, varOldValue);
+		fn_MCHNDAESU_changed();
+	}
+	else if(strColumnID == "MCHNDAESU") {
+		fn_MCHNDAESU_changed();
+	}
+}
+
+function fn_MCHNDAESU_changed()
+{
+	var amt = 0;		//등급별 사용료
+	var amtsum = 0;		//등급별 사용료의 합
+	var daesu = 0;		//기계 댓수
+
+	for(var i=0; i<this.ds_UpsoNoraebang.rowcount; i++){
+		daesu = daesu + toNumber(this.ds_UpsoNoraebang.GetColumn(i, "MCHNDAESU"));
+		amt   = toNumber(this.ds_UpsoNoraebang.GetColumn(i,"STNDAMT")) * toNumber(this.ds_UpsoNoraebang.GetColumn(i,"MCHNDAESU"));
+		if(this.ds_UpsoNoraebang.GetColumn(i,"MCHNDAESU")==0){
+			gfn_Confirm("MB_OK", "대수를 0을 입력하면 하실 수 없습니다.", "경고", "0");
+			this.grd_Noraebang.MoveToPrevCell();
+			return;
+		}
+		
+		this.ds_UpsoNoraebang.SetColumn(i,"AMT",amt);
+		amtsum = amtsum+amt;
+	}
+	
+	//var idx = toNumber(this.edt_AddIdx.Text);
+	var idx = ds_UPSORTAL_INFO.currow;
+
+	this.ds_UpsoNoraebang.SetColumn(nRow, "AMT", amt);
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "MONPRNCFEE2" , amtsum);
+	this.ds_UPSORTAL_INFO.SetColumn(idx, "MCHNDAESU"  , daesu);	
+	calculate_MONPRNCFEE(idx);
+	
+}
+
+function fn_SetFee(nRow)
+{
+	if (length(this.edt_AddIdx.Text) > 0) {
+		if (this.edt_AddIdx.Text == nRow) {
+			return;
+		}
+	}
+	
+	this.edt_CurrIdx.Text = nRow;
+	
+	if ( length(this.edt_AddIdx.Text) == 0) {
+		var BSTYP_CD = this.ds_UPSORTAL_INFO.GetColumn(nRow, "BSTYP_CD");
+		
+		if (BSTYP_CD == "o") {
+			var orgGRAD = this.ds_UPSORTAL_INFO.GetOrgColumn(nRow, "GRAD");
+			var GRAD     = this.ds_UPSORTAL_INFO.GetColumn(nRow, "GRAD");
+/*			
+			if (orgGRAD == GRAD) {
+				if (this.ds_UpsoNoraebang.rowcount == 0) {
+					this.ds_Noraebang_In.ClearData();
+					this.ds_Noraebang_In.AddRow();
+					this.ds_Noraebang_In.SetColumn(0,"UPSO_CD" , this.edt_UPSO_CD.Text);
+					this.ds_Noraebang_In.SetColumn(0,"CHG_DAY" , this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_DAY"));
+					this.ds_Noraebang_In.SetColumn(0,"CHG_NUM" , this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_NUM"));
+					this.ds_Noraebang_In.SetColumn(0,"CHG_BRAN", this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_BRAN"));
+		
+					this.ds_UpsoNoraebang.ClearData();
+					gfn_syncCall("search_noraebang","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_noraebang_select","S=ds_Noraebang_In","ds_UpsoNoraebang=SEL1","","fn_CallBack");
+				}
+				//else {
+					//this.ds_UpsoNoraebang.Reset();
+				//}
+			}
+			else {
+*/
+				this.ds_Noraebang_In.ClearData();
+				this.ds_Noraebang_In.AddRow();
+				this.ds_Noraebang_In.SetColumn(0,"UPSO_CD" , this.edt_UPSO_CD.Text);
+				this.ds_Noraebang_In.SetColumn(0,"CHG_DAY" , this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_DAY"));
+				this.ds_Noraebang_In.SetColumn(0,"CHG_NUM" , this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_NUM"));
+				this.ds_Noraebang_In.SetColumn(0,"CHG_BRAN", this.ds_UPSORTAL_INFO.GetColumn(nRow, "CHG_BRAN"));
+	
+				//this.ds_UpsoNoraebang.ClearData();
+				gfn_syncCall("search_noraebang","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_noraebang_select",
+				"S=ds_Noraebang_In","ds_UpsoNoraebang=SEL1","","fn_CallBack");
+				
+				//trace(this.ds_Noraebang_In.SaveXML());
+				//trace(this.ds_UpsoNoraebang.SaveXML());
+//			}
+			fn_SetNoreInfoVisible(true);
+		}
+		else {
+			fn_SetNoreInfoVisible(false);
+		}
+	}
+	var S_loc =substr(this.ds_UPSORTAL_INFO.GetColumn(0,"GRAD"),0,2);
+
+	if(S_loc=="o11" or S_loc=="o12" or S_loc=="o13" or S_loc=="o14"){
+		this.rad_location.Value = 2;
+	}
+}
+
+/*
+ * 기      능: 업종그리드값 선택시에
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function grd_FeeInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	fn_SetFee(nRow);
+}
+
+/*
+ * 기      능: 수정여부 파악
+ * 인      수: ARGUMENT
+ * Return    : Return Value
+ * 예     시 : 함수 사용 예	
+*/
+function ds_UPSORTAL_INFO_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// 이미 수정된 정보가 있는 경우 수정 불가
+	var isUpdated = false;
+	
+	// 이미 수정된 정보가 있는 경우 수정 불가
+	if (strColumnID == "GRAD" && !fn_IsAavailableUpdate(nRow)) {
+        gfn_Confirm("MB_OK", "먼저 변경된 사항을 저장 후 작업하십시요", "경고", "0");
+		return false;
+	}
+
+/*	센터 팀장님 요청으로 센터에서 사용료 등급변경 적용일 제약조건 해제
+
+	// 청구정보가 있는 경우는 수정 불가
+	var last_demd = toNumber(this.ds_UPSORTAL_INFO.GetColumn(nRow,"LAST_DEMD"));
+	var apply_Date = toNumber(substr(this.ds_UPSORTAL_INFO.GetColumn(nRow,"APPL_DAY"),0,6));
+	
+	if(last_demd > apply_Date) {
+        gfn_Confirm("MB_OK", "청구 정보가 존재합니다. \n이미 기존 정보로 청구가 되어 이 정보는 수정할 수 없습니다.", "경고", "0");
+		return;
+	}
+*/
+}
+
+
+function ds_UPSORTAL_INFO_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if (strColumnID == "GRAD") {
+		var result = gfn_GetGRAD_CD(varNewValue);
+
+		if (length(result) > 0) {
+			var vArr = result.split(",");
+
+			// 업종이 변경되었는지 체크한다. 2010/04/08
+			if(last_upjong_chk != substr(vArr[0], 0, 1))
+			{
+				gfn_Confirm("MB_OK", "업종은 변경할수 없습니다.", "경고", "0");
+				
+				// 기존에 셋팅되어 있을지도 모를 데이타를 삭제시킨다.
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"GRAD"      , "");	
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"GRADNM"    , "");
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"MONPRNCFEE", "");	
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"MONPRNCFEE2", "");	
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"BSTYP_CD"  , "");
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"UPSO_GRAD" , "");
+				
+				return;
+			}
+			
+			this.ds_UPSORTAL_INFO.SetColumn(nRow,"GRAD"      , vArr[0]);	
+			this.ds_UPSORTAL_INFO.SetColumn(nRow,"GRADNM"    , vArr[1]);
+			this.ds_UPSORTAL_INFO.SetColumn(nRow,"MONPRNCFEE2", vArr[2]);
+			this.ds_UPSORTAL_INFO.SetColumn(nRow,"BSTYP_CD"  , substr(vArr[0], 0, 1));
+			this.ds_UPSORTAL_INFO.SetColumn(nRow,"UPSO_GRAD" , substr(vArr[0], 1, 2));
+			calculate_MONPRNCFEE(nRow);
+			
+			var v_grad_init = substr(vArr[0], 0, 1);
+			if ( v_grad_init == "m" || v_grad_init == "n" || v_grad_init == "J" ) {	//에어로빅, 무도장, 노래교실의 경우
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"USE_TIME"  , "15");
+			} else {
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"USE_TIME"  , "0");
+			}
+			
+			if (substr(vArr[0], 0, 1) == "o") {
+				fn_SetNoreInfoVisible(true);			
+			}
+			else {
+				fn_SetNoreInfoVisible(false);			
+			}
+			
+			if (toInteger(substr(vArr[0], 1, 2)) > 10) {
+				this.rad_LOCATION.Index = 1;
+			}
+			else {
+				this.rad_LOCATION.Index = 0;
+			}
+		}
+	}
+	
+	
+	//20120802 노래교실 사용시간에 따른 징수규정 개정에 따른 수정
+	if (strColumnID == "USE_TIME") {
+		
+		var v_grad = this.ds_UPSORTAL_INFO.GetColumn(nRow, "GRAD");
+		var v_grad_init = substr(v_grad, 0, 1);
+		var v_new_fee = 0;
+		
+		//사용시간 값은 1~15 사이여야한다.
+		if ( v_grad_init == "m" || v_grad_init == "n" || v_grad_init == "J" ) {	
+			if (toNumber(varNewValue) < 1 || toNumber(varNewValue) > 15) 
+			{
+				gfn_Confirm("MB_OK", "에어로빅, 노래교실, 무도장의 사용시간은 1~15사이의 값을 입력하십시요", "경고", "0");
+				return;
+			}
+						var result = gfn_GetGRAD_CD(this.ds_UPSORTAL_INFO.GetColumn(nRow, "GRAD"));	
+			if (length(result) > 0) {				var vArr = result.split(",");
+				v_new_fee = Truncate(toNumber(vArr[2]) * toNumber(varNewValue) / 15);
+				v_new_fee = truncate(v_new_fee / 10) * 10;	//원단위절사
+				this.ds_UPSORTAL_INFO.SetColumn(nRow,"MONPRNCFEE2", v_new_fee);	
+				calculate_MONPRNCFEE(nRow);
+			}
+		}
+		
+	}
+	
+	if(strColumnID == "MONPRNCFEE2")
+	{
+		if(ds_UPSORTAL_INFO.GetColumn(nRow, "MONPRNCFEE2") != "1")
+		{
+			//ds_UPSORTAL_INFO.FireEvent = false;
+			
+			var v_grad = this.ds_UPSORTAL_INFO.GetColumn(nRow, "GRAD");
+			var v_grad_init = substr(v_grad, 0, 1);
+			var v_monprncfee2 = toNumber(ds_UPSORTAL_INFO.GetColumn(nRow, "MONPRNCFEE2"));
+			var v_feerate = toNumber(ds_feerate.GetColumn(ds_feerate.FindRow("APPL_DAY", ds_feerate.Max("APPL_DAY")), "RATE")) * 0.01;
+			
+			if(v_grad_init == "A" || v_grad_init == "B" || v_grad_init == "C" || v_grad_init == "D" || v_grad_init == "E" || v_grad_init == "G"
+			|| v_grad_init == "H" || v_grad_init == "I" || v_grad_init == "J" || v_grad_init == "g" || v_grad_init == "s" || v_grad_init == "t"
+			|| v_grad_init == "u" || v_grad_init == "v" || v_grad_init == "w" || v_grad_init == "x" || v_grad_init == "y")
+			{
+				//ds_UPSORTAL_INFO.SetColumn(nRow, "MONPRNCFEE", floor(v_monprncfee2 * v_feerate / 10) * 10);
+				calculate_MONPRNCFEE(nRow);
+			}
+			//ds_UPSORTAL_INFO.FireEvent = true;
+		}
+	}
+	if(strColumnID == "APPL_DAY" && parseInt(v_opbi_day) > parseInt(varNewValue))
+	{
+		ds_UPSORTAL_INFO.fireEvent = false;
+		
+		ds_UPSORTAL_INFO.SetColumn(nRow, strColumnID, varOldValue);
+		
+		ds_UPSORTAL_INFO.fireEvent = true;
+	}
+}
+
+function grd_FeeInfo_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    if(!(nCell == 5 || nCell == 7 || nCell == 8)){
+        return;
+    }
+
+	//fn_GetUpsoInfo();
+
+}
+
+// 센터관리부만 삭제권한을 준다. 2010.05.12
+function btn_deleteRTAL_OnClick(obj)
+{
+	var tot_row_cnt = this.ds_UPSORTAL_INFO.count;
+	var del_row_idx = this.ds_UPSORTAL_INFO.currow;
+	
+	// 업종변경이력이 1건이거나 최초의 건수를 삭제하고자 할경우는 삭제 안된다.
+	if(tot_row_cnt == 1 || del_row_idx == 0){
+		gfn_Confirm("MB_OK", "선택된 정보는 삭제할수 없습니다.", "경고", "0");
+		return false;
+	}else{
+		if(gfn_Confirm("MB_YESNO", "선택된 정보를 삭제 하시겠습니까?") == "6") {
+
+			this.ds_UPSORTAL_INFO.DeleteRow(del_row_idx);
+						
+			gfn_syncCall("USEFEE_SAVE","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_amt_change",
+			"S1=ds_UpsoNoraebang:U S=ds_UPSORTAL_INFO:U","ds_UPSORTAL_INFO=SEL9 ds_UpsoNoraebang2=SEL19","","fn_CallBack", gv_TraceLog, this.id);
+			
+			gfn_syncCall("UPSO_RTAT_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=upso_amt_select","S=ds_UPSORTAL_IN",
+			"ds_UPSORTAL_INFO=SEL1 ds_UpsoNoraebang=SEL2 ds_feerate=SEL4","","fn_CallBack");
+		
+			
+			this.edt_AddIdx.Text = "";
+			//trace("=======================================" );
+			//trace(this.ds_UPSORTAL_INFO.SaveXML() );
+			//trace(this.ds_UpsoNoraebang.SaveXML() );
+			//저장한 사용료 정보를 업소정보의 사용료 정보에 업데이트 한다.
+			parent.fn_Search();
+		}
+		else {
+			return;
+		}
+	}
+}
+
+function ds_UPSORTAL_INFO_CanRowPosChange(obj,nOldRow,nRow)
+{
+	var newRow = nRow;
+	if(ds_UPSORTAL_INFO.GetRowType(nOldRow) != "normal")
+	{
+		if(confirm("변경사항이 있습니다. \n변경사항을 저장하시겠습니까?"))
+		{
+			btn_saveRTAL_OnClick();
+		}
+		else
+		{
+			form_OnLoadCompleted();
+			fn_SetFee(newRow);
+		}
+	}
+}
+
+function calculate_MONPRNCFEE(nRow) {
+	this.ds_in_appl_day.ClearData();
+	this.ds_in_appl_day.AddRow();
+	this.ds_in_appl_day.SetColumn(0, "UPSO_CD", this.ds_UPSORTAL_INFO.GetColumn(nRow, "UPSO_CD"));
+	this.ds_in_appl_day.SetColumn(0, "APPL_DAY", this.ds_UPSORTAL_INFO.GetColumn(nRow, "APPL_DAY"));
+	gfn_syncCall("FEERATE_SELECT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004008&EVENTID=feerate_select", "S=ds_in_appl_day","ds_set_rate=SEL1","","fn_CallBack");
+	
+	var vFee = truncate(0.01 * toNumber(this.ds_UPSORTAL_INFO.GetColumn(nRow, "MONPRNCFEE2")) * toNumber(this.ds_set_rate.GetColumn(0, "RATE")));
+	vFee = truncate(vFee /10) * 10;
+	this.ds_UPSORTAL_INFO.SetColumn(nRow, "MONPRNCFEE", vFee);
+}]]></Script>
+</Window>

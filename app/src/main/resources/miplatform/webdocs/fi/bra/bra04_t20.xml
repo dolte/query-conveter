@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra04_t20" Left="8" OnLoadCompleted="bra04_t20_OnLoadCompleted" PidAttrib="7" Title="[미수채권]미수금통계" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search" UseClientLayout="1">
+				<Contents>
+					<colinfo id="START_YRMN" size="256" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list" UseClientLayout="1">
+				<Contents>
+					<colinfo id="YRMN" size="256" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" type="STRING"/>
+					<colinfo id="BEFORE_NONPY_AMT" size="256" type="DECIMAL"/>
+					<colinfo id="DEMD_AMT" size="256" type="DECIMAL"/>
+					<colinfo id="REPT_AMT" size="256" type="DECIMAL"/>
+					<colinfo id="ADJ_AMT" size="256" type="DECIMAL"/>
+					<colinfo id="NONPY_AMT" size="256" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bran">
+				<Contents>
+					<colinfo id="GIBU" size="256" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="808" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="728" Id="grd_reslut" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="40" Style="grid" TabOrder="1" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="150"/>
+						<col width="90"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="년월"/>
+						<cell col="1" color="user12" display="text" text="지부명"/>
+						<cell col="2" color="user12" display="text" text="전월미수"/>
+						<cell col="3" color="user12" display="text" text="청구"/>
+						<cell col="4" color="user12" display="text" text="입금"/>
+						<cell col="5" color="user12" display="text" text="정정금액"/>
+						<cell col="6" color="user12" display="text" text="미수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="YRMN" display="text"/>
+						<cell align="center" col="1" colid="BRAN_CD" combocol="GIBU" combodataset="ds_bran" combotext="DEPT_NM" display="combo"/>
+						<cell align="right" col="2" colid="BEFORE_NONPY_AMT" display="number"/>
+						<cell align="right" col="3" colid="DEMD_AMT" display="number"/>
+						<cell align="right" col="4" colid="REPT_AMT" display="number"/>
+						<cell align="right" col="5" colid="ADJ_AMT" display="number"/>
+						<cell align="right" col="6" colid="NONPY_AMT" display="number"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell align="right" col="1" display="text" text="합계"/>
+						<cell col="2" display="number" expr='SUM(&quot;BEFORE_NONPY_AMT&quot;)'/>
+						<cell col="3" display="number" expr='SUM(&quot;DEMD_AMT&quot;)'/>
+						<cell col="4" display="number" expr='SUM(&quot;REPT_AMT&quot;)'/>
+						<cell col="5" display="number" expr='SUM(&quot;ADJ_AMT&quot;)'/>
+						<cell col="6" display="number" expr='SUM(&quot;NONPY_AMT&quot;)'/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Div Height="64" Id="Div0" Left="8" TabOrder="2" Text="Div0" Top="-8" Width="1032">
+			<Contents>
+				<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1021" TabOrder="0" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image Height="41" Id="Image17" ImageID="C_search_left" Left="-16" TabOrder="0" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image Height="41" Id="Image1" ImageID="C_search_left" TabOrder="1" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="8" TabOrder="4" TabStop="FALSE" Top="19" Width="1015"></Image>
+				<Static Height="19" Id="Static2" Left="176" Style="tx_left_bold" TabOrder="5" Text="~" Top="35" Width="13"></Static>
+				<Static Height="19" Id="Static1" Left="32" Style="tx_left_bold" TabOrder="6" Text="년월" Top="35" Width="64"></Static>
+				<Image Height="11" Id="Image2" ImageID="C_icon" Left="16" TabOrder="7" TabStop="FALSE" Top="35" Width="11"></Image>
+			</Contents>
+		</Div>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_start_yrmn" Left="80" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="3" ToolTipText="현황년월" Top="22" Width="102"></Calendar>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_end_yrmn" Left="200" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="4" ToolTipText="현황년월" Top="22" Width="102"></Calendar>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+
+var mod = 0; //0 단체발급 일때,  2 개별발급일때
+var checked = false;  //발행신청 유무 => ISSADD_YN
+
+
+function bra04_t20_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	// 지부코드 가져오기
+	gfn_syncCall("find_GIBU","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_gibu_select","","ds_bran=SEL1","","fn_CallBack");
+	//trace(ds_bran.SaveXML());
+	
+	//  기준년도 설정
+	this.cal_start_yrmn.Text = addMonth(today(),-1);
+	this.cal_end_yrmn.Text = addMonth(today(),-1);
+
+}
+
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){	fn_Search();	}
+    //저장
+    else if(strCode == "SAVE"){}    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){	fn_Excel();		}
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){	close();	}	return;}
+
+//조회
+function fn_Search(){
+
+	
+	this.ds_search.ClearData();
+	this.ds_list.ClearData();
+	this.ds_search.AddRow();
+	this.ds_search.SetColumn(0, "START_YRMN", substr(this.cal_start_yrmn.Value,0,6));
+	this.ds_search.SetColumn(0, "END_YRMN", substr(this.cal_end_yrmn.Value,0,6));
+	
+    //trace(this.ds_search.SaveXML());
+    gfn_syncCall("get_stat","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001020&EVENTID=get_stat","S=ds_search","ds_list=SEL8","","fn_CallBack", gv_TraceLog, gv_formid);
+    //trace(this.ds_list.SaveXML());
+}
+
+
+//엑셀출력
+function fn_Excel(){
+    grd_reslut.ExportExcelEx("[미수채권]미수금통계");
+}
+
+
+//CallBack
+function fn_CallBack(srvId,ErrorCode,ErrorMsg){
+}
+]]></Script>
+</Window>

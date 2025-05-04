@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="방송청구입금등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0_0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<colinfo id="column1" size="256" type="STRING"/>
+					<colinfo id="column2" size="256" type="STRING"/>
+					<colinfo id="column3" size="256" type="STRING"/>
+					<colinfo id="column4" size="256" type="STRING"/>
+					<colinfo id="column5" size="256" type="STRING"/>
+					<colinfo id="column6" size="256" type="STRING"/>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+						<column6></column6>
+					</record>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+						<column6></column6>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="2" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="346" TabOrder="2" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Shape BKColor="user7" Bottom="64" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="4" Top="61" Type="Rectangle" Width="1032"></Shape>
+		<Static Height="15" Id="Static1" Left="44" Style="tx_left_bold" TabOrder="6" Text="센터코드/명" Top="26" Width="70"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit2" Left="126" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="7" Top="22" Width="30"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit3" Left="159" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="8" Top="22" Width="120"></Edit>
+		<Static Height="15" Id="Static0" Left="362" Style="tx_left_bold" TabOrder="10" Text="기준년월" Top="27" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="9" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button5" ImageID="C_btn_90" Left="930" LeftMargin="23" OnClick="Button2_OnClick" Style="edit" TabOrder="11" Text="Excel생성" Top="22" TopMargin="1" Width="90"></Button>
+		<Image Height="11" Id="Image8" ImageID="C_icon" Left="579" TabOrder="14" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Height="15" Id="Static6" Left="595" Style="tx_left_bold" TabOrder="15" Text="미징수개월수" Top="28" Width="82"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit0" Left="681" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="12" Top="23" Width="20"></Edit>
+		<Static Color="user6" Height="13" Id="Static7" Left="703" Style="style0" TabOrder="16" Text="~" Top="25" Width="9"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit4" Left="714" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="13" Top="23" Width="20"></Edit>
+		<Combo Border="Flat" Height="20" Id="Combo0" Left="423" Style="edit" TabOrder="18" Text="&#32;2008-10-15" Top="23" Width="100"></Combo>
+		<Image Height="16" Id="Image1" ImageID="s_04" Left="526" LeftMargin="0" OnClick="Image1_OnClick" TabOrder="17" TabStop="FALSE" Top="26" Width="14"></Image>
+		<Grid BindDataset="Dataset0_0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="792" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="728" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1040" RowHeight="20" Style="grid" TabOrder="19" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="90"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="84"/>
+						<col width="106"/>
+						<col width="198"/>
+						<col width="114"/>
+						<col width="114"/>
+						<col width="114"/>
+						<col width="114"/>
+						<col width="114"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="월"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="업주명"/>
+						<cell col="5" color="user12" display="text" text="등급"/>
+						<cell col="6" color="user12" display="text" text="미징수"/>
+						<cell col="7" color="user12" display="text" text="주소"/>
+						<cell col="8" color="user12" display="text" text="전화번호"/>
+						<cell col="9" color="user12" display="text" text="핸드폰번호"/>
+						<cell col="10" color="user12" display="text" text="미징수금액"/>
+						<cell col="11" color="user12" display="text" text="가산금"/>
+						<cell col="12" color="user12" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+}
+]]></Script>
+</Window>

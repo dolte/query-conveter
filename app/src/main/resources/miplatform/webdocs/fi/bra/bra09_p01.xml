@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="전국센터&#32;징수현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_CompIn">
+				<Contents>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Accuse">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MNG_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_COL_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL_CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="0" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="0" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="5" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="33" TabOrder="6" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="50" Style="tx_left_bold" TabOrder="7" Text="년월" Top="26" Width="30"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_Month" Left="90" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="1" ToolTipText="년월" Top="22" Width="102"></Calendar>
+		<ubiviewer Bottom="793" Height="729" Id="ubi0" Left="8" Right="1039" Top="64" Width="1031">
+			<_PersistData>&#13;&#10;/6wfpQ1T/wAAAQCPagAAd1hLAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "Acuse_states_Search") {
+		gfn_SetStatusMsg(ds_Accuse.count + " 건이 조회되었습니다.");
+	}
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+  
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		//this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	
+	return;
+}
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	this.ds_CompIn.AddRow();
+	this.cal_Month.value = substr(today(),0,6)+ "01";
+	
+}
+
+
+function fn_Search(){
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	if(parseInt(cal_Month.Value) = 0)
+	{
+        gfn_Confirm("MB_OK", "징수년월을 입력하세요.", "경고", "0");
+		cal_Month.SetFocus();
+		return false;
+
+	}
+	
+	
+	this.ds_CompIn.setcolumn(0,"YRMN",substr(this.cal_Month.Value,0,6));
+	gfn_syncCall("sync_Acuse_states_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012001&EVENTID=tbran_col_list","S=ds_CompIn","ds_Accuse=SEL1 ","","fn_CallBack");
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra09_p01.jrf");
+	ubi0.SetDataset("ds_Accuse","ds_Accuse");
+	ubi0.Retrieve();
+	
+}
+
+function fn_Print()
+{
+
+	if(ds_Accuse.rowcount = 0)
+	{
+        gfn_Confirm("MB_OK", "출력할 데이타가 없습니다.", "경고", "0");
+		return false;
+	}
+	
+	ubi0.directPrint();
+
+}]]></Script>
+</Window>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="304" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="저장이력정보" Top="8" Ver="1.0" Width="552" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_TBRA_ONOFF_LEVY_PRCON_HISTORY">
+				<Contents>
+					<colinfo id="PRCON_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BindDataset="ds_TBRA_ONOFF_LEVY_PRCON_HISTORY" BkColor2="default" BoldHead="true" Border="Flat" Bottom="296" Enable="true" EndLineColor="default" HeadHeight="23" Height="288" Id="ikikikik" InputPanel="true" Left="8" LineColor="default" Right="544" RowHeight="22" Style="edit" TabOrder="66" TabStop="true" Top="8" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="536">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="132"/>
+						<col width="130"/>
+						<col width="247"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="현황년월"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="등록사원"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="등록일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="PRCON_YRMN" display="text"/>
+						<cell align="center" col="1" colid="INSPRES_ID" display="text"/>
+						<cell align="center" col="2" colid="INS_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+ 
+
+function fn_CommmonButtonClick(strCode)
+{
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function form_OnLoadCompleted(obj)
+{
+
+	gfn_syncCall("HISTORY_VIEW","KOMCA?SYSID=PATHFINDER&MENUID=1000001006012003&EVENTID=onoff_history","","ds_TBRA_ONOFF_LEVY_PRCON_HISTORY=SEL1","","fn_CallBack");
+	
+	//fn_Search();
+}
+
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+
+]]></Script>
+</Window>

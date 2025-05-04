@@ -1,0 +1,1160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra03_r11" Left="8" OnLoadCompleted="bra03_r11_OnLoadCompleted" OnSize="bra03_r11_OnSize" PidAttrib="7" Title="자동이체&#32;청구서,&#32;영수증&#32;발행" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="gbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>O</code>
+						<value>개별지로</value>
+					</record>
+					<record>
+						<code>M</code>
+						<value>MICR</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_grd_search" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAEPYO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ubi" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_DSCT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="O_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAEPYO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCHECK" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_NONPY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="PWD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CP_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ubi_p" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLIENT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_DSCT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_TOT_USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_TOT_DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="O_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAEPYO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCHECK" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_NONPY_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_excel_p">
+				<Contents>
+					<colinfo id="sect1_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect1_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect1_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect1_4" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect2_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect2_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect2_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect2_4" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect2_5" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_4" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_5" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_6" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_7" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_8" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect3_9" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect4_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_4" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_5" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_6" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_7" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_8" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_9" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_10" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect5_11" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_4" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_5" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_6" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_7" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_8" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_9" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_10" size="256" summ="default" type="STRING"/>
+					<colinfo id="sect6_11" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_PrcGbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="name" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<name>23&#32;일&#32;청구</name>
+					</record>
+					<record>
+						<code>2</code>
+						<name>3&#32;일&#32;청구</name>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_send_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>all</CODE_CD>
+						<CODE_NM>전체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>p</CODE_CD>
+						<CODE_NM>우편</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>e</CODE_CD>
+						<CODE_NM>E-mail</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>m</CODE_CD>
+						<CODE_NM>문자</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_email_p">
+				<Contents>
+					<colinfo id="TO_EMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP1" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP2" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP3" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP4" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP5" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAP_CONTENT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Target">
+				<Contents>
+					<colinfo id="USER_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCHEDULE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUBJECT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMS_MSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEND_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CALLBACK" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEST_INFO" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEST_COUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="HAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CP_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESERVED1" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESERVED3" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEST_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEND_STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="KT_OFFICE_CODE" size="256" summ="default" type="STRING"/>
+					<record>
+						<CALLBACK></CALLBACK>
+						<CP_NUM></CP_NUM>
+						<DEST_COUNT></DEST_COUNT>
+						<DEST_INFO></DEST_INFO>
+						<DEST_TYPE></DEST_TYPE>
+						<HAN_NM></HAN_NM>
+						<KT_OFFICE_CODE></KT_OFFICE_CODE>
+						<RESERVED1></RESERVED1>
+						<RESERVED3></RESERVED3>
+						<SCHEDULE_TYPE></SCHEDULE_TYPE>
+						<SEND_DATE></SEND_DATE>
+						<SEND_STATUS></SEND_STATUS>
+						<SMS_MSG></SMS_MSG>
+						<SUBJECT></SUBJECT>
+						<USER_ID></USER_ID>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="ds_ubi" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="774" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="630" Id="grd_List" InputPanel="FALSE" Left="8" LineColor="silver" MultiSelect="TRUE" OnHeadClick="grd_List_OnHeadClick" Right="1024" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="144" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1016">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="62"/>
+						<col width="164"/>
+						<col width="89"/>
+						<col width="0"/>
+						<col width="121"/>
+						<col width="76"/>
+						<col width="76"/>
+						<col width="39"/>
+						<col width="79"/>
+						<col width="48"/>
+						<col width="172"/>
+						<col width="96"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="대표"/>
+						<cell col="4" color="user12" display="text" text="주소"/>
+						<cell align="center" col="5" color="user12" display="text" text="청구기간"/>
+						<cell col="6" color="user12" display="text" text="영수금"/>
+						<cell col="7" color="user12" display="text" text="청구금"/>
+						<cell col="8" color="user12" display="text" text="출력"/>
+						<cell col="9" color="user12" display="text" text="청구일"/>
+						<cell col="10" color="user12" display="text" text="구분"/>
+						<cell col="11" color="user12" display="text" text="메일주소"/>
+						<cell col="12" color="user12" display="text" text="핸드폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="DAEPYO" display="text"/>
+						<cell align="left" col="4" colid="ADDR" display="text"/>
+						<cell align="center" col="5" colid="B_START_YRMN" display="text" expr='substr(B_START_YRMN,0,4)+&apos;/&apos;+substr(B_START_YRMN,4,2)&#32;+&#32;&quot;&#32;~&#32;&quot;&#32;+substr(B_END_YRMN,0,4)+&apos;/&apos;+substr(B_END_YRMN,4,2)'/>
+						<cell align="right" col="6" colid="TOT_DEMD_AMT" display="number"/>
+						<cell align="right" col="7" colid="B_TOT_DEMD_AMT" display="number"/>
+						<cell col="8" colid="CCHECK" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="9" colid="PROC_GBN" combocol="code" combodataset="ds_PrcGbn" combotext="name" display="combo"/>
+						<cell align="center" col="10" colid="GBN" combocol="CODE_CD" combodataset="ds_send_gbn" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="11" colid="EMAIL" display="text"/>
+						<cell align="center" col="12" colid="CP_NUM" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" color="user12" display="text" font="굴림,9,Bold" text="조회건수"/>
+						<cell col="2" color="user12" display="text" expr='COUNT(&quot;UPSO_CD&quot;)' font="굴림,9,Bold"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Div Height="64" Id="Div0" Left="8" TabOrder="1" Text="Div0" Top="-8" Width="1032">
+			<Contents>
+				<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1005" TabOrder="7" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="9" TabOrder="9" TabStop="FALSE" Top="19" Width="999"></Image>
+				<Image Height="41" Id="Image17" ImageID="C_search_left" Left="-16" TabOrder="8" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image Height="11" Id="Image0" ImageID="C_icon" Left="20" TabOrder="4" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="16" Id="Static5" Left="34" Style="tx_left_bold" TabOrder="6" Text="센터명" Top="35" Width="48"></Static>
+				<Combo Border="Flat" BorderColor="user10" Height="21" Id="cob_BRAN_CD" ImeMode="none" INDEX="0" Left="78" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="30" Width="100"></Combo>
+				<Static Height="19" Id="Static1" Left="211" Style="tx_left_bold" TabOrder="8" Text="이체년월" Top="35" Width="64"></Static>
+				<Image Height="11" Id="Image2" ImageID="C_icon" Left="196" TabOrder="6" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Image Height="41" Id="Image1" ImageID="C_search_left" TabOrder="10" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Static Height="16" Id="Static0" Left="486" Style="tx_left_bold" TabOrder="14" Text="전월이체일자" Top="35" Width="90"></Static>
+				<Image Height="11" Id="Image3" ImageID="C_icon" Left="469" TabOrder="11" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Image Height="11" Id="Image4" ImageID="C_icon" Left="693" TabOrder="12" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="16" Id="Static2" Left="710" Style="tx_left_bold" TabOrder="16" Text="당월이체일자" Top="35" Width="90"></Static>
+				<Calendar Border="Flat" BorderColor="user3" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="21" Id="cal_OPBI_DAY" Left="792" LeftMargin="6" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="5" ToolTipText="당월이체일자" Top="30" Value="TODAY" Width="102"></Calendar>
+				<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" FocusIndex="1" Height="21" Id="cal_Yrmn" Left="268" LeftMargin="15" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="이체년월" Top="30" Value="TODAY" Width="90"></Calendar>
+				<Calendar Border="Flat" BorderColor="user3" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="21" Id="cal_B_OPBI_DAY" Left="566" LeftMargin="6" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="3" ToolTipText="전월이체일자" Top="30" Value="TODAY" Width="102"></Calendar>
+			</Contents>
+		</Div>
+		<TextArea Border="Flat" BorderColor="user3" Height="56" Id="txt_content" ImeMode="none" Left="96" TabOrder="4" Text="☆&#32;자동이체&#32;할인율은&#32;1%이며,&#32;인출일은&#32;매월&#32;23일(휴일인&#32;경우&#32;다음&#32;영업일)입니다.&#32;단,&#32;미출금된&#32;업소는&#32;익월&#32;3일에&#32;출금됩니다." ToolTipText="내용" Top="80" VScroll="TRUE" Width="808"></TextArea>
+		<Image Height="24" Id="Image2" ImageID="C_icon2" Left="27" TabOrder="7" Top="81" Width="18"></Image>
+		<Static Color="user1" Height="13" Id="Static17" Left="51" Style="tx_bold" TabOrder="5" Text="내용" Top="84" Width="40"></Static>
+		<ubiviewer Bottom="576" Height="320" Id="ubiviewer0" Left="8" Right="864" Top="256" Visible="FALSE" Width="856">
+			<_PersistData>&#13;&#10;/6yDFld5/wAAAQB4WAAA9xMhAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="ds_excel_p" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="696" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="344" Id="grd_for_excel" InputPanel="FALSE" Left="8" LineColor="silver" MultiSelect="TRUE" Right="456" RowHeight="20" Style="grid" TabOrder="9" TabStop="true" Top="352" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="448">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="sect1_1"/>
+						<cell col="1" color="user12" display="text" text="sect1_2"/>
+						<cell col="2" color="user12" display="text" text="sect1_3"/>
+						<cell col="3" color="user12" display="text" text="sect1_4"/>
+						<cell col="4" color="user12" display="text" text="sect2_1"/>
+						<cell col="5" color="user12" display="text" text="sect2_2"/>
+						<cell col="6" color="user12" display="text" text="sect2_3"/>
+						<cell col="7" color="user12" display="text" text="sect2_4"/>
+						<cell col="8" color="user12" display="text" text="sect2_5"/>
+						<cell col="9" color="user12" display="text" text="sect3_1"/>
+						<cell col="10" color="user12" display="text" text="sect3_2"/>
+						<cell col="11" color="user12" display="text" text="sect3_3"/>
+						<cell col="12" color="user12" display="text" text="sect3_4"/>
+						<cell col="13" color="user12" display="text" text="sect3_5"/>
+						<cell col="14" color="user12" display="text" text="sect3_6"/>
+						<cell col="15" color="user12" display="text" text="sect3_6"/>
+						<cell col="16" color="user12" display="text" text="sect3_7"/>
+						<cell col="17" color="user12" display="text" text="sect3_8"/>
+						<cell col="18" color="user12" display="text" text="sect4_1"/>
+						<cell col="19" color="user12" display="text" text="sect5_1"/>
+						<cell col="20" color="user12" display="text" text="sect5_2"/>
+						<cell col="21" color="user12" display="text" text="sect5_3"/>
+						<cell col="22" color="user12" display="text" text="sect5_4"/>
+						<cell col="23" color="user12" display="text" text="sect5_5"/>
+						<cell col="24" color="user12" display="text" text="sect5_6"/>
+						<cell col="25" color="user12" display="text" text="sect5_7"/>
+						<cell col="26" color="user12" display="text" text="sect5_8"/>
+						<cell col="27" color="user12" display="text" text="sect5_9"/>
+						<cell col="28" color="user12" display="text" text="sect5_10"/>
+						<cell col="29" color="user12" display="text" text="sect5_11"/>
+						<cell col="30" color="user12" display="text" text="sect6_1"/>
+						<cell col="31" color="user12" display="text" text="sect6_2"/>
+						<cell col="32" color="user12" display="text" text="sect6_3"/>
+						<cell col="33" color="user12" display="text" text="sect6_4"/>
+						<cell col="34" color="user12" display="text" text="sect6_5"/>
+						<cell col="35" color="user12" display="text" text="sect6_6"/>
+						<cell col="36" color="user12" display="text" text="sect6_7"/>
+						<cell col="37" color="user12" display="text" text="sect6_8"/>
+						<cell col="38" color="user12" display="text" text="sect6_9"/>
+						<cell col="39" color="user12" display="text" text="sect6_10"/>
+						<cell col="40" color="user12" display="text" text="sect6_11"/>
+					</head>
+					<body>
+						<cell col="0" colid="SECT1_1" display="text"/>
+						<cell col="1" colid="SECT1_2" display="text"/>
+						<cell col="2" colid="SECT1_3" display="text"/>
+						<cell col="3" colid="SECT1_4" display="text"/>
+						<cell col="4" colid="SECT2_1" display="text"/>
+						<cell col="5" colid="SECT2_2" display="text"/>
+						<cell col="6" colid="SECT2_3" display="text"/>
+						<cell col="7" colid="SECT2_4" display="text"/>
+						<cell col="8" colid="SECT2_5" display="text"/>
+						<cell col="9" colid="SECT3_1" display="text"/>
+						<cell col="10" colid="SECT3_2" display="text"/>
+						<cell col="11" colid="SECT3_3" display="text"/>
+						<cell col="12" colid="SECT3_4" display="text"/>
+						<cell col="13" colid="SECT3_5" display="text"/>
+						<cell col="14" colid="SECT3_6" display="text"/>
+						<cell col="15" colid="SECT3_7" display="text"/>
+						<cell col="16" colid="SECT3_8" display="text"/>
+						<cell col="17" colid="SECT3_9" display="text"/>
+						<cell col="18" colid="SECT4_1" display="text"/>
+						<cell col="19" colid="SECT5_1" display="text"/>
+						<cell col="20" colid="SECT5_2" display="text"/>
+						<cell col="21" colid="SECT5_3" display="text"/>
+						<cell col="22" colid="SECT5_4" display="text"/>
+						<cell col="23" colid="SECT5_5" display="text"/>
+						<cell col="24" colid="SECT5_6" display="text"/>
+						<cell col="25" colid="SECT5_7" display="text"/>
+						<cell col="26" colid="SECT5_8" display="text"/>
+						<cell col="27" colid="SECT5_9" display="text"/>
+						<cell col="28" colid="SECT5_10" display="text"/>
+						<cell col="29" colid="SECT5_11" display="text"/>
+						<cell col="30" colid="SECT6_1" display="text"/>
+						<cell col="31" colid="SECT6_2" display="text"/>
+						<cell col="32" colid="SECT6_3" display="text"/>
+						<cell col="33" colid="SECT6_4" display="text"/>
+						<cell col="34" colid="SECT6_5" display="text"/>
+						<cell col="35" colid="SECT6_6" display="text"/>
+						<cell col="36" colid="SECT6_7" display="text"/>
+						<cell col="37" colid="SECT6_8" display="text"/>
+						<cell col="38" colid="SECT6_9" display="text"/>
+						<cell col="39" colid="SECT6_10" display="text"/>
+						<cell col="40" colid="SECT6_11" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_txt" ImageID="C_btn_120" Left="907" LeftMargin="23" OnClick="fn_SaveFile" Style="edit" TabOrder="10" Text="영수/청구&#32;발송" Top="88" TopMargin="1" Visible="FALSE" Width="120"></Button>
+		<Combo Border="Flat" BorderColor="user10" CodeColumn="code" DataColumn="name" Height="21" Id="cob_DemdAutoGbn" ImeMode="none" InnerDataset="ds_PrcGbn" Left="368" TabOrder="3" Top="21" Width="90"></Combo>
+		<Combo Border="Flat" BorderColor="user10" CodeColumn="CODE_CD" DataColumn="CODE_NM" Editable="TRUE" Height="21" Id="cob_send_gbn" ImeMode="none" InnerDataset="ds_send_gbn" Left="920" TabOrder="6" Top="21" Width="90"></Combo>
+		<FileDialog Bottom="88" FilePath="C:\komca" Height="24" Id="fdg_Auto" Left="912" Right="936" TabOrder="11" Top="64" Type="Dir" Width="24"></FileDialog>
+		<Static Height="16" Id="Static1" Left="51" Style="tx_left_bold" TabOrder="12" Text="폴더" Top="64" VAlign="Middle" Visible="FALSE" Width="36"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="22" Id="edt_FileName" Left="93" MaxLength="10" Readonly="TRUE" Style="edit" TabOrder="11" Text="C:\komca" ToolTipText="폴더" Top="60" Visible="FALSE" Width="186"></Edit>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_SearchFile" ImageID="C_btn_70" Left="287" LeftMargin="23" OnClick="btn_SearchFile_OnClick" Style="edit" TabOrder="11" TabStop="FALSE" Text="찾기" Top="60" TopMargin="1" Visible="FALSE" Width="71"></Button>
+		<Image Height="24" Id="Image0" ImageID="C_icon2" Left="27" TabOrder="13" Top="62" Visible="FALSE" Width="18"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_send_sms" ImageID="C_btn_120" Left="907" LeftMargin="23" OnClick="btn_send_sms_OnClick" Style="edit" TabOrder="15" TabStop="FALSE" Text="SMS&#32;MAIL&#32;발송" Top="114" TopMargin="1" Width="120"></Button>
+		<TextArea Border="Flat" BorderColor="user10" Height="27" Id="txt_cmpl_bran" Left="85" Readonly="TRUE" TabOrder="17" Top="779" Width="838"></TextArea>
+		<Static Font="굴림,9,Bold" Height="23" Id="Static8" Left="13" TabOrder="16" Text="발송센터&#32;:&#32;" Top="783" Width="72"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_preview" ImageID="C_btn_120" Left="907" LeftMargin="35" OnClick="btn_preview_OnClick" Style="edit" TabOrder="18" TabStop="FALSE" Text="미리보기" Top="79" TopMargin="1" Width="120"></Button>
+	</Form>
+	<Script><![CDATA[/*
+		   * 프로그램명 	: bra03_r11 - 업소청구서
+		   * 작  성  자     : 윤지환
+		   * 작  성  일   	: 2009
+		   * 설      명    	: 업소청구서 및 영수증 밤급
+		   * 수정일1     	: 	
+		   * 수정자       	: 	
+		   * 수정내용    	: 설명 부여(여러줄 사용가능)	
+		   * 수정일2     	: 	
+		   * 수정자       	:	
+		   * 수정내용    	: 	
+		   * 수정일3     	: 	
+		   * 수정자       	: 	
+		   * 수정내용    	:	
+*/
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var btn_print;	//프린트 속성을 기억
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function bra03_r11_OnLoadCompleted(obj)
+{
+	this.ds_in.AddRow();
+	gfn_LoadForm(obj);
+	gfn_GetDataGIBU_CD(this.Div0.cob_BRAN_CD, 1);
+    //this.cal_Yrmn.Value = today();
+	//this.cal_B_OPBI_DAY.Value = today();
+	btn_print = 0;
+	this.Div0.cal_OPBI_DAY.Value = today();
+	/*txt_content.Text = "2006년 9월부터 자동이체 할인율이 1%적용 됨을 알려드립니다." //20161221 류선희대리 요청 변경
+	                 + "\n\n"
+	                 + "2011년 11월부터 자동이체 납부일이 월2회  (3일,23일) 출금됨을 알려드립니다."
+	                 + "\n"
+	                 + "※ 단, 매월 23일에 출금되지 않은 자동이체   업소에 한해 미납된 저작권 사용료가       익월 3일에 출금됩니다.";*/
+	/*txt_content.Text = "귀 업소의 무궁한 발전을 기원합니다."
+	                 + "\n\n"
+	                 + "자동이체 할인율은 1%이며, 인출일은 매월 23일(휴일인 경우 다음 영업일)입니다."
+	                 + "\n"
+	                 + "※ 단, 미출금된 업소는 익월 3일에 출금됩니다.";*/
+	gfn_SetPermission(this.Div0.cob_BRAN_CD.Value);
+
+	if(gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100"){ // 센터관리팀, 전산팀
+		var iRow = ds_GIBU_CD.InsertRow(0);
+		ds_GIBU_CD.SetColumn(iRow,"GIBU","");
+		ds_GIBU_CD.SetColumn(iRow,"DEPT_NM","--ALL--");
+		ds_GIBU_CD.SetColumn(iRow,"DEPT_CD","");
+	}
+
+	trace(gds_sessioninfo.GetColumn(0, "DEPT_CD"));
+
+	this.div0.cob_send_gbn.value = "all";
+	
+	Div0.cal_Yrmn.Value = addMonth(today(), -1);
+	
+	var v_day = parseInt(substr(getDate(), 6, 2));
+	if(v_day > 3 && v_day < 23)
+	{
+		cob_DemdAutoGbn.Index = 0;
+	}
+	else
+	{
+		cob_DemdAutoGbn.Index = 1;
+	}
+	
+	bra03_r11_OnSize();
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }    
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+/*
+ * 기      능: 조회기능 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Search()
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(div0)) return;
+	btn_print = 0;
+	this.ds_In.ClearData();
+	this.ds_In.AddRow();
+    this.ds_In.SetColumn(0, "BRAN_CD", this.Div0.cob_BRAN_CD.Value);
+    this.ds_In.SetColumn(0, "YRMN",    substr(this.Div0.cal_Yrmn.Value, 0, 6));
+    this.ds_In.SetColumn(0, "PROC_GBN", this.Div0.cob_DemdAutoGbn.Value);
+    this.ds_In.SetColumn(0, "GBN",      this.div0.cob_send_gbn.value);
+	gfn_syncCall("sys_bra03_r11","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005010&EVENTID=auto_demd_rept","S=ds_in","ds_ubi=SEL1","","fn_CallBack");
+	ds_grd_search.Copy("ds_ubi");
+	btn_print_OnClick();
+}
+
+/*
+ * 기      능: 프로세스 빌더 실행결과 반영
+ * 인      수: Argument	설명
+ * Return    : Returㄴn Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+
+	if (srvId == "sys_bra03_r11") {
+		gfn_SetStatusMsg(ds_ubi.count + " 건이 조회되었습니다.");	
+	}
+	else if (srvId == "sys_bra03_r11") {
+	//	gfn_SetStatusMsg(ds_grd_search.count + " 건이 조회되었습니다.");
+		
+	}
+	else if (srvId == "svcSendKakao")
+	{
+		txt_cmpl_bran.Text += gds_kakao.GetColumn(0, "RESERVED3") + ", ";
+	}
+}
+
+
+//출력
+function fn_Print()
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_ubi_p.ClearData();
+	
+	var check;
+	var n=0; //체크된 페이지만 저장
+
+	var total = this.ds_ubi.RowCount();
+
+	for(var i=0; i<total; i++)
+	{   
+		if(this.ds_ubi.GetColumn(i,"CCHECK")==1)
+		{  		
+			this.ds_ubi_p.AddRow();
+			this.ds_ubi_p.SetColumn(n, "BRAN_CD", this.ds_ubi.GetColumn(i,"BRAN_CD"));
+			this.ds_ubi_p.SetColumn(n, "UPSO_CD", this.ds_ubi.GetColumn(i,"UPSO_CD"));
+			this.ds_ubi_p.SetColumn(n, "DEMD_YRMN", this.ds_ubi.GetColumn(i,"DEMD_YRMN"));
+			this.ds_ubi_p.SetColumn(n, "B_DEMD_YRMN", this.ds_ubi.GetColumn(i,"B_DEMD_YRMN"));
+			this.ds_ubi_p.SetColumn(n, "START_YRMN", this.ds_ubi.GetColumn(i,"START_YRMN"));
+			this.ds_ubi_p.SetColumn(n, "END_YRMN", this.ds_ubi.GetColumn(i,"END_YRMN"));
+			this.ds_ubi_p.SetColumn(n, "MONPRNCFEE", this.ds_ubi.GetColumn(i,"MONPRNCFEE"));
+			this.ds_ubi_p.SetColumn(n, "TOT_USE_AMT", this.ds_ubi.GetColumn(i,"TOT_USE_AMT"));
+			this.ds_ubi_p.SetColumn(n, "TOT_DEMD_AMT", this.ds_ubi.GetColumn(i,"TOT_DEMD_AMT"));
+			this.ds_ubi_p.SetColumn(n, "B_MONPRNCFEE", this.ds_ubi.GetColumn(i,"B_MONPRNCFEE"));
+			this.ds_ubi_p.SetColumn(n, "B_DSCT_AMT", this.ds_ubi.GetColumn(i,"B_DSCT_AMT"));
+			this.ds_ubi_p.SetColumn(n, "B_TOT_USE_AMT", this.ds_ubi.GetColumn(i,"B_TOT_USE_AMT"));
+			this.ds_ubi_p.SetColumn(n, "B_TOT_DEMD_AMT", this.ds_ubi.GetColumn(i,"B_TOT_DEMD_AMT"));
+			this.ds_ubi_p.SetColumn(n, "B_START_YRMN", this.ds_ubi.GetColumn(i,"B_START_YRMN"));
+			this.ds_ubi_p.SetColumn(n, "B_END_YRMN", this.ds_ubi.GetColumn(i,"B_END_YRMN"));
+			this.ds_ubi_p.SetColumn(n, "BANK_NM", this.ds_ubi.GetColumn(i,"BANK_NM"));
+			this.ds_ubi_p.SetColumn(n, "BANK_NO", this.ds_ubi.GetColumn(i,"BANK_NO"));
+			this.ds_ubi_p.SetColumn(n, "BRAN_NM", this.ds_ubi.GetColumn(i,"BRAN_NM"));
+			this.ds_ubi_p.SetColumn(n, "BRAN_ADDR", this.ds_ubi.GetColumn(i,"BRAN_ADDR"));
+			this.ds_ubi_p.SetColumn(n, "PHON_NUM", this.ds_ubi.GetColumn(i,"PHON_NUM"));
+			this.ds_ubi_p.SetColumn(n, "POST_NUM", this.ds_ubi.GetColumn(i,"POST_NUM"));
+			this.ds_ubi_p.SetColumn(n, "UPSO_NM", this.ds_ubi.GetColumn(i,"UPSO_NM"));
+			this.ds_ubi_p.SetColumn(n, "O_UPSO_NM", this.ds_ubi.GetColumn(i,"O_UPSO_NM"));
+			this.ds_ubi_p.SetColumn(n, "DAEPYO", this.ds_ubi.GetColumn(i,"DAEPYO"));
+			this.ds_ubi_p.SetColumn(n, "ZIP", this.ds_ubi.GetColumn(i,"ZIP"));
+			this.ds_ubi_p.SetColumn(n, "ADDR", this.ds_ubi.GetColumn(i,"ADDR"));
+			this.ds_ubi_p.SetColumn(n, "CLIENT_NUM", this.ds_ubi.GetColumn(i,"CLIENT_NUM"));
+			
+		
+			check = 1;
+			n++;
+		}
+	}
+
+
+		if(check ==1)
+		{
+			this.ubiviewer0.SetDataset("ds_ubi", "ds_ubi_p");
+			this.ubiviewer0.SetArgument("BRAN_NM", div0.cob_BRAN_CD.Text ); 		// 센터
+			this.ubiviewer0.SetArgument("cal_B_OPBI_DAY", this.Div0.cal_B_OPBI_DAY.Text ); 	// 전월이체일자
+			this.ubiviewer0.SetArgument("cal_OPBI_DAY", this.Div0.cal_OPBI_DAY.Text ); 		// 당월이체일자
+			
+			//this.ubiviewer0.SetArgument("DATE", this.cal_OPBI_DAY.Value );
+			this.ubiviewer0.SetArgument("TXT_CONT", 	THIS.txt_content.Text );
+
+			ubiviewer0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+			ubiviewer0.setJrfFileName("bra03_r11.jrf");
+			ubiviewer0.Retrieve();
+			ubiviewer0.directPrint();
+		
+		}
+}
+
+function btn_print_OnClick(obj)
+{
+	var i=0;
+	grd_List.Redraw = false;
+	for(i=0; i<ds_ubi.RowCount(); i++){
+		if(btn_print==1){
+			this.ds_ubi.SetColumn(i,"CCHECK",0);
+		}
+		else this.ds_ubi.SetColumn(i,"CCHECK",1);
+	}
+	if(btn_print ==0) btn_print =1;
+	else btn_print = 0;
+
+	grd_List.Redraw = true;
+	
+
+}
+
+
+function fn_SaveFile(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_excel_p.ClearData();
+	this.ds_email_p.ClearData();
+	
+	var check_excel; var check_email;
+	var n=0;	var m=0; //체크된 페이지만 저장용 카운터
+
+	var total = this.ds_ubi.RowCount();
+
+	alert("업체에 제공할 자동이체 청구서/영수증 파일을 생성, 이메일을 발송합니다.");
+	
+	for(var i=0; i<total; i++)
+	{   
+		if(this.ds_ubi.GetColumn(i,"CCHECK")==1)
+		{  	
+			if (this.ds_ubi.GetColumn(i, "GBN") == "e")
+			{
+				this.ds_email_p.AddRow();
+				
+				this.ds_email_p.SetColumn(m, "TO_EMAIL", this.ds_ubi.GetColumn(i, "EMAIL"));
+				this.ds_email_p.SetColumn(m, "TO_NAME",  this.ds_ubi.GetColumn(i, "UPSO_NM"));
+				this.ds_email_p.SetColumn(m, "MAP1",     this.ds_ubi.GetColumn(i, "UPSO_CD"));
+				this.ds_email_p.SetColumn(m, "MAP2",     this.ds_ubi.GetColumn(i, "DEMD_YRMN"));
+				this.ds_email_p.SetColumn(m, "MAP3",     replace(this.Div0.cal_OPBI_DAY.Text, "/", "") + "" + replace(this.Div0.cal_B_OPBI_DAY.Text, "/", ""));
+				this.ds_email_p.SetColumn(m, "MAP4",     this.ds_ubi.GetColumn(i, "PROC_GBN"));
+				this.ds_email_p.SetColumn(m, "MAP5",     this.ds_ubi.GetColumn(i, "PWD"));
+				this.ds_email_p.SetColumn(m, "MAP_CONTENT",  substr(this.ds_ubi.GetColumn(i, "DEMD_YRMN"),0,4) + "년 " + substr(this.ds_ubi.GetColumn(i, "DEMD_YRMN"),4,2) + "월");
+				
+				check_email = 1;
+				m++;
+			}
+			else
+			{
+				this.ds_excel_p.AddRow();
+				
+				// 제1 영역
+				this.ds_excel_p.SetColumn(n, "SECT1_1", div0.cob_BRAN_CD.Text);
+				this.ds_excel_p.SetColumn(n, "SECT1_2", this.ds_ubi.GetColumn(i,"BRAN_ADDR"));
+				this.ds_excel_p.SetColumn(n, "SECT1_3", substr(ds_ubi.GetColumn(i,"POST_NUM"),0,3) + "-" +substr(ds_ubi.GetColumn(i,"POST_NUM"),3,3));
+				this.ds_excel_p.SetColumn(n, "SECT1_4", this.ds_ubi.GetColumn(i,"PHON_NUM"));
+				
+				
+				// 제2 영역
+				this.ds_excel_p.SetColumn(n, "SECT2_1", this.ds_ubi.GetColumn(i,"ADDR"));
+				this.ds_excel_p.SetColumn(n, "SECT2_2", this.ds_ubi.GetColumn(i,"UPSO_CD"));
+				this.ds_excel_p.SetColumn(n, "SECT2_3", this.ds_ubi.GetColumn(i,"UPSO_NM"));
+				this.ds_excel_p.SetColumn(n, "SECT2_4", this.ds_ubi.GetColumn(i,"DAEPYO") + "님 귀하");
+				this.ds_excel_p.SetColumn(n, "SECT2_5", "(우)" + ds_ubi.GetColumn(i,"ZIP"));			
+				
+			
+				// 제 3 영역 시작
+				var sect3_1="", sect3_3="", sect3_4="", sect3_5="", sect3_6="",;
+				var sect3_7="", sect3_8="", sect3_9="";
+				
+				if (this.ds_ubi.GetColumn(i,"B_TOT_DEMD_AMT") > 0) {
+					sect3_1 = substr(ds_ubi.GetColumn(i,"B_DEMD_YRMN"),0,4) + "   " + substr(ds_ubi.GetColumn(i,"B_DEMD_YRMN"),4,2);
+					sect3_3 = this.ds_ubi.GetColumn(i,"DAEPYO");
+					sect3_4 = substr(ds_ubi.GetColumn(i,"B_START_YRMN"),0,4) + "/" + substr(ds_ubi.GetColumn(i,"B_START_YRMN"),4,2);
+					sect3_4 += " ~ ";
+					sect3_4 += substr(ds_ubi.GetColumn(i,"B_END_YRMN"),0,4) + "/" + substr(ds_ubi.GetColumn(i,"B_END_YRMN"),4,2);
+					sect3_6 = this.ds_ubi.GetColumn(i,"B_MONPRNCFEE");
+					sect3_7 = this.ds_ubi.GetColumn(i,"B_DSCT_AMT");
+					sect3_8 = this.ds_ubi.GetColumn(i,"B_TOT_DEMD_AMT");
+					sect3_9 = this.ds_ubi.GetColumn(i,"CLIENT_NUM");
+				}
+				if (this.ds_ubi.GetColumn(i,"B_NONPY_AMT") > 0) {
+					sect3_5 = this.ds_ubi.GetColumn(i,"B_NONPY_AMT");
+				}
+				
+				this.ds_excel_p.SetColumn(n, "SECT3_1", sect3_1);
+				this.ds_excel_p.SetColumn(n, "SECT3_2", this.ds_ubi.GetColumn(i,"UPSO_NM"));
+				this.ds_excel_p.SetColumn(n, "SECT3_3", sect3_3);
+				this.ds_excel_p.SetColumn(n, "SECT3_4", sect3_4);
+				this.ds_excel_p.SetColumn(n, "SECT3_5", sect3_5);
+				this.ds_excel_p.SetColumn(n, "SECT3_6", sect3_6);
+				this.ds_excel_p.SetColumn(n, "SECT3_7", sect3_7);
+				this.ds_excel_p.SetColumn(n, "SECT3_8", sect3_8);
+				this.ds_excel_p.SetColumn(n, "SECT3_9", sect3_9);
+				// 제 3 영역 끝
+				
+				
+				// 제 4 영역
+				this.ds_excel_p.SetColumn(n, "SECT4_1", THIS.txt_content.Text);
+				
+				// 제 5 영역 시작
+				var sect5_1="", sect5_8="", sect5_10="";
+				
+				sect5_1 = substr(ds_ubi.GetColumn(i,"DEMD_YRMN"),0,4) + "   " + substr(ds_ubi.GetColumn(i,"DEMD_YRMN"),4,2);
+				sect5_8 = substr(this.Div0.cal_B_OPBI_DAY.Text,0,4) + "년 " + substr(this.Div0.cal_B_OPBI_DAY.Text,5,2) + "월 " + substr(this.Div0.cal_B_OPBI_DAY.Text,8,2) + "일";
+				sect5_10 = substr(ds_ubi.GetColumn(i,"START_YRMN"),0,4) + "/" + substr(ds_ubi.GetColumn(i,"START_YRMN"),4,2);
+				sect5_10 += " ~ ";
+				sect5_10 += substr(ds_ubi.GetColumn(i,"END_YRMN"),0,4) + "/" + substr(ds_ubi.GetColumn(i,"END_YRMN"),4,2);
+	
+				this.ds_excel_p.SetColumn(n, "SECT5_1", sect5_1);
+				this.ds_excel_p.SetColumn(n, "SECT5_2", this.ds_ubi.GetColumn(i,"UPSO_CD"));
+				this.ds_excel_p.SetColumn(n, "SECT5_3", this.ds_ubi.GetColumn(i,"UPSO_NM"));
+				this.ds_excel_p.SetColumn(n, "SECT5_4", this.ds_ubi.GetColumn(i,"DAEPYO"));
+				this.ds_excel_p.SetColumn(n, "SECT5_5", this.ds_ubi.GetColumn(i,"BANK_NM"));
+				this.ds_excel_p.SetColumn(n, "SECT5_6", this.ds_ubi.GetColumn(i,"DAEPYO"));
+				this.ds_excel_p.SetColumn(n, "SECT5_7", this.ds_ubi.GetColumn(i,"BANK_NO") + "**********");
+				this.ds_excel_p.SetColumn(n, "SECT5_8", sect5_8);
+				this.ds_excel_p.SetColumn(n, "SECT5_9", this.ds_ubi.GetColumn(i,"UPSO_CD"));
+				this.ds_excel_p.SetColumn(n, "SECT5_10", sect5_10);
+				this.ds_excel_p.SetColumn(n, "SECT5_11", this.ds_ubi.GetColumn(i,"TOT_DEMD_AMT"));
+				// 제 5 영역 끝
+	  
+	
+				// 제 6 영역 시작
+				var sect6_1="", sect6_2="", sect6_4="", sect6_5="", sect6_6="",;
+				var sect6_7="", sect6_8="", sect6_9="", sect6_10="", sect6_11="";
+				
+				if (this.ds_ubi.GetColumn(i,"B_TOT_DEMD_AMT") > 0) {
+					sect6_1 = substr(ds_ubi.GetColumn(i,"B_DEMD_YRMN"),0,4) + "   " + substr(ds_ubi.GetColumn(i,"B_DEMD_YRMN"),4,2);
+					sect6_2 = this.ds_ubi.GetColumn(i,"UPSO_CD");
+					sect6_4 = this.ds_ubi.GetColumn(i,"DAEPYO");
+					sect6_5 = this.ds_ubi.GetColumn(i,"BANK_NM");
+					sect6_6 = this.ds_ubi.GetColumn(i,"DAEPYO");
+					sect6_7 = this.ds_ubi.GetColumn(i,"BANK_NO") +  "**********";
+					sect6_8 = substr(this.Div0.cal_OPBI_DAY.Text,0,4) + "년 " + substr(this.Div0.cal_OPBI_DAY.Text,5,2) + "월 " + substr(this.Div0.cal_OPBI_DAY.Text,8,2) + "일";
+					sect6_9 = this.ds_ubi.GetColumn(i,"UPSO_CD");
+					sect6_10 = substr(ds_ubi.GetColumn(i,"B_START_YRMN"),0,4) + "/" + substr(ds_ubi.GetColumn(i,"B_START_YRMN"),4,2);
+					sect6_10 += " ~ ";
+					sect6_10 += substr(ds_ubi.GetColumn(i,"B_END_YRMN"),0,4) + "/" + substr(ds_ubi.GetColumn(i,"B_END_YRMN"),4,2);
+					sect6_11 = this.ds_ubi.GetColumn(i,"B_TOT_DEMD_AMT");
+				}
+				this.ds_excel_p.SetColumn(n, "SECT6_1", sect6_1);
+				this.ds_excel_p.SetColumn(n, "SECT6_2", sect6_2);
+				this.ds_excel_p.SetColumn(n, "SECT6_3", this.ds_ubi.GetColumn(i,"UPSO_NM"));
+				this.ds_excel_p.SetColumn(n, "SECT6_4", sect6_4);
+				this.ds_excel_p.SetColumn(n, "SECT6_5", sect6_5);
+				this.ds_excel_p.SetColumn(n, "SECT6_6", sect6_6);
+				this.ds_excel_p.SetColumn(n, "SECT6_7", sect6_7);
+				this.ds_excel_p.SetColumn(n, "SECT6_8", sect6_8);
+				this.ds_excel_p.SetColumn(n, "SECT6_9", sect6_9);
+				this.ds_excel_p.SetColumn(n, "SECT6_10", sect6_10);
+				this.ds_excel_p.SetColumn(n, "SECT6_11", sect6_11);
+	
+				// 제 6 영역 끝
+				
+				check_excel = 1;
+				n++;
+			}
+		}
+	}
+
+	if(check_excel != 1 && check_email != 1) {	
+		gfn_SetStatusMsg("출력체크가 한건도 없습니다.");
+	}
+
+	if(check_excel == 1) {	
+		fn_save_delimited_text();	//텍스트로 저장하기
+		
+		//20140213 작업의뢰서 txt만 만들고 엑셀생성 안함.
+		//this.grd_for_excel.SaveExcel(this.edt_FileName.Text + "\\" + substr(this.Div0.cal_Yrmn.Value, 0, 6) + div0.cob_BRAN_CD.Value +".xls", "자동이체 청구서, 영수증 발행 의뢰 데이터");	//엑셀로 저장하기
+	} else {
+		gfn_SetStatusMsg("우편 출력체크가 한건도 없습니다.");
+	}
+	
+	if(check_email == 1) {	
+		gfn_syncCall("SEND_EMAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005010&EVENTID=send_email", "S=ds_email_p","","", "fn_CallBack");
+		gfn_SetStatusMsg(this.ds_email_p.rowcount + "개 이메일 발송요청 완료");		
+	} else {
+		gfn_SetStatusMsg("이메일 출력체크가 한건도 없습니다.");
+	}
+		
+}
+
+
+//tab을 구분자로 하는 
+function fn_save_delimited_text()
+{
+	var delimiter = "\t";
+	
+	if (!IsValid("fil_Txt"))
+	{
+		Create("File", "fil_Txt");
+	}
+
+	fil_Txt.FileName = this.edt_FileName.Text + "\\" + substr(this.Div0.cal_Yrmn.Value, 0, 6) + div0.cob_BRAN_CD.Value + ".txt";
+	fil_Txt.open("wt"); 
+	var buffer = "";
+	
+	for (var i=0 ; i < this.ds_excel_p.RowCount() ; i++)
+	{
+		buffer = "";
+		buffer += this.ds_excel_p.GetColumn(i, "SECT1_1") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT1_2") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT1_3") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT1_4") + delimiter;
+		
+		buffer += this.ds_excel_p.GetColumn(i, "SECT2_1") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT2_2") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT2_3") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT2_4") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT2_5") + delimiter;
+		
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_1") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_2") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_3") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_4") + delimiter;;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_5") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_6") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_7") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_8") + delimiter;;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT3_9") + delimiter;
+		
+		buffer += this.ds_excel_p.GetColumn(i, "SECT4_1") + delimiter;
+		
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_1") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_2") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_3") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_4") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_5") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_6") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_7") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_8") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_9") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_10") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT5_11") + delimiter;
+		
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_1") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_2") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_3") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_4") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_5") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_6") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_7") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_8") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_9") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_10") + delimiter;
+		buffer += this.ds_excel_p.GetColumn(i, "SECT6_11") + "\n";
+		
+		fil_Txt.Write(buffer);		
+	}
+	fil_Txt.close();
+	alert("파일생성 완료 되었습니다.");
+	}
+}
+
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+
+
+function btn_SearchFile_OnClick(obj)
+{
+	this.fdg_Auto.Open();
+	var fildDay = this.ds_DemdPayDay.GetColumn(0, "PAY_DAY");
+	if (length(this.fdg_Auto.FilePath) > 0 ) {
+		this.edt_FileName.Text = this.fdg_Auto.FilePath;
+	}
+}
+
+function btn_send_sms_OnClick(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	ds_email_p.ClearData();
+	
+	if(!confirm("문자 및 E-mail을 발송하시겠습니까? ")) return;
+	
+	gds_kakao.ClearData();
+	
+	for(var i = 0; i < ds_ubi.rowcount; i++)
+	{   
+		if(ds_ubi.GetColumn(i, "CCHECK") == 1)
+		{  	
+			if(ds_ubi.GetColumn(i, "GBN") == "e")
+			{
+				var aRow = ds_email_p.AddRow();
+				
+				ds_email_p.SetColumn(aRow, "TO_EMAIL", this.ds_ubi.GetColumn(i, "EMAIL"));
+				ds_email_p.SetColumn(aRow, "TO_NAME",  this.ds_ubi.GetColumn(i, "UPSO_NM"));
+				ds_email_p.SetColumn(aRow, "MAP1",     this.ds_ubi.GetColumn(i, "UPSO_CD"));
+				ds_email_p.SetColumn(aRow, "MAP2",     this.ds_ubi.GetColumn(i, "DEMD_YRMN"));
+				ds_email_p.SetColumn(aRow, "MAP3",     replace(this.Div0.cal_OPBI_DAY.Text, "/", "") + "" + replace(this.Div0.cal_B_OPBI_DAY.Text, "/", ""));
+				ds_email_p.SetColumn(aRow, "MAP4",     this.ds_ubi.GetColumn(i, "PROC_GBN"));
+				//ds_email_p.SetColumn(aRow, "MAP4",     substr(this.ds_ubi.GetColumn(i, "DEMD_YRMN"),0,4) + "년 " + substr(this.ds_ubi.GetColumn(i, "DEMD_YRMN"),4,2) + "월");
+				ds_email_p.SetColumn(aRow, "MAP5",     this.ds_ubi.GetColumn(i, "PWD"));
+				ds_email_p.SetColumn(aRow, "MAP_CONTENT",  txt_content.Text);
+			}
+			else
+			{
+				if(length(ds_ubi.GetColumn(i, "CP_NUM")) >= 10)
+				{
+					var txt_msg = "[(사)한국음악저작권협회] ";
+					txt_msg += "\n";
+					txt_msg += "■ " + substr(ds_ubi.GetColumn(i, "B_DEMD_YRMN"), 0, 4) + "년 " + substr(ds_ubi.GetColumn(i, "B_DEMD_YRMN"), 4, 2) + "월 음악저작권사용료 자동이체 청구서" + "\n";
+					txt_msg += "\n";
+					txt_msg += "☆ 업소명 : " + ds_ubi.GetColumn(i, "UPSO_NM") + "(" + ds_ubi.GetColumn(i, "UPSO_CD") + ")\n";
+					txt_msg += "☆ 업주명 : " + ds_ubi.GetColumn(i, "DAEPYO") + "\n";
+					txt_msg += "☆ 고객번호 : " + ds_ubi.GetColumn(i, "CLIENT_NUM") + "\n";
+					txt_msg += "☆ 청구기간 : " + substr(ds_ubi.GetColumn(i, "B_START_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(i, "B_START_YRMN"), 4, 2) + "~" + substr(ds_ubi.GetColumn(i, "B_END_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(i, "B_END_YRMN"), 4, 2) + "\n";
+					txt_msg += "☆ 청구금액 : " + NumFormat(ds_ubi.GetColumn(i, "B_TOT_DEMD_AMT")) + "\n";
+					txt_msg += "☆ 인출예정일 : " + Div0.cal_OPBI_DAY.Text + "\n";
+					txt_msg += "(" + ds_ubi.GetColumn(i, "BANK_NM") + "은행 자동이체)" + "\n";
+					txt_msg += "\n";
+					txt_msg += "=================" + "\n";
+					txt_msg += "[청구상세내역]" + "\n";
+					txt_msg += "미납금액 : " + NumFormat(ds_ubi.GetColumn(i, "B_NONPY_AMT")) + "\n";
+					txt_msg += "연체료 : " + NumFormat(ds_ubi.GetColumn(i, "ADDT_AMT")) + "\n";
+					txt_msg += "당월금액 : " + NumFormat(ds_ubi.GetColumn(i, "B_MONPRNCFEE")) + "\n";
+					txt_msg += "할인금액 : " + NumFormat(ds_ubi.GetColumn(i, "B_DSCT_AMT")) + "\n";
+					txt_msg += "합계 : " + NumFormat(ds_ubi.GetColumn(i, "B_TOT_DEMD_AMT")) + "\n";
+					txt_msg += "=================" + "\n";
+					txt_msg += "\n";
+					txt_msg += "=================" + "\n";
+					txt_msg += "[" + substr(ds_ubi.GetColumn(i, "DEMD_YRMN"), 0, 4) + "년 " + substr(ds_ubi.GetColumn(i, "DEMD_YRMN"), 4, 2) + "월 영수증]" + "\n";
+					txt_msg += "납부기간 : " + substr(ds_ubi.GetColumn(i, "START_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(i, "START_YRMN"), 4, 2) + "~" + substr(ds_ubi.GetColumn(i, "END_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(i, "END_YRMN"), 4, 2) + "\n";
+					txt_msg += "납부금액 : " + NumFormat(ds_ubi.GetColumn(i, "REPT_AMT")) + "\n";
+					txt_msg += "인출한날 : " + substr(ds_ubi.GetColumn(i, "RECV_DAY"), 0, 4) + "/" + substr(ds_ubi.GetColumn(i, "RECV_DAY"), 4, 2) + "/" + substr(ds_ubi.GetColumn(i, "RECV_DAY"), 6, 2) + "\n";
+					txt_msg += "=================" + "\n";
+					txt_msg += "\n";
+					txt_msg += "상기 금액이 귀하의 예금계좌에서 자동이체 되었습니다.\n";
+					txt_msg += "\n";
+					txt_msg += txt_content.Text;
+					txt_msg += "\n";
+					txt_msg += "문의사항 : " + ds_ubi.GetColumn(i, "DEPT_NM") + "\n";
+					txt_msg += "☎ " + ds_ubi.GetColumn(i, "PHON_NUM");
+					
+					var aRow = gds_kakao.AddRow();
+					gds_kakao.SetColumn(aRow, "CHANNEL",     "A"); //알림톡여부
+					gds_kakao.SetColumn(aRow, "PHONE_NUM",   ds_ubi.GetColumn(i, "CP_NUM")); //수신자번호
+					gds_kakao.SetColumn(aRow, "TMPL_CD",     "JIBU_17"); //템플릿코드
+					gds_kakao.SetColumn(aRow, "SUBJECT",     "(사)한국음악저작권협회"); //문자제목
+					gds_kakao.SetColumn(aRow, "SND_MSG",     txt_msg); //내용
+					gds_kakao.SetColumn(aRow, "SMS_SND_NUM", ds_ubi.GetColumn(i, "PHON_NUM2")); //발신자번호
+					gds_kakao.SetColumn(aRow, "RESERVED1",   ds_ubi.GetColumn(i, "DAEPYO")); //업주명
+					gds_kakao.SetColumn(aRow, "RESERVED2",   "U");
+					gds_kakao.SetColumn(aRow, "RESERVED3",   ds_ubi.GetColumn(i, "BRAN_CD"));
+					gds_kakao.SetColumn(aRow, "RESERVED4",   "");
+					gds_kakao.SetColumn(aRow, "RESERVED5",   "");
+					gds_kakao.SetColumn(aRow, "RESERVED6",   "bra03_r11"); //form id
+					gds_kakao.SetColumn(aRow, "USER_ID",     ds_ubi.GetColumn(i, "UPSO_CD")); //업소코드
+				}
+			}
+		}
+	}
+
+	if(gds_kakao.rowcount < 1 && ds_email_p.rowcount < 1)
+	{	
+		gfn_SetStatusMsg("출력체크가 한건도 없습니다.");
+		return;
+	}
+
+	if(gds_kakao.rowcount > 0)
+	{	
+		var rtn = gfn_ChkKakao();
+		if(rtn)
+		{
+			//trace(ds_Target.SaveXML());
+			gfn_SyncCall("svcSendKakao","KOMCA?SYSID=PATHFINDER&MENUID=1000006001010&EVENTID=send_kakao_msg","S=gds_kakao:U","","","fn_CallBack");
+		}
+	}
+	
+	if(ds_email_p.rowcount > 0)
+	{	
+		gfn_syncCall("SEND_EMAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005010&EVENTID=send_email", "S=ds_email_p","","", "fn_CallBack");
+	}
+	
+	alert("발송이 완료되었습니다.");
+}
+
+function grd_List_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == grd_List.GetBindCellIndex("body", "CCHECK"))
+	{
+		btn_print_OnClick();
+	}
+	else
+	{
+		gfn_GridSort(obj, nCell);
+	}
+}
+
+function bra03_r11_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_List, bra03_r11, "1", "0");
+}
+
+function btn_preview_OnClick(obj)
+{
+	var txt_msg = "[(사)한국음악저작권협회] ";
+	txt_msg += "\n";
+	txt_msg += "■ " + substr(ds_ubi.GetColumn(0, "B_DEMD_YRMN"), 0, 4) + "년 " + substr(ds_ubi.GetColumn(0, "B_DEMD_YRMN"), 4, 2) + "월 음악저작권사용료 자동이체 청구서" + "\n";
+	txt_msg += "\n";
+	txt_msg += "☆ 업소명 : " + ds_ubi.GetColumn(0, "UPSO_NM") + "(" + ds_ubi.GetColumn(0, "UPSO_CD") + ")\n";
+	txt_msg += "☆ 업주명 : " + ds_ubi.GetColumn(0, "DAEPYO") + "\n";
+	txt_msg += "☆ 고객번호 : " + ds_ubi.GetColumn(0, "CLIENT_NUM") + "\n";
+	txt_msg += "☆ 청구기간 : " + substr(ds_ubi.GetColumn(0, "B_START_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(0, "B_START_YRMN"), 4, 2) + "~" + substr(ds_ubi.GetColumn(0, "B_END_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(0, "B_END_YRMN"), 4, 2) + "\n";
+	txt_msg += "☆ 청구금액 : " + NumFormat(ds_ubi.GetColumn(0, "B_TOT_DEMD_AMT")) + "\n";
+	txt_msg += "☆ 인출예정일 : " + Div0.cal_OPBI_DAY.Text + "\n";
+	txt_msg += "(" + ds_ubi.GetColumn(0, "BANK_NM") + "은행 자동이체)" + "\n";
+	txt_msg += "\n";
+	txt_msg += "=================" + "\n";
+	txt_msg += "[청구상세내역]" + "\n";
+	txt_msg += "미납금액 : " + NumFormat(ds_ubi.GetColumn(0, "B_NONPY_AMT")) + "\n";
+	txt_msg += "연체료 : " + NumFormat(ds_ubi.GetColumn(0, "ADDT_AMT")) + "\n";
+	txt_msg += "당월금액 : " + NumFormat(ds_ubi.GetColumn(0, "B_MONPRNCFEE")) + "\n";
+	txt_msg += "할인금액 : " + NumFormat(ds_ubi.GetColumn(0, "B_DSCT_AMT")) + "\n";
+	txt_msg += "합계 : " + NumFormat(ds_ubi.GetColumn(0, "B_TOT_DEMD_AMT")) + "\n";
+	txt_msg += "=================" + "\n";
+	txt_msg += "\n";
+	txt_msg += "=================" + "\n";
+	txt_msg += "[" + substr(ds_ubi.GetColumn(0, "DEMD_YRMN"), 0, 4) + "년 " + substr(ds_ubi.GetColumn(0, "DEMD_YRMN"), 4, 2) + "월 영수증]" + "\n";
+	txt_msg += "납부기간 : " + substr(ds_ubi.GetColumn(0, "START_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(0, "START_YRMN"), 4, 2) + "~" + substr(ds_ubi.GetColumn(0, "END_YRMN"), 0, 4) + "/" + substr(ds_ubi.GetColumn(0, "END_YRMN"), 4, 2) + "\n";
+	txt_msg += "납부금액 : " + NumFormat(ds_ubi.GetColumn(0, "REPT_AMT")) + "\n";
+	txt_msg += "인출한날 : " + substr(ds_ubi.GetColumn(0, "RECV_DAY"), 0, 4) + "/" + substr(ds_ubi.GetColumn(0, "RECV_DAY"), 4, 2) + "/" + substr(ds_ubi.GetColumn(0, "RECV_DAY"), 6, 2) + "\n";
+	txt_msg += "=================" + "\n";
+	txt_msg += "\n";
+	txt_msg += "상기 금액이 귀하의 예금계좌에서 자동이체 되었습니다.\n";
+	if(length(txt_content.Text) > 0)
+	{
+		txt_msg += "\n";
+		txt_msg += txt_content.Text;
+		txt_msg += "\n";
+	}
+	txt_msg += "\n";
+	txt_msg += "문의사항 : " + ds_ubi.GetColumn(0, "DEPT_NM") + "\n";
+	txt_msg += "☎ " + ds_ubi.GetColumn(0, "PHON_NUM");
+	
+	alert(txt_msg);
+}
+]]></Script>
+</Window>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra06_p03" Left="8" OnLoadCompleted="bra06_p03_OnLoadCompleted" PidAttrib="7" Title="센터별노래연습장기기현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0_0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<colinfo id="column1" size="256" type="STRING"/>
+					<colinfo id="column2" size="256" type="STRING"/>
+					<colinfo id="column3" size="256" type="STRING"/>
+					<colinfo id="column4" size="256" type="STRING"/>
+					<colinfo id="column5" size="256" type="STRING"/>
+					<record>
+						<column0>1</column0>
+						<column1>길동</column1>
+						<column2>3</column2>
+						<column3>4</column3>
+						<column4>5</column4>
+						<column5>3</column5>
+					</record>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="2" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="2" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="5" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="44" Style="tx_left_bold" TabOrder="6" Text="센터명" Top="31" Width="46"></Static>
+		<Combo Border="Flat" Height="20" Id="Combo0" Left="93" Style="edit" TabOrder="7" Top="26" Width="148"></Combo>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="260" TabOrder="9" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="276" Style="tx_left_bold" TabOrder="10" Text="기간" Top="31" Width="30"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Dist" ImageID="C_btn_110" Left="632" LeftMargin="23" OnClick="btn_Dist_OnClick" Style="edit" TabOrder="11" Text="&#32;&#32;&#32;엑셀변환" Top="25" TopMargin="1" Width="110"></Button>
+		<Static Color="user1" Height="16" Id="Static3" Left="422" TabOrder="12" Text="~" Top="31" Width="16"></Static>
+		<Calendar Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Sday" Left="310" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="13" Top="26" Width="101"></Calendar>
+		<Calendar Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="Calendar0" Left="446" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="14" Top="26" Width="101"></Calendar>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+#include "script::global.js"	// 글로벌 js
+
+function Edit0_OnChanged(obj,strText)
+{
+	
+}
+
+function Edit4_OnChanged(obj,strText)
+{
+	
+}
+
+
+
+function Button00_OnClick(obj)
+{
+	
+}
+
+function Button0_OnClick(obj)
+{
+	
+}
+
+function List0_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	
+}
+
+function bra06_p03_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	
+	//ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileDir("http://192.168.1.192:8080/report_file/"+"fi/bra/");
+	ubi0.setJrfFileName("bra06_p03.jrf");
+	//UbiReport0.SetDataset("ds_search", "ds_search");
+	//UbiReport0.SetDataset("ds_master", "ds_Master");
+	ubi0.SetArgument("title","노래연습장 기기현황");
+	ubi0.Retrieve();
+}
+]]></Script>
+</Window>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="392" Id="chk_Jungbok" Left="8" OnLoadCompleted="chk_Jungbok_OnLoadCompleted" PidAttrib="7" Title="주소중복검색_새주소" Top="8" Ver="1.0" Width="832" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="UPSO_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLSBS_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoFit="TRUE" BindDataset="ds_search" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="369" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="325" Id="grd_search" InputPanel="FALSE" Left="19" LineColor="silver" MinWidth="100" Right="814" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" ToolTipText="테스트1" Top="44" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="795">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="164"/>
+						<col width="80"/>
+						<col width="368"/>
+						<col width="106"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" color="user12" display="text" text="업소코드" Valign="Center"/>
+						<cell align="center" col="1" color="user12" display="text" text="업소명" Valign="Center"/>
+						<cell align="center" col="2" color="user12" display="text" text="경영주" Valign="Center"/>
+						<cell align="center" col="3" color="user12" display="text" text="주소" Valign="Center"/>
+						<cell align="center" col="4" color="user12" display="text" text="폐업년월" Valign="Center"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text" edit="normal"/>
+						<cell align="left" col="1" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="2" colid="MNGEMSTR_NM" display="text"/>
+						<cell col="3" colid="UPSO_ADDR" display="text"/>
+						<cell align="center" col="4" colid="CLSBS_YRMN" combocol="CODE_CD" combodataset="ds_Gyeyn" combotext="CODE_NM" display="text" Mask="@@@@/@@"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="736" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="2" TabStop="FALSE" Text="닫기" Top="8" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  // 공통 js
+#include "script::commDs.js"
+
+function chk_Jungbok_OnLoadCompleted(obj){
+	ds_In.AddRow();
+	this.ds_In.SetColumn(0,"UPSO_ADDR1", UPSO_ADDR1);
+	//this.ds_In.SetColumn(0,"UPSO_ADDR2", UPSO_ADDR2);
+	
+	gfn_syncCall("ACMN_INFO_SELECT","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004001&EVENTID=addr_chk","S=ds_In", "ds_search=SEL1", "", "");
+	//trace(this.ds_search.SaveXML());
+	//trace(this.ds_search.SaveXML());
+}
+
+function btn_close_OnClick(obj){
+	close();
+}
+]]></Script>
+</Window>

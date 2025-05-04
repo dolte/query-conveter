@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="bra01_r14" Left="8" OnLoadCompleted="bra01_r14_OnLoadCompleted" PidAttrib="7" Title="SMS&#32;자료LIST" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_in">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_CNT_MON" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_CNT_MON" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sms_data_create" UseClientLayout="1">
+				<Contents>
+					<colinfo id="DEMD_MMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK_RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BOND" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_HPNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_USE_AMT" size="256" summ="default" type="INT"/>
+					<colinfo id="TOT_ADDT_AMT" size="256" summ="default" type="INT"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="INT"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_PHON_NUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UPSOTYPE">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>즉시</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>예약</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="gbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>0</code>
+						<value>0</value>
+					</record>
+					<record>
+						<code>1</code>
+						<value>1</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>2</value>
+					</record>
+					<record>
+						<code>3</code>
+						<value>3</value>
+					</record>
+					<record>
+						<code>4</code>
+						<value>4</value>
+					</record>
+					<record>
+						<code>5</code>
+						<value>5</value>
+					</record>
+					<record>
+						<code>6</code>
+						<value>6</value>
+					</record>
+					<record>
+						<code>7</code>
+						<value>7</value>
+					</record>
+					<record>
+						<code>8</code>
+						<value>8</value>
+					</record>
+					<record>
+						<code>9</code>
+						<value>9</value>
+					</record>
+					<record>
+						<code>10</code>
+						<value>10</value>
+					</record>
+					<record>
+						<code>11</code>
+						<value>11</value>
+					</record>
+					<record>
+						<code>12</code>
+						<value>12</value>
+					</record>
+					<record>
+						<code>13</code>
+						<value>13</value>
+					</record>
+					<record>
+						<code>14</code>
+						<value>14</value>
+					</record>
+					<record>
+						<code>15</code>
+						<value>15</value>
+					</record>
+					<record>
+						<code>16</code>
+						<value>16</value>
+					</record>
+					<record>
+						<code>17</code>
+						<value>17</value>
+					</record>
+					<record>
+						<code>18</code>
+						<value>18</value>
+					</record>
+					<record>
+						<code>19</code>
+						<value>19</value>
+					</record>
+					<record>
+						<code>20</code>
+						<value>20</value>
+					</record>
+					<record>
+						<code>21</code>
+						<value>21</value>
+					</record>
+					<record>
+						<code>22</code>
+						<value>22</value>
+					</record>
+					<record>
+						<code>23</code>
+						<value>23</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="gbn_2">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>0</code>
+						<value>0</value>
+					</record>
+					<record>
+						<code>1</code>
+						<value>1</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>2</value>
+					</record>
+					<record>
+						<code>3</code>
+						<value>3</value>
+					</record>
+					<record>
+						<code>4</code>
+						<value>4</value>
+					</record>
+					<record>
+						<code>5</code>
+						<value>5</value>
+					</record>
+					<record>
+						<code>6</code>
+						<value>6</value>
+					</record>
+					<record>
+						<code>7</code>
+						<value>7</value>
+					</record>
+					<record>
+						<code>8</code>
+						<value>8</value>
+					</record>
+					<record>
+						<code>9</code>
+						<value>9</value>
+					</record>
+					<record>
+						<code>10</code>
+						<value>10</value>
+					</record>
+					<record>
+						<code>11</code>
+						<value>11</value>
+					</record>
+					<record>
+						<code>12</code>
+						<value>12</value>
+					</record>
+					<record>
+						<code>13</code>
+						<value>13</value>
+					</record>
+					<record>
+						<code>14</code>
+						<value>14</value>
+					</record>
+					<record>
+						<code>15</code>
+						<value>15</value>
+					</record>
+					<record>
+						<code>16</code>
+						<value>16</value>
+					</record>
+					<record>
+						<code>17</code>
+						<value>17</value>
+					</record>
+					<record>
+						<code>18</code>
+						<value>18</value>
+					</record>
+					<record>
+						<code>19</code>
+						<value>19</value>
+					</record>
+					<record>
+						<code>20</code>
+						<value>20</value>
+					</record>
+					<record>
+						<code>21</code>
+						<value>21</value>
+					</record>
+					<record>
+						<code>22</code>
+						<value>22</value>
+					</record>
+					<record>
+						<code>23</code>
+						<value>23</value>
+					</record>
+					<record>
+						<code>24</code>
+						<value>24</value>
+					</record>
+					<record>
+						<code>25</code>
+						<value>25</value>
+					</record>
+					<record>
+						<code>26</code>
+						<value>26</value>
+					</record>
+					<record>
+						<code>27</code>
+						<value>27</value>
+					</record>
+					<record>
+						<code>28</code>
+						<value>28</value>
+					</record>
+					<record>
+						<code>29</code>
+						<value>29</value>
+					</record>
+					<record>
+						<code>30</code>
+						<value>30</value>
+					</record>
+					<record>
+						<code>31</code>
+						<value>31</value>
+					</record>
+					<record>
+						<code>32</code>
+						<value>32</value>
+					</record>
+					<record>
+						<code>33</code>
+						<value>33</value>
+					</record>
+					<record>
+						<code>34</code>
+						<value>34</value>
+					</record>
+					<record>
+						<code>35</code>
+						<value>35</value>
+					</record>
+					<record>
+						<code>36</code>
+						<value>36</value>
+					</record>
+					<record>
+						<code>37</code>
+						<value>37</value>
+					</record>
+					<record>
+						<code>38</code>
+						<value>38</value>
+					</record>
+					<record>
+						<code>39</code>
+						<value>39</value>
+					</record>
+					<record>
+						<code>40</code>
+						<value>40</value>
+					</record>
+					<record>
+						<code>41</code>
+						<value>41</value>
+					</record>
+					<record>
+						<code>42</code>
+						<value>42</value>
+					</record>
+					<record>
+						<code>43</code>
+						<value>43</value>
+					</record>
+					<record>
+						<code>44</code>
+						<value>44</value>
+					</record>
+					<record>
+						<code>45</code>
+						<value>45</value>
+					</record>
+					<record>
+						<code>46</code>
+						<value>46</value>
+					</record>
+					<record>
+						<code>47</code>
+						<value>47</value>
+					</record>
+					<record>
+						<code>48</code>
+						<value>48</value>
+					</record>
+					<record>
+						<code>49</code>
+						<value>49</value>
+					</record>
+					<record>
+						<code>50</code>
+						<value>50</value>
+					</record>
+					<record>
+						<code>51</code>
+						<value>51</value>
+					</record>
+					<record>
+						<code>52</code>
+						<value>52</value>
+					</record>
+					<record>
+						<code>53</code>
+						<value>53</value>
+					</record>
+					<record>
+						<code>54</code>
+						<value>54</value>
+					</record>
+					<record>
+						<code>55</code>
+						<value>55</value>
+					</record>
+					<record>
+						<code>56</code>
+						<value>56</value>
+					</record>
+					<record>
+						<code>57</code>
+						<value>57</value>
+					</record>
+					<record>
+						<code>58</code>
+						<value>58</value>
+					</record>
+					<record>
+						<code>59</code>
+						<value>59</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1027" TabOrder="23" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="15" TabOrder="22" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="22" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Grid BindDataset="ds_sms_data_create" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="764" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="690" Id="grd_SMS" InputPanel="FALSE" Left="7" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="-1" TabStop="true" Top="74" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="25"/>
+						<col width="60"/>
+						<col width="140"/>
+						<col width="51"/>
+						<col width="103"/>
+						<col width="55"/>
+						<col width="220"/>
+						<col width="75"/>
+						<col width="92"/>
+						<col width="67"/>
+						<col width="56"/>
+						<col width="82"/>
+						<col width="104"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="월"/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell align="center" col="3" color="user12" display="text" text="업주명"/>
+						<cell col="4" color="user12" display="text" text="등급"/>
+						<cell col="5" color="user12" display="text" text="월정료"/>
+						<cell col="6" color="user12" display="text" text="주소"/>
+						<cell col="7" color="user12" display="text" text="전화번호"/>
+						<cell col="8" color="user12" display="text" text="핸드폰번호"/>
+						<cell col="9" color="user12" display="text" text="미징수금액"/>
+						<cell col="10" color="user12" display="text" text="가산금"/>
+						<cell align="center" col="11" color="user12" display="text" text="납부금액"/>
+						<cell col="12" color="user12" display="text" text="비고"/>
+						<cell col="13" color="user12" display="text" text="회신번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DEMD_MMCNT" display="text"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="MNGEMSTR_NM" display="text"/>
+						<cell col="4" colid="GRADNM" display="text"/>
+						<cell align="right" col="5" colid="MONPRNCFEE" display="numberexp"/>
+						<cell col="6" colid="UPSO_ADDR" display="text"/>
+						<cell align="center" col="7" colid="UPSO_PHON" display="text"/>
+						<cell align="center" col="8" colid="MNGEMSTR_HPNUM" display="text"/>
+						<cell col="9" colid="TOT_USE_AMT" display="number"/>
+						<cell col="10" colid="TOT_ADDT_AMT" display="number"/>
+						<cell align="right" col="11" colid="TOT_AMT" display="numberexp"/>
+						<cell align="center" col="12" colid="REMAK" display="text"/>
+						<cell col="13" colid="BRAN_PHON_NUM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Color="user0" Height="13" Id="st_CNTMON_2" Left="602" Style="style0" TabOrder="8" Text="~" Top="27" Width="9"></Static>
+		<Static Color="user12" Height="11" Id="st_CNTMON_1" Left="468" Style="tx_left_bold" TabOrder="7" Text="미징수개월수" Top="28" Width="81"></Static>
+		<Image Height="11" Id="img_CNT_MON" ImageID="C_icon" Left="452" TabOrder="6" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="26" TabOrder="9" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="Static4" Left="43" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="28" Width="44"></Static>
+		<Static Color="user12" Height="11" Id="st_DISP_DAY" Left="255" Style="tx_left_bold" TabOrder="11" Text="기준년월" Top="28" Width="62"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="237" TabOrder="12" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Combo BKColor="user13" Border="Flat" Height="20" Id="cob_BRAN_CD" Left="95" OnChanged="cob_BRAN_CD_OnChanged" Style="edit" TabOrder="1" ToolTipText="센터명" Top="22" Width="112"></Combo>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_DEMD_YRMN" Left="322" LeftMargin="10" SaturdayTextColor="blue" SpinStyle="1" Style="edit" SundayTextColor="red" TabOrder="2" ToolTipText="기준년월" Top="23" Width="89"></Calendar>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="20" Id="mae_START_CNT_MON" Left="564" MaxLength="3" TabOrder="3" ToolTipText="미징수개월수_S" Top="23" VAlign="BOTTOM" Width="28"></MaskEdit>
+		<MaskEdit BKColor="user13" Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="20" Id="mae_END_CNT_MON" Left="620" MaxLength="3" TabOrder="4" ToolTipText="미징수개월수_E" Top="23" VAlign="BOTTOM" Width="28"></MaskEdit>
+		<Static Height="23" Id="Static0" Left="441" TabOrder="13" Text="업&#32;소&#32;계&#32;:" Top="796" Width="74"></Static>
+		<Static Height="23" Id="Static1" Left="561" TabOrder="14" Text="미징수계&#32;:" Top="796" Width="74"></Static>
+		<Static Height="23" Id="Static2" Left="705" TabOrder="15" Text="가산액계&#32;:" Top="796" Width="74"></Static>
+		<Static Height="23" Id="Static3" Left="865" TabOrder="16" Text="미징수합계&#32;:&#32;" Top="796" Width="74"></Static>
+		<MaskEdit Border="Flat" BorderColor="white" Height="21" Id="mae_sum_upso" Left="499" TabOrder="17" Top="792" Value="MaskEdit0" Width="48"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="white" Height="21" Id="mae_sum_use" Left="624" TabOrder="18" Top="792" Value="MaskEdit0" Width="64"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="white" Height="21" Id="mae_sum_addt" Left="768" TabOrder="19" Top="792" Value="MaskEdit0" Width="72"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="white" Height="21" Id="mae_tot" Left="936" TabOrder="20" Top="792" Value="MaskEdit0" Width="88"></MaskEdit>
+		<Grid BindDataset="ds_sms_data_create" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="592" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="424" Id="grd_sms_excel" InputPanel="FALSE" Left="7" LineColor="silver" Right="575" RowHeight="20" Style="grid" TabOrder="21" TabStop="true" Top="168" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="568">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="60"/>
+						<col width="140"/>
+						<col width="51"/>
+						<col width="92"/>
+						<col width="35"/>
+						<col width="82"/>
+						<col width="89"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="업소명"/>
+						<cell align="center" col="2" color="user12" display="text" text="업주명"/>
+						<cell col="3" color="user12" display="text" text="핸드폰번호"/>
+						<cell col="4" color="user12" display="text" text="개월"/>
+						<cell align="center" col="5" color="user12" display="text" text="납부금액"/>
+						<cell col="6" color="user12" display="text" text="회신번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell col="1" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="2" colid="MNGEMSTR_NM" display="text"/>
+						<cell align="center" col="3" colid="MNGEMSTR_HPNUM" display="text"/>
+						<cell col="4" colid="DEMD_MMCNT" display="number"/>
+						<cell align="right" col="5" colid="TOT_AMT" display="numberexp"/>
+						<cell col="6" colid="BRAN_PHON_NUM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="20" Id="Static5" Left="750" TabOrder="25" Text="자동이체&#32;업소는&#32;SMS를&#32;보내지&#32;않습니다." Top="58" Width="250"></Static>
+	</Form>
+	<Script><![CDATA[/*
+		   * 프로그램명 	:   bra01_s14 - SMS자료생성
+		   * 작  성  자   	:    	윤지환
+		   * 작  성  일   	: 	2009
+		   * 설      명    	:	   SMS자료를 조회하여 엑셀로 출력한다.
+		   * 수정일1     	: 	
+		   * 수정자       	: 	
+		   * 수정내용    	: 설명 부여(여러줄 사용가능)	
+		   * 수정일2     	: 	
+		   * 수정자       	:	
+		   * 수정내용    	: 	
+		   * 수정일3     	: 	
+		   * 수정자       	: 	
+		   * 수정내용    	:	
+*/
+
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function bra01_r14_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	this.ds_in.AddRow();
+	this.cal_DEMD_YRMN.Value = today();			//기준년월을 오늘로 세팅
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);	// 센터코드 가져오기
+}
+
+
+/*
+ * 기      능: 공통버튼 제어
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		close();
+    }
+
+	return;
+}
+
+
+/*
+ * 기      능: 조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_search(){
+	var sum_upso=0 ; 		//업소합계
+	var sum_use=0 ; 		//미징수합계
+	var sum_addt=0 ; 		//가산액합계
+	var tot = 0;	 		//미징수합계
+	
+
+	if (!gfn_CheckFormNull(this)) return;		//필수체크
+	
+	// 조회하기 전 필수 내역을 세팅
+	this.ds_in.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	this.ds_in.SetColumn(0,"DEMD_YRMN", substr(this.cal_DEMD_YRMN.Value,0,6));
+	this.ds_in.SetColumn(0, "START_CNT_MON", this.mae_START_CNT_MON.Text );
+	this.ds_in.SetColumn(0, "END_CNT_MON", this.mae_END_CNT_MON.Text );
+	
+	
+	gfn_syncCall("sys_sms_data_create","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004006001&EVENTID=sms_data_create",
+			"S=ds_in","ds_sms_data_create=SEL1 ds_sms_excel=SEL1","","fn_CallBack",gv_TraceLog,GV_FORMID);
+			
+			
+	//trace(this.ds_in.SaveXML());
+	
+	
+	for(var i=0; i<this.ds_sms_data_create.RowCount(); i++){
+		sum_use = toNumber(sum_use) + toNumber(this.ds_sms_data_create.GetColumn(i,"TOT_USE_AMT"));
+		sum_addt = toNumber(sum_addt) + toNumber(this.ds_sms_data_create.GetColumn(i,"TOT_ADDT_AMT"));
+		tot		 = toNumber(tot) + toNumber(this.ds_sms_data_create.GetColumn(i,"TOT_AMT"));
+		
+	}
+	this.mae_sum_upso.Text = this.ds_sms_data_create.RowCount();
+	this.mae_sum_use.Text = sum_use;
+	this.mae_sum_addt.Text = sum_addt;
+	this.mae_tot.Text = tot;
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	var cnt = 0;
+	if (srvId == "sys_sms_data_create") {
+		cnt = this.ds_sms_data_create.RowCount();
+	}
+		gfn_SetStatusMsg(cnt + " 건이 조회되었습니다.");
+	}
+}
+
+
+
+
+
+function fn_Excel() 
+{	
+	if(ds_sms_data_create.count== 0){
+        gfn_Confirm("MB_OK", "Excel로 출력할 데이터가 없습니다.", "경고", "0");
+        return;
+    }
+	this.grd_sms_excel.ExportExcelEx("SMS");
+	//this.grd_upso_list.ExportExcelEx("aaa.xsl","채권관리");
+    //SaveExcel(strFileName,strDocName);
+}	
+	
+
+
+
+
+
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	this.ds_sms_data_create.ClearData();
+	this.mae_sum_upso.Text = "";
+	this.mae_sum_use.Text ="";
+	this.mae_sum_addt.Text = "";
+	this.mae_tot.Text = "";
+	
+}
+
+
+function btn_send_sms_OnClick(obj,nX,nY)
+{
+	//필수체크
+	if (!gfn_CheckFormNull(this)) return;
+	
+	if(this.ds_sms_data_create.RowCount()==0){
+		gfn_Confirm("MB_OK", "보낼 데이터가 없습니다", "경고", "0");
+		return;
+	}
+	
+	gds_sms_send.ClearData();
+	var i;
+	
+	
+	for(i=0; i<this.ds_sms_data_create.RowCount(); i++){
+		gds_sms_send.AddRow();
+		
+		gds_sms_send.SetColumn(i,"USER_ID", "U"+this.ds_sms_data_create.GetColumn(i,"UPSO_CD") );
+		if(this.rad_sms_type.Value ==1){
+			gds_sms_send.SetColumn(i,"SCHEDULE_TYPE","0"); //즉시 “0” 예약 “1”
+			gds_sms_send.SetColumn(i,"SEND_DATE", ""); //즉시는 없음 200912182130
+		}
+		else{
+			gds_sms_send.SetColumn(i,"SCHEDULE_TYPE","1"); //즉시 “0” 예약 “1”
+		
+			
+			
+			var date = this.cal_day.Value ;
+			var hour = this.cob_hour.Text;
+			var minute = this.cob_minure.Text;
+			
+			if(length(hour)==1){
+				hour = 0+hour;
+			}
+			if(length(minute)==1){
+				minute = 0+minute;
+			}
+			//var inParam = "date=" + quote(date) + " hour=" + quote(hour) + " minute=" + quote(minute);
+			//var inParam = quote(date)+quote(hour)+quote(minute);
+			var inParam = date+hour+minute;
+			//alert(inParam);
+			gds_sms_send.SetColumn(i,"SEND_DATE",inParam); //즉시는 없음 200912182130
+		}
+		
+		gds_sms_send.SetColumn(i,"SUBJECT", "테스트발송"); //제목:발송되지는 않음
+		
+		
+		var msg ;
+		msg = this.ds_sms_data_create.GetColumn(i,"UPSO_NM") + "의 납부 금액은 " + NumFormat(this.ds_sms_data_create.GetColumn(i,"TOT_AMT"))+"원 입니다." ;
+		gds_sms_send.SetColumn(i,"SMS_MSG", msg); //발송문자내용
+		gds_sms_send.SetColumn(i,"CALLBACK", this.ds_sms_data_create.GetColumn(i, "BRAN_PHON_NUM"));//회신번호
+		gds_sms_send.SetColumn(i,"NAME", this.ds_sms_data_create.GetColumn(i, "MNGEMSTR_NM")); //수신자명
+		gds_sms_send.SetColumn(i,"PHNUM", this.ds_sms_data_create.GetColumn(i, "MNGEMSTR_HPNUM")); //수신자핸드폰번호 ‘-‘는 생략
+	}
+		Dialog("ad_pub::env06_r01.xml", "", "", "");	//전송 팝업
+	
+}
+
+
+
+
+function rad_UPSOTYPE_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(this.rad_sms_type.Value ==1){
+		this.cal_day.Enable = false;
+		this.cal_day.BKColor = "";
+		this.cob_hour.Enable = false;
+		this.cob_hour.BKColor = "";
+		this.cob_minure.Enable = false;
+		this.cob_minure.BKColor = "";
+	}
+	else { 
+		this.cal_day.Enable = true;
+		this.cal_day.BKColor = "user13";
+		this.cob_hour.Enable = true;
+		this.cob_hour.BKColor = "user13";
+		this.cob_minure.Enable = true;
+		this.cob_minure.BKColor = "user13";
+	}
+}
+
+
+]]></Script>
+</Window>

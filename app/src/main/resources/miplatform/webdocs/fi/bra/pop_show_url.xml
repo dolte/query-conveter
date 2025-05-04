@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="592" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="미리보기" Top="8" Ver="1.0" Width="920" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_router_cd">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="840" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="1" TabStop="FALSE" Text="닫기" Top="8" TopMargin="1" Width="71"></Button>
+		<ubiviewer Bottom="576" Height="544" Id="ubi_list" Left="2" Right="914" Top="32" Width="912">
+			<_PersistData>&#13;&#10;/6ykxbHk/wAAAQBCXgAA9zk4APjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+
+
+function form_OnLoadCompleted(obj)
+{
+	ubi_list.setPageScale("140");
+	ubi_list.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi_list.setJrfFileName("show_image.jrf"); 
+	
+	//trace(urlEncodeUtf8(path));
+	
+	//ubi_list.setArgument("ar_img_url", urlEncodeUtf8(path));
+	ubi_list.setArgument("ar_img_url", path);
+	
+	
+	ubi_list.Retrieve();
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+}
+
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+]]></Script>
+</Window>

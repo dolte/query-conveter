@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="472" Id="find_accu_list" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="고소번호&#32;조회" Top="8" Ver="1.0" Width="808" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_accu_search" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_list" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_GBN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUDG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERMMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPN_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accu_gbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>A</code>
+						<value>형사</value>
+					</record>
+					<record>
+						<code>B</code>
+						<value>민사</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="70" Id="Image16" ImageID="C_search2_right" Left="789" TabOrder="17" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="70" Id="Image15" ImageID="C_search2_left" Left="8" TabOrder="15" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image FillType="STRETCH" Height="70" Id="Image1" ImageID="C_search2_bg" Left="18" TabOrder="16" TabStop="FALSE" Top="8" Width="774"></Image>
+		<Static Color="user12" Height="11" Id="Static3" Left="286" Style="tx_left_bold" TabOrder="11" Text="경영주" Top="53" Width="73"></Static>
+		<Image Height="11" Id="Image6" ImageID="C_icon" Left="28" TabOrder="11" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static8" Left="46" Style="tx_left_bold" TabOrder="13" Text="지&#32;부" Top="23" Width="40"></Static>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="268" TabOrder="12" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="268" TabOrder="13" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="286" Style="tx_left_bold" TabOrder="15" Text="고소번호" Top="26" Width="60"></Static>
+		<Static Color="user12" Height="11" Id="Static0" Left="46" Style="tx_left_bold" TabOrder="17" Text="업소명" Top="53" Width="46"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="21" Id="edt_UPSO_NM" ImeMode="native" Left="100" LeftMargin="2" MaxLength="10" OnKeyDown="edt_UPSO_NM_OnKeyDown" Style="edit" TabOrder="6" Top="48" Width="152"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Height="21" Id="edt_MNGEMSTR_NM" ImeMode="native" Left="348" LeftMargin="2" MaxLength="5" OnKeyDown="edt_MNGEMSTR_NM_OnKeyDown" Style="edit" TabOrder="7" Top="48" Width="80"></Edit>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="28" TabOrder="14" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Combo Editable="TRUE" Enable="FALSE" Height="21" Id="cob_BRAN_CD" Left="100" OnKeyDown="cob_BRAN_CD_OnKeyDown" TabOrder="1" Top="19" Width="112"></Combo>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Search" ImageID="C_btn_70" Left="708" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="9" TabStop="FALSE" Text="조회" Top="20" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="708" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="10" TabStop="FALSE" Text="닫기" Top="48" TopMargin="1" Width="71"></Button>
+		<Static Color="user12" Height="11" Id="Static1" Left="558" Style="tx_left_bold" TabOrder="22" Text="허가주" Top="53" Width="41"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="540" TabOrder="18" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Edit Border="Flat" BorderColor="user10" Height="21" Id="edt_PERMMSTR_NM" ImeMode="native" Left="604" LeftMargin="2" MaxLength="5" OnKeyDown="edt_PERMMSTR_NM_OnKeyDown" Style="edit" TabOrder="8" Top="48" Width="80"></Edit>
+		<Static Height="9" Id="Static2" Left="434" TabOrder="24" Text="-" Top="25" Width="6"></Static>
+		<Static Height="9" Id="Static14" Left="492" TabOrder="25" Text="-" Top="25" Width="10"></Static>
+		<Edit Align="CENTER" Border="Flat" BorderColor="user10" Height="21" Id="edt_accu_bran" ImeMode="english" Left="504" LeftMargin="4" MaxLength="2" RightMargin="2" Style="edit" TabOrder="4" Top="20" Width="24"></Edit>
+		<MaskEdit Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="21" Id="mae_accu_day" Left="349" LeftMargin="10" Mask="####/##/##" MaxLength="8" TabOrder="2" Top="20" Type="STRING" Width="80"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="user3" DisplayComma="FALSE" Height="21" Id="mae_accu_num" Left="444" LeftMargin="10" Mask="####" MaxLength="4" TabOrder="3" Top="20" Type="STRING" Width="43"></MaskEdit>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="556" TabOrder="19" TabStop="FALSE" Top="25" Width="11"></Image>
+		<Static Color="user12" Height="15" Id="Static5" Left="572" Style="tx_left_bold" TabOrder="27" Text="구분" Top="25" Width="56"></Static>
+		<Combo Border="Flat" CodeColumn="code" DataColumn="value" Editable="TRUE" Height="20" Id="cob_accu_gbn" InnerDataset="ds_accu_gbn" Left="608" Search="FILTERED" Style="edit" TabOrder="5" Top="20" Width="76"></Combo>
+		<Grid BindDataset="ds_accu_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="456" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="368" Id="grd_accu_list" InputPanel="FALSE" Left="8" LineColor="silver" OnCellDBLClick="grd_accu_list_OnCellDblClick" Right="796" RowHeight="20" Style="grid" TabOrder="20" TabStop="FALSE" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="788">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="74"/>
+						<col width="171"/>
+						<col width="54"/>
+						<col width="120"/>
+						<col width="84"/>
+						<col width="120"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" color="user12" display="text" text="업소코드"/>
+						<cell align="center" col="1" color="user12" display="text" text="업소명"/>
+						<cell align="center" col="2" color="user12" display="text" text="구분"/>
+						<cell align="center" col="3" color="user12" display="text" text="판결내역"/>
+						<cell align="center" col="4" color="user12" display="text" text="완결일자"/>
+						<cell align="center" col="5" color="user12" display="text" text="고소번호"/>
+						<cell align="center" col="6" color="user12" display="text" text="경영주명"/>
+						<cell align="center" col="7" color="user12" display="text" text="업종"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell col="1" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="2" colid="ACCU_GBN_NM" display="text"/>
+						<cell col="3" colid="JUDG_NM" display="text"/>
+						<cell align="center" col="4" colid="COMPN_DAY" display="text" Mask="####/##/##"/>
+						<cell align="center" col="5" colid="ACCU_NO" display="text"/>
+						<cell col="6" colid="MNGEMSTR_NM" display="text"/>
+						<cell col="7" colid="GRADNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::\commonGibu.js"  	// 센터 공통 js
+ 
+function form_OnLoadCompleted(obj)
+{
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	
+	if (SGBN == "bra04_r04") {
+		this.cob_BRAN_CD.Value = BRAN_CD;
+		this.edt_UPSO_NM.Text = UPSO_NM;
+		this.edt_MNGEMSTR_NM.Text = MNGEMSTR_NM;
+		
+		fn_getAccuList();
+	}
+	else if (SGBN == "bra05_s03") {
+		if( length(BRAN_CD)  > 0 ) this.cob_BRAN_CD.Value = BRAN_CD;
+		if( length(ACCU_GBN) > 0 ) this.cob_accu_gbn.Value = ACCU_GBN;
+		if( length(ACCU_DAY) > 0 ) this.mae_accu_day.Value = ACCU_DAY;
+		if( length(ACCU_NUM) > 0 ) this.mae_accu_num.Value = ACCU_NUM;
+		if( length(ACCU_BRAN) > 0) this.edt_accu_bran.Text = ACCU_BRAN;
+		
+		if ( length(ACCU_DAY) > 0 ) {
+			fn_getAccuList();
+		}
+	}
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+
+function fn_getAccuList()
+{
+	if (this.cob_BRAN_CD.Value == null) {
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_GIBU.SetFocus();
+		return;
+	}
+/*
+	if (this.cob_accu_gbn.Value == null) {
+        gfn_Confirm("MB_OK", "고소구분을 선택하세요.", "경고", "0");
+		this.cob_accu_gbn.SetFocus();
+		return;
+	}
+*/
+	ds_accu_search.ClearData();
+	ds_accu_search.AddRow();
+	
+	ds_accu_search.SetColumn(0, "BRAN_CD"    , this.cob_BRAN_CD.Value);
+	ds_accu_search.SetColumn(0, "ACCU_DAY"   , this.mae_accu_day.Value);
+	ds_accu_search.SetColumn(0, "ACCU_NUM"   , this.mae_accu_num.Value);
+	ds_accu_search.SetColumn(0, "ACCU_BRAN"  , this.edt_accu_bran.Text);
+	ds_accu_search.SetColumn(0, "ACCU_GBN"   , this.cob_accu_gbn.Value);
+	ds_accu_search.SetColumn(0, "UPSO_NM"    , this.edt_UPSO_NM.Text);
+	ds_accu_search.SetColumn(0, "MNGEMSTR_NM", this.edt_MNGEMSTR_NM.Text);
+	ds_accu_search.SetColumn(0, "PERMMSTR_NM", this.edt_PERMMSTR_NM.Text);
+
+	gfn_syncCall("find_accu_no","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002001&EVENTID=p_accu_list","S=ds_accu_search","ds_accu_list=SEL1","","fn_CallBack");
+	
+}
+
+function btn_Search_OnClick(obj)
+{
+	fn_getAccuList();
+}
+
+function edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		fn_getAccuList();
+	}
+}
+
+function edt_MNGEMSTR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		fn_getAccuList();
+	}
+}
+function edt_PERMMSTR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		fn_getAccuList();
+	}
+}
+// 조회된 고소리슽에서 더블클릭시
+function grd_accu_list_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var ACCU_DAY  = this.ds_accu_list.GetColumn(nRow,"ACCU_DAY");
+	var ACCU_NUM  = this.ds_accu_list.GetColumn(nRow,"ACCU_NUM");
+	var ACCU_BRAN = this.ds_accu_list.GetColumn(nRow,"ACCU_BRAN");
+	var ACCU_GBN  = this.ds_accu_list.GetColumn(nRow,"ACCU_GBN");
+
+	if (SGBN == "bra04_r04") {
+		Close(ACCU_DAY + "," + ACCU_NUM + "," + ACCU_BRAN + "," + ACCU_GBN);
+	}
+	else if (SGBN == "bra05_s03") {
+		parent.cob_BRAN_CD.Value = this.cob_BRAN_CD.Value;
+		parent.cob_accu_gbn.Value = this.cob_accu_gbn.Value;
+		parent.mae_accu_day.Value = ACCU_DAY;	
+		parent.mae_accu_num.Value = ACCU_NUM;	
+		parent.edt_accu_bran.Value = ACCU_BRAN;	
+	
+		parent.fn_Search_m();
+		close();
+	}
+}
+
+
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="464" Id="frm_zipsearch" Left="8" PidAttrib="7" Title="우편번호&#32;조회&#32;팝업" Top="8" Ver="1.0" Width="584" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CITYCNTYDSRC" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOWNTWSHPDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="RI" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISL" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDING_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<ATTE></ATTE>
+						<BUILDING_NM></BUILDING_NM>
+						<CITYCNTYDSRC></CITYCNTYDSRC>
+						<HNM></HNM>
+						<ISL></ISL>
+						<RI></RI>
+						<TOWNTWSHPDONG></TOWNTWSHPDONG>
+						<ZIP></ZIP>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_zip" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CITYCNTYDSRC" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOWNTWSHPDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="RI" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISL" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDING_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ALLADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHGDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="INPGBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="16" Id="Image0" ImageID="C_icon1" Left="8" LeftMargin="0" TabOrder="1" TabStop="FALSE" Top="8" Width="17"></Image>
+		<Static Height="16" Id="Static00" Left="28" Style="tx_c_bold" TabOrder="4" Text="우편번호조회" Top="8" Width="188"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_Search" ImageID="C_btn_70" Left="496" LeftMargin="28" OnClick="btn_Search_OnClick" Style="edit" TabOrder="4" TabStop="FALSE" Text="조회" Top="8" TopMargin="1" Width="71"></Button>
+		<Shape BKColor="user7" Bottom="96" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="576" TabOrder="7" Top="93" Type="Rectangle" Width="568"></Shape>
+		<Static Color="user1" Height="16" Id="Static02" Left="216" TabOrder="8" Text="시/군/구/읍/면/동/리" Top="48" Width="120"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="202" TabOrder="5" TabStop="FALSE" Top="48" Width="11"></Image>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="10" TabOrder="6" TabStop="FALSE" Top="48" Width="11"></Image>
+		<Static Color="user1" Height="13" Id="Static1" Left="24" TabOrder="9" Text="우편번호" Top="48" Width="55"></Static>
+		<Edit BindDataset="ds_search" Border="Flat" BorderColor="user6" Column="ZIP" Height="20" Id="edt_Zip" Left="81" OnChar="edt_Zip_OnChar" OnKeyDown="edt_Zip_OnKeyDown" Style="edit" TabOrder="2" Top="42" Width="72"></Edit>
+		<Edit BindDataset="ds_search" Border="Flat" BorderColor="user6" Column="ATTE" Height="20" Id="edt_ATTE" ImeMode="native,katakana" Left="345" OnKeyDown="edt_ATTE_OnKeyDown" Style="edit" TabOrder="3" Top="42" Width="119"></Edit>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_zip" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="440" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="368" Id="grd_List" InputPanel="FALSE" Left="8" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_List_OnCellDblClick" Right="576" RowHeight="20" Style="grid" TabOrder="7" TabStop="FALSE" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="568">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="39"/>
+						<col width="93"/>
+						<col width="72"/>
+						<col width="485"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="No"/>
+						<cell col="1" color="user12" display="text" text="관리우편번호"/>
+						<cell col="2" color="user12" display="text" text="우편번호"/>
+						<cell col="3" color="user12" display="text" text="주소"/>
+					</head>
+					<body>
+						<cell align="right" col="0" colid="No" display="text" expr="currow+1"/>
+						<cell col="1" colid="MNG_ZIP" display="text"/>
+						<cell align="center" col="2" colid="ZIP" display="text"/>
+						<cell col="3" colid="ALLADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="496" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="12" TabStop="FALSE" Text="닫기" Top="40" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"	// 공통 js#include "script::commDs.js"	// 데이터셋 컨트롤
+/* * 기      능: Callback함수 * 인      수: Argument	설명 * Return    : Return Value	 * 예     시 : 함수 사용 예	 */function fn_CallBack(svcid,errCode,errMsg){	if (errCode < 0 ) 	{		//alert("Error =======>"+errMsg);	} 	else 	{			switch (svcid)		{			case "svcSearch_high" :				this.Close();				break;
+			case "svcSave_detail" :				alert("저장되었습니다.");				fn_Update_List();				break;							default : break;					}			}}
+function btn_Search_OnClick(obj)
+{
+	this.ds_search.SetColumn(0, "ZIP" , this.edt_Zip.Text);	this.ds_search.SetColumn(0, "ATTE", this.edt_ATTE.Text);    gfn_asyncCall("zip_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008004 &EVENTID=c_zip_search","S=ds_search","ds_zip=SEL1","","fn_CallBack");
+}function grd_List_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex){	var nRow = ds_zip.currow;
+	if (formType = 1)	{		Parent.Object(zip).Text = ds_zip.GetColumn(nRow, "zip");
+		var addr = ds_zip.GetColumn(nRow, "ATTE") + " "
+		         + ds_zip.GetColumn(nRow, "CITYCNTYDSRC") + " "
+		         + ds_zip.GetColumn(nRow, "TOWNTWSHPDONG");
+		         
+		if (length(trim(ds_zip.GetColumn(nRow, "RI"))) > 0) 
+			addr = addr + trim(ds_zip.GetColumn(nRow, "RI"));
+		
+		if (length(trim(ds_zip.GetColumn(nRow, "ISL"))) > 0) 
+			addr = addr + trim(ds_zip.GetColumn(nRow, "ISL"));
+
+		if (length(trim(ds_zip.GetColumn(nRow, "BUILDING"))) > 0) 
+			addr = addr + trim(ds_zip.GetColumn(nRow, "BUILDING"));			
+		//Parent.Object(alladdr).Text = ds_zip.GetColumn(nRow, "alladdr");		Parent.Object(alladdr).Text = this.ds_zip.GetColumn(nRow,"ADDR1");
+		Parent.Object(mng_zip).Text = this.ds_zip.GetColumn(nRow,"MNG_ZIP");
+	}	else if (formType = 2)	{		Object(dsName).SetColumn(prNrow, Vzip, ds_zip.GetColumn(nRow, "zip"));
+		var addr = ds_zip.GetColumn(nRow, "SIDO") + " "
+		         + ds_zip.GetColumn(nRow, "SIGUNGU") + " "
+		         + ds_zip.GetColumn(nRow, "EUPMYUNDONG");
+		         
+		if (length(trim(ds_zip.GetColumn(nRow, "DOSEO"))) > 0) 
+			addr = addr + trim(ds_zip.GetColumn(nRow, "DOSEO"));
+
+		if (length(trim(ds_zip.GetColumn(nRow, "RI"))) > 0) 
+			addr = addr + trim(ds_zip.GetColumn(nRow, "RI"));
+		
+		if (length(trim(ds_zip.GetColumn(nRow, "DARYANG"))) > 0) 
+			addr = addr + trim(ds_zip.GetColumn(nRow, "DARYANG"));
+
+		//Object(dsName).SetColumn(prNrow, Valladdr, ds_zip.GetColumn(nRow, "alladdr"));		Object(dsName).SetColumn(prNrow, Valladdr, addr);	}
+	close();	
+}
+function edt_ATTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar=='13')
+	{
+		btn_Search_OnClick(obj);
+	}
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+
+function edt_Zip_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+	   //alert("이름 " + strtext +"(은)는 사용할수 없습니다.");
+		return false;
+	}
+	
+	if((asc(right(strPostText,1)) >= 65) && (asc(right(strPostText,1)) <= 122))
+	{
+	   // alert("영문은 입력불가");
+	    return false;
+	}
+}
+
+function edt_Zip_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar=='13')
+	{
+		btn_Search_OnClick(obj);
+	}
+}
+]]></Script>
+</Window>

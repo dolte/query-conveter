@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" PidAttrib="7" Title="방송청구입금등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="16" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="2" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="2" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="2" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Spin Border="Flat" Height="20" Id="Spin0" Left="437" Style="edit" TabOrder="5" Text="2008" Top="27" Width="100"></Spin>
+		<Static Height="15" Id="Static1" Left="44" Style="tx_left_bold" TabOrder="6" Text="센터코드/명" Top="31" Width="86"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit2" Left="132" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="7" Top="27" Width="30"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit3" Left="164" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="8" Top="27" Width="120"></Edit>
+		<Static Height="15" Id="Static0" Left="372" Style="tx_left_bold" TabOrder="10" Text="납부년월" Top="31" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="356" TabOrder="9" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="604" TabOrder="14" TabStop="FALSE" Top="31" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="620" Style="tx_left_bold" TabOrder="15" Text="출력기간" Top="31" Width="56"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit26" Left="685" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="11" Top="27" Width="34"></Edit>
+		<Static Color="user6" Height="13" Id="Static20" Left="727" Style="style0" TabOrder="12" Text="~" Top="29" Width="9"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit0" Left="745" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="13" Top="27" Width="34"></Edit>
+		<Tab Border="Flat" Height="741" HilightColor="white" HilightTextColor="white" Id="Tab00" Left="8" MouseOverColor="white" SelColor="white" Style="tab" TabIndex="1" TabOrder="16" Top="66" Width="1032">
+			<Contents>
+				<TabPage BorderColor="black" Height="712" Id="tab2" ImageID="C_tab2" Left="2" Style="tab" TabOrder="1" Text="지로발송업소" Top="27" Width="1028">
+					<Button ButtonStyle="TRUE" Height="21" Id="Button8" ImageID="C_btn_70" Left="526" LeftMargin="28" Style="edit" TabOrder="1" Text="삭제" Top="820" TopMargin="1" Width="71"></Button>
+					<Button ButtonStyle="TRUE" Height="21" Id="Button0" ImageID="C_btn_70" Left="442" LeftMargin="28" Style="edit" TabOrder="2" Text="추가" Top="820" TopMargin="1" Width="71"></Button>
+					<Button ButtonStyle="TRUE" Height="21" Id="Button1" ImageID="C_btn_70" Left="534" LeftMargin="28" Style="edit" TabOrder="3" Text="삭제" Top="828" TopMargin="1" Width="71"></Button>
+					<Button ButtonStyle="TRUE" Height="21" Id="Button2" ImageID="C_btn_70" Left="450" LeftMargin="28" Style="edit" TabOrder="3" Text="추가" Top="828" TopMargin="1" Width="71"></Button>
+					<Grid BindDataset="Dataset0_0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="242" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="211" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1018" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="31" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1010">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="99"/>
+									<col width="120"/>
+									<col width="108"/>
+									<col width="295"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="업소코드"/>
+									<cell col="1" color="user12" display="text" text="업소명"/>
+									<cell col="2" color="user12" display="text" text="업주명"/>
+									<cell col="3" color="user12" display="text" text="주소"/>
+									<cell col="4" color="user12" display="text" text="기간"/>
+									<cell col="5" color="user12" display="text" text="전월미납"/>
+									<cell col="6" color="user12" display="text" text="연체료"/>
+									<cell col="7" color="user12" display="text" text="당월분"/>
+									<cell col="8" color="user12" display="text" text="미납액"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" text="1"/>
+									<cell col="1" display="text"/>
+									<cell align="center" col="2" colid="column3" display="text"/>
+									<cell align="center" col="3" colid="column4" display="text" text="100"/>
+									<cell align="center" col="4" colid="column5" display="text"/>
+									<cell col="5" display="text"/>
+									<cell col="6" display="text"/>
+									<cell col="7" display="text"/>
+									<cell col="8" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Shape BKColor="user7" Bottom="31" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1018" TabOrder="5" Top="28" Type="Rectangle" Width="1010"></Shape>
+				</TabPage>
+				<TabPage BorderColor="black" Height="712" Id="tab3" ImageID="C_tab2" Left="2" TabOrder="24" Text="지로취소업소" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="31" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1018" TabOrder="1" Top="28" Type="Rectangle" Width="1010"></Shape>
+					<Grid BindDataset="Dataset0_0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="242" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="211" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1018" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="31" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1010">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="99"/>
+									<col width="120"/>
+									<col width="108"/>
+									<col width="295"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+									<col width="130"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="업소코드"/>
+									<cell col="1" color="user12" display="text" text="업소명"/>
+									<cell col="2" color="user12" display="text" text="업주명"/>
+									<cell col="3" color="user12" display="text" text="주소"/>
+									<cell col="4" color="user12" display="text" text="담당사원"/>
+									<cell col="5" color="user12" display="text" text="기간"/>
+									<cell col="6" color="user12" display="text" text="전월미납"/>
+									<cell col="7" color="user12" display="text" text="연체료"/>
+									<cell col="8" color="user12" display="text" text="당월분"/>
+									<cell col="9" color="user12" display="text" text="미납액"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="user8" col="0" colid="column0" display="text" text="1"/>
+									<cell col="1" display="text"/>
+									<cell align="center" col="2" colid="column3" display="text"/>
+									<cell align="center" col="3" colid="column4" display="text" text="100"/>
+									<cell align="center" col="4" colid="column5" display="text"/>
+									<cell align="center" col="5" colid="column5" display="text"/>
+									<cell col="6" display="text"/>
+									<cell col="7" display="text"/>
+									<cell col="8" display="text"/>
+									<cell col="9" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[
+function Edit0_OnChanged(obj,strText)
+{
+	
+}
+
+function Edit4_OnChanged(obj,strText)
+{
+	
+}
+
+
+
+function Button00_OnClick(obj)
+{
+	
+}
+
+function Button0_OnClick(obj)
+{
+	
+}
+
+function List0_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	
+}
+]]></Script>
+</Window>

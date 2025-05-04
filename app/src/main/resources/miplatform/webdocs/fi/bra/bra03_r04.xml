@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="지로발송업소리스트" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_demdIn">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCR_PRNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Demd">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCR_PRNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="gbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code></code>
+						<value>전체</value>
+					</record>
+					<record>
+						<code>1</code>
+						<value>지로</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>독촉</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="4" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="5" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1028" TabOrder="6" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="26" TabOrder="7" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Grid AutoScrollBar="Vert" BindDataset="ds_Demd" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="776" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="720" Id="grd_reslut" InputPanel="FALSE" Left="8" LineColor="silver" Right="1042" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1034">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="64"/>
+						<col width="164"/>
+						<col width="67"/>
+						<col width="235"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="79"/>
+						<col width="63"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="업소명"/>
+						<cell col="2" color="user12" display="text" text="업주명"/>
+						<cell col="3" color="user12" display="text" text="주소"/>
+						<cell col="4" color="user12" display="text" text="기간"/>
+						<cell col="5" color="user12" display="text" text="전월미납"/>
+						<cell col="6" color="user12" display="text" text="연체료"/>
+						<cell col="7" color="user12" display="text" text="당월분"/>
+						<cell col="8" color="user12" display="text" text="미납액"/>
+						<cell col="9" color="user12" display="text" text="지로"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="1" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="2" colid="MNGEMSTR_NM" display="text"/>
+						<cell align="left" col="3" colid="ADDR" display="text"/>
+						<cell col="4" colid="YRMN" display="text" Mask="####/##&#32;~&#32;####/##"/>
+						<cell col="5" colid="NONPY_AMT" display="number"/>
+						<cell col="6" colid="ADDT_AMT" display="number"/>
+						<cell col="7" colid="USE_AMT" display="number"/>
+						<cell col="8" colid="DEMD_AMT" display="number"/>
+						<cell col="9" colid="OCR_PRNT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="60" Height="3" Id="Shape0" Left="6" LineColor="user7" Right="1038" TabOrder="8" Top="57" Type="Rectangle" Width="1032"></Shape>
+		<Static Height="14" Id="Static1" Left="42" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="23" Width="40"></Static>
+		<Static Height="17" Id="Static0" Left="370" Style="tx_left_bold" TabOrder="12" Text="납부년월" Top="23" Width="54"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="354" TabOrder="9" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="680" TabOrder="10" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="16" Id="Static2" Left="696" Style="tx_left_bold" TabOrder="14" Text="구분" Top="24" Width="32"></Static>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" Left="91" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="18" Width="109"></Combo>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="21" Id="cal_Yrmn" Left="433" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="납부년월" Top="18" Width="102"></Calendar>
+		<Combo BindDataset="ds_demdIn" BKColor="user13" CodeColumn="code" Column="OCR_PRNT" DataColumn="value" Height="20" Id="cob_match_yn" ImeMode="none" InnerDataset="gbn" Left="731" TabOrder="3" Top="18" Width="109"></Combo>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+var save_check;
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	this.ds_demdIn.AddRow();
+	this.cal_Yrmn.value = today();
+
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	gfn_SetInnerPermission("tab_UpsoInfo.UPSO.btn_OwnerCng,tab_UpsoInfo.UPSO.btn_MonFee");
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+}
+
+function fn_Search() {
+	if (!gfn_CheckFormNull(this)) return;
+
+	this.ds_demdIn.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_demdIn.SetColumn(0,"DEMD_YRMN", substr(this.cal_Yrmn.Value,0,6) );
+	gfn_syncCall("Mon_status_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005006&EVENTID=ocr_send_list","S=ds_demdIn","ds_Demd=SEL1","","fn_CallBack");
+	
+	save_check='Y';
+}
+
+function fn_Excel(){
+	this..grd_reslut.ExportExcelEX("지로발송업소리스트");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "Mon_status_Search") {
+		gfn_SetStatusMsg(ds_Demd.count + "건이 조회 되었습니다.");
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	gfn_SetInnerPermission("tab_UpsoInfo.UPSO.btn_OwnerCng,tab_UpsoInfo.UPSO.btn_MonFee");
+	if(save_check =="Y"){
+		this.ds_demd.ClearData();
+		this.cal_Yrmn.Text = "";
+		this.edt_START_MON.Text = "";
+		this.edt_END_MON.Text = "";
+		save_check = "N";
+	}
+}
+]]></Script>
+</Window>

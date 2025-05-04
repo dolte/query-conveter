@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="자동이체신청내역확인" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_application_list" OnColumnChanged="ds_application_list_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPLICATION_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AUTO_ACCNNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESINUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RELATION" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPTN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROC_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD></CODE_CD>
+						<CODE_NM>전체&#32;보기</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>확인&#32;보기</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>미확인&#32;보기</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search_opt">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONFIRM_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_staff">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_applic_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>02</CODE_CD>
+						<CODE_NM>계좌신규</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>08</CODE_CD>
+						<CODE_NM>계좌해지</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>12</CODE_CD>
+						<CODE_NM>카드신규</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>16</CODE_CD>
+						<CODE_NM>카드변경</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>18</CODE_CD>
+						<CODE_NM>카드해지</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="6" TabStop="FALSE" Top="8" Width="1000"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="9" TabOrder="7" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1016" TabOrder="8" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="30" TabOrder="9" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="30" TabOrder="10" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="51" Style="tx_left_bold" TabOrder="0" Text="지부명" Top="24" Width="40"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="290" TabOrder="0" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="308" Style="tx_left_bold" TabOrder="0" Text="등록일자" Top="23" Width="70"></Static>
+		<Combo BKColor="user13" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" Left="114" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="지부명" Top="17" Width="145"></Combo>
+		<Calendar Border="Flat" BorderColor="user10" Dateformat="yyyy/MM/dd" Height="20" Id="cal_StartDt" Left="378" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="2" Top="19" Width="95"></Calendar>
+		<Static Height="16" Id="Static27" Left="477" Style="tx_left_bold" TabOrder="14" Text="~" Top="22" Width="16"></Static>
+		<Calendar Border="Flat" BorderColor="user10" Dateformat="yyyy/MM/dd" Height="20" Id="cal_EndDt" Left="491" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="3" Top="20" Width="95"></Calendar>
+		<Image Height="11" Id="Image6" ImageID="C_icon" Left="754" TabOrder="15" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static30" Left="772" Style="tx_left_bold" TabOrder="16" Text="구분" Top="23" Width="70"></Static>
+		<Combo Border="Flat" CodeColumn="CODE_CD" DataColumn="CODE_NM" Editable="TRUE" Height="20" Id="cob_confirm_gbn" ImeMode="none" InnerDataset="ds_code_gbn" Left="808" ResetIndex="FIRST" Style="edit" TabOrder="4" Top="19" Value="82" Width="112"></Combo>
+		<Grid BindDataset="ds_application_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" BorderColor="user3" Bottom="784" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="712" Id="grd_application_list" InputPanel="FALSE" Left="8" LineColor="default" Right="1024" RowHeight="20" Style="grid" TabOrder="5" TabStop="true" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1016">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="36"/>
+						<col width="61"/>
+						<col width="61"/>
+						<col width="99"/>
+						<col width="57"/>
+						<col width="90"/>
+						<col width="106"/>
+						<col width="101"/>
+						<col width="75"/>
+						<col width="68"/>
+						<col width="68"/>
+						<col width="69"/>
+						<col width="60"/>
+						<col width="64"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="번호"/>
+						<cell col="1" color="user12" display="text" text="등록일자"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="신청구분"/>
+						<cell col="5" color="user12" display="text" text="은행/카드사"/>
+						<cell col="6" color="user12" display="text" text="계좌/카드번호"/>
+						<cell col="7" color="user12" display="text" text="주민번호"/>
+						<cell col="8" color="user12" display="text" text="납부자명"/>
+						<cell col="9" color="user12" display="text" text="신청일자"/>
+						<cell col="10" color="user12" display="text" text="접수자"/>
+						<cell col="11" color="user12" display="text" text="등록자"/>
+						<cell col="12" color="user12" display="text" text="확인여부"/>
+						<cell col="13" color="user12" display="text" text="확인자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="INS_DATE" display="date"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="APPLICATION_GBN" combocol="CODE_CD" combodataset="ds_code_applic_gbn" combotext="CODE_NM" display="combo"/>
+						<cell align="left" col="5" colid="BANK_NM" display="text"/>
+						<cell align="left" col="6" colid="AUTO_ACCNNUM" display="text"/>
+						<cell align="left" col="7" colid="RESINUM" display="text" edit="mask" Mask="######-#@@@@@@"/>
+						<cell align="left" col="8" colid="PAYPRES_NM" display="text"/>
+						<cell align="center" col="9" colid="APPTN_DAY" display="date"/>
+						<cell align="center" col="10" colid="STAFF_CD" combocol="CODE_CD" combodataset="ds_code_staff" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="11" colid="INSPRES_ID" combocol="CODE_CD" combodataset="ds_code_staff" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="12" colid="CONFIRM_YN" display='expr:decode(PROC_DAY,&apos;&apos;,&quot;checkbox&quot;,&quot;text&quot;)' edit='expr:decode(PROC_DAY,&apos;&apos;,&quot;checkbox&quot;,&quot;text&quot;)'/>
+						<cell align="center" col="13" colid="CONFIRM_ID" combocol="CODE_CD" combodataset="ds_code_staff" combotext="CODE_NM" display="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Color="user1" Height="11" Id="Static21" Left="31" Style="tx_bold" TabOrder="17" Text='본&#32;화면은&#32;확인용&#32;화면입니다.&#32;수정은&#32;&quot;자동이체신청서등록&quot;&#32;화면에서&#32;수행해주십시오' Top="59" Width="520"></Static>
+		<Shape BKColor="user7" Bottom="75" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1024" TabOrder="18" Top="72" Type="Rectangle" Width="1016"></Shape>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	//검색조건 세팅
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 2);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	this.cob_confirm_gbn.Value = "N";
+	
+	gfn_getComboCode("1000002001001003","cb_staff_cd","ds_code_staff");  // 사원
+}
+
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){}
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function fn_Search() 
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_search_opt.ClearData();
+	this.ds_search_opt.AddRow();
+	this.ds_search_opt.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_search_opt.SetColumn(0,"START_DATE", cal_StartDt.Value);
+	this.ds_search_opt.SetColumn(0,"END_DATE", cal_EndDt.Value);
+	this.ds_search_opt.SetColumn(0,"CONFIRM_YN", this.cob_confirm_gbn.Value);
+	
+	this.ds_application_list.ClearData();
+	//trace(this.ds_upso_condi.SaveXML());
+	gfn_syncCall("search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005012&EVENTID=search_test2","S=ds_search_opt","ds_application_list=MRG1","","fn_CallBack");
+	
+		    
+}
+
+function fn_Save() 
+{
+    if (!gfn_CheckFormNull(this)) return;
+    
+	if(!confirm("저장하시겠습니까?")){
+	    return;
+	}
+	gfn_syncCall("save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005012&EVENTID=save_test2","S=ds_application_list:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	
+	fn_Search();
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+} 
+
+function ds_application_list_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID =="CONFIRM_YN"){
+		if ((ds_application_list.GetColumn(nRow,'CONFIRM_YN')) == 1 ) {
+			ds_application_list.SetColumn(nRow, "CONFIRM_ID",gv_USER_ID);
+			//ds_application_list.SetColumn(nRow, "CONFIRM_ID","K095176");
+		}
+		else{
+			ds_application_list.SetColumn(nRow, "CONFIRM_ID","");
+		}
+	}
+}
+
+]]></Script>
+</Window>

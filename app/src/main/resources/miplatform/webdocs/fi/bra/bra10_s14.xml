@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_s14" Left="8" OnLoadCompleted="bra10_s14_OnLoadCompleted" OnSize="bra10_s14_OnSize" PidAttrib="7" Title="청구내역&#32;매칭관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_bscon">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCONHAN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BSCON_CD></BSCON_CD>
+						<DEMD_YRMN></DEMD_YRMN>
+						<MATCH_GBN></MATCH_GBN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code2">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_match_sc"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_komca_list">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_addr_in">
+				<Contents>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<record>
+						<ADDR></ADDR>
+						<APPL_DAY></APPL_DAY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_bscon_upso" OnColumnChanged="ds_bscon_upso_OnColumnChanged">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATAX_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="0" TabStop="FALSE" Top="8" Width="1018"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="0" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="0" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Grid AreaSelect="true" BindDataset="ds_bscon_upso" BkColor2="default" BoldHead="true" Border="Flat" Bottom="608" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="548" Id="grd_Data" InputPanel="FALSE" Left="8" LineColor="default" OnCellPosChanged="grd_Data_OnCellPosChanged" OnKeyDown="grd_Data_OnKeyDown" Right="1036" RowHeight="20" Style="grid" TabOrder="4" TabStop="true" Top="60" UseAutoSizing="Row" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="133"/>
+						<col width="95"/>
+						<col width="95"/>
+						<col width="85"/>
+						<col width="58"/>
+						<col width="243"/>
+						<col width="208"/>
+						<col width="60"/>
+						<col width="73"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="146"/>
+						<col width="60"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="단체명"/>
+						<cell col="2" color="user12" display="text" text="타단체업소코드"/>
+						<cell col="3" color="user12" display="text" text="타단체업소명"/>
+						<cell col="4" color="user12" display="text" text="협회업소코드"/>
+						<cell col="5" color="user12" display="text" text="우편번호"/>
+						<cell col="6" color="user12" display="text" text="기본주소"/>
+						<cell col="7" color="user12" display="text" text="상세주소"/>
+						<cell col="8" color="user12" display="text" text="매칭구분"/>
+						<cell col="9" color="user12" display="text" text="총청구금액"/>
+						<cell col="10" color="user12" display="text" text="사용료"/>
+						<cell col="11" color="user12" display="text" text="부가세액"/>
+						<cell col="12" color="user12" display="text" text="비고"/>
+						<cell col="13" color="user12" display="text" text="등록자"/>
+						<cell col="14" color="user12" display="text" text="수정자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BSCON_CD" combocol="BSCON_CD" combodataset="ds_bscon" combotext="BSCONHAN_NM" display="combo"/>
+						<cell align="left" col="2" colid="BSCON_UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="BSCON_UPSO_NM" display="text"/>
+						<cell align="center" bkcolor="user13" col="4" colid="UPSO_CD" display="text" edit="normal"/>
+						<cell align="center" col="5" colid="UPSO_ZIP" display="text"/>
+						<cell align="left" col="6" colid="UPSO_ADDR1" display="text"/>
+						<cell align="left" col="7" colid="UPSO_ADDR2" display="text"/>
+						<cell align="left" bkcolor="user13" col="8" colid="MATCH_GBN" combocol="CODE_CD" combodataset="ds_Code1" combotext="CODE_NM" display="combo" edit="combo"/>
+						<cell align="right" col="9" colid="DEMD_AMT" display="number"/>
+						<cell align="right" col="10" colid="USE_AMT" display="number"/>
+						<cell align="right" col="11" colid="ATAX_AMT" display="number"/>
+						<cell align="left" col="12" colid="REMAK" display="text" edit="normal"/>
+						<cell align="center" col="13" colid="INSPRES_NM" display="text"/>
+						<cell align="center" col="14" colid="MODPRES_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="61" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1036" TabOrder="4" Top="58" Type="Rectangle" Width="1028"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add" ImageID="C_btn_70" Left="835" LeftMargin="28" OnClick="btn_add_OnClick" Style="edit" TabOrder="4" Text="추가" Top="17" TopMargin="1" Visible="FALSE" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_delete" ImageID="C_btn_70" Left="909" LeftMargin="28" OnClick="btn_delete_OnClick" Style="edit" TabOrder="4" Text="삭제" Top="17" TopMargin="1" Visible="FALSE" Width="71"></Button>
+		<FileDialog Bottom="40" Height="24" Id="FileDialog0" Left="984" Right="1008" TabOrder="26" Top="16" Width="24"></FileDialog>
+		<File Bottom="40" Height="24" Id="File0" Left="1008" Right="1032" TabOrder="26" Top="16" Width="24"></File>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="34" TabOrder="10" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="50" Style="tx_left_bold" TabOrder="9" Text="청구년월" Top="23" Width="52"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" HeaderFont="Default,-1" Height="21" Id="cal_yrmn" Left="117" SaturdayTextColor="blue" SelectedDayFont="Default,-1" SpinStyle="1" SundayTextColor="red" TabOrder="8" ToolTipText="청구년월" Top="18" Value="TODAY" WeeksFont="Default,-1" Width="88"></Calendar>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="230" TabOrder="11" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static1" Left="247" Style="tx_left_bold" TabOrder="12" Text="단체선택" Top="23" Width="70"></Static>
+		<Combo BindDataset="ds_search" Border="Flat" CodeColumn="BSCON_CD" Column="BSCON_CD" DataColumn="BSCONHAN_NM" Height="20" Id="cob_bscon" INDEX="0" InnerDataset="ds_bscon" Left="319" ResetIndex="FIRST" Style="edit" TabOrder="11" Top="18" Width="182"></Combo>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="526" TabOrder="14" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="543" Style="tx_left_bold" TabOrder="15" Text="매칭구분" Top="23" Width="70"></Static>
+		<Combo BindDataset="ds_search" Border="Flat" CodeColumn="CODE_CD" Column="MATCH_GBN" DataColumn="CODE_NM" Height="20" Id="cob_matchgbn" INDEX="0" InnerDataset="ds_Code1" Left="607" ResetIndex="FIRST" Style="edit" TabOrder="14" Top="18" Width="78"></Combo>
+		<Image Height="17" Id="Image3" ImageID="C_icon2" Left="11" TabOrder="17" TabStop="FALSE" Top="619" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static9" Left="37" Style="tx_bold" TabOrder="18" Text="협회&#32;동일주소" Top="623" Width="300"></Static>
+		<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_komca_list" BkColor2="default" BoldHead="true" Border="Flat" Bottom="788" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="148" Id="grd_komca_list" InputPanel="FALSE" Left="8" LineColor="default" OnCellDBLClick="grd_komca_list_OnCellDblClick" Right="1036" RowHeight="20" Style="grid" TabOrder="19" TabStop="true" Top="640" UseAutoSizing="Row" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="39"/>
+						<col width="65"/>
+						<col width="78"/>
+						<col width="151"/>
+						<col width="491"/>
+						<col width="88"/>
+						<col width="96"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="센터코드"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="주소"/>
+						<cell col="5" color="user12" display="text" text="개업년월"/>
+						<cell col="6" color="user12" display="text" text="업종"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BRAN_CD" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="left" col="4" colid="ADDR" display="text"/>
+						<cell align="center" col="5" colid="OPBI_DAY" display="text"/>
+						<cell align="center" col="6" colid="BSTYP_CD" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")        { fn_New();    }//신규
+    else if(strCode == "SEARCH"){ fn_Search(); }//조회
+    else if(strCode == "SAVE")  { fn_Save();   }//저장
+    else if(strCode == "DELETE"){ fn_Delete(); }//삭제
+    else if(strCode == "EXCEL") { fn_Excel();  }//Excel
+    else if(strCode == "PRINT") { fn_Print();  }//출력
+    else if(strCode == "CLOSE") { close();     }//닫기
+	return;
+}
+
+/*
+ * 기      능: Callback함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(svcid,errCode,errMsg)
+{
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcSearch" :
+				break;
+			case "svcSave" :
+				alert("저장되었습니다.");
+				break;
+			case "svcBsconSearch" :
+				ds_bscon.InsertRow(0);
+				ds_bscon.SetColumn(0, "BSCON_CD", "");
+				ds_bscon.SetColumn(0, "BSCONHAN_NM", "--ALL--");
+				cob_bscon.Index = 0;
+				break;
+			case "svcGetKomcaList" :
+				break;
+			default : break;
+		}
+	}
+}
+
+function bra10_s14_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_SyncCall("svcBsconSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=sel_bscon_cd", "", "ds_bscon=SEL1", "", "fn_CallBack");
+	
+	gfn_PubCode("ds_Code2", "2", "00033");			// 매칭구분
+	ds_Code1.AddRow();
+	ds_Code1.SetColumn(0, "CODE_CD", "");
+	ds_Code1.SetColumn(0, "CODE_NM", "--ALL--");
+	ds_Code1.AddRow();
+	ds_Code1.CopyRow(1, "ds_Code2", ds_Code2.FindRow("CODE_CD", "Y"));
+	ds_Code1.AddRow();
+	ds_Code1.CopyRow(2, "ds_Code2", ds_Code2.FindRow("CODE_CD", "N"));
+	cob_matchgbn.Index = 0;
+	
+	cal_yrmn.Value = today();
+	
+	bra10_s14_OnSize();
+}
+
+function fn_Search()
+{
+	ds_search.SetColumn(0, "DEMD_YRMN", substr(cal_yrmn.Value, 0, 6));
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013002&EVENTID=sel_demd_bscon","S=ds_search","ds_bscon_upso=SEL1","","fn_CallBack");
+}
+
+function fn_Save()
+{
+	if(Confirm("청구자료의 수동매칭은 타단체로부터 받은 청구자료를 임의 수정하는 것으로, 타단체의 확인이 필요합니다. 진행하시겠습니까?"))
+	{
+		if(ds_bscon_upso.rowcount < 1)
+		{
+			alert("저장할 자료가 없습니다.");
+			return;
+		}
+		
+		gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013002&EVENTID=mng_match_bscon","S=ds_bscon_upso:U","","","fn_CallBack");
+		fn_Search();
+	}
+}
+
+function grd_Data_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	if(length(ds_bscon_upso.GetColumn(nRow, "UPSO_ADDR1")) < 1)
+	{
+		return;
+	}
+	
+	ds_addr_in.SetColumn(0, "ADDR", ds_bscon_upso.GetColumn(nRow, "UPSO_ADDR1"));
+	ds_addr_in.SetColumn(0, "APPL_DAY", ds_bscon_upso.GetColumn(nRow, "APPL_DAY"));
+	
+	//trace(this.ds_addr_in.SaveXML());
+	gfn_syncCall("svcGetKomcaList","KOMCA?SYSID=PATHFINDER&MENUID=1000001006013002&EVENTID=get_komca_data","S=ds_addr_in","ds_komca_list=SEL1","","fn_CallBack");
+}
+
+function grd_komca_list_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_bscon_upso.SetColumn(ds_bscon_upso.currow, "UPSO_CD", ds_komca_list.GetColumn(nRow, "UPSO_CD"));
+	ds_bscon_upso.SetColumn(ds_bscon_upso.currow, "MATCH_GBN", "Y");
+}
+
+function ds_bscon_upso_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "MATCH_GBN" && (varNewValue == "N" || varNewValue == "미매칭"))
+	{
+		ds_bscon_upso.SetColumn(ds_bscon_upso.currow, "UPSO_CD", "");
+	}
+}
+
+function fn_Excel()
+{
+	grd_Data.ExportExcelEx("타단체청구자료매칭내역");
+}
+
+function grd_Data_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	var selRow = ds_bscon_upso.currow;
+	
+	if(nChar == 13)
+	{
+		if(ds_bscon_upso.GetColumn(selRow, "UPSO_CD") = "")
+		{
+			ds_bscon_upso.SetColumn(selRow, "MATCH_GBN", "N");
+			gfn_setGridFocus(grd_Data, selRow, "UPSO_CD");
+		}
+	}
+	
+	//업소조회팝업
+	if(nChar == 112)
+	{
+		var uName = ds_bscon_upso.GetColumn(selRow, "BSCON_UPSO_NM");
+		
+		var p_upso_nm		= ds_bscon_upso.GetColumn(selRow, "BSCON_UPSO_NM");
+		var p_upso_cd		= ds_bscon_upso.GetColumn(selRow, "UPSO_CD");		var p_bstyp_cd_nm 	= "";
+		var p_addr			= ds_bscon_upso.GetColumn(selRow, "UPSO_ADDR1");
+		var p_phon_num		= "";
+		var p_post_num		= ds_bscon_upso.GetColumn(selRow, "UPSO_ZIP");	
+		var rst = Dialog("fi_pub::find_upso_match.xml"
+						 ,"SGBN=dis dsName=ds_bscon_upso prNrow='"+selRow+"' colNm1=UPSO_CD colNm2=MATCH_GBN "
+						 +" UPSO_NM=\""			+replace(trim(p_upso_nm),"\"","\\\"")		+"\""
+						 +" UPSO_CD=\""			+replace(trim(p_upso_cd),"\"","\\\"")		+"\""
+						 +" p_bstyp_cd_nm=\""	+replace(trim(p_bstyp_cd_nm),"\"","\\\"")	+"\""
+						 +" p_addr=\""			+replace(trim(p_addr),"\"","\\\"")		+"\""
+						 +" p_phon_num=\""		+replace(trim(p_phon_num),"\"","\\\"")	+"\""
+						 +" p_post_num=\""		+replace(trim(p_post_num),"\"","\\\"")	+"\""
+						 ,"");
+		if(rst == 0)
+		{
+			var f_post_num = ds_bscon_upso.GetColumn(selRow,"UPSO_ZIP");
+			var f_addr = ds_bscon_upso.GetColumn(selRow,"UPSO_ADDR1");
+			var f_phon_num = "";
+			
+			var f_match_gbn = ds_bscon_upso.GetColumn(selRow,"MATCH_GBN");
+			var f_upso_cd = ds_bscon_upso.GetColumn(selRow,"UPSO_CD");
+			
+			trace(f_match_gbn);
+			
+			for( i = selRow+1 ; i < ds_bscon_upso.rowcount ; i++)
+			{
+				if(ds_bscon_upso.GetColumn(i,"UPSO_ZIP") == f_post_num &&
+				   ds_bscon_upso.GetColumn(i,"UPSO_ADDR1")     == f_addr)
+				   {
+						ds_bscon_upso.SetColumn(i,"MATCH_GBN",f_match_gbn);
+						ds_bscon_upso.SetColumn(i,"UPSO_CD",f_upso_cd);
+						
+						trace(ds_bscon_upso.GetColumn(i,"MATCH_GBN"));
+				   }
+				else
+				   {
+						break;
+				   }
+			}
+		}
+	}
+}
+
+function bra10_s14_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(Shape2,this,1,0);
+	gfn_ObjreSize(grd_Data,this,1,0);
+	gfn_ObjreSize(grd_komca_list,this,1,0);
+}
+]]></Script>
+</Window>

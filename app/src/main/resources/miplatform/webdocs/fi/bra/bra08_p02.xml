@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="방송청구입금등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0_0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<colinfo id="column1" size="256" type="STRING"/>
+					<colinfo id="column2" size="256" type="STRING"/>
+					<colinfo id="column3" size="256" type="STRING"/>
+					<colinfo id="column4" size="256" type="STRING"/>
+					<colinfo id="column5" size="256" type="STRING"/>
+					<record>
+						<column0>1</column0>
+						<column1>길동</column1>
+						<column2>3</column2>
+						<column3>4</column3>
+						<column4>5</column4>
+						<column5>3</column5>
+					</record>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="35" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="35" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="35" Width="10"></Image>
+		<Shape BKColor="user7" Bottom="87" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="3" Top="84" Type="Rectangle" Width="1032"></Shape>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="300" TabOrder="5" TabStop="FALSE" Top="50" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="316" Style="tx_left_bold" TabOrder="6" Text="등록기간" Top="50" Width="54"></Static>
+		<Static Color="user6" Height="16" Id="Static20" Left="482" Style="style0" TabOrder="7" Text="~" Top="47" Width="9"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="830" TabOrder="8" TabStop="FALSE" Top="50" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="846" Style="tx_left_bold" TabOrder="9" Text="시행일자" Top="50" Width="56"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="23" Id="Edit22" Left="692" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="10" Top="46" Width="120"></Edit>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="611" TabOrder="11" TabStop="FALSE" Top="50" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="627" Style="tx_left_bold" TabOrder="12" Text="문서번호" Top="50" Width="56"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="30" TabOrder="13" TabStop="FALSE" Top="50" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="45" Style="tx_left_bold" TabOrder="14" Text="센터명" Top="50" Width="86"></Static>
+		<Combo Height="21" Id="Combo0" Left="101" TabOrder="15" Top="45" Width="145"></Combo>
+		<Calendar BindDataset="DS_Upso" Column="OPBI_DAY" Height="21" Id="Calendar0" Left="504" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="16" Top="46" Width="97"></Calendar>
+		<Calendar BindDataset="DS_Upso" Column="OPBI_DAY" Height="21" Id="Calendar2" Left="376" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="17" Top="46" Width="97"></Calendar>
+		<Calendar BindDataset="DS_Upso" Column="OPBI_DAY" Height="21" Id="Calendar1" Left="905" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="18" Top="46" Width="113"></Calendar>
+		<Ubi Bottom="654" Height="570" Id="Ubi0" Left="15" Right="1045" Top="84" Width="1030">
+			<_PersistData>&#13;&#10;/6xhXMhk/wAAAQB0agAAd+k6APjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwAwhA&#13;&#10;</_PersistData>
+		</Ubi>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+function form_OnLoadCompleted(obj)
+{
+	Ubi0.setJrfFileDir("http://192.168.1.192:8080/report_file/fi/bra/");
+	//Ubi0.setJrfFileName("w_gibu803.jrf");
+	Ubi0.setJrfFileName("bra08_p02.jrf");
+	Ubi0.Retrieve();
+	gfn_LoadForm(obj);
+}
+]]></Script>
+</Window>

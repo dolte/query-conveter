@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="960" Id="form" Left="8" PidAttrib="7" Title="출장복명서등록" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Image FillType="STRETCH" Height="70" Id="Image1" ImageID="C_search2_bg" Left="40" OnClick="Image0_OnClick" TabOrder="2" Top="32" Width="1015"></Image>
+		<Calendar Height="21" Id="Calendar0" Left="463" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="1" Top="69" Width="145"></Calendar>
+		<Image Height="70" Id="Image2" ImageID="C_search2_right" Left="1054" TabOrder="4" Top="32" Width="10"></Image>
+		<Image Height="70" Id="Image21" ImageID="C_search2_left" Left="32" TabOrder="3" Top="32" Width="10"></Image>
+		<Combo Height="21" Id="Combo3" Left="122" TabOrder="5" Top="43" Width="145"></Combo>
+		<Edit BindDataset="DS_Upso" Border="Flat" BorderColor="user10" Column="bFRUPSO_CD" Height="22" Id="Edit7" Left="464" LeftMargin="2" MaxLength="5" Style="edit" TabOrder="6" Top="43" Width="96"></Edit>
+		<Combo Height="21" Id="Combo4" Left="122" TabOrder="7" Top="68" Width="88"></Combo>
+		<Combo Height="21" Id="Combo5" Left="268" TabOrder="8" Top="68" Width="61"></Combo>
+		<Static Color="user12" Height="11" Id="Static2" Left="72" Style="tx_left_bold" TabOrder="10" Text="&#32;지&#32;부" Top="48" Width="40"></Static>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="56" TabOrder="9" TabStop="FALSE" Top="48" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="398" Style="tx_left_bold" TabOrder="12" Text="&#32;방문자" Top="48" Width="48"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="376" TabOrder="11" TabStop="FALSE" Top="48" Width="11"></Image>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="56" TabOrder="13" TabStop="FALSE" Top="75" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static1" Left="72" Style="tx_left_bold" TabOrder="14" Text="&#32;출장지" Top="75" Width="46"></Static>
+		<Static Color="user12" Height="11" Id="Static3" Left="215" Style="tx_left_bold" TabOrder="15" Text="&#32;군/시" Top="77" Width="42"></Static>
+		<Static Color="user12" Height="11" Id="Static4" Left="329" Style="tx_left_bold" TabOrder="16" Text="&#32;동" Top="75" Width="42"></Static>
+		<Static Color="user12" Height="11" Id="Static5" Left="399" Style="tx_left_bold" TabOrder="17" Text="&#32;출장일" Top="75" Width="42"></Static>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="376" TabOrder="18" TabStop="FALSE" Top="75" Width="11"></Image>
+		<Grid BindDataset="dataset0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="488" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="336" Id="Grid0" InputPanel="FALSE" Left="32" LineColor="default" Right="1080" RowHeight="20" Style="grid" TabOrder="19" TabStop="true" Top="152" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1048">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="103"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="118"/>
+						<col width="80"/>
+						<col width="115"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="구분"/>
+						<cell col="1" color="user12" display="text" text="업소명"/>
+						<cell col="2" color="user12" display="text" text="업주명"/>
+						<cell col="3" color="user12" display="text" text="주민등록번호"/>
+						<cell col="4" color="user12" display="text" text="적용월"/>
+						<cell col="5" color="user12" display="text" text="전화번호"/>
+						<cell col="6" color="user12" display="text" text="휴대폰"/>
+						<cell col="7" color="user12" display="text" text="등급"/>
+						<cell col="8" color="user12" display="text" text="면담자"/>
+						<cell col="9" color="user12" display="text" text="면담내용"/>
+						<cell col="10" color="user12" display="text" text="비고"/>
+						<cell col="11" color="user12" display="text" text="휴업&#32;구분"/>
+						<cell col="12" color="user12" display="text" text="휴업(폐업)시작"/>
+						<cell col="13" color="user12" display="text" text="휴업종료"/>
+						<cell col="14" color="user12" display="text" text="휴업(폐업)사유"/>
+					</head>
+					<body>
+						<cell col="0" combocol="code" combodataset="gbn" combotext="value" display="text" edit="combo"/>
+						<cell col="1" colid="column0" display="text"/>
+						<cell col="2" colid="column1" display="text"/>
+						<cell col="3" colid="column2" display="text"/>
+						<cell col="4" colid="column3" display="text"/>
+						<cell col="5" colid="column5" display="text"/>
+						<cell col="6" colid="column6" display="text"/>
+						<cell col="7" colid="column7" combotext="value" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" colid="column12" display="text"/>
+						<cell col="11" combocol="code" combodataset="CLSD_GBN" combotext="value" display="combo" edit="combo"/>
+						<cell col="12" colid="column13" display="text"/>
+						<cell col="13" colid="column14" display="text"/>
+						<cell col="14" colid="column15" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script></Script>
+</Window>

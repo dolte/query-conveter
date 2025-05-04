@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="184" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="무선반주기&#32;업체선택" Top="8" Ver="1.0" Width="280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_code_bscon">
+				<Contents>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Font="굴림,12,Bold" Height="28" Id="Static0" Left="28" TabOrder="1" Text="반주기&#32;정보&#32;선택" Top="16" Width="150"></Static>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_code_bscon" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="168" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="120" Id="grd_bscon" InputPanel="FALSE" Left="23" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_bscon_OnCellDblClick" Right="255" RowHeight="20" Style="grid" TabOrder="2" TabStop="FALSE" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="232">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="330"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="반주기&#32;업체"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CODE_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="185" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="3" TabStop="FALSE" Text="닫기" Top="12" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+
+
+function form_OnLoadCompleted(obj)
+{
+	// 설정 코드 정보 가져오기
+	gfn_PubCode("ds_code_bscon", 2, "00429");		// 무선로그 업체정보
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+}
+
+function grd_Upjong_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var serial_no    = ds_serial_no.GetColumn(nRow, "SERIAL_NO");
+	
+	//선택시에 선택한 값을 가지고 온다. 
+	Close(serial_no);
+}
+
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+
+function grd_bscon_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var bscon_cd    = this.ds_code_bscon.GetColumn(nRow, "CODE_CD");
+	//선택시에 선택한 값을 가지고 온다. 
+	Close(bscon_cd);
+}
+]]></Script>
+</Window>

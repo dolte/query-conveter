@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra09_p07" Left="8" OnLoadCompleted="bra09_p07_OnLoadCompleted" PidAttrib="7" Title="관리&#32;연체업소수&#32;현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_radio01">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>관리업소수현황</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>개발중업소수현황</value>
+					</record>
+					<record>
+						<code>03</code>
+						<value>전체업소수현황</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_radio02">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>시/군/구별</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>읍/명/동별</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="70" Id="Image21" ImageID="C_search2_left" Left="8" TabOrder="0" Top="9" Width="10"></Image>
+		<Image FillType="STRETCH" Height="70" Id="Image1" ImageID="C_search2_bg" Left="18" OnClick="Image0_OnClick" TabOrder="1" Top="9" Width="1015"></Image>
+		<Image Height="70" Id="Image2" ImageID="C_search2_right" Left="1030" TabOrder="3" Top="9" Width="10"></Image>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="438" TabOrder="2" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="455" Style="tx_left_bold" TabOrder="3" Text="센터명" Top="54" Width="79"></Static>
+		<Image Height="11" Id="Image12" ImageID="C_icon" Left="245" TabOrder="2" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static7" Left="265" Style="tx_left_bold" TabOrder="4" Text="기준년월" Top="54" Width="60"></Static>
+		<Radio BKColor="white" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="3" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="Radio2" INDEX="0" InnerDataset="ds_radio01" Left="24" ShadowColor="user17" Style="radio" TabOrder="8" Top="18" Width="400">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<Radio BKColor="white" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="3" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="Radio0" INDEX="0" InnerDataset="ds_radio02" Left="24" ShadowColor="user17" Style="radio" TabOrder="9" Top="47" Width="192">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<Calendar Dateformat="yyyy/MM" FocusIndex="0" Height="22" Id="cal_Yrmn" Left="323" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="10" Top="49" Width="102"></Calendar>
+		<Combo Border="Flat" Height="20" Id="Combo0" Left="504" Style="edit" TabOrder="11" Top="48" Width="130"></Combo>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="654" TabOrder="12" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="671" Style="tx_left_bold" TabOrder="13" Text="사원코드/명" Top="54" Width="79"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit0" Left="753" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="14" Top="49" Width="30"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit10" Left="786" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="15" Top="49" Width="88"></Edit>
+		<ubi Bottom="784" Height="696" Id="ubi0" Left="8" Right="1040" Top="88" Width="1032">
+			<_PersistData>&#13;&#10;/6yZCu/B/wAAAQCpagAAd+9HAPjy//7//fL4/fYLDwACBVQAWQBfUABFADD48gH+8C8DMQAyLgABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGGPAHUAbFcDnAf48AgBQA==&#13;&#10;</_PersistData>
+		</ubi>
+	</Form>
+	<Script><![CDATA[/* include */
+#include "script::common.js"	// 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+#include "script::global.js"	// 글로벌 js
+
+
+function bra09_p07_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.setJrfFileName("bra09_p07.jrf");
+	//UbiReport0.SetDataset("ds_search", "ds_search");
+	//UbiReport0.SetDataset("ds_master", "ds_Master");
+	ubi0.SetArgument("title","관리 연체업소수 현황");
+	ubi0.Retrieve();
+}
+]]></Script>
+</Window>

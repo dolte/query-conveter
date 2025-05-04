@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="960" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Image FillType="STRETCH" Height="70" Id="Image1" ImageID="C_search2_bg" Left="24" OnClick="Image0_OnClick" TabOrder="1" Top="16" Width="776"></Image>
+		<Image Height="70" Id="Image2" ImageID="C_search2_right" Left="800" TabOrder="3" Top="16" Width="10"></Image>
+		<Image Height="70" Id="Image21" ImageID="C_search2_left" Left="16" TabOrder="2" Top="16" Width="10"></Image>
+		<Combo Height="21" Id="Combo3" Left="106" TabOrder="4" Top="27" Width="145"></Combo>
+		<Edit BindDataset="DS_Upso" Border="Flat" BorderColor="user10" Column="bFRUPSO_CD" Height="22" Id="Edit7" Left="350" LeftMargin="2" MaxLength="5" Style="edit" TabOrder="5" Top="27" Width="96"></Edit>
+		<Combo Height="21" Id="Combo4" Left="106" TabOrder="6" Top="52" Width="88"></Combo>
+		<Static Color="user12" Height="11" Id="Static2" Left="56" Style="tx_left_bold" TabOrder="8" Text="&#32;지&#32;부" Top="32" Width="40"></Static>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="40" TabOrder="7" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="286" Style="tx_left_bold" TabOrder="10" Text="고소번호" Top="32" Width="58"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="264" TabOrder="9" TabStop="FALSE" Top="32" Width="11"></Image>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="40" TabOrder="11" TabStop="FALSE" Top="59" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static1" Left="61" Style="tx_left_bold" TabOrder="12" Text="업&#32;소" Top="59" Width="46"></Static>
+		<Static Color="user12" Height="11" Id="Static3" Left="285" Style="tx_left_bold" TabOrder="13" Text="경영주" Top="62" Width="42"></Static>
+		<Grid BindDataset="dataset0" BkColor2="default" BoldHead="true" Bottom="440" Editable="TRUE" Enable="true" EndLineColor="default" Height="336" Id="Grid0" InputPanel="FALSE" Left="24" LineColor="default" Right="808" TabOrder="14" TabStop="true" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="58"/>
+						<col width="162"/>
+						<col width="98"/>
+						<col width="165"/>
+						<col width="87"/>
+						<col width="107"/>
+						<col width="103"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="업소코드"/>
+						<cell col="1" display="text" text="업소명"/>
+						<cell col="2" display="text" text="구분"/>
+						<cell col="3" display="text" text="판결내역"/>
+						<cell col="4" display="text" text="고소번호"/>
+						<cell col="5" display="text" text="경영주명"/>
+						<cell col="6" display="text" text="업종"/>
+					</head>
+					<body>
+						<cell col="0" combocol="code" combodataset="gbn" combotext="value" display="text" edit="combo"/>
+						<cell col="1" colid="column0" display="text"/>
+						<cell col="2" colid="column1" display="text"/>
+						<cell col="3" colid="column2" display="text"/>
+						<cell col="4" colid="column3" display="text"/>
+						<cell col="5" colid="column5" display="text"/>
+						<cell col="6" colid="column6" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Edit BindDataset="DS_Upso" Border="Flat" BorderColor="user10" Column="bFRUPSO_CD" Height="22" Id="Edit0" Left="469" LeftMargin="2" MaxLength="5" Style="edit" TabOrder="15" Top="26" Width="40"></Edit>
+		<Edit BindDataset="DS_Upso" Border="Flat" BorderColor="user10" Column="bFRUPSO_CD" Height="22" Id="Edit1" Left="534" LeftMargin="2" MaxLength="5" Style="edit" TabOrder="16" Top="26" Width="40"></Edit>
+		<Static Height="14" Id="Static6" Left="454" TabOrder="17" Text="-" Top="32" Width="15"></Static>
+		<Static Height="14" Id="Static7" Left="518" TabOrder="18" Text="-" Top="32" Width="15"></Static>
+		<Image Height="11" Id="Image6" ImageID="C_icon" Left="598" TabOrder="20" TabStop="FALSE" Top="29" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static8" Left="614" Style="tx_left_bold" TabOrder="21" Text="&#32;구&#32;분" Top="29" Width="40"></Static>
+		<Combo Height="21" Id="Combo0" Left="676" TabOrder="19" Top="24" Width="88"></Combo>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="263" TabOrder="22" TabStop="FALSE" Top="62" Width="11"></Image>
+		<Edit BindDataset="DS_Upso" Border="Flat" BorderColor="user10" Column="bFRUPSO_CD" Height="22" Id="Edit2" Left="349" LeftMargin="2" MaxLength="5" Style="edit" TabOrder="23" Top="56" Width="96"></Edit>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="597" TabOrder="25" TabStop="FALSE" Top="62" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static4" Left="619" Style="tx_left_bold" TabOrder="24" Text="허가주" Top="62" Width="42"></Static>
+		<Edit BindDataset="DS_Upso" Border="Flat" BorderColor="user10" Column="bFRUPSO_CD" Height="22" Id="Edit3" Left="673" LeftMargin="2" MaxLength="5" Style="edit" TabOrder="26" Top="56" Width="96"></Edit>
+	</Form>
+	<Script></Script>
+</Window>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="NewUpsoList" Left="8" OnLoadCompleted="NewUpsoList_OnLoadCompleted" PidAttrib="7" Title="신규업소안내문(본부)" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_new_upso_list" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCHECK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_new_upso_list_0" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECV_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCHECK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BindDataset="ds_new_upso_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="794" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="730" Id="grd_List" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="12" TabStop="FALSE" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="87"/>
+						<col width="189"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="350"/>
+						<col width="127"/>
+						<col width="74"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="업소명"/>
+						<cell col="2" color="user12" display="text" text="수신자"/>
+						<cell col="3" color="user12" display="text" text="수신우편번호"/>
+						<cell col="4" color="user12" display="text" text="수신&#32;주소"/>
+						<cell col="5" color="user12" display="text" text="금액"/>
+						<cell col="6" color="user12" display="text" text="출력"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell col="1" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="2" colid="RECV_NM" display="text"/>
+						<cell align="center" col="3" colid="RECV_ZIP" display="text" Mask="#####"/>
+						<cell col="4" colid="RECV_ADDR" display="text"/>
+						<cell align="right" col="5" colid="AMT" display="numberexp"/>
+						<cell col="6" colid="CCHECK" display="checkbox" edit="checkbox"/>
+					</body>
+					<summary>
+						<cell col="0" color="user12" display="text" font="굴림,9,Bold" text="조회건수"/>
+						<cell col="1" color="user12" display="text" expr='COUNT(&quot;UPSO_CD&quot;)' font="굴림,9,Bold"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="5" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="6" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="7" TabStop="FALSE" Top="12" Width="9"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="340" TabOrder="8" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="356" Style="tx_left_bold" TabOrder="9" Text="기간" Top="27" Width="30"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="667" TabOrder="9" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="683" Style="tx_left_bold" TabOrder="11" Text="발송일자" Top="27" Width="56"></Static>
+		<Static Height="15" Id="Static1" Left="37" Style="tx_left_bold" TabOrder="13" Text="센터명" Top="27" Width="40"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="22" TabOrder="10" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Combo BindDataset="ds_In" BKColor="user13" Border="Flat" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" Left="95" OnChanged="cob_BRAN_CD_OnChanged" Style="edit" TabOrder="1" ToolTipText="센터명" Top="22" Width="145"></Combo>
+		<Static Height="13" Id="Static7" Left="507" TabOrder="14" Text="~" Top="28" Width="9"></Static>
+		<Calendar BindDataset="ds_In" BKColor="user13" Border="Flat" Column="START_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_START_DAY" Left="398" LeftMargin="8" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="2" ToolTipText="기간_S" Top="24" Width="104"></Calendar>
+		<ubiviewer Bottom="832" Height="640" Id="ubiviewer0" Left="8" Right="1036" Top="192" Visible="FALSE" Width="1028">
+			<_PersistData>&#13;&#10;/6z5cV76/wAAAQA/agAA9yVCAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Calendar Border="Flat" Dateformat="yyyy/MM/dd" Height="20" Id="cal_send_day" Left="749" LeftMargin="8" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="4" Top="24" Width="104"></Calendar>
+		<Calendar BindDataset="ds_In" BKColor="user13" Border="Flat" Column="END_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_END_DAY" Left="522" LeftMargin="8" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="3" ToolTipText="기간_E" Top="24" Width="104"></Calendar>
+		<Button Appearance="FLAT" BKColor="user8" BorderColor="GRAYTEXT" Color="user12" Font="굴림,9,Bold" Height="24" Id="btn_pnt" Left="941" OnClick="btn_pnt_OnClick" TabOrder="11" TabStop="FALSE" Text="출력" Top="64" Width="75"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+var btn_print;		//출력을 클릭시에 전체 선책인지 전체 해지인지 확인
+
+function NewUpsoList_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	// 센터코드 가져오기	
+	this.ds_In.AddRow();
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	//start_day는 당월의 1일로 한다,. 
+	var s_day = substr(today(),0,6);
+	this.cal_START_DAY.Text = s_day + '01';
+	this.cal_END_DAY.Text = today();
+	this.cal_send_day = today();	
+	btn_print = 0;		//초반 출력 상태는 없음으로 규정
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //조회
+    if(strCode == "SEARCH")
+    {
+		fn_Search();
+	}
+	//출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+	
+}
+
+function fn_Search()
+{
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+
+	// 기간 유효성 검사
+	var start_day = this.cal_START_DAY.Value;
+	var end_day = this.cal_END_DAY.Value;
+
+	if (!fn_checkTerm(start_day, end_day)) {
+		gfn_Confirm("MB_OK", "시작기간이 종료기간보다 큽니다.", "경고", "0");	
+		this.cal_END_DAY.SetFocus();
+		return;
+	}
+	
+	this.ds_In.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.Value);
+	gfn_syncCall("syc_new_upso_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006011003&EVENTID=new_upso_list","S=ds_In","ds_new_upso_list=SEL1","","fn_CallBack");
+	var total = this.ds_new_upso_list.RowCount();
+
+	for(i=0; i<total; i++) 
+	{
+		this.ds_new_upso_list.SetColumn(i,"CCHECK",0);
+	}
+}
+
+function fn_Print()
+{
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	this.ds_new_upso_list_0.ClearData();
+	var check;
+	var n=0; //체크된 페이지만 저장
+	//gfn_syncCall("syc_new_upso_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006011003&EVENTID=new_upso_list","S=ds_In","ds_new_upso_list=SEL1","","fn_CallBack");
+	var total = this.ds_new_upso_list.RowCount();
+
+	for(var i=0; i<total; i++)
+	{   
+		if(this.ds_new_upso_list.GetColumn(i,"CCHECK")==1)
+		{  		
+			this.ds_new_upso_list_0.AddRow();
+			this.ds_new_upso_list_0.SetColumn(n,"UPSO_CD",this.ds_new_upso_list.GetColumn(i,"UPSO_CD"));
+			this.ds_new_upso_list_0.SetColumn(n,"UPSO_NM",this.ds_new_upso_list.GetColumn(i,"UPSO_NM"));
+			this.ds_new_upso_list_0.SetColumn(n,"MNGEMSTR_NM",this.ds_new_upso_list.GetColumn(i,"MNGEMSTR_NM"));
+			this.ds_new_upso_list_0.SetColumn(n,"RECV_ZIP",this.ds_new_upso_list.GetColumn(i,"RECV_ZIP"));
+			this.ds_new_upso_list_0.SetColumn(n,"RECV_ADDR",this.ds_new_upso_list.GetColumn(i,"RECV_ADDR"));
+			this.ds_new_upso_list_0.SetColumn(n,"AMT",this.ds_new_upso_list.GetColumn(i,"AMT"));
+			this.ds_new_upso_list_0.SetColumn(n,"NONPY_AMT",this.ds_new_upso_list.GetColumn(i,"NONPY_AMT"));
+			this.ds_new_upso_list_0.SetColumn(n,"ADDT_AMT",this.ds_new_upso_list.GetColumn(i,"ADDT_AMT"));
+			this.ds_new_upso_list_0.SetColumn(n,"EXT_ADDT_AMT",this.ds_new_upso_list.GetColumn(i,"EXT_ADDT_AMT"));
+			this.ds_new_upso_list_0.SetColumn(n,"DEMD_AMT",this.ds_new_upso_list.GetColumn(i,"DEMD_AMT"));
+			this.ds_new_upso_list_0.SetColumn(n,"BRAN_NM",this.ds_new_upso_list.GetColumn(i,"BRAN_NM"));
+			this.ds_new_upso_list_0.SetColumn(n,"BRAN_ADDR",this.ds_new_upso_list.GetColumn(i,"BRAN_ADDR"));
+			this.ds_new_upso_list_0.SetColumn(n,"BRAN_TEL",this.ds_new_upso_list.GetColumn(i,"BRAN_TEL"));
+			this.ds_new_upso_list_0.SetColumn(n,"BRAN_ZIP",this.ds_new_upso_list.GetColumn(i,"BRAN_ZIP"));
+			this.ds_new_upso_list_0.SetColumn(n,"YRMN",this.ds_new_upso_list.GetColumn(i,"YRMN"));
+			this.ds_new_upso_list_0.SetColumn(n,"RECV_NM",this.ds_new_upso_list.GetColumn(i,"RECV_NM"));
+			check = 1;
+			n++;
+		}
+	}
+
+
+		if(check ==1)
+		{
+			this.ubiviewer0.SetDataset("sql_new_upso_list","ds_new_upso_list_0");
+			this.ubiviewer0.SetArgument("BRAN_NM",this.cob_BRAN_CD.Text);
+			this.ubiviewer0.SetArgument("DATE", this.cal_send_day.Text);
+			ubiviewer0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+			ubiviewer0.setJrfFileName("bra08_r01.jrf");
+			ubiviewer0.Retrieve();
+			ubiviewer0.directPrint();
+		}
+}
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "syc_new_upso_list") {
+		gfn_SetStatusMsg(ds_new_upso_list.count + " 건이 조회되었습니다.");
+	}
+}
+//출력
+function btn_pnt_OnClick(obj)
+{
+	var i=0;
+	for(i=0; i<ds_new_upso_list.RowCount(); i++){
+		if(btn_print==1){
+			this.ds_new_upso_list.SetColumn(i,"CCHECK",0);
+		}
+		else this.ds_new_upso_list.SetColumn(i,"CCHECK",1);
+	}
+	if(btn_print ==0) btn_print =1;
+	else btn_print = 0;
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+/*
+	var s_day = substr(today(),0,6);
+	this.cal_START_DAY.Text = s_day + '01';
+	this.cal_END_DAY.Text = today();
+	this.cal_send_day = today();	
+*/
+	this.ds_new_upso_list.ClearData();
+	gfn_SetPermission(strCode);
+}]]></Script>
+</Window>

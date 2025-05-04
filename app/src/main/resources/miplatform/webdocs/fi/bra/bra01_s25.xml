@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra01_s25" Left="8" OnLoadCompleted="bra01_s25_OnLoadCompleted" OnSize="bra01_s25_OnSize" PidAttrib="7" Title="무선로그(유심업소&#32;매칭관리)리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL2" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<GBN></GBN>
+						<SERIAL1></SERIAL1>
+						<SERIAL2></SERIAL2>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list" OnRowPosChanged="ds_list_OnRowPosChange" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CO_PARING" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEM_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="USIM_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="USIM_MODEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEM_KIND" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_bscon">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search2">
+				<Contents>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_history">
+				<Contents>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEM_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="USIM_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="USIM_MODEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEM_KIND" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dup_result">
+				<Contents>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Rad_Gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>전체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>단일</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>복수</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>범위</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="440" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="368" Id="grd_list" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="57"/>
+						<col width="65"/>
+						<col width="128"/>
+						<col width="62"/>
+						<col width="69"/>
+						<col width="56"/>
+						<col width="140"/>
+						<col width="38"/>
+						<col width="83"/>
+						<col width="65"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="78"/>
+						<col width="140"/>
+						<col width="140"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업소코드"/>
+						<cell col="1" color="user12" display="text" text="센터명"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="업종"/>
+						<cell col="4" color="user12" display="text" text="반주기정보"/>
+						<cell col="5" color="user12" display="text" text="담당자명"/>
+						<cell col="6" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="7" color="user12" display="text" text="상태"/>
+						<cell col="8" color="user12" display="text" text="이동전화번호"/>
+						<cell col="9" color="user12" display="text" text="모뎀번호"/>
+						<cell col="10" color="user12" display="text" text="유심번호"/>
+						<cell col="11" color="user12" display="text" text="유심모델"/>
+						<cell col="12" color="user12" display="text" text="모뎀종류"/>
+						<cell col="13" color="user12" display="text" text="비고"/>
+						<cell col="14" color="user12" display="text" text="최종저장일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="UPSO_CD" display="text"/>
+						<cell align="center" col="1" colid="BRAN_nm" display="text"/>
+						<cell align="left" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="GRAD_NM" display="text"/>
+						<cell align="center" col="4" colid="BSCON_CD" combocol="CODE_CD" combodataset="ds_code_bscon" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="5" colid="STAFF_NM" display="text"/>
+						<cell align="center" col="6" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="7" colid="CO_PARING" display="text"/>
+						<cell align="center" col="8" colid="TEL_NO" display="text" edit="normal"/>
+						<cell align="center" col="9" colid="MODEM_NO" display="text" edit="normal"/>
+						<cell align="center" col="10" colid="USIM_NO" display="text" edit="normal"/>
+						<cell align="center" col="11" colid="USIM_MODEL" display="text" edit="normal"/>
+						<cell align="center" col="12" colid="MODEM_KIND" display="text" edit="normal"/>
+						<cell align="center" col="13" colid="BIGO" display="text" edit="normal"/>
+						<cell align="center" col="14" colid="INS_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Div Height="64" Id="Div0" Left="8" TabOrder="2" Text="Div0" Top="-8" Width="1032">
+			<Contents>
+				<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1021" TabOrder="3" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="8" TabOrder="4" TabStop="FALSE" Top="19" Width="1015"></Image>
+				<Image Height="41" Id="Image17" ImageID="C_search_left" Left="-16" TabOrder="3" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image Height="11" Id="Image0" ImageID="C_icon" Left="21" TabOrder="2" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="16" Id="Static5" Left="40" Style="tx_left_bold" TabOrder="2" Text="센터명" Top="35" Width="48"></Static>
+				<Image Height="41" Id="Image1" ImageID="C_search_left" TabOrder="5" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="90" TabOrder="1" ToolTipText="센터명" Top="30" Width="109"></Combo>
+				<Image Height="11" Id="Image4" ImageID="C_icon" Left="214" TabOrder="8" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="19" Id="Static2" Left="230" Style="tx_left_bold" TabOrder="9" Text="반주기정보보" Top="35" Width="64"></Static>
+				<Image Height="11" Id="Image5" ImageID="C_icon" Left="428" TabOrder="10" TabStop="FALSE" Top="36" Width="11"></Image>
+				<Static Height="19" Id="Static3" Left="444" Style="tx_left_bold" TabOrder="11" Text="검색구분" Top="36" Width="52"></Static>
+				<Image Height="11" Id="Image2" ImageID="C_icon" Left="718" TabOrder="12" TabStop="FALSE" Top="35" Visible="FALSE" Width="11"></Image>
+				<Static Height="19" Id="Static0" Left="734" Style="tx_left_bold" TabOrder="13" Text="시리얼1" Top="35" Visible="FALSE" Width="50"></Static>
+				<Image Height="11" Id="Image3" ImageID="C_icon" Left="870" TabOrder="14" TabStop="FALSE" Top="35" Visible="FALSE" Width="11"></Image>
+				<Static Height="19" Id="Static1" Left="888" Style="tx_left_bold" TabOrder="15" Text="시리얼2" Top="35" Visible="FALSE" Width="50"></Static>
+			</Contents>
+		</Div>
+		<Combo BorderColor="user3" CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_bscon_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_code_bscon" Left="312" OnChanged="cob_bscon_gbn_OnChanged" TabOrder="3" ToolTipText="담당직원" Top="22" Width="104"></Combo>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="17" TabOrder="5" Top="461" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static0" Left="40" Style="tx_bold" TabOrder="4" Text="유심관리&#32;히스토리" Top="464" Width="110"></Static>
+		<Grid AutoEnter="TRUE" BindDataset="ds_history" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="672" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="192" Id="grd_history" InputPanel="FALSE" Left="8" LineColor="silver" OnCellClick="grd_list_OnCellClick" Right="928" RowHeight="20" Style="grid" TabOrder="6" TabStop="true" Top="480" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="920">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="45"/>
+						<col width="140"/>
+						<col width="83"/>
+						<col width="65"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="78"/>
+						<col width="140"/>
+						<col width="140"/>
+						<col width="61"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="2" color="user12" display="text" text="이동전화번호"/>
+						<cell col="3" color="user12" display="text" text="모뎀번호"/>
+						<cell col="4" color="user12" display="text" text="유심번호"/>
+						<cell col="5" color="user12" display="text" text="유심모델"/>
+						<cell col="6" color="user12" display="text" text="모뎀종류"/>
+						<cell col="7" color="user12" display="text" text="비고"/>
+						<cell col="8" color="user12" display="text" text="최종저장일시"/>
+						<cell col="9" color="user12" display="text" text="수정자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEQ" display="text"/>
+						<cell align="center" col="1" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="2" colid="TEL_NO" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="MODEM_NO" display="text" edit="normal"/>
+						<cell align="center" col="4" colid="USIM_NO" display="text" edit="normal"/>
+						<cell align="center" col="5" colid="USIM_MODEL" display="text" edit="normal"/>
+						<cell align="center" col="6" colid="MODEM_KIND" display="text" edit="normal"/>
+						<cell align="center" col="7" colid="BIGO" display="text" edit="normal"/>
+						<cell align="center" col="8" colid="INS_DATE" display="text"/>
+						<cell align="center" col="9" colid="INSPRES_ID" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Right" Color="red" Height="12" Id="Static1" Left="639" TabOrder="7" Text='*&#32;로그기시리&#32;앞자리&#32;&quot;C038E0EB00000000&quot;은&#32;자동으로&#32;포함됩니다.' Top="56" Width="400"></Static>
+		<Edit BindDataset="ds_search" Column="SERIAL1" Height="20" Id="edt_Serial1" Left="798" MaxLength="4" TabOrder="8" Top="23" Visible="FALSE" Width="66"></Edit>
+		<Edit BindDataset="ds_search" Column="SERIAL2" Height="20" Id="edt_Serial2" Left="950" MaxLength="4" TabOrder="9" Top="23" Visible="FALSE" Width="66"></Edit>
+		<Radio BindDataset="ds_search" BKColor="whitesmoke" Border="None" CodeColumn="CODE_CD" Column="GBN" ColumnCount="4" DataColumn="CODE_NM" Height="20" Id="rad_Search_Gbn" INDEX="0" InnerDataset="ds_Rad_Gbn" Left="513" OnChanged="rad_Search_Gbn_OnChanged" Style="radio" TabOrder="10" Top="24" Width="200"></Radio>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+function bra01_s25_OnLoadCompleted(obj)
+{	gfn_LoadForm(obj);
+	gfn_ObjreSize(grd_reslut,this,1,0);
+	
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(Div0.cob_BRAN_CD, 0);
+	
+	//gfn_SetPermission(cob_BRAN_CD.Value);
+	
+	gfn_PubCode("ds_code_bscon", 1, "00429");
+	//trace(this.ds_code_bscon.SaveXML());
+	
+	rad_Search_Gbn.Index = 0;
+}
+
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	return;}
+
+//조회
+function fn_Search(){
+    if (!gfn_CheckFormNull(Div0)) return;
+    if(!gfn_changeAction("SEARCH", "ds_list")) return;
+    
+    if(rad_Search_Gbn.Value == 2)
+    {
+		if(length(edt_Serial1.Text) < 1)
+		{
+			alert("로그기 시리얼번호를 입력하셔야 합니다.");
+			return;
+		}
+    }
+    if(rad_Search_Gbn.Value == 3 || rad_Search_Gbn.Value == 4)
+    {
+		if(length(edt_Serial1.Text) < 1 || length(edt_Serial2.Text) < 1)
+		{
+			alert("로그기 시리얼번호는 두개를 모두 입력하셔야 합니다.");
+			return;
+		}
+	}
+
+    //trace(this.ds_search.SaveXML());
+    gfn_syncCall("get_usim_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004025&EVENTID=get_usim_list","S=ds_search","ds_list=MRG5","","fn_CallBack", gv_TraceLog, gv_formid);
+    //trace(this.ds_list.SaveXML());
+}
+
+//저장
+function fn_Save(){
+	//수정한 데이터 중에서 중복찾기
+	if (!fn_check_dup_in_ds()) {
+		return false;
+	}
+	
+	//중복찾고, 중복 없으면 저장
+	gfn_syncCall("save_usim","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004025&EVENTID=save_usim","S=ds_list:U","ds_dup_result=ADD4","","fn_CallBack", gv_TraceLog, gv_formid);
+	if (ds_dup_result.GetRowCount() > 0) {
+		var message = "중복된 값이 있어 저장할 수 없습니다. \n 중복이 발생한 로그기시리얼 쌍의 정보는 아래와 같습니다.\n";
+		for(var i=0; i<ds_dup_result.GetRowCount(); i++) {
+			message = message + ds_dup_result.GetColumn(i, "SERIAL_NO") + "\n";
+		}
+		alert(message);
+	} else {
+		gfn_SetStatusMsg("저장이 완료 되었습니다.");
+	}
+}
+
+function fn_check_dup_in_ds()
+{
+	var t_tel_no = "";
+	var t_modem_no = "";
+	var t_usim_no = "";
+	
+	for (var i=0; i < this.ds_list.GetRowCount(); i++) {
+		t_tel_no = this.ds_list.GetColumn(i, "TEL_NO");
+		t_modem_no = this.ds_list.GetColumn(i, "MODEM_NO");
+		t_usim_no = this.ds_list.GetColumn(i, "USIM_NO");
+		
+		for(var j=i+1; j < this.ds_list.GetRowCount(); j++) {
+			if (t_tel_no != null && t_tel_no != '' && t_tel_no == this.ds_list.GetColumn(j, "TEL_NO")){
+				alert("중복된 값이 있어 저장할 수 없습니다. \n로그기시리얼 " + this.ds_list.GetColumn(i, "SERIAL_NO") + ", " + this.ds_list.GetColumn(j, "SERIAL_NO"));
+				return false;
+			} else if (t_modem_no != null && t_modem_no != '' && t_modem_no == this.ds_list.GetColumn(j, "MODEM_NO")){
+				alert("중복된 값이 있어 저장할 수 없습니다. \n로그기시리얼 " + this.ds_list.GetColumn(i, "SERIAL_NO") + ", " + this.ds_list.GetColumn(j, "SERIAL_NO"));
+				return false;
+			} else if (t_usim_no != null && t_usim_no != '' && t_usim_no == this.ds_list.GetColumn(j, "USIM_NO")){
+				alert("중복된 값이 있어 저장할 수 없습니다. \n로그기시리얼 " + this.ds_list.GetColumn(i, "SERIAL_NO") + ", " + this.ds_list.GetColumn(j, "SERIAL_NO"));
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+//엑셀출력
+function fn_Excel(){
+    grd_list.ExportExcelEx("유심업소 매칭관리");
+}
+
+//CallBack
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+
+	switch(srvId)
+	{
+		case "get_usim_list" :
+			set_filter();
+			ds_list_OnRowPosChange();
+			break;
+		default :
+			break;
+	}
+}
+
+function bra01_s25_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_list,this,1,0);
+}
+
+function cob_bscon_gbn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	set_filter();
+}
+
+function set_filter(){
+	var gbn = this.cob_bscon_gbn.Value;
+	
+	if (gbn == "%") {
+		this.ds_list.UnFilter();
+	} else {	//반주기정보를 태진 혹은 금영을 선택했을때.
+		this.ds_list.Filter("BSCON_CD='"+ gbn+"'");
+	}
+}
+
+function ds_list_OnRowPosChange(obj,nOldRow,nRow)
+{
+	this.ds_search2.ClearData();
+	this.ds_search2.AddRow();
+	this.ds_search2.setcolumn(0, "SERIAL_NO", this.ds_list.GetColumn(ds_list.currow, "SERIAL_NO"));
+	
+	//trace(this.ds_search2.SaveXML());
+    gfn_syncCall("get_usim_history","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004025&EVENTID=get_usim_history","S=ds_search2","ds_history=SEL1","","fn_CallBack", gv_TraceLog, gv_formid);
+    //trace(this.ds_history.SaveXML());
+}
+
+function rad_Search_Gbn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	switch(strCode)
+	{
+	case 1 :
+		Div0.image2.Visible = false;
+		Div0.image3.Visible = false;
+		Div0.Static0.Visible = false;
+		Div0.Static1.Visible = false;
+		edt_Serial1.Visible = false;
+		edt_Serial2.Visible = false;
+		//edt_Serial1.Text = "";
+		//edt_Serial2.Text = "";
+		break;
+	case 2 :
+		Div0.image2.Visible = true;
+		Div0.image3.Visible = false;
+		Div0.Static0.Visible = true;
+		Div0.Static1.Visible = false;
+		edt_Serial1.Visible = true;
+		edt_Serial2.Visible = false;
+		//edt_Serial2.Text = "";
+		break;
+	case 3 :
+	case 4 :
+		Div0.image2.Visible = true;
+		Div0.image3.Visible = true;
+		Div0.Static0.Visible = true;
+		Div0.Static1.Visible = true;
+		edt_Serial1.Visible = true;
+		edt_Serial2.Visible = true;
+		break;
+	}
+}
+]]></Script>
+</Window>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" PidAttrib="7" Title="지로발송대비회수금액현황" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0_0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<colinfo id="column1" size="256" type="STRING"/>
+					<colinfo id="column2" size="256" type="STRING"/>
+					<colinfo id="column3" size="256" type="STRING"/>
+					<colinfo id="column4" size="256" type="STRING"/>
+					<colinfo id="column5" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="Dataset0"></Dataset>
+		</Datasets>
+		<Image Height="16" Id="Image3" ImageID="C_icon1" Left="8" TabOrder="0" Top="8" Width="17"></Image>
+		<Static Height="15" Id="Static3" Left="28" Style="tx_c_bold" TabOrder="0" Text="통계관리_지로발송대비회수금액통계" Top="8" Width="266"></Static>
+		<Grid BindDataset="Dataset0_0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="404" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="312" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1040" RowHeight="20" Style="grid" TabOrder="3" TabStop="true" Top="92" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="130"/>
+						<col width="130"/>
+						<col width="130"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="미납월수"/>
+						<cell col="1" color="user12" display="text" text="발송업소"/>
+						<cell col="2" color="user12" display="text" text="회수업소"/>
+						<cell col="3" color="user12" display="text" text="미회수업소수"/>
+						<cell col="4" color="user12" display="text" text="청구금액"/>
+						<cell col="5" color="user12" display="text" text="징수금액"/>
+						<cell col="6" color="user12" display="text" text="미징수금액"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="92" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="3" Top="89" Type="Rectangle" Width="1032"></Shape>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="5" TabStop="FALSE" Top="41" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="6" TabStop="FALSE" Top="41" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="7" TabStop="FALSE" Top="41" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="654" TabOrder="6" TabStop="FALSE" Top="56" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="671" Style="tx_left_bold" TabOrder="7" Text="센터코드/명" Top="56" Width="72"></Static>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit2" Left="766" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="8" Top="52" Width="30"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit3" Left="798" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="9" Top="52" Width="120"></Edit>
+		<Static Height="15" Id="Static0" Left="295" Style="tx_left_bold" TabOrder="11" Text="회수기간" Top="56" Width="54"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="279" TabOrder="10" TabStop="FALSE" Top="56" Width="11"></Image>
+		<Combo Border="Flat" Height="20" Id="Combo16" Left="368" Style="edit" TabOrder="14" Text="&#32;2008-10-01" Top="51" Width="100"></Combo>
+		<Image Height="16" Id="Image2" ImageID="s_04" Left="469" LeftMargin="0" TabOrder="12" TabStop="FALSE" Top="54" Width="14"></Image>
+		<Combo Border="Flat" Height="20" Id="Combo0" Left="498" Style="edit" TabOrder="16" Text="&#32;2008-10-28" Top="51" Width="100"></Combo>
+		<Image Height="16" Id="Image1" ImageID="s_04" Left="599" LeftMargin="0" TabOrder="13" TabStop="FALSE" Top="54" Width="14"></Image>
+		<Static Height="9" Id="Static2" Left="487" TabOrder="14" Text="~" Top="57" Width="13"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="31" TabOrder="19" TabStop="FALSE" Top="56" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="47" Style="tx_left_bold" TabOrder="20" Text="발송년월" Top="56" Width="54"></Static>
+		<Combo Border="Flat" Height="20" Id="Combo1" Left="120" Style="edit" TabOrder="22" Text="&#32;2008-10" Top="51" Width="100"></Combo>
+		<Image Height="16" Id="Image5" ImageID="s_04" Left="221" LeftMargin="0" TabOrder="21" TabStop="FALSE" Top="54" Width="14"></Image>
+		<Grid BindDataset="Dataset0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="728" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="312" Id="Grid1" InputPanel="FALSE" Left="8" LineColor="silver" Right="1040" RowHeight="20" Style="grid" TabOrder="23" TabStop="true" Top="416" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="130"/>
+						<col width="130"/>
+						<col width="130"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="직원명"/>
+						<cell col="1" color="user12" display="text" text="발송업소"/>
+						<cell col="2" color="user12" display="text" text="회수업소"/>
+						<cell col="3" color="user12" display="text" text="미회수업소수"/>
+						<cell col="4" color="user12" display="text" text="청구금액"/>
+						<cell col="5" color="user12" display="text" text="징수금액"/>
+						<cell col="6" color="user12" display="text" text="미징수금액"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="416" Height="3" Id="Shape1" Left="8" LineColor="user7" Right="1040" TabOrder="23" Top="413" Type="Rectangle" Width="1032"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button12" ImageID="C_btn_70" Left="664" LeftMargin="28" Style="edit" TabOrder="29" Text="저장" Top="8" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button11" ImageID="C_btn_70" Left="740" LeftMargin="28" Style="edit" TabOrder="28" Text="추가" Top="8" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button8" ImageID="C_btn_70" Left="816" LeftMargin="28" Style="edit" TabOrder="27" Text="삭제" Top="8" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button3" ImageID="C_btn_70" Left="892" LeftMargin="28" Style="edit" TabOrder="25" Text="출력" Top="8" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button10" ImageID="C_btn_70" Left="968" LeftMargin="28" Style="edit" TabOrder="26" Text="닫기" Top="8" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button5" ImageID="C_btn_70" Left="587" LeftMargin="28" Style="edit" TabOrder="30" Text="조회" Top="8" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="Button9" ImageID="C_btn_70" Left="510" LeftMargin="28" Style="edit" TabOrder="31" Text="신규" Top="8" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[
+function Edit0_OnChanged(obj,strText)
+{
+	
+}
+
+function Edit4_OnChanged(obj,strText)
+{
+	
+}
+
+
+
+function Button00_OnClick(obj)
+{
+	
+}
+
+function Button0_OnClick(obj)
+{
+	
+}
+
+function List0_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	
+}
+]]></Script>
+</Window>

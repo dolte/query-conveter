@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="528" Id="env06_r01" Left="8" OnLoadCompleted="env06_r01_OnLoadCompleted" PidAttrib="7" Title="문자보내기" Top="8" Ver="1.0" Width="728" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_schedule">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="name" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>0</code>
+						<name>즉시</name>
+					</record>
+					<record>
+						<code>1</code>
+						<name>예약</name>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Virtual_temp">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPTPRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Virtual_In">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="gds_sms_send" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="248" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="232" Id="grd_sms" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellClick="grd_sms_OnCellClick" Right="712" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="16" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="696">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="39"/>
+						<col width="48"/>
+						<col width="108"/>
+						<col width="123"/>
+						<col width="95"/>
+						<col width="102"/>
+						<col width="244"/>
+						<col width="85"/>
+						<col width="85"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="No"/>
+						<cell col="1" display="text" text="구분"/>
+						<cell col="2" display="text" text="예약발송일자"/>
+						<cell col="3" display="text" text="제목"/>
+						<cell col="4" display="text" text="이름"/>
+						<cell col="5" display="text" text="전화번호"/>
+						<cell col="6" display="text" text="메세지"/>
+						<cell col="7" display="text" text="회신번호"/>
+						<cell col="8" display="text" text="Error"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="No" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="SCHEDULE_TYPE" combocol="code" combodataset="ds_schedule" combotext="name" display="combo" limit="6"/>
+						<cell col="2" colid="SEND_DATE" display="text" limit="120"/>
+						<cell col="3" colid="SUBJECT" display="text" limit="20"/>
+						<cell col="4" colid="NAME" display="text"/>
+						<cell col="5" colid="PHNUM" display="text"/>
+						<cell col="6" colid="SMS_MSG" display="text" limit="200"/>
+						<cell col="7" colid="CALLBACK" display="text" limit="4"/>
+						<cell col="8" colid="ERR_CHK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<TextArea BindDataset="gds_sms_send" Border="Flat" BorderColor="user3" CheckLength="Byte" Column="SMS_MSG" Font="굴림체,10" Height="168" Id="txt_msg" ImeMode="none" Left="69" MaxLength="1000" OnCharChanged="txt_msg_OnChanged" TabOrder="2" Text="가나다라&#32;마바사아자" Top="288" Width="120"></TextArea>
+		<TextArea BindDataset="gds_sms_send" Border="Flat" BorderColor="user3" Column="SUBJECT" Font="굴림체,10" Height="24" Id="TextArea1" Left="69" TabOrder="3" Text="제목" Top="256" Width="616"></TextArea>
+		<Static Color="user1" Height="19" Id="Static02" Left="20" TabOrder="4" Text="제목" Top="261" Width="60"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="6" TabOrder="5" TabStop="FALSE" Top="261" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static0" Left="20" TabOrder="6" Text="메세지" Top="293" Width="60"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="6" TabOrder="7" TabStop="FALSE" Top="293" Width="11"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="435" TabOrder="9" TabStop="FALSE" Top="285" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static1" Left="449" TabOrder="8" Text="Error" Top="285" Width="60"></Static>
+		<TextArea BindDataset="gds_sms_send" Border="Flat" BorderColor="user3" Column="ERR_CHK" Font="굴림체,10" Height="179" Id="TextArea2" Left="432" Readonly="TRUE" TabOrder="10" Text="가나다라&#32;마바사아자" Top="298" Width="280"></TextArea>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_Sms_Send" ImageID="C_btn_70" Left="480" LeftMargin="28" OnClick="btn_Sms_Send_OnClick" Style="edit" TabOrder="11" Text="발송" Top="488" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="C_btn_70" Left="640" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="12" Text="취소" Top="488" TopMargin="1" Width="71"></Button>
+		<Edit Align="RIGHT" Border="Flat" BorderColor="user3" Height="21" Id="edt_cnt" Left="69" Readonly="TRUE" TabOrder="13" Top="456" Width="120"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_delete" ImageID="C_btn_70" Left="560" LeftMargin="28" OnClick="btn_delete_OnClick" Style="edit" TabOrder="14" Text="삭제" Top="488" TopMargin="1" Width="71"></Button>
+		<Button Height="26" Id="Button0" Left="8" OnClick="Button0_OnClick" TabOrder="15" Text="T.D" Top="448" Visible="FALSE" Width="57"></Button>
+		<Edit Align="RIGHT" BindDataset="gds_sms_send" Border="Flat" BorderColor="user3" Column="PHNUM" Enable="FALSE" Height="21" Id="Edit0" Left="69" TabOrder="16" Top="488" Width="120"></Edit>
+		<Edit Align="RIGHT" BindDataset="gds_sms_send" Border="Flat" BorderColor="user3" Column="CALLBACK" Enable="FALSE" Height="21" Id="Edit1" Left="288" TabOrder="17" Top="488" Width="120"></Edit>
+		<Button Height="22" Id="Btn_msg" Left="8" OnClick="Btn_msg_OnClick" TabOrder="18" Text="일괄적용" Top="312" Width="57"></Button>
+		<Static Color="user1" Height="19" Id="Static2" Left="240" TabOrder="19" Text="회신번호" Top="495" Width="60"></Static>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="225" TabOrder="20" TabStop="FALSE" Top="495" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static3" Left="20" TabOrder="21" Text="수신번호" Top="495" Width="60"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="6" TabOrder="22" TabStop="FALSE" Top="495" Width="11"></Image>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="205" TabOrder="24" TabStop="FALSE" Top="285" Width="11"></Image>
+		<Static Color="user1" Height="19" Id="Static4" Left="219" TabOrder="23" Text="Info" Top="285" Width="60"></Static>
+		<TextArea Border="Flat" BorderColor="user3" Font="굴림체,10" Height="179" Id="txt_info" Left="208" Readonly="TRUE" TabOrder="25" Text="가나다라&#32;마바사아자" Top="296" Width="222"></TextArea>
+	</Form>
+	<Script><![CDATA[/* include */#include "script::common.js"  // 공통 js (프로그램 수행중 사용될 함수를 모아둔곳)#include "script::commDs.js"
+var err_cnt;
+var v_bran_cd = "";
+
+function env06_r01_OnLoadCompleted(obj)
+{
+	//fn_makesms();
+	//fn_ChkSms();	
+	if (gds_sessioninfo.GetColumn(0, "DEPT_CD") = "122040100") {
+		Button0.Visible = true;
+		Edit0.Enable = true;
+		Edit1.Enable = true;
+	}
+	
+	var rowcnt = Object(dsName).count -1;
+	
+	txt_info.Text = "업소코드:" + Object(dsName).GetColumn(rowcnt, "UPSO_CD") + "\n"
+	              + "업소명:" +   Object(dsName).GetColumn(rowcnt, "UPSO_NM") + "\n"
+	              + "업주명:" +   Object(dsName).GetColumn(rowcnt, "MNGEMSTR_NM") + "\n"
+	              + "청구금액:" +   Object(dsName).GetColumn(rowcnt, "TOT_DEMD_AMT") + "원\n\n";
+	
+	ds_Virtual_In.SetColumn(0, "UPSO_CD", Object(dsName).GetColumn(rowcnt, "UPSO_CD"));
+			
+	gfn_syncCall("svcSearchInfo","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005024&EVENTID=sel_virtual_temp","S=ds_Virtual_In","ds_Virtual_temp=SEL1","","fn_CallBack");
+	
+	if(ds_Virtual_temp.rowcount > 0)
+	{
+		txt_info.Text += ds_Virtual_temp.GetColumn(0, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(0, "ACCN_NUM");
+		
+		if(ds_Virtual_temp.rowcount > 1 && ds_Virtual_temp.GetColumn(1, "USE_YN") == "Y")
+		{
+			txt_info.Text += "\n" + ds_Virtual_temp.GetColumn(1, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(1, "ACCN_NUM");
+		}
+		if(ds_Virtual_temp.rowcount > 2 && ds_Virtual_temp.GetColumn(2, "USE_YN") == "Y")
+		{
+			txt_info.Text += "\n" + ds_Virtual_temp.GetColumn(2, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(2, "ACCN_NUM");
+		}
+	}
+	
+	txt_info.Text += "\n예금주명:" + ds_Virtual_temp.GetColumn(0, "REPTPRES");
+}
+/*
+function Fn_MakeSms()
+{
+	gds_sms_send.ClearData();
+	gds_sms_send.AddRow();
+	var rcnt = gds_sms_send.currow;
+	gds_sms_send.SetColumn(rcnt,"USER_ID","a00001");
+	gds_sms_send.SetColumn(rcnt,"SCHEDULE_TYPE","0");
+	gds_sms_send.SetColumn(rcnt,"SUBJECT","안녕하세요");
+	gds_sms_send.SetColumn(rcnt,"SEND_DATE","200912182130");
+	gds_sms_send.SetColumn(rcnt,"SMS_MSG","안녕하세요 음저협입니다.");
+	gds_sms_send.SetColumn(rcnt,"CALLBACK","01092563487");
+	gds_sms_send.SetColumn(rcnt,"NAME","이광노");
+	gds_sms_send.SetColumn(rcnt,"PHNUM","01092563487");
+	
+	gds_sms_send.AddRow();
+	var rcnt = gds_sms_send.currow;
+	gds_sms_send.SetColumn(rcnt,"USER_ID","M00001");
+	gds_sms_send.SetColumn(rcnt,"SCHEDULE_TYPE","0");
+	gds_sms_send.SetColumn(rcnt,"SUBJECT","안녕하세요");
+	gds_sms_send.SetColumn(rcnt,"SEND_DATE","200912182130");
+	gds_sms_send.SetColumn(rcnt,"SMS_MSG","안녕하세요 음저협입니다.");
+	gds_sms_send.SetColumn(rcnt,"CALLBACK","01092563487");
+	gds_sms_send.SetColumn(rcnt,"NAME","이광노");
+	gds_sms_send.SetColumn(rcnt,"PHNUM","01092563487");
+
+}
+*/
+function btn_Sms_Send_OnClick(obj)
+{
+/*
+	fn_Chksms();
+	if (err_cnt == 0){
+		var btn_style = "MB_YESNO";
+		var str_msg = "수신자에게 실제로 문자가 발송됩니다.\n발송 하시겠습니까?";
+		var title = "최종 발송 확인";
+		var focus = "1";
+		var rtn = gfn_Confirm(btn_style, str_msg, title, focus);	
+		if (rtn = 6) {
+			fn_MakeSms();
+			trace(gds_sdk_sms_send.saveXML() );
+			gfn_syncCall("sms_send_save","KOMCA?SYSID=PATHFINDER&MENUID=1000006001010&EVENTID=sms_send_save_sdk","S=gds_sdk_sms_send:U","","","gfn_CallBack");
+		}
+	}
+	else
+	{
+		alert("발송 형식에 오류가 있습니다.\n확인후 발송 하십시오");
+	}*/
+	fn_SetKakao();
+	var rtn = gfn_ChkKakao();
+	if(rtn)
+	{
+		gfn_SyncCall("svcSendKakao","KOMCA?SYSID=PATHFINDER&MENUID=1000006001010&EVENTID=send_kakao_msg","S=gds_kakao:U","","","gfn_CallBack");
+	}
+}
+
+function txt_msg_OnChanged(obj,strText)
+{
+	var len_msg = lengthb(txt_msg.Text);
+	if (len_msg <= 80) {
+		edt_cnt.text = lengthb(txt_msg.Text) + "/80";
+	} else {
+		edt_cnt.text = lengthb(txt_msg.Text) + "/1000";
+	}
+
+}
+
+function ds_schedule_CanRowPosChange(obj,nOldRow,nRow)
+{
+	
+}
+
+function grd_sms_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var sms_msg = grd_sms.GetCellText("body",nRow,6);
+	var tot_len = 80;
+	if (lengthb(sms_msg) > 80) {
+		tot_len = 1000;
+	}
+	edt_cnt.text = lengthb(sms_msg) + "/" + tot_len;
+	
+	txt_info.Text = "업소코드:" + Object(dsName).GetColumn(nRow, "UPSO_CD") + "\n"
+	              + "업소명:" +   Object(dsName).GetColumn(nRow, "UPSO_NM") + "\n"
+	              + "업주명:" +   Object(dsName).GetColumn(nRow, "MNGEMSTR_NM") + "\n"
+	              + "청구금액:" +   Object(dsName).GetColumn(nRow, "TOT_DEMD_AMT") +"\n\n";
+
+	
+	ds_Virtual_In.SetColumn(0, "UPSO_CD", Object(dsName).GetColumn(nRow, "UPSO_CD"));
+			
+	gfn_syncCall("svcSearchInfo","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005024&EVENTID=sel_virtual_temp","S=ds_Virtual_In","ds_Virtual_temp=SEL1","","fn_CallBack");
+	
+	txt_info.Text += ds_Virtual_temp.GetColumn(0, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(0, "ACCN_NUM");
+	
+	if(ds_Virtual_temp.rowcount > 1 && ds_Virtual_temp.GetColumn(1, "USE_YN") == "Y")
+	{
+		txt_info.Text += "\n" + ds_Virtual_temp.GetColumn(1, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(1, "ACCN_NUM");
+	}
+	if(ds_Virtual_temp.rowcount > 2 && ds_Virtual_temp.GetColumn(2, "USE_YN") == "Y")
+	{
+		txt_info.Text += "\n" + ds_Virtual_temp.GetColumn(2, "BANK_NM") + ": " + ds_Virtual_temp.GetColumn(2, "ACCN_NUM");
+	}
+	
+	txt_info.Text +=  Object(dsName).GetColumn(nRow, "ACCN_OWNER");
+}
+
+function Button0_OnClick(obj)
+{
+	gds_sms_send.ClearData();
+	gds_sms_send.AddRow();
+	var rcnt = gds_sms_send.currow;
+	gds_sms_send.SetColumn(rcnt,"USER_ID","U0107037A");
+	gds_sms_send.SetColumn(rcnt,"SCHEDULE_TYPE","0");
+	gds_sms_send.SetColumn(rcnt,"SUBJECT","발송테스트");
+	gds_sms_send.SetColumn(rcnt,"SEND_DATE",GetDate());
+	gds_sms_send.SetColumn(rcnt,"SMS_MSG","테스트 발송 내용 1");
+	gds_sms_send.SetColumn(rcnt,"CALLBACK","01092563487");
+	gds_sms_send.SetColumn(rcnt,"NAME","홍길동");
+	gds_sms_send.SetColumn(rcnt,"PHNUM","01092563487");
+
+	gds_sms_send.AddRow();
+	var rcnt = gds_sms_send.currow;
+	gds_sms_send.SetColumn(rcnt,"USER_ID","U0107037A");
+	gds_sms_send.SetColumn(rcnt,"SCHEDULE_TYPE","0");
+	gds_sms_send.SetColumn(rcnt,"SUBJECT","발송테스트");
+	gds_sms_send.SetColumn(rcnt,"SEND_DATE",GetDate());
+	gds_sms_send.SetColumn(rcnt,"SMS_MSG","테스트 발송 내용 2");
+	gds_sms_send.SetColumn(rcnt,"CALLBACK","01092563487");
+	gds_sms_send.SetColumn(rcnt,"NAME","홍길동");
+	gds_sms_send.SetColumn(rcnt,"PHNUM","01092563487");
+
+}
+
+
+
+/*====================================================================
+* FUNCTION NAME     : fn_ChkSms()
+* FUNCTION DESC 	: sms 문자 발송할 내역을 check
+* @param            : 없음
+*          
+=====================================================================*/
+function fn_ChkSms()
+{
+	var rcnt = gds_sms_send.RowCount();
+	err_cnt = 0;
+	var err_type;
+	gds_sdk_sms_send.ClearData();
+	err_cnt =0;
+	for (var i = 0 ; i < rcnt ; i++){
+		gds_sdk_sms_send.AddRow();
+		err_type = "";
+		gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		var user_id = gds_sms_send.GetColumn(i,"USER_ID");
+		if (mid(user_id,0,1) == "M" or mid(user_id,0,1) == "U" or mid(user_id,0,1) == "C"){
+			//gds_sdk_sms_send.SetColumn(i,"USER_ID",user_id);
+		} else {
+			err_cnt++;
+			err_type = "ID구분 오류 \n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var schedule_type = gds_sms_send.GetColumn(i,"SCHEDULE_TYPE");
+		if (schedule_type == "0" or schedule_type == "1"){
+			//gds_sdk_sms_send.SetColumn(i,"SCHEDULE_TYPE",schedule_type);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 예약구분 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var subject = gds_sms_send.GetColumn(i,"SUBJECT");
+		if (lengthb(subject) < 50 and lengthb(subject) > 0){
+			//gds_sdk_sms_send.SetColumn(i,"SUBJECT",subject);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 제목길이오류 1~50문자 : "+lengthb(subject)+"\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var sms_msg = gds_sms_send.GetColumn(i,"SMS_MSG");
+		if (lengthb(sms_msg) <= 1000 and lengthb(sms_msg) > 0){
+			//gds_sdk_sms_send.SetColumn(i,"SMS_MSG",sms_msg);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 메세지길이오류 1~1000문자 : "+lengthb(sms_msg)+"\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var send_date = gds_sms_send.GetColumn(i,"SEND_DATE");
+		if (schedule_type == "1") { //예약일경우만
+			if (gfn_IsDateYMD(mid(send_date,0,8)) == 0) {/* 날짜 체크 */
+				//gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+			} else {
+				err_cnt++;
+				err_type = err_type + " 날짜 오류\n";
+				gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			}
+			if (gfn_IsTimeHHMM(mid(send_date,8,4)) == 0) { /* 시간 체크 */
+				//gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+			} else {
+				err_cnt++;
+				err_type = err_type + " 시간 오류\n";
+				gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			}
+		} else {
+			gds_sms_send.SetColumn(i,"send_date",GetDate()); /* 즉시일경우 현재 시간 */
+		}
+		var callback = gds_sms_send.GetColumn(i,"CALLBACK");
+		if (lengthb(callback) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"CALLBACK",callback);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 회신번호없음 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		//gds_sdk_sms_send.SetColumn(i,"KT_OFFICE_CODE","");
+		//gds_sdk_sms_send.SetColumn(i,"CDR_ID","");
+		//gds_sdk_sms_send.SetColumn(i,"DEST_TYPE","0");
+		//gds_sdk_sms_send.SetColumn(i,"DEST_COUNT","1");
+		var name = gds_sms_send.GetColumn(i,"NAME");
+		if (lengthb(name) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"name",name);
+			if (length(name) > 6) {
+				gds_sms_send.SetColumn(i,"NAME", substr(name,0,6));
+			}
+		} else {
+			err_cnt++;
+			err_type = err_type + " 이름없음 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+
+		var phnum = replace(gds_sms_send.GetColumn(i,"PHNUM"),"-","");
+		if (lengthb(phnum) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"PHNUM",PHNUM);
+		} else {
+			//err_cnt++;
+			err_type = err_type + " 전화번호없음 오류\n";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+
+		//gds_sdk_sms_send.SetColumn(i,"DEST_INFO",name+"^"+phnum);
+	}
+}
+
+function fn_MakeSms()
+{
+	var rcnt = gds_sms_send.RowCount();
+	err_cnt = 0;
+	var err_type;
+	gds_sdk_sms_send.ClearData();
+	err_cnt =0;
+	for (var i = 0 ; i < rcnt ; i++){
+		gds_sdk_sms_send.AddRow();
+		err_type = "";
+		var user_id = gds_sms_send.GetColumn(i,"USER_ID");
+		gds_sdk_sms_send.SetColumn(i,"USER_ID",mid(user_id,1,length(user_id)-1));
+
+		var schedule_type = gds_sms_send.GetColumn(i,"SCHEDULE_TYPE");
+		gds_sdk_sms_send.SetColumn(i,"SCHEDULE_TYPE",schedule_type);
+
+		var subject = gds_sms_send.GetColumn(i,"SUBJECT");
+		gds_sdk_sms_send.SetColumn(i,"SUBJECT",subject);
+
+		var sms_msg = gds_sms_send.GetColumn(i,"SMS_MSG");
+		gds_sdk_sms_send.SetColumn(i,"SMS_MSG",sms_msg);
+
+		var send_date = gds_sms_send.GetColumn(i,"SEND_DATE");
+		gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+
+		var callback = gds_sms_send.GetColumn(i,"CALLBACK");
+		gds_sdk_sms_send.SetColumn(i,"CALLBACK",callback);
+		gds_sdk_sms_send.SetColumn(i,"KT_OFFICE_CODE","");
+		gds_sdk_sms_send.SetColumn(i,"CDR_ID","");
+		gds_sdk_sms_send.SetColumn(i,"DEST_TYPE","0");
+		gds_sdk_sms_send.SetColumn(i,"DEST_COUNT","1");
+		var name = gds_sms_send.GetColumn(i,"NAME");
+		var phnum = replace(gds_sms_send.GetColumn(i,"PHNUM"),"-","");
+		gds_sdk_sms_send.SetColumn(i,"DEST_INFO",name+"^"+phnum);
+
+		gds_sdk_sms_send.SetColumn(i,"RESERVED1",gds_sessioninfo.GetColumn(0,"STAFF_NUM"));
+		gds_sdk_sms_send.SetColumn(i,"RESERVED2",mid(user_id,0,1));
+		gds_sdk_sms_send.SetColumn(i,"SEND_STATUS","0");
+		
+		gds_sdk_sms_send.SetColumn(i,"RESERVED3", ""+lengthb(gds_sms_send.GetColumn(i, "SMS_MSG")) );
+		
+		gds_sdk_sms_send.SetColumn(i,"RESERVED4", Object(dsName).GetColumn(i, "FORM_ID"));
+		
+		gds_sdk_sms_send.SetColumn(i,"RESERVED5", Object(dsName).GetColumn(i, "BRAN_CD"));
+
+	}
+}
+function btn_delete_OnClick(obj)
+{
+	var c_row = gds_sms_send.currow;
+	//alert(c_row);
+	gds_sms_send.DeleteRow(c_row);
+}
+
+
+
+function btn_close_OnClick(obj)
+{
+	close();	
+}
+
+function Btn_msg_OnClick(obj)
+{
+	var rcnt = gds_sms_send.RowCount();
+	var ncnt = gds_sms_send.currow;
+	var sms_msg = gds_sms_send.GetColumn(ncnt,"SMS_MSG");
+	var subject = gds_sms_send.GetColumn(ncnt,"SUBJECT");
+	for (var i = 0 ; i < rcnt ; i++)
+	{
+		gds_sms_send.SetColumn(i,"SMS_MSG",sms_msg);
+		gds_sms_send.SetColumn(i,"SUBJECT",subject);
+	}
+	
+}
+
+function fn_SetKakao()
+{
+	gds_kakao.ClearData();
+	
+	for (var i = 0 ; i < gds_sms_send.rowcount ; i++)
+	{
+		var aRow = gds_kakao.AddRow();
+		gds_kakao.SetColumn(aRow, "PHONE_NUM",   gds_sms_send.GetColumn(i, "PHNUM")); //수신자번호
+		gds_kakao.SetColumn(aRow, "SUBJECT",     "(사)한국음악저작권협회"); //문자제목
+		gds_kakao.SetColumn(aRow, "SND_MSG",     gds_sms_send.GetColumn(i, "SMS_MSG")); //내용
+		gds_kakao.SetColumn(aRow, "SMS_SND_NUM", gds_sms_send.GetColumn(i, "CALLBACK")); //발신자번호
+		gds_kakao.SetColumn(aRow, "RESERVED1",   gds_sms_send.GetColumn(i, "NAME")); //업주명
+		gds_kakao.SetColumn(aRow, "RESERVED2",   "U");
+		gds_kakao.SetColumn(aRow, "RESERVED3",   Object(dsName).GetColumn(i, "BRAN_CD"));
+		gds_kakao.SetColumn(aRow, "RESERVED4",   "");
+		gds_kakao.SetColumn(aRow, "RESERVED5",   "");
+		gds_kakao.SetColumn(aRow, "RESERVED6",   Object(dsName).GetColumn(i, "FORM_ID")); //form id
+		gds_kakao.SetColumn(aRow, "USER_ID",     substr(gds_sms_send.GetColumn(i, "USER_ID"), 1)); //업소코드
+	}
+}
+]]></Script>
+</Window>

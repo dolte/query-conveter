@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_s17" Left="8" OnLoadCompleted="bra10_s17_OnLoadCompleted" OnSize="bra10_s17_OnSize" PidAttrib="7" Title="업무현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Auth">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Search">
+				<Contents>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="JOB_GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_DAY></END_DAY>
+						<JOB_GBN></JOB_GBN>
+						<STAFF_CD></STAFF_CD>
+						<START_DAY></START_DAY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_VisitCndtn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LNG" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAST_VISIT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_filter">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>%</CODE_CD>
+						<CODE_NM>전체</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>퇴근</CODE_CD>
+						<CODE_NM>퇴근</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_duty_list">
+				<Contents>
+					<colinfo id="YRMNDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DILNLAZ_PLAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AOFFICE_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="A_LAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="A_LNG" size="256" summ="default" type="STRING"/>
+					<colinfo id="A_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="LOFFICE_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="L_LAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="L_LNG" size="256" summ="default" type="STRING"/>
+					<colinfo id="L_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="SVISIT_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="S_LAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="S_LNG" size="256" summ="default" type="STRING"/>
+					<colinfo id="S_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="LOGIN_TIME" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_work_desc">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ENFRC_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPLMT_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOVISIT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="VISIT_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_job_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>V</CODE_CD>
+						<CODE_NM>출장</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>P</CODE_CD>
+						<CODE_NM>전화</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_work_stat">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_V" size="256" summ="default" type="STRING"/>
+					<colinfo id="ENFRC_V" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPLMT_V" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_V" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_V" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_T" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_TOT_V" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLAN_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="ENFRC_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPLMT_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEW_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_E" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_TOT_P" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="6" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="7" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="6" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Calendar BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM/dd" DayStyle="edit" EditAlign="CENTER" FocusIndex="0" Height="20" Id="cal_Sday" Left="331" MonthPickerFormat="yyyy년&#32;MM월" OnChanged="cal_OnChanged" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="2" Top="19" Value="TODAY" Width="90"></Calendar>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="227" TabOrder="8" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static38" Left="245" Style="tx_left_bold" TabOrder="7" Text="업무일자" Top="23" Width="60"></Static>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="9" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="44" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="23" Width="40"></Static>
+		<Combo BindDataset="ds_Search" BKColor="user13" Border="Flat" BorderColor="user10" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" Left="88" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="18" Width="120"></Combo>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="584" TabOrder="11" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static0" Left="601" Style="tx_left_bold" TabOrder="12" Text="사원명" Top="23" Width="79"></Static>
+		<Combo BindDataset="ds_Search" Border="Flat" BorderColor="user10" CodeColumn="STAFF_CD" Column="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="649" TabOrder="4" ToolTipText="담당직원" Top="18" Width="79"></Combo>
+		<MSIE AddressBar="false" Bottom="16" Height="8" Id="MSIE0" Left="1056" MenuBar="false" RegisterAsDropTarget="false" Right="1080" StatusBar="false" TitleChange="MSIE0_TitleChange" ToolBar="0" Top="8" Width="24"></MSIE>
+		<Calendar BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM/dd" DayStyle="edit" EditAlign="CENTER" Height="20" Id="cal_Eday" Left="443" MonthPickerFormat="yyyy년&#32;MM월" OnChanged="cal_OnChanged" SaturdayTextColor="blue" Style="edit" SundayTextColor="red" TabOrder="3" Top="19" Value="TODAY" Width="90"></Calendar>
+		<Static Height="20" Id="Static1" Left="426" TabOrder="16" Text="~" Top="25" Width="14"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="752" TabOrder="17" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="769" Style="tx_left_bold" TabOrder="18" Text="필터" Top="23" Width="79"></Static>
+		<Combo Border="Flat" BorderColor="user10" CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_filter" ImeMode="none" INDEX="1" InnerDataset="ds_filter" Left="809" OnChanged="cob_filter_OnChanged" TabOrder="5" Top="18" Width="79"></Combo>
+		<Button ButtonStyle="TRUE" Height="22" Id="btn_chg_addr" ImageID="C_btn_90" Left="936" LeftMargin="26" OnClick="btn_chg_addr_OnClick" TabOrder="19" Text="주소변환" Top="18" Width="91"></Button>
+		<Button Height="20" Id="btn_prev" Left="304" OnClick="btn_prev_OnClick" TabOrder="20" Text="◀" Top="19" Width="24"></Button>
+		<Button Height="20" Id="btn_next" Left="536" OnClick="btn_next_OnClick" TabOrder="21" Text="▶" Top="19" Width="24"></Button>
+		<Tab BorderColor="white" Height="736" Id="tab_cndtn" Left="8" OnChanged="tab_cndtn_OnChanged" PreLoad="TRUE" TabOrder="22" Top="56" Width="1032">
+			<Contents>
+				<TabPage BorderColor="black" Height="707" Id="visit_list" ImageID="C_tab2" Left="2" TabOrder="13" Text="업소출장현황" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="13" Height="3" Id="Shape0" Left="6" LineColor="user7" Right="1022" TabOrder="2" Top="10" Type="Rectangle" Width="1016"></Shape>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_VisitCndtn" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user7" Bottom="701" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="688" Id="grd_visit_cndtn" InputPanel="FALSE" Left="6" LineColor="default" MinWidth="100" OnCellDBLClick="grd_visit_cndtn_OnCellDblClick" OnKeyDown="grd_visit_cndtn_OnKeyDown" Right="1022" Style="grid" TabOrder="1" TabStop="FALSE" Top="13" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1016">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="38"/>
+									<col width="64"/>
+									<col width="56"/>
+									<col width="74"/>
+									<col width="74"/>
+									<col width="120"/>
+									<col width="87"/>
+									<col width="87"/>
+									<col width="87"/>
+									<col width="234"/>
+									<col width="56"/>
+									<col width="132"/>
+									<col width="44"/>
+								</columns>
+								<head>
+									<cell bkcolor="user8" col="0" color="user12" display="text" text="순번"/>
+									<cell bkcolor="user8" col="1" color="user12" display="text" text="센터"/>
+									<cell bkcolor="user8" col="2" color="user12" display="text" text="담당자"/>
+									<cell bkcolor="user8" col="3" color="user12" display="text" text="방문일자"/>
+									<cell bkcolor="user8" col="4" color="user12" display="text" text="업소코드"/>
+									<cell bkcolor="user8" col="5" color="user12" display="text" text="업소명"/>
+									<cell bkcolor="user8" col="6" color="user12" display="text" text="방문예정여부"/>
+									<cell bkcolor="user8" col="7" color="user12" display="text" text="위도"/>
+									<cell bkcolor="user8" col="8" color="user12" display="text" text="경도"/>
+									<cell bkcolor="user8" col="9" color="user12" display="text" text="등록위치"/>
+									<cell bkcolor="user8" col="10" color="user12" display="text" text="등록자"/>
+									<cell bkcolor="user8" col="11" color="user12" display="text" text="등록일시"/>
+									<cell bkcolor="user8" col="12" color="user12" display="text" text="마지막"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="NO" display="number" expr="currow+1"/>
+									<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+									<cell align="center" col="2" colid="STAFF_NM" display="text"/>
+									<cell align="center" bkcolor="user13" col="3" colid="VISIT_DAY" display="date" edit="date"/>
+									<cell align="center" bkcolor="user13" col="4" colid="UPSO_CD" display="text" edit="normal" limit="8"/>
+									<cell align="left" bkcolor="user13" col="5" colid="UPSO_NM" display="text"/>
+									<cell align="center" col="6" colid="VISIT_YN" display="text"/>
+									<cell col="7" colid="LAT" display="text"/>
+									<cell col="8" colid="LNG" display="text"/>
+									<cell col="9" colid="ADDR" display="text"/>
+									<cell align="center" col="10" colid="INSPRES_NM" display="text"/>
+									<cell align="center" col="11" colid="INS_DATE" display="text"/>
+									<cell align="center" col="12" colid="LAST_VISIT" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="work_statistic" ImageID="C_tab2" Left="2" TabOrder="13" Text="업무통계" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="13" Height="3" Id="Shape0" Left="6" LineColor="user7" Right="1022" TabOrder="2" Top="10" Type="Rectangle" Width="1016"></Shape>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_work_stat" BkColor2="default" BoldHead="true" Border="Flat" Bottom="701" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="688" Id="grd_work_stat" InputPanel="FALSE" Left="6" LineColor="default" MinWidth="100" Right="1022" RowHeight="20" Style="grid" TabOrder="1" TabStop="FALSE" Top="13" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1016">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="105"/>
+									<col width="92"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+									<col width="58"/>
+								</columns>
+								<head>
+									<cell bkcolor="user8" col="0" color="user12" display="text" rowspan="3" text="센터"/>
+									<cell bkcolor="user8" col="1" color="user12" display="text" rowspan="3" text="담당자"/>
+									<cell bkcolor="user8" col="2" color="user12" colspan="7" display="text" text="출장업무"/>
+									<cell bkcolor="user8" col="2" color="user12" display="text" row="1" rowspan="2" text="예정"/>
+									<cell bkcolor="user8" col="3" color="user12" display="text" row="1" rowspan="2" text="실시"/>
+									<cell bkcolor="user8" col="4" color="user12" display="text" row="1" rowspan="2" text="추가"/>
+									<cell bkcolor="user8" col="5" color="user12" display="text" row="1" rowspan="2" text="신규"/>
+									<cell bkcolor="user8" col="6" color="user12" colspan="3" display="text" row="1" text="결과"/>
+									<cell bkcolor="user8" col="6" color="user12" display="text" row="2" text="방문"/>
+									<cell bkcolor="user8" col="7" color="user12" display="text" row="2" text="출장"/>
+									<cell bkcolor="user8" col="8" color="user12" display="text" row="2" text="합계"/>
+									<cell bkcolor="user8" col="9" color="user12" colspan="7" display="text" text="전화업무"/>
+									<cell bkcolor="user8" col="9" color="user12" display="text" row="1" rowspan="2" text="예정"/>
+									<cell bkcolor="user8" col="10" color="user12" display="text" row="1" rowspan="2" text="실시"/>
+									<cell bkcolor="user8" col="11" color="user12" display="text" row="1" rowspan="2" text="추가"/>
+									<cell bkcolor="user8" col="12" color="user12" display="text" row="1" rowspan="2" text="기타"/>
+									<cell bkcolor="user8" col="13" color="user12" colspan="3" display="text" row="1" text="결과"/>
+									<cell bkcolor="user8" col="13" color="user12" display="text" row="2" text="전화"/>
+									<cell bkcolor="user8" col="14" color="user12" display="text" row="2" text="기타"/>
+									<cell bkcolor="user8" col="15" color="user12" display="text" row="2" text="합계"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="BRAN_NM" display="text"/>
+									<cell align="center" col="1" colid="STAFF_NM" display="text"/>
+									<cell col="2" colid="PLAN_V" display="number"/>
+									<cell col="3" colid="ENFRC_V" display="number"/>
+									<cell col="4" colid="SPLMT_V" display="number"/>
+									<cell col="5" colid="NEW_V" display="number"/>
+									<cell col="6" colid="CNT_V" display="number"/>
+									<cell col="7" colid="CNT_T" display="number"/>
+									<cell col="8" colid="CNT_TOT_V" display="number"/>
+									<cell col="9" colid="PLAN_P" display="number"/>
+									<cell col="10" colid="ENFRC_P" display="number"/>
+									<cell col="11" colid="SPLMT_P" display="number"/>
+									<cell col="12" colid="NEW_P" display="number"/>
+									<cell col="13" colid="CNT_P" display="number"/>
+									<cell col="14" colid="CNT_E" display="number"/>
+									<cell col="15" colid="CNT_TOT_P" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" col="0" colspan="2" display="text" text="합계"/>
+									<cell align="right" col="2" display="number" expr="sum(&apos;PLAN_V&apos;)"/>
+									<cell align="right" col="3" display="number" expr="sum(&apos;ENFRC_V&apos;)"/>
+									<cell align="right" col="4" display="number" expr="sum(&apos;SPLMT_V&apos;)"/>
+									<cell align="right" col="5" display="number" expr="sum(&apos;NEW_V&apos;)"/>
+									<cell align="right" col="6" display="number" expr="sum(&apos;CNT_V&apos;)"/>
+									<cell align="right" col="7" display="number" expr="sum(&apos;CNT_T&apos;)"/>
+									<cell align="right" col="8" display="number" expr="sum(&apos;CNT_TOT_V&apos;)"/>
+									<cell align="right" col="9" display="number" expr="sum(&apos;PLAN_P&apos;)"/>
+									<cell align="right" col="10" display="number" expr="sum(&apos;ENFRC_P&apos;)"/>
+									<cell align="right" col="11" display="number" expr="sum(&apos;SPLMT_P&apos;)"/>
+									<cell align="right" col="12" display="number" expr="sum(&apos;NEW_P&apos;)"/>
+									<cell align="right" col="13" display="number" expr="sum(&apos;CNT_P&apos;)"/>
+									<cell align="right" col="14" display="number" expr="sum(&apos;CNT_E&apos;)"/>
+									<cell align="right" col="15" display="number" expr="sum(&apos;CNT_TOT_P&apos;)"/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="work_statistic_desc" ImageID="C_tab2" Left="2" TabOrder="13" Text="업무상세" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="13" Height="3" Id="Shape0" Left="6" LineColor="user7" Right="1022" TabOrder="2" Top="10" Type="Rectangle" Width="1016"></Shape>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_work_desc" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user7" Bottom="701" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="688" Id="grd_work_desc" InputPanel="FALSE" Left="6" LineColor="default" MinWidth="100" Right="1022" Style="grid" TabOrder="1" TabStop="FALSE" Top="13" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1016">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="38"/>
+									<col width="105"/>
+									<col width="92"/>
+									<col width="92"/>
+									<col width="74"/>
+									<col width="224"/>
+									<col width="84"/>
+									<col width="84"/>
+									<col width="84"/>
+								</columns>
+								<head>
+									<cell bkcolor="user8" col="0" color="user12" display="text" text="순번"/>
+									<cell bkcolor="user8" col="1" color="user12" display="text" text="센터"/>
+									<cell bkcolor="user8" col="2" color="user12" display="text" text="담당자"/>
+									<cell bkcolor="user8" col="3" color="user12" display="text" text="업무일자"/>
+									<cell bkcolor="user8" col="4" color="user12" display="text" text="업소코드"/>
+									<cell bkcolor="user8" col="5" color="user12" display="text" text="업소명"/>
+									<cell bkcolor="user8" col="6" color="user12" display="text" text="실시"/>
+									<cell bkcolor="user8" col="7" color="user12" display="text" text="추가"/>
+									<cell bkcolor="user8" col="8" color="user12" display="text" text="신규"/>
+								</head>
+								<body>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="0" colid="NO" display="number" expr="currow+1" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="1" colid="BRAN_NM" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="2" colid="STAFF_NM" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="3" colid="VISIT_DAY" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="4" colid="UPSO_CD" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="5" colid="UPSO_NM" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="6" colid="ENFRC_TM" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="7" colid="SPLMT_TM" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+									<cell align="center" bkcolor="expr:decode(SEQ,&apos;999&apos;,&apos;beige&apos;,&apos;&apos;)" col="8" colid="NEW_TM" display="text" font="expr:decode(SEQ,&apos;999&apos;,&apos;굴림,9,bold&apos;,&apos;&apos;)"/>
+								</body>
+								<summary>
+									<cell align="right" col="0" display="text"/>
+									<cell align="center" col="1" display="text"/>
+									<cell align="center" col="2" display="text"/>
+									<cell align="center" col="3" display="text"/>
+									<cell align="center" col="4" display="text"/>
+									<cell align="right" col="5" display="text" text="합계"/>
+									<cell align="center" col="6" colid="E" display="text"/>
+									<cell align="center" col="7" colid="S" display="text"/>
+									<cell align="center" col="8" colid="N" display="text"/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="707" Id="duty_list" ImageID="C_tab2" Left="2" TabOrder="13" Text="근태현황" Top="27" Width="1028">
+					<Shape BKColor="user7" Bottom="13" Height="3" Id="Shape0" Left="6" LineColor="user7" Right="1022" TabOrder="2" Top="10" Type="Rectangle" Width="1016"></Shape>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_duty_list" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user7" Bottom="701" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="688" Id="grd_duty_list" InputPanel="FALSE" Left="6" LineColor="default" MinWidth="100" OnCellDBLClick="tab_cndtn_duty_list_grd_duty_list_OnCellDblClick" Right="1022" Style="grid" TabOrder="1" TabStop="FALSE" Top="13" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1016">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="32"/>
+									<col width="74"/>
+									<col width="50"/>
+									<col width="86"/>
+									<col width="60"/>
+									<col width="86"/>
+									<col width="60"/>
+									<col width="160"/>
+									<col width="60"/>
+									<col width="160"/>
+									<col width="60"/>
+									<col width="160"/>
+									<col width="0"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="60"/>
+								</columns>
+								<head>
+									<cell bkcolor="user8" col="0" color="user12" display="text" text="순번"/>
+									<cell bkcolor="user8" col="1" color="user12" display="text" text="일자"/>
+									<cell bkcolor="user8" col="2" color="user12" display="text" text="요일"/>
+									<cell bkcolor="user8" col="3" color="user12" display="text" text="센터"/>
+									<cell bkcolor="user8" col="4" color="user12" display="text" text="담당자"/>
+									<cell bkcolor="user8" col="5" color="user12" display="text" text="근태계획"/>
+									<cell bkcolor="user8" col="6" color="user12" display="text" text="출근시간"/>
+									<cell bkcolor="user8" col="7" color="user12" display="text" text="출근위치"/>
+									<cell bkcolor="user8" col="8" color="user12" display="text" text="출장시간"/>
+									<cell bkcolor="user8" col="9" color="user12" display="text" text="출장위치"/>
+									<cell bkcolor="user8" col="10" color="user12" display="text" text="퇴근시간"/>
+									<cell bkcolor="user8" col="11" color="user12" display="text" text="퇴근위치"/>
+									<cell bkcolor="user8" col="12" color="user12" display="text" text="최초로그인"/>
+									<cell bkcolor="user8" col="13" color="user12" display="text" text="출근위도"/>
+									<cell bkcolor="user8" col="14" color="user12" display="text" text="출근경도"/>
+									<cell bkcolor="user8" col="15" color="user12" display="text" text="출장위도"/>
+									<cell bkcolor="user8" col="16" color="user12" display="text" text="출장경도"/>
+									<cell bkcolor="user8" col="17" color="user12" display="text" text="퇴근위도"/>
+									<cell bkcolor="user8" col="18" color="user12" display="text" text="퇴근경도"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="NO" display="number" expr="currow+1"/>
+									<cell align="center" col="1" colid="YRMNDAY" display="date"/>
+									<cell align="center" col="2" colid="DAY" display="text"/>
+									<cell align="center" col="3" colid="DEPT_NM" display="text"/>
+									<cell align="center" col="4" colid="HAN_NM" display="text"/>
+									<cell align="center" col="5" colid="DILNLAZ_PLAN" display="text"/>
+									<cell align="center" col="6" colid="AOFFICE_TM" display="text"/>
+									<cell col="7" colid="A_ADDR" display="text"/>
+									<cell align="center" col="8" colid="SVISIT_TM" display="text"/>
+									<cell col="9" colid="S_ADDR" display="text"/>
+									<cell align="center" col="10" colid="LOFFICE_TM" display="text"/>
+									<cell col="11" colid="L_ADDR" display="text"/>
+									<cell align="center" col="12" colid="LOGIN_TIME" display="text"/>
+									<cell align="center" col="13" colid="A_LAT" display="text"/>
+									<cell align="center" col="14" colid="A_LNG" display="text"/>
+									<cell align="center" col="15" colid="S_LAT" display="text"/>
+									<cell align="center" col="16" colid="S_LNG" display="text"/>
+									<cell align="center" col="17" colid="L_LAT" display="text"/>
+									<cell align="center" col="18" colid="L_LNG" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_duty_list" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user7" Bottom="525" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="25" Height="456" Id="grd_duty_list_gibu" InputPanel="FALSE" Left="22" LineColor="default" MinWidth="100" OnCellDBLClick="tab_cndtn_duty_list_grd_duty_list_OnCellDblClick" Right="686" Style="grid" TabOrder="3" TabStop="FALSE" Top="69" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="664">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="32"/>
+									<col width="74"/>
+									<col width="50"/>
+									<col width="86"/>
+									<col width="60"/>
+									<col width="86"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="60"/>
+								</columns>
+								<head>
+									<cell bkcolor="user8" col="0" color="user12" display="text" text="순번"/>
+									<cell bkcolor="user8" col="1" color="user12" display="text" text="일자"/>
+									<cell bkcolor="user8" col="2" color="user12" display="text" text="요일"/>
+									<cell bkcolor="user8" col="3" color="user12" display="text" text="센터"/>
+									<cell bkcolor="user8" col="4" color="user12" display="text" text="담당자"/>
+									<cell bkcolor="user8" col="5" color="user12" display="text" text="근태계획"/>
+									<cell bkcolor="user8" col="6" color="user12" display="text" text="출근시간"/>
+									<cell bkcolor="user8" col="7" color="user12" display="text" text="출장시간"/>
+									<cell bkcolor="user8" col="8" color="user12" display="text" text="퇴근시간"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="NO" display="number" expr="currow+1"/>
+									<cell align="center" col="1" colid="YRMNDAY" display="date"/>
+									<cell align="center" col="2" colid="DAY" display="text"/>
+									<cell align="center" col="3" colid="DEPT_NM" display="text"/>
+									<cell align="center" col="4" colid="HAN_NM" display="text"/>
+									<cell align="center" col="5" colid="DILNLAZ_PLAN" display="text"/>
+									<cell align="center" col="6" colid="AOFFICE_TM" display="text"/>
+									<cell align="center" col="7" colid="SVISIT_TM" display="text"/>
+									<cell align="center" col="8" colid="LOFFICE_TM" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Radio BindDataset="ds_Search" BKColor="whitesmoke" Border="None" CodeColumn="CODE_CD" Column="JOB_GBN" ColumnCount="2" DataColumn="CODE_NM" Height="24" Id="rad_job_gbn" INDEX="0" InnerDataset="ds_job_gbn" Left="810" OnChanged="rad_job_gbn_OnChanged" Style="radio" TabOrder="23" Top="17" Visible="FALSE" Width="96"></Radio>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+var v_auth = "0";
+
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")
+    {
+		//fn_New();
+	}
+    else if(strCode == "SEARCH")
+    {
+		fn_Search();
+	}
+    else if(strCode == "SAVE")
+    {
+    	fn_Save();
+    }
+    else if(strCode == "DELETE")
+    {
+    	//fn_Delete();
+    }
+    else if(strCode == "EXCEL")
+    {
+    	fn_Excel();
+    }
+    else if(strCode == "PRINT")
+    {
+    	//fn_Print();
+    }
+    else if(strCode == "CLOSE")
+    {
+        close();
+    }
+}
+
+function fn_CallBack(svcid,errCode,errMsg) 
+{
+	if (errCode = 0)
+	{
+		switch(svcid)
+		{
+			case "svcSearch1" :
+				cob_filter_OnChanged();
+				break;
+			case "svcSearch2" :
+				var v_e = 0;
+				var v_s = 0;
+				var v_n = 0;
+				
+				for(var i = 0; i < ds_work_desc.rowcount; i++)
+				{
+					if(ds_work_desc.GetColumn(i, "SEQ") == "999")
+					{
+						v_e += parseInt(substr(ds_work_desc.GetColumn(i, "ENFRC_TM"), 5));
+						v_s += parseInt(substr(ds_work_desc.GetColumn(i, "SPLMT_TM"), 5));
+						v_n += parseInt(substr(ds_work_desc.GetColumn(i, "NEW_TM"), 5));
+					}
+				}
+				//tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("summ", tab_cndtn.work_statistic_desc.grd_work_desc.GetBindCellIndex("summ", "E"), "text", v_e);
+				//tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("summ", tab_cndtn.work_statistic_desc.grd_work_desc.GetBindCellIndex("summ", "S"), "text", v_s);
+				//tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("summ", tab_cndtn.work_statistic_desc.grd_work_desc.GetBindCellIndex("summ", "N"), "text", v_n);
+				tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("summ", 5, "text", v_e);
+				tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("summ", 6, "text", v_s);
+				tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("summ", 7, "text", v_n);
+				break;
+			case "svcStaff" :
+				ds_SawonInfo.InsertRow(0);
+				ds_SawonInfo.SetColumn(0,"STAFF_CD","");
+				ds_SawonInfo.SetColumn(0,"STAFF_NM","--ALL--");
+				
+				cob_Staff_Nm.Index = 0;
+				break;
+			case "svcSave" :
+				alert("저장되었습니다.");
+				fn_Search();
+				break;
+			default: break;
+		}
+	}
+}
+
+function bra10_s17_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	cal_Sday.Value = addDate(cal_Sday.Value, -1);
+	cal_Eday.Value = addDate(cal_Eday.Value, -1);
+	
+	tab_cndtn.duty_list.grd_duty_list_gibu.Left = 6;
+	tab_cndtn.duty_list.grd_duty_list_gibu.Top = 13;
+	tab_cndtn.duty_list.grd_duty_list_gibu.Width = 1016;
+	tab_cndtn.duty_list.grd_duty_list_gibu.Height = 688;
+	
+	bra10_s17_OnSize();
+	
+	gfn_syncCall("svcAuth","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008008&EVENTID=sel_udtkpres","","ds_Auth=SEL1","","fn_CallBack");
+	
+	if(ds_Auth.FindRow("UDTKPRES_ID", gds_sessioninfo.GetColumn(0, "STAFF_NUM")) > 0 || gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") == "122040100")
+	{
+		v_auth = "1";
+		
+		this.cob_Staff_Nm.Enable = true;
+		tab_cndtn.Enable = true;
+		tab_cndtn.duty_list.grd_duty_list.Visible = true;
+		tab_cndtn.duty_list.grd_duty_list_gibu.Visible = false;
+	}
+	else
+	{
+		v_auth = "0";
+		
+		this.cob_Staff_Nm.Enable = false;
+		this.cob_Staff_Nm.Value = gds_sessioninfo.GetColumn(0, "STAFF_NUM");
+		
+		tab_cndtn.DeleteTab(2);
+		tab_cndtn.DeleteTab(1);
+		tab_cndtn.DeleteTab(0);
+		
+		cob_filter.Visible = false;
+		btn_chg_addr.Visible = false;
+		
+		tab_cndtn.duty_list.grd_duty_list.Visible = false;
+		tab_cndtn.duty_list.grd_duty_list_gibu.Visible = true;
+		
+		var objBtn;
+		var comps = this.parent.dvtitle.divIcon.Components["Button"];
+		for( var i = 0 ; i < comps.Count ; i++)
+		{
+			objBtn = object("dvtitle.divIcon." + comps[i].id);
+			
+			if(objBtn.UserData == "SAVE" || objBtn.UserData == "EXCEL")
+			{
+				objBtn.Enable = false;
+			}
+		}
+	}
+	
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);
+	gfn_syncCall("find_GIBU","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_gibu_select","","ds_GIBU_CD=SEL1","","fn_CallBack");
+	
+	if(cob_BRAN_CD.Index < 0)
+	{
+		cob_BRAN_CD.Index = 0;
+	}
+
+	cob_BRAN_CD_OnChanged(this, cob_BRAN_CD.Value, "", "", "");
+	
+	cob_filter.Index = 0;
+	rad_job_gbn.Index = 0;
+}
+
+function fn_Search()
+{
+	if(length(this.cob_BRAN_CD.Value) < 1)
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	ds_Search.SetColumn(0, "START_DAY", cal_Sday.Value);
+	ds_Search.SetColumn(0, "END_DAY", cal_Eday.Value);
+	
+	if(tab_cndtn.TabIndex == 0 && tab_cndtn.TabCount > 3)
+	{
+		gfn_syncCall("svcSearch1","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004027&EVENTID=sel_gps_record","S=ds_Search","ds_VisitCndtn=SEL1","","fn_CallBack");
+	}
+	else if(tab_cndtn.TabIndex == 1)
+	{
+		gfn_syncCall("svcSearch2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004027&EVENTID=sel_work_stat","S=ds_Search","ds_work_stat=SEL8","","fn_CallBack");
+	}
+	else if(tab_cndtn.TabIndex == 2)
+	{
+		gfn_syncCall("svcSearch2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004027&EVENTID=sel_work_stat","S=ds_Search","ds_work_desc=MRG5","","fn_CallBack");
+	}
+	else
+	{
+		gfn_syncCall("svcSearch3","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004027&EVENTID=sel_duty_list","S=ds_Search","ds_duty_list=SEL1","","fn_CallBack");
+	}
+}
+
+function fn_Save()
+{
+	if(tab_cndtn.TabIndex == 0)
+	{
+		if(!Confirm("저장하시겠습니까?")) return;
+		
+		gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004027&EVENTID=mng_gps_record","S=ds_VisitCndtn:U","","","fn_CallBack");
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("svcStaff","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	this.cob_Staff_Nm.Value = gds_sessioninfo.GetColumn(0, "STAFF_NUM");
+	if(cob_Staff_Nm.Index == -1) cob_Staff_Nm.Index = 0;
+	
+	if(v_auth == "0")
+	{
+		var objBtn;
+		var comps = this.parent.dvtitle.divIcon.Components["Button"];
+		for( var i = 0 ; i < comps.Count ; i++)
+		{
+			objBtn = object("dvtitle.divIcon." + comps[i].id);
+			
+			if(objBtn.UserData == "SAVE" || objBtn.UserData == "EXCEL")
+			{
+				objBtn.Enable = false;
+			}
+		}
+	}
+}
+
+function grd_visit_cndtn_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(bCtrl == 1 && nChar == 67) //crtl + c
+	{
+		var strGps = "";
+		strGps = grd_visit_cndtn.GetCellText("body", ds_VisitCndtn.currow, tab_cndtn.visit_list.grd_visit_cndtn.GetBindCellIndex("body", "LAT"));
+		strGps += ", ";
+		strGps += grd_visit_cndtn.GetCellText("body", ds_VisitCndtn.currow, tab_cndtn.visit_list.grd_visit_cndtn.GetBindCellIndex("body", "LNG"));
+		
+		SetClipBoard("CF_UNICODETEXT", strGps);
+	}
+}
+
+function grd_visit_cndtn_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var lat = tab_cndtn.visit_list.grd_visit_cndtn.GetCellText("body", ds_VisitCndtn.currow, tab_cndtn.visit_list.grd_visit_cndtn.GetBindCellIndex("body", "LAT"));
+	var lng = tab_cndtn.visit_list.grd_visit_cndtn.GetCellText("body", ds_VisitCndtn.currow, tab_cndtn.visit_list.grd_visit_cndtn.GetBindCellIndex("body", "LNG"));
+    //var url = "http://stlog1.local.daum.net/logcollector/log/map?type=search_q_type&typeid=window&q=" + lat + "%2C+" + lng + "&qidx=3&tregionid=I1003A443";
+    //var url = "http://tiara.daum.net/tiara.front/front/click/1496110992876?dummy=1496110992876&url=t__nil_navi=menu_map_search&param1=" + lat + "%2C+" + lng;
+    //var url = "http://mygeoposition.com/query_cache.php?token=302dc8cdc90493835538ef98b659d263&type=geocoding&query=" + lat + ",%20" + lng + "&sessionId=1496112045450-9f85-1d27-8c25-b0cd-0c18";
+
+	if(length(lat) < 1 || length(lng) < 1)
+	{
+		return;
+	}
+    
+    var url = "https://www.google.com/maps/search/" + lat + "," + lng + "/";
+    ExecBrowser(url);
+}
+
+function fn_Excel()
+{
+	var fileNm = "";
+	
+	if(cob_BRAN_CD.Index == 0)
+	{
+		fileNm = "전체";
+	}
+	else
+	{
+		fileNm = cob_BRAN_CD.Text;
+	}
+		
+	if(tab_cndtn.TabIndex == 0)
+	{
+		fileNm = cal_Sday.Value + "_" + fileNm + "_출장현황";
+		
+		tab_cndtn.visit_list.grd_visit_cndtn.ExportExcelEx(fileNm);
+	}
+	else if(tab_cndtn.TabIndex == 1)
+	{
+		fileNm = cal_Sday.Value + "_" + fileNm + "_업무통계";
+		
+		tab_cndtn.work_statistic.grd_work_stat.ExportExcelEx(fileNm);
+	}
+	else if(tab_cndtn.TabIndex == 2)
+	{
+		fileNm = cal_Sday.Value + "_" + fileNm + "_업무상세";
+		
+		tab_cndtn.work_statistic_desc.grd_work_desc.ExportExcelEx(fileNm);
+	}
+	else if(tab_cndtn.TabIndex == 3)
+	{
+		fileNm = cal_Sday.Value + "_" + fileNm + "_근태현황";
+		
+		tab_cndtn.duty_list.grd_duty_list.ExportExcelEx(fileNm);
+	}
+}
+
+function cob_filter_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(cob_filter.Value == "퇴근")
+	{
+		ds_VisitCndtn.Filter("LAST_VISIT='" + cob_filter.Value + "' OR LAST_VISIT='Y'");
+	}
+	else
+	{
+		ds_VisitCndtn.UnFilter();
+	}
+}
+
+var tchk = 1;
+var cRow = 0;
+function MSIE0_TitleChange(obj,Text)
+{
+	tchk++;
+	
+	if(tchk == 2)
+	{
+		ds_VisitCndtn.SetColumn(cRow, "ADDR", Text);
+		tchk = 1;
+	}
+	else
+	{
+		tchk = 1;
+	}
+}
+
+function btn_chg_addr_OnClick(obj)
+{
+	cRow = ds_VisitCndtn.currow;
+	if(length(ds_VisitCndtn.GetColumn(cRow, "ADDR")) > 0 || length(ds_VisitCndtn.GetColumn(cRow, "LAT")) < 1 || length(ds_VisitCndtn.GetColumn(cRow, "LNG")) < 1)
+	{
+		return;
+	}
+	MSIE0.Navigate("http://komca.or.kr/kosmos2/coord2addr.jsp?LAT=" + ds_VisitCndtn.GetColumn(cRow, "LAT") + "&LNG=" + ds_VisitCndtn.GetColumn(cRow, "LNG"));
+}
+
+function bra10_s17_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(tab_cndtn, bra10_s17, 1, 0);
+	tab_cndtn.visit_list.grd_visit_cndtn.Width = tab_cndtn.Width - 16;
+	tab_cndtn.visit_list.Shape0.Width = tab_cndtn.Width - 16;
+	tab_cndtn.work_statistic.grd_work_stat.Width = tab_cndtn.Width - 16;
+	tab_cndtn.work_statistic.Shape0.Width = tab_cndtn.Width - 16;
+	tab_cndtn.work_statistic_desc.grd_work_desc.Width = tab_cndtn.Width - 16;
+	tab_cndtn.work_statistic_desc.Shape0.Width = tab_cndtn.Width - 16;
+	tab_cndtn.duty_list.grd_duty_list.Width = tab_cndtn.Width - 16;
+	tab_cndtn.duty_list.Shape0.Width = tab_cndtn.Width - 16;
+	tab_cndtn.duty_list.grd_duty_list_gibu.Width = tab_cndtn.Width - 16;
+}
+
+function cal_OnChanged(obj,strOldText,strNewText)
+{
+	if(obj == cal_Sday)
+	{
+		if(cal_Sday.Value > cal_Eday.Value)
+			cal_Eday.Value = cal_Sday.Value;
+	}
+	else if(obj == cal_Eday)
+	{
+		if(cal_Sday.Value > cal_Eday.Value)
+			cal_Sday.Value = cal_Eday.Value;
+	}
+}
+
+function btn_next_OnClick(obj)
+{
+	cal_Sday.Value = addDate(cal_Sday.Value, 1);
+	cal_Eday.Value = cal_Sday.Value;
+	//fn_search();
+}
+
+function btn_prev_OnClick(obj)
+{
+	cal_Sday.Value = addDate(cal_Sday.Value, -1);
+	cal_Eday.Value = cal_Sday.Value;
+	//fn_search();
+}
+
+function tab_cndtn_OnChanged(obj,nOldIndex,nNewindex)
+{
+	if(nNewindex == 0)
+	{
+		cob_BRAN_CD.Enable = true;
+		btn_chg_addr.Visible = true;
+		cob_filter.Visible = true;
+		rad_job_gbn.Visible = false;
+		Image1.Visible = false;
+		Static2.Visible = false;
+		
+		btn_prev.Visible = true;
+		Static1.Visible = true;
+		cal_Eday.Visible = true;
+		cal_Eday.OnChanged = "cal_OnChanged";
+		btn_next.Visible = true;
+		cal_Sday.SpinStyle = false;
+		cal_Sday.FocusIndex = 0;
+		cal_Sday.DateFormat = "yyyy/MM/dd";
+	}
+	/*else if(nNewindex == 1)
+	{
+		cob_BRAN_CD.Enable = true;
+		btn_chg_addr.Visible = false;
+		cob_filter.Visible = false;
+		rad_job_gbn.Visible = true;
+		Image1.Visible = true;
+		Static2.Visible = true;
+		
+		btn_prev.Visible = false;
+		Static1.Visible = false;
+		cal_Eday.Visible = false;
+		cal_Eday.OnChanged = "";
+		btn_next.Visible = false;
+		cal_Sday.SpinStyle = true;
+		cal_Sday.FocusIndex = 1;
+		cal_Sday.DateFormat = "yyyy/MM";
+	}*/
+	else if(nNewindex == 1 || nNewindex == 2)
+	{
+		cob_BRAN_CD.Enable = true;
+		btn_chg_addr.Visible = false;
+		cob_filter.Visible = false;
+		rad_job_gbn.Visible = true;
+		Image1.Visible = true;
+		Static2.Visible = true;
+		
+		btn_prev.Visible = true;
+		Static1.Visible = true;
+		cal_Eday.Visible = true;
+		cal_Eday.OnChanged = "cal_OnChanged";
+		btn_next.Visible = true;
+		cal_Sday.SpinStyle = false;
+		cal_Sday.FocusIndex = 0;
+		cal_Sday.DateFormat = "yyyy/MM/dd";
+	}
+	else
+	{
+		cob_BRAN_CD.Enable = true;
+		btn_chg_addr.Visible = false;
+		cob_filter.Visible = false;
+		rad_job_gbn.Visible = false;
+		Image1.Visible = false;
+		Static2.Visible = false;
+		
+		btn_prev.Visible = true;
+		Static1.Visible = true;
+		cal_Eday.Visible = true;
+		cal_Eday.OnChanged = "cal_OnChanged";
+		btn_next.Visible = true;
+		cal_Sday.SpinStyle = false;
+		cal_Sday.FocusIndex = 0;
+		cal_Sday.DateFormat = "yyyy/MM/dd";
+	}
+}
+
+function tab_cndtn_duty_list_grd_duty_list_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var lat = "";
+	var lng = "";
+	var v_ds_type = "";
+	
+	if(tab_cndtn.duty_list.grd_duty_list.GetBindCellIndex("body", "AOFFICE_TM") == nCell || tab_cndtn.duty_list.grd_duty_list.GetBindCellIndex("body", "A_ADDR") == nCell)
+	{
+		v_ds_type = "A_";
+	}
+	else if(tab_cndtn.duty_list.grd_duty_list.GetBindCellIndex("body", "SVISIT_TM") == nCell || tab_cndtn.duty_list.grd_duty_list.GetBindCellIndex("body", "S_ADDR") == nCell)
+	{
+		v_ds_type = "S_";
+	}
+	else if(tab_cndtn.duty_list.grd_duty_list.GetBindCellIndex("body", "LOFFICE_TM") == nCell || tab_cndtn.duty_list.grd_duty_list.GetBindCellIndex("body", "L_ADDR") == nCell)
+	{
+		v_ds_type = "L_";
+	}
+	
+	lat = ds_duty_list.GetColumn(ds_duty_list.currow, v_ds_type + "LAT");
+	lng = ds_duty_list.GetColumn(ds_duty_list.currow, v_ds_type + "LNG");
+	
+	if(length(lat) < 1 || length(lng) < 1)
+	{
+		return;
+	}
+    
+    var url = "https://www.google.com/maps/search/" + lat + "," + lng + "/";
+    ExecBrowser(url);
+}
+
+function rad_job_gbn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "V")
+	{
+		tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("head", 8, "text", "신규");
+	}
+	else
+	{
+		tab_cndtn.work_statistic_desc.grd_work_desc.SetCellProp("head", 8, "text", "기타");
+	}
+}
+]]></Script>
+</Window>

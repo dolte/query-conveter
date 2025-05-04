@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra06_r14" Left="8" OnLoadCompleted="bra06_r14_OnLoadCompleted" PidAttrib="7" Title="무선오프라인로그데이터(30%할인)" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" type="STRING"/>
+					<colinfo id="START_DAY" size="256" type="STRING"/>
+					<colinfo id="END_DAY" size="256" type="STRING"/>
+					<colinfo id="LOG" size="256" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_DAY></END_DAY>
+						<LOG></LOG>
+						<START_DAY></START_DAY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list1">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" type="STRING"/>
+					<colinfo id="CO_PARING" size="256" type="STRING"/>
+					<colinfo id="CNT" size="256" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_log1">
+				<Contents>
+					<colinfo id="CO_CODE" size="256" type="STRING"/>
+					<colinfo id="CO_NAME" size="256" type="STRING"/>
+					<record>
+						<CO_CODE>100</CO_CODE>
+						<CO_NAME>100회&#32;미만</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>200</CO_CODE>
+						<CO_NAME>200회&#32;미만</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>300</CO_CODE>
+						<CO_NAME>300회&#32;미만</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>400</CO_CODE>
+						<CO_NAME>400회&#32;미만</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>500</CO_CODE>
+						<CO_NAME>500회&#32;미만</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>999</CO_CODE>
+						<CO_NAME>1,000회&#32;미만</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>1000</CO_CODE>
+						<CO_NAME>1,000회&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>1500</CO_CODE>
+						<CO_NAME>1,500회&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>7600</CO_CODE>
+						<CO_NAME>7,600회&#32;이상</CO_NAME>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_stat">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>무선로그통계(100회&#32;미만)</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>로그&#32;미수신&#32;업소현황</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_log2">
+				<Contents>
+					<colinfo id="CO_CODE" size="256" type="STRING"/>
+					<colinfo id="CO_NAME" size="256" type="STRING"/>
+					<record>
+						<CO_CODE>3</CO_CODE>
+						<CO_NAME>3일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>5</CO_CODE>
+						<CO_NAME>5일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>7</CO_CODE>
+						<CO_NAME>7일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>9</CO_CODE>
+						<CO_NAME>9일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>11</CO_CODE>
+						<CO_NAME>11일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>13</CO_CODE>
+						<CO_NAME>13일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>15</CO_CODE>
+						<CO_NAME>15일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>20</CO_CODE>
+						<CO_NAME>20일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>25</CO_CODE>
+						<CO_NAME>25일&#32;이상</CO_NAME>
+					</record>
+					<record>
+						<CO_CODE>30</CO_CODE>
+						<CO_NAME>30일&#32;이상</CO_NAME>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list2">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" type="STRING"/>
+					<colinfo id="PARING_DATE" size="256" type="STRING"/>
+					<colinfo id="CO_PARING" size="256" type="STRING"/>
+					<colinfo id="REG_DATE" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_condition">
+				<Contents>
+					<colinfo id="CO_CODE" size="256" type="STRING"/>
+					<colinfo id="CO_NAME" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list1" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="818" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="728" Id="grd_result1" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="90" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="296"/>
+						<col width="80"/>
+						<col width="178"/>
+						<col width="75"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="지부명"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="업종"/>
+						<cell col="5" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="6" color="user12" display="text" text="로그횟수"/>
+						<cell col="7" color="user12" display="text" text="상태"/>
+						<cell col="8" color="user12" display="text" text="담당자명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="BSTYP_NM" display="text"/>
+						<cell align="center" col="5" colid="SERIAL_NO" display="text"/>
+						<cell col="6" colid="CNT" display="number"/>
+						<cell align="center" col="7" colid="CO_PARING" combocol="CO_CODE" combodataset="ds_code_condition" combotext="CO_NAME" display="combo"/>
+						<cell align="center" col="8" colid="STAFF_NM" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell align="right" col="5" display="text" font="굴림,9,Bold" text="갯수"/>
+						<cell col="6" display="number" expr='COUNT(&quot;SERIAL_NO&quot;)' font="굴림,9,Bold"/>
+						<cell align="left" col="7" display="text" text="개"/>
+						<cell col="8" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Div Height="64" Id="Div0" Left="8" TabOrder="2" Text="Div0" Top="-8" Width="1032">
+			<Contents>
+				<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1021" TabOrder="3" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="8" TabOrder="4" TabStop="FALSE" Top="19" Width="1015"></Image>
+				<Image Height="41" Id="Image17" ImageID="C_search_left" Left="-16" TabOrder="3" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Image Height="11" Id="Image0" ImageID="C_icon" Left="309" TabOrder="2" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="16" Id="Static5" Left="328" Style="tx_left_bold" TabOrder="2" Text="지부명" Top="35" Width="48"></Static>
+				<Image Height="41" Id="Image1" ImageID="C_search_left" TabOrder="5" TabStop="FALSE" Top="19" Width="10"></Image>
+				<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="374" TabOrder="1" ToolTipText="지부명" Top="30" Width="109"></Combo>
+				<Static Height="19" Id="Static0" Left="528" Style="tx_left_bold" TabOrder="9" Text="기준년월일" Top="35" Width="64"></Static>
+				<Image Height="11" Id="Image3" ImageID="C_icon" Left="512" TabOrder="8" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Image Height="11" Id="Image2" ImageID="C_icon" Left="808" TabOrder="11" TabStop="FALSE" Top="36" Width="11"></Image>
+				<Static Height="19" Id="Static1" Left="824" Style="tx_left_bold" TabOrder="12" Text="로그횟수" Top="36" Width="64"></Static>
+				<Combo BKColor="user13" BorderColor="user3" CodeColumn="CO_CODE" DataColumn="CO_NAME" Height="20" Id="cob_log_cnt" ImeMode="none" INDEX="1" InnerDataset="ds_code_log1" Left="880" TabOrder="10" ToolTipText="로그횟수" Top="30" Width="100"></Combo>
+				<Image Height="11" Id="Image4" ImageID="C_icon" Left="21" TabOrder="13" TabStop="FALSE" Top="35" Width="11"></Image>
+				<Static Height="16" Id="Static2" Left="40" Style="tx_left_bold" TabOrder="14" Text="통계선택" Top="35" Width="55"></Static>
+				<Combo CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="18" Id="cob_statistics" ImeMode="none" INDEX="1" InnerDataset="ds_code_stat" Left="97" OnChanged="Div0_cob_statistics_OnChanged" TabOrder="13" ToolTipText="통계종류&#32;선택" Top="30" Width="200"></Combo>
+				<Calendar BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="user10" Column="START_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_StartDt" Left="598" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="16" Top="31" Value="TODAY" Width="95"></Calendar>
+				<Static Height="16" Id="Static6" Left="693" Style="tx_left_bold" TabOrder="18" Text="~" Top="33" Width="16"></Static>
+				<Calendar BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="user10" Column="END_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_EndDt" Left="707" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="17" Top="31" Value="TODAY" Width="95"></Calendar>
+				<Static Height="19" Id="Static3" Left="824" Style="tx_left_bold" TabOrder="20" Text="로그미수신기간" Top="36" Width="90"></Static>
+				<Combo BKColor="user13" BorderColor="user3" CodeColumn="CO_CODE" DataColumn="CO_NAME" Height="20" Id="cob_log_term" ImeMode="none" INDEX="1" InnerDataset="ds_code_log2" Left="920" TabOrder="19" ToolTipText="로그미수신기간" Top="30" Width="100"></Combo>
+			</Contents>
+		</Div>
+		<Static Color="BACKGROUND" Font="굴림,9" Height="16" Id="Static5" Left="24" Style="tx_left_bold" TabOrder="3" Text="*&#32;로그기시리얼에&#32;연결된&#32;가장&#32;마지막&#32;업소정보를&#32;표시함" Top="72" Width="350"></Static>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list2" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="818" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="728" Id="grd_result2" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="4" TabStop="true" Top="90" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="75"/>
+						<col width="75"/>
+						<col width="200"/>
+						<col width="73"/>
+						<col width="155"/>
+						<col width="130"/>
+						<col width="130"/>
+						<col width="59"/>
+						<col width="67"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="지부명"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="업종"/>
+						<cell col="5" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="6" color="user12" display="text" text="설치/개통일시"/>
+						<cell col="7" color="user12" display="text" text="마지막&#32;접속일시"/>
+						<cell col="8" color="user12" display="text" text="상태"/>
+						<cell col="9" color="user12" display="text" text="담당자명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="BSTYP_NM" display="text"/>
+						<cell align="center" col="5" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="6" colid="PARING_DATE" display="text"/>
+						<cell align="center" col="7" colid="REG_DATE" display="text"/>
+						<cell align="center" col="8" colid="CO_PARING" combocol="CO_CODE" combodataset="ds_code_condition" combotext="CO_NAME" display="combo"/>
+						<cell align="center" col="9" colid="STAFF_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_go_admin" ImageID="C_btn_120" Left="916" LeftMargin="23" OnClick="btn_go_admin_OnClick" Style="edit" TabOrder="5" TabStop="FALSE" Text="ADMIN으로&#32;이동" Top="66" TopMargin="1" Width="120"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 지부 공통 js
+
+
+function bra06_r14_OnLoadCompleted(obj)
+{	gfn_LoadForm(obj);
+	// 지부코드 가져오기
+	gfn_GetDataGIBU_CD(Div0.cob_BRAN_CD, 0);
+	gfn_SetPermission(Div0.cob_BRAN_CD.Value);
+	
+	this.div0.cob_statistics.Value = "1";
+	
+	var curYMD = today();
+	this.Div0.cal_StartDt.Value = substr(curYMD, 0, 6) + "01" ;  // 현재월의 첫날 부터
+	this.Div0.cal_EndDt.value = curYMD;							// 현재일자 까지
+	
+	this.div0.cob_log_cnt.value="100";
+	
+	this.div0.Static3.Visible = false;		//로그미수신기간
+	this.div0.cob_log_term.BKColor = "";
+	this.div0.cob_log_term.Visible = false;
+	this.div0.cob_log_term.value="3";
+	
+	this.grd_result2.Visible = false;
+	
+	gfn_syncCall("get_code_log_stat","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004017&EVENTID=get_code_log_stat","","ds_code_condition=SEL1","","fn_CallBack");
+}
+
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){}    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	return;}
+
+//조회
+function fn_Search(){
+    if (!gfn_CheckFormNull(Div0)) return;
+    
+    if (this.div0.cob_statistics.value == "1") {
+		this.ds_search.SetColumn(0, "START_DAY", substr(this.Div0.cal_StartDt.value));
+		this.ds_search.SetColumn(0, "END_DAY", substr(this.Div0.cal_EndDt.value));
+		this.ds_search.SetColumn(0, "LOG", this.div0.cob_log_cnt.value);
+		trace(this.ds_search.SaveXML());
+		gfn_syncCall("search_logcnt_stat","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004017&EVENTID=search_logcnt_stat","S=ds_search","ds_list1=MRG6","","fn_CallBack", gv_TraceLog, gv_formid);
+		trace(this.ds_list1.SaveXML());
+		
+		this.grd_result1.Visible = true;
+		this.grd_result2.Visible = false;
+	} else {
+		this.ds_search.SetColumn(0, "START_DAY", substr(this.Div0.cal_StartDt.value));
+		this.ds_search.SetColumn(0, "LOG", this.div0.cob_log_term.value);
+		trace(this.ds_search.SaveXML());
+		
+		gfn_syncCall("search_lastlog_stat","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004017&EVENTID=search_lastlog_stat","S=ds_search","ds_list2=SEL1","","fn_CallBack", gv_TraceLog, gv_formid);
+		this.grd_result1.Visible = false;
+		this.grd_result2.Visible = true;
+	}
+}
+
+//엑셀출력
+function fn_Excel(){
+	if (this.div0.cob_statistics.value == "1") {
+		grd_result1.ExportExcelEx("무선로그 기준미달 업소현황");
+	} else {
+		grd_result2.ExportExcelEx("로그 미수신 업소현황");
+	}
+}
+
+//CallBack
+function fn_CallBack(srvId,ErrorCode,ErrorMsg){
+}
+
+
+function Div0_cob_statistics_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	//alert(strCode + ", " + strText);
+	if (strCode == 1) {
+		//alert("test1");
+		this.div0.Static6.Visible = true;	//종료월 앞의 물결
+		this.div0.cal_EndDt.BKColor = "user13";	//종료월
+		this.div0.cal_EndDt.Visible = true;
+		var curYMD = today();
+		this.Div0.cal_StartDt.Value = substr(curYMD, 0, 6) + "01" ;  // 현재월의 첫날 부터
+		this.Div0.cal_EndDt.value = curYMD;							// 현재일자 까지
+		
+		this.div0.Static1.Visible = true;		//로그횟수
+		this.div0.cob_log_cnt.BKColor = "user13";
+		this.div0.cob_log_cnt.Visible = true;
+		this.div0.Static3.Visible = false;		//로그미수신기간
+		this.div0.cob_log_term.BKColor = "";
+		this.div0.cob_log_term.Visible = false;
+	}
+	else{
+		//alert("test2");
+		this.div0.Static6.Visible = false;
+		this.div0.cal_EndDt.BKColor = "";
+		this.div0.cal_EndDt.Visible = false;
+		var curYMD = today();
+		this.Div0.cal_StartDt.Value = curYMD;  // 현재월의 첫날 부터
+		
+		this.div0.Static1.Visible = false;		//로그횟수
+		this.div0.cob_log_cnt.BKColor = "";
+		this.div0.cob_log_cnt.Visible = false;
+		this.div0.Static3.Visible = true;		//로그미수신기간
+		this.div0.cob_log_term.BKColor = "user13";
+		this.div0.cob_log_term.Visible = true;
+	}
+	
+}
+
+function btn_go_admin_OnClick(obj)
+{
+	ExecBrowser("http://log.komca.or.kr:82/login/form_login.jsp");
+}
+]]></Script>
+</Window>

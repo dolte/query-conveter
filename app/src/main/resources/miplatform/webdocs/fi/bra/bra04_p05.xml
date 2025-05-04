@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="848" Id="form" Left="8" OnKeyDown="form_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="일자순입금전표내역서" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DATE" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<BSTYP_CD></BSTYP_CD>
+						<END_DATE></END_DATE>
+						<END_DAY></END_DAY>
+						<FROM_ZIP></FROM_ZIP>
+						<REPT_GBN></REPT_GBN>
+						<STAFF_CD></STAFF_CD>
+						<START_DATE></START_DATE>
+						<START_DAY></START_DAY>
+						<TO_ZIP></TO_ZIP>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mng_Si" UseClientLayout="1">
+				<Contents>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="AAA" size="256" summ="default" type="INT"/>
+					<colinfo id="RNO" size="256" summ="default" type="INT"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAPPING_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_REPT_GBN" UseClientLayout="1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_In_0" UseClientLayout="1">
+				<Contents>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FROM_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="TO_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DATE" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<BSTYP_CD></BSTYP_CD>
+						<END_DATE></END_DATE>
+						<END_DAY></END_DAY>
+						<FROM_ZIP></FROM_ZIP>
+						<REPT_GBN></REPT_GBN>
+						<STAFF_CD></STAFF_CD>
+						<START_DATE></START_DATE>
+						<START_DAY></START_DAY>
+						<TO_ZIP></TO_ZIP>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SawonInfo">
+				<Contents>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETCOM_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_BRAN_CD">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptSum">
+				<Contents>
+					<colinfo id="CNT_AUTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_AUTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_AUTO_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_AUTO_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_MICR" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_MICR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_OCR" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_OCR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_CLAIM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_CLAIM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_TRANS" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_TRANS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_TR_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_TR_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_AV_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_AV_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_BR_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_BR_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_REPT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_REPT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_RETURN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_RETURN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_VIRTUAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_VIRTUAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_VI_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_VI_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_BR_VI_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_BR_VI_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_AV_VI_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_AV_VI_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT_VI_LT_IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUM_VI_LT_IN" size="256" summ="default" type="STRING"/>
+					<record>
+						<CNT_AUTO></CNT_AUTO>
+						<CNT_AUTO_CARD></CNT_AUTO_CARD>
+						<CNT_AV_IN></CNT_AV_IN>
+						<CNT_AV_VI_IN></CNT_AV_VI_IN>
+						<CNT_BR_IN></CNT_BR_IN>
+						<CNT_BR_VI_IN></CNT_BR_VI_IN>
+						<CNT_CARD></CNT_CARD>
+						<CNT_CLAIM></CNT_CLAIM>
+						<CNT_MICR></CNT_MICR>
+						<CNT_OCR></CNT_OCR>
+						<CNT_REPT></CNT_REPT>
+						<CNT_RETURN></CNT_RETURN>
+						<CNT_TR_IN></CNT_TR_IN>
+						<CNT_TRANS></CNT_TRANS>
+						<CNT_VI_IN></CNT_VI_IN>
+						<CNT_VI_LT_IN></CNT_VI_LT_IN>
+						<CNT_VIRTUAL></CNT_VIRTUAL>
+						<SUM_AUTO></SUM_AUTO>
+						<SUM_AUTO_CARD></SUM_AUTO_CARD>
+						<SUM_AV_IN></SUM_AV_IN>
+						<SUM_AV_VI_IN></SUM_AV_VI_IN>
+						<SUM_BR_IN></SUM_BR_IN>
+						<SUM_BR_VI_IN></SUM_BR_VI_IN>
+						<SUM_CARD></SUM_CARD>
+						<SUM_CLAIM></SUM_CLAIM>
+						<SUM_MICR></SUM_MICR>
+						<SUM_OCR></SUM_OCR>
+						<SUM_REPT></SUM_REPT>
+						<SUM_RETURN></SUM_RETURN>
+						<SUM_TR_IN></SUM_TR_IN>
+						<SUM_TRANS></SUM_TRANS>
+						<SUM_VI_IN></SUM_VI_IN>
+						<SUM_VI_LT_IN></SUM_VI_LT_IN>
+						<SUM_VIRTUAL></SUM_VIRTUAL>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReptBranSum">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_VirtualSum">
+				<Contents>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMIS" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="95" Id="Image8" ImageID="C_Search2_bg1" Left="18" OnClick="Image0_OnClick" TabOrder="12" TabStop="FALSE" Top="10" Width="1015"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="13" TabStop="FALSE" Top="29" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="44" Style="tx_left_bold" TabOrder="14" Text="센터명" Top="29" Width="40"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="28" TabOrder="14" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="45" Style="tx_left_bold" TabOrder="16" Text="입금일자" Top="53" Width="56"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="861" TabOrder="15" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Static Height="11" Id="Static1" Left="875" Style="tx_left_bold" TabOrder="18" Text="사원명" Top="53" Width="39"></Static>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="517" TabOrder="16" TabStop="FALSE" Top="78" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="533" Style="tx_left_bold" TabOrder="20" Text="우편번호" Top="78" Width="82"></Static>
+		<Static Color="black" Height="13" Id="Static20" Left="662" Style="style0" TabOrder="21" Text="~" Top="78" Width="9"></Static>
+		<Radio BKColor="whitesmoke" Border="None" Height="24" Id="rad_Sort" INDEX="0" Left="337" OnClick="rad_Sort_OnClick" Style="radio" TabOrder="2" Top="22" Width="527">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="일자순입금전표" top="5" width="100"/>
+				<Layout code="2" height="18" left="120" text="업종순입금전표" top="5" width="100"/>
+				<Layout code="3" height="18" left="240" text="주소순입금전표" top="5" width="120"/>
+				<Layout code="4" height="18" left="360" text="담당자순입금전표" top="5" width="120"/>
+			</Contents>
+		</Radio>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="28" TabOrder="17" TabStop="FALSE" Top="75" Width="11"></Image>
+		<Static Height="15" Id="Static25" Left="44" Style="tx_left_bold" TabOrder="22" Text="업소코드/명" Top="75" Width="73"></Static>
+		<Static Color="black" Height="16" Id="Static7" Left="227" Style="style0" TabOrder="23" Text="~" Top="53" Width="9"></Static>
+		<Image Height="11" Id="Image7" ImageID="C_icon" Left="810" TabOrder="18" TabStop="FALSE" Top="78" Width="11"></Image>
+		<Static Height="15" Id="Static9" Left="826" Style="tx_left_bold" TabOrder="25" Text="입금매체" Top="78" Width="73"></Static>
+		<Image Height="11" Id="Image6" ImageID="C_icon" Left="675" TabOrder="19" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="691" Style="tx_left_bold" TabOrder="27" Text="업종" Top="54" Width="73"></Static>
+		<Image FillType="STRETCH" Height="95" Id="Image21" ImageID="C_Search2_left1" Left="8" TabOrder="20" TabStop="FALSE" Top="10" Width="12"></Image>
+		<Image FillType="STRETCH" Height="95" Id="Image9" ImageID="C_Search2_right1" Left="1030" TabOrder="21" TabStop="FALSE" Top="10" Width="12"></Image>
+		<Edit BindDataset="ds_In" Border="Flat" BorderColor="user10" Column="UPSO_CD" Height="20" Id="edt_UPSO_CD" ImeMode="none" Left="128" LeftMargin="2" MaxLength="8" OnChar="edt_UPSO_CD_OnChar" OnKeyDown="edt_UPSO_CD_OnKeyDown" Style="edit" TabOrder="9" Text="4000437A" Top="72" UseIME="FALSE" Width="91"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Column="UPSO_NM" Height="20" Id="edt_UPSO_NM" ImeMode="native,katakana" Left="224" MaxLength="100" OnKeyDown="edt_UPSO_NM_OnKeyDown" Style="edit" TabOrder="10" Top="72" Width="176"></Edit>
+		<Combo BindDataset="ds_In" BKColor="user13" Border="Flat" BorderColor="user10" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="0" Left="127" OnChanged="cob_BRAN_CD_OnChanged" ResetIndex="FIRST" TabOrder="1" ToolTipText="센터명" Top="24" Width="109"></Combo>
+		<Combo BindDataset="ds_In" Border="Flat" BorderColor="user3" Column="BSTYP_CD" Height="20" Id="cob_BSTYP_CD" Left="730" Style="edit" TabOrder="7" Top="48" Width="110"></Combo>
+		<ubiviewer Bottom="469" Height="101" Id="ubi0" Left="8" Right="448" Top="368" Visible="FALSE" Width="440">
+			<_PersistData>&#13;&#10;/6y/OwOH/wAAAQB6LQAA93AKAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Combo BindDataset="ds_In" Border="Flat" BorderColor="user3" CodeColumn="CODE_CD" Column="REPT_GBN" DataColumn="CODE_NM" Height="20" Id="cob_REPT_GBN" ImeMode="none" InnerDataset="ds_REPT_GBN" Left="884" TabOrder="11" Top="72" Width="122"></Combo>
+		<Calendar BindDataset="ds_In" BKColor="user13" Border="Flat" BorderColor="user10" Column="START_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_StartDt" Left="128" LeftMargin="6" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="3" ToolTipText="입금일자(from)" Top="48" Value="TODAY" Width="95"></Calendar>
+		<Calendar BindDataset="ds_In" BKColor="user13" Border="Flat" BorderColor="user10" Column="END_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_EndDt" Left="240" LeftMargin="6" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="4" ToolTipText="입금일자(to)" Top="48" Value="TODAY" Width="95"></Calendar>
+		<MaskEdit Align="Center" BindDataset="ds_In" Border="Flat" BorderColor="user10" Column="FROM_ZIP" Height="21" Id="mae_from_zip" Left="600" Mask="#####" TabOrder="5" ToolTipText="우편번호_S" Top="72" Type="STRING" Width="60"></MaskEdit>
+		<MaskEdit Align="Center" BindDataset="ds_In" Border="Flat" BorderColor="user10" Column="TO_ZIP" Height="21" Id="mae_to_zip" Left="672" Mask="#####" TabOrder="6" ToolTipText="우편번호_E" Top="72" Type="STRING" Width="60"></MaskEdit>
+		<Button Cursor="HAND" Height="21" Id="btn_FindUpso" ImageID="C_btn_search" Left="407" OnClick="btn_FindUpso_OnClick" TabOrder="22" TabStop="FALSE" Top="72" Width="58"></Button>
+		<Combo Border="Flat" BorderColor="user10" CodeColumn="STAFF_CD" DataColumn="STAFF_NM" Height="20" Id="cob_Staff_Nm" ImeMode="none" INDEX="1" InnerDataset="ds_SawonInfo" Left="924" TabOrder="8" ToolTipText="담당직원" Top="48" Width="80"></Combo>
+		<Static Height="16" Id="Static3" Left="16" TabOrder="33" Text="자동이체(은행)" Top="600" Width="80"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_AUTO" Height="20" Id="mae_CntAuto" Left="100" Readonly="TRUE" TabOrder="23" TabStop="FALSE" Top="596" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_AUTO" Height="20" Id="mae_SumAuto" Left="100" Readonly="TRUE" TabOrder="24" TabStop="FALSE" Top="620" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static6" Left="40" TabOrder="36" Text="MICR" Top="704" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_MICR" Height="20" Id="mae_CntMICR" Left="100" Readonly="TRUE" TabOrder="25" TabStop="FALSE" Top="700" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_MICR" Height="20" Id="mae_SumMICR" Left="100" Readonly="TRUE" TabOrder="26" TabStop="FALSE" Top="724" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static8" Left="248" TabOrder="39" Text="OCR" Top="600" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_OCR" Height="20" Id="mae_CntOCR" Left="292" Readonly="TRUE" TabOrder="27" TabStop="FALSE" Top="596" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_OCR" Height="20" Id="mae_SumOCR" Left="292" Readonly="TRUE" TabOrder="28" TabStop="FALSE" Top="620" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static10" Left="40" TabOrder="42" Text="CARD" Top="760" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_CARD" Height="20" Id="mae_CntCard" Left="100" Readonly="TRUE" TabOrder="29" TabStop="FALSE" Top="756" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_CARD" Height="20" Id="mae_SumCard" Left="100" Readonly="TRUE" TabOrder="30" TabStop="FALSE" Top="780" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static11" Left="248" TabOrder="45" Text="채권" Top="704" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_CLAIM" Height="20" Id="mae_CntClaim" Left="292" Readonly="TRUE" TabOrder="31" TabStop="FALSE" Top="700" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_CLAIM" Height="20" Id="mae_SumClaim" Left="292" Readonly="TRUE" TabOrder="32" TabStop="FALSE" Top="724" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static12" Left="834" TabOrder="48" Text="입금" Top="600" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="CNT_TR_IN" Height="20" Id="mae_CntTrIn" Left="892" Readonly="TRUE" TabOrder="33" TabStop="FALSE" Top="596" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="SUM_TR_IN" Height="20" Id="mae_SumTrIn" Left="892" Readonly="TRUE" TabOrder="34" TabStop="FALSE" Top="620" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static13" Left="834" TabOrder="51" Text="미입금" Top="760" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="CNT_AV_IN" Height="20" Id="mae_CntAvIn" Left="892" Readonly="TRUE" TabOrder="35" TabStop="FALSE" Top="756" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="SUM_AV_IN" Height="20" Id="mae_SumAvIn" Left="892" Readonly="TRUE" TabOrder="36" TabStop="FALSE" Top="780" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static14" Left="632" TabOrder="54" Text="무통장" Top="600" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="CNT_TRANS" Height="20" Id="mae_CntTrans" Left="692" Readonly="TRUE" TabOrder="37" TabStop="FALSE" Top="596" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="SUM_TRANS" Height="20" Id="mae_SumTrans" Left="692" Readonly="TRUE" TabOrder="38" TabStop="FALSE" Top="620" Width="108"></MaskEdit>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static15" Left="552" TabOrder="57" Text="전체&#32;합계" Top="823" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_REPT" Font="굴림,9,Bold" Height="20" Id="mae_CntRept" Left="628" Readonly="TRUE" TabOrder="39" TabStop="FALSE" Top="819" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_REPT" Font="굴림,9,Bold" Height="20" Id="mae_SumRept" Left="748" Readonly="TRUE" TabOrder="40" TabStop="FALSE" Top="819" Width="108"></MaskEdit>
+		<Shape Bottom="822" Height="20" Id="Shape0" Left="20" Right="1020" TabOrder="60" Top="802" Width="1000"></Shape>
+		<Static Height="32" Id="Static16" Left="834" TabOrder="63" Text="센터분배" Top="704" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="CNT_BR_IN" Height="20" Id="mae_CntArTIn" Left="892" Readonly="TRUE" TabOrder="41" TabStop="FALSE" Top="700" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="cornsilk" Border="Flat" BorderColor="user10" Column="SUM_BR_IN" Height="20" Id="mae_SumArTIn" Left="892" OnClick="mae_SumArTIn_OnClick" Readonly="TRUE" TabOrder="42" TabStop="FALSE" Top="724" Width="108"></MaskEdit>
+		<Div Height="218" Id="div_BranAmt" Left="824" TabOrder="43" TabStop="FALSE" Text="Div0" Top="352" Visible="FALSE" Width="222">
+			<Contents>
+				<Grid AutoFit="TRUE" BindDataset="ds_ReptBranSum" BkColor2="default" BoldHead="true" Border="Flat" Bottom="216" Enable="true" EndLineColor="default" Height="192" Id="grd_ReptBranSum" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="208" TabOrder="1" TabStop="true" Top="24" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="200">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="80"/>
+								<col width="95"/>
+							</columns>
+							<body>
+								<cell col="0" colid="BRAN_NM" display="text"/>
+								<cell col="1" colid="REPT_AMT" display="number"/>
+							</body>
+							<summary>
+								<cell align="center" col="0" display="text" text="계"/>
+								<cell col="1" display="number" expr='sum(&quot;REPT_AMT&quot;)'/>
+							</summary>
+						</format>
+					</contents>
+				</Grid>
+				<Button Height="15" Id="btn_close" Left="192" OnClick="div_BranAmt_btn_close_OnClick" TabOrder="2" Text="X" Top="6" Width="13"></Button>
+			</Contents>
+		</Div>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static17" Left="16" TabOrder="65" Text="가수금&#32;당월&#32;매칭&#32;금액은&#32;일자별&#32;입금전표&#32;내역에서&#32;제외됩니다." Top="120" Width="400"></Static>
+		<Static Height="16" Id="Static18" Left="248" TabOrder="68" Text="반환" Top="760" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_RETURN" Height="20" Id="mae_CntReturn" Left="292" Readonly="TRUE" TabOrder="66" TabStop="FALSE" Top="756" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_RETURN" Height="20" Id="mae_SumReturn" Left="292" Readonly="TRUE" TabOrder="67" TabStop="FALSE" Top="780" Width="108"></MaskEdit>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static19" Left="872" TabOrder="69" Text="(입금금액&#32;-&#32;반환금액)" Top="823" Width="140"></Static>
+		<Static Height="24" Id="Static21" Left="432" TabOrder="72" Text="가상계좌" Top="600" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="CNT_VIRTUAL" Height="20" Id="mae_CntVirtual" Left="492" Readonly="TRUE" TabOrder="70" TabStop="FALSE" Top="596" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="SUM_VIRTUAL" Height="20" Id="mae_SumVirtual" Left="492" Readonly="TRUE" TabOrder="71" TabStop="FALSE" Top="620" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static22" Left="434" TabOrder="75" Text="입금" Top="704" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="CNT_VI_IN" Height="20" Id="MaskEdit0" Left="492" Readonly="TRUE" TabOrder="73" TabStop="FALSE" Top="700" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="SUM_VI_IN" Height="20" Id="MaskEdit1" Left="492" Readonly="TRUE" TabOrder="74" TabStop="FALSE" Top="724" Width="108"></MaskEdit>
+		<Static Height="32" Id="Static23" Left="434" TabOrder="78" Text="센터분배" Top="760" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="CNT_BR_VI_IN" Height="20" Id="MaskEdit2" Left="492" Readonly="TRUE" TabOrder="76" TabStop="FALSE" Top="756" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="SUM_BR_VI_IN" Height="20" Id="MaskEdit3" Left="492" OnClick="mae_SumArTIn_OnClick" Readonly="TRUE" TabOrder="77" TabStop="FALSE" Top="780" Width="108"></MaskEdit>
+		<Static Height="16" Id="Static24" Left="634" TabOrder="81" Text="미입금" Top="760" Width="56"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="CNT_AV_VI_IN" Height="20" Id="MaskEdit4" Left="692" Readonly="TRUE" TabOrder="79" TabStop="FALSE" Top="756" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="SUM_AV_VI_IN" Height="20" Id="MaskEdit5" Left="692" Readonly="TRUE" TabOrder="80" TabStop="FALSE" Top="780" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="CNT_VI_LT_IN" Height="20" Id="MaskEdit6" Left="692" Readonly="TRUE" TabOrder="82" TabStop="FALSE" Top="700" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="SUM_VI_LT_IN" Height="20" Id="MaskEdit7" Left="692" Readonly="TRUE" TabOrder="83" TabStop="FALSE" Top="724" Width="108"></MaskEdit>
+		<Static Height="40" Id="Static26" Left="631" TabOrder="84" Text="가상계좌&#13;&#10;수수료미만&#13;&#10;입금" Top="704" Width="65"></Static>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static27" Left="64" TabOrder="85" Text="가상계좌&#32;합계" Top="823" Width="82"></Static>
+		<MaskEdit BindDataset="ds_VirtualSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="REPT_AMT" Height="20" Id="mae_virtual_sum" Left="156" Readonly="TRUE" TabOrder="86" TabStop="FALSE" Top="820" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_VirtualSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="COMIS" Height="20" Id="mae_virtual_comis" Left="284" Readonly="TRUE" TabOrder="87" TabStop="FALSE" Top="820" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_VirtualSum" BKColor="azure" Border="Flat" BorderColor="user10" Column="USE_AMT" Height="20" Id="mae_virtual_real" Left="412" Readonly="TRUE" TabOrder="88" TabStop="FALSE" Top="820" Width="108"></MaskEdit>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static28" Left="270" TabOrder="89" Text="-" Top="823" Width="20"></Static>
+		<Static Font="굴림,9,Bold" Height="16" Id="Static29" Left="398" TabOrder="90" Text="=" Top="823" Width="20"></Static>
+		<Calendar BindDataset="ds_In" Border="Flat" BorderColor="user10" Column="END_DATE" Dateformat="yyyy/MM/dd" Height="20" Id="cal_recv_end" Left="552" LeftMargin="6" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="92" ToolTipText="입금일자(to)" Top="48" Width="95"></Calendar>
+		<Static Color="black" Height="16" Id="Static30" Left="539" Style="style0" TabOrder="95" Text="~" Top="53" Width="9"></Static>
+		<Calendar BindDataset="ds_In" Border="Flat" BorderColor="user10" Column="START_DATE" Dateformat="yyyy/MM/dd" Height="20" Id="cal_recv_start" Left="440" LeftMargin="6" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="91" ToolTipText="입금일자(from)" Top="48" Width="95"></Calendar>
+		<Static Height="15" Id="Static31" Left="381" Style="tx_left_bold" TabOrder="94" Text="영수일자" Top="53" Width="56"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="364" TabOrder="93" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Grid AutoScrollBar="AlwaysVert" BindDataset="ds_Mng_Si" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="584" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="448" Id="grd_List" InputPanel="FALSE" Left="8" LineColor="silver" OnHeadClick="grd_UPSO_REPT_OnHeadClick" Right="1039" RowHeight="20" Style="grid" TabOrder="96" TabStop="FALSE" Top="136" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="40"/>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="125"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="입금일자"/>
+						<cell col="1" color="user12" display="text" rowspan="2" text="순번"/>
+						<cell col="2" color="user12" display="text" rowspan="2" text="업소코드"/>
+						<cell col="3" color="user12" display="text" rowspan="2" text="업소명"/>
+						<cell col="4" color="user12" display="text" rowspan="2" text="업주명"/>
+						<cell col="5" color="user12" display="text" rowspan="2" text="업종"/>
+						<cell col="6" color="user12" colspan="2" display="text" text="납입기간"/>
+						<cell col="8" color="user12" display="text" rowspan="2" text="입금액"/>
+						<cell col="9" color="user12" display="text" rowspan="2" text="입금매체"/>
+						<cell col="10" color="user12" display="text" rowspan="2" text="담당직원"/>
+						<cell col="11" color="user12" display="text" rowspan="2" text="비고"/>
+						<cell col="6" color="user12" display="text" row="1" text="시작년월"/>
+						<cell col="7" color="user12" display="text" row="1" text="종료년월"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="REPT_DAY" display="date" Mask="yyyy/MM/dd" suppress="1"/>
+						<cell align="center" col="1" colid="RNO" display="text"/>
+						<cell align="center" col="2" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="MNGEMSTR_NM" display="text"/>
+						<cell align="center" col="5" colid="GRADNM" display="text"/>
+						<cell align="center" col="6" colid="START_YRMN" display="text" Mask="####/##"/>
+						<cell align="center" col="7" colid="END_YRMN" display="text" Mask="####/##"/>
+						<cell align="right" col="8" colid="USE_AMT" display="number"/>
+						<cell align="center" col="9" colid="REPT_GBN_NM" combotext="CODE_NM" display="text"/>
+						<cell align="center" col="10" colid="STAFF_NM" display="text"/>
+						<cell align="left" col="11" colid="REMAK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="16" Id="Static32" Left="16" TabOrder="99" Text="자동이체(카드)" Top="651" Width="80"></Static>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="CNT_AUTO_CARD" Height="20" Id="MaskEdit8" Left="100" Readonly="TRUE" TabOrder="97" TabStop="FALSE" Top="647" Width="108"></MaskEdit>
+		<MaskEdit BindDataset="ds_ReptSum" Border="Flat" BorderColor="user10" Column="SUM_AUTO_CARD" Height="20" Id="MaskEdit9" Left="100" Readonly="TRUE" TabOrder="98" TabStop="FALSE" Top="671" Width="108"></MaskEdit>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "sync_Mng_Si") {
+		gfn_SetStatusMsg(this.ds_Mng_Si.count + " 건이 조회되었습니다.");
+		fn_GetReptCntSum();
+		fn_SetRno();
+	}
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		//fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+		
+        close();
+    }
+	
+	return;
+}
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	//ds_In.AddRow();
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	rad_Sort.Index = 0;
+	cal_StartDt.Value = TODAY();
+	cal_EndDt.Value = TODAY();
+		// 업종 정보 가져오기
+	gfn_GetDataBSTYP(cob_BSTYP_CD, 0);
+		// 입금구분 가져오기
+	gfn_PubCode("ds_REPT_GBN", 2, "00141", "A");
+	ds_REPT_GBN.InsertRow(0);
+	ds_REPT_GBN.SetColumn(0,"CODE_CD",'');
+	ds_REPT_GBN.SetColumn(0,"CODE_NM",'전체');
+	cob_BSTYP_CD.Index = 0;
+	cob_REPT_GBN.Index = 0;
+	
+	if (this.ds_SawonInfo.rowcount == 0) {
+		this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+		gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+		var iRow = ds_SawonInfo.InsertRow(0);
+		ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+		ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+		this.cob_Staff_Nm.Value = "";
+	}
+
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+}
+
+
+
+function fn_Search(){
+// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+
+	if(length(trim(cob_BRAN_CD.Text)) == 0)
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	
+	if(   (substr(cal_StartDt.Value, 0, 4) != substr(cal_EndDt.Value, 0, 4))
+	   || (cob_BRAN_CD.Value == "AL" && cob_BSTYP_CD.Index == 0 && (parseInt(substr(cal_StartDt.Value, 0, 6)) + 2 < parseInt(substr(cal_EndDt.Value, 0, 6))))
+	  )
+	{
+		gfn_Confirm("MB_OK", "조회기간을 조정해주세요.", "경고", "0");
+		cal_StartDt.SetFocus();
+		return false;
+	}
+	
+	ds_In_0.SetColumn(0,"BRAN_CD",cob_BRAN_CD.Value);
+	ds_In_0.SetColumn(0,"START_DAY",cal_StartDt.Value);
+	ds_In_0.SetColumn(0,"END_DAY",cal_EndDt.Value);
+	ds_In_0.SetColumn(0,"FROM_ZIP",mae_from_zip.Value);
+	ds_In_0.SetColumn(0,"TO_ZIP",mae_to_zip.Value);
+	ds_In_0.SetColumn(0,"BSTYP_CD",cob_BSTYP_CD.Value);
+	var cd_staff = this.cob_Staff_Nm.Value;
+	ds_In_0.SetColumn(0,"STAFF_CD",cd_staff);
+	ds_In_0.SetColumn(0,"UPSO_CD",edt_UPSO_CD.Text);
+	ds_In_0.SetColumn(0,"REPT_GBN",cob_REPT_GBN.Value);
+	
+	ds_In_0.SetColumn(0,"START_DATE",cal_recv_start.Value);
+	ds_In_0.SetColumn(0,"END_DATE",cal_recv_end.Value);
+	
+	gfn_syncCall("sync_Mng_Si","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001008002&EVENTID=day_rept_list","S=ds_In_0","ds_Mng_Si=SEL1 ds_ReptBranSum=SEL2 ds_VirtualSum=SEL3","","fn_CallBack");
+}
+
+
+function edt_UPSO_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//업소코드 입력 조회시 바로 조회창 페이지를 거치지 않고 바로 검색
+	if(this.cob_BRAN_CD.Value==null){
+	
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return false;
+	}
+	if (nChar == "13") {
+		fn_GetUPSO_CD();
+		
+	}
+	else if (nChar == "112") {
+		fn_FindUPSO();
+	}
+
+	return;
+}
+
+function edt_UPSO_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == "112") {
+		fn_FindUPSO();
+	}
+
+	return;
+}
+
+function form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+
+}
+function fn_GetUPSO_CD()
+{
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	}
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+
+	var result = gfn_GetUPSO_CD(BRAN_CD, UPSO_CD, UPSO_NM);
+
+	if (length(result) > 0) {
+		var vArr = result.split(",");
+		this.edt_UPSO_CD.Text = vArr[0];
+		this.edt_UPSO_NM.Text = vArr[1];
+		fn_search();
+	}
+	else {
+		fn_FindUPSO();
+	}
+}
+
+function fn_Print()
+{
+	if(length(this.cob_Staff_Nm.Value)==0){
+		ubi0.SetArgument("Staff_NM","");
+	}
+	else{
+		ubi0.SetArgument("Staff_NM", this.cob_Staff_Nm.Text );
+	}
+	
+	ubi0.SetArgument("BRAN_NM",this.cob_BRAN_CD.Text ) ;
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/"); 
+	
+	if(rad_Sort.Value = 1){
+		ubi0.SetDataset("ds_Mng_Si","ds_Mng_Si");
+		ubi0.setJrfFileName("bra04_p05_01.jrf");
+	}else if(rad_Sort.Value = 2){
+		ubi0.SetDataset("ds_Mng_Si","ds_Mng_Si");
+		ubi0.setJrfFileName("bra04_p05_02.jrf");
+	}else if(rad_Sort.Value = 3){
+		ubi0.SetDataset("ds_Mng_Si","ds_Mng_Si");
+		ubi0.setJrfFileName("bra04_p05_03.jrf");
+	}else if(rad_Sort.Value = 4){
+		ubi0.SetDataset("ds_Mng_Si","ds_Mng_Si");
+		ubi0.setJrfFileName("bra04_p05_04.jrf");
+	}
+	
+	ubi0.Retrieve();
+	
+	if(ds_Mng_Si.rowcount = 0)
+	{
+        gfn_Confirm("MB_OK", "출력할 데이타가 없습니다.", "경고", "0");
+		return false;
+	
+	}
+	
+	ubi0.directPrint();
+}
+
+function fn_Excel()
+{
+	this.grd_List.ExportExcelEx("일자순입금전표내역서");
+}
+
+
+function btn_FindUpso_OnClick(obj)
+{
+	if(length(trim(cob_BRAN_CD.Text)) == 0)
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		cob_BRAN_CD.SetFocus();
+		return false;
+
+	}	
+	fn_FindUPSO();
+}
+function fn_FindUPSO()
+{
+	//if (!gfn_RequiredCheck(this.cob_BRAN_CD, "센터를 선택하세요")) return;
+/*	
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		this.cob_BRAN_CD.SetFocus();
+		return;
+	}
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var UPSO_CD = this.edt_UPSO_CD.Text;
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+
+    //var inParam = "SGBN=bra01_s01" + " BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM);
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra01_s01");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	
+	    this.edt_UPSO_CD.Text = vArr[0];
+	    this.edt_UPSO_NM.Text = vArr[1];
+	}
+*/
+	var BRAN_CD = this.cob_BRAN_CD.Value;
+	var upso_cd;
+	if(this.edt_UPSO_NM.Text == ""){
+		UPSO_CD = this.edt_UPSO_CD.Text;
+	}
+	else{
+		UPSO_CD = "";
+	}
+	
+	this.edt_UPSO_NM.SetFocus();
+	var UPSO_NM = this.edt_UPSO_NM.Text;
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM) + " SGBN=" + quote("bra01_s01");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);
+
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	    this.edt_UPSO_CD.Text = vArr[0];
+	    this.edt_UPSO_NM.Text = vArr[1];
+	}
+	
+	
+}
+function img_empSearch_OnClick(obj,nX,nY)
+{
+
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		return;
+	}
+
+	var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+		
+		if (length(result ) > 0) {
+			var vArr = result.Split(",");
+			edt_staff_nm.Text = vArr[0];
+			edt_staff_cd.Text = vArr[1];
+		}
+}
+
+
+function edt_STAFF_CD_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(this.cob_BRAN_CD.Index < 0){
+        gfn_Confirm("MB_OK", "센터를 선택하십시요", "경고", "0");
+		return;
+	}
+	if (nChar == "112") {
+		var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+		
+		if (length(result ) > 0) {
+			var vArr = result.Split(",");
+			edt_STAFF_CD.Text = vArr[0];
+			edt_STAFF_NM.Text = vArr[1];
+		}
+	}
+}
+
+function edt_UPSO_CD_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	var strtext = right(strPostText,1);
+	var chkstr = "[<!#$%*&_:=|`~'"+Quote("")+";@^+\\>-]"; 
+	
+	if(pos(chkstr, strtext) >= 0)   // 특수문자 사용 제한
+	{
+		return false;
+	}
+	
+	if (length(strPostText) == 8 && nChar >= asc('a') && nChar <= asc('z')) {
+		obj.Text = strPreText + toUpper(chr(nChar));
+		return false;
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+
+	this.ds_BRAN_CD.SetColumn(0,"BRAN_CD", this.cob_BRAN_CD.value);
+	gfn_syncCall("SAWON_CLICK","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=p_staff_select","S=ds_BRAN_CD","ds_SawonInfo=SEL1","","fn_CallBack");
+	var iRow = ds_SawonInfo.InsertRow(0);
+	ds_SawonInfo.SetColumn(iRow,"CODE_CD","");
+	ds_SawonInfo.SetColumn(iRow,"CODE_NM","");
+
+	this.cob_Staff_Nm.Value = "";
+	this.cob_Staff_Nm.Enable = true;
+}
+
+function fn_GetReptCntSum()
+{
+	var cnt_auto  = 0;	// 자동이체(은행 입금 건수
+	var sum_auto  = 0;	// 자동이체(은행) 입금 금액
+	var cnt_auto_card  = 0;	// 자동이체(카드) 입금 건수
+	var sum_auto_card  = 0;	// 자동이체(카드) 입금 금액	
+	var cnt_micr  = 0;	// micr 입금 건수
+	var sum_micr  = 0;	// micr 입금 금액
+	var cnt_ocr   = 0;	// ocr 입금 건수
+	var sum_ocr   = 0;	// ocr 입금 금액
+	var cnt_card  = 0;	// card 입금 건수
+	var sum_card  = 0;	// card 입금 금액
+	var cnt_claim = 0;	// 채권 입금 건수
+	var sum_claim = 0;	// 채권 입금 금액
+	var cnt_trans = 0;	// 무통장 입금 건수
+	var sum_trans = 0;	// 무통장 입금 금액 
+	var cnt_tr_in = 0;	// 무통장 매핑 건수
+	var sum_tr_in = 0;	// 무통장 매핑 금액 
+	var cnt_br_in = 0;	// 무통장 센터분배 건수
+	var sum_br_in = 0;	// 무통장 센터분배 금액
+	var cnt_av_in = 0;	// 무통장 가수 건수
+	var sum_av_in = 0;	// 무통장 가수 금액
+	var cnt_return = 0;	// 반환 건수
+	var sum_return = 0;	// 반환 금액
+	var cnt_rept = 0;	// 전체 입금 건수
+	var sum_rept = 0;	// 전체 입금 금액
+	var cnt_virtual = 0;	// 가상계좌 입금 건수
+	var sum_virtual = 0;	// 가상계좌 입금 금액
+	var cnt_vi_in = 0;	// 가상계좌 매핑 건수
+	var sum_vi_in = 0;	// 가상계좌 매핑 금액 
+	var cnt_br_vi_in = 0;	// 가상계좌 센터분배 건수
+	var sum_br_vi_in = 0;	// 가상계좌 센터분배 금액
+	var cnt_av_vi_in = 0;	// 가상계좌 가수 건수
+	var sum_av_vi_in = 0;	// 가상계좌 가수 금액
+	var cnt_vi_lt_in = 0;	// 가상계좌 수수료미만 입금 건수
+	var sum_vi_lt_in = 0;	// 가상계좌 수수료미만 입금 금액 
+	
+	var rno = 0;
+	for (var i=0; i<this.ds_Mng_Si.rowcount; i++) {
+		
+		if (i>0 && this.ds_Mng_Si.GetColumn(i, "REPT_DAY") != this.ds_Mng_Si.GetColumn(i-1, "REPT_DAY")) {
+			rno = 0;
+		}
+		rno = rno + 1;
+		this.ds_Mng_Si.SetColumn(i, "RNO", rno);
+		
+		// 자동이체
+		if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "01") {
+			cnt_auto = cnt_auto + 1;
+			sum_auto = sum_auto + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 
+		// 자동이체(카드)
+		if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "10") {
+			cnt_auto_card = cnt_auto_card + 1;
+			sum_auto_card = sum_auto_card + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 		
+		// MICR
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "02") {
+			cnt_micr = cnt_micr + 1;
+			sum_micr = sum_micr + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 
+		// OCR
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "04") {
+			cnt_ocr = cnt_ocr + 1;
+			sum_ocr = sum_ocr + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 
+		// card
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "05") {
+			cnt_card = cnt_card + 1;
+			sum_card = sum_card + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 
+		// 채권
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "06") {
+			cnt_claim = cnt_claim  + 1;
+			sum_claim = sum_claim  + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 
+		// 반환
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "09") {
+			cnt_return = cnt_return  + 1;
+			sum_return = sum_return  + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		} 
+		// 무통장
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "03") {
+			cnt_trans = cnt_trans + 1;
+			sum_trans = sum_trans + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+
+			if (length(this.ds_Mng_Si.GetColumn(i, "UPSO_CD")) > 1) {
+				cnt_tr_in = cnt_tr_in + 1;
+				sum_tr_in = sum_tr_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+			}
+			else {
+			/*-------------------------------------------------
+				GBN : 1  일반 입금 내역
+					  2  센터 분배 가수금 (미분배)
+					  3  센터 분배 타센터 분배분
+					  4  센터 분배 가수금 (미매칭) - 자기 센터
+					  5  센터 분배 가수금 (미매칭) - 타센터 
+					  6  센터 분배 입금 내역
+					  7  업소 분배 가수금
+					  8  업소 분배 내역
+					  9  입금 반환
+			-------------------------------------------------*/
+				if (this.ds_Mng_Si.GetColumn(i, "GBN") == "3"){
+					cnt_br_in = cnt_br_in + 1;
+					sum_br_in = sum_br_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+				}
+				else {
+					cnt_av_in = cnt_av_in + 1;
+					sum_av_in = sum_av_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+				}
+			}
+		}
+		// 가상계좌
+		else if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "08") {
+			cnt_virtual = cnt_virtual + 1;
+			sum_virtual = sum_virtual + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+
+			if (   length(this.ds_Mng_Si.GetColumn(i, "MAPPING_DAY")) > 1
+			    && toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT") > 0))
+			{
+				cnt_vi_in = cnt_vi_in + 1;
+				sum_vi_in = sum_vi_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+			}
+			else if (toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT") < 0))
+			{
+				cnt_vi_lt_in = cnt_vi_lt_in + 1;
+				sum_vi_lt_in = sum_vi_lt_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+			}
+			else {
+			/*-------------------------------------------------
+				GBN : 1  일반 입금 내역
+					  2  센터 분배 가수금 (미분배)
+					  3  센터 분배 타센터 분배분
+					  4  센터 분배 가수금 (미매칭) - 자기 센터
+					  5  센터 분배 가수금 (미매칭) - 타센터 
+					  6  센터 분배 입금 내역
+					  7  업소 분배 가수금
+					  8  업소 분배 내역
+					  9  입금 반환
+			-------------------------------------------------*/
+				if (this.ds_Mng_Si.GetColumn(i, "GBN") == "3"){
+					cnt_br_vi_in = cnt_br_vi_in + 1;
+					sum_br_vi_in = sum_br_vi_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+				}
+				else {
+					cnt_av_vi_in = cnt_av_vi_in + 1;
+					sum_av_vi_in = sum_av_vi_in + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+				}
+			}
+		}
+		
+		cnt_rept = cnt_rept + 1;
+		
+		if (this.ds_Mng_Si.GetColumn(i, "REPT_GBN") == "09") {
+			sum_rept = sum_rept - toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		}
+		else {
+			sum_rept = sum_rept + toNumber(this.ds_Mng_Si.GetColumn(i, "USE_AMT"));
+		}
+	}
+	
+	this.ds_ReptSum.SetColumn(0, "CNT_AUTO"  , cnt_auto  );
+	this.ds_ReptSum.SetColumn(0, "SUM_AUTO"  , sum_auto  );
+	this.ds_ReptSum.SetColumn(0, "CNT_AUTO_CARD"  , cnt_auto_card  );
+	this.ds_ReptSum.SetColumn(0, "SUM_AUTO_CARD"  , sum_auto_card  );	
+	this.ds_ReptSum.SetColumn(0, "CNT_MICR"  , cnt_micr  );
+	this.ds_ReptSum.SetColumn(0, "SUM_MICR"  , sum_micr  );
+	this.ds_ReptSum.SetColumn(0, "CNT_OCR"   , cnt_ocr   );
+	this.ds_ReptSum.SetColumn(0, "SUM_OCR"   , sum_ocr   );
+	this.ds_ReptSum.SetColumn(0, "CNT_CARD"  , cnt_card  );
+	this.ds_ReptSum.SetColumn(0, "SUM_CARD"  , sum_card  );
+	this.ds_ReptSum.SetColumn(0, "CNT_CLAIM" , cnt_claim );
+	this.ds_ReptSum.SetColumn(0, "SUM_CLAIM" , sum_claim );
+	this.ds_ReptSum.SetColumn(0, "CNT_TRANS" , cnt_trans );
+	this.ds_ReptSum.SetColumn(0, "SUM_TRANS" , sum_trans );
+	this.ds_ReptSum.SetColumn(0, "CNT_TR_IN" , cnt_tr_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_TR_IN" , sum_tr_in );
+	this.ds_ReptSum.SetColumn(0, "CNT_AV_IN" , cnt_av_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_AV_IN" , sum_av_in );
+	this.ds_ReptSum.SetColumn(0, "CNT_BR_IN" , cnt_br_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_BR_IN" , sum_br_in );
+	this.ds_ReptSum.SetColumn(0, "CNT_RETURN", cnt_return);
+	this.ds_ReptSum.SetColumn(0, "SUM_RETURN", sum_return);
+	this.ds_ReptSum.SetColumn(0, "CNT_REPT"  , cnt_rept  );
+	this.ds_ReptSum.SetColumn(0, "SUM_REPT"  , sum_rept  );
+	this.ds_ReptSum.SetColumn(0, "CNT_VIRTUAL" , cnt_virtual );
+	this.ds_ReptSum.SetColumn(0, "SUM_VIRTUAL" , sum_virtual );
+	this.ds_ReptSum.SetColumn(0, "CNT_VI_IN" , cnt_vi_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_VI_IN" , sum_vi_in );
+	this.ds_ReptSum.SetColumn(0, "CNT_BR_VI_IN" , cnt_br_vi_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_BR_VI_IN" , sum_br_vi_in );
+	this.ds_ReptSum.SetColumn(0, "CNT_AV_VI_IN" , cnt_av_vi_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_AV_VI_IN" , sum_av_vi_in );
+	this.ds_ReptSum.SetColumn(0, "CNT_VI_LT_IN" , cnt_vi_lt_in );
+	this.ds_ReptSum.SetColumn(0, "SUM_VI_LT_IN" , sum_vi_lt_in );
+}
+
+function rad_Sort_OnClick(obj)
+{
+	if (this.rad_Sort.Value == 1) {
+		this.ds_Mng_Si.Sort("REPT_DAY:A,MAPPING_DAY:A");
+	}
+	else if (this.rad_Sort.Value == 2) {
+		//this.ds_Mng_Si.Sort("REPT_DAY:A,BSTYP_CD:A");
+		this.ds_Mng_Si.Sort("BSTYP_CD:A,UPSO_CD:A");
+	}
+	else if (this.rad_Sort.Value == 3) {
+		//this.ds_Mng_Si.Sort("REPT_DAY:A,UPSO_ADDR:A");
+		this.ds_Mng_Si.Sort("UPSO_ADDR:A,UPSO_CD:A");
+	}
+	else if (this.rad_Sort.Value == 4) {
+		//this.ds_Mng_Si.Sort("REPT_DAY:A,STAFF_NM:A");
+		this.ds_Mng_Si.Sort("STAFF_NM:A,UPSO_CD:A");
+	}
+
+	fn_SetRno();
+}
+
+function fn_SetRno()
+{
+	var rno = 0;
+	for (var i=0; i<this.ds_Mng_Si.rowcount; i++) {
+		if (i>0 && this.ds_Mng_Si.GetColumn(i, "REPT_DAY") != this.ds_Mng_Si.GetColumn(i-1, "REPT_DAY")) {
+			rno = 0;
+		}
+		rno = rno + 1;
+		this.ds_Mng_Si.SetColumn(i, "RNO", rno);
+	}
+}
+
+function div_BranAmt_btn_close_OnClick(obj)
+{
+	this.div_BranAmt.Visible = false;
+}
+
+function mae_SumArTIn_OnClick(obj,objDragObj,nX,nY)
+{
+	if (length(this.mae_SumArTIn.Value) > 0 && toNumber(this.mae_SumArTIn.Value) > 0) {
+		this.div_BranAmt.Visible = !this.div_BranAmt.Visible;
+	}
+}
+]]></Script>
+</Window>

@@ -1,0 +1,1285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="lev02_s01" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="무대공연&#32;승인등록" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_USEAPPRV">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USEAPPTN_MNG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IFMNT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SITE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TTL" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_USAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_KND" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_FORM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_FORM_ETC_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_TYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_METH" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_LOC" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_LOCN_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="USETRM_START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="USETRM_END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_MUSICUSE_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRVCDTN_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USEAPPRVPROC_STAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONTRCCLSN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSR_START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSR_END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSR_REAS" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKDEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_REBIO_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRVDAPVL_REAS" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_FREQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_LOCN_AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="RTAL_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEAT_SALE_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_USEWRTG">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROD_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SINA_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="YETINS_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SECT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="LRC_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERFM_TM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMK_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMK_FORM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMK_FORM_ETC_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COUR_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_MB_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SWR_RESIINS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRDUCPRES_MB_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRDUCPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPS_RESIINS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUCST_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUNEUNCO_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_USEDEMDREPT">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="UDTKSTAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDT_CLOS_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="YETFREQ_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FREQFREQ_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_BANK_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_ACCN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPL_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_ACK_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPT_DECPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_CLRREC">
+				<Contents>
+					<colinfo id="PROP_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLR_UNIT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLR_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLR_QUART" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLR_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECVFEE_IPR_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADFEE_IPR_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXCHAD_IPR_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLR_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTCH_FILE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATTCH_FILE_ROUT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_APPTNPRESINFO">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPTNPRES_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FNM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR_DETED" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHON_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CP_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMAIL_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="HMPG_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>신청자</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>담당자</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>사업자</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>대행사</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>5</CODE_CD>
+						<CODE_NM>기획사</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>6</CODE_CD>
+						<CODE_NM>제작사</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>7</CODE_CD>
+						<CODE_NM>정당</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>8</CODE_CD>
+						<CODE_NM>개인</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_0">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>CD</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>TAPE</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>기타&#32;매체</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_1">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>판매용</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>비매용</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_2">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>등록</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>미등록</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_3">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>개작</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>미개작</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_4">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>신보</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>비신보</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_5">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>대중</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>순수</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>국악</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>동요</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>5</CODE_CD>
+						<CODE_NM>종교</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_6">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>개사</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>편곡</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>편집</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>9</CODE_CD>
+						<CODE_NM>기타</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_7">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>징수금액청구</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>세금청구서</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_8">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>지로</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>카드결재</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>무통장입금</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_9">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>Y</CODE_CD>
+						<CODE_NM>완료</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>N</CODE_CD>
+						<CODE_NM>미완료</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_10">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>년별</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>분기별</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>월별</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_11">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>주제</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>배경</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>시그널(삽입곡)</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>9</CODE_CD>
+						<CODE_NM>기타</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_12">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>국내</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>국외</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>전체</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_13">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>접수중</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>접수완료</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>심사중</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>승인완료</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>5</CODE_CD>
+						<CODE_NM>승인불가</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>6</CODE_CD>
+						<CODE_NM>승인유보</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Code_14">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HIGH_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>1/4&#32;분기</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>2/4&#32;분기</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>3</CODE_CD>
+						<CODE_NM>3/4&#32;분기</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+					<record>
+						<CODE_CD>4</CODE_CD>
+						<CODE_NM>4/4&#32;분기</CODE_NM>
+						<HIGH_CD></HIGH_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mdmcd1"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mdmcd2"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Mdmcd3"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_MdmUpside"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TLEV_USEQTY">
+				<Contents>
+					<colinfo id="APPRV_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SALE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="QTY_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="QTY_GBN_ETC_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="QTY_LNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="QTY_PNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="QTY_PRC" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<record>
+						<APPRV_NUM></APPRV_NUM>
+						<INS_DATE></INS_DATE>
+						<INSPRES_ID></INSPRES_ID>
+						<MNG_NUM></MNG_NUM>
+						<MOD_DATE></MOD_DATE>
+						<MODPRES_ID></MODPRES_ID>
+						<QTY_GBN></QTY_GBN>
+						<QTY_GBN_ETC_CTENT></QTY_GBN_ETC_CTENT>
+						<QTY_LNUM></QTY_LNUM>
+						<QTY_PNUM></QTY_PNUM>
+						<QTY_PRC></QTY_PRC>
+						<REMAK_CTENT></REMAK_CTENT>
+						<SALE_GBN></SALE_GBN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="Dataset0"></Dataset>
+		</Datasets>
+		<Shape BKColor="white" Bottom="63" Height="26" Id="Shape01" Left="103" LineColor="user3" Right="903" TabOrder="2" Top="37" Type="Rectangle" Width="800"></Shape>
+		<Shape BKColor="white" Bottom="39" Height="27" Id="Shape1" Left="103" LineColor="user3" Right="903" TabOrder="36" Top="12" Type="Rectangle" Width="800"></Shape>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static14" Left="624" Style="box_tx" TabOrder="37" Text="승인번호" Top="13" VAlign="Middle" Width="96"></Static>
+		<Shape BKColor="white" Bottom="188" Height="26" Id="Shape8" Left="103" LineColor="user3" Right="903" TabOrder="8" Top="162" Type="Rectangle" Width="800"></Shape>
+		<Shape BKColor="white" Bottom="113" Height="26" Id="Shape0" Left="103" LineColor="user3" Right="903" RoundHeight="25" TabOrder="41" Top="87" Type="Rectangle" Width="800"></Shape>
+		<Tab Border="Flat" Height="192" HilightColor="white" HilightTextColor="white" Id="tab_List" Left="8" MouseOverColor="white" SelColor="white" Style="tab" TabOrder="1" Top="256" Width="1029">
+			<Contents>
+				<TabPage BorderColor="black" Height="163" Id="tab_Info" ImageID="C_tab2" Left="2" Style="tab" TabOrder="1" Text="신청자정보" Top="27" Width="1025">
+					<Shape BKColor="user7" Bottom="21" Height="3" Id="Shape11" Left="15" LineColor="user7" Right="883" TabOrder="2" Top="18" Type="Rectangle" Width="868"></Shape>
+					<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_TLEV_APPTNPRESINFO" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="144" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="123" Id="grd_Info_Data" InputPanel="FALSE" Left="14" LineColor="silver" MultiSelect="TRUE" OnCellDBLClick="grd_Info_Data_OnCellDBLClick" Right="882" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="21" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="868">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="50"/>
+									<col width="101"/>
+									<col width="101"/>
+									<col width="106"/>
+									<col width="154"/>
+									<col width="101"/>
+									<col width="94"/>
+									<col width="210"/>
+									<col width="296"/>
+									<col width="101"/>
+									<col width="101"/>
+									<col width="101"/>
+									<col width="172"/>
+									<col width="204"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="관리번호"/>
+									<cell col="2" color="user12" display="text" text="신청자구분"/>
+									<cell col="3" color="user12" display="text" text="사업자등록번호"/>
+									<cell col="4" color="user12" display="text" text="상호명"/>
+									<cell col="5" color="user12" display="text" text="대표자명"/>
+									<cell col="6" color="user12" display="text" text="우편번호"/>
+									<cell col="7" color="user12" display="text" text="주소"/>
+									<cell col="8" color="user12" display="text" text="상세주소"/>
+									<cell col="9" color="user12" display="text" text="전화번호"/>
+									<cell col="10" color="user12" display="text" text="FAX번호"/>
+									<cell col="11" color="user12" display="text" text="휴대폰번호"/>
+									<cell col="12" color="user12" display="text" text="이메일"/>
+									<cell col="13" color="user12" display="text" text="홈페이지"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="column0" display="text" edit="number" expr="currow&#32;+&#32;1" limit="2"/>
+									<cell col="1" colid="MNG_NUM" display="text" edit="normal"/>
+									<cell col="2" colid="APPTNPRES_GBN" combocol="CODE_CD" combodataset="ds_Code" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell align="center" col="3" colid="INS_NUM" display="normal" edit="normal" limit="14"/>
+									<cell align="center" col="4" colid="FNM_NM" display="normal" edit="normal" limit="100"/>
+									<cell col="5" colid="REPPRES_NM" display="normal" edit="normal" limit="50"/>
+									<cell col="6" colid="POST_NUM" display="normal" limit="7"/>
+									<cell col="7" colid="ADDR" display="normal" limit="100"/>
+									<cell col="8" colid="ADDR_DETED" display="normal" edit="normal" limit="200"/>
+									<cell col="9" colid="PHON_NUM" display="normal" edit="normal" limit="30"/>
+									<cell col="10" colid="FAX_NUM" display="normal" edit="normal" limit="11"/>
+									<cell col="11" colid="CP_NUM" display="normal" edit="normal" limit="11"/>
+									<cell col="12" colid="EMAIL_ADDR" display="normal" edit="normal" limit="100"/>
+									<cell col="13" colid="HMPG_ADDR" display="normal" edit="normal" limit="200"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Button ButtonStyle="TRUE" Height="21" Id="btn_Tab_Add" ImageID="C_btn_70" Left="925" LeftMargin="23" OnClick="tab_List_tab_Info_btn_Tab_Add_OnClick" Style="edit" TabOrder="3" Text="추가" Top="19" TopMargin="1" Width="71"></Button>
+					<Button ButtonStyle="TRUE" Height="21" Id="btn_Tab_Del" ImageID="C_btn_70" Left="925" LeftMargin="23" OnClick="tab_List_tab_Info_btn_Tab_Del_OnClick" Style="edit" TabOrder="4" Text="삭제" Top="44" TopMargin="1" Width="71"></Button>
+				</TabPage>
+				<TabPage BorderColor="black" Height="163" Id="tab_Jujak" ImageID="C_tab2" Left="2" TabOrder="5" Text="승인저작물" Top="27" Width="1025">
+					<Shape BKColor="user7" Bottom="18" Height="3" Id="Shape11" Left="12" LineColor="user7" Right="880" TabOrder="1" Top="15" Type="Rectangle" Width="868"></Shape>
+					<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_TLEV_USEWRTG" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="141" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="123" Id="grd_Jujak_Data" InputPanel="FALSE" Left="12" LineColor="silver" MultiSelect="TRUE" OnCellDBLClick="grd_Jujak_Data_OnCellDBLClick" Right="880" RowHeight="20" Style="grid" TabOrder="2" TabStop="true" Top="18" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="868">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="50"/>
+									<col width="88"/>
+									<col width="176"/>
+									<col width="74"/>
+									<col width="74"/>
+									<col width="66"/>
+									<col width="87"/>
+									<col width="165"/>
+									<col width="66"/>
+									<col width="66"/>
+									<col width="150"/>
+									<col width="102"/>
+									<col width="102"/>
+									<col width="115"/>
+									<col width="107"/>
+									<col width="109"/>
+									<col width="106"/>
+									<col width="88"/>
+									<col width="84"/>
+									<col width="188"/>
+									<col width="242"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="작품코드"/>
+									<cell col="2" color="user12" display="text" text="작품명"/>
+									<cell col="3" color="user12" display="text" text="부문"/>
+									<cell col="4" color="user12" display="text" text="미등록여부"/>
+									<cell col="5" color="user12" display="text" text="개작여부"/>
+									<cell col="6" color="user12" display="text" text="개작형태"/>
+									<cell col="7" color="user12" display="text" text="개작형태&#32;기타내용"/>
+									<cell col="8" color="user12" display="text" text="연주시간"/>
+									<cell col="9" color="user12" display="text" text="신보여부"/>
+									<cell col="10" color="user12" display="text" text="가수명"/>
+									<cell col="11" color="user12" display="text" text="작사가&#32;회원코드"/>
+									<cell col="12" color="user12" display="text" text="작사가명"/>
+									<cell col="13" color="user12" display="text" text="작사가&#32;주민번호"/>
+									<cell col="14" color="user12" display="text" text="작곡가&#32;회원코드"/>
+									<cell col="15" color="user12" display="text" text="작곡가명"/>
+									<cell col="16" color="user12" display="text" text="작곡가&#32;주민번호"/>
+									<cell col="17" color="user12" display="text" text="편단가"/>
+									<cell col="18" color="user12" display="text" text="곡단가"/>
+									<cell col="19" color="user12" display="text" text="가사내용"/>
+									<cell col="20" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="column0" display="text" edit="number" expr="currow&#32;+&#32;1" limit="2"/>
+									<cell align="center" col="1" colid="PROD_CD" display="normal" edit="normal" limit="12"/>
+									<cell align="center" col="2" colid="PROD_NM" display="normal" edit="normal" limit="100"/>
+									<cell col="3" colid="SECT_CD" combocol="CODE_CD" combodataset="ds_Code_5" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="4" colid="YETINS_YN" combocol="CODE_CD" combodataset="ds_Code_2" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="5" colid="RMK_YN" combocol="CODE_CD" combodataset="ds_Code_3" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="6" colid="RMK_FORM" combocol="CODE_CD" combodataset="ds_Code_6" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="7" colid="RMK_FORM_ETC_CTENT" display="normal" edit="normal" limit="100"/>
+									<cell col="8" colid="PERFM_TM" display="number" edit="number" limit="6"/>
+									<cell col="9" colid="COUR_YN" combocol="CODE_CD" combodataset="ds_Code_4" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="10" colid="SINA_NM" display="normal" edit="normal" limit="100"/>
+									<cell col="11" colid="SWR_MB_CD" display="normal" limit="8"/>
+									<cell col="12" colid="SWR_NM" display="normal" edit="normal" limit="30"/>
+									<cell col="13" colid="SWR_RESIINS_NUM" display="normal" edit="normal" limit="13"/>
+									<cell col="14" colid="PRDUCPRES_MB_CD" display="normal" limit="8"/>
+									<cell col="15" colid="PRDUCPRES_NM" display="normal" edit="normal" limit="30"/>
+									<cell col="16" colid="CPS_RESIINS_NUM" display="normal" edit="normal" limit="13"/>
+									<cell col="17" colid="SUCST_AMT" display="currency" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="18" colid="TUNEUNCO_AMT" display="currency" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="19" colid="LRC_CTENT" display="normal" edit="normal" limit="200"/>
+									<cell col="20" colid="REMAK" display="normal" edit="normal" limit="200"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Button ButtonStyle="TRUE" Height="21" Id="btn_Tab_Add" ImageID="C_btn_70" Left="922" LeftMargin="23" OnClick="tab_List_tab_Jujak_btn_Tab_Add_OnClick" Style="edit" TabOrder="3" Text="추가" Top="16" TopMargin="1" Width="71"></Button>
+					<Button ButtonStyle="TRUE" Height="21" Id="btn_Tab_Del" ImageID="C_btn_70" Left="922" LeftMargin="23" OnClick="tab_List_tab_Jujak_btn_Tab_Del_OnClick" Style="edit" TabOrder="4" Text="삭제" Top="41" TopMargin="1" Width="71"></Button>
+				</TabPage>
+				<TabPage BorderColor="black" Height="163" Id="tab_Chungip" ImageID="C_tab2" Left="2" Style="tab" TabOrder="1" Text="사용청구입금" Top="27" Width="1025">
+					<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_TLEV_USEDEMDREPT" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="142" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="123" Id="grd_Chungip_Data" InputPanel="FALSE" Left="17" LineColor="silver" MultiSelect="TRUE" OnCellDBLClick="grd_Chungip_Data_OnCellDBLClick" Right="885" RowHeight="20" Style="grid" TabOrder="2" TabStop="true" Top="19" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="868">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="44"/>
+									<col width="88"/>
+									<col width="103"/>
+									<col width="90"/>
+									<col width="87"/>
+									<col width="91"/>
+									<col width="250"/>
+									<col width="87"/>
+									<col width="81"/>
+									<col width="80"/>
+									<col width="78"/>
+									<col width="82"/>
+									<col width="97"/>
+									<col width="82"/>
+									<col width="71"/>
+									<col width="95"/>
+									<col width="102"/>
+									<col width="94"/>
+									<col width="244"/>
+								</columns>
+								<head>
+									<cell col="0" color="user12" display="text" text="순번"/>
+									<cell col="1" color="user12" display="text" text="청구번호"/>
+									<cell col="2" color="user12" display="text" text="청구구분"/>
+									<cell col="3" color="user12" display="text" text="청구년월"/>
+									<cell col="4" color="user12" display="text" text="청구금액"/>
+									<cell col="5" color="user12" display="text" text="가산금액"/>
+									<cell col="6" color="user12" display="text" text="가산손배내용"/>
+									<cell col="7" color="user12" display="text" text="수수금액"/>
+									<cell col="8" color="user12" display="text" text="미수금액"/>
+									<cell col="9" color="user12" display="text" text="입금일자"/>
+									<cell col="10" color="user12" display="text" text="입금구분"/>
+									<cell col="11" color="user12" display="text" text="입금은행"/>
+									<cell col="12" color="user12" display="text" text="입금계좌번호"/>
+									<cell col="13" color="user12" display="text" text="입금액"/>
+									<cell col="14" color="user12" display="text" text="완료여부"/>
+									<cell col="15" color="user12" display="text" text="입금확인일자"/>
+									<cell col="16" color="user12" display="text" text="입금확정자&#32;ID"/>
+									<cell col="17" color="user12" display="text" text="담당사원코드"/>
+									<cell col="18" color="user12" display="text" text="비고"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="column0" display="text" edit="number" expr="currow&#32;+&#32;1" limit="2"/>
+									<cell col="1" colid="DEMD_NUM" display="normal" edit="normal" limit="10"/>
+									<cell col="2" colid="DEMD_GBN" combocol="CODE_CD" combodataset="ds_Code_7" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="3" colid="DEMD_YRMN" display="normal" edit="normal" expr="substr(DEMD_YRMN,&#32;0,&#32;6)" limit="6"/>
+									<cell col="4" colid="DEMD_AMT" display="currency" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="5" colid="ADDT_AMT" display="currency" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="6" colid="ADDT_CLOS_CTENT" display="normal" edit="normal" limit="100"/>
+									<cell col="7" colid="FREQFREQ_AMT" display="currency" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="8" colid="YETFREQ_AMT" display="number" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="9" colid="REPT_DAY" display="date" edit="date" limit="8"/>
+									<cell col="10" colid="REPT_GBN" combocol="CODE_CD" combodataset="ds_Code_8" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="11" colid="REPT_BANK_CD" display="text"/>
+									<cell col="12" colid="REPT_ACCN_NUM" display="normal" edit="normal" limit="20"/>
+									<cell col="13" colid="REPT_AMT" display="currency" edit="mask" limit="10" Mask="#,###,###,###"/>
+									<cell col="14" colid="COMPL_YN" combocol="CODE_CD" combodataset="ds_Code_9" combotext="CODE_NM" display="combo" edit="combo" limit="1"/>
+									<cell col="15" colid="REPT_ACK_DAY" display="date" edit="date" limit="8"/>
+									<cell col="16" colid="REPT_DECPRES_ID" display="normal" edit="normal" limit="30"/>
+									<cell align="center" col="17" colid="UDTKSTAFF_CD" display="normal" edit="normal" limit="8"/>
+									<cell col="18" colid="REMAK" display="normal" edit="normal" limit="200"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Shape BKColor="user7" Bottom="19" Height="3" Id="Shape11" Left="17" LineColor="user7" Right="885" TabOrder="1" Top="16" Type="Rectangle" Width="868"></Shape>
+					<Button ButtonStyle="TRUE" Height="21" Id="btn_Tab_Add" ImageID="C_btn_70" Left="924" LeftMargin="23" OnClick="tab_List_tab_Chunggu_btn_Tab_Add_OnClick" Style="edit" TabOrder="3" Text="추가" Top="17" TopMargin="1" Width="71"></Button>
+					<Button ButtonStyle="TRUE" Height="21" Id="btn_Tab_Del" ImageID="C_btn_70" Left="924" LeftMargin="23" OnClick="tab_List_tab_Chunggu_btn_Tab_Del_OnClick" Style="edit" TabOrder="4" Text="삭제" Top="42" TopMargin="1" Width="71"></Button>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static0" Left="441" Style="box_tx" TabOrder="1" Text="한문" Top="112" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Font="굴림,9" Height="26" Id="Static33" Left="8" Style="box_tx_b" TabOrder="2" Text="수량" Top="162" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Font="굴림,9" Height="26" Id="Static20" Left="8" Style="box_tx_b" TabOrder="3" Text="면적(㎥)" Top="137" VAlign="Middle" Width="96"></Static>
+		<Shape BKColor="white" Bottom="138" Height="26" Id="Shape5" Left="103" LineColor="user3" Right="903" TabOrder="4" Top="112" Type="Rectangle" Width="800"></Shape>
+		<Shape BKColor="white" Bottom="88" Height="26" Id="Shape7" Left="103" LineColor="user3" Right="903" RoundHeight="25" TabOrder="3" Top="62" Type="Rectangle" Width="800"></Shape>
+		<Shape BKColor="white" Bottom="163" Height="26" Id="Shape35" Left="147" LineColor="user3" Right="327" TabOrder="6" Top="137" Type="Rectangle" Width="180"></Shape>
+		<Shape BKColor="user19" Bottom="14" Height="5" Id="Shape20" Left="8" LineColor="user21" Right="1038" RoundHeight="0" RoundWidth="0" TabOrder="7" Top="9" Type="RoundRect" Width="1030"></Shape>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static38" Left="626" Style="box_tx" TabOrder="4" Text="지역구분" Top="62" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Font="굴림,9" Height="26" Id="Static52" Left="8" Style="box_tx_b" TabOrder="6" Text="사용장소내용" Top="112" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static48" Left="8" Style="box_tx" TabOrder="5" Text="거래처코드/명" Top="62" VAlign="Middle" Width="96"></Static>
+		<Shape BKColor="white" Bottom="163" Height="26" Id="Shape34" Left="103" LineColor="user3" Right="903" TabOrder="6" Top="137" Type="Rectangle" Width="800"></Shape>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static24" Left="626" Style="box_tx" TabOrder="9" Text="처리상태" Top="162" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static4" Left="8" Style="box_tx" TabOrder="10" Text="담당부서" Top="187" VAlign="Middle" Width="96"></Static>
+		<Shape BKColor="white" Bottom="213" Height="26" Id="Shape3" Left="103" LineColor="user3" Right="903" TabOrder="11" Top="187" Type="Rectangle" Width="800"></Shape>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static3" Left="626" Style="box_tx" TabOrder="12" Text="계약체결일자" Top="187" VAlign="Middle" Width="96"></Static>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Column="TTL" Height="20" Id="edt_Title" Left="120" LeftMargin="2" MaxLength="100" Style="edit" TabOrder="13" Top="41" Width="748"></Edit>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static6" Left="352" Style="box_tx" TabOrder="14" Text="센터" Top="62" VAlign="Middle" Width="96"></Static>
+		<Calendar BindDataset="ds_TLEV_USEAPPRV" Column="USETRM_START_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Uses" Left="120" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="15" Top="90" Value="TODAY" Width="101"></Calendar>
+		<Static Align="Center" Height="18" Id="Static11" Left="216" Style="edit" TabOrder="17" Text="~" Top="91" VAlign="Middle" Width="28"></Static>
+		<Calendar BindDataset="ds_TLEV_USEAPPRV" Column="USETRM_END_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Usee" Left="240" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="16" Top="90" Value="TODAY" Width="101"></Calendar>
+		<Static Align="Center" BKColor="user8" Border="Flat" Font="굴림,9" Height="26" Id="Static17" Left="8" Style="box_tx_b" TabOrder="24" Text="제목" Top="37" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static1" Left="626" Style="box_tx" TabOrder="25" Text="좌석판매율" Top="137" VAlign="Middle" Width="96"></Static>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Column="USE_METH" Height="20" Id="edt_Usebb" Left="464" LeftMargin="2" MaxLength="100" Style="edit" TabOrder="26" Top="90" Width="402"></Edit>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static5" Left="352" Style="box_tx" TabOrder="27" Text="담당자&#32;ID" Top="187" VAlign="Middle" Width="96"></Static>
+		<Combo BindDataset="ds_TLEV_USEAPPRV" Border="Flat" CodeColumn="CODE_CD" Column="USEAPPRVPROC_STAT" DataColumn="CODE_NM" Height="20" Id="cob_Stat" INDEX="0" InnerDataset="ds_Code_13" Left="737" ResetIndex="FIRST" Style="edit" TabOrder="28" Top="164" Width="130"></Combo>
+		<Calendar BindDataset="ds_TLEV_USEAPPRV" Column="CONTRCCLSN_DAY" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="20" Id="cal_Cont" Left="737" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="29" Top="190" Value="TODAY" Width="101"></Calendar>
+		<Combo BindDataset="ds_TLEV_USEAPPRV" Border="Flat" CodeColumn="CODE_CD" Column="UDTKDEPT_CD" DataColumn="CODE_NM" Height="20" Id="cob_Busu" INDEX="0" Left="119" ResetIndex="FIRST" Style="edit" TabOrder="30" Top="189" Width="130"></Combo>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Column="UDTKPRES_ID" Height="20" Id="edt_Ddid" Left="464" LeftMargin="2" MaxLength="30" Style="edit" TabOrder="31" Top="190" Width="128"></Edit>
+		<Shape BKColor="white" Bottom="238" Height="225" Id="Shape29" Left="902" LineColor="user3" Right="1037" TabOrder="32" Top="13" Type="Rectangle" Width="135"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Sungin" ImageID="C_btn_110" Left="915" LeftMargin="23" OnClick="btn_Sungin_OnClick" Style="edit" TabOrder="33" Text="사용승인서출력" Top="19" TopMargin="1" Width="110"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Dist" ImageID="C_btn_110" Left="915" LeftMargin="23" OnClick="btn_Dist_OnClick" Style="edit" TabOrder="34" Text="분배명부출력" Top="44" TopMargin="1" Width="110"></Button>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static10" Left="8" Style="box_tx" TabOrder="35" Text="매체" Top="13" VAlign="Middle" Width="96"></Static>
+		<Combo Border="Flat" CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_Media2" INDEX="0" InnerDataset="ds_Mdmcd2" Left="120" OnChanged="cob_Media_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="38" ToolTipText="메체1" Top="15" Width="130"></Combo>
+		<Combo Border="Flat" CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="20" Id="cob_Media3" INDEX="0" InnerDataset="ds_Mdmcd3" Left="265" ResetIndex="FIRST" Style="edit" TabOrder="39" Top="15" Width="130"></Combo>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" Column="BSCON_CD" Height="20" Id="edt_Bsconcd" Left="120" MaxLength="5" Readonly="TRUE" Style="edit" TabOrder="40" Top="65" Width="55"></Edit>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static7" Left="8" Style="box_tx" TabOrder="42" Text="사용기간" Top="87" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static9" Left="352" Style="box_tx" TabOrder="43" Text="사용방법" Top="87" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static12" Left="352" Style="box_tx" TabOrder="44" Text="입장료" Top="137" VAlign="Middle" Width="96"></Static>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Column="USE_LOCN_CTENT" Height="20" Id="edt_Usejscntn" Left="120" LeftMargin="2" MaxLength="200" OnChanged="Edit11_OnChanged" Style="edit" TabOrder="45" Top="112" Width="746"></Edit>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static18" Left="8" Style="box_tx" TabOrder="46" Text="승인불가사유" Top="212" VAlign="Middle" Width="96"></Static>
+		<Shape BKColor="white" Bottom="238" Height="26" Id="Shape6" Left="103" LineColor="user3" Right="903" TabOrder="47" Top="212" Type="Rectangle" Width="800"></Shape>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static19" Left="626" Style="box_tx" TabOrder="48" Text="침해구분" Top="212" VAlign="Middle" Width="96"></Static>
+		<Combo BindDataset="ds_TLEV_USEAPPRV" Border="Flat" CodeColumn="CODE_CD" Column="IFMNT_GBN" DataColumn="CODE_NM" Height="20" Id="cob_Chimhe" INDEX="0" Left="736" ResetIndex="FIRST" Style="edit" TabOrder="49" Top="214" Width="130"></Combo>
+		<Combo BindDataset="ds_TLEV_USEAPPRV" Border="Flat" CodeColumn="CODE_CD" Column="BRAN_CD" DataColumn="CODE_NM" Height="20" Id="cob_Jibu" INDEX="0" Left="463" ResetIndex="FIRST" Style="edit" TabOrder="50" Top="64" Width="130"></Combo>
+		<Combo BindDataset="ds_TLEV_USEAPPRV" Border="Flat" CodeColumn="CODE_CD" Column="LOC_GBN" DataColumn="CODE_NM" Height="20" Id="cob_Cont" INDEX="0" InnerDataset="ds_Code_12" Left="738" ResetIndex="FIRST" Style="edit" TabOrder="51" Top="64" Width="130"></Combo>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Column="APPRVDAPVL_REAS" Height="20" Id="edt_Bulga" Left="120" LeftMargin="2" MaxLength="200" OnChanged="Edit11_OnChanged" Style="edit" TabOrder="52" Top="215" Width="472"></Edit>
+		<Button Cursor="HAND" Height="21" Id="btn_Search" ImageID="C_btn_search" Left="280" OnClick="btn_Search_OnClick" TabOrder="53" Top="65" Width="58"></Button>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="edt_Bsconnm" Left="179" MaxLength="100" Readonly="TRUE" Style="edit" TabOrder="54" Top="65" Width="92"></Edit>
+		<Static Height="13" Id="Static21" Left="254" TabOrder="55" Text="(객실,&#32;입장객,&#32;회원,&#32;기기,&#32;비행기)" Top="168" Width="195"></Static>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Height="20" Id="edt_Myun" ImeMode="none" Left="120" LeftMargin="2" MaxLength="3" Number="TRUE" Style="edit" TabOrder="56" Top="140" Width="128"></Edit>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Height="20" Id="edt_Suryang" ImeMode="none" Left="120" LeftMargin="2" MaxLength="3" Number="TRUE" Style="edit" TabOrder="57" Top="165" Width="128"></Edit>
+		<MaskEdit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" DigitLen="3" Height="20" Id="mae_Panme" Left="738" Mask="###.##" MaxLength="5" Style="edit" TabOrder="58" Top="140" Value="MaskEdit0" Width="128"></MaskEdit>
+		<Edit BindDataset="ds_TLEV_USEAPPRV" Border="Flat" BorderColor="user10" CheckLength="Byte" Column="APPRV_NUM" Height="20" Id="Edit0" Left="728" LeftMargin="2" MaxLength="100" Style="edit" TabOrder="59" Top="16" Width="170"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : lev02_s01.xml
+ * 작  성  자 :    	
+ * 작  성  일 : 	
+ * 설      명 :	승인등록
+ * 수정일1    : 	
+ * 수정자     : 	
+ * 수정내용   : 설명 부여(여러줄 사용가능)	
+ * 수정일2    : 	
+ * 수정자     :	
+ * 수정내용   : 	
+ * 수정일3    : 	
+ * 수정자     : 	
+ * 수정내용   :	
+ */
+ 
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+// 데이터셋 로우값
+var rowCnt;
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	// 데이터셋 초기화
+	//ds_TLEV_USEAPPRV.DeleteAll();
+	//ds_TLEV_APPTNPRESINFO.DeleteAll();
+	//ds_TLEV_CLRREC.DeleteAll();
+	//ds_TLEV_USEDEMDREPT.DeleteAll();
+	//ds_TLEV_USEQTY.DeleteAll();
+	//ds_TLEV_USEWRTG.DeleteAll();
+	
+	rowCnt = ds_TLEV_USEAPPRV.AddRow();
+	/*
+	// 등록시
+	if (gv_New_FormYN = "Y" || Length(gv_Form_Args) = 0)
+	{
+		gfn_PubMdmCode("ds_Mdmcd2", 4, 1, "A", "B", "", "");
+		gfn_PubMdmCode("ds_Mdmcd3", 2, 3, "", "", "", "");
+		
+		edt_Appnum.Enable = false;
+		tab_List.tab_Jungsan.Enable = false;
+		btn_Sungin.Enable = false;
+		btn_Dist.Enable = false;
+	}
+	// 상세보기시
+	else 	
+	{
+		var mdmRCnt = ds_MdmUpside.AddRow();
+		
+		//gfn_PubMdmCodeUpside("ds_MdmUpside", 1, gv_Form_Args2);
+		gfn_PubMdmCodeUpside("ds_Mdmcd2", 2, 1, gv_Form_Args2, "A", "B", "");
+		gfn_PubMdmCodeUpside("ds_MdmUpside", 1, 2, gv_Form_Args2, "", "", "");
+		//gfn_PubMdmCode("ds_Mdmcd2", 2, 2, ds_MdmUpside.GetColumn(mdmRCnt, "CODE_CD")));
+		cob_Media2.Value = ds_MdmUpside.GetColumn(mdmRCnt, "CODE_CD");
+		
+		gfn_PubMdmCode("ds_Mdmcd3", 2, 3, cob_Media2.Value);
+		cob_Media3.Value = gv_Form_Args2;
+		
+		fn_Search();
+	}
+	*/
+	
+}
+
+/*
+ * 기      능: 공통버튼 제어
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CommmonButtonClick(strCode)
+{
+    if (strCode == "NEW")	///신규    
+    {
+		ds_TLEV_USEAPPRV.DeleteAll();
+		ds_TLEV_APPTNPRESINFO.DeleteAll();
+		ds_TLEV_CLRREC.DeleteAll();
+		ds_TLEV_USEDEMDREPT.DeleteAll();
+		ds_TLEV_USEQTY.DeleteAll();
+		ds_TLEV_USEWRTG.DeleteAll();
+		
+		rowCnt = ds_TLEV_USEAPPRV.AddRow();
+		edt_Appnum.Enable = false;
+		tab_List.tab_Jungsan.Enable = false;
+    }
+    else if (strCode == "SEARCH")	///조회
+    {
+		fn_search();
+    }
+    else if (strCode == "SAVE")	///저장
+    {
+        
+		if (cob_Media2.Value = "0" && cob_Media3.Value = "0")
+		{
+			ds_TLEV_USEAPPRV.SetColumn(rowCnt, "MDM_CD", "");
+		}
+		else
+		{
+			if (cob_Media2.Value != "0")
+			{
+				ds_TLEV_USEAPPRV.SetColumn(rowCnt, "MDM_CD", cob_Media2.Value);
+			}
+			if (cob_Media3.Value != "0")
+			{
+				ds_TLEV_USEAPPRV.SetColumn(rowCnt, "MDM_CD", cob_Media3.Value);
+			}
+		}
+		
+		
+		if (Confirm("저장하시겠습니까?"))
+		{
+			fn_Save();
+		}
+	}
+	else if (strCode == "EXCEL")	///엑셀저장
+	{
+    
+    }
+    else if (strCode == "DELETE")	///삭제
+    {
+		if (Confirm("삭제하시겠습니까?"))
+		{
+			fn_Del();
+		}
+    }
+    else if (strCode == "PRINT")	///출력
+    {
+    
+    }
+    else if (strCode == "CLOSE")	///닫기
+    {
+		close();
+    }
+}
+
+/*
+ * 기      능: 매체코드조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function cob_Media_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	var objId = obj.ID;
+	
+	if (objId = "cob_Media1")
+	{
+		gfn_PubMdmCode("ds_Mdmcd2", 2, 2, strCode);
+		gfn_PubMdmCode("ds_Mdmcd3", 2, 3, strCode);
+	}
+	else if (objId = "cob_Media2")
+	{
+		gfn_PubMdmCode("ds_Mdmcd3", 2, 3, strCode);
+	}
+	
+}
+
+/*
+ * 기      능: 거래처조회 버튼
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function btn_Search_OnClick(obj)
+{
+	Dialog("fi_pub::com01_r02.xml", "bsconType=1 bsconCd=edt_Bsconcd bsconNm=edt_Bsconnm", "");
+}
+
+/*
+ * 기      능: 사용승인서 출력
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function btn_Sungin_OnClick(obj)
+{
+	
+}
+
+/*
+ * 기      능: 분배명부 출력
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function btn_Dist_OnClick(obj)
+{
+	
+}
+
+/*
+ * 기      능: 기안 출력
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function Button1_OnClick(obj)
+{
+	
+}
+
+/*
+ * 기      능: 신청자정보 그리드 추가
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function tab_List_tab_Info_btn_Tab_Add_OnClick(obj)
+{
+	var nRow = ds_TLEV_APPTNPRESINFO.AddRow();
+	ds_TLEV_APPTNPRESINFO.SetColumn(nRow, "APPRV_NUM", ds_TLEV_USEAPPRV.GetColumn(rowCnt, "APPRV_NUM"));
+	ds_TLEV_APPTNPRESINFO.SetColumn(nRow, "INSPRES_ID", gv_USER_ID);
+	ds_TLEV_APPTNPRESINFO.SetColumn(nRow, "MODPRES_ID", gv_USER_ID);
+}
+
+/*
+ * 기      능: 신청자정보 그리드 삭제
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function tab_List_tab_Info_btn_Tab_Del_OnClick(obj)
+{
+	gfn_grid_DelRow("ds_TLEV_APPTNPRESINFO");
+}
+
+/*
+ * 기      능: 승인저작물 그리드 추가
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function tab_List_tab_Jujak_btn_Tab_Add_OnClick(obj)
+{
+	var nRow = ds_TLEV_USEWRTG.AddRow();
+	ds_TLEV_USEWRTG.SetColumn(nRow, "APPRV_NUM", ds_TLEV_USEAPPRV.GetColumn(rowCnt, "APPRV_NUM"));
+	ds_TLEV_USEWRTG.SetColumn(nRow, "INSPRES_ID", gv_USER_ID);
+	ds_TLEV_USEWRTG.SetColumn(nRow, "MODPRES_ID", gv_USER_ID);
+}
+
+/*
+ * 기      능: 승인저작물 그리드 삭제
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function tab_List_tab_Jujak_btn_Tab_Del_OnClick(obj)
+{
+	gfn_grid_DelRow("ds_TLEV_USEWRTG");
+}
+
+/*
+ * 기      능: 사용청구입금 그리드 추가
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function tab_List_tab_Chunggu_btn_Tab_Add_OnClick(obj)
+{
+	var nRow = ds_TLEV_USEDEMDREPT.AddRow();
+	ds_TLEV_USEDEMDREPT.SetColumn(nRow, "APPRV_NUM", ds_TLEV_USEAPPRV.GetColumn(rowCnt, "APPRV_NUM"));
+	ds_TLEV_USEDEMDREPT.SetColumn(nRow, "INSPRES_ID", gv_USER_ID);
+	ds_TLEV_USEDEMDREPT.SetColumn(nRow, "MODPRES_ID", gv_USER_ID);
+}
+
+/*
+ * 기      능: 사용청구입금 그리드 삭제
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function tab_List_tab_Chunggu_btn_Tab_Del_OnClick(obj)
+{
+	gfn_grid_DelRow("ds_TLEV_USEDEMDREPT");
+}
+
+/*
+ * 기      능: 신청자정보 그리드 더블클릭
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function grd_Info_Data_OnCellDBLClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	// 신청자정보 우편번호 조회
+	if (nCell = 5 || nCell = 6)
+	{
+		Dialog("fi_pub::com01_r08.xml", "postType=2 dsName=ds_TLEV_APPTNPRESINFO prNrow="+nRow+" postNum=POST_NUM addr=ADDR", "");
+	}
+}
+
+/*
+ * 기      능: 사용저작물 그리드 더블클릭
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function grd_Jujak_Data_OnCellDBLClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	// 작품조회
+	if (nCell = 1 || nCell = 2)
+	{
+		//Dialog("fi_pub::com01_r08.xml", "postType=2 dsName=ds_TLEV_APPTNPRESINFO prNrow="+nRow+" postNum=POST_NUM addr=ADDR", "");
+	}
+	// 회원조회
+	else if (nCell = 11 || nCell = 14)
+	{
+		//Dialog("fi_pub::com01_r08.xml", "postType=2 dsName=ds_TLEV_APPTNPRESINFO prNrow="+nRow+" postNum=POST_NUM addr=ADDR", "");
+	}
+}
+
+/*
+ * 기      능: 사용청구입금 그리드 더블클릭
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function grd_Chungip_Data_OnCellDBLClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	// 은행조회
+	if (nCell = 11)
+	{
+		//Dialog("fi_pub::com01_r08.xml", "postType=2 dsName=ds_TLEV_APPTNPRESINFO prNrow="+nRow+" postNum=POST_NUM addr=ADDR", "");
+	}
+	// 사원조회
+	else if (nCell = 17)
+	{
+		//Dialog("fi_pub::com01_r08.xml", "postType=2 dsName=ds_TLEV_APPTNPRESINFO prNrow="+nRow+" postNum=POST_NUM addr=ADDR", "");
+	}
+}
+
+/*
+ * 기      능: 입력값 널체크
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_NullChk()
+{
+	
+}
+
+/*
+ * 기      능: 상세정보조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Search()
+{
+	ds_TLEV_USEAPPRV.SetColumn(rowCnt, "APPRV_NUM", gv_Form_Args);
+	
+	gfn_SyncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001009002001&EVENTID=apprv_detail","S=ds_TLEV_USEAPPRV",
+			"ds_TLEV_USEAPPRV=SEL1 ds_TLEV_APPTNPRESINFO=SEL2 ds_TLEV_USEQTY=SEL3 "
+			+ "ds_TLEV_USEWRTG=SEL4 ds_TLEV_CLRREC=SEL5 ds_TLEV_USEDEMDREPT=SEL6", "", "fn_CallBack");
+	
+}
+
+/*
+ * 기      능: 저장
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Save()
+{
+	ds_TLEV_USEAPPRV.SetColumn(rowCnt, "INSPRES_ID", gv_USER_ID);
+	ds_TLEV_USEAPPRV.SetColumn(rowCnt, "MODPRES_ID", gv_USER_ID);
+	
+	gfn_SyncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001009002001&EVENTID=apprv_save","S=ds_TLEV_USEAPPRV:U "
+			+"A=ds_TLEV_USEQTY:U B=ds_TLEV_APPTNPRESINFO:U C=ds_TLEV_USEWRTG:U D=ds_TLEV_USEDEMDREPT:U",
+			"", "", "fn_CallBack");
+			
+}
+
+/*
+ * 기      능: 삭제
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Del()
+{
+	ds_TLEV_USEAPPRV.SetColumn(rowCnt, "APPRV_NUM", gv_Form_Args);
+	
+	gfn_SyncCall("svcDel","KOMCA?SYSID=PATHFINDER&MENUID=1000001009002001&EVENTID=apprv_delete","S=ds_TLEV_USEAPPRV",
+			"", "", "fn_CallBack");
+			
+}
+
+/*
+ * 기      능: Callback함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(svcid,errCode,errMsg) {
+	
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcSearch" :
+				break;
+			
+			case "svcSave" :
+				gfn_SetStatusMsg("저장이 완료되었습니다.");
+				break;
+			
+			case "svcDel" :
+				gfn_SetStatusMsg("삭제가 완료되었습니다.");
+				break;
+							
+			default : break;			
+		}		
+	}
+	
+}
+
+function fn_search() {
+	gfn_SyncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006003&EVENTID=apprv_search","S=ds_TLEV_USEAPPRV",
+			"ds_TLEV_USEAPPRV=SEL1 ds_TLEV_APPTNPRESINFO=SEL2 ds_TLEV_USEWRTG=SEL3 ds_TLEV_USEDEMDREPT=SEL4 ", "", "fn_CallBack");
+
+}
+
+]]></Script>
+</Window>

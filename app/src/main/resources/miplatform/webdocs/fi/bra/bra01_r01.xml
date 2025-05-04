@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra01_r01" Left="8" OnLoadCompleted="bra01_r01_OnLoadCompleted" PidAttrib="7" Title="무선로그(업소별횟수)" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>전월비교</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>기간조회</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<BSCON_CD></BSCON_CD>
+						<END_DAY></END_DAY>
+						<START_DAY></START_DAY>
+						<START_YRMN></START_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_comp">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="B_USE_FREQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_FREQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FREQ_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRANS_CMNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_term">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_FREQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_bscon">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="1" TabStop="FALSE" Top="8" Width="1018"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" HeaderFont="Default,-1" Height="21" Id="cal_yrmn" Left="565" SaturdayTextColor="blue" SelectedDayFont="Default,-1" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="청구년월" Top="18" Value="TODAY" WeeksFont="Default,-1" Width="88"></Calendar>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="1" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Static Height="15" Id="static_2" Left="50" Style="tx_left_bold" TabOrder="3" Text="센터명" Top="23" Width="52"></Static>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="6" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="34" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="479" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="496" Style="tx_left_bold" TabOrder="3" Text="기준년월" Top="23" Width="52"></Static>
+		<Shape BKColor="user7" Bottom="61" Height="3" Id="Shape2" Left="8" LineColor="user7" Right="1036" TabOrder="4" Top="58" Type="Rectangle" Width="1028"></Shape>
+		<Grid AreaSelect="true" BindDataset="ds_comp" BkColor2="default" BoldHead="true" Border="Flat" Bottom="784" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="38" Height="723" Id="grd_comp" InputPanel="FALSE" Left="8" LineColor="default" Right="1036" RowHeight="20" Style="grid" TabOrder="10" TabStop="true" Top="61" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1028">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="64"/>
+						<col width="57"/>
+						<col width="120"/>
+						<col width="69"/>
+						<col width="40"/>
+						<col width="280"/>
+						<col width="46"/>
+						<col width="68"/>
+						<col width="68"/>
+						<col width="47"/>
+						<col width="79"/>
+						<col width="79"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="센터명"/>
+						<cell col="1" display="text" text="업소코드"/>
+						<cell col="2" display="text" text="업소명"/>
+						<cell col="3" display="text" text="업종"/>
+						<cell col="4" display="text" text="S/N"/>
+						<cell col="5" display="text" text="업소주소"/>
+						<cell col="6" display="text" text="반주기"/>
+						<cell col="7" display="text" text="수집내역"/>
+						<cell col="8" display="text" text="수집내역"/>
+						<cell col="9" display="text" text="비고"/>
+						<cell col="10" display="text" text="힛팅수&#32;증감&#10;산출개수"/>
+						<cell col="11" display="text" text="힛팅수&#32;증감&#10;내용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="BSTYP_NM" display="text"/>
+						<cell align="center" col="4" colid="SERIAL_NO" display="text"/>
+						<cell align="left" col="5" colid="UPSO_ADDR" display="text"/>
+						<cell align="center" col="6" colid="BSCON_NM" display="text"/>
+						<cell align="center" col="7" colid="B_USE_FREQ" display="number"/>
+						<cell align="center" col="8" colid="USE_FREQ" display="number"/>
+						<cell align="center" col="9" colid="BIGO" display="text"/>
+						<cell align="center" bkcolor="expr:decode(TRANS_CMNT,&#32;&apos;▲증가&apos;,&#32;&apos;lightgreen&apos;,&#32;&apos;▽감소&apos;,&#32;&apos;orange&apos;,&#32;&apos;&apos;)" col="10" colid="FREQ_RATE" display="number"/>
+						<cell align="center" bkcolor="expr:decode(TRANS_CMNT,&#32;&apos;▲증가&apos;,&#32;&apos;lightgreen&apos;,&#32;&apos;▽감소&apos;,&#32;&apos;orange&apos;,&#32;&apos;&apos;)" col="11" colid="TRANS_CMNT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Radio BKColor="whitesmoke" Border="None" CodeColumn="CODE_CD" ColumnCount="2" DataColumn="CODE_NM" Height="20" Id="rad_gbn" INDEX="0" InnerDataset="ds_gbn" Left="840" OnChanged="rad_gbn_OnChanged" Style="radio" TabOrder="11" Top="21" Width="176"></Radio>
+		<Combo BindDataset="ds_search" BKColor="user13" Border="Flat" BorderColor="user10" Column="BRAN_CD" Height="21" Id="cob_BRAN_CD" Left="100" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="12" ToolTipText="센터명" Top="17" Width="108"></Combo>
+		<Calendar BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="21" Id="cal_Sday" Left="565" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="14" ToolTipText="기간_S" Top="18" Value="TODAY" Visible="FALSE" Width="90"></Calendar>
+		<Calendar BKColor="user13" Border="Flat" BorderColor="user10" Dateformat="yyyy/MM/dd" DayStyle="edit" Height="21" Id="cal_Eday" Left="672" LeftMargin="5" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="13" ToolTipText="기간_E" Top="18" Value="TODAY" Visible="FALSE" Width="90"></Calendar>
+		<Static Enable="FALSE" Height="20" Id="Static1" Left="660" TabOrder="15" Text="~" Top="24" Visible="FALSE" Width="14"></Static>
+		<Grid AreaSelect="true" AutoFit="TRUE" BindDataset="ds_term" BkColor2="default" BoldHead="true" Border="Flat" Bottom="784" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="38" Height="723" Id="grd_term" InputPanel="FALSE" Left="232" LineColor="default" MinWidth="100" Right="1260" RowHeight="20" Style="grid" TabOrder="16" TabStop="true" Top="61" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="1028">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="82"/>
+						<col width="57"/>
+						<col width="157"/>
+						<col width="86"/>
+						<col width="48"/>
+						<col width="288"/>
+						<col width="54"/>
+						<col width="65"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="센터명"/>
+						<cell col="1" display="text" text="업소코드"/>
+						<cell col="2" display="text" text="업소명"/>
+						<cell col="3" display="text" text="업종"/>
+						<cell col="4" display="text" text="S/N"/>
+						<cell col="5" display="text" text="업소주소"/>
+						<cell col="6" display="text" text="반주기"/>
+						<cell col="7" display="text" text="수집내역"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="BSTYP_NM" display="text"/>
+						<cell align="center" col="4" colid="SERIAL_NO" display="text"/>
+						<cell align="left" col="5" colid="UPSO_ADDR" display="text"/>
+						<cell align="center" col="6" colid="BSCON_NM" display="text"/>
+						<cell align="center" col="7" colid="USE_FREQ" display="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="241" TabOrder="18" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="19" Id="Static0" Left="257" Style="tx_left_bold" TabOrder="19" Text="반주기정보보" Top="23" Width="64"></Static>
+		<Combo BindDataset="ds_search" Border="Flat" BorderColor="user10" CodeColumn="CODE_CD" Column="BSCON_CD" DataColumn="CODE_NM" Height="20" Id="cob_bscon_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_code_bscon" Left="336" OnChanged="cob_bscon_gbn_OnChanged" TabOrder="17" ToolTipText="보" Top="18" Width="100"></Combo>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")        { fn_New();    }//신규
+    else if(strCode == "SEARCH"){ fn_Search(); }//조회
+    else if(strCode == "SAVE")  { fn_Save();   }//저장
+    else if(strCode == "DELETE"){ fn_Delete(); }//삭제
+    else if(strCode == "EXCEL") { fn_Excel();  }//Excel
+    else if(strCode == "PRINT") { fn_Print();  }//출력
+    else if(strCode == "CLOSE") { close();     }//닫기
+	return;
+}
+
+function fn_CallBack(svcid,errCode,errMsg)
+{
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcCompSearch" :
+				grd_comp.SetCellProp("head", 7, "Text", "<수집내역>\n조회기간 :\n" + substr(AddMonth(cal_yrmn.Value, -1), 0, 4) + "." + substr(AddMonth(cal_yrmn.Value, -1), 4, 2));
+				grd_comp.SetCellProp("head", 8, "Text", "<수집내역>\n조회기간 :\n" + substr(cal_yrmn.Value, 0, 4) + "." + substr(cal_yrmn.Value, 4, 2));
+				break;
+			case "svcTermSearch" :
+				break;
+			default : break;
+		}
+	}
+}
+
+function bra01_r01_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	gfn_PubCode("ds_code_bscon", 1, "00429");
+	ds_code_bscon.SetColumn(0, "CODE_CD", "");
+	
+	cob_bscon_gbn.Index = 0;
+	rad_gbn.Index = 0;
+	grd_term.Left = 8;
+	
+	cal_yrmn.Value = today();
+	cal_Sday.Value = today();
+	cal_Eday.Value = today();
+}
+
+function fn_Search()
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	ds_search.SetColumn(0, "START_YRMN", substr(cal_yrmn.Value, 0, 6));
+	ds_search.SetColumn(0, "START_DAY", cal_Sday.Value);
+	ds_search.SetColumn(0, "END_DAY", cal_Eday.Value);
+	
+	if(rad_gbn.Value == "1")
+	{
+		gfn_syncCall("svcCompSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004029&EVENTID=sel_upsolog_comp","S=ds_search","ds_comp=SEL1","","fn_CallBack");
+	}
+	else
+	{
+		gfn_syncCall("svcTermSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004029&EVENTID=sel_upsolog_term","S=ds_search","ds_term=SEL1","","fn_CallBack");
+	}
+}
+
+function fn_Excel()
+{
+	if(rad_gbn.Value == "1")
+	{
+		grd_comp.ExportExcelEx("월별 무선데이터 수집내역");
+	}
+	else
+	{
+		grd_term.ExportExcelEx("기간별 무선데이터 수집내역");
+	}
+}
+
+function rad_gbn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "1")
+	{
+		Static2.Text = "기준년월";
+		cal_yrmn.Visible = true;
+		grd_comp.Visible = true;
+		cal_Sday.Visible = false;
+		cal_Eday.Visible = false;
+		Static1.Visible = false;
+		grd_term.Visible = false;
+	}
+	else
+	{
+		Static2.Text = "조회기간";
+		cal_yrmn.Visible = false;
+		grd_comp.Visible = false;
+		cal_Sday.Visible = true;
+		cal_Eday.Visible = true;
+		Static1.Visible = true;
+		grd_term.Visible = true;
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

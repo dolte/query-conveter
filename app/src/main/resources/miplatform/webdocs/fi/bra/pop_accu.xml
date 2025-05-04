@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="392" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="미징수/고소정보" Top="8" Ver="1.0" Width="784" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_upso_condi" UseClientLayout="1">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<UPSO_CD></UPSO_CD>
+						<YEAR></YEAR>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_upso" UseClientLayout="1">
+				<Contents>
+					<colinfo id="LAST_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MON_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLOSE_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPAY_TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPAY_ORG_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPAY_ADDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NONPAY_EXT_ADDT_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_goso" UseClientLayout="1">
+				<Contents>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPN_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="white" Bottom="192" Height="168" Id="Shape0" Left="8" LineColor="user3" Right="768" TabOrder="1" Top="24" Type="Rectangle" Width="760"></Shape>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static2" Left="24" Style="box_tx" TabOrder="2" Text="최종납부월" Top="55" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static3" Left="24" Style="box_tx" TabOrder="3" Text="휴업개월" Top="90" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static4" Left="24" Style="box_tx" TabOrder="4" Text="미납원금" Top="127" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user5" Border="None" Font="굴림,11,Bold" Height="26" Id="Static0" Left="24" Style="box_tx" TabOrder="5" Text="미징수&#32;정보" Top="12" VAlign="Middle" Width="104"></Static>
+		<Shape BKColor="white" Bottom="384" Height="168" Id="Shape1" Left="8" LineColor="user3" Right="768" TabOrder="6" Top="216" Type="Rectangle" Width="760"></Shape>
+		<Static Align="Center" BKColor="user5" Border="None" Font="굴림,11,Bold" Height="26" Id="Static1" Left="24" Style="box_tx" TabOrder="7" Text="고소&#32;정보" Top="204" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static5" Left="261" Style="box_tx" TabOrder="8" Text="미납기간" Top="56" VAlign="Middle" Width="130"></Static>
+		<Static Height="13" Id="Static9" Left="493" TabOrder="9" Text="~" Top="66" Width="40"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static6" Left="261" Style="box_tx" TabOrder="10" Text="미납총금액" Top="92" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static7" Left="261" Style="box_tx" TabOrder="11" Text="미납가산금" Top="128" VAlign="Middle" Width="130"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static8" Left="512" Style="box_tx" TabOrder="12" Text="미납중가산금" Top="128" VAlign="Middle" Width="130"></Static>
+		<Grid BindDataset="ds_goso" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="user8" Bottom="368" Enable="true" EndLineColor="default" HeadHeight="23" Height="136" Id="Grid0" InputPanel="FALSE" Left="24" LineColor="default" Right="392" TabOrder="1" TabStop="FALSE" Top="232" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="368">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="109"/>
+						<col width="118"/>
+					</columns>
+					<head>
+						<cell bkcolor="user8" col="0" color="user12" display="text" text="순번"/>
+						<cell bkcolor="user8" col="1" color="user12" display="text" text="고소의뢰일"/>
+						<cell bkcolor="user8" col="2" color="user12" display="text" text="고소해결일"/>
+					</head>
+					<body>
+						<cell col="0" display="normal" expr="currow&#32;+1"/>
+						<cell col="1" colid="REQ_DAY" display="date"/>
+						<cell col="2" colid="COMPN_DAY" display="date"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="NONPAY_ORG_AMT" Height="26" Id="edt_resinum" Left="160" OnChanged="MaskEdit0_OnChanged" TabOrder="2" TabStop="FALSE" Top="127" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="NONPAY_ADDT_AMT" Height="26" Id="Edit4" Left="395" OnChanged="MaskEdit0_OnChanged" TabOrder="3" TabStop="FALSE" Top="128" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="NONPAY_EXT_ADDT_AMT" Height="26" Id="Edit5" Left="648" OnChanged="MaskEdit0_OnChanged" TabOrder="4" TabStop="FALSE" Top="128" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="CLOSE_CNT" Height="26" Id="Edit2" Left="160" OnChanged="MaskEdit0_OnChanged" TabOrder="5" TabStop="FALSE" Top="90" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="NONPAY_TOT_AMT" Height="26" Id="Edit3" Left="395" OnChanged="MaskEdit0_OnChanged" TabOrder="6" TabStop="FALSE" Top="92" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="LAST_YRMN" Height="26" Id="edt_bank" Left="160" Mask="&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;####/##" OnChanged="MaskEdit0_OnChanged" TabOrder="7" TabStop="FALSE" Top="55" Type="STRING" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="START_YRMN" Height="26" Id="Edit0" Left="395" Mask="&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;####/##" OnChanged="MaskEdit0_OnChanged" TabOrder="8" TabStop="FALSE" Top="56" Type="STRING" Value="MaskEdit0" Width="90"></MaskEdit>
+		<MaskEdit BindDataset="ds_upso" BKColor="user4" Border="Flat" BorderColor="user10" Column="END_YRMN" Height="26" Id="Edit1" Left="512" Mask="&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;####/##" OnChanged="MaskEdit0_OnChanged" TabOrder="9" TabStop="FALSE" Top="56" Type="STRING" Value="MaskEdit0" Width="90"></MaskEdit>
+		<Edit Align="RIGHT" BindDataset="ds_upso" Border="Flat" BorderColor="white" Column="MON_CNT" Height="28" Id="Edit7" Left="602" TabOrder="10" TabStop="FALSE" Top="56" Width="20"></Edit>
+		<Static Align="Center" Height="28" Id="Static10" Left="620" TabOrder="23" Text="개월" Top="56" VAlign="Middle" Width="27"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="26" Id="Static11" Left="512" Style="box_tx" TabOrder="24" Text="총더넣은&#32;금액" Top="92" VAlign="Middle" Visible="FALSE" Width="130"></Static>
+		<MaskEdit BKColor="user4" Border="Flat" BorderColor="user10" Height="26" Id="mae_balance" Left="648" OnChanged="MaskEdit0_OnChanged" TabOrder="11" TabStop="FALSE" Top="92" Value="MaskEdit0" Visible="FALSE" Width="90"></MaskEdit>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Close" ImageID="C_btn_70" Left="664" LeftMargin="28" OnClick="btn_Close_OnClick" Style="edit" TabOrder="26" TabStop="FALSE" Text="닫기" Top="56" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+ 
+ 
+ 
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function form_OnLoadCompleted(obj)
+{
+	fn_Search();
+	if(length(BALANCE)>0){
+		this.mae_balance.Text = BALANCE;
+	}
+}
+
+
+function fn_Search() 
+{
+
+	this.ds_upso_condi.SetColumn(0,"UPSO_CD" , UPSO_CD);
+	this.ds_upso_condi.SetColumn(0,"BRAN_CD" , BRAN_CD);
+	this.ds_upso_condi.SetColumn(0,"YEAR"    , YEAR);
+
+	if(length(BALANCE)>0){
+	
+		this.static11.Visible = true;
+		this.mae_balance.Visible = true;
+		mae_balance.Text = BALANCE;
+		
+	}
+	else{
+		this.static11.Visible = false;
+		this.mae_balance.Visible = false;
+		mae_balance.Text = BALANCE;
+	}
+	
+//	trace(ds_upso_condi.SaveXML());
+	gfn_syncCall("UPSO_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001008001&EVENTID=minab_goso_info","S=ds_upso_condi","ds_upso=SEL1 ds_goso=SEL2","","fn_CallBack");
+}
+
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) 
+	{
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function btn_Close_OnClick(obj)
+{
+	Close();
+}
+
+
+function MaskEdit0_OnChanged(obj,strText)
+{
+	
+}
+]]></Script>
+</Window>

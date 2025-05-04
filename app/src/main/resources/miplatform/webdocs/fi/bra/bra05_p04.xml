@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="Acuse_states" Left="8" OnLoadCompleted="Acuse_states_OnLoadCompleted" PidAttrib="7" scroll="false" Title="고소내역서" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Accuse" UseClientLayout="1">
+				<Contents>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ConvNm">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>고소의뢰내역서</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>고소해결내역서</value>
+					</record>
+					<record>
+						<code>3</code>
+						<value>사건진행내역</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Tot1">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CompIn">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_YRMN></END_YRMN>
+						<GBN></GBN>
+						<START_YRMN></START_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_GosoSolve" UseClientLayout="1">
+				<Contents>
+					<colinfo id="COMPN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SOL_TOT_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="SOL_ADDT_AMT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="QUIT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_GosoSolve_Tot">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDT_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_accumemo">
+				<Contents>
+					<colinfo id="MEMO_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLCST_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PLSCT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MEMO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCU_BRAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MEMO_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Request">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>ACCU_DAY</CODE_CD>
+						<CODE_NM>고소일자</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>STAFF_NM</CODE_CD>
+						<CODE_NM>담당사원</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>UPSO_CD</CODE_CD>
+						<CODE_NM>업소코드</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>GRADNM</CODE_CD>
+						<CODE_NM>등급</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>UPSO_NM</CODE_CD>
+						<CODE_NM>업소명</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>MNGEMSTR_NM</CODE_CD>
+						<CODE_NM>업주명</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>TOT_AMT</CODE_CD>
+						<CODE_NM>고소금액</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Finish">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>COMPN_DAY</CODE_CD>
+						<CODE_NM>완결일자</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>ACCU_DAY</CODE_CD>
+						<CODE_NM>의뢰일자</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>STAFF_NM</CODE_CD>
+						<CODE_NM>담당사원</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>GRADNM</CODE_CD>
+						<CODE_NM>등급</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>UPSO_NM</CODE_CD>
+						<CODE_NM>업소명</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>SOL_TOT_AMT</CODE_CD>
+						<CODE_NM>해결총금액</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>REMAK</CODE_CD>
+						<CODE_NM>비고</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Ing">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>MEMO_DAY</CODE_CD>
+						<CODE_NM>기록일자</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>UPSO_CD</CODE_CD>
+						<CODE_NM>업소코드</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>PLSCT_NM</CODE_CD>
+						<CODE_NM>경찰서</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>MEMO</CODE_CD>
+						<CODE_NM>내용</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="4" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="4" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="5" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="220" TabOrder="9" TabStop="FALSE" Top="29" Width="11"></Image>
+		<Static Height="15" Id="Static0" Left="237" Style="tx_left_bold" TabOrder="10" Text="현황년월" Top="29" Width="54"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_Start" Left="301" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="현황년월" Top="25" Width="70"></Calendar>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="24" TabOrder="7" TabStop="FALSE" Top="28" Width="11"></Image>
+		<Static Height="11" Id="Static1" Left="43" Style="tx_left_bold" TabOrder="8" Text="센터명" Top="28" Width="55"></Static>
+		<Combo BKColor="user13" Height="18" Id="cob_BRAN_CD" ImeMode="none" Left="93" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="24" Width="109"></Combo>
+		<Radio BindDataset="ds_CompIn" BKColor="whitesmoke" CodeColumn="code" Column="GBN" ColumnCount="3" DataColumn="value" Height="24" Id="rad_UPSO_STAT" INDEX="1" InnerDataset="ds_ConvNm" Left="482" OnChanged="rad_UPSO_STAT_OnChanged" Style="radio" TabOrder="3" Top="24" Width="336">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="정식" top="0" width="95"/>
+				<Layout code="2" height="18" left="110" text="가등록" top="0" width="95"/>
+				<Layout code="3" height="18" left="110" text="가등록" top="0" width="95"/>
+			</Contents>
+		</Radio>
+		<ubiviewer Bottom="793" Height="730" Id="ubi0" Left="8" Right="1039" Top="63" Width="1031">
+			<_PersistData>&#13;&#10;/6w58d3O/wAAAQCPagAA93NLAPjy//7/Bf9UAFkAUABFAAEw/fELAvzyFQ8jBwEI+PC9Af7wAzEAMgkAAbxDAQsFAl4AblcEdLz6&#13;&#10;9AsFCzIANXgALBBJAHkJcw99BQETBO7xrwf4IgbFBEICB0QAZQB/ZgBhAHUAbGUDYPjypwH59aoI+PDwv/r1F1MAaNQAZWUBEAP5&#13;&#10;9X8DdK28ubTM5gjtZPvzDUldAEYAcrsAb10AdABP1gBU6tQAeGUAASISaABttNwAEAMU+vQCMAkHAWExQAGFEuAGIgkAAA==&#13;&#10;</_PersistData>
+		</ubiviewer>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" EditAlign="CENTER" FocusIndex="1" Height="20" Id="cal_End" Left="389" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="12" ToolTipText="현황년월" Top="25" Width="70"></Calendar>
+		<Static Height="12" Id="Static2" Left="375" TabOrder="13" Text="~" Top="30" Width="12"></Static>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="838" TabOrder="14" TabStop="FALSE" Top="29" Width="11"></Image>
+		<Static Height="15" Id="Static3" Left="855" Style="tx_left_bold" TabOrder="15" Text="정렬기준" Top="29" Width="54"></Static>
+		<Combo BKColor="user13" CodeColumn="CODE_CD" DataColumn="CODE_NM" Height="18" Id="cob_Order" ImeMode="none" InnerDataset="ds_Request" Left="916" TabOrder="16" ToolTipText="정렬기준" Top="24" Width="109"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+	* 프로그램명 : bra05_s04 - 고소내역서
+	* 작  성  자 :  
+	* 작  성  일 : 
+	* 설      명 : 센터별/ 현황년월별 업소에 대한 고소내역서[외뢰내역서, 해결내역서]를 뿌려준다.
+*/
+
+/* include */
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+
+function Acuse_states_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+//유비리포트세팅	
+	//gfn_syncCall("svcLogin2","KOMCA?SYSID=PATHFINDER&MENUID=1000001006015&EVENTID=close_state","","ds_CloseState=SEL1","","fn_CallBack");
+	
+// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+//날짜 세팅 		
+	this.cal_Start.value = substr(today(),0,6)+ "01";
+	
+	this.cal_End.value = substr(today(),0,6)+ "01";
+	
+	this.rad_upso_stat.Value =1;
+	
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	cob_Order.Index = 0;
+
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode)
+{
+    //신규
+    if(strCode == "NEW"){
+		//신규일 경우 반주기 정보를 수정 가능하게 한다.
+		this.tab_UpsoInfo.ACMCN.infinite_OnClick();
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	
+	return;
+}
+
+/*
+ * 기      능 : 	다른 페이지에서 인자값을 가지고 현 페이지를 호출 시에 인자값으로 서치한다.
+ * 인      수 : 	
+ * Return    : 	
+ * 예      시 :	
+*/
+function fn_Search()
+{
+// 입력 필수 항목 검사[BKCOLOR을 USER13으로];
+	if (!gfn_CheckFormNull(this)) return;
+	if(this.cal_Start.Value =="" or this.cal_Start.Value ==null or this.cal_End.Value =="" or this.cal_End.Value ==null)
+	{
+		gfn_Confirm("MB_OK", "현황년월을 선택하세요.", "경고", "0");
+		return;
+	}
+	
+	if(this.cob_BRAN_CD.Value =="" or this.cob_BRAN_CD.Value ==null)
+	{
+        gfn_Confirm("MB_OK", "센터를 선택해주세요.", "경고", "0");
+		return;
+	}
+
+	this.ds_CompIn.setcolumn(0,"BRAN_CD",this.cob_BRAN_CD.Value);
+	this.ds_CompIn.setcolumn(0,"START_YRMN",substr(this.cal_Start.Value,0,6));
+	this.ds_CompIn.setcolumn(0,"END_YRMN",substr(this.cal_End.Value,0,6));
+	this.ds_CompIn.SetColumn(0,"GBN",this.rad_UPSO_STAT.Value);
+    
+    if(this.rad_UPSO_STAT.Value ==1)
+	{
+		gfn_syncCall("sync_Acuse_states_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002002&EVENTID=goso_search","S=ds_CompIn", "ds_Accuse=SEL1 ds_Tot1=SEL11","","fn_CallBack");
+		ds_Accuse.Sort(""+cob_Order.Value, true);
+		ubi0.setJrfFileName("bra05_p04.jrf");
+		ubi0.SetDataset("sql_goso_search","ds_Accuse");
+		ubi0.SetDataset("sql_ds_Tot1","ds_Tot1");
+	}
+	else if(this.rad_UPSO_STAT.Value ==2)
+	{
+		gfn_syncCall("sync_Solve_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002002&EVENTID=goso_search","S=ds_CompIn", "ds_GosoSolve=SEL2 ds_GosoSolve_Tot=SEL12","","fn_CallBack");
+		ds_GosoSolve.Sort(cob_Order.Value, true);
+		
+		ubi0.setJrfFileName("bra05_p04_1.jrf");
+		ubi0.SetDataset("sql_GosoSolve", "ds_GosoSolve");
+		ubi0.SetDataset("sql_GosoSolve_Tot", "ds_GosoSolve_Tot");
+	}
+	else if(this.rad_UPSO_STAT.Value == 3)
+	{
+		gfn_syncCall("sync_Accu_Search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006002002&EVENTID=goso_search","S=ds_CompIn", "ds_accumemo=SEL8","","fn_CallBack");
+		ds_accumemo.Sort(cob_Order.Value, true);
+		trace(ds_accumemo.SaveXML());
+		ubi0.setJrfFileName("bra05_p04_2.jrf");
+		ubi0.SetDataset("sql_ds_accumemo", "ds_accumemo");
+	}
+	
+	//trace(ds_Accuse.SaveXML());
+	ubi0.SetArgument("START_YRMN",substr(this.cal_Start.Value,0,6));
+	ubi0.SetArgument("END_YRMN",substr(this.cal_End.Value,0,6));
+	ubi0.SetArgument("GBN",this.rad_UPSO_STAT.Text );
+	ubi0.SetArgument("BRAN_CD",this.cob_BRAN_CD.Text ) ;
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	ubi0.SetArgument("title","고소내역서");
+	ubi0.Retrieve();
+}
+
+/*
+ * 기      능 :  process builder를 실행 후 결과를 나타낸다.
+ * 인      수 :  srvId : process builder를 
+ * Return    : 	Return Value	
+ * 예      시 : 센터명이 변경시에 자동적으로 인자가 전달된다.
+*/
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if (srvId == "sync_Solve_Search") {
+		gfn_SetStatusMsg(ds_Accuse.count + " 건이 조회되었습니다.");
+	}
+	else if (srvId == "sync_Acuse_states_Search") {
+		gfn_SetStatusMsg(ds_Accuse.count + " 건이 조회되었습니다.");
+	}
+	else if (srvId == "sync_Accu_Search") {
+		gfn_SetStatusMsg(ds_Accumemo.count + " 건이 조회되었습니다.");
+	}
+}
+
+/*
+ * 기      능 :  센터명을 변경 시에 로그인하는 ID에 따라서 실행할 수 있는 권한을 가진 아이콘이 달라진다.
+ * 인      수 : 	strCode(센터변경시 해당센터의 value값
+ * Return    : 	Return Value	
+ * 예      시 : 센터명이 변경시에 자동적으로 인자가 전달된다.
+*/
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+
+function rad_UPSO_STAT_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(this.rad_UPSO_STAT.Value ==1)
+	{
+		cob_Order.InnerDataset = "ds_Request";
+	}
+	else if(this.rad_UPSO_STAT.Value ==2)
+	{
+		cob_Order.InnerDataset = "ds_Finish";
+	}
+	else if(this.rad_UPSO_STAT.Value == 3)
+	{
+		cob_Order.InnerDataset = "ds_Ing";
+	}
+	
+	cob_Order.Index = 0;
+}
+]]></Script>
+</Window>

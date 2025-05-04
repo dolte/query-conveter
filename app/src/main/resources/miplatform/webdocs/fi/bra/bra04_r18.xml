@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="720" Id="bra04_r18" Left="8" PidAttrib="7" Title="반환&#32;리스트" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_DAY" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_YRMN></END_YRMN>
+						<RETURN_DAY></RETURN_DAY>
+						<START_YRMN></START_YRMN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReturnList">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNGEMSTR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONPRNCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_error"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ReturnInfo">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_NUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REMAK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRUD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETURN_GBN" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<CRUD></CRUD>
+						<REMAK></REMAK>
+						<RETURN_AMT></RETURN_AMT>
+						<RETURN_DAY></RETURN_DAY>
+						<RETURN_GBN></RETURN_GBN>
+						<RETURN_NUM></RETURN_NUM>
+						<UPSO_CD></UPSO_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_closingYn">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BindDataset="ds_ReturnList" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="544" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="538" Id="grd_DemdOcr" InputPanel="FALSE" Left="8" LineColor="silver" Right="1016" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="6" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1008">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="71"/>
+						<col width="70"/>
+						<col width="130"/>
+						<col width="90"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="280"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="반환일자"/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="업주명"/>
+						<cell col="4" color="user12" display="text" text="업종"/>
+						<cell col="5" color="user12" display="text" text="월정료"/>
+						<cell col="6" color="user12" display="text" text="반환액"/>
+						<cell col="7" color="user12" display="text" text="반환사유"/>
+						<cell col="8" color="user12" display="text" text="담당직원"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="RETURN_DAY" display="date" edit="maskinteger" Mask="yyyy/MM/dd"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell align="left" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="MNGEMSTR_NM" display="text"/>
+						<cell align="left" col="4" colid="GRADNM" display="text"/>
+						<cell col="5" colid="MONPRNCFEE" display="number"/>
+						<cell col="6" colid="RETURN_AMT" display="number"/>
+						<cell align="left" col="7" colid="REMAK" display="text"/>
+						<cell col="8" colid="STAFF_NM" display="normal"/>
+					</body>
+					<summary>
+						<cell align="right" col="0" display="text" expr="count(&apos;UPSO_CD&apos;)"/>
+						<cell align="left" col="1" display="text" text="건"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="number"/>
+						<cell col="6" display="number" expr="sum(&apos;RETURN_AMT&apos;)"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function fn_search() 
+{
+	this.ds_In.SetColumn(0,"BRAN_CD"   , this.cob_BRAN_CD.Value );
+	this.ds_In.SetColumn(0,"START_YRMN", substr(this.cal_StartDate.Value,0,6));
+	this.ds_In.SetColumn(0,"END_YRMN"  , substr(this.cal_EndDate.Value,0,6));
+
+	gfn_syncCall("rept_return_list","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001011002&EVENTID=rept_return_list", "S=ds_In", "ds_ReturnList=SEL1","","fn_CallBack");
+}
+
+function fn_Delete()
+{
+	var nRow = this.ds_ReturnList.currow;
+
+	if (nRow >= 0) {
+
+		this.ds_In.SetColumn(0, "BRAN_CD"   , this.ds_ReturnInfo.GetColumn(0, "BRAN_CD"));
+		this.ds_In.SetColumn(0, "RETURN_DAY", this.ds_ReturnInfo.GetColumn(0, "RETURN_DAY"));
+		
+		gfn_syncCall("rept_closing","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001011001&EVENTID=rept_closing","S=ds_In","ds_closingYn=SEL1","","fn_CallBack");
+	
+		if(ds_closingYn.GetColumn(0, "CNT") != "0"){
+			gfn_Confirm("MB_OK", "해당기간중 마감내역이 존재합니다. 마감내역을 확인하세요.", "경고", "0");
+			return;
+		}
+		//trace(ds_ReturnInfo.SaveXML() );
+		if (ds_ReturnInfo.rowcount == 0) ds_ReturnInfo.AddRow();
+
+		this.ds_ReturnInfo.UpdateControl = false;
+		this.ds_ReturnInfo.SetRowType(0, "delete");
+		this.ds_ReturnInfo.SetColumn (0, "RETURN_DAY", this.ds_ReturnList.GetColumn(nRow, "RETURN_DAY"));
+		this.ds_ReturnInfo.SetColumn (0, "RETURN_NUM", this.ds_ReturnList.GetColumn(nRow, "RETURN_NUM"));
+		this.ds_ReturnInfo.SetColumn (0, "RETURN_AMT", this.ds_ReturnList.GetColumn(nRow, "RETURN_AMT"));
+		this.ds_ReturnInfo.SetColumn (0, "UPSO_CD"   , this.ds_ReturnList.GetColumn(nRow, "UPSO_CD"));
+		this.ds_ReturnInfo.SetColumn (0, "BRAN_CD"   , this.ds_ReturnList.GetColumn(nRow, "BRAN_CD"));
+		this.ds_ReturnInfo.SetColumn (0, "REMAK"     , this.ds_ReturnList.GetColumn(nRow, "REMAK"));
+		this.ds_ReturnInfo.SetColumn (0, "CRUD"      , "D");
+
+		//trace(ds_ReturnInfo.SaveXML("ds_ReturnInfo","U"));
+		
+		gfn_syncCall("upso_rept_return","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001011001&EVENTID=upso_rept_return", "S=ds_ReturnInfo:U", "ds_error=SEL1","","fn_CallBack",gv_TraceLog,GV_FORMID);	
+	
+		if(ds_error.count > 0){
+			gfn_Confirm("MB_OK", ds_error.GetColumn(ds_error.count-1,"ERR_CTENT"), "오류", "0");
+		}
+		
+		ds_ReturnInfo.DeleteAll();
+		fn_Search();
+		
+	}
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+	
+	if (srvId == "rept_return_list") {
+		gfn_SetStatusMsg(this.ds_ReturnList.count + " 건이 조회되었습니다.");
+	}
+}
+
+function fn_ClearDataset()
+{
+	this.ds_ReturnList.ClearData();
+}
+]]></Script>
+</Window>

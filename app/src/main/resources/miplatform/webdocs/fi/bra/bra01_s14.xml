@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="840" Id="bra01_s02" Left="8" OnLoadCompleted="acncm_info_OnLoadCompleted" PidAttrib="7" Title="금영&#32;오프라인&#32;로그기&#32;정보" Top="8" Ver="1.0" Width="984" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list1" OnColumnChanged="ds_list1_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" type="STRING"/>
+					<colinfo id="CO_STATUS" size="256" type="STRING"/>
+					<colinfo id="USER_NAME" size="256" type="STRING"/>
+					<colinfo id="REG_DATE" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list2" UseClientLayout="1">
+				<Contents>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROOM_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CO_STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CO_PARING" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_sawon">
+				<Contents>
+					<colinfo id="STAFF_NUM" size="256" type="STRING"/>
+					<colinfo id="HAN_NM" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_youngup_info">
+				<Contents>
+					<colinfo id="CO_CODE" size="256" type="STRING"/>
+					<colinfo id="CO_NAME" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_logstat">
+				<Contents>
+					<colinfo id="CO_CODE" size="256" type="STRING"/>
+					<colinfo id="CO_NAME" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_comments" UseClientLayout="1">
+				<Contents>
+					<colinfo id="COMMENTS" size="5000" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" type="STRING"/>
+					<colinfo id="IPADDRESS" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_daegi_machine">
+				<Contents>
+					<colinfo id="SERIAL_NO" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_code_bscon">
+				<Contents>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_col_mch_yn" UseClientLayout="1">
+				<Contents>
+					<colinfo id="COL_MCH_YN" size="5000" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_usim">
+				<Contents>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEM_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="USIM_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="USIM_MODEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODEM_KIND" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIGO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Dsct" UseClientLayout="1">
+				<Contents>
+					<colinfo id="DSCT_START" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="DSCT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AreaSelect="true" AutoEnter="TRUE" BindDataset="ds_list1" BkColor2="default" BkSelColor="user2" BoldHead="true" Border="Flat" Bottom="208" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="160" Id="grd_list1" InputPanel="FALSE" Left="24" LineColor="silver" MultiSelect="TRUE" Right="656" RowHeight="20" SelColor="user1" Style="grid" TabOrder="1" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="632">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="283"/>
+						<col width="223"/>
+						<col width="125"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="영업정보"/>
+						<cell col="1" color="user12" display="text" text="변경인"/>
+						<cell col="2" color="user12" display="text" text="일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CO_STATUS" combocol="CO_CODE" combodataset="ds_code_youngup_info" combotext="CO_NAME" display="combo" edit="combo"/>
+						<cell align="center" col="1" colid="USER_NAME" combocol="STAFF_NUM" combodataset="ds_code_sawon" combotext="HAN_NM" display='expr:decode(REG_DATE,null,&quot;combo&quot;,&quot;text&quot;)' edit='expr:decode(REG_DATE,null,&quot;combo&quot;,&quot;text&quot;)'/>
+						<cell align="center" col="2" colid="REG_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_list2" BkColor2="default" BkSelColor="user2" BoldHead="true" Border="Flat" Bottom="400" DisableBKColor="user6" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadHeight="23" Height="160" Id="grd_list2" InputPanel="FALSE" Left="24" LineColor="silver" MinWidth="100" OnKeyDown="grd_list2_OnKeyDown" Right="656" RowHeight="20" SelColor="user1" Style="grid" TabOrder="2" TabStop="true" Top="240" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="632">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="128"/>
+						<col width="186"/>
+						<col width="145"/>
+						<col width="145"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="방이름"/>
+						<cell col="1" color="user12" display="text" text="시리얼&#32;번호"/>
+						<cell col="2" color="user12" display="text" text="반주기&#32;정보"/>
+						<cell col="3" color="user12" display="text" text="로그기&#32;상태(수정불가)"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="ROOM_NAME" display="text" edit="normal"/>
+						<cell align="center" col="1" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="2" colid="BSCON_CD" combocol="CODE_CD" combodataset="ds_code_bscon" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="3" colid="CO_PARING" combocol="CO_CODE" combodataset="ds_code_logstat" combotext="CO_NAME" display="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_loginfo_add" ImageID="C_btn_70" Left="504" OnClick="btn_loginfo_add_OnClick" TabOrder="3" Text="&#32;&#32;&#32;추가" Top="216" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_loginfo_del" ImageID="C_btn_70" Left="584" OnClick="btn_loginfo_del_OnClick" TabOrder="4" Text="삭제" Top="216" Width="79"></Button>
+		<Edit Height="21" Id="edt_BRAN_CD" Left="280" TabOrder="5" Top="24" Visible="FALSE" Width="72"></Edit>
+		<Edit Height="21" Id="edt_UPSO_CD" Left="200" TabOrder="6" Top="24" Visible="FALSE" Width="72"></Edit>
+		<Static Color="user1" Height="20" Id="Static9" Left="56" Style="tx_bold" TabOrder="7" Text="영업&#32;정보&#32;이력&#32;" Top="30" Width="100"></Static>
+		<Image Height="17" Id="Image1" ImageID="C_icon2" Left="33" TabOrder="8" Top="27" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static0" Left="56" Style="tx_bold" TabOrder="9" Text="로그기&#32;정보" Top="220" Width="150"></Static>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="33" TabOrder="10" Top="217" Width="18"></Image>
+		<Image Height="17" Id="Image2" ImageID="C_icon2" Left="33" TabOrder="12" Top="466" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static1" Left="56" Style="tx_bold" TabOrder="11" Text="비고" Top="469" Width="99"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_youngup_add" ImageID="C_btn_70" Left="584" OnClick="btn_youngup_add_OnClick" TabOrder="13" Text="&#32;&#32;&#32;추가" Top="24" Width="71"></Button>
+		<TextArea BindDataset="ds_comments" Border="Flat" BorderColor="user7" Column="COMMENTS" Height="102" Id="TextArea0" Left="24" TabOrder="14" Top="488" VScroll="TRUE" Width="632"></TextArea>
+		<Static Color="user1" Height="20" Id="Static2" Left="37" Style="tx_bold" TabOrder="15" Text="로그기&#32;정보&#32;(시리얼번호&#32;수정&#32;시&#32;F1키,&#32;반주기정보&#32;수정&#32;시&#32;F2키를&#32;누르세요)" Top="413" Width="500"></Static>
+		<Image Height="17" Id="Image3" ImageID="C_icon2" Left="681" TabOrder="17" Top="28" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static3" Left="704" Style="tx_bold" TabOrder="16" Text="TJ반주기&#32;오프라인로그데이터&#32;설치가능&#32;여부" Top="31" Width="300"></Static>
+		<Shape BKColor="white" Bottom="74" Height="26" Id="shp_col_mch_yn" Left="919" LineColor="user3" Right="965" TabOrder="18" Top="48" Type="Rectangle" Width="46"></Shape>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static4" Left="685" Style="box_tx" TabOrder="19" Text="설치&#32;불가능&#32;여부" Top="48" VAlign="Middle" Width="235"></Static>
+		<Static Border="Flat" Height="248" Id="Static5" Left="688" Style="box_tx" TabOrder="20" Text="&#32;설치불가능&#32;여부에&#32;체크가&#32;될&#32;경우,&#10;&#10;&#32;아래와&#32;같은&#32;반주기&#32;사용&#32;업소로서&#32;&#10;&#10;&#32;로그수집기를&#32;설치할&#32;수&#32;없음&#10;&#10;&#10;&#10;&lt;TJ반주기&#32;수집불가&#32;기종&gt;&#10;&#10;&#32;신곡&#32;업데이트&#32;중단&#32;반주기&#32;:&#32;TKR-500,&#32;TKR-700,&#10;&#10;&#32;TKR-700Ⅱ,&#32;DREAMQ&#32;A-700N,&#32;TKR-500DB,&#10;&#10;&#32;TKR-500DE,&#32;TKR-600E,&#32;DREAM-QJ,&#32;TKR-500D,&#10;&#10;&#32;TKR-600D" Top="88" VAlign="Middle" Width="280"></Static>
+		<Checkbox BindDataset="ds_col_mch_yn" Column="COL_MCH_YN" Height="12" Id="chk_COL_MCH_YN" Left="936" OnClick="tab_UpsoInfo_UPSO_chk_BILL_ISS_YN_OnClick" TabOrder="21" Text="Checkbox0" Top="55" Width="12"></Checkbox>
+		<Image Height="17" Id="Image4" ImageID="C_icon2" Left="681" TabOrder="23" Top="380" Width="18"></Image>
+		<Static Color="user1" Height="20" Id="Static6" Left="704" Style="tx_bold" TabOrder="22" Text="유심정보" Top="383" Width="160"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static7" Left="688" Style="box_tx" TabOrder="24" Text="로그기시리얼" Top="401" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="SERIAL_NO" Height="26" Id="Static8" Left="791" Style="box_tx" TabOrder="25" Top="401" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="TEL_NO" Height="26" Id="Static10" Left="791" Style="box_tx" TabOrder="27" Top="426" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static11" Left="688" Style="box_tx" TabOrder="26" Text="이동전화번호" Top="426" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static12" Left="688" Style="box_tx" TabOrder="28" Text="모뎀번호" Top="451" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="MODEM_NO" Height="26" Id="Static13" Left="791" Style="box_tx" TabOrder="29" Top="451" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="USIM_NO" Height="26" Id="Static14" Left="791" Style="box_tx" TabOrder="31" Top="476" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static15" Left="688" Style="box_tx" TabOrder="30" Text="유심번호" Top="476" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="USIM_MODEL" Height="26" Id="Static16" Left="791" Style="box_tx" TabOrder="33" Top="501" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static17" Left="688" Style="box_tx" TabOrder="32" Text="유심모델" Top="501" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static18" Left="688" Style="box_tx" TabOrder="34" Text="모뎀종류" Top="526" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="MODEM_KIND" Height="26" Id="Static19" Left="791" Style="box_tx" TabOrder="35" Top="526" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BindDataset="ds_usim" Border="Flat" Column="BIGO" Height="26" Id="Static20" Left="791" Style="box_tx" TabOrder="37" Top="551" VAlign="Middle" Width="174"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static21" Left="688" Style="box_tx" TabOrder="36" Text="비고" Top="551" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static23" Left="24" Style="box_tx" TabOrder="38" Text="할인시작" Top="433" VAlign="Middle" Width="80"></Static>
+		<MaskEdit Align="Center" BindDataset="ds_Dsct" Border="Flat" BorderColor="user10" Column="DSCT_START" DisplayComma="FALSE" Height="26" Id="mae_Dsct_Start" Left="103" Mask="####/##" MaxLength="6" Readonly="TRUE" TabOrder="39" Top="433" Type="STRING" Width="88"></MaskEdit>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static22" Left="190" Style="box_tx" TabOrder="40" Text="할인종료" Top="433" VAlign="Middle" Width="80"></Static>
+		<MaskEdit Align="Center" BindDataset="ds_Dsct" Border="Flat" BorderColor="user10" Column="DSCT_END" DisplayComma="FALSE" Height="26" Id="mae_Dsct_End" Left="269" Mask="####/##" MaxLength="6" Readonly="TRUE" TabOrder="41" Top="433" Type="STRING" Width="88"></MaskEdit>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static24" Left="356" Style="box_tx" TabOrder="42" Text="선택" Top="433" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" BKColor="user8" Border="Flat" Height="26" Id="Static25" Left="480" Style="box_tx" TabOrder="43" Text="최종저장" Top="433" VAlign="Middle" Width="80"></Static>
+		<Edit Align="CENTER" BindDataset="ds_Dsct" Border="Flat" BorderColor="user10" Column="MOD_DATE" Height="26" Id="edt_Mod_Date" Left="559" Readonly="TRUE" TabOrder="44" Top="433" Width="97"></Edit>
+		<Shape BKColor="white" Bottom="459" Height="26" Id="Shape0" Left="435" LineColor="user3" Right="481" TabOrder="46" Top="433" Type="Rectangle" Width="46"></Shape>
+		<Checkbox BindDataset="ds_Dsct" Column="DSCT_YN" Enable="FALSE" Height="12" Id="Checkbox0" Left="452" OnClick="tab_UpsoInfo_UPSO_chk_BILL_ISS_YN_OnClick" TabOrder="45" Text="Checkbox0" Top="439" Width="12"></Checkbox>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_log_hist" ImageID="C_btn_70" Left="584" LeftMargin="26" OnClick="btn_log_hist_OnClick" TabOrder="47" Text="이력" Top="408" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+var v_BRAN_CD = "";
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function acncm_info_OnLoadCompleted(obj)
+{
+	//this.edt_UPSO_CD.Text = "7201619B";
+	//this.edt_UPSO_CD.Text = "7212711A";
+	//this.edt_BRAN_CD.Text = "A";
+	
+	v_BRAN_CD = gds_sessioninfo.GetColumn(0, "BRAN_CD");
+	
+	// 설정 코드 정보 가져오기
+	gfn_PubCode("ds_code_bscon", 2, "00429");		// 무선로그 업체정보
+	
+	if(v_BRAN_CD == "AL")
+	{
+		mae_Dsct_Start.Readonly = false;
+		mae_Dsct_End.Readonly = false;
+		Checkbox0.Enable = true;
+	}
+	else
+	{
+		mae_Dsct_Start.Readonly = true;
+		mae_Dsct_End.Readonly = true;
+		Checkbox0.Enable = false;
+	}
+	
+	fn_Search();
+}
+
+/*
+ * 기      능: 조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Search()
+{
+	this.ds_In.ClearData();
+	this.ds_In.AddRow();
+	this.ds_In.SetColumn(0, "UPSO_CD", this.edt_UPSO_CD.Text);
+
+	gfn_syncCall("select_offlog_info","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004014&EVENTID=select_offlog_info","S=ds_In",
+	             "ds_list1=SEL1 ds_list2=SEL2 ds_comments=SEL7 ds_col_mch_yn=SEL9 ds_code_sawon=SEL11 ds_code_youngup_info=SEL12 ds_code_logstat=SEL13 ds_usim=SEL14 ds_Dsct=SEL15", "", "fn_CallBack");
+	//trace(ds_Dsct.SaveXML());
+	
+	if (this.ds_col_mch_yn.GetColumn(0, "COL_MCH_YN") == "1") {
+		this.shp_col_mch_yn.BkColor="tomato";
+	} else {
+		this.shp_col_mch_yn.BkColor="white";
+	}
+	
+	
+	//최초신규이거나, 현재 영업인 경우만 로그기정보 활성화
+	if (ds_list1.rowcount > 0 && ds_list1.GetColumn(ds_list1.firstrow, "CO_STATUS") == "07001") {
+		set_stat_list2(true);
+	} else  {
+		set_stat_list2(false);
+	}
+	
+	//현재 이관이라면 영업정보의 추가버튼 비활성화
+	if (ds_list1.rowcount > 0 && ds_list1.GetColumn(ds_list1.firstrow, "CO_STATUS") == "07004") {
+		this.btn_youngup_add.Enable = false;
+	}
+	
+	
+	if (this.ds_comments.rowcount == 0) {
+		this.ds_comments.AddRow();
+		this.ds_comments.SetColumn(0, "UPSO_CD", this.edt_UPSO_CD.Text);
+	}
+	this.ds_comments.SetColumn(0, "IPADDRESS", ext_GetIPAddress());
+	
+	
+	//set_stat_list2(false);
+}
+
+/*
+ * 기      능: 저장
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_Save()
+{
+	for(var i = 0; i < this.ds_list2.rowcount(); i++)
+	{
+		var serial_no = this.ds_list2.GetColumn(i, "SERIAL_NO");
+		var bscon_cd  = this.ds_list2.GetColumn(i, "BSCON_CD");
+		
+		if(length(serial_no) < 1 || length(bscon_cd) < 1)
+		{
+			alert("반주기정보를 선택하십시오.");
+			return ;
+		}
+	}
+	ds_Dsct.SetColumn(0, "MODPRES_ID", gds_sessioninfo.GetColumn(0, "STAFF_NUM"));
+	
+	gfn_syncCall("select_offlog_save","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004014&EVENTID=select_offlog_save",
+		"S1=ds_list1:U S2=ds_list2:U S3=ds_comments S4=ds_col_mch_yn S5=ds_Dsct", "", "", "fn_CallBack", gv_TraceLog, this.id);	
+		
+	gfn_SetStatusMsg("저장되었습니다.");
+	fn_Search();
+}
+
+/*
+ * 기      능: 프로세스빌더 실행 후 결과 
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}	
+
+	if(srvId = "ACMN_SAVE"){
+	    gfn_SetStatusMsg("저장되었습니다.");
+	}
+}
+
+/*
+ * 기      능: 업소코드 생성
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+*/
+function fn_SetUPOS_CD(BRAN_CD, UPSO_CD)
+{
+	this.edt_BRAN_CD.Text = BRAN_CD;
+	this.edt_UPSO_CD.Text = UPSO_CD;
+}
+
+
+function btn_loginfo_add_OnClick(obj)
+{
+	if(v_BRAN_CD != "AL")
+	{
+		alert("센터사업팀에서 변경할 수 있습니다.");
+		return false;
+	}
+	
+	var nRow = this.ds_list2.AddRow();
+	this.ds_list2.SetColumn(nRow, "UPSO_CD", this.edt_UPSO_CD.Text);
+	this.ds_list2.SetColumn(nRow, "ROOM_NAME", "임시방번호");
+	this.ds_list2.SetColumn(nRow, "CO_STATUS", "08001"); 	//대기로 설정
+}
+
+function btn_loginfo_del_OnClick(obj)
+{
+	if(v_BRAN_CD != "AL")
+	{
+		alert("센터사업팀에서 변경할 수 있습니다.");
+		return false;
+	}
+	
+	var yesno = gfn_Confirm("MB_YESNO", "삭제 시 해당 로그기의 상태가 \"대기\"로 전환되며, 향후 동일한 로그기를 재매핑하더라도 재인증 및 재개통하여야 합니다. 그래도 변경하시겠습니까?", "경고", "0");
+	if (yesno == "6") {
+		this.ds_list2.DeleteRow(this.ds_list2.currow);
+	}
+}
+
+function btn_youngup_add_OnClick(obj)
+{
+	if(v_BRAN_CD != "AL") 
+	{
+		alert("센터사업팀에서 변경할 수 있습니다.");
+		return false;
+	}
+	
+	//영업상태 추가는 1번만 가능함
+	for (var i=0; i < ds_list1.rowcount; i++) {
+		if (this.ds_list1.GetRowType(i) == "insert") {
+			alert("영업상태 추가는 한번씩 입력&저장해 주세요");
+			return;
+		}
+	}
+	
+	var nRow = this.ds_list1.AddRow();
+	//alert(nRow);
+	if (nRow == 0) {
+		alert("영업상태를 최초등록 시 영업상태는 \"영업\"만 가능합니다.");
+		this.ds_list1.SetColumn(0, "CO_STATUS", "07001");
+	}
+	
+	this.ds_list1.SetColumn(nRow, "UPSO_CD",edt_UPSO_CD.Text);
+}
+
+
+
+function ds_list1_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{	
+	if(this.ds_list1.GetRowType(nRow) == "update" && varOldValue != varNewValue) {
+		this.ds_list1.SetColumn(nRow, strColumnID, varOldValue);
+		alert("수정할 수 없는 항목입니다.");
+	} else if (this.ds_list1.GetRowType(nRow) == "insert" && strColumnID == "CO_STATUS" && (varNewValue == "07004" || varNewValue == "07005")) {
+		alert("영업정보는 이관, 삭제로 추가할 수 없습니다.");
+	} else if (this.ds_list1.GetRowType(nRow) == "insert" && strColumnID == "CO_STATUS" && (varNewValue == "07002" || varNewValue == "07003")) {
+		if (this.ds_list1.rowcount == 1) {
+			alert("영업상태를 최초등록 시 영업상태는 \"영업\"만 가능합니다.");
+			this.ds_list1.SetColumn(nRow, strColumnID, varOldValue);
+		} else {
+			var yesno = gfn_Confirm("MB_YESNO", "영업 정보 변경 시 이 업소에 매핑된 로그기 상태가 \"대기\"로 전환되며, 향후 동일한 로그기를 재매핑하더라도 재인증 및 재개통하여야 합니다. 그래도 변경하시겠습니까?", "경고", "0");
+			if (yesno == "6") {
+				//로그기정보 쪽을 DISABLE시킨다.
+				set_stat_list2(false);
+			} else {
+				this.ds_list1.SetColumn(nRow, strColumnID, varOldValue);
+			}
+		}
+	} else if (this.ds_list1.GetRowType(nRow) == "insert" && strColumnID == "CO_STATUS" && varNewValue == "07001") {
+		if(length(parent.ds_UpsoInfo.GetColumn(0, "CLSBS_YRMN")) > 0
+		   && ds_list1.GetRowType(nRow) == "insert")
+		{
+			alert("폐업된 업소에 영업으로 추가할 수 없습니다.");
+			ds_list1.DeleteRow(nRow);
+			return;
+		}
+		set_stat_list2(true);
+	}
+}
+
+
+function grd_list2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(v_BRAN_CD != "AL")
+	{
+		alert("센터사업팀에서 변경할 수 있습니다.");
+		return false;
+	}
+		
+	if (nChar == 112) { //F1 눌렀을때 팝업
+	
+		var result = Dialog("fi_bra::find_kylog_daegi.xml","");
+		if (result != null && result != "" && result != "0") {
+			this.ds_list2.SetColumn(this.ds_list2.currow, "SERIAL_NO", result);
+			this.ds_list2.SetColumn(this.ds_list2.currow, "CO_PARING", "");
+		}
+	} else if (nChar == 113) {	//F2눌렀을때 팝업
+	
+		var result = Dialog("fi_bra::find_museon_bscon.xml","");
+		if (result != null && result != "" && result != "0") {
+			this.ds_list2.SetColumn(this.ds_list2.currow, "BSCON_CD", result);
+		}
+	}
+}
+
+function set_stat_list2(value) {
+	this.btn_loginfo_add.Enable = value;
+	this.btn_loginfo_del.Enable = value;
+	this.grd_list2.Enable = value;
+	this.grd_list2.Editable = value;
+}
+
+function fn_check_null() {
+	//1. 영업정보 체크
+	if (this.ds_list1.rowcount == 0) {
+		alert("영업정보를 입력하세요");
+		return false;
+	} else {
+		for (var i=0; i<this.ds_list1.rowcount; i++) {
+			var t_co_status = this.ds_list1.GetColumn(i, "CO_STATUS");
+			var t_user_name = this.ds_list1.GetColumn(i, "USER_NAME");
+			if (length(t_co_status) != 5) {
+				alert("영업정보의 영업상태를 선택하세요.");
+				return false;
+			} else if (t_user_name == "") {
+				alert("영업정보의 변경인을 입력하세요.");
+				return false;
+			}
+		}
+	}
+	
+	//로그기 정보 체크
+	if (this.ds_list2.rowcount == 0) {
+		alert("로그기정보를 입력하세요");
+		return false;
+	} else {
+		for (var i=0; i<this.ds_list2.rowcount; i++) {
+			var t_room_name = this.ds_list2.GetColumn(i, "ROOM_NAME");
+			var t_serial_no = this.ds_list2.GetColumn(i, "SERIAL_NO");
+			if (t_room_name == null) {
+				alert("로그기정보의 방이름를 선택하세요.");
+				return false;
+			} else if (t_serial_no == null) {
+				alert("로그기정보의 시리얼번호를 입력하세요.");
+				return false;
+			}
+			
+			for (var j=0; j<this.ds_list2.rowcount; j++) {
+				if (i!=j && t_serial_no == this.ds_list2.GetColumn(j, "SERIAL_NO")) {
+					alert("동일한 로그기를 두개 이상의 방에 지정하셨습니다.");
+					return false;
+				}
+			}
+		}
+	}
+	
+	//로그기 
+	return true;
+}
+
+function btn_log_hist_OnClick(obj)
+{
+	Dialog("fi_bra::bra01_p14.xml", "P_UPSO_CD=" + edt_UPSO_CD.Text, "");
+}
+]]></Script>
+</Window>

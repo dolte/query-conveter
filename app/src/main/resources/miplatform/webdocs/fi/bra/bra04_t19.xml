@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="미수채권&#32;마감실행" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset Auto="false" DataSetType="Dataset" Editable="True" Id="ds_list" UseClientLayout="1">
+				<Contents>
+					<colinfo id="NONPY_DAY" size="256" type="STRING"/>
+					<colinfo id="REPT_AMT" size="256" type="STRING"/>
+					<colinfo id="COMIS_AMT" size="256" type="STRING"/>
+					<colinfo id="RETURN_AMT" size="256" type="STRING"/>
+					<colinfo id="ADJ_AMT" size="256" type="STRING"/>
+					<colinfo id="CNT_SATN" size="256" type="STRING"/>
+					<colinfo id="BTN_EXECUTE" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" type="STRING"/>
+					<colinfo id="START_DAY" size="256" type="STRING"/>
+					<colinfo id="END_DAY" size="256" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<END_DAY></END_DAY>
+						<START_DAY></START_DAY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_save">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" type="STRING"/>
+					<colinfo id="NONPY_DAY" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_check_executable">
+				<Contents>
+					<colinfo id="YESTERDAY_NONPY_AMT" size="256" type="STRING"/>
+					<colinfo id="TOMORROW_NONPY_AMT" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="1" TabStop="FALSE" Top="8" Width="1000"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="9" TabOrder="2" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1016" TabOrder="3" TabStop="FALSE" Top="8" Width="12"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="30" TabOrder="4" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="30" TabOrder="5" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="51" Style="tx_left_bold" TabOrder="0" Text="지부명" Top="24" Width="40"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="300" TabOrder="0" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="324" Style="tx_left_bold" TabOrder="0" Text="기간" Top="23" Width="70"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" Left="98" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="9" ToolTipText="지부명" Top="17" Width="145"></Combo>
+		<Image Height="17" Id="Image0" ImageID="C_icon2" Left="24" TabOrder="11" Top="59" Width="18"></Image>
+		<Static Color="user1" Height="11" Id="Static0" Left="48" Style="tx_bold" TabOrder="10" Text="미수채권&#32;마감실행" Top="62" Width="450"></Static>
+		<Grid BindDataset="ds_list" BkColor2="user11" BoldHead="true" Border="Flat" BorderColor="user3" Bottom="544" Editable="TRUE" Enable="true" EndLineColor="default" HeadHeight="23" Height="464" Id="grd_list" InputPanel="FALSE" Left="16" LineColor="default" OnCellClick="grd_list_OnCellClick" OnHeadClick="grd_list_OnHeadClick" Right="1004" RowHeight="20" Style="grid" TabOrder="12" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="988">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="67"/>
+						<col width="80"/>
+						<col width="179"/>
+						<col width="82"/>
+						<col width="76"/>
+						<col width="90"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="미수일자"/>
+						<cell col="1" color="user12" display="text" text="당일입금"/>
+						<cell col="2" color="user12" display="text" text="수수료"/>
+						<cell col="3" color="user12" display="text" text="반환금액"/>
+						<cell col="4" color="user12" display="text" text="정정금액"/>
+						<cell col="5" color="user12" display="text" text="정정미결건"/>
+						<cell col="6" color="user12" display="text" text="실행"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="NONPY_DAY" display="date" limit="8" Mask="yyyy-MM-dd"/>
+						<cell col="1" colid="REPT_AMT" display="number"/>
+						<cell col="2" colid="COMIS_AMT" display="number"/>
+						<cell col="3" colid="RETURN_AMT" display="number"/>
+						<cell col="4" colid="ADJ_AMT" display="number"/>
+						<cell col="5" colid="CNT_SATN" display="number"/>
+						<cell align="center" col="6" colid="BTN_EXECUTE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Calendar BindDataset="ds_search" BKColor="user13" Column="START_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_startday" Left="395" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="13" ToolTipText="입금일&#32;(시작)" Top="18" Width="89"></Calendar>
+		<Static Color="user0" Height="13" Id="st_CNTMON_2" Left="489" Style="style0" TabOrder="15" Text="~" Top="21" Width="9"></Static>
+		<Calendar BindDataset="ds_search" BKColor="user13" Column="END_DAY" Dateformat="yyyy/MM/dd" Height="20" Id="cal_endday" Left="505" MonthPickerFormat="yyyy년&#32;MM월" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="14" ToolTipText="입금일&#32;(종료)" Top="18" Width="89"></Calendar>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"
+
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	var curYMD = today();
+	cal_startday.value = substr(curYMD, 0, 6) + "01" ;  // 현재월의 첫날 부터
+	cal_endday.value = curYMD;
+	
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 1);
+	
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	
+	//gfn_PubCode("ds_code_adj_gbn", 2, "00412");
+	
+	this.ds_search.SetColumn(0, "STAFF_NUM", gv_USER_ID);
+}
+
+
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //Excel
+    else if(strCode == "EXCEL"){}
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+
+	return;
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+	
+	if (srvId == "insert_misu_chekwon") {
+		fn_Search();
+	} else if (srvId == "delete_misu_chekwon") {
+		fn_Search();
+	}
+	
+}
+
+function fn_Search() 
+{
+	// 입력 필수 항목 검사;
+	if (!gfn_CheckFormNull(this)) return;
+	
+	//trace(this.ds_search.SaveXML());
+	gfn_syncCall("adj_satn_search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001019&EVENTID=misu_sum_select","S=ds_search","ds_list=SEL1","","fn_CallBack");
+	//trace(this.ds_list.SaveXML());
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+
+function grd_list_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	this.ds_save.ClearData();
+	this.ds_check_executable.ClearData();
+	this.ds_save.AddRow();
+	this.ds_save.SetColumn(0, "BRAN_CD", this.cob_BRAN_CD.Value);
+	this.ds_save.SetColumn(0, "NONPY_DAY", this.ds_list.GetColumn(nRow, "NONPY_DAY"));
+	
+	if (this.ds_list.GetColumn(nRow, "BTN_EXECUTE") == "마감실행") {
+		//전날,다음날 당일미수금액이 있는지 값 획득
+		gfn_syncCall("check_nonpy_amt","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001019&EVENTID=check_nonpy_amt","S=ds_save","ds_check_executable=SEL1","","fn_CallBack");
+		
+		if (this.ds_check_executable.GetColumn(0, "TOMORROW_NONPY_AMT") != 0) {
+			alert("마감관련 조치는 순차적으로 실행되어야합니다.");
+			return;	
+		}
+		var message = "마감하시겠습니까?";
+		if (this.ds_list.GetColumn(nRow, "CNT_SATN") > 0) {
+			message = "정정미결건이 있어 마감을 실행할 수 없습니다.\n" + message;
+			return;
+		}
+		if(!confirm(message)){	return;	}
+		
+		gfn_syncCall("insert_misu_chekwon","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001019&EVENTID=insert_misu_chekwon","S=ds_save","","","fn_CallBack");
+		
+	} else if (this.ds_list.GetColumn(nRow, "BTN_EXECUTE") == "마감해제") {
+		//전날,다음날 당일미수금액이 있는지 값 획득
+		gfn_syncCall("check_nonpy_amt","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001019&EVENTID=check_nonpy_amt","S=ds_save","ds_check_executable=SEL1","","fn_CallBack");
+		if (this.ds_check_executable.GetColumn(0, "TOMORROW_NONPY_AMT") != 0) {	alert("마감관련 조치는 순차적으로 실행되어야합니다.");	return;	}
+		if(!confirm("마감을 해제하시겠습니까?")){	return;	}
+		
+		//trace(this.ds_save.SaveXML());
+		gfn_syncCall("delete_misu_chekwon","KOMCA?SYSID=PATHFINDER&MENUID=1000001006001019&EVENTID=delete_misu_chekwon","S=ds_save","","","fn_CallBack");
+		
+	}
+}
+
+function grd_list_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+]]></Script>
+</Window>

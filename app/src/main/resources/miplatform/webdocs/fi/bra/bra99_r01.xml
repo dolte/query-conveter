@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="792" Id="lev01_r01" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업소조회-등록건수" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cnt" OnRowPosChanged="ds_cnt_OnRowPosChanged">
+				<Contents>
+					<colinfo id="TABLE_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="T_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_querygbn">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>01</code>
+						<value>SELECT</value>
+					</record>
+					<record>
+						<code>02</code>
+						<value>DELETE</value>
+					</record>
+					<record>
+						<code>03</code>
+						<value>무통장</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image17" ImageID="C_search_bg" Left="18" TabOrder="6" Top="7" Width="1012"></Image>
+		<Grid AreaSelect="true" BindDataset="ds_cnt" BkColor2="default" BoldHead="true" Border="Flat" Bottom="784" ColSizing="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="728" Id="grd_Data" InputPanel="FALSE" Left="8" LineColor="default" MultiSelect="TRUE" Right="504" RowHeight="20" Style="grid" TabOrder="-3" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="496">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="224"/>
+						<col width="185"/>
+						<col width="58"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="TABLE&#32;ID"/>
+						<cell col="1" display="text" text="TABLE&#32;NM"/>
+						<cell col="2" display="text" text="건수"/>
+					</head>
+					<body>
+						<cell col="0" colid="TABLE_NAME" display="text"/>
+						<cell col="1" colid="T_NAME" display="text"/>
+						<cell col="2" colid="CNT" display="number" Mask="#,###"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image3" ImageID="C_icon" Left="20" TabOrder="3" TabStop="FALSE" Top="23" Width="11"></Image>
+		<Static Color="user12" Height="11" Id="Static2" Left="38" Style="tx_left_bold" TabOrder="3" Text="업소코드" Top="23" Width="52"></Static>
+		<Edit BindDataset="ds_search" Border="Flat" BorderColor="user10" Column="UPSO_CD" Height="20" Id="edt_upsocd" Left="105" Style="edit" TabOrder="5" Top="18" Width="117"></Edit>
+		<Image Height="41" Id="Image6" ImageID="C_search_left" Left="8" TabOrder="5" Top="7" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="6" Top="7" Width="10"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Copy" ImageID="C_btn_110" Left="696" LeftMargin="23" OnClick="btn_Copy_OnClick" Style="edit" TabOrder="8" Text="&#32;&#32;클립보드" Top="64" TopMargin="1" Width="110"></Button>
+		<TextArea Height="696" HScroll="TRUE" Id="TXT_QUERY" Left="512" TabOrder="9" Top="88" VScroll="TRUE" Width="512"></TextArea>
+		<Radio BKColor="white" Border="None" BorderColor="user6" CodeColumn="code" ColumnCount="4" DataColumn="value" DkshadowColor="user17" Height="24" Hilight3dColor="user17" Id="RDO_QUERY" INDEX="0" InnerDataset="ds_querygbn" Left="520" ShadowColor="user17" Style="radio" TabOrder="10" Top="64" Width="168">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="예" top="0" width="80"/>
+				<Layout code="2" height="18" left="80" text="아니오" top="0" width="120"/>
+			</Contents>
+		</Radio>
+		<Button Cursor="HAND" Height="21" Id="btn_FindUpso" ImageID="C_btn_search" Left="520" OnClick="btn_FindUpso_OnClick" TabOrder="11" Top="16" Width="58"></Button>
+		<Edit BindDataset="ds_search" Border="Flat" BorderColor="user10" Height="20" Id="edt_upsonm" Left="230" Style="edit" TabOrder="12" Top="18" Width="274"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : lev01_r01.xml
+ * 작  성  자 :    	
+ * 작  성  일 : 	
+ * 설      명 :	거래처 조회
+ * 수정일1    : 	
+ * 수정자     : 	
+ * 수정내용   : 설명 부여(여러줄 사용가능)	
+ * 수정일2    : 	
+ * 수정자     :	
+ * 수정내용   : 	
+ * 수정일3    : 	
+ * 수정자     : 	
+ * 수정내용   :	
+ */
+ 
+/* include */
+#include "script::common.js"  // 공통 js
+#include "script::commDs.js"  
+#include "script::global.js"  // 글로벌 js
+
+/*
+ * 기      능: 폼 시작시 실행
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	ds_search.InsertRow(0);
+}
+
+/*
+ * 기      능: 공통버튼 제어
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CommmonButtonClick(strCode)
+{
+    if (strCode == "NEW")	///신규    
+    {
+		// cob_Media1.Index = 0;
+		// cob_Media2.Index = -1;
+		// cob_Media3.Index = -1;
+		// cob_Media4.Index = -1;
+    }
+    else if (strCode == "SEARCH")	///조회
+    {
+		fn_Search();
+    }
+    else if (strCode == "SAVE")	///저장
+    {
+		
+	}
+	else if (strCode == "EXCEL")	///엑셀저장
+	{
+        grd_Data.ExportExcelEx("거래처");
+    }
+    else if (strCode == "DELETE")	///삭제
+    {
+		
+    }
+    else if (strCode == "PRINT")	///출력
+    {
+    
+    }
+    else if (strCode == "CLOSE")	///닫기
+    {
+		close();
+    }
+    
+}
+
+/*
+ * 기      능: 조회
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Search()
+{
+	
+	gfn_SyncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006003001&EVENTID=upso_cnt_select","S=ds_search",
+			"ds_cnt=SEL1", "", "fn_CallBack");
+}
+
+
+/*
+ * 기      능: Callback함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_CallBack(svcid,errCode,errMsg) {
+	if( errCode < 0 ){
+		gfn_SetErrorPop( errCode , errMsg);
+	}else{
+		if(svcid == "svcSearch"){
+			//TRACE(ds_cnt.SaveXML());
+			gfn_SetStatusMsg(ds_cnt.GetRowCount() + " 건 조회가 완료되었습니다.");
+		}		
+	}
+}
+
+function btn_Copy_OnClick(obj)
+{
+	var varstr = txt_query.text;
+	//trace ("edt_query.text-----"+edt_query.text);
+	//trace (varstr);
+	ClearClipboard();
+	SetClipboard("CF_TEXT",varstr);
+}
+
+function ds_cnt_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	VAR TABLE_ID = DS_CNT.GetColumn(NROW,"TABLE_NAME");
+	//edt_query.text = "SELECT ROWID, A.* \nFROM GIBU." + TABLE_ID + " A\nWHERE UPSO_CD = '" + edt_upsocd.Text + "';";
+	if (RDO_QUERY.Value = "01") {
+			txt_query.text = "SELECT ROWID, A.* \nFROM GIBU." + TABLE_ID + " A\nWHERE UPSO_CD = '" + edt_upsocd.Text + "';";	
+		}
+	else if(RDO_QUERY.Value = "02") {
+			txt_query.text = "DELETE \nFROM GIBU." + TABLE_ID + " \nWHERE UPSO_CD = '" + edt_upsocd.Text + "';";		
+		}
+	else if(RDO_QUERY.Value = "03"){
+			if (table_id = "TBRA_REPT_TRANS" OR table_id = "TBRA_REPT") {
+				txt_query.text = "SELECT ROWID, A.* \nFROM GIBU." + TABLE_ID + " A\nWHERE UPSO_CD = '" + edt_upsocd.Text + "';";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n" + "SELECT *\nFROM GIBU.TBRA_REPT_TRANS\nWHERE BRAN_CD = :BRAN_CD\nAND REPT_DAY BETWEEN :REPT_DAY1 AND :REPT_DAY2\nAND ACCN_NUM LIKE :ACCN_NUM||'%'\nAND REPTPRES LIKE '%'||:REPTPRES||'%'\nAND REPT_NUM LIKE :REPT_NUM || '%'";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n" + "DELETE \nFROM GIBU.TBRA_REPT_TRANS\nWHERE BRAN_CD = :BRAN_CD\nAND REPT_DAY BETWEEN :REPT_DAY1 AND :REPT_DAY2\nAND ACCN_NUM LIKE :ACCN_NUM||'%'\nAND REPTPRES LIKE '%'||:REPTPRES||'%'\nAND REPT_NUM LIKE :REPT_NUM || '%'";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n" + "SELECT *\nFROM GIBU.TBRA_REPT\nWHERE BRAN_CD = :BRAN_CD\nAND REPT_DAY BETWEEN :REPT_DAY1 AND :REPT_DAY2\nAND ACCN_NUM LIKE :ACCN_NUM||'%'\nAND REPTPRES LIKE '%'||:REPTPRES||'%'\nAND REPT_NUM LIKE :REPT_NUM || '%'";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n";
+				txt_query.text = txt_query.text + "\n" + "DELETE \nFROM GIBU.TBRA_REPT\nWHERE BRAN_CD = :BRAN_CD\nAND REPT_DAY BETWEEN :REPT_DAY1 AND :REPT_DAY2\nAND ACCN_NUM LIKE :ACCN_NUM||'%'\nAND REPTPRES LIKE '%'||:REPTPRES||'%'\nAND REPT_NUM LIKE :REPT_NUM || '%'";
+			} else {
+				txt_query.text = "";			
+			}
+		}
+}
+
+
+function btn_FindUpso_OnClick(obj)
+{
+	var bran_cd = "";
+	var inParam ="BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(edt_upsocd.Text) + " UPSO_NM=" + quote(edt_upsonm.Text) + " SGBN=" + quote("dis");
+	var result = Dialog("fi_bra::find_upso.xml",inParam);				//업소 찾기팝업
+
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	    this.edt_upsocd.Text = vArr[0];
+	    this.edt_upsonm.Text = vArr[1];
+	}
+		
+}
+]]></Script>
+</Window>

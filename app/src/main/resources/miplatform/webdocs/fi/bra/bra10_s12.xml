@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra10_s12" Left="8" OnLoadCompleted="bra10_s12_OnLoadCompleted" PidAttrib="7" Title="타단체&#32;관리비율&#32;관리" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_GIBU_CD">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_Set" OnColumnChanged="ds_Set_OnColumnChanged" UseClientLayout="1">
+				<Contents>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSTYP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_RATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPL_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_MDMCD" UseClientLayout="1">
+				<Contents>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_CD_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Bstyp" UseClientLayout="1">
+				<Contents>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="8" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Grid AutoEnter="TRUE" BindDataset="ds_Set" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="744" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="25" Height="688" Id="grd_udtk_list" InputPanel="FALSE" Left="8" LineColor="silver" OnEnterDown="grd_udtk_list_OnEnterDown" Right="1037" RowHeight="20" Style="grid" TabOrder="4" TabStop="FALSE" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1029">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="142"/>
+						<col width="86"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="105"/>
+						<col width="83"/>
+						<col width="130"/>
+						<col width="86"/>
+						<col width="130"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="단체명"/>
+						<cell col="1" color="user12" display="text" text="단체코드"/>
+						<cell col="2" color="user12" display="text" text="업종"/>
+						<cell col="3" color="user12" display="text" text="매체코드"/>
+						<cell col="4" color="user12" display="normal" text="관리지분(%)"/>
+						<cell col="5" color="user12" display="text" text="적용일자"/>
+						<cell col="6" color="user12" display="text" text="등록자이름"/>
+						<cell col="7" color="user12" display="text" text="등록일시"/>
+						<cell col="8" color="user12" display="text" text="수정자이름"/>
+						<cell col="9" color="user12" display="text" text="수정일시"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user13" col="0" colid="BSCON_NM" display="text"/>
+						<cell align="center" bkcolor="user13" col="1" colid="BSCON_CD" display="text"/>
+						<cell align="center" bkcolor="user13" col="2" colid="BSTYP_CD" combocol="GRAD_GBN" combodataset="ds_Bstyp" combotext="GRADNM" display="combo" edit="expr:decode(INS_DATE,&apos;&apos;,&apos;combo&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="3" colid="MDM_CD" combocol="MDM_CD" combodataset="ds_MDMCD" combotext="MDM_CD_NM" display="combo"/>
+						<cell align="center" bkcolor="user13" col="4" colid="MNG_RATE" display="numberexp" edit="expr:decode(INS_DATE,&apos;&apos;,&apos;normal&apos;,&apos;none&apos;)"/>
+						<cell align="center" bkcolor="user13" col="5" colid="APPL_DAY" display="date" edit="expr:decode(INS_DATE,&apos;&apos;,&apos;date&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="6" colid="INSPRES_NM" display="text"/>
+						<cell align="center" col="7" colid="INS_DATE" display="text"/>
+						<cell align="center" col="8" colid="MODPRES_NM" display="text"/>
+						<cell align="center" col="9" colid="MOD_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Add" ImageID="C_btn_70" Left="856" LeftMargin="25" OnClick="btn_Add_OnClick" TabOrder="5" TabStop="FALSE" Text="추가" Top="18" Width="72"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_Del" ImageID="C_btn_70" Left="936" LeftMargin="25" OnClick="btn_Del_OnClick" TabOrder="6" TabStop="FALSE" Text="삭제" Top="18" Width="72"></Button>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commSintak.js"  	// 공통 js
+#include "script::commonInsa.js"  // 공통 인사js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW"){///신규  
+		//fn_new();
+	}else if(strCode == "SEARCH"){///조회
+		fn_Search();
+    }else if(strCode == "SAVE"){///저장 
+		fn_Save();
+    }else if(strCode == "EXCEL"){///엑셀저장
+		fn_Excel();
+    }else if(strCode == "DELETE"){///삭제
+		//fn_Delete();
+    }else if(strCode == "PRINT"){///출력
+		//fn_Print();
+    }else if(strCode == "CLOSE"){///닫기
+		if(!gfn_changeAction("CLOSE","ds_Set"))return;
+		close();
+    }
+}
+
+function fn_CallBack(svcid,errCode,errMsg)
+{	if(errCode < 0 )	{		alert("Error =======>"+ svcid + '  ' +errMsg);	}	else	{		switch (svcid)		{			case "svcSearch" :				break;
+			case "svcSave" :
+				alert("저장되었습니다.");
+				fn_Search();
+				break;			default : break;		}	}}
+
+function bra10_s12_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_syncCall("svcBstyp","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=sel_bstyp","","ds_Bstyp=SEL1 ds_MDMCD=ADD8","","fn_CallBack");
+	trace(ds_MDMCD.SaveXML());
+	fn_Search();
+}
+
+function fn_Excel()
+{
+	grd_udtk_list.ExportExcelEx("관리비율");
+}
+
+function fn_Search()
+{
+	if(!gfn_changeAction("SEARCH","ds_Set"))return;
+	
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008012&EVENTID=sel_bscon_rate","","ds_Set=SEL1","","fn_CallBack");
+}
+
+function fn_Save()
+{
+	if(Confirm("저장하시겠습니까?"))
+		gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008012&EVENTID=mng_bscon_rate","S=ds_Set:U","","","fn_CallBack");
+}
+
+function btn_Add_OnClick(obj)
+{
+	ds_Set.AddRow();
+	ds_Set.SetColumn(ds_Set.currow, "INS_DATE", "");
+	ds_Set.SetColumn(ds_Set.currow, "BSCON_CD", "T0000001");
+	ds_Set.SetColumn(ds_Set.currow, "BSCON_NM", "함께하는음악저작권협회");
+}
+
+function btn_Del_OnClick(obj)
+{
+	if(length(ds_Set.GetColumn(ds_Set.currow, "INS_DATE")) > 0)
+	{
+		alert("저장된 데이터는 삭제할 수 없습니다.");
+		return;
+	}
+	ds_Set.DeleteRow(ds_Set.currow);
+}
+
+function ds_Set_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "BSTYP_CD")
+	{
+		ds_Set.SetColumn(nRow, "MDM_CD", ds_Bstyp.GetColumn(ds_Bstyp.FindRow("GRAD_GBN", ds_Set.GetColumn(nRow, "BSTYP_CD")), "MDM_CD"));
+	}
+}
+
+function grd_udtk_list_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	ds_Set.SetColumn(ds_Set.currow, "INS_DATE", "");
+	ds_Set.SetColumn(ds_Set.currow, "BSCON_CD", "T0000001");
+	ds_Set.SetColumn(ds_Set.currow, "BSCON_NM", "함께하는음악저작권협회");
+}
+]]></Script>
+</Window>

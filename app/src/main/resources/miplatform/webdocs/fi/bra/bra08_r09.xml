@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra08_r09" Left="8" OnLoadCompleted="bra08_r09_OnLoadCompleted" OnSize="bra08_r09_OnSize" PidAttrib="7" Title="정부3.0&#32;유단노&#32;체크리스트" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEARCH_TYPE" size="256" summ="default" type="STRING"/>
+					<record>
+						<BRAN_CD></BRAN_CD>
+						<SEARCH_TYPE></SEARCH_TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_type">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>노래방</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>유흥/단란</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_result">
+				<Contents>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPBI_DAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOREBANG_GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHNDAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROOM_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SITE_AREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPARE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LOSS_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="6" TabStop="FALSE" Top="8" Width="1015"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="4" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="41" Id="Image1" ImageID="C_search_left" Left="8" TabOrder="7" TabStop="FALSE" Top="8" Width="10"></Image>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="29" TabOrder="2" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="16" Id="Static5" Left="48" Style="tx_left_bold" TabOrder="3" Text="센터명" Top="24" Width="48"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" Column="BRAN_CD" Height="18" Id="cob_BRAN_CD" ImeMode="none" INDEX="0" Left="98" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="19" Width="109"></Combo>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="240" TabOrder="3" TabStop="FALSE" Top="24" Width="11"></Image>
+		<Static Height="19" Id="Static1" Left="256" Style="tx_left_bold" TabOrder="5" Text="유형" Top="24" Width="30"></Static>
+		<Combo BindDataset="ds_search" BKColor="user13" CodeColumn="CODE_CD" Column="SEARCH_TYPE" DataColumn="CODE_NM" Height="18" Id="cob_type" ImeMode="none" INDEX="0" InnerDataset="ds_type" Left="290" OnChanged="cob_type_OnChanged" TabOrder="9" ToolTipText="센터명" Top="19" Width="109"></Combo>
+		<Grid AutoEnter="TRUE" BindDataset="ds_result" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="784" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="40" Height="720" Id="grd_no_result" InputPanel="FALSE" Left="8" LineColor="silver" Right="1039" RowHeight="20" Style="grid" TabOrder="10" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="68"/>
+						<col width="130"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="275"/>
+						<col width="66"/>
+						<col width="79"/>
+						<col width="122"/>
+						<col width="51"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="61"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="등록일자"/>
+						<cell col="4" color="user12" display="text" text="개업일자"/>
+						<cell col="5" color="user12" display="text" text="주소"/>
+						<cell col="6" color="user12" display="text" text="동명"/>
+						<cell col="7" color="user12" display="text" text="업종"/>
+						<cell col="8" color="user12" display="text" text="등급"/>
+						<cell col="9" color="user12" display="text" text="담당자"/>
+						<cell col="10" color="user12" display="text" text="매칭&#13;&#10;여부"/>
+						<cell col="11" color="user12" display="text" text="협회등록&#13;&#10;노래방&#13;&#10;기기대수"/>
+						<cell col="12" color="user12" display="text" text="정부3.0&#13;&#10;노래방&#13;&#10;기기대수"/>
+						<cell col="13" color="user12" display="text" text="기기대수&#13;&#10;불일치"/>
+						<cell col="14" color="user12" display="text" text="불일치&#32;중&#13;&#10;금액손실"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="0" display="text" expr="currow+1"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="1" colid="UPSO_CD" display="text"/>
+						<cell align="left" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="3" colid="INS_DATE" display="date"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="4" colid="OPBI_DAY" display="date"/>
+						<cell align="left" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="5" colid="ADDR" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="6" colid="DONG" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="7" colid="GRADNM" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="8" colid="NOREBANG_GRAD" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="9" colid="STAFF_NM" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="10" colid="MATCH_YN" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="11" colid="MCHNDAESU" display="number"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="12" colid="ROOM_CNT" display="number"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="13" colid="COMPARE" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="14" colid="LOSS_AMT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="64" Height="3" Id="Shape1" Left="8" LineColor="user7" Right="1039" TabOrder="11" Top="61" Type="Rectangle" Width="1031"></Shape>
+		<Grid AutoEnter="TRUE" BindDataset="ds_result" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="784" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="40" Height="720" Id="grd_yudan_result" InputPanel="FALSE" Left="184" LineColor="silver" Right="1215" RowHeight="20" Style="grid" TabOrder="12" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="1031">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="68"/>
+						<col width="130"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="275"/>
+						<col width="66"/>
+						<col width="79"/>
+						<col width="122"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="61"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="순번"/>
+						<cell col="1" color="user12" display="text" text="업소코드"/>
+						<cell col="2" color="user12" display="text" text="업소명"/>
+						<cell col="3" color="user12" display="text" text="등록일자"/>
+						<cell col="4" color="user12" display="text" text="개업일자"/>
+						<cell col="5" color="user12" display="text" text="주소"/>
+						<cell col="6" color="user12" display="text" text="동명"/>
+						<cell col="7" color="user12" display="text" text="업종"/>
+						<cell col="8" color="user12" display="text" text="담당자"/>
+						<cell col="9" color="user12" display="text" text="매칭&#13;&#10;여부"/>
+						<cell col="10" color="user12" display="text" text="정부3.0&#13;&#10;유흥단란&#13;&#10;면적"/>
+						<cell col="11" color="user12" display="text" text="협회등록&#13;&#10;유흥단란&#13;&#10;등급"/>
+						<cell col="12" color="user12" display="text" text="등급&#13;&#10;불일치"/>
+						<cell col="13" color="user12" display="text" text="불일치&#32;중&#13;&#10;금액손실"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="0" display="text" expr="currow+1"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="1" colid="UPSO_CD" display="text"/>
+						<cell align="left" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="3" colid="INS_DATE" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="4" colid="OPBI_DAY" display="text"/>
+						<cell align="left" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="5" colid="ADDR" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="6" colid="DONG" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="7" colid="GRADNM" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="8" colid="STAFF_NM" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="9" colid="MATCH_YN" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="10" colid="SITE_AREA" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="11" colid="GRAD" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="12" colid="COMPARE" display="text"/>
+						<cell align="center" bkcolor="expr:decode(LOSS_AMT,&apos;O&apos;,&apos;mistyrose&apos;,&apos;&apos;)" col="13" colid="LOSS_AMT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra08_r09_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 0);
+	gfn_SetPermission(cob_BRAN_CD.Value);
+	
+	ds_GIBU_CD.SetColumn(0, "GIBU", "");
+	
+	grd_yudan_result.Left = 8;
+	cob_type.Index = 0;
+	
+	bra08_r09_OnSize();
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode)
+{
+    if(strCode == "NEW")//신규
+    {
+    }
+    else if(strCode == "SEARCH")//조회
+    {
+		fn_Search();
+    }
+    else if(strCode == "SAVE")//저장
+    {
+    }    
+    else if(strCode == "DELETE")//삭제
+    {
+    }
+    else if(strCode == "EXCEL")//Excel
+    {
+		fn_Excel();
+    }
+    else if(strCode == "PRINT")//출력
+    {
+    }
+    else if(strCode == "CLOSE")//닫기
+    {
+        close();
+    }	return;}
+
+function fn_Search()
+{
+	if(cob_type.Value == "1")
+	{
+		gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=sel_gov_compare","S=ds_search","ds_result=SEL3","","fn_CallBack");
+	}
+	else
+	{
+		gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=sel_gov_compare","S=ds_search","ds_result=SEL4","","fn_CallBack");
+	}
+}
+
+function fn_Excel()
+{
+	if(cob_type.Value == "1")
+	{
+		grd_no_result.ExportExcelEx(cob_BRAN_CD.Text + " 노래방 정부3.0 비교 체크리스트");
+	}
+	else
+	{
+		grd_yudan_result.ExportExcelEx(cob_BRAN_CD.Text + " 유흥단란 정부3.0 비교 체크리스트");
+	}
+}
+
+function bra08_r09_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_ObjreSize(grd_no_result, this, 1, 0);
+	gfn_ObjreSize(grd_yudan_result, this, 1, 0);
+	gfn_ObjreSize(Shape1, this, 1, 0);
+}
+
+function cob_type_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "1")
+	{
+		grd_no_result.Visible = true;
+		grd_yudan_result.Visible = false;
+	}
+	else
+	{
+		grd_no_result.Visible = false;
+		grd_yudan_result.Visible = true;
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+]]></Script>
+</Window>

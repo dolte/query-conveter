@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="816" Id="bra08_s11" Left="8" OnLoadCompleted="bra08_p10_OnLoadCompleted" PidAttrib="7" Title="정부&#32;3.0&#32;데이터&#32;통계" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_code_Gbn">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<CODE_CD>1</CODE_CD>
+						<CODE_NM>센터별</CODE_NM>
+					</record>
+					<record>
+						<CODE_CD>2</CODE_CD>
+						<CODE_NM>사원별</CODE_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="STAFF_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="N_MATCH_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MATCH_RATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="792" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="720" Id="grd_List" InputPanel="FALSE" Left="16" LineColor="silver" OnCellClick="tab_Onwer_NOREBANG_grd_no_result1_OnCellClick" Right="976" RowHeight="20" Style="grid" TabOrder="1" TabStop="true" Top="72" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="960">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="113"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="센터명"/>
+						<cell col="1" color="user12" display="text" text="사원명"/>
+						<cell col="2" color="user12" display="text" expr='&quot;정부3.0\n매칭률&quot;'/>
+						<cell col="3" color="user12" display="text" text="관리직원수"/>
+						<cell col="4" color="user12" display="text" expr='&quot;정부3.0&#32;총&#32;업소수\n(유단노)&quot;' text="수"/>
+						<cell col="5" color="user12" display="text" text="매칭된업소수"/>
+						<cell col="6" color="user12" display="text" text="미매칭업소수"/>
+						<cell col="7" color="user12" display="text" text="상세보기"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="BRAN_NM" display="text"/>
+						<cell align="center" col="1" colid="STAFF_NM" display="text"/>
+						<cell align="center" col="2" colid="MATCH_RATE" display="text"/>
+						<cell align="center" col="3" colid="STAFF_CNT" display="number"/>
+						<cell align="center" col="4" colid="TOT_CNT" display="number"/>
+						<cell align="center" col="5" colid="MATCH_CNT" display="number"/>
+						<cell align="center" col="6" colid="N_MATCH_CNT" display="number"/>
+						<cell align="center" col="7" display="text"/>
+					</body>
+					<summary>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell align="center" col="3" display="number" expr='SUM(&quot;STAFF_CNT&quot;)'/>
+						<cell align="center" col="4" display="number" expr='SUM(&quot;TOT_CNT&quot;)'/>
+						<cell align="center" col="5" display="number" expr='SUM(&quot;MATCH_CNT&quot;)'/>
+						<cell align="center" col="6" display="number" expr='SUM(&quot;N_MATCH_CNT&quot;)'/>
+						<cell col="7" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="41" Id="Image1" ImageID="C_search_left" Left="232" TabOrder="4" TabStop="FALSE" Top="19" Width="10"></Image>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="248" TabOrder="5" TabStop="FALSE" Top="35" Width="11"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="24" TabOrder="3" TabStop="FALSE" Top="19" Width="944"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="965" TabOrder="2" TabStop="FALSE" Top="19" Width="10"></Image>
+		<Static Color="user12" Height="14" Id="Static2" Left="260" Style="tx_left_bold" TabOrder="7" Text="조회년월" Top="34" Width="52"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="242" TabOrder="6" TabStop="FALSE" Top="34" Width="11"></Image>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_start" Left="326" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="8" ToolTipText="현황년월" Top="30" Width="102"></Calendar>
+		<Static Color="user1" Height="16" Id="Static3" Left="432" TabOrder="10" Text="~" Top="36" Width="16"></Static>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="20" Id="cal_end" Left="446" LeftMargin="15" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="9" ToolTipText="현황년월" Top="30" Width="102"></Calendar>
+		<Static Color="user12" Height="14" Id="Static4" Left="52" Style="tx_left_bold" TabOrder="12" Text="센터명" Top="34" Width="52"></Static>
+		<Image Height="11" Id="Image5" ImageID="C_icon" Left="34" TabOrder="11" TabStop="FALSE" Top="34" Width="11"></Image>
+		<Static Color="user12" Height="14" Id="Static5" Left="588" Style="tx_left_bold" TabOrder="13" Text="구분" Top="34" Width="52"></Static>
+		<Combo BKColor="user13" Border="Flat" BorderColor="user10" Height="20" Id="cob_BRAN_CD" ImeMode="none" INDEX="1" Left="104" TabOrder="14" ToolTipText="센터명" Top="28" Width="109"></Combo>
+		<Image Height="41" Id="Image3" ImageID="C_search_left" Left="16" TabOrder="15" TabStop="FALSE" Top="19" Width="10"></Image>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="562" TabOrder="16" TabStop="FALSE" Top="34" Width="11"></Image>
+		<Combo BorderColor="user3" CodeColumn="CODE_CD" DataColumn="CODE_NM" Editable="TRUE" Height="20" Id="cob_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_code_gbn" Left="632" TabOrder="17" ToolTipText="구분" Top="30" Width="100"></Combo>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){
+		fn_new();
+	}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	return;}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	}
+}
+
+function bra08_p10_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	gfn_GetDataGIBU_CD(cob_BRAN_CD,0);	
+	
+	cal_start.Value = substr(today(),0,6)+ "01";
+	cal_end.Value = substr(today(),0,6)+ "01";
+	
+	cob_BRAN_CD.Index=0;
+	cob_gbn.Index=0;
+
+	ds_list.ClearData();
+	
+	if (gds_sessioninfo.GetColumn(0, "BRAN_CD") == "AL" || gds_sessioninfo.GetColumn(0, "DEPT_CD") ="122040100")
+	{
+		cob_BRAN_CD.Enable=true;
+	}
+	else
+	{
+		cob_BRAN_CD.Enable=false;
+	}
+}
+
+function fn_new()
+{
+	bra08_p10_OnLoadCompleted(obj);
+}
+
+function fn_search()
+{
+	ds_search.ClearData();
+	ds_search.AddRow();
+	ds_search.SetColumn(0,"BRAN_CD",cob_BRAN_CD.Value);
+	ds_search.SetColumn(0,"GBN",cob_gbn.Value);
+	
+	
+	if ( length(cal_start.Value)=0 || length(cal_end.Value)=0)
+	{
+		alert("조회년월을 설정해주세요");
+		cal_start.SetFocus();
+		return;
+	}
+	
+	if(cal_start.Value >cal_end.Value)
+	{
+		alert("시작년월이 마지막년월보다 클수 없습니다. 다시 설정해주세요");
+		cal_start.SetFocus();
+		return;
+	}
+	
+	ds_search.SetColumn(0,"START_YRMN",substr(cal_start.Value,0,6));
+	ds_search.SetColumn(0,"END_YRMN",substr(cal_end.Value,0,6));
+	
+	//trace(ds_search.SaveXML());
+	
+	gfn_syncCall("gov_sta_search","KOMCA?SYSID=PATHFINDER&MENUID=1000001006008009&EVENTID=gov_stat_search", "S=ds_search", "ds_list=MRG6", "", "fn_CallBack");
+}
+]]></Script>
+</Window>

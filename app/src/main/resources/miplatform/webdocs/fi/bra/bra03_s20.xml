@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="카드자동이체&#32;자료&#32;생성" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_DemdErr">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRET_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="START_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="END_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERR_CTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEMD_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DemdIn">
+				<Contents>
+					<colinfo id="DEMD_YRMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSPRES_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DemdOut">
+				<Contents>
+					<colinfo id="P_CNT_READ" size="256" summ="default" type="STRING"/>
+					<colinfo id="P_CNT_INST" size="256" summ="default" type="STRING"/>
+					<colinfo id="P_CNT_ERR" size="256" summ="default" type="STRING"/>
+					<colinfo id="P_CNT_PREPAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="P_CNT_OCR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DemdEnd">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_END" size="256" summ="default" type="STRING"/>
+					<colinfo id="INS_DAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_closingYn">
+				<Contents>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<static BKColor="whitesmoke" Height="200" Id="grb1" Left="16" TabOrder="18" Text="처리내역" Top="72" Type="Groupbox" Width="408"></static>
+		<Shape BKColor="white" Bottom="135" Height="24" Id="Shape3" Left="49" LineColor="user3" Right="424" TabOrder="32" Top="111" Type="Rectangle" Width="375"></Shape>
+		<Shape BKColor="white" Bottom="168" Height="24" Id="Shape4" Left="49" LineColor="user3" Right="424" TabOrder="33" Top="144" Type="Rectangle" Width="375"></Shape>
+		<Shape BKColor="white" Bottom="191" Height="24" Id="Shape5" Left="49" LineColor="user3" Right="424" TabOrder="34" Top="167" Type="Rectangle" Width="375"></Shape>
+		<Shape BKColor="white" Bottom="214" Height="24" Id="Shape6" Left="49" LineColor="user3" Right="424" TabOrder="35" Top="190" Type="Rectangle" Width="375"></Shape>
+		<Shape BKColor="white" Bottom="237" Height="24" Id="Shape7" Left="49" LineColor="user3" Right="424" TabOrder="36" Top="213" Type="Rectangle" Width="375"></Shape>
+		<Shape BKColor="white" Bottom="260" Height="24" Id="Shape8" Left="49" LineColor="user3" Right="424" TabOrder="37" Top="236" Type="Rectangle" Width="375"></Shape>
+		<Shape BKColor="white" Bottom="112" Height="24" Id="Shape2" Left="49" LineColor="user3" Right="424" TabOrder="31" Top="88" Type="Rectangle" Width="375"></Shape>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="26" TabOrder="4" TabStop="FALSE" Top="11" Width="990"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="5" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1015" TabOrder="3" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="356" TabOrder="6" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="372" Style="tx_left_bold" TabOrder="5" Text="생성년월" Top="25" VAlign="Middle" Width="56"></Static>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_DemdProc" ImageID="C_btn_90" Left="608" LeftMargin="23" OnClick="btn_DemdProc_OnClick" Style="edit" TabOrder="7" TabStop="FALSE" Text="&#32;처리시작" Top="21" TopMargin="1" Width="91"></Button>
+		<Calendar AutoIncrement="1" BKColor="user13" Dateformat="yyyy/MM" FocusIndex="1" Height="22" Id="cal_DEMD_YRMN" Left="448" LeftMargin="17" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="2" ToolTipText="생성년월" Top="20" Width="102"></Calendar>
+		<Grid BindDataset="ds_DemdErr" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="784" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="455" Id="grd_DEMD_ERR" InputPanel="FALSE" Left="16" LineColor="silver" Right="1024" RowHeight="20" Style="grid" TabOrder="8" TabStop="FALSE" Top="329" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1008">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="73"/>
+						<col width="73"/>
+						<col width="177"/>
+						<col width="70"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="62"/>
+						<col width="629"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" rowspan="2" text="청구&#32;년월"/>
+						<cell col="1" color="user12" display="text" rowspan="2" text="업소&#32;코드"/>
+						<cell col="2" color="user12" display="text" rowspan="2" text="업소&#32;명"/>
+						<cell col="3" color="user12" display="text" rowspan="2" text="청구구분"/>
+						<cell col="4" color="user12" colspan="2" display="text" text="대&#32;상&#32;기&#32;간"/>
+						<cell col="6" color="user12" display="text" rowspan="2" text="오류코드"/>
+						<cell col="7" color="user12" display="text" rowspan="2" text="오류&#32;내역"/>
+						<cell col="4" color="user12" display="text" row="1" text="시작&#32;년월"/>
+						<cell col="5" color="user12" display="text" row="1" text="종료&#32;년월"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DEMD_YRMN" display="text" Mask="####-##"/>
+						<cell align="center" col="1" colid="UPSO_CD" display="text"/>
+						<cell col="2" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="3" colid="DEMD_NM" display="text"/>
+						<cell align="center" col="4" colid="START_YRMN" display="text" Mask="####-##"/>
+						<cell align="center" col="5" colid="END_YRMN" display="text" Mask="####-##"/>
+						<cell align="center" col="6" colid="ERR_GBN" display="text"/>
+						<cell col="7" colid="ERR_CTENT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="52" TabOrder="9" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Height="15" Id="Static5" Left="68" Style="tx_left_bold" TabOrder="11" Text="센터명" Top="25" VAlign="Middle" Width="86"></Static>
+		<Combo BKColor="user13" Height="21" Id="cob_BRAN_CD" Left="123" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="1" ToolTipText="센터명" Top="21" Width="145"></Combo>
+		<static BKColor="whitesmoke" Height="200" Id="static4" Left="448" TabOrder="24" Text="센터별&#32;카드자동이체&#32;청구&#32;완료여부" Top="72" Type="groupbox" Width="320"></static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static9" Left="40" Style="box_tx" TabOrder="12" Text="생성건수" Top="167" VAlign="Middle" Width="160"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static0" Left="40" Style="box_tx" TabOrder="13" Text="시작시간" Top="88" VAlign="Middle" Width="160"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static1" Left="40" Style="box_tx" TabOrder="14" Text="종료시간" Top="111" VAlign="Middle" Width="160"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static2" Left="40" Style="box_tx" TabOrder="15" Text="처리건수" Top="144" VAlign="Middle" Width="160"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static3" Left="40" Style="box_tx" TabOrder="16" Text="선납건수" Top="213" VAlign="Middle" Width="160"></Static>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_StartTime" Left="203" LeftMargin="30" Mask="####-##-##&#32;##:##:##" NullValue="&#32;" Readonly="TRUE" TabOrder="10" TabStop="FALSE" Top="90" Type="STRING" Width="183"></MaskEdit>
+		<MaskEdit Border="Flat" BorderColor="ACTIVEBORDER" Height="20" Id="mae_EndTime" Left="203" LeftMargin="30" Mask="####-##-##&#32;##:##:##" NullValue="&#32;" Readonly="TRUE" TabOrder="11" TabStop="FALSE" Top="113" Type="STRING" Width="183"></MaskEdit>
+		<MaskEdit BindDataset="ds_DemdOut" Border="Flat" BorderColor="ACTIVEBORDER" Column="P_CNT_READ" Height="20" Id="mae_P_CNT_READ" Left="203" NullValue="&#32;" Readonly="TRUE" TabOrder="12" TabStop="FALSE" Top="146" Width="183"></MaskEdit>
+		<MaskEdit BindDataset="ds_DemdOut" Border="Flat" BorderColor="ACTIVEBORDER" Column="P_CNT_INST" Height="20" Id="mae_P_CNT_INST" Left="203" NullValue="&#32;" Readonly="TRUE" TabOrder="13" TabStop="FALSE" Top="169" Width="183"></MaskEdit>
+		<MaskEdit BindDataset="ds_DemdOut" Border="Flat" BorderColor="ACTIVEBORDER" Column="P_CNT_PREPAY" Height="20" Id="mae_P_CNT_PREPAY" Left="203" NullValue="&#32;" Readonly="TRUE" TabOrder="14" TabStop="FALSE" Top="215" Width="183"></MaskEdit>
+		<Grid AutoScrollBar="AlwaysVert" BindDataset="ds_DemdEnd" BkColor2="default" BoldHead="true" Bottom="264" Enable="true" EndLineColor="default" Height="176" Id="grd_DemdEnd" InputPanel="FALSE" Left="464" LineColor="default" Right="752" TabOrder="15" TabStop="FALSE" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="288">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="110"/>
+						<col width="70"/>
+						<col width="80"/>
+					</columns>
+					<body>
+						<cell col="0" colid="DEPT_NM" display="text"/>
+						<cell align="center" col="1" colid="BRAN_END" display="text"/>
+						<cell col="2" colid="INS_DAY" display="date"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_LoadBranEnd" ImageID="C_btn_110" Left="776" LeftMargin="23" OnClick="btn_LoadBranEnd_OnClick" Style="edit" TabOrder="16" TabStop="FALSE" Text="새로고침" Top="80" TopMargin="1" Width="110"></Button>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static6" Left="40" Style="box_tx" TabOrder="27" Text="자동이체연체-&gt;OCR청구" Top="236" VAlign="Middle" Width="160"></Static>
+		<MaskEdit BindDataset="ds_DemdOut" Border="Flat" BorderColor="ACTIVEBORDER" Column="P_CNT_OCR" Height="20" Id="mae_P_CNT_OCR" Left="203" NullValue="&#32;" Readonly="TRUE" TabOrder="17" TabStop="FALSE" Top="238" Width="183"></MaskEdit>
+		<Static Align="Center" BKColor="user18" Border="Flat" Font="굴림,9,Bold" Height="24" Id="Static7" Left="40" Style="box_tx" TabOrder="28" Text="오류건수" Top="190" VAlign="Middle" Width="160"></Static>
+		<MaskEdit BindDataset="ds_DemdOut" Border="Flat" BorderColor="ACTIVEBORDER" Column="P_CNT_ERR" Height="20" Id="mae_P_CNT_ERR" Left="203" NullValue="&#32;" Readonly="TRUE" TabOrder="18" TabStop="FALSE" Top="192" Width="183"></MaskEdit>
+		<Static Color="user1" Height="11" Id="Static8" Left="39" Style="tx_bold" TabOrder="38" Text="오류내역" Top="310" Width="64"></Static>
+		<Image Height="17" Id="Image2" ImageID="C_icon2" Left="16" TabOrder="19" TabStop="FALSE" Top="308" Width="18"></Image>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+
+	// 센터코드 가져오기
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+
+	// 검색일자 설정
+	this.cal_DEMD_YRMN.Value = today();
+
+	gfn_SetPermission(this.cob_BRAN_CD.Value);
+	gfn_SetInnerPermission("btn_DemdProc,btn_LoadBranEnd");
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{
+	if(ErrorCode < 0) {
+		//에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		return;
+	}
+	
+	if (srvId == "DemdAuto") {
+		this.mae_EndTime.Text = getDate();
+		
+		/*
+		    로그처리
+		*/
+		this.ds_DemdIn.DeleteAll();
+		this.ds_DemdIn.AddRow();
+		
+		this.ds_DemdIn.SetColumn(0, "BRAN_CD"   , this.cob_BRAN_CD.Value);
+		this.ds_DemdIn.SetColumn(0, "DEMD_YRMN" , substr(this.cal_DEMD_YRMN.Value, 0, 6));
+		this.ds_DemdIn.SetColumn(0, "INSPRES_ID", gv_USER_ID);
+		
+		gfn_syncCall("loginfo_select","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=loginfo_select","S=ds_DemdIn:U","","","fn_CallBack",gv_TraceLog,GV_FORMID);
+	}
+
+}
+
+/*
+	공통버튼 컨트롤
+*/
+function fn_CommmonButtonClick(strCode){
+
+    //신규
+    if(strCode == "NEW"){
+		fn_New();
+    }
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }
+    //추가
+    else if(strCode == "ADD"){
+		fn_Add();
+    }
+    //삭제
+    else if(strCode == "DELETE"){
+		fn_Delete();
+    }
+    //출력
+    else if(strCode == "PRINT"){
+		fn_Print();
+    }
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+}
+
+function fn_New() {}
+function fn_search() {}
+function fn_Save() {}
+function fn_Add() {}
+function fn_Delete() {}
+function fn_Print() {}
+
+function btn_DemdProc_OnClick(obj)
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	this.ds_DemdIn.DeleteAll();
+	this.ds_DemdIn.AddRow();
+	
+	this.ds_DemdIn.SetColumn(0, "BRAN_CD"   , this.cob_BRAN_CD.Value);
+	this.ds_DemdIn.SetColumn(0, "DEMD_YRMN" , substr(this.cal_DEMD_YRMN.Value, 0, 6));
+	this.ds_DemdIn.SetColumn(0, "INSPRES_ID", gv_USER_ID);
+
+	gfn_syncCall("rept_closing","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005020&EVENTID=rept_closing","S=ds_DemdIn","ds_closingYn=SEL1","","fn_CallBack");
+	
+	if(ds_closingYn.GetColumn(0, "CNT") != "0")
+	{
+        gfn_Confirm("MB_OK", "해당기간중 마감내역이 존재합니다. 마감내역을 확인하세요.", "경고", "0");
+		return;
+	}
+
+	this.mae_StartTime.Value    = getDate();
+	this.mae_EndTime.Value      = "";
+	this.mae_P_CNT_READ.Value   = "0";
+	this.mae_P_CNT_INST.Value   = "0";
+	this.mae_P_CNT_PREPAY.Value = "0";
+	this.mae_P_CNT_OCR.Value    = "0";
+	this.mae_P_CNT_ERR.Value    = "0";
+
+	// sync 로 call 한 경우 시작시간이 화면에 표시되지 않는다.
+	gfn_AsyncCall("DemdAuto","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005020&EVENTID=auto_card_data_make","S=ds_DemdIn","ds_DemdOut=OSP1 ds_DemdErr=SEL2 ds_DemdEnd=SEL3","","fn_CallBack");
+}
+
+function btn_LoadBranEnd_OnClick(obj)
+{
+	// 센터별 청구 마감정보 가져오기
+	this.ds_DemdIn.DeleteAll();
+	this.ds_DemdIn.AddRow();
+	
+	this.ds_DemdIn.SetColumn(0, "DEMD_YRMN" , substr(this.cal_DEMD_YRMN.Value, 0, 6));
+	gfn_AsyncCall("DemdAutoInit","KOMCA?SYSID=PATHFINDER&MENUID=1000001006005020&EVENTID=auto_card_demd_init","S=ds_DemdIn","ds_DemdEnd=SEL1","","fn_CallBack");
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+	gfn_SetInnerPermission("btn_DemdProc,btn_LoadBranEnd");
+	
+	
+	ds_DemdOut.ClearData();
+	ds_DemdErr.ClearData();
+}
+]]></Script>
+</Window>

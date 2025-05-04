@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="792" Id="NewUpsoList" Left="8" OnLoadCompleted="NewUpsoList_OnLoadCompleted" PidAttrib="7" scroll="false" Title="신규업소안내문(센터)" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_In">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Select">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>1.&#32;전국센터&#32;온오프라인&#32;업소수&#32;현황</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>2.&#32;전국센터&#32;온오프라인&#32;반주기&#32;현황</value>
+					</record>
+					<record>
+						<code>3</code>
+						<value>3.&#32;온오프라인&#32;미파악&#32;업소현황</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Onoff">
+				<Contents>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHN_COMPY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ONOFF_O" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ONOFF_K" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ONOFF_L" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_O" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_K" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_L" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_O" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_K" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_L" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ONOFF_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ONOFF_Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_UnKnown">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_PHON" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RNUMBER" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Vand">
+				<Contents>
+					<colinfo id="GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCHN_COMPY" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_O" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_K" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_L" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_O" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_K" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_L" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_ON_Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_P" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAESU_OFF_Y" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="3" TabStop="FALSE" Top="12" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="3" TabStop="FALSE" Top="12" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="3" TabStop="FALSE" Top="12" Width="9"></Image>
+		<Static Height="15" Id="Static1" Left="325" Style="tx_left_bold" TabOrder="7" Text="센터명" Top="27" Visible="FALSE" Width="40"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="310" TabOrder="6" TabStop="FALSE" Top="27" Visible="FALSE" Width="11"></Image>
+		<Combo BindDataset="ds_In" Column="BRAN_CD" Height="20" Id="cob_BRAN_CD" Left="384" OnChanged="cob_BRAN_CD_OnChanged" TabOrder="2" ToolTipText="센터명" Top="24" Visible="FALSE" Width="145"></Combo>
+		<Combo BindDataset="ds_In" Border="Flat" CodeColumn="code" Column="GBN" DataColumn="value" Font="굴림,9" Height="20" Id="cob_PAYPRES_GBN" ImeMode="none" INDEX="0" InnerDataset="ds_Select" Left="24" OnChanged="cob_Media_OnChanged" ResetIndex="FIRST" Style="edit" TabOrder="1" Top="23" Value="82" Width="241"></Combo>
+		<ubiviewer Bottom="776" Height="712" Id="ubi0" Left="8" Right="1039" Top="64" Width="1031">
+			<_PersistData>&#13;&#10;/6xftJCw/wAAAQCPagAAd5ZJAPjy//7//fL4/PcMDwACBVQAWQBfUABFADD48QH+8C8DMQAyLwABNQH99S8CXgBuSQR0+vn+8C8L&#13;&#10;MgA1agAsOwBrCQRlD28FAfv0mAb+8q4ENAL/B0QAZQBmAGEPAHUAbFcD+PeYAvjwewhA+/MFUwBovQABZVcBAgM=&#13;&#10;</_PersistData>
+		</ubiviewer>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+#include "script::commDs.js"	// 데이터셋 컨트롤
+#include "script::commGrid.js"	// 그리드 컨트롤
+
+function NewUpsoList_OnLoadCompleted(obj)
+{
+	gfn_loadform(obj);
+	// 센터코드 가져오기	
+	this.ds_In.AddRow();
+	this.cob_PAYPRES_GBN.Value = 1;
+	
+	gfn_GetDataGIBU_CD(this.cob_BRAN_CD, 0);
+	gfn_SetPermission(this.cob_BRAN_CD.value);
+	
+}
+
+function fn_CommmonButtonClick(strCode){
+
+    //조회
+    if(strCode == "SEARCH")
+    {
+		fn_Search();
+	}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }
+	return;
+	
+}
+
+function fn_Search()
+{
+	if (!gfn_CheckFormNull(this)) return;
+	
+	ubi0.SetArgument("BRAN_CD",this.cob_BRAN_CD.Text);
+	ubi0.setJrfFileDir(gv_ReportUrl+"fi/bra/");
+	
+	if(this.cob_PAYPRES_GBN.Value ==1)	{
+		gfn_syncCall("UPSO_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009003&EVENTID=onoff_info","S=ds_In","ds_Onoff=SEL8","",""); 
+		//trace(this.ds_Onoff.SaveXML());
+		ubi0.setJrfFileName("bra06_p11_onoff_one.jrf");
+		ubi0.SetDataset("ds_Onoff", "ds_Onoff");
+		ubi0.Retrieve();
+	
+	}
+	else if(this.cob_PAYPRES_GBN.Value ==2)	{
+		gfn_syncCall("UPSO_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009003&EVENTID=onoff_info","S=ds_In","ds_Vand=SEL3","","");
+		
+		ubi0.setJrfFileName("bra06_p11_3_one.jrf");
+		ubi0.SetDataset("ds_Vand", "ds_Vand");
+		ubi0.Retrieve();
+
+	}
+	else if(this.cob_PAYPRES_GBN.Value ==3)	{
+		gfn_syncCall("UPSO_DETAIL","KOMCA?SYSID=PATHFINDER&MENUID=1000001006009003&EVENTID=onoff_info","S=ds_In","ds_UnKnown=SEL2","","");
+		//trace(this.ds_UnKnown.SaveXML());
+		ubi0.setJrfFileName("bra06_p11_2.jrf");
+		ubi0.SetDataset("ds_UnKnown", "ds_UnKnown");
+		ubi0.Retrieve();
+	}
+}
+
+function cob_BRAN_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_SetPermission(strCode);
+}
+
+function cob_Media_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	
+	if(this.cob_PAYPRES_GBN.Value==1 or this.cob_PAYPRES_GBN.Value==2){
+		this.cob_BRAN_CD.BKColor ="";
+		this.Image0.Visible = false;
+		this.Static1.Visible =  false;
+		this.cob_BRAN_CD.Visible = false;
+	}
+	else if(this.cob_PAYPRES_GBN.Value==3){
+		this.cob_BRAN_CD.BKColor ="user13";
+		this.Image0.Visible = true;
+		this.Static1.Visible =  true;
+		this.cob_BRAN_CD.Visible = true;
+	}
+}
+]]></Script>
+</Window>

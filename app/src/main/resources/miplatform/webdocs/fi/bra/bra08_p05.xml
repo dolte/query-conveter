@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="법적절차착수통보" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="7" TabStop="FALSE" Top="11" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="11" Id="Image16" ImageID="C_icon" Left="28" TabOrder="1" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Shape BKColor="user7" Bottom="63" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="3" Top="60" Type="Rectangle" Width="1032"></Shape>
+		<Static Height="15" Id="Static0" Left="348" Style="tx_left_bold" TabOrder="6" Text="작성년월" Top="26" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="332" TabOrder="5" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="33" TabOrder="8" TabStop="FALSE" Top="25" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="48" Style="tx_left_bold" TabOrder="9" Text="센터명" Top="25" Width="86"></Static>
+		<Combo Height="21" Id="Combo1" Left="104" TabOrder="10" Top="20" Width="145"></Combo>
+		<Calendar Dateformat="yyyy/MM" FocusIndex="0" Height="22" Id="Calendar1" Left="408" SaturdayTextColor="blue" SpinStyle="1" SundayTextColor="red" TabOrder="11" Top="17" Width="102"></Calendar>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+
+function form_OnLoadCompleted(obj)
+{
+	Ubi0.setJrfFileDir("http://192.168.1.192:8080/report_file/fi/bra/");
+	//Ubi0.setJrfFileName("w_gibu803.jrf");
+	Ubi0.setJrfFileName("bra08_p05.jrf");
+	Ubi0.Retrieve();
+	gfn_LoadForm(obj);
+		
+}]]></Script>
+</Window>

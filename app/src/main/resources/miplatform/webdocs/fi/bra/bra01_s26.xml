@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="800" Id="bra01_s26" Left="8" OnLoadCompleted="bra01_s26_OnLoadCompleted" PidAttrib="7" Title="무선로그(F/W&#32;테스트)" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_code_bscon">
+				<Contents>
+					<colinfo id="CODE_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CODE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_list">
+				<Contents>
+					<colinfo id="BRAN_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPSO_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MODPRES_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MOD_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+					<record>
+						<BSCON_CD></BSCON_CD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_GIBU_CD">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_upso_temp">
+				<Contents>
+					<colinfo id="UPSO_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SERIAL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSCON_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="41" Id="Image1" ImageID="C_search_left" Left="8" TabOrder="3" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="16" TabOrder="2" TabStop="FALSE" Top="11" Width="1015"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1029" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Grid AutoEnter="TRUE" BindDataset="ds_list" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="792" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="30" Height="712" Id="grd_result" InputPanel="FALSE" Left="8" LineColor="silver" NoDataText="조회&#32;결과가&#32;없습니다." OnKeyDown="grd_result_OnKeyDown" Right="1040" RowHeight="20" Style="grid" TabOrder="4" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="95"/>
+						<col width="95"/>
+						<col width="135"/>
+						<col width="239"/>
+						<col width="78"/>
+						<col width="70"/>
+						<col width="125"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="NO"/>
+						<cell col="1" color="user12" display="text" text="센터"/>
+						<cell col="2" color="user12" display="text" text="업소코드"/>
+						<cell col="3" color="user12" display="text" text="업소명"/>
+						<cell col="4" color="user12" display="text" text="로그기시리얼"/>
+						<cell col="5" color="user12" display="text" text="반주기정보"/>
+						<cell col="6" color="user12" display="text" text="담당자"/>
+						<cell col="7" color="user12" display="text" text="최종저장"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" bkcolor="user13" col="1" colid="BRAN_CD" combocol="GIBU" combodataset="ds_GIBU_CD" combotext="DEPT_NM" display="combo" edit="combo"/>
+						<cell align="center" bkcolor="user13" col="2" colid="UPSO_CD" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="UPSO_NM" display="text"/>
+						<cell align="center" col="4" colid="SERIAL_NO" display="text"/>
+						<cell align="center" col="5" colid="BSCON_CD" combocol="CODE_CD" combodataset="ds_code_bscon" combotext="CODE_NM" display="combo"/>
+						<cell align="center" col="6" colid="MODPRES_NM" display="text"/>
+						<cell align="center" col="7" colid="MOD_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Height="11" Id="Image4" ImageID="C_icon" Left="30" TabOrder="6" TabStop="FALSE" Top="27" Width="11"></Image>
+		<Static Height="19" Id="Static2" Left="46" Style="tx_left_bold" TabOrder="7" Text="반주기정보" Top="27" Width="64"></Static>
+		<Combo BindDataset="ds_search" BorderColor="user3" CodeColumn="CODE_CD" Column="BSCON_CD" DataColumn="CODE_NM" Height="20" Id="cob_bscon_gbn" ImeMode="none" INDEX="0" InnerDataset="ds_code_bscon" Left="117" OnChanged="cob_bscon_gbn_OnChanged" TabOrder="5" Top="22" Width="100"></Combo>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add" ImageID="C_btn_70" Left="876" LeftMargin="23" OnClick="btn_add_OnClick" Style="edit" TabOrder="8" Text="추&#32;가" Top="22" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del" ImageID="C_btn_70" Left="952" LeftMargin="23" OnClick="btn_del_OnClick" Style="edit" TabOrder="9" Text="삭&#32;제" Top="22" TopMargin="1" Width="71"></Button>
+		<Combo BKColor="user13" CodeColumn="DEPT_CD" Color="black" DataColumn="DEPT_NM" Height="20" Id="cob_BRAN_CD" ImeMode="none" InnerDataset="ds_GIBU_CD" Left="728" OnChanged="cob_BRAN_CD_OnChanged" Style="edit" TabOrder="10" ToolTipText="센터명" Top="8" Visible="FALSE" Width="109"></Combo>
+		<Static Align="Right" Color="red" Height="16" Id="Static0" Left="240" TabOrder="11" Text="*&#32;아래&#32;정보는&#32;통계자료에서&#32;제외되기&#32;위한&#32;목록일&#32;뿐이므로,&#32;변경내역은&#32;업소등록에서&#32;수정&#32;후&#32;아래에서&#32;삭제&#32;후&#32;새로&#32;추가하여주시기&#32;바랍니다." Top="61" Width="800"></Static>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+#include "script::commonGibu.js"  	// 센터 공통 js
+
+function bra01_s26_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+	
+	gfn_PubCode("ds_code_bscon", 1, "00429");
+	cob_bscon_gbn.Index = 0;
+	
+	gfn_GetDataGIBU_CD(cob_BRAN_CD, 1);
+	
+	fn_Search();
+}
+
+//	공통버튼 컨트롤
+function fn_CommmonButtonClick(strCode){
+    //신규
+    if(strCode == "NEW"){}
+    //조회
+    else if(strCode == "SEARCH"){
+		fn_Search();
+    }
+    //저장
+    else if(strCode == "SAVE"){
+		fn_Save();
+    }    
+    //삭제
+    else if(strCode == "DELETE"){}
+    //Excel
+    else if(strCode == "EXCEL"){
+		fn_Excel();
+    }
+    //출력
+    else if(strCode == "PRINT"){}
+    //닫기
+    else if(strCode == "CLOSE"){
+        close();
+    }	return;}
+
+function fn_Search()
+{
+	gfn_syncCall("svcSearch","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004026&EVENTID=sel_test_upso","S=ds_Search","ds_list=SEL1","","fn_CallBack", gv_TraceLog, gv_formid);
+}
+
+function fn_Save()
+{
+	for(var i = 0; i < ds_list.rowcount; i++)
+	{
+		if(length(ds_list.GetColumn(i, "SERIAL_NO")) < 1)
+		{
+			alert("업소를 모두 매칭후에 저장할 수 있습니다.");
+			return;
+		}
+	}
+	gfn_syncCall("svcSave","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004026&EVENTID=mng_test_upso","S=ds_list:U","","","fn_CallBack", gv_TraceLog, gv_formid);
+}
+
+function fn_CallBack(srvId,ErrorCode,ErrorMsg)
+{	
+	switch(srvId)
+	{
+	case "svcSearch" :
+		fn_SetFilter();
+		break;
+	case "svcSave" :
+		alert("저장되었습니다.");
+		fn_Search();
+		break;
+	default :
+		break;
+	}
+}
+
+function btn_add_OnClick(obj)
+{
+	for(var i = 0; i < ds_list.rowcount; i++)
+	{
+		if(length(ds_list.GetColumn(i, "SERIAL_NO")) < 1)
+		{
+			alert("업소를 매칭후에 새로 추가할 수 있습니다.");
+			return;
+		}
+	}
+	ds_list.AddRow();
+}
+
+function btn_del_OnClick(obj)
+{
+	if(Confirm("'" + ds_list.GetColumn(ds_list.currow, "UPSO_NM") + "' 업소를 삭제하시겠습니까?"))
+		ds_list.DeleteRow(grd_Result.CurrentRow);
+}
+
+function grd_result_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(grd_result.GetClickedCell() == grd_result.GetBindCellIndex("body", "UPSO_CD"))
+	{
+		if (length(ds_list.GetColumn(ds_list.currow, "BRAN_CD")) < 1)
+		{
+			alert("센터를선택하세요");
+			return;
+		}
+		
+		if(nChar == 112)
+		{
+			fn_FindUPSO();
+		}
+		else if (nChar == "13")
+		{
+			fn_GetUPSO_CD();
+		}
+	}
+}
+
+function fn_GetUPSO_CD()
+{	
+	result = gfn_GetUPSO_CD(ds_list.GetColumn(ds_list.currow, "BRAN_CD"), ds_list.GetColumn(ds_list.currow, "UPSO_CD"), "");
+	
+	if (length(result) > 0) {
+		var vArr = result.split(",");
+		ds_list.SetColumn(ds_list.currow, "UPSO_CD", vArr[0]);
+		ds_list.SetColumn(ds_list.currow, "UPSO_NM", vArr[1]);
+		
+		fn_GetInfo();
+	}
+	else {
+
+		fn_FindUPSO();
+	}
+}
+
+function fn_FindUPSO()
+{
+	var BRAN_CD = ds_list.GetColumn(ds_list.currow, "BRAN_CD");
+	var UPSO_CD = ds_list.GetColumn(ds_list.currow, "UPSO_CD");
+	var UPSO_NM = "";
+
+    var inParam = "SGBN=new" + " BRAN_CD=" + quote(BRAN_CD) + " UPSO_CD=" + quote(UPSO_CD) + " UPSO_NM=" + quote(UPSO_NM);
+
+	var result = Dialog("fi_bra::find_upso.xml",inParam);
+	if(0 < length(result)){
+	    var vArr = result.split(",");
+	
+	    ds_list.SetColumn(ds_list.currow, "UPSO_CD", vArr[0]);
+		ds_list.SetColumn(ds_list.currow, "UPSO_NM", vArr[1]);
+	}
+	
+	fn_GetInfo();
+}
+
+function fn_GetInfo()
+{
+	ds_upso_temp.ClearData();
+	ds_upso_temp.AddRow();
+	ds_upso_temp.SetColumn(0, "UPSO_CD", ds_list.GetColumn(ds_list.currow, "UPSO_CD"));
+	gfn_syncCall("svcSearch1","KOMCA?SYSID=PATHFINDER&MENUID=1000001006004026&EVENTID=sel_upso_info","S=ds_upso_temp","ds_upso_temp=SEL1","","fn_CallBack", gv_TraceLog, gv_formid);
+	
+	if(length(ds_upso_temp.GetColumn(0, "SERIAL_NO")) < 1)
+	{
+		alert("무선로그대상업소가 아닙니다.\n업소를 다시 조회하여주세요.");
+		ds_list.SetColumn(ds_list.currow, "UPSO_CD", "");
+		ds_list.SetColumn(ds_list.currow, "UPSO_NM", "");
+	}
+	else
+	{
+		ds_list.SetColumn(ds_list.currow, "SERIAL_NO", ds_upso_temp.GetColumn(0, "SERIAL_NO"));
+		ds_list.SetColumn(ds_list.currow, "BSCON_CD", ds_upso_temp.GetColumn(0, "BSCON_CD"));
+	}
+}
+
+function fn_SetFilter()
+{
+	var gbn1 = cob_bscon_gbn.Value;
+	
+	if (gbn1 == "%")
+	{
+		ds_list.UnFilter();
+	}
+	else
+	{		//구분을 선택했을때
+		ds_list.Filter("BSCON_CD='"+ gbn1+"'");
+	}
+}
+function cob_bscon_gbn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	fn_SetFilter();
+}
+]]></Script>
+</Window>

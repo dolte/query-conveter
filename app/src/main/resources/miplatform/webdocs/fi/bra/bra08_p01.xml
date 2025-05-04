@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="신규업소안내문(본부)" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="18" TabOrder="1" TabStop="FALSE" Top="11" Width="1012"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="8" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="1030" TabOrder="1" TabStop="FALSE" Top="11" Width="10"></Image>
+		<Shape BKColor="user7" Bottom="63" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="3" Top="60" Type="Rectangle" Width="1032"></Shape>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="340" TabOrder="5" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Height="15" Id="Static15" Left="356" Style="tx_left_bold" TabOrder="6" Text="기간" Top="26" Width="30"></Static>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="667" TabOrder="7" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Static Height="15" Id="Static4" Left="683" Style="tx_left_bold" TabOrder="8" Text="발송일자" Top="26" Width="56"></Static>
+		<Static Height="15" Id="Static1" Left="37" Style="tx_left_bold" TabOrder="10" Text="센터명" Top="26" Width="86"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="22" TabOrder="9" TabStop="FALSE" Top="26" Width="11"></Image>
+		<Combo Height="21" Id="Combo0" Left="93" TabOrder="11" Top="21" Width="145"></Combo>
+		<Static Color="user6" Height="13" Id="Static7" Left="520" Style="style0" TabOrder="12" Text="~" Top="24" Width="9"></Static>
+		<Calendar BindDataset="DS_Upso" Column="PRESDONGTRNF_APPTN_DAY" Height="21" Id="Calendar2" Left="744" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="13" Top="21" Width="121"></Calendar>
+		<Calendar BindDataset="DS_Upso" Column="PRESDONGTRNF_APPTN_DAY" Height="21" Id="Calendar0" Left="403" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="15" Top="22" Width="104"></Calendar>
+		<Calendar BindDataset="DS_Upso" Column="PRESDONGTRNF_APPTN_DAY" Height="21" Id="Calendar1" Left="539" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="16" Top="22" Width="104"></Calendar>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+
+
+
+function form_OnLoadCompleted(obj)
+{
+	Ubi0.setJrfFileDir("http://192.168.1.192:8080/report_file/fi/bra/");
+	//Ubi0.setJrfFileName("w_gibu803.jrf");
+	Ubi0.setJrfFileName("bra08_p01.jrf");
+	Ubi0.Retrieve();
+	gfn_LoadForm(obj);
+}
+]]></Script>
+</Window>

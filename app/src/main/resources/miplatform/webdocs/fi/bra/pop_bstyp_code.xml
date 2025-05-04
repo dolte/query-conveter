@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="760" Id="find_accu_code" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="업종다중선택" Top="8" Ver="1.0" Width="280" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_bstyp" UseClientLayout="1">
+				<Contents>
+					<colinfo id="GRAD_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MDM_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_bstyp" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="720" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="712" Id="grd_Data" InputPanel="FALSE" Left="8" LineColor="silver" OnHeadClick="grd_Data_OnHeadClick" Right="272" RowHeight="20" Style="grid" TabOrder="0" TabStop="FALSE" Top="8" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="264">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="200"/>
+						<col width="40"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="업종"/>
+						<cell col="1" color="user12" display="checkbox" edit="checkbox"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GRADNM" display="text"/>
+						<cell col="1" colid="CHK" display="checkbox" edit="checkbox"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_close" ImageID="C_btn_70" Left="152" LeftMargin="28" OnClick="btn_close_OnClick" Style="edit" TabOrder="0" TabStop="FALSE" Text="닫기" Top="728" TopMargin="1" Width="71"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_save" ImageID="C_btn_70" Left="56" LeftMargin="28" OnClick="btn_save_OnClick" Style="edit" TabOrder="3" TabStop="FALSE" Text="적용" Top="728" TopMargin="1" Width="71"></Button>
+	</Form>
+	<Script><![CDATA[
+/* include */
+#include "script::common.js"	// 공통 js
+
+var checkFlag = 0;
+
+var MultiSelectList = '';
+var separator = '_';
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_syncCall("sel_bstyp","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=sel_bstyp","","ds_bstyp=SEL1","","fn_CallBack");
+
+	//trace("recalled MSL : " + MultiSelectList);
+
+	var selectArr = MultiSelectList.split(separator);
+
+	//trace("parsed array : " + selectArr);
+
+	for (var i = 0; i<selectArr.length; i++){
+		for(var j = 0; j < ds_bstyp.rowcount; j++){
+			if(ds_bstyp.GetColumn(j, "GRAD_GBN") == selectArr[i]){
+				ds_bstyp.SetColumn(j, "CHK", 1);
+				break;
+			}
+		}
+	}
+}
+
+function fn_CallBack(svcid,errCode,errMsg) {
+
+	if (errCode = 0)
+	{
+		switch (svcid)
+		{
+			case "svcSearch" :
+			
+				if (ds_cd_info.GetRowCount() == 0)
+				{
+                    gfn_Confirm("MB_OK", "조회결과가 없습니다.", "경고", "0");
+				}
+				break;
+							
+			default : break;			
+		}		
+	}
+	
+}
+
+function grd_Data_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{	
+	if(nCell == grd_Data.GetBindCellIndex("body", "CHK"))
+	{
+		ds_bstyp.FireEvent = false;
+		if(checkFlag == 0)
+		{
+			grd_Data.SetCellProp("head", nCell, "Text", "1");
+			for(var i = 0; i < ds_bstyp.rowcount; i++)
+			{
+				ds_bstyp.SetColumn(i, "CHK", 1);
+			}
+			checkFlag = 1;
+		}
+		else
+		{
+			grd_Data.SetCellProp("head", nCell, "Text", "0");
+			for(var i = 0; i < ds_bstyp.rowcount; i++)
+			{
+				ds_bstyp.SetColumn(i, "CHK", 0);
+			}
+			checkFlag = 0;
+		}
+		ds_bstyp.FireEvent = true;
+	}
+}
+
+function btn_save_OnClick(obj)
+{
+	var tmp_MultiSelectList = MultiSelectList;
+	MultiSelectList = '';
+	for(var i = 0; i < ds_bstyp.rowcount; i++)
+	{
+		if (ds_bstyp.GetColumn(i, "CHK") == 1){
+			MultiSelectList += ds_bstyp.GetColumn(i, "GRAD_GBN") + separator; 
+		}
+	}
+
+	if (MultiSelectList == ''){
+		alert("한 개 이상의 업종을 선택하세요.");
+		MultiSelectList = tmp_MultiSelectList;
+		return;
+	}
+
+	close(MultiSelectList);
+}
+
+function btn_close_OnClick(obj)
+{
+	close(MultiSelectList);
+}
+
+]]></Script>
+</Window>

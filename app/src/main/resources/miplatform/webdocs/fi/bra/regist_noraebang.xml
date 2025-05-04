@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="노래방&#32;정보" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_noraebang" OnColumnChanged="ds_noraebang_OnColumnChanged">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCN_DAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_SUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_location">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>1</code>
+						<value>도시</value>
+					</record>
+					<record>
+						<code>2</code>
+						<value>농어촌</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_search">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_result" OnColumnChanged="ds_noraebang_OnColumnChanged">
+				<Contents>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAREA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="STNDAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MCN_DAESU" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRAD_SUM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="temp_result">
+				<Contents>
+					<colinfo id="TOTAL_MCN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTAL_FEE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Edit BindDataset="temp_result" Border="Flat" BorderColor="user10" Column="TOTAL_MCN" Height="23" Id="Edit2" ImeMode="none" Left="135" Readonly="TRUE" TabOrder="2" TabStop="FALSE" Top="74" Width="86"></Edit>
+		<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="23" Id="Static1" Left="17" TabOrder="2" Text="전체기계댓수" Top="74" VAlign="Middle" Width="119"></Static>
+		<Static Align="Center" BKColor="user18" Border="Flat" BorderColor="user10" Color="black" Font="굴림,9" Height="23" Id="Static2" Left="220" TabOrder="4" Text="업소&#32;전체사용료" Top="74" VAlign="Middle" Width="146"></Static>
+		<Image FillType="STRETCH" Height="41" Id="Image15" ImageID="C_search_bg" Left="24" TabOrder="3" TabStop="FALSE" Top="16" Width="630"></Image>
+		<Image Height="41" Id="Image17" ImageID="C_search_left" Left="16" TabOrder="4" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Image Height="41" Id="Image18" ImageID="C_search_right" Left="654" TabOrder="5" TabStop="FALSE" Top="16" Width="10"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add" ImageID="C_btn_90" Left="576" LeftMargin="23" OnClick="btn_add_OnClick" Style="edit" TabOrder="6" TabStop="FALSE" Text="&#32;&#32;&#32;추&#32;가" Top="96" TopMargin="1" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del" ImageID="C_btn_90" Left="576" LeftMargin="23" OnClick="btn_del_OnClick" Style="edit" TabOrder="7" TabStop="FALSE" Text="&#32;&#32;&#32;삭&#32;제" Top="128" TopMargin="1" Width="90"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_save" ImageID="C_btn_90" Left="576" LeftMargin="23" OnClick="btn_save_OnClick" Style="edit" TabOrder="8" TabStop="FALSE" Text="&#32;&#32;&#32;저&#32;장" Top="160" TopMargin="1" Width="90"></Button>
+		<Combo BindDataset="ds_noraebang" CodeColumn="code" Column="GBN" DataColumn="value" Height="21" Id="Combo0" InnerDataset="ds_location" Left="32" TabOrder="1" Top="24" Width="109"></Combo>
+		<MaskEdit BindDataset="temp_result" Border="Flat" Column="TOTAL_FEE" DisplayMaskchar="," Height="23" Id="mae_Amt" Left="365" Mask="#,###,###,###" MaxLength="10" Style="edit" TabOrder="9" TabStop="FALSE" Top="74" Width="127"></MaskEdit>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoEnterType="Key" AutoFit="TRUE" BindDataset="ds_noraebang" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="440" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Face3dColor="user8" FixedColSizing="TRUE" HeadBorder="Flat" HeadHeight="23" Height="336" Id="ds_noraebang" InputPanel="FALSE" Left="16" LineColor="silver" MinWidth="100" NoDataText="No&#32;Data" OnCellDBLClick="grd_UpsoList_OnCellDblClick" Right="560" RowHeight="20" Style="grid" TabOrder="10" TabStop="FALSE" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="544">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="103"/>
+						<col width="62"/>
+						<col width="125"/>
+						<col width="78"/>
+						<col width="58"/>
+						<col width="113"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="방면적[단위:m]"/>
+						<cell col="1" color="user12" display="text" text="업종코드"/>
+						<cell col="2" color="user12" display="text" text="업종(등급)명"/>
+						<cell col="3" color="user12" display="text" text="대당&#32;사용료"/>
+						<cell col="4" color="user12" display="text" text="기계&#32;댓수"/>
+						<cell col="5" color="user12" display="text" text="등급별&#32;사용료"/>
+					</head>
+					<body>
+						<cell col="0" colid="STNDAREA" display="text" edit="normal"/>
+						<cell col="1" colid="GRAD" display="text"/>
+						<cell col="2" colid="GRADNM" display="text"/>
+						<cell col="3" colid="STNDAMT" display="text" edit="normal" Mask="#,###,###,###"/>
+						<cell col="4" colid="MCN_DAESU" display="text" edit="normal"/>
+						<cell col="5" colid="GRAD_SUM" display="text" Mask="#,###,###,###"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[
+#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+function btn_add_OnClick(obj)
+{
+	ds_noraebang.AddRow(); 
+	ds_location.AddRow();		
+}
+
+
+function form_OnLoadCompleted(obj)
+{
+	temp_result.AddRow();
+}
+
+function ds_noraebang_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	
+	if(strColumnID == "STNDAREA"){
+	    ds_search.ClearData();							//ds_search의 dbatset을 지운다
+	    var cRow = ds_search.AddRow();					//현제 주가한 addrow한ds_search의 위치를 저장한다.
+	    ds_search.setcolumn(cRow,"GBN",ds_noraebang.GetColumn(nRow,"GBN"));						//dataset의 컴럼 GBN에 값을 입력받는다
+	    ds_search.SetColumn(cRow,"STNDAREA",ds_noraebang.GetColumn(nRow,"STNDAREA"));			//dataset의 컴럼 stndarea에 값을 입력받는다.
+	    
+		//ds_search.SetColumnDP 입력한 두가지 값을 PB로 보넨다
+	    gfn_syncCall("svcLogin1","KOMCA?SYSID=PATHFINDER&MENUID=1000001006007&EVENTID=c_norebang_amt","S=ds_search","ds_result=SEL1","","fn_CallBack");
+	    
+	    // 프로세스 빌드한 값을 세팅해준다. 
+	    ds_noraebang.SetColumn(nRow,"GRAD",ds_result.GetColumn(0,"GRAD"));
+	    ds_noraebang.SetColumn(nRow,"GRADNM",ds_result.GetColumn(0,"GRADNM"));
+	    ds_noraebang.SetColumn(nRow,"STNDAMT",ds_result.GetColumn(0,"STNDAMT"));
+	    
+	    
+	}
+	
+	
+	if(strColumnID == "MCN_DAESU"){
+		//등급별 사용료 = 대당사용료 * 기계대수의 값을 입력한다.
+	    ds_noraebang.SetColumn(nRow,"GRAD_SUM",toNumber(ds_noraebang.GetColumn(nRow,"STNDAMT"))*toNumber(varNewValue));	    
+	    var gigiSum = 0;
+	    
+	    //전체기계댓수의 값을 입력한다. 
+	    for(var i=0; i < ds_noraebang.count;i++){
+	        gigiSum = gigiSum + toNumber(ds_noraebang.GetColumn(i,"MCN_DAESU"));
+	    }
+	    temp_result.SetColumn(0,"TOTAL_MCN",gigiSum);
+	}
+
+	if(strColumnID == "GRAD_SUM"){
+		//업소 전체사용료를 입력한다. 
+	    var fee_sum = 0;
+	    for(var i=0; i < ds_noraebang.count;i++){
+	        fee_sum = fee_sum + toNumber(ds_noraebang.GetColumn(i,"GRAD_SUM"));
+	    }
+	    temp_result.SetColumn(0,"TOTAL_FEE",fee_sum);
+	}
+}
+
+function fn_CallBack(srvId,erroCode,errmsg){
+}
+
+
+function btn_del_OnClick(obj){
+	ds_noraebang.DeleteSelected();
+	var rRow = ds_noraebang.count;
+	//ds_noraebang.DeleteAll();
+}	
+
+
+function btn_save_OnClick(obj){
+	var one =ds_result.GetColumn(nRow);
+	ds_Upjong.GetColumn(nRow,"GRAD");
+	Close(grad + "," + gradnm + "," + stndamt); 
+}
+]]></Script>
+</Window>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="844" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="연체개월별현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0_0">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<colinfo id="column1" size="256" type="STRING"/>
+					<colinfo id="column2" size="256" type="STRING"/>
+					<colinfo id="column3" size="256" type="STRING"/>
+					<colinfo id="column4" size="256" type="STRING"/>
+					<colinfo id="column5" size="256" type="STRING"/>
+					<record>
+						<column0></column0>
+						<column1></column1>
+						<column2></column2>
+						<column3></column3>
+						<column4></column4>
+						<column5></column5>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="70" Id="Image17" ImageID="C_search2_bg" Left="16" OnClick="Image17_OnClick" TabOrder="3" Top="11" Width="1015"></Image>
+		<Radio BKColor="whitesmoke" Border="None" Height="19" Id="Radio00" INDEX="0" Left="30" Style="radio" TabOrder="1" Top="27" Width="431">
+			<Contents>
+				<Layout code="1" default="true" height="18" left="0" text="관리업소수현황" top="0" width="120"/>
+				<Layout code="2" height="18" left="130" text="개발중업소수현황" top="0" width="130"/>
+				<Layout code="3" height="18" left="280" text="전체업소수현황" top="0" width="130"/>
+			</Contents>
+		</Radio>
+		<Combo Border="Flat" Height="20" Id="Combo16" Left="113" Style="edit" TabOrder="1" Text="2008-10" Top="48" Width="100"></Combo>
+		<Image Height="70" Id="Image6" ImageID="C_search2_left" Left="8" TabOrder="3" Top="11" Width="10"></Image>
+		<Image Height="70" Id="Image18" ImageID="C_search2_right" Left="1030" TabOrder="4" Top="11" Width="10"></Image>
+		<Image Height="11" Id="Image1" ImageID="C_icon" Left="31" TabOrder="6" TabStop="FALSE" Top="52" Width="11"></Image>
+		<Static Height="15" Id="Static2" Left="47" Style="tx_left_bold" TabOrder="7" Text="기준년월" Top="52" Width="50"></Static>
+		<Image Height="16" Id="Image4" ImageID="s_04" Left="215" LeftMargin="0" TabOrder="8" TabStop="FALSE" Top="51" Width="14"></Image>
+		<Static Height="15" Id="Static0" Left="559" Style="tx_left_bold" TabOrder="12" Text="사원코드/명" Top="53" Width="72"></Static>
+		<Image Height="11" Id="Image0" ImageID="C_icon" Left="543" TabOrder="11" TabStop="FALSE" Top="53" Width="11"></Image>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit0" Left="646" LeftMargin="4" MaxLength="10" RightMargin="2" Style="edit" TabOrder="9" Top="49" Width="30"></Edit>
+		<Edit Border="Flat" BorderColor="user10" Height="20" Id="Edit1" Left="678" LeftMargin="4" RightMargin="2" Style="edit" TabOrder="10" Top="49" Width="120"></Edit>
+		<Grid BindDataset="Dataset0_0" BkColor2="user11" BkSelColor="user9" BoldHead="true" Border="Flat" Bottom="670" Enable="true" EndLineColor="default" Face3dColor="user8" HeadHeight="23" Height="577" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="silver" Right="1040" RowHeight="20" Style="grid" TabOrder="13" TabStop="true" Top="93" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1032">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="180"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="180"/>
+					</columns>
+					<head>
+						<cell col="0" color="user12" display="text" text="연체개월수"/>
+						<cell col="1" color="user12" display="text" text="업소수"/>
+						<cell col="2" color="user12" display="text" text="연체&#32;금액"/>
+						<cell col="3" color="user12" display="text" text="직원명"/>
+						<cell col="4" color="user12" display="text" text="업소수"/>
+						<cell col="5" color="user12" display="text" text="직원연체금액"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user7" Bottom="93" Height="3" Id="Shape0" Left="8" LineColor="user7" Right="1040" TabOrder="13" Top="90" Type="Rectangle" Width="1032"></Shape>
+		<Image Height="11" Id="Image2" ImageID="C_icon" Left="273" TabOrder="15" TabStop="FALSE" Top="54" Width="11"></Image>
+		<Static Height="15" Id="Static1" Left="288" Style="tx_left_bold" TabOrder="16" Text="센터명" Top="54" Width="86"></Static>
+		<Combo Height="21" Id="Combo1" Left="344" TabOrder="17" Top="49" Width="145"></Combo>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"  	// 공통 js
+#include "script::global.js"  	// 공통 js
+
+
+
+
+
+function form_OnLoadCompleted(obj)
+{
+	gfn_LoadForm(obj);
+}
+]]></Script>
+</Window>
