@@ -1,0 +1,87 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<delete id="SQLsave_udtkpres_XIUD7" parameterType="">
+DELETE FROM
+	GIBU.TBRA_BILL_AUTH
+WHERE
+	DEPT_CD = NVL(# { deptCd1 }, # { deptCd })
+	AND GBN = 'B'
+	AND UDTKPRES_ID = NVL(# { staffCd }, # { udtkpresId })
+</delete>
+
+<insert id="SQLsave_udtkpres_XIUD11" parameterType="">
+INSERT INTO
+	GIBU.TBRA_BILL_AUTH (DEPT_CD, UDTKPRES_ID, INSPRES_ID, INS_DATE, GBN)
+SELECT
+	# { deptCd },
+	# { udtkpresId },
+	# { inspresId },
+	SYSDATE,
+	'B'
+FROM
+	DUAL
+</insert>
+
+<update id="SQLsave_udtkpres_XIUD10" parameterType="">
+UPDATE
+	GIBU.TBRA_BILL_AUTH
+SET
+	UDTKPRES_ID = # { udtkpresId },
+	MODPRES_ID = # { modpresId },
+	MOD_DATE = SYSDATE,
+	DEPT_CD = # { deptCd }
+WHERE
+	DEPT_CD = NVL(# { deptCd1 }, # { deptCd })
+	AND GBN = 'B'
+	AND UDTKPRES_ID = NVL(# { staffCd }, # { udtkpresId })
+</update>
+
+<select id="SQLsel_udtkpres_SEL1" parameterType="" resultType="">
+SELECT
+	A.DEPT_CD AS DEPT_CD,
+	(
+		SELECT
+			DEPT_NM
+		FROM
+			INSA.TCPM_DEPT
+		WHERE
+			DEPT_CD = A.DEPT_CD
+	) AS DEPT_NM,
+	A.UDTKPRES_ID AS UDTKPRES_ID,
+	(
+		SELECT
+			HAN_NM
+		FROM
+			INSA.TINS_MST01
+		WHERE
+			STAFF_NUM = A.UDTKPRES_ID
+	) AS UDTKPRES_NM,
+	A.INSPRES_ID AS INSPRES_ID,
+	(
+		SELECT
+			HAN_NM
+		FROM
+			INSA.TINS_MST01
+		WHERE
+			STAFF_NUM = A.INSPRES_ID
+	) AS INSPRES_NM,
+	A.INS_DATE AS INS_DATE,
+	A.MODPRES_ID AS MODPRES_ID,
+	(
+		SELECT
+			HAN_NM
+		FROM
+			INSA.TINS_MST01
+		WHERE
+			STAFF_NUM = A.MODPRES_ID
+	) AS MODPRES_NM,
+	A.MOD_DATE AS MOD_DATE
+FROM
+	GIBU.TBRA_BILL_AUTH A
+WHERE
+	GBN = 'B'
+	AND UDTKPRES_ID = # { staffNum }
+ORDER BY
+	A.DEPT_CD
+</select>
+
+</mapper>

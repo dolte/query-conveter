@@ -8,7 +8,7 @@ public class DatabaseObjectRename {
     static String filePath = "C:\\komca\\workspace\\komca-center-api\\src\\main\\resources";
     //static String filePath = "/Users/pp01713/cursor-workspace/komca-center-api/src/main/resources/mapper/";
     static String directory = "\\mapper\\upso\\command";
-    static String fileName = "UpsoRouterCommandMapper";
+    static String fileName = "CenterStaffCommandMapper";
     static String tableNameListFile = filePath + "\\references\\db\\table-rename.txt";
     static String columnNameListFile = filePath + "\\references\\db\\column-rename.txt";
     static String paramNameListFile = filePath + "\\references\\db\\param-rename.txt";

@@ -1,0 +1,455 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLclosed_mng_head_SEL49" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT,
+	'' AS DISTR_SEQ
+FROM
+	GIBU.TBRA_BRANEND
+WHERE
+	SUBSTR(SUBSTR(#{clsedDay1}, 0, 6), 1, 4) = END_YEAR
+	AND SUBSTR(SUBSTR(#{clsedDay1}, 0, 6), 5, 2) = END_MON
+	AND BRAN_CD = #{branCd}
+</select>
+
+<select id="SQLclosed_mng_head_SEL51" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_BRANEND
+WHERE
+	SUBSTR(SUBSTR(#{clsedDay1}, 0, 6), 1, 4) = END_YEAR
+	AND SUBSTR(SUBSTR(#{clsedDay1}, 0, 6), 5, 2) = END_MON
+	AND BRAN_CD = #{branCd}
+</select>
+
+<select id="SQLclosed_mng_head_SEL36" parameterType="" resultType="">
+SELECT
+	'' GBN
+FROM
+	DUAL
+</select>
+
+<select id="SQLclosed_mng_head_SEL37" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_NOTE
+WHERE
+	UPSO_CD = #{upsoCd}
+	AND NOTE_YRMN >= SUBSTR(#{startYrmn1}, 1, 6)
+</select>
+
+<select id="SQLclosed_mng_head_SEL54" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_NOTE
+WHERE
+	NOTE_YRMN > (
+		SELECT
+			MAX(NOTE_YRMN) END_YRMN
+		FROM
+			GIBU.TBRA_NOTE
+		WHERE
+			UPSO_CD = #{upsoCd}
+			AND REPT_DAY = #{reptDay}
+			AND REPT_NUM = #{reptNum}
+	)
+	AND UPSO_CD = #{upsoCd}
+	AND REPT_GBN <> '14'
+</select>
+
+<delete id="SQLclosed_mng_head_DEL48" parameterType="">
+Delete from
+	GIBU.TBRA_NOTE
+where
+	REPT_DAY = #{reptDay}
+	and REPT_NUM = #{reptNum}
+	and UPSO_CD = #{upsoCd}
+</delete>
+
+<select id="SQLclosed_mng_head_SEL55" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_NOTE
+WHERE
+	UPSO_CD = #{upsoCd}
+	AND NOTE_YRMN >= SUBSTR(#{startYrmn1}, 1, 6)
+</select>
+
+<delete id="SQLclosed_mng_head_DEL49" parameterType="">
+Delete from
+	GIBU.TBRA_UPSO_CLSED
+where
+	UPSO_CD = #{upsoCd}
+	and CLSED_BRAN = #{clsedBran}
+	and CLSED_NUM = #{clsedNum}
+	and CLSED_DAY = #{clsedDay}
+</delete>
+
+<select id="SQLclosed_mng_head_SEL20" parameterType="" resultType="">
+SELECT
+	LPAD(NVL(MAX(CLSED_NUM), 0) + 1, 5, '0') CLSED_NUM
+FROM
+	GIBU.TBRA_UPSO_CLSED
+WHERE
+	CLSED_BRAN = #{clsedBran}
+	AND CLSED_DAY = #{clsedDay}
+</select>
+
+<delete id="SQLclosed_mng_head_XIUD63" parameterType="">
+DELETE FROM
+	GIBU.TBRA_NOTE
+WHERE
+	UPSO_CD = #{upsoCd}
+	AND REPT_DAY = #{clsedDay}
+	AND REPT_NUM = #{clsedNum}
+	AND REPT_GBN = #{clsedGbn}
+</delete>
+
+<update id="SQLclosed_mng_head_UPD34" parameterType="">
+Update
+	GIBU.TBRA_UPSO_CLSED
+set
+	STTNT_DAY = #{sttntDay},
+	MODPRES_ID = #{modpresId},
+	START_YRMN = SUBSTR(#{startYrmn1}, 1, 6),
+	START_DAY = #{startDay},
+	MOD_DATE = SYSDATE,
+	END_YRMN = SUBSTR(#{endYrmn1}, 1, 6),
+	CLSED_GBN = #{clsedGbn},
+	REMAK = #{remak},
+	END_DAY = #{endDay}
+where
+	CLSED_BRAN = #{clsedBran}
+	and CLSED_NUM = #{clsedNum}
+	and CLSED_DAY = #{clsedDay}
+	and UPSO_CD = #{upsoCd}
+</update>
+
+<insert id="SQLclosed_mng_head_INS13" parameterType="">
+Insert into
+	GIBU.TBRA_UPSO_CLSED (
+		STTNT_DAY,
+		INSPRES_ID,
+		CLSED_BRAN,
+		CLSED_NUM,
+		CLSED_DAY,
+		START_YRMN,
+		INS_DATE,
+		START_DAY,
+		UPSO_CD,
+		END_YRMN,
+		CLSED_GBN,
+		REMAK,
+		END_DAY
+	)
+values
+(
+		#{sttntDay},
+		#{inspresId},
+		#{clsedBran},
+		#{clsedNum},
+		#{clsedDay},
+		SUBSTR(#{startYrmn1}, 1, 6),
+		SYSDATE,
+		#{startDay},
+		#{upsoCd},
+		SUBSTR(#{endYrmn1}, 1, 6),
+		#{clsedGbn},
+		#{remak},
+		#{endDay}
+	)
+</insert>
+
+<update id="SQLclosed_mng_head_XIUD55" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSO
+SET
+	CLSBS_YRMN = '',
+	CLSBS_INS_DAY = '',
+	MOD_DATE = SYSDATE,
+	MODPRES_ID = #{modpresId}
+WHERE
+	UPSO_CD = #{upsoCd}
+</update>
+
+<select id="SQLclosed_mng_head_SEL60" parameterType="" resultType="">
+SELECT
+	YRMN,
+	'' AS DISTR_SEQ
+FROM
+	(
+		SELECT
+			YYYY || MM YRMN
+		FROM
+			GIBU.COPY_YY YY,
+			GIBU.COPY_MM MM
+	)
+WHERE
+	YRMN = SUBSTR(#{startYrmn1}, 1, 6)
+</select>
+
+<select id="SQLclosed_mng_head_SEL44" parameterType="" resultType="">
+SELECT
+	YRMN,
+	'' AS DISTR_SEQ
+FROM
+	(
+		SELECT
+			YYYY || MM YRMN
+		FROM
+			GIBU.COPY_YY YY,
+			GIBU.COPY_MM MM
+	)
+WHERE
+	YRMN = SUBSTR(#{startYrmn1}, 1, 6)
+</select>
+
+<insert id="SQLclosed_mng_head_XIUD49" parameterType="">
+INSERT INTO
+	GIBU.TBRA_NOTE (
+		UPSO_CD,
+		NOTE_YRMN,
+		NOTE_NUM,
+		REPT_DAY,
+		REPT_NUM,
+		REPT_GBN,
+		USE_AMT,
+		RECV_DAY,
+		REMAK,
+		INSPRES_ID,
+		INS_DATE,
+		BRAN_CD
+	)
+VALUES
+	(
+		#{upsoCd},
+		#{reptYrmn},
+		(
+			SELECT
+				LPAD(NVL(MAX(NOTE_NUM), 0) + 1, 4, '0') NOTE_NUM
+			FROM
+				GIBU.TBRA_NOTE
+			WHERE
+				UPSO_CD = #{noteNum1}
+				AND NOTE_YRMN = #{noteNum2}
+		),
+		#{reptDay},
+		#{clsedNum},
+		#{reptGbn},
+		0,
+		#{sttntDay},
+		#{remak},
+		#{inspresId},
+		SYSDATE,
+		#{branCd}
+	)
+</insert>
+
+<insert id="SQLclosed_mng_head_XIUD50" parameterType="">
+INSERT INTO
+	GIBU.TBRA_NOTE (
+		UPSO_CD,
+		NOTE_YRMN,
+		NOTE_NUM,
+		REPT_DAY,
+		REPT_NUM,
+		REPT_GBN,
+		USE_AMT,
+		RECV_DAY,
+		REMAK,
+		INSPRES_ID,
+		INS_DATE,
+		BRAN_CD
+	)
+VALUES
+	(
+		#{upsoCd},
+		#{reptYrmn},
+		(
+			SELECT
+				LPAD(NVL(MAX(NOTE_NUM), 0) + 1, 4, '0') NOTE_NUM
+			FROM
+				GIBU.TBRA_NOTE
+			WHERE
+				UPSO_CD = #{noteNum1}
+				AND NOTE_YRMN = #{noteNum2}
+		),
+		#{reptDay},
+		#{clsedNum},
+		#{reptGbn},
+		0,
+		#{sttntDay},
+		#{remak},
+		#{inspresId},
+		SYSDATE,
+		#{branCd}
+	)
+</insert>
+
+<update id="SQLclosed_mng_head_XIUD22" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSO
+SET
+	CLSBS_YRMN = SUBSTR(#{startYrmn1}, 1, 6),
+	CLSBS_INS_DAY = #{sttntDay},
+	BILL_ISS_YN = '0',
+	MOD_DATE = SYSDATE,
+	MODPRES_ID = #{modpresId}
+WHERE
+	UPSO_CD = #{upsoCd}
+</update>
+
+<update id="SQLclosed_mng_head_XIUD64" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSO
+SET
+	CLSBS_YRMN = SUBSTR(#{startYrmn1}, 1, 6),
+	CLSBS_INS_DAY = #{sttntDay},
+	BILL_ISS_YN = '0',
+	MOD_DATE = SYSDATE,
+	MODPRES_ID = #{modpresId}
+WHERE
+	UPSO_CD = #{upsoCd}
+</update>
+
+<select id="SQLclosed_mng_head_SEL47" parameterType="" resultType="">
+SELECT
+	MON AS YRMN,
+	'' AS DISTR_SEQ
+FROM
+	INSA.TDUT_CALENDAR
+WHERE
+	YRMNDAY BETWEEN #{startDay}
+	AND #{endDay}
+GROUP BY
+	MON
+HAVING
+	COUNT(1) > DECODE(
+		TO_CHAR(LAST_DAY(TO_DATE(#{startDay}, 'YYYYMMDD')), 'DD'),
+		'31',
+		21,
+		'30',
+		20,
+		'29',
+		19,
+		'28',
+		18
+	)
+ORDER BY
+	MON
+</select>
+
+<select id="SQLclosed_mng_head_SEL39" parameterType="" resultType="">
+SELECT
+	MON AS YRMN,
+	'' AS DISTR_SEQ
+FROM
+	INSA.TDUT_CALENDAR
+WHERE
+	YRMNDAY BETWEEN #{startDay}
+	AND #{endDay}
+GROUP BY
+	MON
+HAVING
+	COUNT(1) > DECODE(
+		TO_CHAR(LAST_DAY(TO_DATE(#{startDay}, 'YYYYMMDD')), 'DD'),
+		'31',
+		21,
+		'30',
+		20,
+		'29',
+		19,
+		'28',
+		18
+	)
+ORDER BY
+	MON
+</select>
+
+<select id="SQLclosed_mng_head_SEL23" parameterType="" resultType="">
+SELECT
+	COUNT(*) AS CNT
+FROM
+	GIBU.TBRA_NOTE
+WHERE
+	UPSO_CD = #{upsoCd}
+	AND NOTE_YRMN IN (
+		SELECT
+			MON AS YRMN
+		FROM
+			INSA.TDUT_CALENDAR
+		WHERE
+			YRMNDAY BETWEEN #{startDay}
+			AND #{endDay}
+		GROUP BY
+			MON
+	)
+</select>
+
+<select id="SQLclosed_mng_head_SEL46" parameterType="" resultType="">
+SELECT
+	COUNT(*) AS CNT
+FROM
+	GIBU.TBRA_NOTE
+WHERE
+	UPSO_CD = #{upsoCd}
+	AND NOTE_YRMN IN (
+		SELECT
+			MON AS YRMN
+		FROM
+			INSA.TDUT_CALENDAR
+		WHERE
+			YRMNDAY BETWEEN #{startDay}
+			AND #{endDay}
+		GROUP BY
+			MON
+	)
+</select>
+
+<select id="SQLclosed_mng_head_SEL18" parameterType="" resultType="">
+SELECT
+	A.UPSO_CD,
+	A.CLSED_DAY,
+	A.CLSED_NUM,
+	A.CLSED_BRAN,
+	A.CLSED_GBN,
+	DECODE(A.START_YRMN, NULL, NULL, A.START_YRMN || '01') START_YRMN,
+	DECODE(A.END_YRMN, NULL, NULL, A.END_YRMN || '01') END_YRMN,
+	A.STTNT_DAY,
+	A.REMAK,
+	B.BRAN_CD
+FROM
+	GIBU.TBRA_UPSO_CLSED A,
+	GIBU.TBRA_UPSO B
+WHERE
+	A.UPSO_CD = #{upsoCd}
+	AND A.UPSO_CD = B.UPSO_CD
+	AND CLSED_GBN NOT IN ('14', '01', '02', '03', '04')
+</select>
+
+<select id="SQLclosed_mng_head_SEL45" parameterType="" resultType="">
+SELECT
+	A.UPSO_CD,
+	A.CLSED_DAY,
+	A.CLSED_NUM,
+	A.CLSED_BRAN,
+	'14' AS CLSED_GBN,
+	A.CLSED_GBN AS GBN,
+	DECODE(A.START_YRMN, NULL, NULL, A.START_YRMN || '01') START_YRMN,
+	DECODE(A.END_YRMN, NULL, NULL, A.END_YRMN || '01') END_YRMN,
+	A.STTNT_DAY,
+	A.REMAK,
+	B.BRAN_CD
+FROM
+	GIBU.TBRA_UPSO_CLSED A,
+	GIBU.TBRA_UPSO B
+WHERE
+	A.UPSO_CD = #{upsoCd}
+	AND A.UPSO_CD = B.UPSO_CD
+	AND CLSED_GBN IN ('14', '01', '02', '03', '04')
+</select>
+
+</mapper>

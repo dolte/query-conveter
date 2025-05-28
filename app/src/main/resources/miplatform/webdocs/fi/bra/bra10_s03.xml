@@ -483,7 +483,8 @@ function img_empSearch_OnClick(obj,nX,nY)
 		return;
 	}
 
-	var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
+
+	var result = Dialog("fi_bra::find_sawon.xml", "BRAN_CD=" + quote(this.cob_BRAN_CD.Value));
 		
 	if (length(result ) > 0) {
 		var vArr = result.Split(",");
