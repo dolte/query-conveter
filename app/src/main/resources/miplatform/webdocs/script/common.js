@@ -1,0 +1,4197 @@
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿var ErrorCode;
+var ErrorMsg;
+
+/******************************************************
+ * Frame이 전부 Load 됐을때를 위한 Event Function
+ *
+ *
+ * @param obj		: Frame 객체 
+ * @return			: none
+ ******************************************************
+ * 2008.10.10 박호경 최초작성
+ ******************************************************/   
+function gfn_AllFrame_OnLoadCompleted(obj){
+	gv_frameCount = toNumber(gv_frameCount) + 1;
+}
+
+/************************************************************************
+// 모든 Form에서 Include하여 사용한다.
+// GSPL 프로젝트 전체에서 사용하는 공통 function을 작성한다.
+// function 명은 gfn_comm_ 을 Prefix로 사용함.
+************************************************************************/
+var CONST_ASC_MARK="▲";
+var CONST_DESC_MARK="▼";
+
+/**********************************************************************************
+ * 기      능 : 인자를 넘겨줄 경우에 넘겨주는 규칙대로 인자/값을 설정
+ * 인      수 : p_name		설정할 파리미터명
+				p_value		설정할 값
+ * Return     : 없음
+ * 예      시 :	paramStr += gfn_SetParam("sql_xml", "gspl_sql_common");
+ **********************************************************************************/
+function gfn_SetParam(p_name, p_value)
+{       
+	return  p_name + "=" + quote(p_value) + " ";
+}
+
+/********************************************************************************************************
+* 공통코드 데이터셋 가져오기
+********************************************************************************************************/
+/**
+* 함수명     : gfnGridSort
+* 주의 사항  :  
+*
+* 인자설명 
+* 	 GridObj 	  : Grid
+*    dsObj 		  : DataSet
+*    nCell   	  : 그리드 Cell
+* [example] 
+*	function grdGroup_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+*	{
+*		gfnGridSort(obj,dsGroup,nCell);
+*	}
+*/
+/**
+* 함수명     : gfnGridSort
+* 주의 사항  :  
+*
+* 인자설명 
+* 	 GridObj 	  : Grid
+*    dsObj 		  : DataSet
+*    nCell   	  : 그리드 Cell
+* [example] 
+*/
+function grd_Grid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+//	gfnGridSort(obj,dsGroup,nCell);
+	//VAR cNcell = OBJ.GetCellProp("head",nCell,"col");
+//	gfn_GridSort(obj,  Ncell, Ncell);
+	gfn_GridSort(obj,  Ncell);
+}
+
+
+function gfnGridSort(GridObj,dsObj,nCell)
+{
+	if ((GridObj.GetCellProp("Body",nCell,"colid")=="") || (GridObj.GetCellProp("Body",nCell,"colid")==null))
+	{
+		return;
+	}
+	
+	if (GridObj.GetCellProp("Body",nCell,"display")=="checkbox")
+	{
+		return;
+	}
+	
+	var nheadText,sflag;
+
+	if (right(GridObj.GetCellProp("head",nCell,"text"),1) == CONST_ASC_MARK)
+	{
+		dsObj.sort(GridObj.GetCellProp("Body",nCell,"colid"),false);
+		nheadText = GridObj.GetCellProp("head",nCell,"text");
+		nheadText = replace(nheadText,CONST_ASC_MARK,"");
+		nheadText = nheadText + CONST_DESC_MARK;
+		sflag = CONST_DESC_MARK;
+	}
+	else
+	{
+		dsObj.sort(GridObj.GetCellProp("Body",nCell,"colid"),true);
+		nheadText = GridObj.GetCellProp("head",nCell,"text");
+		nheadText = replace(nheadText,CONST_DESC_MARK,"");
+		nheadText = nheadText + CONST_ASC_MARK;   
+		sflag = CONST_ASC_MARK;
+	}
+	
+	GridObj.SetCellProp("head",nCell,"text",nheadText);
+		
+	var sRepText="";
+	for(i=0; i<GridObj.GetColCount(); i++)
+	{		
+		if (nCell <> i) 
+		{
+			sRepText = replace(GridObj.GetCellProp("head",i,"text"), CONST_ASC_MARK,"");
+			GridObj.SetCellProp("head",i,"text", sRepText);
+			
+			sRepText = replace(GridObj.GetCellProp("head",i,"text"), CONST_DESC_MARK,"");
+			GridObj.SetCellProp("head",i,"text", sRepText);
+		}
+	}
+	
+	//OnRowPosChanged() event 발생
+	var nRow = dsObj.row;	
+	dsObj.row = -1;
+	dsObj.row = nRow;
+	
+	return sflag;
+}
+
+/********************************************************************************************************
+* 바인딩된 칼럼 인덱스 가져오기
+********************************************************************************************************/
+/**
+* 함수명     : gfnGetColumnIndex
+*
+* 리턴값     : column index
+*
+* 인자설명 
+* 	 objGrid  : Grid Id
+* 	 strColID : Binding ColID
+*
+*/
+function gfnGetColumnIndex(objGrid, strColID)
+{	
+	var idx = -1;
+	for (var i=0; i<objGrid.GetColCount(); i++)
+	{	
+		if (objGrid.GetCellProp("body",i,"ColId") == strColID)
+		{
+			idx = i;
+			break;
+		}
+	}
+	
+	return idx;
+}
+/********************************************************************************************************
+* 공통코드 데이터셋 가져오기
+********************************************************************************************************/
+/**
+* 함수명     : gfnSetCommonCode
+* 주의 사항  :  
+*
+* 인자설명 
+* 	 objDs 		  : dataset (칼럼값은 CODE, CODE_NAME)
+*    strHigh_code : 코드테이블(CODE)의 HIGH_CODE
+*    strAddCode   : 추가행의 코드값
+*    strAddName   : 추가행의 코드명값
+* ex) gfnSetCommonCode(objDs,"C0001")
+* ex) gfnSetCommonCode(objDs,"C0001","","전체")
+*/
+function gfnSetCommonCode(objDs, strHigh_code, strAddCode, strAddName)
+{ 
+	 var arrHigh_code = split(strHigh_code,",","webstyle");
+	 var strTemp = "CODE<>'00000' && (";
+	 
+	 for(var i=0; i<arrHigh_code.length; i++)
+	 {
+		strTemp += " HIGH_CODE='" + arrHigh_code[i] + "' ||";
+	 }
+	 
+	 strTemp = Left(strTemp,Length(strTemp)-2) + ")";
+	 
+	 gdsCode.Filter(strTemp);	 
+	 gdsTemp.CopyF(gdsCode);
+	 gdsCode.UnFilter();
+	 
+	 if ( strAddCode !=null)
+	 {
+		gdsTemp.InsertRow(0);
+		gdsTemp.SetColumn(0,"CODE",strAddCode);
+		gdsTemp.SetColumn(0,"CODE_NAME",strAddName);  				
+	 } 
+	 
+	 objDs.copy(gdsTemp);
+	 
+}
+
+/********************************************************************************************************
+* 화면권한 가져오기
+********************************************************************************************************/
+/**
+* 함수명     : gfnGetAuth
+*
+* 리턴값     : AUTHORITY.AUTH_LEVEL (조회=1, 출력=2, 저장=3, 관리자=9)
+*
+* 인자설명 
+* 	 strFilename : xml 파일명 (.xml 제외)
+*
+*/
+function gfnGetAuth(strFilename)
+{
+	var v_filename = ToUpper(strFilename + ".xml");
+	var nRow = -1;
+	var strReturn = "";
+	
+	for(var i=0; i<gds_Menu.rowcount; i++)
+	{
+		if (IndexOf(ToUpper(gds_Menu.GetColumn(i,"FORM_URL")),v_filename) >= 0)
+		{
+			nRow = i;
+			break;			
+		}
+	}
+	
+	if (nRow >= 0)
+	{
+		strReturn = gds_Menu.GetColumn(i,"AUTH_LEVEL");
+	}
+	
+	return strReturn;
+}
+
+/********************************************************************************************************
+* 기준일시에서 초 더하기
+********************************************************************************************************/
+/**
+* 함수명     : gfnAddSecond
+*
+* 리턴값     : 입력시에서 입력초 더한 일시 ('yyyymmddhhmmss')
+*
+* 인자설명 
+* 	 vDate  : yyyymmddhhmmss
+* 	 vSecond : plus second
+*
+*/
+function gfnAddSecond(vDate, vSecond)
+{	
+	var rtn;
+	
+	var sDay = SubStr(vDate,0,8);
+	var sHour = SubStr(vDate,8,2);
+	var sMinute = SubStr(vDate,10,2);
+	var sSecond = SubStr(vDate,12,2);
+	
+	var sTotalSeconds = ParseInt(sHour)*60*60 + ParseInt(sMinute)*60 + ParseInt(sSecond);
+	
+	sTotalSeconds = sTotalSeconds + ParseFloat(vSecond);
+		
+	var sPlusDay = Truncate(sTotalSeconds/(24*60*60));
+	sTotalSeconds = sTotalSeconds%(24*60*60);
+	
+	sHour = Truncate(sTotalSeconds/(60*60));
+	sTotalSeconds = sTotalSeconds%(60*60);
+	
+	sMinute = Truncate(sTotalSeconds/(60));
+	sTotalSeconds = sTotalSeconds%(60);
+	
+	sSecond = sTotalSeconds;
+	
+	rtn = AddDate(sDay,sPlusDay) + Lpad(sHour,'0',2) + Lpad(sMinute,'0',2) + Lpad(sSecond,'0',2);
+	
+	return rtn;
+}
+
+/********************************************************************************************************
+* Date 포맷정하기
+********************************************************************************************************/
+/**
+* 함수명     : gfnDateFormat
+*
+* 리턴값     : 포맷팅 한 데이트 (시간이 있을경우는 ' hh:mm:ss')
+*
+* 인자설명 
+* 	 vDate : yyyymmdd or yyyymmddhhmmss
+* 	 vSepa : 날짜구분 문자
+*
+*/
+function gfnDateFormat(vDate, vSepa)
+{
+	var rtn;
+	
+	var sYear, sMonth, sDay;
+	var sHour, sMinute, sSecond;
+	
+	sYear = SubStr(vDate,0,4);
+	sMonth = SubStr(vDate,4,2);
+	sDay = SubStr(vDate,6,2);
+	
+	rtn = sYear + vSepa + sMonth + vSepa + sDay;
+	
+	if (Length(vDate) > 8)
+	{
+		sHour = SubStr(vDate,8,2);
+		sMinute = SubStr(vDate,10,2);
+		sSecond = SubStr(vDate,12,2);
+		
+		rtn = rtn + " " + sHour + ":" + sMinute + ":" + sSecond;
+	}
+	
+	return rtn;
+}
+
+/*===============================================================
+= 기능 : 인자를 넘겨줄 경우에 넘겨주는 규칙대로 인자/값을 설정
+===============================================================*/
+function gfnSetParam(p_name, p_value)
+{       
+	return  p_name + "=" + quote(p_value) + " ";
+}
+
+/*===============================================================
+= 기능 : 자바 파일다운로드
+===============================================================*/
+function gfnFileDownload(fileName){
+	var strDownUrl = gv_WebURL + "/fileDownload.do?fileName="+fileName;
+
+	var strAttr = 'Height="29" Left="43" Width="29" visible="false"';
+	
+	if ( Find("web_file") == NULL )
+		create("WebBrowser","web_file",strAttr);
+	
+	web_file.PageUrl = strDownUrl;
+	
+	web_file.Run();
+}	
+
+/*===============================================================
+= 기능 : 메뉴권한 리턴 (메뉴화면만 해당)
+===============================================================*/
+function gfnGetMenuAuth(obj)
+{   
+    var rtn = "";
+	var nRow = gdsMenu.FindRow("MENU_CD",obj.id);
+	
+	if (nRow >= 0)
+	{
+		rtn = gdsMenu.GetColumn(nRow,"MENU_AUTH");
+	}
+	
+	return rtn;
+}
+
+
+/**********************************************************************************
+ * 기      능 : 바인딩된 칼럼 인덱스 가져오기
+				해당 칼럼이 그리드의 몇번째 열에 바인딩되어 있는지를 리턴
+ * 인      수 : objGrid		Grid Id
+				strColID	Binding ColID
+ * Return     : idx			바인딩 된 그리드 열(순서)
+ * 예      시 :	
+ **********************************************************************************/
+function gfn_GetColumnIndex(objGrid, strColID)
+{	
+	var idx = -1;
+	for (var i=0; i<objGrid.GetColCount(); i++)
+	{	
+		if (objGrid.GetCellProp("body",i,"ColId") == strColID)
+		{
+			idx = i;
+			break;
+		}
+	}
+	
+	return idx;
+}
+
+/**********************************************************************************
+ * 기      능 : 그리드 데이터 정렬(Sorting)
+				해당 칼럼이 그리드의 몇번째 열에 바인딩되어 있는지를 리턴
+ * 인      수 : GridObj		Grid Id
+				nCell		클릭된 열index
+ * Return     : 없음
+ * 예      시 :	gfn_GridSort(obj, nCell);	
+ **********************************************************************************/
+function gfn_GridSort(GridObj, nCell)
+{
+	VAR cNcell = GridObj.GetCellProp("head",nCell,"col");
+	dsObj = object(GridObj.BindDataSet);
+	//Grid_Sort(GridObj,dsObj, nCell);
+	
+	//alert("old");
+	if(dsObj.rowcount < 1) return;	//데이터 없을 때는 패스
+	
+	if ((GridObj.GetCellProp("Body",nCell,"colid")=="") || (GridObj.GetCellProp("Body",nCell,"colid")==null))
+	{
+		return;
+	}
+	
+	if (GridObj.GetCellProp("Body",nCell,"display")=="checkbox")
+	{
+		return;
+	}
+	
+	var nheadText,sflag;
+
+	if (right(GridObj.GetCellProp("head",nCell,"text"),1) == CONST_ASC_MARK)
+	{
+		dsObj.sort(GridObj.GetCellProp("Body",cnCell,"colid"),false);
+		nheadText = GridObj.GetCellProp("head",nCell,"text");
+		nheadText = replace(nheadText,CONST_ASC_MARK,"");
+		nheadText = nheadText + CONST_DESC_MARK;
+		sflag = CONST_DESC_MARK;
+	}
+	else
+	{
+		dsObj.sort(GridObj.GetCellProp("Body",cnCell,"colid"),true);
+		nheadText = GridObj.GetCellProp("head",nCell,"text");
+		nheadText = replace(nheadText,CONST_DESC_MARK,"");
+		nheadText = nheadText + CONST_ASC_MARK;   
+		sflag = CONST_ASC_MARK;
+	}
+	
+	GridObj.SetCellProp("head",nCell,"text",nheadText);
+		
+	var sRepText="";
+	for(i=0; i<GridObj.GetColCount(); i++)
+	{
+		if (nCell <> i) 
+		{
+			sRepText = replace(GridObj.GetCellProp("head",i,"text"), CONST_ASC_MARK,"");
+			GridObj.SetCellProp("head",i,"text", sRepText);
+			
+			sRepText = replace(GridObj.GetCellProp("head",i,"text"), CONST_DESC_MARK,"");
+			GridObj.SetCellProp("head",i,"text", sRepText);
+		}
+	}
+	
+	//OnRowPosChanged() event 발생
+	var nRow = dsObj.row;
+	dsObj.row = -1;
+	dsObj.row = nRow;
+	
+	return sflag;
+	
+}
+
+
+function Grid_Sort(grdObj,dsObj,nCell) {
+	var str_head = ""; // 헤더 이름
+	var str_body = ""; // 바디 이름
+	var grd_col;       // 컬럼 갯수
+
+	//데이타가 없으면 리턴한다.
+	if(dsObj.RowCount()<1) return;
+	//alert("---->"+dsobj.rowcount());
+	//컬럼 갯수를 구한다.
+	grd_col = grdObj.GetCellCount("head");
+	
+	str_head = grdObj.GetCellProp("head",nCell,"text");
+	str_body = grdObj.GetCellProp("body",nCell,"colid");
+	
+	if(IndexOf(str_head,"↑") != -1 )
+	{
+		grdObj.SetCellProp("head",nCell,"text",replace(str_head,"↑","↓"));
+		dsObj.Sort(str_body, false);
+	} else if(IndexOf(str_head,"↓") != -1){ 
+		grdObj.SetCellProp("head",nCell,"text",replace(str_head,"↓","↑"));
+		dsObj.Sort(str_body, true);
+	} else {
+		//생성된 화살표가 있으면 삭제!
+		for (i=0;i<grd_col;i++) {
+			var str_head_tmp = grdObj.GetCellProp("head",i,"text");
+			var f_pos1 = Pos(str_head_tmp,"↑");
+			if (f_pos1=0) {
+				str_head_tmp = str_head_tmp.Replace("↑","");
+			} else {
+				f_pos2 = Pos(str_head_tmp,"↓");
+				if (f_pos2=0) {
+					str_head_tmp = str_head_tmp.Replace("↓",""); }
+			}
+			grdObj.SetCellProp("head",i,"text",str_head_tmp);
+			grdObj.SetCellProp("head",i,"align","center");
+		}
+		//새로운 컬럼을 클릭시 화살표 생성!
+		grdObj.SetCellProp("head",nCell,"text","↓"+str_head);
+		//Dataset를 소트한다.
+		dsObj.Sort(str_body, false);
+	}
+}
+
+
+//old 메뉴권한 박호경
+function gfn_Auth(objForm){
+	var comps = objForm.Components["Button"];
+	for( var i = 0 ; i < comps.Count ; i++){
+	
+		//입력
+		if(IndexOf(comps[i].id, "Input") != -1){
+			if(gv_Auth_Write == "1"){
+				Object(comps[i].id).Visible = true;
+			}else{
+				Object(comps[i].id).Visible = false;
+			}			
+		}
+		
+		if(IndexOf(comps[i].id, "New") != -1){
+			if(gv_Auth_Write == "1"){
+				Object(comps[i].id).Visible = true;
+			}else{
+				Object(comps[i].id).Visible = false;
+			}			
+		}			
+	
+		//저장
+		if(IndexOf(comps[i].id, "Save") != -1){
+			if(gv_Auth_Write == "1"){
+				Object(comps[i].id).Visible = true;
+			}else{
+				Object(comps[i].id).Visible = false;
+			}			
+		}
+		
+		//삭제
+		if(IndexOf(comps[i].id, "Delete") != -1){
+			if(gv_Auth_Write == "1"){
+				Object(comps[i].id).Visible = true;
+			}else{
+				Object(comps[i].id).Visible = false;
+			}			
+		}
+		
+		//엑셀출력
+		if(IndexOf(comps[i].id, "Excel") != -1){
+			if(gv_Auth_Print == "1"){
+				Object(comps[i].id).Visible = true;
+			}else{
+				Object(comps[i].id).Visible = false;
+			}			
+		}			
+
+	}
+}
+
+//사업자등록번호 체크
+/*===============================================================
+= 기능 : 사업자등록번호 적함성 여부 체크 함수
+= 인수 : strNumb - 사업자등록번호
+= 
+= 리턴 : true(적합), false(부적합)
+===============================================================*/
+function gfn_Vndr_Regno_Chk(strNumb) {
+    strNumb = Replace(strNumb,"-");   
+    if (strNumb.length != 10) {   
+        alert("사업자등록번호가 잘못되었습니다.");   
+        return false;   
+    }   
+    sumMod = 0;   
+    sumMod += parseInt(substr(strNumb,0,1));   
+    sumMod += parseInt(substr(strNumb,1,1)) * 3 % 10;   
+    sumMod += parseInt(substr(strNumb,2,1)) * 7 % 10;   
+    sumMod += parseInt(substr(strNumb,3,1)) * 1 % 10;   
+    sumMod += parseInt(substr(strNumb,4,1)) * 3 % 10;   
+    sumMod += parseInt(substr(strNumb,5,1)) * 7 % 10;   
+    sumMod += parseInt(substr(strNumb,6,1)) * 1 % 10;   
+    sumMod += parseInt(substr(strNumb,7,1)) * 3 % 10;   
+    sumMod += floor(parseInt(substr(strNumb,8,1)) * 5 / 10);   
+    sumMod += parseInt(substr(strNumb,8,1)) * 5 % 10;   
+    sumMod += parseInt(substr(strNumb,9,1));   
+  
+    if (sumMod % 10 != 0) {   
+        alert("사업자등록번호가 잘못되었습니다.");   
+        return false;   
+    }   
+    return true;   
+}
+//법인등록번호 체크
+/*===============================================================
+= 기능 : 법인등록번호 적함성 여부 체크 함수
+= 인수 : strNumb - 법인등록번호
+= 
+= 리턴 : true(적합), false(부적합)
+===============================================================*/
+function gfn_corp_regno_chk(vndr_reg_no)
+{
+ var strVndr_Reg_No,No_Chk;
+ 
+ strVndr_Reg_No = replace(vndr_reg_no, " ", "");
+ strVndr_Reg_No = replace(strVndr_Reg_No, "-", "");
+ strVndr_Reg_No = replace(strVndr_Reg_No, "/", "");
+ 
+ if (length(strVndr_Reg_No) <> 13){
+           alert("법인등록번호가 잘못되었습니다.");   
+  return false;
+ }
+ else{
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 0, 1 )) * 1;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 1, 1 )) * 2;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 2, 1 )) * 1;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 3, 1 )) * 2;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 4, 1 )) * 1;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 5, 1 )) * 2;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 6, 1 )) * 1;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 7, 1 )) * 2;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 8, 1 )) * 1;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 9, 1 )) * 2;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 10, 1 )) * 1;
+  No_Chk = No_Chk + toNumber(mid( strVndr_Reg_No, 11, 1 )) * 2;
+  
+  No_Chk = No_Chk % 10;
+  No_Chk = 10 - No_Chk;
+  
+  if (No_Chk > 9){
+   No_Chk = 0;
+  }
+  
+  if (toNumber(No_Chk) == toNumber(mid(strVndr_Reg_No, 12, 1))){
+   return true;
+  }
+  else{
+          alert("법인등록번호가 잘못되었습니다.");   
+   return false;
+  }
+ }
+}
+/*===============================================================
+= 기능 : 주민등록번호 적함성 여부 체크 함수
+= 인수 : val1-주민번호앞6자리 val2-주민번호뒤7자리
+= 
+= 리턴 : 1(적합), -1(부적합)
+===============================================================*/
+function gfn_CheckJumin(val1, val2) {
+
+	var tmp1, tmp2, tmp3;
+	var t1, t2, t3, t4, t5, t6, t7;
+	tmp1 = val1.substr( 2, 2 );
+	tmp2 = val1.substr( 4 );
+    tmp3 = val2.substr( 0, 1 );
+           
+	if (fnDoCheckProResnoLength(val1) == -1) {
+		return -1;
+	}
+	if (fnDoCheckPreResnoLength(val2) == -1) {
+		return -1;
+	}
+	if ((tmp1 < "01") || (tmp1 > "12")) {
+		return -1;
+	}
+	if ((tmp2 < "01") || (tmp2 > "31")) {
+		return -1;
+	}
+	if ((tmp3 < "1" ) || (tmp3 > "8" )) {
+		return -1;
+	}
+	
+	//var return_val = -1;
+	
+	t1 = val1.substr(0, 1);
+	t2 = val1.substr(1, 1);
+	t3 = val1.substr(2, 1);
+	t4 = val1.substr(3, 1);
+	t5 = val1.substr(4, 1);
+	t6 = val1.substr(5, 1);
+	t11 = val2.substr(0, 1);
+	t12 = val2.substr(1, 1);
+	t13 = val2.substr(2, 1);
+	t14 = val2.substr(3, 1);
+	t15 = val2.substr(4, 1);
+	t16 = val2.substr(5, 1);
+	t17 = val2.substr(6, 1);
+
+	var tot = tointeger(t1)  * 2 + tointeger(t2)  * 3 + tointeger(t3)  * 4 + tointeger(t4)  * 5 + tointeger(t5)  * 6 + tointeger(t6)  * 7;
+	tot    += tointeger(t11) * 8 + tointeger(t12) * 9 + tointeger(t13) * 2 + tointeger(t14) * 3 + tointeger(t15) * 4 + tointeger(t16) * 5;
+	
+	var result = 11 - (tointeger(tot) % 11);
+	
+	if(tmp3 >= "1" && tmp3 <= "4") 
+	{
+		result = tointeger(result) % 10;
+	}
+	else
+	{
+		var odd = tointeger(t12) * 10 + tointeger(t13);
+	
+		if(tointeger(odd) % 2 != 0)
+			return -1;
+		
+		if(result >= 10)
+			result -= result;
+		
+		result += 2;
+	}
+	
+	if(result == t17)
+		return 0;
+	else
+		return -1;	
+	
+}
+
+
+// 주민번호 형식 check (앞 6자리)
+function fnDoCheckProResnoLength(szProResno) {
+
+	//var nResno = parseInt( szProResno ).toString();
+			
+	if (szProResno.length == 6) {
+    	return 0;
+    } else {
+    	return -1;	
+    }
+		
+}	
+
+// 주민번호 형식 check (뒤 7자리)
+function fnDoCheckPreResnoLength(szPreResno) {
+
+	//var nResno = parseInt( szPreResno ).toString();
+			
+	if (szPreResno.length == 7) {
+		return 0;
+	} else {
+		return -1;	
+	}
+	
+}
+
+// 이메일 형식체크
+function gfn_Email_Check(sValue) {
+
+	var sReturnValue = "N";
+	var sTmp = "";
+	var sRegExp = "[a-z0-9]+[a-z0-9.,]+@[a-z0-9]+[a-z0-9.,]+\\.[a-z0-9]+";
+	
+	var regexp = CreateRegExp(sRegExp,"ig");
+	sTmp = regexp.Exec(sValue);
+	
+	if (sTmp == null) {
+		sReturnValue = "N";
+	} else {
+		if ((sTmp.index == 0) && (sTmp.length == sValue.length)) {
+			sReturnValue = "Y";
+		} else {
+			sReturnValue = "N";
+		}
+	}
+	return sReturnValue;
+	
+}
+/*
+ * 기      능: 코드구분값 구하여 데이타셋에 넣기
+ * 인      수: @codeVal - 코드구분값, @dsName - 데이터셋 이름
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+
+var obj_DsName = "";
+
+function gfn_getCodeVal(codeVal, dsName)
+{
+	var args = "HIGH_CD#=#" + codeVal;
+	ds_MultiSelect("svcCommCode", gv_DatasourceFIDU, "comm_sql", "comm_code_div", 
+			dsName, args, "clear_and_call", "fn_Code_CallBack");
+	
+	obj_DsName = dsName;
+		
+}
+
+/*
+ * 기      능: Callback 함수
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function fn_Code_CallBack(svcid,errCode,errMsg) 
+{
+	if (errCode < 0) 
+	{
+		alert("Error =======>"+errMsg);
+		return;
+	}
+	
+	switch (svcid) 
+	{
+		// 코드값 구분 구하기
+		case "svcCommCode" :
+			if (obj_DsName == "ds_Code_Sex")	// 저작자회원등록 성별구분
+				div_Memtype.rad_Sex.Index = 0;
+			
+			break;
+		
+		default : break;
+	}
+	
+}
+
+/********************************************************************************************************
+* 화면상의 모든 객체 editable 컨트롤
+********************************************************************************************************/
+
+var sPath = "";
+
+function fn_setCompProp(id,prop,val)
+{
+	for (var i=0 ; i<Components.Count ; i++)
+	{
+		//trace("toLower(left(Components[i].id, 3))=="+toLower(left(Components[i].id, 3)));
+		//trace("Components[i].IsComposite()=="+Components[i].IsComposite());
+		if ((Components[i].GetType() == "Dataset") ||
+			(Components[i].GetType() == "File") ||	
+			(Components[i].GetType() == "FileDialog") ||	
+			(Components[i].GetType() == "PopupDiv" ))	
+			continue;
+		if (Components[i].IsComposite())
+			fn_SubSetCompProp(Components[i], id, prop, val);
+		else if (toLower(left(Components[i].id, 3)) == "edt" ||
+				 toLower(left(Components[i].id, 3)) == "grd" ||
+				 toLower(left(Components[i].id, 3)) == "cob") 
+			fn_setProp(Components[i], prop, val);
+	}
+	
+}
+
+function fn_SubSetCompProp(obj,id,prop,val)
+{
+	for (var i=0 ; i<obj.Components.Count ; i++)
+	{
+		if ((obj.Components[i].GetType() == "Dataset") ||
+			(obj.Components[i].GetType() == "File") ||	
+			(obj.Components[i].GetType() == "FileDialog") ||	
+			(obj.Components[i].GetType() == "PopupDiv"))	
+			continue;
+		if (obj.Components[i].IsComposite())
+			fn_SubSetCompProp(obj.Components[i], id, prop, val);
+		else
+			fn_setProp(obj.Components[i], prop, val);
+	}
+	
+}
+
+function fn_setProp(obj,prop,val)
+{
+	switch (toLower(prop))
+	{
+		case "enable":
+			obj.enable = val;
+			break;
+		case "visible":
+			obj.visible = val;
+			break;
+		case "readonly":
+			obj.readonly = val;
+			break;
+		case "editable":
+			obj.Editable = val;
+			break;
+	}
+	
+}
+
+function fn_path(obj)
+{
+	var rtn;   	
+	if (sPath == "")
+		sPath = toString(obj.id);
+		
+	if (toString(obj) == "[Global]")
+	{
+	   arr = split(sPath,"::");
+
+	   for (var i=(arr.length()-1) ; i>=0 ; i--) 
+	   {
+		  rtn = rtn + arr[i] + "::";
+	   }
+	   sPath = substr(rtn, 0, length(rtn) -2);
+	   return;
+	}
+
+	var obj = obj.getForm();
+	sPath = sPath + "::" + toString(obj.id); 
+
+	fn_path(obj);
+	
+}
+
+/********************************************************************************************************
+/*
+ * 기      능: 메뉴상단의 공통버튼 사용여부 결정
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ *				obj = 버튼 순서, val = boolean 값
+ */
+function gfn_Btn_Setting(obj, val)
+{
+	var btnVal = "";
+	var btnArr = Array(8);
+	btnArr[0] = "btn_First";
+	btnArr[1] = "btn_New";
+	btnArr[2] = "btn_Search";
+	btnArr[3] = "btn_Save";
+	btnArr[4] = "btn_Add";
+	btnArr[5] = "btn_Del";
+	btnArr[6] = "btn_Print";
+	btnArr[7] = "btn_Close";
+	
+	for (var i=0 ; i<Length(obj) ; i++)
+	{
+		if (IndexOf(obj, Substr(obj, i, 1)) != -1)
+		{
+			Object(btnArr[ParseInt(Substr(obj, i, 1))]).Enable = val;
+		}
+	}
+	
+}
+
+/*
+ * 기      능: 선택한 그리드 로우 삭제
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ *				dsName = 데이터셋 이름
+ */
+function gfn_grid_DelRow(dsName)
+{
+	var nRow = Object(dsName).currow;
+	
+	if (nRow < 0) 
+	{
+		alert("데이타를 선택하세요");
+		return;
+	} 
+	else 
+	{	
+		var nCnt = Object(dsName).rowcount;
+		
+		for (var i=(nCnt - 1) ; i>-1 ; i--)
+		{
+			if (Object(dsName).GetSelect(i))
+				Object(dsName).DeleteRow(i); //선택된 Row를 삭제
+		}
+
+	}
+	
+}
+
+
+/*====================================================================
+* FUNCTION NAME     : gfn_SetButton
+* FUNCTION DESC 	: 공통버튼 초기화
+* @param 
+*				 sCell	Start Cell Index
+*				 eCell 	End Cell Index
+*				 dRow		Head Depth
+* @return
+=====================================================================*/
+var gv_orgOnTimer;	// 개발용
+var gv_arrIconList;
+function gfn_SetButton(arrList) {
+    //워크플로권한처리
+	if(GV_MDIFG == "Y") {
+		if(parent.IsExistVar("fv_FrameBodyFormID") || parent.IsExistVar("fv_ComPopFormID")) {		
+			parent.dvtitle.divIcon.fn_ResetIcon(arrList);
+		}else{
+			parent.dvtitle.divIcon.fn_ResetIcon(arrList);
+		}
+	} else {
+		var nWidth = 653;
+		Destroy("DevelopDiv");
+		Create("Div","DevelopDiv","left='0' top='0' width='" + nWidth + "' height='20' Url='main::ComButton.xml'");
+		gv_orgOnTimer = this.OnTimer;
+		this.OnTimer = "gfn_SingleOnTimer";
+		
+		gv_arrIconList = arrList;
+		setTimer(999,300);
+	}
+}
+
+
+function gfn_SingleOnTimer(obj,nEventID) {
+	KillTimer(nEventID);
+
+	if(nEventID == 999) {
+		DevelopDiv.fn_ResetIcon(gv_arrIconList);
+	}
+
+	if(gv_orgOnTimer.length() > 0) {
+		this.OnTimer = gv_orgOnTimer;
+	}
+}
+
+
+/*====================================================================
+* FUNCTION NAME     : gfn_SetMsgPop
+* FUNCTION DESC 	: StatusBar TEXT 보이기
+* @param 
+*				strMessage  	: Message
+* @return
+* gfn_SetStatusMsg("11111111111111");
+=====================================================================*/
+function gfn_SetStatusMsg(strMessage,strColor,bBold,bBlink)
+{
+	if(GV_MDIFG != "Y") {
+		return;
+	}
+
+	global.frame_message.fn_SetMessage(strMessage,strColor,bBold,bBlink);
+}
+
+/*====================================================================
+* FUNCTION NAME     : gfn_SetMsgPop
+* FUNCTION DESC 	: StatusBar TEXT 보이기
+* @param 
+*				strMessage  	: Message
+* @return
+=====================================================================*/
+function gfn_SetMoreMsg(strMessage)
+{
+	if(GV_MDIFG != "Y") {
+		return;
+	}
+
+	global.frame_message.fn_SetMoreMessage(strMessage);
+}
+
+
+//---------------------------------------------------------
+// 데이타셋 생성 
+//
+// 사용법: gfn_CreateDataSet(데이타셋아이디,"컬럼아이디,사이즈,타입[  컬럼아이디,사이즈,타입]");
+//
+// 예> gfn_CreateDataSet("ds_Cond","GRP_CD,5,STRING SEL_ALL,1,STRING");
+//
+//---------------------------------------------------------
+function gfn_CreateDataSet(dataSetId,colInfos) {
+
+    var obj = Object(dataSetId);
+    if(IsValidObject(obj)){
+        return false;
+    }
+	var dsContents = '';
+	var colInfo = split(colInfos,"/ /");
+	Create("Dataset",dataSetId);
+	
+	dsContents = '<Contents>';
+	for(var i=0; i<colInfo.length; i++ ) {
+		var prop = split(colInfo[i],"[,]");
+		dsContents += '<colinfo id="'+prop[0]+'" size="'+prop[1]+'" type="'+prop[2]+'"/>';
+	}
+	dsContents += '</Contents>';
+	
+	object(dataSetId).Contents = dsContents;
+	return true;
+}
+
+/*===============================================================
+* FUNCTION NAME     : gfn_CallBack
+* FUNCTION DESC 	: Transaction 호출 후 CallBack Function
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+===============================================================*/
+function gfn_CallBack(srvID,ErrorCode,ErrorMsg)
+{
+    
+	SetWaitCursor(false);
+	
+	
+	/*
+	// Session TimeOut
+	if(GV_EXITFLAG == "SESSIONOUT") {
+		return;
+	}
+    
+	// Http Error
+	if(GV_HTTPCODE.length() > 0)
+	{
+	
+		var arrErrorList = split(GV_HTTPCODE,chr(30));
+		ErrorCode = toNumber(arrErrorList[0]);
+		ErrorMsg = arrErrorList[1];
+		
+		ErrorMsg = replace(ErrorMsg,toString(ErrorCode) + ":","");	
+		if((ErrorCode == -2085613056) || (ErrorCode == -2085605317)) {
+			ErrorMsg += "\n\n동일한 현상이 발생할 경우, 시스템 관리자에게 연락하시기 바랍니다.";
+		} else if((ErrorCode == -2085601264) || (ErrorCode == -2085613056)) {
+			//ErrorMsg = replace(ErrorMsg,'해당경로에 파일을 찾을수 없습니다','네트워크 연결에 실패 하였습니다');
+			//ErrorMsg += "\n\n동일한 현상이 발생할 경우, 시스템 관리자에게 연락하시기 바랍니다.";
+			ErrorCode = 0;
+		}
+	}
+
+	ErrorCode = decode(ErrorCode,"","0",null,"0",ErrorCode);
+	
+	//세션아웃
+	if(ErrorCode == 302){
+	    alert("세션이 종료되었습니다.\n로그인 화면으로 이동합니다.");
+	    GV_EXITFLAG = "LOGOUT";
+		
+		//SetReg("OnlyOne","False");
+
+		var exePath = replace(AliasToRealPath("%TOBE%") + "MiPlatform320\\MiPlatform320.exe","\\","\\\\");
+		// PID
+		if(GV_SERVICE == "L") {
+			ExecProc(exePath,"-k 'MINISTOP' -d 'Win32' -v '3.2' " + " -x '" + global.startxml + "'");
+		} else {
+			//ExecProc(exePath,"-k 'MINISTOP' -d 'Win32' -v '3.2' ");
+			ExecProc(exePath,"-k 'MINISTOP' -d 'Win32' -v '3.2' " + " -x '" + global.startxml + "'");
+		}
+		Exit();
+		return;
+	}
+	if(ErrorCode < 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	} else {
+		gfn_SetStatusMsg(ErrorMsg);
+	}
+	*/
+	ErrorCode = decode(ErrorCode,"","0",null,"0",ErrorCode);
+	var arrSrvId = split(srvID,chr(29));
+	if(ErrorCode < 0) {
+	    //에러 공통 팝업
+	    //에러 공통 팝업
+	    //ALERT(GV_FORMID);
+	    //alert(gv_formid);
+	    if (gv_formid == "dis04_s01" || gv_formid == "dis04_s01_simul" || gv_formid == "dis08_s01" || gv_formid == "dis03_s04"|| gv_formid == "lev02_s29" || gv_formid == "lev02_s32" || gv_formid == "lev16_r01" || gv_formid == "lev16_r08" ){
+			null;
+				/*
+				if (left(ErrorMsg,9) == "ORA-20100")
+				{
+					//ALERT("분배 자료가 없습니다.\n분배 자료 확인 하십시오");
+				} ELSE if (left(ErrorMsg,9) == "ORA-20101") {
+					// 분배 오류시 메세지 안보여줌
+				}
+				*/
+		}	else
+		{
+			gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		}
+	} else {
+	    if(arrSrvId[0] != "LogInfo"){
+		    gfn_SetStatusMsg(ErrorMsg);
+			//정상 처리시에는 변경 로그를 저장한다.
+			// 저장할지 체크를 해야됨.
+			//trace("-gv_chklogSave->" + gv_chklogSave);
+			if (gv_chklogSave == "1") {
+				//alert("!! 저장 합니다 !!");
+				gfn_dsValidateSave();
+			}
+		}
+		//SMS발송 시. 
+		//bra04_r07에서 호출한 다이알로그 env06_r01에서 사용한다.
+		if (srvID == "sms_send_save") {	
+			alert("전송하였습니다.");
+		}
+		else if (srvID == "svcSendKakao") {	
+			alert("전송하였습니다.");
+			gds_kakao.ClearData();
+		}
+	}		
+	if(arrSrvId.length() > 1) {
+		var ExprCall = arrSrvId[1] + '(arrSrvId[0], ErrorCode, ErrorMsg)';
+		eval(ExprCall);
+		
+		if(length(frame_top.sta_ip.Text) > 7)
+		{
+			gfn_OnEvent();
+		}
+	}
+    if(srvId != "LogInfo"){
+		co_HideWaitMsg();
+	}
+
+}
+
+
+
+/*===============================================================
+* FUNCTION NAME     : gfn_CallBack
+* FUNCTION DESC 	: Transaction 호출 후 CallBack Function
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+===============================================================*/
+function gfn_CallBack2(srvID,ErrorCode,ErrorMsg)
+{
+    
+	//SetWaitCursor(false);
+	
+	
+	/*
+	// Session TimeOut
+	if(GV_EXITFLAG == "SESSIONOUT") {
+		return;
+	}
+    
+	// Http Error
+	if(GV_HTTPCODE.length() > 0)
+	{
+	
+		var arrErrorList = split(GV_HTTPCODE,chr(30));
+		ErrorCode = toNumber(arrErrorList[0]);
+		ErrorMsg = arrErrorList[1];
+		
+		ErrorMsg = replace(ErrorMsg,toString(ErrorCode) + ":","");	
+		if((ErrorCode == -2085613056) || (ErrorCode == -2085605317)) {
+			ErrorMsg += "\n\n동일한 현상이 발생할 경우, 시스템 관리자에게 연락하시기 바랍니다.";
+		} else if((ErrorCode == -2085601264) || (ErrorCode == -2085613056)) {
+			//ErrorMsg = replace(ErrorMsg,'해당경로에 파일을 찾을수 없습니다','네트워크 연결에 실패 하였습니다');
+			//ErrorMsg += "\n\n동일한 현상이 발생할 경우, 시스템 관리자에게 연락하시기 바랍니다.";
+			ErrorCode = 0;
+		}
+	}
+
+	ErrorCode = decode(ErrorCode,"","0",null,"0",ErrorCode);
+	
+	//세션아웃
+	if(ErrorCode == 302){
+	    alert("세션이 종료되었습니다.\n로그인 화면으로 이동합니다.");
+	    GV_EXITFLAG = "LOGOUT";
+		
+		//SetReg("OnlyOne","False");
+
+		var exePath = replace(AliasToRealPath("%TOBE%") + "MiPlatform320\\MiPlatform320.exe","\\","\\\\");
+		// PID
+		if(GV_SERVICE == "L") {
+			ExecProc(exePath,"-k 'MINISTOP' -d 'Win32' -v '3.2' " + " -x '" + global.startxml + "'");
+		} else {
+			//ExecProc(exePath,"-k 'MINISTOP' -d 'Win32' -v '3.2' ");
+			ExecProc(exePath,"-k 'MINISTOP' -d 'Win32' -v '3.2' " + " -x '" + global.startxml + "'");
+		}
+		Exit();
+		return;
+	}
+	if(ErrorCode < 0) {
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	} else {
+		gfn_SetStatusMsg(ErrorMsg);
+	}
+	*/
+	ErrorCode = decode(ErrorCode,"","0",null,"0",ErrorCode);
+	var arrSrvId = split(srvID,chr(29));
+	if(ErrorCode < 0) {
+	    //에러 공통 팝업
+	    //에러 공통 팝업
+	    //ALERT(GV_FORMID);
+	    //alert(gv_formid);
+	    if (gv_formid == "dis04_s01" || gv_formid == "dis04_s01_simul" || gv_formid == "dis08_s01" || gv_formid == "dis03_s04"  ||  gv_formid == "lev02_s29"  ||  gv_formid == "lev02_s32" || gv_formid == "lev16_r01" || gv_formid == "lev16_r08" ){
+			null;
+				/*
+				if (left(ErrorMsg,9) == "ORA-20100")
+				{
+					//ALERT("분배 자료가 없습니다.\n분배 자료 확인 하십시오");
+				} ELSE if (left(ErrorMsg,9) == "ORA-20101") {
+					// 분배 오류시 메세지 안보여줌
+				}
+				*/
+		}	else
+		{
+			gfn_SetErrorPop(ErrorCode,ErrorMsg);
+		}
+	} else {
+	    if(arrSrvId[0] != "LogInfo"){
+		    gfn_SetStatusMsg(ErrorMsg);
+			//정상 처리시에는 변경 로그를 저장한다.
+			// 저장할지 체크를 해야됨.
+			//trace("-gv_chklogSave->" + gv_chklogSave);
+			if (gv_chklogSave == "1") {
+				//alert("!! 저장 합니다 !!");
+				gfn_dsValidateSave();
+			}
+		}
+		//SMS발송 시. 
+		//bra04_r07에서 호출한 다이알로그 env06_r01에서 사용한다.
+		if (srvID == "sms_send_save") {	
+			alert("전송하였습니다.");
+		}
+	}		
+	if(arrSrvId.length() > 1) {
+		var ExprCall = arrSrvId[1] + '(arrSrvId[0], ErrorCode, ErrorMsg)';
+		eval(ExprCall);
+		
+		if(length(frame_top.sta_ip.Text) > 7)
+		{
+			if(gds_sessioninfo.GetColumn(0, "DEPT_CD") != "120030000")
+			{
+				gfn_OnEvent();
+			}
+		}
+	}
+    if(srvId != "LogInfo"){
+		//co_HideWaitMsg();
+	}
+
+}
+
+/*====================================================================
+* FUNCTION 명       : gfn_SetMsgPop
+* FUNCTION 기능설명 : Message 창 보여주기
+* @param 
+*				strMessage  	: Message
+* @return
+			return value
+=====================================================================*/
+function gfn_SetErrorPop(strCode,strMessage)
+{
+	var objLastform = AllWindows[AllWindows.Count-1];
+	var arg  = "fa_Code=" + quote(strCode);
+		arg += " fa_Msg=" + quote(strMessage);
+	objLastform.Dialog("main::ComMsg.xml",arg,380,140,true,-1,-1);
+}
+
+/*====================================================================
+* FUNCTION 명       : gfn_SetWatch
+* FUNCTION 기능설명 : 로그인,로그아웃,메뉴실행,메뉴종료등의 로그를 관리
+* @param            : strCond    작업 상태
+                      1 : login
+                      2 : logout
+                      3 : menuin
+                      4 : menuexit
+                      strMenuID  메뉴 id
+                      'login' : login
+                      'logout' : logout
+                      menuid : 메뉴id
+                      strIP     사용자의 IP
+*				
+* @return
+			return value
+=====================================================================*/
+function gfn_SetWatch(strCond,strMenuID,strIP)
+{
+	
+}
+/****************************************************************
+* FUNCTION NAME     : gfn_LoadForm
+* FUNCTION DESC		: Form LoadCompleted 필수 함수
+* @param 
+*				obj        	: ChindWindow
+* @return
+*****************************************************************/
+var gv_orgPopupWindowActivate;
+var gv_orgPopupWindowUnload;
+
+function gfn_LoadForm(obj)
+{
+	// M사의 내용은 삭제함..
+
+//    alert("Form -> " + obj.GetType() + "," + obj.id + "," + GV_FORMID + ":");
+
+//	alert("type -> " + obj.GetType());
+    //alert("div_form_FormID -> " + parent.id);
+    //alert("gv_formid -> " + gv_formid);
+    parent.id = gv_formid;
+    //alert("div_form_FormID -> " + parent.id );
+	var nRow;
+	if(obj.GetType() == "Form") {	
+		gfn_SetAuthButton(obj.id);
+		nRow = gds_menu.FindRow("MENU_ID",obj.id,0,-1);
+	} else{
+		gfn_SetAuthButton(GV_FORMID);
+		obj.OnUnloadCompleted = "gfn_PopupOnUnloadCompleted";
+		//사용자 프로그램 실행 정보 저장
+		gfn_LogInfo(parent.id,"3");
+		nRow = gds_menu.FindRow("MENU_ID",GV_FORMID,0,-1);
+		
+		var bgcolor = "user3";
+		var color = "default";
+		gfn_SetObjectDisabledColor(obj.Components, "", bgcolor, color);
+
+		
+	}
+
+	var Collect = obj.Components;
+	var Cnt = obj.Components.count();
+
+	var strType;
+	var strKeyEvent;
+	for (var i=0 ; i < Cnt ; i++ ) {
+		strType = toUpper(Collect[i].GetType());
+		// alert("type : "+strType);
+		switch(strType) {
+			case "EDIT" 	:
+				break;
+			case "MASKEDIT" :
+				break;
+			case "COMBO" 	:
+				break;
+			case "CALENDAR" :
+				break;
+			case "RADIO" 	:
+				break;
+			case "CHECKBOX" :
+				break;
+			case "BUTTON"	:
+				//alert(toupper(Collect[i].id));
+				//저장/출력 권한 가져오기
+				var bWrite = gds_menu.GetColumn(nRow,"AUTH_WRITE");
+				var bPrint = gds_menu.GetColumn(nRow,"AUTH_PRINT");
+				if(mid(toupper(Collect[i].id),length(Collect[i].id)-3 ,3) == "EDT" and bWrite <> "1")
+				{ 
+					Collect[i].Enable = false;
+				} 
+				if(mid(toupper(Collect[i].id),length(Collect[i].id)-3 ,3) == "PRT" and bPrint <> "1")
+				{ 
+					Collect[i].Enable = false;
+				}
+				// Button1.Visible = false;
+				// Button0.Enable = false;
+				break;
+			case "GRID"		:
+				strKeyEvent = Collect[i].OnKeyDown;
+//				alert("Grid-key--> "+strKeyEvent);
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				strKeyEvent = Collect[i].OnHeadClick;
+//				alert("Grid-head--> "+strKeyEvent);
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnHeadClick = "grd_Grid_OnHeadClick";
+//					alert("Grid_OnHeadClick---> "+strType);
+				}
+				break;
+			case "TAB"		:
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocusTabDiv";
+				}
+				gfn_CatchComponents(Collect[i]);
+				break;
+			case "DIV"		:
+				//if(length(obj.url) == 0) {
+					gfn_CatchComponents(Collect[i]);
+				//}
+				break;
+			default :
+		}
+	}
+	
+	if(obj.GetType() == "Form") {			
+		// 버튼을 세팅함
+		gfn_SetAuthButton(obj.id);
+		
+		obj.AddVariable("gfv_PopFormID",obj.id);
+		
+		//프로그램 시작시시 처리되는 함수 선언
+		gv_orgPopupWindowActivate = obj.OnActivate;
+		obj.OnActivate = "gfn_PopupOnActivate";
+		
+		//프로그램 종료시 처리되는 함수 선언
+		gv_orgPopupWindowUnload = obj.OnUnloadCompleted;
+		obj.OnUnloadCompleted = "gfn_PopupOnUnloadCompleted";
+		
+		
+		GV_ACTIVEWIN = obj.id;
+		
+	} else 	{
+		// 공통 팝업 - 아이콘이 있는 팝업
+			gfn_CatchComponents(obj);
+			}
+
+	//obj.setFocus();
+}
+
+/*====================================================================
+* FUNCTION NAME     : gfn_SetRoleButton
+* FUNCTION DESC 	: S용자별 버튼 권한을 설정한다
+* @param 
+*				
+* @return
+=====================================================================*/
+//function gfn_SetAuthButton(FormObj) {
+function gfn_SetAuthButton(Form_id) {
+	
+	// 프로그램의 버튼 사용 속성에 의해서  버튼을 세팅
+
+	// FormObj.id gds_menu찾아서 버튼 속성 가져온다.
+	//alert("-->  " +form_id);
+	var nRow = gds_menu.FindRow("MENU_ID",form_id,0,-1);
+	//alert("idx : " + nRow);
+	var bNew = gds_menu.GetColumn(nRow,"NEW_BTN");
+	var bSearch = gds_menu.GetColumn(nRow,"SEARCH_BTN");
+	var bSave = gds_menu.GetColumn(nRow,"SAVE_BTN");
+	var bAdd = gds_menu.GetColumn(nRow,"ADD_BTN");
+	var bDelete = gds_menu.GetColumn(nRow,"DELETE_BTN");
+	var bPrint = gds_menu.GetColumn(nRow,"PRINT_BTN");
+	var bClose = gds_menu.GetColumn(nRow,"CLOSE_BTN");
+	var bEtc1 = gds_menu.GetColumn(nRow,"ETC1_BTN");
+	var bEtc2 = gds_menu.GetColumn(nRow,"ETC2_BTN");
+	var bEtc3 = gds_menu.GetColumn(nRow,"ETC3_BTN");
+
+	If(bNew == "0" or bNew == "" ) {bNew = "H";} else { bNew = "E"; }
+	If(bSearch == "0" or bSearch == "" ) {bSearch = "H";} else { bSearch = "E"; }
+	If(bSave == "0" or bSave == "" ) {bSave = "H";} else { bSave = "E"; }
+	If(bAdd == "0" or bAdd == "" ) {bAdd = "H";} else { bAdd = "E"; }
+	If(bDelete == "0" or bDelete == "" ) {bDelete = "H";} else { bDelete = "E"; }
+	If(bPrint == "0" or bPrint == "" ) {bPrint = "H";} else { bPrint = "E"; }
+	If(bClose == "0" or bClose == "" ) {bClose = "H";} else { bClose = "E"; }
+	If(bEtc1 == "0" or bEtc1 == "" ) {bEtc1 = "H";} else { bEtc1 = "E"; }
+	If(bEtc2 == "0" or bEtc2 == "" ) {bEtc2 = "H";} else { bEtc2 = "E"; }
+	If(bEtc3 == "0" or bEtc3 == "" ) {bEtc3 = "H";} else { bEtc3 = "E"; }
+	
+	//alert(bNew);
+	// 사용가능한 버튼을 세팅한다.
+	arrList = [bNew,bSearch,bSave,bAdd,bDelete,bPrint,bClose];
+    gfn_SetButton(arrList);
+	
+	
+//var fv_arrButtonCode = ["NEW","SEARCH","SAVE","ADD","DELETE","PRINT","CLOSE"];
+//var fv_arrButton = ["신규","조회","저장","추가","삭제","출력","닫기"];
+
+	// 사용자의 버튼 권한에 의해서 버튼을 세팅한다.
+	var bWrite = gds_menu.GetColumn(nRow,"AUTH_WRITE");
+	var bPrint = gds_menu.GetColumn(nRow,"AUTH_PRINT");
+
+	// 쓰기 O(1) , 출력 O(1)  _edt o, _prn o
+	IF(bWrite == "1" and bPrint == "1"){
+		// 신규,조회,저장,추가,삭제,출력,닫기
+		arrList = ["E","E","E","E","E","E","E"];
+	// 쓰기 O(1) , 출력 X(0)  _edt o, _prn x
+	} else if(bWrite == "1" and bPrint == "0"){
+		// 신규,조회,저장,추가,삭제,닫기
+		arrList = ["E","E","E","E","E","D","E"];
+	// 쓰기 X(0) , 출력 O(1)  _edt x, _prn o
+	} else if(bWrite == "0" and bPrint == "1"){
+		// 조회,출력,닫기
+		arrList = ["D","E","D","D","D","E","E"];
+	// 쓰기 X(0) , 출력 X(0)  _edt x, _prn x
+	} else if(bWrite == "0" and bPrint == "0"){
+		// 조회,출력,닫기
+		arrList = ["D","E","D","D","D","D","E"];
+	}
+	gfn_SetButton(arrList);
+
+}
+
+/*===============================================================
+* FUNCTION NAME     : gfn_SyncCall
+* FUNCTION DESC 	: Transaction Sync Call
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+*				logtraceDsList 	: log trace Dataset List
+===============================================================*/
+function gfn_SyncCall(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+	
+    if(srvId != "LogInfo"){
+	    gfn_SetStatusMsg("","",false);
+		co_ShowWaitMsg();
+	}
+	//gfn_SetMoreMsg("");
+
+	var strNewUrl;
+	
+	GV_HTTPCODE = "";
+	var ip = ext_GetIPAddress();
+	
+	strNewUrl = "DBsrv::";
+	
+	if(indexOf(ip, "192.168.1.") > -1 || indexOf(ip, "192.168.252.") > -1)
+	{
+		strNewUrl = "DBsrvIn::";
+	}
+	
+	strNewUrl += url;
+	SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+	global.http.sync = true;
+	gv_chklogSave = logtraceChk;
+    if(srvId != "LogInfo"){
+		//gv_logtraceChk = logtraceChk;
+		gv_test = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			//alert(objid);
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"");
+	global.http.sync = false;
+	
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	gv_chklogSave = logtraceChk;
+	gfn_CallBack(srvID,ErrorCode,ErrorMsg);  // 변경 로그를 기록한다.
+}
+
+/*===============================================================
+* FUNCTION NAME     : gfn_SyncCall
+* FUNCTION DESC 	: Transaction Sync Call
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+*				logtraceDsList 	: log trace Dataset List
+===============================================================*/
+function gfn_SyncCall2(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+    
+    if(srvId != "LogInfo"){
+	    gfn_SetStatusMsg("","",false);
+		co_ShowWaitMsg();
+	}
+	//gfn_SetMoreMsg("");
+
+	var strNewUrl;
+	
+	GV_HTTPCODE = "";
+	//strNewUrl = "DBsrv::";
+	strNewUrl = gv_SimiURL;
+	strNewUrl += url;
+	SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+	global.http.sync = true;
+	gv_chklogSave = logtraceChk;
+    if(srvId != "LogInfo"){
+		//gv_logtraceChk = logtraceChk;
+		gv_test = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			//alert(objid);
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"");
+	global.http.sync = false;
+	
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	gv_chklogSave = logtraceChk;
+	gfn_CallBack2(srvID,ErrorCode,ErrorMsg);  // 변경 로그를 기록한다.
+}
+
+/*===============================================================
+* FUNCTION NAME     : gfn_SyncCall
+* FUNCTION DESC 	: Transaction Sync Call
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+*				logtraceDsList 	: log trace Dataset List
+===============================================================*/
+function gfn_SyncCall3(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+	
+    if(srvId != "LogInfo"){
+	    gfn_SetStatusMsg("","",false);
+		co_ShowWaitMsg();
+	}
+	//gfn_SetMoreMsg("");
+
+	var strNewUrl;
+	
+	GV_HTTPCODE = "";
+	var ip = ext_GetIPAddress();
+	
+	strNewUrl = "DBsrv1::";
+	
+	if(indexOf(ip, "192.168.1.") > -1 || indexOf(ip, "192.168.252.") > -1)
+	{
+		strNewUrl = "DBsrv1In::";
+	}
+	
+	strNewUrl += url;
+	SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+	global.http.sync = true;
+	gv_chklogSave = logtraceChk;
+    if(srvId != "LogInfo"){
+		//gv_logtraceChk = logtraceChk;
+		gv_test = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			//alert(objid);
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"");
+	global.http.sync = false;
+	
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	gv_chklogSave = logtraceChk;
+	gfn_CallBack(srvID,ErrorCode,ErrorMsg);  // 변경 로그를 기록한다.
+}
+
+
+/*===============================================================
+* FUNCTION NAME     : gfn_AsyncCall
+* FUNCTION DESC 	: Transaction Async Call
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+===============================================================*/
+function gfn_AsyncCall(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+    
+    if(srvId != "Loginfo"){
+	    gfn_SetStatusMsg("","",false);
+		co_ShowWaitMsg();
+	}
+	//gfn_SetStatusMsg("","",false);
+	//gfn_SetMoreMsg("");
+
+
+	var strNewUrl;
+
+	strNewUrl = "DBsrv::";
+	
+	if(indexOf(ip, "192.168.1.") > -1 || indexOf(ip, "192.168.252.") > -1)
+	{
+		strNewUrl = "DBsrvIn::";
+	}
+
+	strNewUrl += url;
+
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	global.http.sync = false;
+	
+	SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+    if(srvId != "Loginfo"){
+		gv_chklogSave = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"gfn_CallBack");
+				
+   //transaction(srvId,strNewUrl,
+	//			inDsList,outDsList,arg,"");				
+}
+
+
+/*===============================================================
+* FUNCTION NAME     : gfn_AsyncCall
+* FUNCTION DESC 	: Transaction Async Call
+* @param 
+*				srvId  		: Service id
+*				url  		: Server url
+*				inDsList  	: Input Dataset List
+*				outDsList  	: Output Dataset List
+*				arg  		: Argument
+*				CallBackFunc  	: CallBack
+===============================================================*/
+function gfn_AsyncCall2(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+    
+    if(srvId != "Loginfo"){
+	    gfn_SetStatusMsg("","",false);
+		co_ShowWaitMsg();
+	}
+	//gfn_SetStatusMsg("","",false);
+	//gfn_SetMoreMsg("");
+
+
+	var strNewUrl;
+
+	//strNewUrl = "DBsrv::";
+	strNewUrl = gv_SimiURL;
+
+	strNewUrl += url;
+
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	global.http.sync = false;
+	
+	SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+    if(srvId != "Loginfo"){
+		gv_chklogSave = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"gfn_CallBack2");
+				
+   //transaction(srvId,strNewUrl,
+	//			inDsList,outDsList,arg,"");				
+}
+
+function gfn_AsyncCall3(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+    
+    if(srvId != "Loginfo"){
+	    gfn_SetStatusMsg("","",false);
+		co_ShowWaitMsg();
+	}
+	//gfn_SetStatusMsg("","",false);
+	//gfn_SetMoreMsg("");
+
+
+	var strNewUrl;
+
+	var ip = ext_GetIPAddress();
+	
+	strNewUrl = "DBsrv1::";
+	
+	if(indexOf(ip, "192.168.1.") > -1 || indexOf(ip, "192.168.252.") > -1)
+	{
+		strNewUrl = "DBsrv1In::";
+	}
+
+	strNewUrl += url;
+
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	global.http.sync = false;
+	
+	SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+    if(srvId != "Loginfo"){
+		gv_chklogSave = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"gfn_CallBack");
+				
+   //transaction(srvId,strNewUrl,
+	//			inDsList,outDsList,arg,"");				
+}
+
+function gfn_GroupAsyncCall(srvId,url,inDsList,outDsList,arg,CallBackFunc,logtraceChk,objid)
+{
+	gfn_OffEvent();
+    
+    if(srvId != "Loginfo"){
+	    gfn_SetStatusMsg("","",false);
+		//co_ShowWaitMsg();
+	}
+	//gfn_SetStatusMsg("","",false);
+	//gfn_SetMoreMsg("");
+
+
+	var strNewUrl;
+
+	strNewUrl = "DBsrv::";
+	
+	if(indexOf(ip, "192.168.1.") > -1 || indexOf(ip, "192.168.252.") > -1)
+	{
+		strNewUrl = "DBsrvIn::";
+	}
+
+	strNewUrl += url;
+
+	srvId = srvId + chr(29) + CallBackFunc;
+
+
+	global.http.sync = false;
+	
+	//SetWaitCursor(true);
+	
+	inDsList = inDsList + " GOV=gds_User";
+	
+    if(srvId != "Loginfo"){
+		gv_chklogSave = logtraceChk;
+		if (logtraceChk == gv_TraceLog) {
+			gfn_dsValidateChk(inDsList,objid); // 변경된 데이타를 임시 데이타셋에 보관한다.
+		}
+	}
+	
+	transaction(srvId,strNewUrl,
+				inDsList,outDsList,arg,"gfn_CallBack");
+				
+   //transaction(srvId,strNewUrl,
+	//			inDsList,outDsList,arg,"");				
+}
+
+
+/****************************************************************
+* FUNCTION NAME     : gfn_CatchComponents
+* FUNCTION DESC		: enter시 next로 focus 이동
+*****************************************************************/
+function gfn_CatchComponents(obj)
+{
+	var Collect = obj.Components;
+	var Cnt = obj.Components.count();
+
+	var strType;
+	var strKeyEvent;
+	for (var i=0 ; i < Cnt ; i++ ) {
+		strType = toUpper(Collect[i].GetType());
+		switch(strType) {
+			case "EDIT" 	:
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "MASKEDIT" :
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "COMBO" 	:
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "CALENDAR" :
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "RADIO" 	:
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "CHECKBOX" :
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "BUTTON"	:
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				break;
+			case "GRID"		:
+				//trace("--->" + Collect[i].id);
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocus";
+				}
+				// 이광노 추가 10.1.12
+				strKeyEvent = Collect[i].OnHeadClick;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnHeadClick = "grd_Grid_OnHeadClick";
+				}
+
+				break;
+			case "TAB"		:
+				strKeyEvent = Collect[i].OnKeyDown;
+				if(strKeyEvent.length() == 0) {
+					Collect[i].OnKeyDown = "gfn_NextFocusTabDiv";
+				}
+				break;
+		    case "TABPAGE"  :	
+			    gfn_CatchComponents(Collect[i]);	
+			    break;
+			case "DIV"		:
+				gfn_CatchComponents(Collect[i]);
+				break;
+			default :
+		}
+	}
+}
+
+/*====================================================================
+* FUNCTION NAME     : gfn_NextFocusTabDiv
+* FUNCTION DESC 	: Tab,Division인 경우 NextComponent Focus 처리
+* @param 
+=====================================================================*/
+function gfn_NextFocusTabDiv(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {
+		if(obj.GetType() == "Tab") {
+			var objTabPage = obj.GetItem(obj.TabIndex);
+			objTabPage.setFocus();
+		}
+	}
+}
+
+/****************************************************************
+* FUNCTION NAME     : gfn_PopupOnActivate
+* FUNCTION DESC		: Form LoadCompleted 필수 함수에서 생성 Event
+*					  Popup Form Activate시
+* @param 
+*				obj        	: ChindWindow
+* @return
+*****************************************************************/
+function gfn_PopupOnActivate(obj)
+{
+	if(gv_orgPopupWindowActivate.length() > 0) {
+		eval(gv_orgPopupWindowActivate + "(obj)");
+	}
+
+	GV_ACTIVEWIN = obj.id;
+	//global.FrameLeft.fn_ExcuteFindWindow();
+}
+
+
+/****************************************************************
+* FUNCTION NAME     : gfn_PopupOnUnloadCompleted
+* FUNCTION DESC		: Form LoadCompleted 필수 함수에서 생성 Event
+*					  Popup Form Unload시
+* @param 
+*				obj        	: ChindWindow
+* @return
+*****************************************************************/
+function gfn_PopupOnUnloadCompleted(obj)
+{
+	var bRtn = true;
+	if(gv_orgPopupWindowUnload.length() > 0) {
+		bRtn = eval(gv_orgPopupWindowUnload + "(obj)");
+	}
+
+	if(bRtn == false) {
+		return false;
+	} else {
+		gfn_SetStatusMsg("","",false);
+	}
+	
+	if(GV_MDIFG == "Y") {
+		var strActivate = parent.OnActivate;
+		if(strActivate.length() > 0) {
+			eval("parent." + strActivate + "(parent)");
+		}
+	}	
+	//alert("close obj.id-->"+parent.id);
+	//사용자 프로그램 종료 정보 저장
+	gfn_LogInfo(parent.id,"4");
+
+
+}
+
+
+/****************************************************************
+* FUNCTION NAME     : gfn_PubCode
+* FUNCTION DESC		: 공통코드를 가져오는 함후
+* @param 
+*      RcvDS         : 리턴받는 DataSet
+*      SelectType    : 보여주는 형태
+                       "1" : 명
+                       "2" : 명, all(전체)
+                       "3" : 코드+명
+                       "4" : 코드+명, all
+*      high_cd       : 공통코드 (그룹)
+* @return
+*****************************************************************/
+function gfn_PubCode(RcvDS,SelectType,high_cd,CODE_ETC)
+{
+	var eventID;
+	gfn_CreateDataSet("ds_pubcode","HIGH_CD,5,STRING CODE_ETC,20,STRING");
+	ds_pubcode.ClearData();
+	var AROW = ds_pubcode.AddRow();
+	ds_pubcode.SetColumn(AROW,"HIGH_CD",high_cd);
+	ds_pubcode.SetColumn(AROW,"CODE_ETC",CODE_ETC);
+	if(SelectType == "1"){
+		eventID = "pubcode_select1";
+	} else if(SelectType == "2"){
+		eventID = "pubcode_select2";
+	} else if(SelectType == "3"){
+		eventID = "pubcode_select3";
+	} else if(SelectType == "4"){
+		eventID = "pubcode_select4";
+	} else {
+		eventID = "pubcode_select1";
+	}
+	//alert(eventID+ " : " + RcvDS);
+    gfn_syncCall("svcSearch_init","KOMCA?SYSID=PATHFINDER&MENUID=1000006003&EVENTID="+eventID,"S=ds_pubcode",RcvDS+"=SEL1","","gfn_CallBack");
+}
+/****************************************************************
+* FUNCTION NAME     : gfn_workplaceCode
+* FUNCTION DESC		: 사업장코드(콤보)를 가져오는 함후
+* @param 
+*      RcvDS         : 리턴받는 DataSet
+*
+* @return
+*****************************************************************/
+function gfn_workplaceCode(RcvDS,gbn)
+{
+    if(gbn == 1 || gbn == null || gbn == ""){
+        gfn_syncCall("svcSearch_init","KOMCA?SYSID=PATHFINDER&MENUID=1000002003009&EVENTID=com01_r02","",RcvDS+"=SEL1","","gfn_CallBack");
+    }else if(gbn == 2){
+        gfn_syncCall("svcSearch_init","KOMCA?SYSID=PATHFINDER&MENUID=1000002003009&EVENTID=com01_r02_all","",RcvDS+"=SEL1","","gfn_CallBack");
+    }
+}
+/*====================================================================
+* FUNCTION NAME     : gfn_NextFocus
+* FUNCTION DESC 	: NextComponent Focus 처리
+* @param 
+=====================================================================*/
+function gfn_NextFocus(obj,nChar,bShift,bCtrl,bAlt,LLParam,HLParam)
+{
+	if(nChar == 13) {
+		if(obj.GetType() == "Grid") {
+			if(obj.Editable == false) {
+				var objNext = GetNextComponent(true);
+				if((objNext != null) && (objNext != "")) {
+					objNext.SetFocus();
+				}
+				return;
+			}
+			
+			var bRtn = obj.MoveToNextCell();
+			
+			if(!bRtn) {
+
+				// 마지막 row일 경우 처음으로 이동시 아래루틴
+				/*
+				var nCol = -1;
+				for(var i=0;i<obj.GetColCount();i++) {
+					if(toUpper(obj.GetCellProp("Body",i,"Edit")) != "NONE") {
+						nCol = i;
+						break;
+					}
+				}
+				if(nCol >= 0) {
+					var objDs = object(obj.BindDataset);
+					objDs.row = 0;
+					obj.SetCellPos(nCol);
+				}
+				*/
+				var nCol = -1;
+				for(var i=0;i<obj.GetColCount();i++) {
+					if(toUpper(obj.GetCellProp("Body",i,"Edit")) != "NONE") {
+						nCol = i;
+						break;
+					}
+				}
+				if(nCol >= 0) {
+					var objDs = object(obj.BindDataset);
+					objDs.AddRow();
+					//fn_addRow(obj,objDs);
+		            obj.SetCellPos(1);
+		            obj.SetFocus();   
+				}
+			}			
+		} else if(obj.GetType() == "Button") {
+			obj.Click();
+			
+		} else {
+			//
+			//trace("-NEXTFOCUS->"+obj.id);
+			var objNext = GetNextComponent(true);
+			if(objNext != null) {
+				objNext.SetFocus();
+			}
+		}
+	}
+}
+
+function gfn_LogInfo(menu_id,gbn)
+{
+		//사용자 프로그램 실행 정보 저장
+		//gbn
+		// 1: login
+		// 2: loout
+		// 3: p-run
+		// 4: p-exit
+		// 5: b_search
+		// 6: b_save
+		// 7: b_delete
+		// 8: b_insert
+		// 9: b_print
+		// 10: b_excel
+		var menu_nm = "";
+		
+		if (gbn == "1")
+		{
+			menu_id = "Login";
+			menu_nm = "Login";
+		} else if (gbn == "2")
+		{
+			menu_id = "Logout";
+			menu_nm = "Logout";
+		} else
+		{
+			var nRow = gds_Menu.FindRow("MENU_ID",menu_id);
+			if (nRow >= 0)
+			{
+				menu_nm = gds_Menu.GetColumn(nRow,"MENU_NM");
+			}
+		}
+		gds_loginfo.DeleteAll();
+		VAR AROW = gds_loginfo.AddRow();
+		gds_loginfo.SetColumn(AROW,"USER_ID",GV_USER_ID);
+		gds_loginfo.SetColumn(AROW,"MENU_CD",menu_id);
+		gds_loginfo.SetColumn(AROW,"MENU_NM",MENU_NM);
+		gds_loginfo.SetColumn(AROW,"GBN",gbn);
+		gds_loginfo.SetColumn(AROW,"IPADDRESS",ext_GetIPAddress());
+		
+		gds_loginfo.SetColumn(AROW,"COMPUTER_NM",ext_GetHostName());
+		//alert(" -> " + MENU_ID + "(" + MENU_NM + ")");
+		gfn_syncCall("LogInfo","KOMCA?SYSID=PATHFINDER&MENUID=1000006001007&EVENTID=loginfo_save","S=gds_loginfo","","","gfn_CallBack");
+}
+function gfn_fileUpSelect(fileSize,fileObj,fileDialogObj,callback,multiFile,uploadDs){
+    fileDialogObj.Type = "OPEN";
+    if (!fileDialogObj.Open())
+	{
+		return false;   
+	}
+	
+	// 레코드를 추가한다.
+	//var row = dsUploadFile.AddRow();
+	//GDS_UPLOAD.Clear();
+	if(Lengthb(fileDialogObj.FileName) > 100){
+	    alert("첨부파일명 길이를 초과하였습니다.\n한글50자 영문100자 미만");
+	    return false;
+	}
+	fileObj.FileName = fileDialogObj.FilePath + "\\" + fileDialogObj.FileName;	 
+	fileObj.Open("rb"); 
+	var blobbuffer = fileObj.ReadBinary();
+//	var blobbuffer = File0.Read();
+	if(blobbuffer == "NULL")	
+	{ 
+		alert("null");
+	} else {
+//		alert("ok" + blobbuffer);
+	}
+	/*
+	if((fileSize*1024*1024) < fileObj.GetLength()){
+	    alert(fileSize+"MB 보다 작은 용량의 파일만 업로드 가능합니다");
+	    return;
+	}
+	*/
+	if(tonumber(fileSize) < tonumber(fileObj.GetLength())){
+	    alert(NumFormat(fileSize)+" byte("+Truncate(ToNumber(fileSize)/1024/1024,2)+"MB) 보다 작은 용량의 파일만 업로드 가능합니다");
+	    return false;
+	}
+	if(uploadDs == null || uploadDs == ""){	    
+	    var uploadDs2 = "GDS_UPLOAD";
+	    gfn_CreateDataSet(uploadDs2,"UPCONTENT,256,BLOB UPFILENAME,256,STRING UNIFILENAME,256,STRING FILESIZE,256,STRING FILEPATH,256,STRING FILESIZEKB,256,STRING");
+	    var row;
+	    if(multiFile == null || multiFile == ""){
+	        row = eval(uploadDs2+".AddRow()");
+	    }else{
+	        for(var i=uploadDs2.count; i<=multiFile;i++){
+	            eval(uploadDs2+".AddRow()");
+	        }
+	        row = multiFile;
+	    }
+	    //uploadDs2.SetColumn(row, "FILESIZEKB", round(fileObj.GetLength()/ 1024)+"KB");
+		eval(uploadDs2+".SetColumn("+row+", \"FILESIZE\", fileObj.GetLength())");		
+		eval(uploadDs2+".SetColumn("+row+", \"FILESIZEKB\", round(fileObj.GetLength()/1024)+\"KB\")");
+		fileObj.Close(); 		
+		
+		// 읽은 파일 내용을 dataset에 저장한다.
+		//dsUploadFile.SetColumn(row, "UPCONTENT", blobbuffer);
+		//dsUploadFile.SetColumn(row, "UPFILENAME", FileDialog0.FileName);
+		//uploadDs2.SetColumn(row, "UPCONTENT", blobbuffer);
+		//uploadDs2.SetColumn(row, "UPFILENAME", fileDialogObj.FileName);
+		//uploadDs2.SetColumn(row, "FILEPATH", fileDialogObj.FilePath);
+		eval(uploadDs2+".SetColumn("+row+", \"UPCONTENT\", blobbuffer)");
+		eval(uploadDs2+".SetColumn("+row+", \"UPFILENAME\", replace(fileDialogObj.FileName,\" \",\"\"))");
+		eval(uploadDs2+".SetColumn("+row+", \"FILEPATH\", fileDialogObj.FilePath)");
+	}else{
+	    gfn_CreateDataSet(uploadDs,"UPCONTENT,256,BLOB UPFILENAME,256,STRING UNIFILENAME,256,STRING FILESIZE,256,STRING FILEPATH,256,STRING FILESIZEKB,256,STRING");
+	    
+	    var row ;
+	    if(multiFile == null || multiFile == ""){
+	        row = eval(uploadDs+".AddRow()");
+	    }else{
+	        for(var i=eval(uploadDs+".count");i<=multiFile;i++){
+	            eval(uploadDs+".AddRow()");
+	        }
+	        row = multiFile;
+	    }
+	    
+	    eval(uploadDs+".SetColumn("+row+", \"FILESIZE\", fileObj.GetLength())");
+	    eval(uploadDs+".SetColumn("+row+", \"FILESIZEKB\", round(fileObj.GetLength()/1024)+\"KB\")");
+	    fileObj.Close();
+	    eval(uploadDs+".SetColumn("+row+", \"UPCONTENT\", blobbuffer)");
+		eval(uploadDs+".SetColumn("+row+", \"UPFILENAME\", replace(fileDialogObj.FileName,\" \",\"\"))");
+		eval(uploadDs+".SetColumn("+row+", \"FILEPATH\", fileDialogObj.FilePath)");
+	}
+	eval(callback+"("+quote(fileDialogObj.FilePath)+",\""+fileDialogObj.FileName+"\",\""+fileObj.GetLength()+"\")");	
+	return true;
+}
+
+function gfn_fileUpLoad(resultDataSet,callback,uploadDs){    
+	gfn_CreateDataSet(uploadDs,"UPCONTENT,256,BLOB UPFILENAME,256,STRING UNIFILENAME,256,STRING FILESIZE,256,STRING FILEPATH,256,STRING FILESIZEKB,256,STRING");
+	gfn_CreateDataSet(resultDataSet,"UPCONTENT,256,BLOB UPFILENAME,256,STRING PATH,256,STRING FILESIZE,256,STRING");
+	gfn_AsyncCall("fileup","UPLOAD?SYSID=PATHFINDER&MENUID=1000004008&EVENTID=fileupload","UP="+uploadDs,resultDataSet+"=CVT1","",callback);
+	eval(uploadDs+".DeleteAll()");
+}
+
+/*
+    fileorgnm 추가(서버파일명이 아닌 원본파일명으로 다운받기 위해)
+    miplatform은 overload, override 지원 안됨.
+    따라서 파라미터의 차이는 같은것은 왼쪽부터 다른것을 오른쪽으로 처리해야함
+*/
+function gfn_fileDownLoad(path,filename,fileObj,dialogObj,fileorgnm)
+{
+    var result = false;
+    GDS_DOWNLOAD.SetColumn(0,"PATH",path);
+	GDS_DOWNLOAD.SetColumn(0,"DOWNFILE",filename);
+    gfn_CreateDataSet("ds_fileDownLoad","PATH,256,STRING DOWNFILE,256,STRING CONTENT,256,STRING");	// 임시 dataset 생성
+    
+	gfn_SyncCall("find","DOWNLOAD?SYSID=PATHFINDER&MENUID=1007016002001&EVENTID=search","S=GDS_DOWNLOAD","ds_fileDownLoad=S","","CallBack");
+	
+	var blobbuffer = ds_fileDownLoad.getColumn(0, "CONTENT");
+	
+	if(blobbuffer == "NULL")
+	{
+	 	alert("File Content = NULL");
+	 	return result;
+	}
+    
+    dialogObj.Type = "SAVE";
+    dialogObj.FileName = filename;
+    
+    if (length(fileorgnm) > 0)
+    {
+		dialogObj.FileName = fileorgnm;
+	} else {
+		dialogObj.FileName = filename;
+	}
+    
+	if (!dialogObj.Open())
+	{
+		return result;
+	}
+	
+	fileObj.FileName=dialogObj.FilePath+"\\"+dialogObj.FileName;
+	fileObj.Open("w");
+	fileObj.WriteBinary(blobbuffer);
+	fileObj.Close();
+	result = true;
+    return result;
+}
+
+//그리드 포커스 주기
+function gfn_setGridFocus(obj, nRow, nCellId) {
+	var objDs = object(obj.BindDataset);
+	var nCellIdx = obj.GetBindCellIndex("body",nCellId);
+	objDs.RowPos = nRow;
+	obj.SetCellPos(nCellIdx);
+	obj.SetFocus();
+}
+
+var gv_rtnDate;
+var gv_rtnDFlag;
+var gv_objBindDs;
+var	gv_grdRow;
+var	gv_grdColId;
+var gv_objGrid;
+var gv_openChkCal = false;
+var gv_rtnMonth;
+var gv_openChkMon = false;
+var gv_creatDs = false;
+
+/*====================================================================
+* FUNCTION NAME     : gfn_SetCalendar
+* FUNCTION DESC 	: PopupDiv Calendar Set (공통)
+* @param 
+* obj			
+*			Grid Component ID
+*			nRow			Current Row
+*			nCell 		Selected Cell 
+* @return
+=====================================================================*/
+function gfn_SetCalendar(objGrd, nRow, nCell, chkFlg)
+{	
+	gv_objGrid = objGrd;
+	
+	if (chkFlg) 
+	{
+		gv_rtnDFlag = true;
+	}
+	else 
+	{
+		gv_rtnDFlag = false;
+	}
+	
+	var objBDs =  gv_objGrid.BindDataset;
+	gv_objBindDs = object(objBDS).id;
+	gv_grdRow = nRow;
+	gv_grdColId =  gv_objGrid.GetCellProp("Body",nCell, "ColId");
+	
+	var str_val = object(gv_objBindDs).GetColumn(nRow, gv_grdColId);
+	var arr_val =  gv_objGrid.GetCellRect(nRow,nCell);	
+	var div_x = ClientToScreenX(objGrd, arr_val[0]);
+	var div_y = ClientToScreenY(objGrd, arr_val[1]);
+	var div_w = arr_val[2] - arr_val[0];
+	var div_h = arr_val[3] - arr_val[1];
+	
+	if (gv_openChkCal == false)
+	{
+		Create("PopupDiv", "PopDiv_Calendar", 'width="240" height="155"');
+		gv_openChkCal = true;
+	}
+	PopDiv_Calendar.Contents = gfn_SetPopDivCalContent(str_val);
+	PopDiv_Calendar.TrackPopup(div_x, div_y, div_w, div_h);	
+	
+	return gv_rtnDate;
+}		
+
+/*===============================================================
+= 기능 : PopupDiv Calendar Set Contents (공통)
+= 인수 : str_val		Selected Date
+= 결과 : return  		PopupDiv Contents				 
+= 예제 : ngmf_SetColumnAdd(value)
+===============================================================*/
+function gfn_SetPopDivCalContent(str_val)
+{
+	var str_temp;
+
+	str_temp += '<Contents>' + chr(10);
+	str_temp += '<Calendar Dateformat="yyyyMMdd" UseTrailingDay="FALSE" MonthOnly="TRUE" OnDayClick="gfn_CalDayClick"  ' + chr(10); 
+	str_temp += 'DayStyle="edit" Height="20" Id="cal_Jagyuke"  SaturdayTextColor="blue" SundayTextColor="red"  ' + chr(10); 
+	str_temp += 'TabOrder="60" Width="101" MonthPickerFormat="yyyy년&#32;MM월">  ' + chr(10); 
+	str_temp += '</Calendar>  '+ chr(10); 
+	str_temp += '</Contents>';
+	
+	return str_temp;
+}
+
+/*===============================================================
+= 기능 : Calendar Date DayClick Event (공통)
+= 인수 : obj				Calendar Component ID
+= 예제 : ngmf_CalDayClick(obj,strText)
+===============================================================*/
+function gfn_CalDayClick(obj,strText)
+{
+	if (gv_rtnDFlag) 
+	{
+		gv_rtnDate = strText;
+	}
+	else 
+	{
+		object(gv_objBindDs).SetColumn(gv_grdRow, gv_grdColId, strText);
+	}
+	PopDiv_Calendar.ClosePopup();
+	
+}
+
+//---------------------------------------------------------
+// [GRID] 필수입력 컬럼 모두 입력했는지 확인 
+//
+// 리턴값: true/false
+//
+// 사용법: gfn_CheckNotnullGrid(그리드아이디,"컬럼아이디1[,컬럼아이디2]");
+//
+// 예> var bool = gfn_CheckNotnullGrid(ds_List,"CARDCMP_CD,CARDCMP_NM");
+//---------------------------------------------------------
+function gfn_CheckNotnullGrid(gridId,colIds){
+	var datasetId = object(gridId.BindDataset);
+	var args = colIds.split(",");
+	var chkStr = "";
+
+	for(var i=0; i<datasetId.count; i++){
+		for(var j=0; j<args.length; j++){
+			chkStr = ""+datasetId.GetColumn(i,args[j]);
+
+			if( length(chkStr) == 0 ) {
+				if(isValid(gridId)) {
+					gfn_setGridFocus(gridId,i,args[j]);
+				}
+				return false;
+			}
+		}
+	}
+	
+	return true;
+}
+
+
+
+
+/**
+* blnGridCheckLen()
+* 작성일자 : 2007-12-21
+* 개요       : MaxLength 및 필수항목 체크 
+* return : true/false
+* 사용법    :	dataSetId : 데이터셋  
+			gridObjId : 그리드명
+            row   : 줄
+            colId : 컬럼명
+            sval1 : 에러시 보여줄 항목 
+            sval2 : 1 -> 필수입력(0),   0 -> 필수입력(X)
+            sval3 : 1 -> 입력 값이 maxSize와 동일해야 되는 경우, 0 -> 동일하지 않아도 되는 경우
+            nsize : maxSize
+blnGridCheckLen(DS_EMP_LIST, GR_EMP_LIST, 1, NAME,"성명",1,0,20)
+*/
+function blnGridCheckLen(dataSetId, gridObjId, row, colId, sval1, sval2, sval3, nsize)
+{
+    var temp, k;
+    var mycount;
+    mycount = 0;
+    var len = 0;
+    var len2 = 0;
+    var context = "";
+    len = (""+dataSetId.GetColumn(row, colId)).length;
+  
+    for(k=0;k<len;k++){
+        temp = dataSetId.GetColumn(row,colId).charAt(k);
+        if ((temp != " " ) && ( len2 == 0 ) ) {
+            len2 = len2 + 1;
+        }
+        if(temp.length > 4)
+            mycount += 2;
+        else
+            mycount++;
+    }
+    if ((sval2 == 1 ) && (len2 == 0)) {
+        alert(sval1+"은(는) 반드시 입력해야 합니다.");
+        gfn_setGridFocus(gridObjId, row, colId);        
+        return false;
+    }
+	 if(sval2 == 1){
+	  if(sval3 == 1 && mycount < nsize){
+	   context = "("+sval1 + ")의 "+nsize + "자리 중 "+mycount+"자리가 입력되었습니다.\n 반드시 "+nsize + "자리를 입력하시기 바랍니다.";
+	   alert(context);
+	   gfn_setGridFocus(gridObjId, row, colId);    
+	   return false;
+	  }
+	 }else if(sval2 == 0){
+	  if(sval3 == 1 && mycount < nsize && len2 > 0){
+	   context = "("+sval1 + ")의 "+nsize + "자리 중 "+mycount+"자리가 입력되었습니다.\n 반드시 "+nsize + "자리를 입력하시기 바랍니다.";
+	   alert(context);
+	   gfn_setGridFocus(gridObjId, row, colId);    
+	   return false;
+	  }
+	 }    
+    if (nsize > 0 ) {
+        if (mycount > nsize) {
+            context= "("+sval1 + ") 입력 가능 글자수 초과\n최대 가능Byte수 : " + nsize
+                  + " 현재 입력Byte수 : " + mycount
+                  + "\n수정바랍니다.";
+            alert(context);
+            gfn_setGridFocus(gridObjId, row, colId);  
+            return false;
+        }
+    }
+
+    return true;
+    
+}
+
+
+/**
+* blnCheckLenUp() 
+* 작성일자 : 2007-12-21
+* 개요       : MaxLength 및 필수항목 체크 
+* return : true/false
+* 사용법    :
+            sval1 : 체크필드             
+            sval2 : 에러시 보여줄 항목 
+            sval3 : 1 -> 필수입력(0),   0 -> 필수입력(X)
+            sval4 : 1 -> 입력 값이 maxSize와 동일해야 되는 경우, 0 -> 동일하지 않아도 되는 경우
+            nsize : maxSize
+blnCheckLen(EM_NAME,"성명",1,0,20)
+*/
+function blnCheckLenUp(sval1, sval2, sval3, sval4, nsize)
+{
+
+    var temp, k;
+    var mycount;
+    mycount = 0;
+    var len = 0;
+    var len2 = 0;
+    var context = "";
+
+    switch (sval1.id.substr(0,2).toUpperCase()){
+        case "EM": //Emedit
+            len = sval1.text.length;
+            break;
+        case "LC": //Luxecombo
+            len = sval1.BindColVal.length;
+            break;
+        default: //input type
+            len = sval1.value.length;
+            break;                            
+    }
+
+    for(k=0;k<len;k++){
+        switch (sval1.id.substr(0,2).toUpperCase()){
+            case "EM": //Emedit
+                temp = sval1.text.charAt(k);
+                break;
+            case "LC": //Luxecombo
+                temp = sval1.BindColVal.charAt(k);
+                break;
+            default: //input type
+                temp = sval1.value.charAt(k);
+                break;                            
+        } 
+
+        if ((temp != " " ) && ( len2 == 0 ) ) {
+            len2 = len2 + 1;
+        }
+        if(temp.length > 4)
+            mycount += 2;
+        else
+            mycount++;
+    }
+
+    if ((sval3 == 1 ) && (len2 == 0) ) {
+        alert(sval2+"은(는)반드시 입력해야합니다.");
+        sval1.SetFocus();
+        return false;
+    }
+    if(sval3 == 1){
+		if(sval4 == 1 && mycount < nsize){
+			context = "("+sval2 + ")의 "+nsize + "자리 중 "+mycount+"자리가 입력되었습니다.\n 반드시 "+nsize + "자리를 입력하시기 바랍니다.";
+			//showMessage(INFORMATION, Ok,  "USER-1000", context);
+			alert(context);
+			sval1.SetFocus();
+			return false;
+		}
+    }else if(sval3 == 0){
+        if(sval4 == 1 && mycount < nsize && len2 > 0){
+		   context = "("+sval2 + ")의 "+nsize + "자리 중 "+mycount+"자리가 입력되었습니다.\n 반드시 "+nsize + "자리를 입력하시기 바랍니다.";
+		   alert(context);
+		   sval1.SetFocus();  
+		   return false;
+		  }
+    }
+    if (nsize > 0 ) {
+        if (mycount > nsize) {
+            context= "("+sval2 + ") 입력 가능 글자수 초과\n최대 가능Byte수 : " + nsize
+                  + " 현재 입력Byte수 : " + mycount
+                  + "\n수정바랍니다.";
+            //showMessage(INFORMATION, Ok,  "USER-1000", context);
+			alert(context);
+            sval1.SetFocus();
+            return false;
+        }
+    }
+    return true;
+}
+
+
+/*====================================================================
+* FUNCTION NAME     : gfn_SetMonth
+* FUNCTION DESC 	: PopDiv_Month Set (공통)
+* @param 
+* obj 		MaskEdit Componet ID
+* obj 		Grid Component ID
+* nRow		Current Row
+* nCell 	Selected Cell 
+* 
+* @return value : Stirng
+* ex) obj MaskEdit일 경우 
+*    => var strDate = gfn_SetMonth(MaskEdit)
+*     obj Grid일 경우
+*    => var strDate = gfn_SetMonth(Grid, nRow, nCell)
+=====================================================================*/
+function gfn_SetMonth(obj, nRow, nCell)
+{
+	var curMonth, arr_val, div_x, div_y, div_w, div_h;
+	//그리드일 경우
+	if(obj.getType() == "Grid"){
+		arr_val =  obj.GetCellRect(nRow,nCell);	
+		div_x = ClientToScreenX(obj, arr_val[0]);
+		div_y = ClientToScreenY(obj, arr_val[1]);
+		div_w = arr_val[2] - arr_val[0];
+		div_h = arr_val[3] - arr_val[1];
+		if(length(obj.getCellValue(nRow,nCell)) < 6) curMonth = substr(today(),0,6);
+		else curMonth = obj.getCellValue(nRow,nCell);
+	}
+	//마스크에디트일 경우
+	else {
+		div_x = ClientToScreenX(obj.GetForm(), obj.left);
+		div_y = ClientToScreenY(obj.GetForm(), obj.top);
+		div_w = obj.Width;
+		div_h = obj.Height;
+		
+		if(length(obj.value) < 6) curMonth = substr(today(),0,6);
+		else curMonth = obj.value;
+	}
+	
+	//월달력 생성 
+	if (gv_openChkMon == false){
+		gv_rtnMonth = curMonth;
+		Create("PopupDiv", "PopDiv_Month", 'width="121" height="81"');
+		gv_openChkMon = true;
+	}
+	PopDiv_Month.Contents = gfn_SetPopDivMonthContent(curMonth);
+	PopDiv_Month.TrackPopup(div_x, div_y, div_w, div_h);	
+	
+	return gv_rtnMonth;
+}
+
+/*===============================================================
+= 기능 : gfn_SetPopDivMonthContent
+= 인수 : str_val		Selected Date
+= 결과 : return  		PopupDiv Contents	
+===============================================================*/
+function gfn_SetPopDivMonthContent(strVal){
+	var strTemp;
+	
+	strTemp += '<Contents>' + chr(10);
+	strTemp += '<Datasets>' + chr(10);
+	strTemp += '<Dataset DataSetType="Dataset" Id="ds_Month" OnLoadCompleted="ds_Month_OnLoadCompleted" UseClientLayout="1">' + chr(10);
+	strTemp += '<Contents>' + chr(10);
+	strTemp += '<colinfo id="M1" size="2" type="STRING"/>' + chr(10);
+	strTemp += '<colinfo id="M2" size="2" type="STRING"/>' + chr(10);
+	strTemp += '<colinfo id="M3" size="2" type="STRING"/>' + chr(10);
+	strTemp += '<colinfo id="M4" size="2" type="STRING"/>' + chr(10);
+	strTemp += '<record>' + chr(10);
+	strTemp += '<M1>1</M1>' + chr(10);
+	strTemp += '<M2>2</M2>' + chr(10);
+	strTemp += '<M3>3</M3>' + chr(10);
+	strTemp += '<M4>4</M4>' + chr(10);
+	strTemp += '<YMD></YMD>' + chr(10);
+	strTemp += '</record>' + chr(10);
+	strTemp += '<record>' + chr(10);
+	strTemp += '<M1>5</M1>' + chr(10);
+	strTemp += '<M2>6</M2>' + chr(10);
+	strTemp += '<M3>7</M3>' + chr(10);
+	strTemp += '<M4>8</M4>' + chr(10);
+	strTemp += '<YMD></YMD>' + chr(10);
+	strTemp += '</record>' + chr(10);
+	strTemp += '<record>' + chr(10);
+	strTemp += '<M1>9</M1>' + chr(10);
+	strTemp += '<M2>10</M2>' + chr(10);
+	strTemp += '<M3>11</M3>' + chr(10);
+	strTemp += '<M4>12</M4>' + chr(10);
+	strTemp += '<YMD></YMD>' + chr(10);
+	strTemp += '</record>' + chr(10);
+	strTemp += '</Contents>' + chr(10);
+	strTemp += '</Dataset>' + chr(10);
+	strTemp += '</Datasets>' + chr(10);
+	strTemp += '<Grid BindDataset="ds_Month" BkColor2="default" BoldHead="true" Border="Flat" ' + chr(10);
+	strTemp += 'Bottom="80" ColSelect="TRUE" Enable="true" EndLineColor="default" HeadBorder="None" ' + chr(10);
+	strTemp += 'HeadHeight="20" Height="81" Id="grd_Month" InputPanel="FALSE" Left="0" LineColor="default" ' + chr(10);
+	strTemp += 'OnCellClick="gfn_Month_OnCellClick" OnHeadClick="gfn_Month_OnHeadClick" Right="121" ' + chr(10);
+	strTemp += 'RowHeight="20" Style="grid_style4" TabOrder="1" TabStop="true" Top="0" UseDBuff="true"  UserData="'+substr(strVal,0,4)+'" ' + chr(10);
+	strTemp += 'UsePopupMenu="true" UseSelColor="false" Visible="true" VLineColor="default" WheelScrollRow="1" Width="121">' + chr(10);
+	strTemp += '<contents>' + chr(10);
+	strTemp += '<format id="Default">' + chr(10);
+	strTemp += '<columns>' + chr(10);
+	strTemp += '<col width="30"/>' + chr(10);
+	strTemp += '<col width="30"/>' + chr(10);
+	strTemp += '<col width="30"/>' + chr(10);
+	strTemp += '<col width="30"/>' + chr(10);
+	strTemp += '</columns>' + chr(10);
+	strTemp += '<head>' + chr(10);
+	strTemp += '<cell bkcolor="user16" col="0" color="BACKGROUND" cursor="hand" display="text" text="◀"/>' + chr(10);
+	strTemp += '<cell bkcolor="user16" col="1" color="BACKGROUND" colspan="2" display="text" text="'+substr(strVal,0,4)+'년"/>' + chr(10);
+	strTemp += '<cell bkcolor="user16" col="3" color="BACKGROUND" cursor="hand" display="text" text="▶"/>' + chr(10);
+	strTemp += '</head>' + chr(10);
+	strTemp += '<body>' + chr(10);
+	strTemp += '<cell align="center" bkcolor="expr:iif(&apos;'+strVal+'&apos;&#32;==&#32;grd_month.userdata+lpad(m1,&apos;0&apos;,2),&apos;greenyellow&apos;,&apos;default&apos;)" col="0" colid="M1" display="text"/>' + chr(10);
+	strTemp += '<cell align="center" bkcolor="expr:iif(&apos;'+strVal+'&apos;&#32;==&#32;grd_month.userdata+lpad(m2,&apos;0&apos;,2),&apos;greenyellow&apos;,&apos;default&apos;)" col="1" colid="M2" display="text"/>' + chr(10);
+	strTemp += '<cell align="center" bkcolor="expr:iif(&apos;'+strVal+'&apos;&#32;==&#32;grd_month.userdata+lpad(m3,&apos;0&apos;,2),&apos;greenyellow&apos;,&apos;default&apos;)" col="2" colid="M3" display="text"/>' + chr(10);
+	strTemp += '<cell align="center" bkcolor="expr:iif(&apos;'+strVal+'&apos;&#32;==&#32;grd_month.userdata+lpad(m4,&apos;0&apos;,2),&apos;greenyellow&apos;,&apos;default&apos;)" col="3" colid="M4" display="text"/>' + chr(10);
+	strTemp += '</body>' + chr(10);
+	strTemp += '</format>' + chr(10);
+	strTemp += '</contents>' + chr(10);
+	strTemp += '</Grid>' + chr(10);
+	strTemp += '</Contents>';
+	
+	return strTemp;
+}
+
+/*===============================================================
+= 기능 : gfn_Month_OnCellClick Event (공통)
+= 인수 : obj				Grid Component ID
+===============================================================*/
+function gfn_Month_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	gv_rtnMonth = obj.UserData+Lpad(obj.GetCellValue(nRow,nCell),"0",2);
+	PopDiv_Month.ClosePopup();
+}
+
+/*===============================================================
+= 기능 : gfn_Month_OnHeadClick Event (공통) => 연 이동
+= 인수 : obj				Grid Component ID
+===============================================================*/
+function gfn_Month_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var yyyy = obj.UserData;
+	if( nCell == 0 ) yyyy = ToString(ToInteger(yyyy)-1);
+	else if( nCell = 2 ) yyyy = ToString(ToInteger(yyyy)+1);
+	
+	obj.UserData = yyyy;
+	obj.SetCellProp("head",1,"text", yyyy+"년");
+}
+
+/*********************************************************************************
+*  버튼 초기화
+*  params : 
+   flag  : 액션명
+   dsObj : 데이터셋 이름
+*  
+*  return Value : true/false
+*  예)gfn_changeAction("MOVE","ds_Detail");					//데이터셋이 하나인 경우
+*     gfn_changeAction("MOVE","ds_Detail,ds_Master",...); 	//데이터셋이 두개 이상일 경우
+**********************************************************************************/
+function gfn_changeAction(flag, dsObj, userMsg) {
+	var vArr = dsObj.split(",");
+	var isUpdate = 0;
+	var strMsg = "변경된 내역이 있습니다.\n";
+	
+	switch(ToUpper(flag)) {
+		case "MOVE" :
+			strMsg += "이동 하시겠습니까?";
+			break;
+		case "SEARCH" :
+			strMsg += "조회 하시겠습니까?";
+			break;
+		case "CLOSE" :
+			strMsg += "종료 하시겠습니까?";
+			break;
+		case "USER" :
+			strMsg = userMsg;
+			break;
+	}
+	
+    for(var i=0; i<length(vArr); i++){
+		if(object(trim(vArr[i])).GetUpdate()) isUpdate++;
+	}
+	
+	if(isUpdate) {
+		var btn_style = "MB_YESNO";
+		var str_msg = strMsg;
+		var title = "내역 확인";
+		var focus = "0";
+		var rtn = gfn_Confirm(btn_style, str_msg, title, focus);	
+		if (rtn = 6) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		return true;
+	}
+/*	
+	if(isUpdate && !confirm(strMsg)){
+	    g_sts = 0;
+	    return false;
+	}else{
+	    return true;
+	}
+	*/
+}
+
+/*********************************************************************************
+*  폼의 OBJECT중 필수 항목 체크
+*  params : 
+   Obj : 폼/탭페이지/디비젼  오프젝트
+   nObj : 탭 오프젝트
+*  
+*  return Value : true/false
+*  예)gfn_changeAction(THIS);					//
+	if (!gfn_CheckFormNull(this)) return;
+	if (!gfn_CheckFormNull(div_wmem)) return;
+	if (!gfn_CheckFormNull(tab_memins.tabpg_yemyung,tab_memins)) return;
+	if (!gfn_CheckFormNull(tab_memins.tabpg_addr,tab_memins)) return;
+
+**********************************************************************************/
+function gfn_CheckFormNull(Obj,nObj) {
+	var Collect = obj.Components;
+	var Cnt = obj.Components.count();
+	var strType;
+	var strKeyEvent;
+	gfn_SetStatusMsg("");
+	
+	if(IsValidObject(nobj)) {
+		//alert("---> " +nobj);
+		if (toUpper(nObj.GetType()) = "TAB") {
+			for ( var i = 0 ; i < nObj.TabCount;i++)
+			{
+				//alert(nObj.GetItem(i).id + " " + obj.id);
+				if ( nObj.GetItem(i).id == obj.id) {
+				nObj.TabIndex = i;
+				break;
+				}
+			}  
+		}
+	}
+	for (var i=0 ; i < Cnt ; i++ ) {
+		strType = toUpper(Collect[i].GetType());
+		//alert("type : "+Collect[i].id + " "+strType);
+		var strMsg = "필수 입력 항목이 누락 되었습니다.\n입력하십시오.\n";
+
+		
+		var btn_style = "MB_OK";
+		var strmsg = strMsg;
+		var title = "필수항목누락";
+		var focus = "0";
+		//var rtn = gfn_Confirm(btn_style, str_msg, title, focus);	
+		
+		switch(strType){
+			case "EDIT" :
+			case "MASKEDIT" :
+			case "COMBO" 	:
+			case "CALENDAR" :
+			case "RADIO" 	:
+			case "TEXTAREA" :
+			case "CHECKBOX" :
+				if (Collect[i].ToolTipText != "") {
+				strMsg = strMsg + "[" +Collect[i].ToolTipText+"]";
+				}
+			break;
+		}
+		switch(strType) {
+			case "EDIT" 	:
+				if (Collect[i].BKColor = "user13"){
+					if (length(Collect[i].text) == 0) {
+						//gfn_SetStatusMsg(strMsg);
+						gfn_Confirm(btn_style, strmsg, title, focus);
+						Collect[i].setfocus();
+						return false;
+					}
+				}
+				break;
+			case "TEXTAREA" 	:
+				if (Collect[i].BKColor = "user13"){
+					if (length(Collect[i].text) == 0) {
+						//gfn_SetStatusMsg(strMsg);
+						gfn_Confirm(btn_style, strmsg, title, focus);
+						Collect[i].setfocus();
+						return false;
+					}
+				}
+				break;
+			case "MASKEDIT" :
+				if (Collect[i].BKColor = "user13"){
+					//trace(Collect[i].id + "==="+length(Collect[i].text));
+					if (length(Collect[i].value) == 0) {
+						//gfn_SetStatusMsg(strMsg);
+						gfn_Confirm(btn_style, strmsg, title, focus);
+						Collect[i].setfocus();
+						return false;
+					}
+				}
+				break;
+			case "COMBO" 	:
+				if (Collect[i].BKColor = "user13"){
+					if (length(Collect[i].text) == 0) {
+						//gfn_SetStatusMsg(strMsg);
+						gfn_Confirm(btn_style, strmsg, title, focus);
+						Collect[i].setfocus();
+						return false;
+					}
+				}
+				break;
+			case "CALENDAR" :
+				if (Collect[i].BKColor = "user13"){
+					if (length(Collect[i].value) == 0) {
+						//gfn_SetStatusMsg(strMsg);
+						gfn_Confirm(btn_style, strmsg, title, focus);
+						Collect[i].setfocus();
+						return false;
+					}
+				}
+				break;
+			case "RADIO" 	:
+				// 널 체크 없다.
+				break;
+			case "CHECKBOX" :
+				// 널 체크 없다.
+				break;
+			case "BUTTON"	:
+				// 널 체크 없다.
+				break;
+			case "GRID"		:
+				// 각 로우의 칼라를 확인한다.
+				var rCnt = 0;
+				dsobj = object(Collect[i].binddataset);
+				//alert("ds count : "+dsobj.rowcount());
+				rCnt = dsobj.rowcount();
+
+				var cCnt;
+				cCnt = Collect[i].GetColCount();
+
+				for (var gi=0 ; gi < rCnt ; gi++ ){
+					for (var gj=0 ; gj < cCnt ; gj++) {
+						//alert(gi + " " + gj + " " + Collect[i].gettype());
+						if (Collect[i].GetCellProp("body",gj,"BKColor") =="1073741837") {
+							//alert("결과값:"+Collect[i].GetCellValue(gi,gj));
+							if (length(tostring(Collect[i].GetCellValue(gi,gj))) == 0){
+								//gfn_SetStatusMsg(strMsg);
+								gfn_Confirm(btn_style, strmsg, title, focus);
+								Collect[i].setfocus();
+								dsobj.row = gi;
+								Collect[i].SetCellpos(gj);
+								return false;
+							}
+						}
+					}
+				}
+				break;
+			case "TAB"		:
+				// 널 체크 없다.
+				break;
+			case "DIV"		:
+				// 널 체크 없다. 개발 div는 따로 호출해서 체크할것
+				break;
+			default :
+		}
+	}
+	return true;
+}	
+
+/*====================================================================
+* FUNCTION NAME     : gfn_Excel2Grid
+* FUNCTION DESC 	: Excel을 읽어 Grid에 대체 한다.(Popup을 띄운다)
+* @param 
+			
+*	param : strGridID (string - Target Grid ID, Tab또는 Div안에 있으면 경로 포함)
+*  	strFileName (string - Excell File Name, Path포함, 없으면 Dialog를 띄움)
+*   nSheet (Number - Excell Sheet Index, 0부터 시작)
+* @return
+=====================================================================*/
+function gfn_Excel2Grid(objGrid,strFileName,nSheet)
+{
+	var strFileDialog = "FileDlgExcel";
+	var strFileID = "FileExcel";
+	var objFile;
+
+	if(GV_MDIFG == "Y") {
+		objFile = global.frame_top.File_Global;
+	} else {
+		if(!find("File_Global")) {
+			Create("File","File_Global");
+		}
+		objFile = File_Global;
+	}
+
+	// strFileName가 존재하지 않는 파일이면 FileDialog를 띄움
+	if (objFile.IsExistFile(strFileName) == false or length(strFileName) == 0)
+	{
+		var objFileDialog;
+		if(GV_MDIFG == "Y") {
+			objFileDialog = global.frame_top.FileDialog_Global;
+		} else {
+			if(!find("FileDialog_Global")) {
+				Create("FileDialog","FileDialog_Global");
+			}
+			objFileDialog = FileDialog_Global;
+		}
+	
+		objFileDialog.Type = "OPEN";	
+		objFileDialog.Filter = "Excel File(*.xls)|*.xls|";
+		objFileDialog.FileName = "";
+
+		if (objFileDialog.Open() == false) {
+			return false;
+		}	
+		strFileName = objFileDialog.FilePath + "\\" + objFileDialog.FileName;	
+	}
+
+	// nSheet가 없으면 0번째 Sheet자동 선택
+	nSheet = decode(gfn_isNull(nSheet), true, 0, nSheet);
+
+	var sParam = "";
+		sParam += " asGrid=" + quote(objGrid.id);
+		sParam += " asExcel=" + quote(strFileName);
+		sParam += " anSheet=" + quote(nSheet);
+
+	var bRet = dialog("MAIN::ComExcelPop.xml", sParam);
+	
+	if (bRet) {
+		objGrid.Redraw = false;
+		objGrid.Redraw = true;
+	}
+}
+
+//---------------------------------------------------------
+// [DataSet] 중복데이타인지 여부 확인 
+//
+// 리턴값: 이미 등록되어있을 경우 등록되어 있는 Row값 
+//         없을 경우 0 
+//
+// 사용법: gfn_CheckDupDs(데이타셋 아이디,"컬럼아이디1[,컬럼아이디2]");
+//
+// 예> var rs = gfn_CheckDupDs(ds_List,"CARDCMP_CD,CARDCMP_NM");
+// gfn_CheckDupDs 는 현재 선택된 행에 대해서 중복된값이 있는지 체크하는것을 보완
+// 현재 선택된행에 대해서만 체크 하는게 아니라 전체 데이터셋에 중복된값이 있는지 체크
+//---------------------------------------------------------
+function gfn_CheckDupDs2(datasetId,colIds){
+	var args = colIds.split("[,]");
+	var str = "";		
+	
+	for(var i=0; i<datasetId.count; i++){
+	    for(var j=0; j<args.length; j++){
+	        str += datasetId.GetColumn(i,args[j]);
+	    }
+	    if(str != ""){
+			for(var k=0; k<datasetId.count; k++){
+				if(i != k){
+					var chkStr = "";
+					for(var h=0; h<args.length; h++){
+						chkStr += datasetId.GetColumn(k,args[h]);
+					}
+					if(str == chkStr){
+						return k+1;
+					}
+				}
+			}
+		}
+		str = "";
+	}
+	return 0;
+}
+
+/**
+* gfn_blnCheckYYYYMMDD()
+* 작 성 일 : 2007-12-28
+* 개    요 :  유효한 날짜인지 확인하기 
+* 사용방법 : gfn_blnCheckYYYYMMDD(date)
+*            arguments[0] -> 년월일 을 표현한 8자리 숫자 ( 예> '20070510' )
+*			
+* return값 : bool
+*/
+function gfn_blnCheckYYYYMMDD(strDate) {
+    var strYear = "", strMonth = "", strDay = "";
+    var intYear = 0, intMonth = 0, intDay = 0;
+    
+    if (strDate.length != 8) {
+        return false;
+    } else {
+        strYear = strDate.substr(0,4);
+	    strMonth = strDate.substr(4,2);
+	    if (parseFloat(strMonth) < 10) strMonth = "0" + parseFloat(trim(strMonth));
+	        strDay = strDate.substr(6,2);
+	    if (parseFloat(strDay) < 10)
+	        strDay = "0" + parseFloat(trim(strDay));
+	}
+    if (!isDigit(strYear) || !isDigit(strMonth) || !isDigit(strDay)) return false;
+    intYear = parseInt(strYear,'10');
+    intMonth = parseInt(strMonth,'10');
+    intDay = parseInt(strDay,'10');
+	//if (!isDigit(intYear) || !isDigit(intMonth) || !isDigit(intDay)) return false;
+    if (intYear < 1) intYear = 0;
+    if (intMonth < 1 || intMonth > 12) intMonth = 0;
+    if (intDay < 1) intDay = 0;
+    if ( intMonth == 1 || intMonth == 3 || intMonth == 5 || intMonth == 7 || intMonth == 8 || intMonth == 10 || intMonth == 12)  {
+	    if (intDay > 31) intDay = 0;
+	    } else if (intMonth == 4 || intMonth == 6 ||  intMonth == 9 || intMonth == 11) {
+	    if (intDay > 30) intDay = 0;
+	    } else if (intMonth == 2 )  {
+	    if (intYear % 4 != 0 || (intYear % 100 == 0 && intYear % 400 != 0)) {
+	    if (intDay > 28) intDay = 0;
+	    } else if (intDay > 29) intDay = 0;
+    }
+    if (intYear == 0 || intMonth == 0 || intDay == 0) return false;
+    return true;
+}
+
+/*====================================================================
+* FUNCTION NAME     : gfn_Confirm
+* FUNCTION DESC 	: 확인 팝업 함수
+* @param 
+			
+*	param : 
+*          btn_style
+
+				MB_ABORTRETRYIGNORE 중단, 다시시도, 무시 (3버튼)
+				MB_OK 확인 (1버튼)
+				MB_OKCANCEL  확인, 취소 (2버튼)
+				MB_RETRYCANCEL 다시시도, 취소 (2버튼)
+				MB_YESNOCANCEL 예, 아니오, 취소 (3버튼)
+				MB_YESNO 예, 아니오(2버튼)
+*          tr_msg  : 메세지
+*          title : 타이틀
+*          focus : 버튼의 포커스 0,1,2
+* @return
+		 "확인": 1
+		 "취소": 2
+		 "중단": 3
+		 "다시시도": 4
+		 "무시": 5
+		 "예": 6
+		 "아니오": 7
+=====================================================================*/
+function gfn_Confirm(btn_style, str_msg, title, focus, linenum)
+{
+	var args  = "btn_style=" + Quote(btn_style);
+		args += " str_msg=" + Quote(str_msg);
+		args += " title=" + Quote(title);
+		args += " focus=" + Quote(focus);
+		args += " linenum=" + linenum;
+	var rtn = dialog("ad_pub::frm_Confirm.xml", args);
+	//alert("return value = " + rtn);
+	return(rtn);
+}
+
+function gfn_Confirm_Custom(btn_style, str_msg, title, focus)
+{
+	//커스텀 컨펌창이다
+	//btn_style : 버튼리스트를 | 를 구분자로 넣는다 ex) "저장|삭제|취소"
+	//str_msg : 문구를 넣는다 ex) "아래 보기 중 골라보세요"
+	//title : 컨펌창 제목 ex) "선택"
+	//focus : 기본 포커스 될 버튼의 순서 ex) 저장=1, 삭제=2, 취소=3
+	//문구의 내용 및 버튼의 개수에따라 자동으로 가로 세로가 조절된다
+	//버튼리스트의 순서대로 1,2,3,4, ... 이며 리턴값도 1,2,3,4, ... 이다.
+	var args  = "btn_style=" + Quote(btn_style);
+		args += " str_msg=" + Quote(str_msg);
+		args += " title=" + Quote(title);
+		args += " focus=" + Quote(focus);
+	var rtn = dialog("ad_pub::frm_Confirm_new.xml", args);
+	
+	return(rtn);
+}
+
+/////////////////////////////////////////////
+function g_getComponentPath()
+{
+	//AliasToRealPath("%COMPONENT%")
+	//return AliasToRealPath("%USERAPP%") + "\\TOBESOFT\\TOBE_DEMO\\component\\";
+	//return "C:\\";
+	return "http://komca.or.kr:8080/miplatform/img/";
+}
+
+var strCoWaitDiv = "cdvWait";	// ���� 
+
+function co_ShowWaitMsg()
+{
+	var strContent, nTop, nLeft;
+	var nHeight = 150;   //�׸�height
+	var nWidth = 400;   //�׸�width
+	var objWin;
+	var objWaitDiv;
+	
+	// ���� Form�� �ֻ��� Form���� �Ǵ�.
+	var objTopWin = global.GetTopWindow();
+	//TRACE("show global.GetTopWindow()--->"+global.GetTopWindow());
+	if (isValid(objTopWin) && this.GetHandle() == objTopWin.GetHandle()) {
+		objWin = global.GetTopWindow();
+	}
+	else {
+		objWin = this;   
+	}
+	
+	nTop  = (objWin.Height - nHeight) / 2;
+	nLeft = (objWin.Width - nWidth) / 2;
+
+	objWaitDiv = objWin.Find(strCoWaitDiv);
+	
+	if (isValid(objWaitDiv) == false || objWaitDiv.GetForm().GetHandle() != objWin.GetHandle() ) {
+		objWin.Create("Div", strCoWaitDiv, "left='"+nLeft+"' border='none'  top='"+nTop+"' width='"+nWidth+"' height='"+nHeight+"' syncContents='true'");
+
+		var strPrcsImageID = g_getComponentPath() + "wait.gif";
+		strContent  = "<Contents>";
+		strContent += " <Image Height='"+nHeight+"' Id='imgProcessing' ImageID='"+strPrcsImageID+"' Width='"+nWidth+"'></Image>";
+		strContent += "</Contents>";
+
+		//<Image Height="40" Id="Image0" ImageID="admin01" Left="560" TabOrder="18" Top="697" Width="99"></Image>
+		
+		objWaitDiv = objWin.find(strCoWaitDiv);
+		objWaitDiv.Contents = strContent;
+		
+		objWaitDiv.Visible = true;
+		objWaitDiv.Visible = false;
+	}
+	
+	//objWaitDiv.Top 	= nTop	;
+	//objWaitDiv.Left 	= nLeft	;
+	
+	if (isValid(objWaitDiv))
+	{
+		objWaitDiv.Top 	= nTop	;
+		objWaitDiv.Left = nLeft	;
+		
+		objWaitDiv.Visible = true;
+		idle();		// Sync Transaction ������ Idle�߰�
+	}	
+}
+
+function co_HideWaitMsg()
+{
+	var objWin;
+	
+	// ���� Form�� �ֻ��� Form���� �Ǵ�.
+	var objTopWin = global.GetTopWindow();
+	//TRACE("hide global.GetTopWindow()--->"+global.GetTopWindow());
+	if (isValid(objTopWin) && this.GetHandle() == objTopWin.GetHandle()) {
+		objWin = global.GetTopWindow();
+	}
+	else {
+		objWin = this;
+	}
+
+	var objWaitDiv = objWin.find(strCoWaitDiv);
+
+	if (isValid(objWaitDiv))
+	{
+		objWaitDiv.Visible = false;
+	}
+}
+/*====================================================================
+* FUNCTION NAME     : gfn_dsValidateChk
+* FUNCTION DESC 	: 확인 팝업 함수
+* @param 
+			
+*	param : 
+*          btn_style
+=====================================================================*/
+function gfn_dsValidateChk(var_dsobj,v_formid)
+{
+	// 저장용 데이타셋을 만든다.
+	gds_tracelog.DeleteAll();
+	//ALERT("gfn_dsValidateChk-->"+ v_formid);
+	// 데이타셋에 변경된 내역이 있는지 각 데이타셋별로 찾는다.
+	var dslist = var_dsobj.split(" ");
+	for (var i = 0 ; i < dslist.length() ; i++) {
+
+		var dspos;
+		var dsname;
+		if ((toupper(mid(dslist[i],length(dslist[i])-2,length(dslist[i]))) = ":U")
+		   or (toupper(mid(dslist[i],length(dslist[i])-2,length(dslist[i]))) = ":N")){
+			//trace("1>>"+mid(dslist[i],length(dslist[i])-2,length(dslist[i])));
+			dspos = pos(dslist[i],"=");
+			var dsname_st = toupper(mid(dslist[i],length(dslist[i])-2,length(dslist[i])));
+			if (dsname_st = ":U"){
+				dsname = replace(toupper(mid(dslist[i],dspos+1,length(dslist[i]))),":U","");
+			}
+			if (dsname_st = ":N"){
+				dsname = replace(toupper(mid(dslist[i],dspos+1,length(dslist[i]))),":N","");
+			}
+			//trace(dspos + " " + dsname);
+			
+			var dsobj = object(dsname);
+			//trace(dslist.length() + "  " + i + "  " + dsobj.id);
+	
+			var rcnt = dsobj.rowcount;
+		
+			var cCnt;
+			cCnt = dsobj.GetColCount();
+			VAR v_Upso_chk = "";
+			// 정상적인 레코드 처리
+			for (var nRow=0 ; nRow < rCnt ; nRow++ ){
+				for (var nCell=0 ; nCell < cCnt ; nCell++) {
+					//alert(gi + " " + gj + " " + Collect[i].gettype());
+					//trace(dsname_st + ">>" + "Row Count:"+rCnt + " Col Count :"+ cCnt+ " nRow:"+nrow+" nCell:"+ncell);
+					var ROW_TYPE = dsobj.getrowtype(nRow);
+					var COL_NM = dsobj.GetColID(nCell);
+					v_Upso_chk = "0";
+					if (COL_NM = "UPSO_CD") {
+						v_Upso_chk = "1";
+					}
+					// update인경우 예외적으로 저장 처리
+					if (v_formid = 'bra03_s02' or   // mrcr 청구등록
+					    v_formid = 'bra04_s01' or   // 개별입금 등록
+					    v_formid = 'bra03_s09' )    // 개별지로 청구 등록
+					{
+						v_Upso_chk = "1";
+					}
+					var CHGBFR_CTENT = dsobj.GetOrgColumn(nRow,nCell);
+					var CHGATR_CTENT = dsobj.GetColumn(nRow,nCell);
+					// update인경우 예외적으로 저장 처리 업소코드 올드값에 강제 세팅
+					if (COL_NM = "UPSO_CD" AND 
+					    (    v_formid = 'bra01_s05'      // 업소클릭콜관리
+					      or v_formid = 'bra04_s06' ))   // 무통장입금관리
+					{
+						CHGBFR_CTENT = CHGATR_CTENT;
+						//alert(CHGBFR_CTENT + "->>" + CHGATR_CTENT);
+					}
+//					trace(COL_NM + ":" + ROW_TYPE + "##" + CHGBFR_CTENT +" -->" + CHGATR_CTENT);
+//					if (CHGBFR_CTENT != CHGATR_CTENT OR ROW_TYPE = "update" OR ROW_TYPE = "insert" OR ROW_TYPE = "delete") {
+					if(dsname_st = ":N") 
+					{
+						gfn_gds_tracelogAdd(v_formid,COL_NM,CHGBFR_CTENT,CHGATR_CTENT,ROW_TYPE,nRow);
+					}
+					if(dsname_st = ":U") 
+					{
+						if (ROW_TYPE = "update"){
+							if (CHGBFR_CTENT != CHGATR_CTENT or v_Upso_chk = "1") {
+								gfn_gds_tracelogAdd(v_formid,COL_NM,CHGBFR_CTENT,CHGATR_CTENT,ROW_TYPE,nRow);
+							}
+						} else if (ROW_TYPE = "insert") {
+							gfn_gds_tracelogAdd(v_formid,COL_NM,CHGBFR_CTENT,CHGATR_CTENT,ROW_TYPE,nRow);
+						} else if (ROW_TYPE = "delete" ) {
+							gfn_gds_tracelogAdd(v_formid,COL_NM,CHGBFR_CTENT,CHGATR_CTENT,ROW_TYPE,nRow);
+						}
+					}
+				}
+			}
+			// 삭제된 레코드 처리
+			rcnt = dsobj.GetDelRowCount();
+			//TRACE("DELETE ROW COUNT:>"+rcnt);
+			cCnt = dsobj.GetColCount();
+			for (var nRow=0 ; nRow < rCnt ; nRow++ ){
+				for (var nCell=0 ; nCell < cCnt ; nCell++) {
+					//alert(gi + " " + gj + " " + Collect[i].gettype());
+					var ROW_TYPE = dsobj.getrowtype(nRow);
+					var COL_NM = dsobj.GetColID(nCell);
+					var CHGBFR_CTENT = dsobj.GetDelColumn(nRow,nCell);
+					var CHGATR_CTENT = "";
+					//trace(COL_NM + ":" + ROW_TYPE + "##" + CHGBFR_CTENT +" -->" + CHGATR_CTENT);
+					gfn_gds_tracelogAdd(v_formid,COL_NM,CHGBFR_CTENT,CHGATR_CTENT,"delete",nRow);
+				}
+			}
+
+		}
+	}
+	//alert(gds_tracelog.SaveXML());
+}
+function gfn_gds_tracelogAdd(v_formid,v_col_nm,v_chgbfr_ctent,v_chgatr_ctent,v_row_type,v_record_cnt)
+{
+	VAR AROW = gds_tracelog.ADDROW();
+	gds_tracelog.SetColumn(AROW,"MENU_ID",v_formid);
+	gds_tracelog.SetColumn(AROW,"COL_NM",v_col_nm);
+	gds_tracelog.SetColumn(AROW,"CHGBFR_CTENT",v_chgbfr_ctent);
+	gds_tracelog.SetColumn(AROW,"CHGATR_CTENT",v_chgatr_ctent);
+	gds_tracelog.SetColumn(AROW,"IPADDRESS",ext_GetIPAddress());
+	gds_tracelog.SetColumn(AROW,"COMPUTER_NM",ext_GetHostName());
+	gds_tracelog.SetColumn(AROW,"ROW_TYPE",v_row_type);
+	gds_tracelog.SetColumn(AROW,"INSPRES_ID",GV_USER_ID);
+	gds_tracelog.SetColumn(AROW,"STAFF_NUM",gds_sessioninfo.getcolumn(0,"STAFF_NUM"));
+	gds_tracelog.SetColumn(AROW,"RECORD_CNT",v_record_cnt);
+	//trace(v_col_nm + ":" + v_row_type + "##" + v_chgbfr_ctent +" -->" + v_chgatr_ctent);
+	//trace("-gv_chklogSave->" + gv_chklogSave);
+
+}
+/*====================================================================
+* FUNCTION NAME     : gfn_dsValidateSave
+* FUNCTION DESC 	: 확인 팝업 함수
+* @param 
+			
+*	param : 
+*          btn_style
+=====================================================================*/
+function gfn_dsValidateSave()
+{
+
+	//trace(gds_tracelog.saveXML());
+	SetWaitCursor(true);
+	global.http.sync = true;
+	// 변경로그 저장하는 데이타셋의 변경내역을 추출한다.
+
+	//transaction(srvId,strNewUrl,
+	//			inDsList,outDsList,arg,"");
+	
+	transaction("svcSearch","DBsrv::KOMCA?SYSID=PATHFINDER&MENUID=1000006001009&EVENTID=tracelog_save",
+				"S=gds_tracelog:U","","","gfn_logcallback");
+	global.http.sync = false;
+}
+
+function gfn_logcallback(srvID,ErrorCode,ErrorMsg)
+{
+    
+	SetWaitCursor(false);
+	ErrorCode = decode(ErrorCode,"","0",null,"0",ErrorCode);
+	var arrSrvId = split(srvID,chr(29));
+	
+	if(ErrorCode < 0) {
+	    //에러 공통 팝업
+		gfn_SetErrorPop(ErrorCode,ErrorMsg);
+	} else {
+	    if(arrSrvId[0] != "LogInfo"){
+		    gfn_SetStatusMsg(ErrorMsg);
+		}
+	}		
+	if(arrSrvId.length() > 1) {
+		var ExprCall = arrSrvId[1] + '(arrSrvId[0], ErrorCode, ErrorMsg)';
+		eval(ExprCall);
+	}
+    if(srvId != "LogInfo"){
+		co_HideWaitMsg();
+	}
+
+}
+
+function gfn_SetObjectDisabledColor(comps, pid, bgcolor, color)
+{
+	var obj;
+	var objType = "";
+	var compId = "";
+	
+	for(var i=0; i<comps.count; i++) {
+
+		if (pid == "") 	compId = comps[i].id;
+		else			compId = pid + "." + comps[i].id;
+
+		obj = object(compId);
+		objType = toUpper(obj.getType());
+
+		if (objType == "DIV") {
+			gfn_SetObjectDisabledColor(object(comps[i].id).Components, compId, bgcolor, color);
+		}
+		else if (objType == "TAB") {
+			for (var j=0; j<obj.TabCount; j++) {
+				gfn_SetObjectDisabledColor(obj.getItem(j).Components, compId + "." + obj.getItem(j).id, bgcolor, color);
+			}
+		}
+		else if (objType == "TEXTAREA" || objType == "LIST"){
+			obj.DisableBkColor = bgcolor;
+		}
+		else if (objType == "CALENDAR" || objType == "COMBO" || 
+				 objType == "EDIT" || objType == "RADIO" ||
+				 objType == "CHECKBOX" || objType == "MASKEDIT"){
+			obj.DisableBkColor = bgcolor;
+			obj.DisableColor = color;
+		}
+	}
+}
+
+/*====================================================================
+* FUNCTION NAME     : gfn_ChangeInt2Han
+* FUNCTION DESC 	: 숫자를 문자로 변환 한다.
+* @param 
+			
+*	param : 문자, 숫자는 스트링으로 변환
+           gfn_ChangeInt2Han(Edit0.text);
+           gfn_ChangeInt2Han(toString(12345)); //숫자는 string으로 변환
+          
+*          
+=====================================================================*/
+function gfn_ChangeInt2Han(argPrice)
+{
+	var hn = split("영,일,이,삼,사,오,육,칠,팔,구",",",true);
+	var hj = split(",만,억,조,경,해",",",true);
+	var ul = split("영천,영백,영십,영",",",true);
+	var tm = Array();
+	var result = "";
+	
+	if (charAt(argPrice,0) =="-") {
+		result = "마이너스 ";
+		argPrice = mid(argPrice,1,length(argPrice)-1);
+	}
+	
+	
+	loop_size = ceil(length(argPrice)/4);
+	tmpPrice = "";
+	
+	for (var count=length(argPrice); count >= 0; count--)
+	tmpPrice += mid(argPrice,count,1);
+	argPrice = tmpPrice;
+	
+	for (var A=0;A<loop_size;A++) {
+		sum = hj[A] + "";
+		tm[A] = mid(argPrice,A*4,4);
+		
+		tm2 = "";
+		
+		for (var count=length(tm[A]); count >= 0; count--)
+		tm2 += mid(tm[A],count,1);
+		
+		tm[A] = tm2;
+		part_jari = length(tm[A]);
+		
+		for (var D=0;D<10;D++) {
+			for (var B=0;B<10;B++) tm[A] = replace(tm[A],B,hn[B]);
+		}
+		
+		if (part_jari == 4) tm[A] = charAt(tm[A],0)+"천"+charAt(tm[A],1)+"백"+charAt(tm[A],2)+"십"+charAt(tm[A],3);
+		else if (part_jari == 3) tm[A] = charAt(tm[A],0)+"백"+charAt(tm[A],1)+"십"+charAt(tm[A],2);
+		else if (part_jari == 2) tm[A] = charAt(tm[A],0)+"십"+charAt(tm[A],1);
+		else {tm[A] = charAt(tm[A],0);}
+		
+		for (var C=0;C<4;C++) {
+			tm[A] = replace(tm[A],ul[C],"");
+			/*
+			if (tm[A] == ul[C]) 
+			{
+				part_jari--; 
+				tm[A] = replace(tm[A],ul[C],"");
+			}
+			*/
+		}
+		
+		if (part_jari != 0) tm[A] += sum;
+	}
+	
+	for (var i = loop_size;i >-1;i--)
+	result += tm[i];
+	
+	result = replace(result,"undefined","");
+	
+	return result;
+}
+/*====================================================================
+* FUNCTION NAME     : gfn_SendSms()
+* FUNCTION DESC 	: sms 문자 발송 함수
+* @param            : 없음
+*          
+=====================================================================*/
+
+function gfn_SendSms()
+{
+	var rcnt = gds_sms_send.RowCount();
+	var err_cnt;
+	var err_type;
+	gds_sdk_sms_send.ClearData();
+	err_cnt =0;
+	for (var i = 0 ; i < rcnt ; i++){
+		gds_sdk_sms_send.AddRow();
+		err_type = "";
+		var user_id = gds_sms_send.GetColumn(i,"USER_ID");
+		if (mid(user_id,0,1) == "M" or mid(user_id,0,1) == "U" or mid(user_id,0,1) == "C"){
+			gds_sdk_sms_send.SetColumn(i,"USER_ID",user_id);
+		} else {
+			err_cnt++;
+			err_type = "ID구분 오류 ";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var schedule_type = gds_sms_send.GetColumn(i,"SCHEDULE_TYPE");
+		if (schedule_type == "0" or schedule_type == "1"){
+			gds_sdk_sms_send.SetColumn(i,"SCHEDULE_TYPE",schedule_type);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 예약구분 오류";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var subject = gds_sms_send.GetColumn(i,"SUBJECT");
+		if (lengthb(subject) < 50){
+			gds_sdk_sms_send.SetColumn(i,"SUBJECT",subject);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 제목길이 오류"+lengthb(subject);
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var sms_msg = gds_sms_send.GetColumn(i,"SMS_MSG");
+		if (lengthb(sms_msg) < 80){
+			gds_sdk_sms_send.SetColumn(i,"SMS_MSG",sms_msg);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 메세지길이 오류"+lengthb(sms_msg);
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		var send_date = gds_sms_send.GetColumn(i,"SEND_DATE");
+		if (schedule_type == "1") { //예약일경우만
+			if (gfn_IsDateYMD(mid(send_date,0,8)) == 0) {/* 날짜 체크 */
+				gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+			} else {
+				err_cnt++;
+				err_type = err_type + " 날짜 오류";
+				gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			}
+			if (gfn_IsTimeHHMM(mid(send_date,8,4)) == 0) { /* 시간 체크 */
+				gds_sdk_sms_send.SetColumn(i,"SEND_DATE",send_date);
+			} else {
+				err_cnt++;
+				err_type = err_type + " 시간 오류";
+				gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+			}
+		}
+		var callback = gds_sms_send.GetColumn(i,"CALLBACK");
+		if (lengthb(callback) <> 0){
+			gds_sdk_sms_send.SetColumn(i,"CALLBACK",callback);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 회신번호없음 오류";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+		gds_sdk_sms_send.SetColumn(i,"KT_OFFICE_CODE","");
+		gds_sdk_sms_send.SetColumn(i,"CDR_ID","");
+		gds_sdk_sms_send.SetColumn(i,"DEST_TYPE","0");
+		gds_sdk_sms_send.SetColumn(i,"DEST_COUNT","1");
+		var name = gds_sms_send.GetColumn(i,"NAME");
+		if (lengthb(name) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"name",name);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 이름없음 오류";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+
+		var phnum = replace(gds_sms_send.GetColumn(i,"PHNUM"),"-","");
+		if (lengthb(phnum) <> 0){
+			//gds_sdk_sms_send.SetColumn(i,"PHNUM",PHNUM);
+		} else {
+			err_cnt++;
+			err_type = err_type + " 전화번호없음 오류";
+			gds_sms_send.SetColumn(i,"ERR_CHK",err_type);
+		}
+
+		gds_sdk_sms_send.SetColumn(i,"DEST_INFO",name+"^"+phnum);
+
+		gds_sdk_sms_send.SetColumn(i,"SEND_STATUS","0");
+
+	}
+	if (err_cnt == 0){
+		gfn_syncCall("sms_send_save","KOMCA?SYSID=PATHFINDER&MENUID=1000006001010&EVENTID=sms_send_save","S=gds_sdk_sms_send:U","","","gfn_CallBack");
+	} else {
+		alert("발송 형식에 오류가 있습니다.\n확인후 발송 하십시오");
+	}
+}
+*/
+/*===============================================================
+= 기능 : 날짜 여부를 확인한다.(년월일)
+= 인수 : sYmd 입력스트링(YYYYMMDD)
+=
+= 리턴 : 0(적합), -1(부적합) => 적합이면 날짜값
+===============================================================*/
+function gfn_IsDateYMD(sYmd)
+{
+	//
+  	if(  length(sYmd) < 1)
+  	{
+    	return -1;
+  	}
+    // 숫자 확인
+    if(fnIsNumber(sYmd) == -1)
+    {
+    	//alert("날짜는 숫자만 입력하십시오.!!!","날짜 체크 오류",MM_ERROR);
+    	return -1;
+  	}
+  	// 길이 확인
+  	if(length(sYmd) == 8) {
+  	} else {
+	    //alert("일자의 형식을 확인하여 주십시요.","날짜 체크 오류",MM_ERROR); //20040111 정인혁(홍과장요구사항)
+    	return -1;
+  	}
+  	var iYear = ToNumber(sYmd.substr(0,4));  // 년도 입력(YYYY)
+  	var iMonth = ToNumber(sYmd.substr(4,2));   //월입력(MM)
+  	var iDay = ToNumber(sYmd.substr(6,2));     //일자입력(DD)
+  	if((iMonth < 1) ||(iMonth >12))
+  	{
+	    //alert(iMonth+"월의 입력이 잘못 되었습니다.!!!","날짜 체크 오류",MM_ERROR);
+        return -1;
+  	}
+  	// 날짜의 존재 여부를 확인
+  	if(GetDay(sYmd) < 0 )
+  	{
+	    //alert("해당일자는 존재하지 않습니다.!!!","날짜 체크 오류",MM_ERROR);
+    	return -1;
+  	}
+  	return 0;
+}
+
+/*===============================================================
+= 기능 : 시간 여부를 확인한다.(hh24mm)
+= 인수 : sHH24MM 입력스트링(hh24mm)
+=
+= 리턴 : 0(적합), -1(부적합) => 적합이면 날짜값
+===============================================================*/
+function gfn_IsTimeHHMM(sHHMM)
+{
+  	if(  length(sHHMM) < 1)
+  	{
+    	return -1;
+  	}
+    // 숫자 확인
+    if(fnIsNumber(sHHMM) == -1)
+    {
+    	alert("날짜는 숫자만 입력하십시오.!!!","날짜 체크 오류",MM_ERROR);
+    	return -1;
+  	}
+  	// 길이 확인
+  	if(length(sHHMM) == 4) {
+  	} else {
+    	return -1;
+  	}
+  	
+  	var ihh = ToNumber(sHHMM.substr(0,2));  // 시간 입력(hh)
+  	var imm= ToNumber(sHHMM.substr(2,2));    // 분 입력(MM)
+  	
+  	if((ihh < 0) ||(ihh > 24))
+  	{
+	    //alert(iMonth+"시의 입력이 잘못 되었습니다.!!!","시간 체크 오류",MM_ERROR);
+        return -1;
+  	}
+  	if((imm < 0) ||(ihh > 60))
+  	{
+	    //alert(iMonth+"분의 입력이 잘못 되었습니다.!!!","시간 체크 오류",MM_ERROR);
+        return -1;
+  	}
+  	
+  	return 0;
+}
+
+/*===============================================================
+= 기능 : 입력값이 숫자인지를 확인한다
+= 인수 : sVal 입력스트링
+= 리턴 : 0(적합), -1(부적합) => 적합이면 숫자값
+===============================================================*/
+function fnIsNumber(sVal)
+{
+  
+  	var i, iBit;
+  	
+  	var ll_str_len;
+  	
+  	ll_str_len = length(sVal);  //.length();
+
+  	for(i=0; i<ll_str_len; i++)
+  	{
+	    	 
+	    	var iBit = substr(sVal,i,1);
+		
+		
+	    		    	 
+	    	if((iBit < 0 ) || (9 < iBit))
+	    	{
+	    	    return -1;  
+	    	}   
+  	}
+ 
+  	return 0;
+}
+
+/*====================================================================
+* FUNCTION NAME     : gfn_GridMultySort()
+* FUNCTION DESC 	: 그리드의 멀티 섹렉트
+* @param            : 그리드
+*          
+=====================================================================*/
+function gfn_GridMultySort(gridobj)
+{
+	gfn_ColList(gridobj);
+	
+	dsobj = object(gridobj.BindDataSet);
+	var result = Dialog("ad_pub::frm_sort.xml","");
+	var nheadText;
+	if(0 < length(result)){
+		if ( dsobj.rowcount() <> 0) {
+			dsobj.sort(result);
+			
+			// 해더 텍스트에 올림/내림 표시를 한다.
+			var colarr = result.split(",");
+	
+			for(i=0; i<gridobj.GetColCount(); i++)
+			{
+				//전체 현재 상태로
+				sRepText = replace(GridObj.GetCellProp("head",i,"text"), CONST_ASC_MARK,"");
+				GridObj.SetCellProp("head",i,"text", sRepText);
+				
+				sRepText = replace(GridObj.GetCellProp("head",i,"text"), CONST_DESC_MARK,"");
+				GridObj.SetCellProp("head",i,"text", sRepText);
+			}
+	
+			
+			for(j=0;j<colarr.length;j++)
+			{
+				var colidarr = colarr[j].split(":");
+				for(i=0; i<gridobj.GetColCount(); i++)
+				{
+					// 소트 구분 있는것만 고쳐놓기
+					if (GridObj.GetCellProp("Body",i,"colid") = colidarr[0]) 
+					{
+						if( colidarr[1] = "D") {
+						nheadText = GridObj.GetCellProp("head",i,"text");
+						nheadText = replace(nheadText,CONST_ASC_MARK,"");
+						nheadText = nheadText + CONST_DESC_MARK;
+						} else {
+							nheadText = GridObj.GetCellProp("head",i,"text");
+							nheadText = replace(nheadText,CONST_DESC_MARK,"");
+							nheadText = nheadText + CONST_ASC_MARK;   
+						}
+						
+						GridObj.SetCellProp("head",i,"text",nheadText);
+	
+					}
+				}
+			}
+		}
+	}
+}
+function gfn_ColList(gridobj)
+{
+	// gds_cilid에 그리드의 컬럼 아이디와 컬럼명을 넣는다
+	gds_colid.ClearData();
+	var irow;
+	for(i=0; i<GridObj.GetColCount(); i++)
+	{
+		irow = gds_colid.AddRow();
+		gds_colid.SetColumn(irow,"col_nm",GridObj.GetCellProp("head",i,"text"));
+		gds_colid.SetColumn(irow,"col_id",GridObj.GetCellProp("Body",i,"colid"));
+		}
+	}
+}
+
+function gfn_ubicall(ubi_print)
+{
+	//var menu_nm = gds_menu.getcolumn(R_Row,"MENU_TAG");
+	var MENU_NM = global.frame_message.edt_tag.text;
+	var strPath = AliasToRealPath("%USERPROFILE%")+"\\komcacon\\printscreen.bmp";
+
+	//alert(menu_nm);
+	ubi_Print.SetArgument("FORMID",MENU_NM);
+	ubi_Print.setPageScale("50");
+	ubi_Print.setFileURL(gv_ReportUrl+"fi/pub/");
+	ubi_Print.setJrfFileDir(gv_ReportUrl+"fi/pub/");
+	ubi_Print.setJrfFileName("printscreen.jrf");
+	ubi_Print.SetArgument("PRINTPATH", strPath);
+	ubi_Print.Retrieve();
+	cur_scale = ubi_Print.scale;
+	total_page = ubi_Print.getTotalPage();
+	cur_page = 1;
+	ubi_Print.print();
+
+	//refresh();
+
+}
+function gfn_ObjreSize(gridobj,formobj,w_gbn,h_gbn)
+/*
+	gridobj : 자동조정하고자하는 object
+	formobj : 해당폼 'this' 고정
+	w_gbn : 좌우폭(width)  조정 1:적용,0:자동처리 안함(고정)
+	h_gbn : 상하폭(height) 조정 1:적용,0:자동처리 안함(고정)
+*/
+{
+	if (h_gbn == 1) {
+		gridobj.Height = formobj.height - gridobj.top - 10;
+	} 
+	if (w_gbn == 1) {
+		gridobj.Width = formobj.width - gridobj.Left - 20;
+	} 
+	
+}
+
+/*
+    운영및 개발에 ftp를 이용해 업로드
+    
+    lPath : 로컬파일경로
+    rPath : 리모트파일경로
+    fileNm : 파일명(;로 구분 다중파일 업로드 가능)
+    devGbn : 개발여부(운영:"",개발:"d")    
+*/
+function gfn_ftpUpload(lPath,rPath,fileNm,devGbn){
+	
+	var files = split(fileNm,";","webstyle");
+	
+	//객체생성
+	Create("CyFtpEx","CyFtpEx0");
+	
+	//개발서버일경우
+	if(devGbn=="d")
+	{
+		CyFtpEx0.PassiveMode=false;
+		CyFtpEx0.Open("192.168.1.5","tmax","(tmax)10!!","21");
+		
+		for(var i=0;i<files.length;i++)
+		{
+			CyFtpEx0.PutFile(lPath + files[i],rPath + files[i]);
+		}
+		
+		CyFtpEx0.Close();
+	}
+	//그룹웨어서버ftp파일전송
+	else
+	{
+		CyFtpEx0.PassiveMode=true;
+		CyFtpEx0.Open("gw.komca.or.kr","tmax","tmax)(237!!","21");
+		
+		for(var i=0;i<files.length;i++)
+		{
+			CyFtpEx0.PutFile(lPath + files[i],rPath + files[i]);
+		}
+		
+		CyFtpEx0.Close();	
+	}
+		
+	Destroy("CyFtpEx0");	
+	
+	var rtnFile ="";
+		
+	for(var i=0;i<files.length;i++){
+		
+		if(i==(files.length-1)){
+			rtnFile = rtnFile + rPath+files[i];
+		}else{
+			rtnFile = rtnFile + rPath+files[i]+";";
+		}
+	}
+	
+	return rtnFile;
+}
+
+/* 화면잠금 해제 */
+function gfn_OffEvent()
+{
+	//if(gds_sessioninfo.GetColumn(0, "DEPT_CD") != "120030000")
+	//{
+		frame_top.KillTimer(2);
+		frame_top.CyLastInputU0.RunDelayInputTime(false);
+		
+		frame_left.OnMouseOut = "";
+		frame_left.OnMouseOver = "";
+		frame_top.OnMouseOut = "";
+		frame_top.OnMouseOver = "";
+		frame_bottom.OnMouseOut = "";
+		frame_bottom.OnMouseOver = "";
+		frame_message.OnMouseOut = "";
+		frame_message.OnMouseOver = "";
+	//}
+}
+
+/* 화면잠금 동작 */
+function gfn_OnEvent()
+{
+	//if(gds_sessioninfo.GetColumn(0, "DEPT_CD") != "120030000")
+	//{
+		frame_left.OnMouseOut = "frm_FrameLeft_OnMouseOut";
+		frame_left.OnMouseOver = "frm_FrameLeft_OnMouseOver";
+		frame_top.OnMouseOut = "frm_FrameTop_OnMouseOut";
+		frame_top.OnMouseOver = "frm_FrameTop_OnMouseOver";
+		frame_bottom.OnMouseOut = "frm_FrameBottom_OnMouseOut";
+		frame_bottom.OnMouseOver = "frm_FrameBottom_OnMouseOver";
+		frame_message.OnMouseOut = "FrameBottom_OnMouseOut";
+		frame_message.OnMouseOver = "FrameBottom_OnMouseOver";
+		
+		frame_top.SetTimer(2, gv_Session_Timer);	//타이머 재설정
+		frame_top.CyLastInputU0.RunDelayInputTime(true);
+	//}
+}
+
+/* URLEncode UTF-8 */
+var unreserved = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_.~";
+var reserved = "!*'();:@&=+$,/?%#[]";
+var hexchars = "0123456789ABCDEFabcdef";
+
+function gethex(decimal) 
+{
+  return "%" + charAt(hexchars,ext_getBitCalc(">>",decimal,4)) + 
+               charAt(hexchars,ext_getBitCalc("&",decimal,15));
+}
+
+function urlEncodeUtf8(decoded) 
+{
+  // Some variables:
+	var encoded = "";
+	
+	// ---------------- If UTF-8 character encoding was chosen: ----------------
+	
+	for (var i = 0; i < length(decoded); i++ ) 
+	{
+		var ch = charAt(decoded,i);
+		// Check if character is an unreserved character:
+		if (indexOf(unreserved,ch) != -1) {
+			encoded = encoded + ch;
+		} else {
+
+			// The position in the Unicode table tells us how many bytes are needed.
+			// Note that if we talk about first, second, etc. in the following, we are
+			// counting from left to right:
+			//
+			//   Position in   |  Bytes needed   | Binary representation
+			//  Unicode table  |   for UTF-8     |       of UTF-8
+			// ----------------------------------------------------------
+			//     0 -     127 |    1 byte       | 0XXX.XXXX
+			//   128 -    2047 |    2 bytes      | 110X.XXXX 10XX.XXXX
+			//  2048 -   65535 |    3 bytes      | 1110.XXXX 10XX.XXXX 10XX.XXXX
+			// 65536 - 2097151 |    4 bytes      | 1111.0XXX 10XX.XXXX 10XX.XXXX 10XX.XXXX
+	
+			var charcode = Asc(charAt(decoded,i));
+	
+			// Position 0 - 127 is equal to percent-encoding with an ASCII character encoding:
+			if (charcode < 128) {
+			  encoded = encoded + gethex(charcode);
+			}
+	
+			// Position 128 - 2047: two bytes for UTF-8 character encoding.
+			if (charcode > 127 && charcode < 2048) {
+			  // First UTF byte: Mask the first five bits of charcode with binary 110X.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc(">>",charcode,6),12));
+			  // Second UTF byte: Get last six bits of charcode and mask them with binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",charcode,63),128));
+			}
+	
+			// Position 2048 - 65535: three bytes for UTF-8 character encoding.
+			if (charcode > 2047 && charcode < 65536) {
+			  // First UTF byte: Mask the first four bits of charcode with binary 1110.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc(">>",charcode,12),224));
+			  // Second UTF byte: Get the next six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",ext_getBitCalc(">>",charcode,6),63),128));
+			  // Third UTF byte: Get the last six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",charcode,63),128));
+			}
+	
+			// Position 65536 - : four bytes for UTF-8 character encoding.
+			if (charcode > 65535) {
+			  // First UTF byte: Mask the first three bits of charcode with binary 1111.0XXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc(">>",charcode,18),240));
+			  // Second UTF byte: Get the next six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",ext_getBitCalc(">>",charcode,12),63),128));
+			  // Third UTF byte: Get the last six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",ext_getBitCalc(">>",charcode,6),63),128));
+			  // Fourth UTF byte: Get the last six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",charcode,63),128));
+			}
+		}
+
+	}  // end of for ...
+	return encoded;
+}
+
+function gfn_ChkKakao()
+{
+	gfn_PubCode("gds_kakao_tmpl", "2", "00457", "");
+	
+	for(var i = 0; i < gds_kakao.rowcount; i++)
+	{
+		if(length(gds_kakao.GetColumn(i, "CHANNEL")) > 0 && (gds_kakao.GetColumn(i, "CHANNEL") != "A" && gds_kakao.GetColumn(i, "CHANNEL") != "S"))
+		{
+			alert("알림톡 : A 또는 문자 : S 외의 다른 코드를 입력하였습니다.");
+			return false;
+		}
+		/*if(length(replace(replace(replace(trim(gds_kakao.GetColumn(i, "PHONE_NUM")), "-", ""), "(", ""), ")", "")) < 10)
+		{
+			alert("수신자 전화번호가 잘못 입력되었습니다.");
+			return false;
+		}*/
+		if(length(gds_kakao.GetColumn(i, "TMPL_CD")) > 0 && gds_kakao.GetColumn(i, "TMPL_CD") != "S" && gds_kakao_tmpl.FindRow("CODE_NM", gds_kakao.GetColumn(i, "TMPL_CD")) < 0)
+		{
+			alert("템플릿 코드가 잘못 입력되었습니다.");
+			return false;
+		}
+		if(length(gds_kakao.GetColumn(i, "SUBJECT")) < 1)
+		{
+			alert("문자발송 시 제목이 누락되었습니다.");
+			return false;
+		}
+		if(length(gds_kakao.GetColumn(i, "SND_MSG")) > 1000 || length(gds_kakao.GetColumn(i, "SND_MSG")) < 1)
+		{
+			if(length(gds_kakao.GetColumn(i, "SND_MSG")) > 1000)
+			{
+				alert("내용은 한글, 영어, 숫자, 특수문자 구분없이 1000자까지만 가능합니다.");
+			}
+			else
+			{
+				alert("내용이 누락되었습니다.");
+			}
+			return false;
+		}
+		if(length(gds_kakao.GetColumn(i, "SMS_SND_MSG")) > 90)
+		{
+			alert("내용은 한글, 영어, 숫자, 특수문자 구분없이 90자까지만 가능합니다.");
+			return false;
+		}
+		/*if(replace(replace(replace(trim(gds_kakao.GetColumn(i, "SMS_SND_NUM")), "-", ""), "(", ""), ")", "")  )
+		{
+		}
+		if(length(gds_kakao.GetColumn(i, "REQ_DTM")) > 0)
+		{
+			var vDate = Getdate();
+			var vDay = parseInt(substr(vDate, 6, 2));
+			var vHour = parseInt(substr(vDate, 8, 2));
+			var vMin = parseInt(substr(vDate, 10, 2));
+			var pDay = parseInt(substr(gds_kakao.GetColumn(i, "REQ_DTM"), 6, 2));
+			var pHour = parseInt(substr(gds_kakao.GetColumn(i, "REQ_DTM"), 8, 2));
+			var pMin = parseInt(substr(gds_kakao.GetColumn(i, "REQ_DTM"), 10, 2));
+			
+			if((vDay > pDay) || (vDay == pDay && vHour > pHour) || (vDay == pDay && vHour == pHour && vMin >= pMin))
+			{
+				alert("예약 시간이 현재보다 이전입니다.");
+				return false;
+			}
+			if(length(gds_kakao.GetColumn(i, "REQ_DTM")) < 8 || length(mae_Send_Time.Value) < 4)
+			{
+				alert("발송일시가 잘못 입력되었습니다.");
+				return false;
+			}
+		}*/
+		if(length(gds_kakao.GetColumn(i, "SMS_SND_YN")) > 0 && gds_kakao.GetColumn(i, "SMS_SND_YN") != "Y" && gds_kakao.GetColumn(i, "SMS_SND_YN") =="N")
+		{
+			alert("알림톡 실패 시 문자발송여부가 잘못 입력되었습니다.");
+			return false;
+		}
+		if(length(gds_kakao.GetColumn(i, "RESERVED6")) < 0)
+		{
+			alert("FORM ID가 누락 되었습니다.\n전산팀으로 문의하여주시기 바랍니다.");
+			return false;
+		}
+	}
+	return true;
+}

@@ -1,0 +1,491 @@
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿/*
+ *	신탁 공통
+ *
+ */
+
+/*
+ * 기      능: 매체코드 호출
+ * 인      수: Argument	설명
+			  rcvDS : 수신 데이터셋 명
+			  selectType : 1 - 매체코드그룹 반환
+			               2 - 전체 포함 매체코드그룹 반환
+			               3 - 다중매체코드 선택시(소분류코드로 중분류코드 그룹 알아오기)
+			               4 - 전체 포함 다중매체코드 선택시(소분류코드로 중분류코드 그룹 알아오기)
+			               5 - 소분류코드로 상위코드값 알아오기
+			               6 - 소분류코드로 서비스코드 조회
+			               
+			  # selectType 1 ~ 2
+			  comboNum : 1 - 대분류 콤보박스
+			             2 - 중분류 콤보박스
+			             3 - 소분류 콤보박스
+			  
+			  # selectType 3
+			  comboNum : 1 - 매체코드로 대분류코드 알아오기
+			             2 - 매체코드로 중분류코드 알아오기
+			             3 - 매체코드로 소분류코드 알아오기
+			             
+			  # selectType 4
+			  comboNum : 1 - 기본인자
+			  
+			  # selectType 1 ~ 3
+			  highCd : 상위콤보박스에서 선택된 하위콤보의 시퀀스값
+			  apprvPgmNm : 해당 프로그램의 ID값
+			  
+			  # selectType 4
+			  highCd : 서비스코드 조회시 필요한 소분류코드값
+			  
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+#include "script::common.js"  	// 공통 js
+
+function gfn_PubMdmCode(rcvDS, selectType, comboNum, highCd, apprvPgmNm){
+	var eventID;	gfn_CreateDataSet("ds_PubMdmCode", "HIGH_CD,8,STRING PGM_ID,8,STRING");
+		ds_PubMdmCode.DeleteAll();
+	var arow = ds_PubMdmCode.AddRow();
+	ds_PubMdmCode.SetColumn(arow, "HIGH_CD", highCd);
+	ds_PubMdmCode.SetColumn(arow, "PGM_ID", apprvPgmNm);
+	
+	if (selectType == 1)
+	{
+		if (comboNum == 1)
+		{
+			eventID = "mdm_select1";
+		}
+		else if (comboNum == 2)
+		{
+			eventID = "mdm_select2";
+		}
+		else if (comboNum == 3)
+		{
+			eventID = "mdm_select3";
+		}
+		else if (comboNum == 4)
+		{
+			eventID = "mdm_select4";
+		}
+	}	
+	else if (selectType == 2)
+	{		if (comboNum == 1)
+		{
+			eventID = "mdm_select_all1";
+		}
+		else if (comboNum == 2)
+		{
+			eventID = "mdm_select_all2";
+		}
+		else if (comboNum == 3)
+		{
+			eventID = "mdm_select_all3";
+		}
+		else if (comboNum == 4)
+		{
+			eventID = "mdm_select_all4";
+		}	}
+	else if (selectType == 3)
+	{
+		if (comboNum == 1)
+		{
+			eventID = "mdm_upside_select3";
+		}
+		else if (comboNum == 2)
+		{
+			eventID = "mdm_upside_select2";
+		}
+		else if (comboNum == 3)
+		{
+			eventID = "mdm_upside_select1";
+		}
+	}
+	else if (selectType == 4)
+	{
+		if (comboNum == 1)
+		{
+			eventID = "svccd_select";
+		}
+	}
+	else if( selectType == 5)
+	{
+		if (comboNum == 1)
+		{
+			eventID = "mdm_dis_select1";
+		}
+		else if (comboNum == 2)
+		{
+			eventID = "mdm_dis_select2";
+		}
+		else if (comboNum == 3)
+		{
+			eventID = "mdm_dis_select3";
+		}
+		else if (comboNum == 4)
+		{
+			eventID = "mdm_dis_select4";
+		}
+	}
+    gfn_syncCall("svcMdmSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001010&EVENTID=" + eventID,
+		"S=ds_PubMdmCode", rcvDS + "=SEL1", "", "gfn_CallBack");
+	
+}
+/*
+ * 기      능: 매체코드 콤보박스 선택값 반환
+ * 인      수: Argument	설명
+ * Return    : Return Value	
+ * 예     시 : 함수 사용 예	
+ */
+function gfn_Mdmcd_Val(cobType, dsName, mdmCol, cobName1, cobName2, cobName3, cobName4, cobName5)
+{
+	if (cobType == 1)
+	{
+		if (Object(cobName2).Value = "0" && Object(cobName3).Value = "0")
+		{
+			Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, "");
+		}
+		else
+		{
+			if (Object(cobName2).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName2).Value);
+			}
+			if (Object(cobName3).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName3).Value);
+			}
+		}
+	}
+	else if (cobType == 2)
+	{
+		if (Object(cobName2).Value = "0" && Object(cobName3).Value = "0" && Object(cobName4).Value = "0")
+		{
+			Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, "");
+		}
+		else
+		{
+			if (Object(cobName2).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName2).Value);
+			}
+			if (Object(cobName3).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName3).Value);
+			}
+			if (Object(cobName4).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName4).Value);
+			}
+		}
+	}
+	else if (cobType == 3)
+	{
+		if (Object(cobName1).Value = "0" && Object(cobName2).Value = "0" 
+			&& Object(cobName3).Value = "0" && Object(cobName4).Value = "0")
+		{
+			Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, "");
+		}
+		else
+		{
+			if (Object(cobName1).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName1).Value);
+			}
+			if (Object(cobName2).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName2).Value);
+			}
+			if (Object(cobName3).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName3).Value);
+			}
+			if (Object(cobName4).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName4).Value);
+			}
+		}
+	}
+	else if (cobType == 4)
+	{
+		if (Object(cobName1).Value = "0" && Object(cobName2).Value = "0" 
+			&& Object(cobName3).Value = "0" && Object(cobName4).Value = "0")
+		{
+			Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, "");
+			Object(dsName).SetColumn(Object(dsName).getLastRow(), cobName5, "");
+		}
+		else
+		{
+			if (Length(Object(cobName1).Value) > 0 && Object(cobName1).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), cobName5, Object(cobName1).Value);
+			}
+			if (Length(Object(cobName2).Value) > 0 && Object(cobName2).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), cobName5, Object(cobName2).Value);
+			}
+			if (Length(Object(cobName3).Value) > 0 && Object(cobName3).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), cobName5, Object(cobName3).Value);
+			}
+			if (Length(Object(cobName4).Value) > 0 && Object(cobName4).Value != "0")
+			{
+				Object(dsName).SetColumn(Object(dsName).getLastRow(), mdmCol, Object(cobName4).Value);
+			}
+		}
+	}
+	
+}
+
+
+/* * 기      능: 경로및 ID 구하기 * 인      수: @obj = obj			   @lev = 1 : 최하위 객체 ID					  2 : 폼하위의 하위 객체 ID					  3 : 폼 하위 객체 ID					  4 : 폼ID * Return    : Return Value	 * 예     시 : 함수 사용 예	 */function gfn_GetComp(obj, lev){	var rtn = "";  	var sPath = "";
+	if (sPath == "")	{
+		sPath = toString(obj.id);	}
+	if (toString(obj) == "[Global]")	{		arr = split(sPath,"::");		for ( var i = (arr.length()-1); i >=0; i -- ) 		{			rtn = rtn + arr[i] + "::";		}		sPath = substr(rtn, 0, length(rtn) - 2);		return;	}
+	var obj = obj.getForm();
+	if (lev = 1)	{
+		sPath = toString(obj.id);	}
+	else if (lev = 2)	{
+		sPath = toString(obj.id) + "." + sPath; 	}
+	else if (lev = 3)	{
+		sPath = GetCurrentComponent() + "." + toString(obj.id) + "." + sPath; 	}
+	else if	(lev = 4)	{
+		sPath = this.ID + "." + GetCurrentComponent() +  "." + toString(obj.id) + "." + sPath; 	}
+	else if	(lev = 5)	{
+		sPath = this.ID + "." + GetCurrentComponent() +  "." + toString(obj.id); 	}
+	else if	(lev = 6)	{
+		sPath = GetCurrentComponent(); 	}
+	else if	(lev = 7)	{
+		sPath = toString(obj.id); 	}
+	else if	(lev = 8)	{
+		sPath = this.ID; 	}
+	else if	(lev = 9)	{
+		sPath = sPath; 	}
+	return sPath;
+}
+
+
+/*기타 공연*/
+function gfn_PubMdmEtcCode(rcvDS, selectType, comboNum, highCd ){
+	var eventID = "";	gfn_CreateDataSet("ds_PubMdmCode", "HIGH_CD,8,STRING PGM_ID,8,STRING");
+		ds_PubMdmCode.DeleteAll();
+	var arow = ds_PubMdmCode.AddRow();
+	ds_PubMdmCode.SetColumn(arow, "HIGH_CD", highCd);
+
+	var rcvSEL = "";
+	if (selectType == 0 )
+	{
+		if (comboNum == 1)
+		{
+			eventID = "mem_etc_select1";
+			rcvSEL  = "SEL1";
+		}
+		else if (comboNum == 2)
+		{
+			eventID = "mdm_etc_select2";
+			rcvSEL	= "MRG1";
+		}
+		else if (comboNum == 3)
+		{
+			eventID = "mdm_etc_select3";
+			rcvSEL  = "SEL1";
+		}
+		else if (comboNum == 4)
+		{
+			eventID = "mdm_etc_select4";
+			rcvSEL  = "SEL1";
+		}
+	}	
+
+    gfn_syncCall("svcMdmEtcSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001010&EVENTID=" + eventID,
+		"S=ds_PubMdmCode", rcvDS + "=" + rcvSEL , "", "gfn_CallBack");
+	
+}
+
+function gfn_ProgramID( val_mdmcd )
+{
+	var mdmcd = left( val_mdmcd , 1 );
+	var pgmID = "";
+	switch( mdmcd )
+	{
+		case "A":
+			pgmID = "lev02_s04";
+			break;
+		
+		case "B":
+			pgmID = "lev02_s02";
+			break;
+		
+		case "C":
+			if( left( val_mdmcd , 2 ) == "CA" )
+			{
+				pgmID = "lev02_s15";
+			}
+			else if( left( val_mdmcd , 2 ) == "CB" )
+			{
+				if( left( val_mdmcd , 4 ) == "CB99" )
+				{
+					pgmID = "lev02_s13";
+				}
+				else
+				{
+					pgmID = "lev02_s14";
+				}
+			}
+			else if( left( val_mdmcd , 2 ) == "CC" )
+			{
+				if( left( val_mdmcd , 4 ) == "CC03" )
+				{
+					pgmID = "lev02_s18";
+				}
+				if ( left( val_mdmcd , 4 ) == "CC04" )
+				{
+				  	pgmID = "lev02_s22";
+				}
+				else
+				{
+					pgmID = "lev02_s10";
+				}
+			}
+			else if( left( val_mdmcd , 2 ) == "CD" )
+			{
+				pgmID = "lev02_s07";
+			}
+			else if( left( val_mdmcd , 2 ) == "CE" )
+			{
+				pgmID = "lev02_s06";
+			}
+			else if( left( val_mdmcd , 2 ) == "CG" )
+			{
+			   if (val_mdmcd == "CG0201" )
+			   {
+			    pgmID = "lev02_s22";
+			   }
+			   else
+			   {
+				pgmID = "lev02_s09";
+			   }
+			}
+			else if( left( val_mdmcd , 2 ) == "CH" )
+			{
+				pgmID = "lev02_s08";
+			}
+			break;
+			
+		case "D":
+			if( left( val_mdmcd , 2 ) == "DA" )
+			{
+				pgmID = "lev02_s01";
+			}
+			else if(left( val_mdmcd , 2 ) == "DC" )
+			{
+				pgmID = "lev02_s21";
+			}
+			else if(left( val_mdmcd , 2 ) == "DB")
+			{
+			    pgmID = "lev02_s21";
+			}
+			break;
+	
+		default: break;
+	}
+	
+	return pgmID;
+}
+
+function gfn_ProdName( prodcd )
+{
+	var prodnm;
+	gfn_CreateDataSet("ds_prodsearch", "PROD_CD,8,STRING PROD_NM,8,STRING");
+	
+	ds_prodsearch.DeleteAll();
+	var arow = ds_prodsearch.AddRow();
+	ds_prodsearch.SetColumn(arow, "PROD_CD", prodcd);
+	
+	gfn_syncCall("svcProdnmSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001001&EVENTID=prodnm_select" ,
+					"S=ds_prodsearch", "ds_prodsearch=SEL1", "", "gfn_CallBack");
+					
+	if( ds_prodsearch.rowcount == 1 )
+	{
+		prodnm = ds_prodsearch.GetColumn( 0 , "PROD_NM");
+	}
+	else
+	{
+		prodnm = "";
+	}
+	destroy("ds_prodsearch");
+	return prodnm;
+}
+
+function gfn_Member_Name( Mbcd )
+{
+	var mbnm;
+	gfn_CreateDataSet("ds_mem_name", "MB_CD,8,STRING MB_NM,8,STRING");
+	
+	ds_mem_name.DeleteAll();
+	var arow = ds_mem_name.AddRow();
+	ds_mem_name.SetColumn(arow, "MB_CD", Mbcd);
+	
+	gfn_syncCall("svcMbnmSearch", "KOMCA?SYSID=PATHFINDER&MENUID=1000001001&EVENTID=mem_name_search" ,
+					"S=ds_mem_name", "ds_mem_name=SEL1", "", "gfn_CallBack");
+	
+	
+	if( ds_mem_name.rowcount == 1 )
+	{
+		mbnm = ds_mem_name.GetColumn( 0 , "MB_NM");
+	}
+	else
+	{
+		mbnm = "";
+	}
+	destroy("ds_mem_name");
+	return mbnm; 
+}
+
+function gfn_ProgramName( val_pgmID )
+{
+	var pgmID 	= val_pgmID;
+	var pgmName = "";
+	
+	switch( val_pgmID )
+	{
+		case "lev02_s02" : 
+			pgmName = "전송서비스";
+			break;
+		case "lev02_s04" : 
+			pgmName = "방송";
+			break;
+		case "lev02_s15" : 
+			pgmName = "음반";
+			break;
+		case "lev02_s10" :
+			pgmName = "영상";
+			break;
+		case "lev02_s18" : 
+			pgmName = "방송영상";
+			break;
+		case "lev02_s06" : 
+			pgmName = "출판";
+			break;
+		case "lev02_s07" : 
+			pgmName = "반주기기";
+			break;
+		case "lev02_s08" : 
+			pgmName = "광고";
+			break;
+		case "lev02_s09" : 
+			pgmName = "영화";
+			break;
+		case "lev02_s13" : 
+			pgmName = "기타";
+			break;
+		case "lev02_s14" : 
+			pgmName = "선거로고송";
+			break;	
+		case "lev02_s01" : 
+			pgmName = "무대공연";
+			break;	
+		case "lev02_s21" : 
+			pgmName = "유선공연";
+			break;	
+		default: break;
+	}
+	
+	return pgmName;
+}

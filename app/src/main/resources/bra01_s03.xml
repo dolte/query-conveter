@@ -1,0 +1,462 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<delete id="SQLupso_amt_change_DEL22" parameterType="">
+Delete from
+	GIBU.TBRA_UPSORTAL_INFO
+where
+	CHG_BRAN = # { chgBran }
+	and CHG_NUM = # { chgNum }
+	and CHG_DAY = # { chgDay }
+	and UPSO_CD = # { upsoCd }
+</delete>
+
+<update id="SQLupso_amt_change_UPD7" parameterType="">
+Update
+	GIBU.TBRA_UPSORTAL_INFO
+set
+	MODPRES_ID = # { modpresId },
+	APPL_DAY = # { applDay },
+	UPSO_GRAD = # { upsoGrad },
+	USE_TIME = # { useTime },
+	MCHNDAESU = # { mchndaesu },
+	MONPRNCFEE = # { monprncfee },
+	BSTYP_CD = # { bstypCd },
+	MONPRNCFEE2 = # { monprncfee2 },
+	MOD_DATE = SYSDATE,
+	REMAK = # { remak }
+where
+	CHG_BRAN = # { chgBran }
+	and CHG_DAY = # { chgDay }
+	and CHG_NUM = # { chgNum }
+	and UPSO_CD = # { upsoCd }
+</update>
+
+<select id="SQLupso_amt_change_SEL7" parameterType="" resultType="">
+SELECT
+	LPAD(NVL(MAX(CHG_NUM), 0) + 1, 4, '0') CHG_NUM
+FROM
+	GIBU.TBRA_UPSORTAL_INFO
+WHERE
+	CHG_BRAN = # { chgBran }
+	AND CHG_DAY = # { chgDay }
+	AND UPSO_CD = # { upsoCd }
+</select>
+
+<insert id="SQLupso_amt_change_INS6" parameterType="">
+Insert into
+	GIBU.TBRA_UPSORTAL_INFO (
+		JOIN_SEQ,
+		APPL_DAY,
+		CHG_BRAN,
+		CHG_DAY,
+		INSPRES_ID,
+		UPSO_GRAD,
+		USE_TIME,
+		MCHNDAESU,
+		MONPRNCFEE,
+		BSTYP_CD,
+		MONPRNCFEE2,
+		INS_DATE,
+		CHG_NUM,
+		UPSO_CD,
+		REMAK
+	)
+values
+(
+		(
+			SELECT
+				NVL(MAX(JOIN_SEQ), 0) + 1 JOIN_SEQ
+			FROM
+				GIBU.TBRA_UPSORTAL_INFO
+		),
+		# { applDay },
+		# { chgBran },
+		# { chgDay },
+		# { inspresId },
+		# { upsoGrad },
+		# { useTime },
+		# { mchndaesu },
+		# { monprncfee },
+		# { bstypCd },
+		# { monprncfee2 },
+		SYSDATE,
+		# { chgNum },
+		# { upsoCd },
+		# { remak }
+	)
+</insert>
+
+<delete id="SQLupso_amt_change_DEL24" parameterType="">
+Delete from
+	GIBU.TBRA_NOREBANG_INFO
+where
+	CHG_NUM = # { chgNum }
+	and CHG_DAY = # { chgDay }
+	and UPSO_CD = # { upsoCd }
+	and BSTYP_CD = # { bstypCd }
+</delete>
+
+<update id="SQLupso_amt_change_UPD42" parameterType="">
+Update
+	GIBU.TBRA_UPSO
+set
+	MODPRES_ID = # { modpresId },
+	MCHNDAESU = # { mchndaesu },
+	MOD_DATE = SYSDATE
+where
+	UPSO_CD = # { upsoCd }
+</update>
+
+<select id="SQLupso_amt_change_SEL26" parameterType="" resultType="">
+SELECT
+	MCHNDAESU
+FROM
+	GIBU.TBRA_UPSORTAL_INFO
+WHERE
+	JOIN_SEQ = (
+		SELECT
+			MAX(JOIN_SEQ) JOIN_SEQ
+		FROM
+			GIBU.TBRA_UPSORTAL_INFO
+		WHERE
+			UPSO_CD = # { upsoCd }
+	)
+</select>
+
+<update id="SQLupso_amt_change_UPD40" parameterType="">
+Update
+	GIBU.TBRA_UPSO
+set
+	MODPRES_ID = # { modpresId },
+	MCHNDAESU = # { mchndaesu },
+	MOD_DATE = SYSDATE
+where
+	UPSO_CD = # { upsoCd }
+</update>
+
+<update id="SQLupso_amt_change_UPD25" parameterType="">
+Update
+	GIBU.TBRA_UPSO
+set
+	MODPRES_ID = # { modpresId },
+	MCHNDAESU = # { mchndaesu },
+	MOD_DATE = SYSDATE
+where
+	UPSO_CD = # { upsoCd }
+</update>
+
+<delete id="SQLupso_amt_change_DEL34" parameterType="">
+Delete from
+	GIBU.TBRA_NOREBANG_INFO
+where
+	CHG_BRAN = # { chgBran }
+	and CHG_NUM = # { chgNum }
+	and CHG_DAY = # { chgDay }
+	and UPSO_CD = # { upsoCd }
+	and GRAD_NUM = # { gradNum }
+</delete>
+
+<select id="SQLupso_amt_change_SEL29" parameterType="" resultType="">
+SELECT
+	CASE
+		WHEN APPL_DAY < '20130601' THEN (
+			SELECT
+				STNDAMT
+			FROM
+				GIBU.TBRA_BSTYPGRAD_TEMP2013
+			WHERE
+				BSTYP_CD = # { bstypCd }
+				AND GRAD_GBN = # { gradGbn }
+		)
+		ELSE (
+			SELECT
+				STNDAMT
+			FROM
+				GIBU.TBRA_BSTYPGRAD
+			WHERE
+				BSTYP_CD = # { bstypCd }
+				AND GRAD_GBN = # { gradGbn }
+		)
+	END STNDAMT,
+	(
+		SELECT
+			/*+  INDEX_DESC(TBRA_FEERATE_HISTY  TBRA_FEERATE_HISTY_IDX_PK)  */
+			RATE
+		FROM
+			GIBU.TBRA_FEERATE_HISTY
+		WHERE
+			APPL_DAY <= A.APPL_DAY
+			AND BSTYP_CD = GIBU.FT_GET_BSTYP_INFO(# { upsoCd })
+			AND ROWNUM = 1
+	) RATE
+FROM
+	GIBU.TBRA_UPSORTAL_INFO A
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND CHG_DAY = # { chgDay }
+	AND CHG_NUM = # { chgNum }
+	AND CHG_BRAN = # { chgBran }
+</select>
+
+<select id="SQLupso_amt_change_SEL28" parameterType="" resultType="">
+SELECT
+	CASE
+		WHEN APPL_DAY < '20130601' THEN (
+			SELECT
+				STNDAMT
+			FROM
+				GIBU.TBRA_BSTYPGRAD_TEMP2013
+			WHERE
+				BSTYP_CD = # { bstypCd }
+				AND GRAD_GBN = # { gradGbn }
+		)
+		ELSE (
+			SELECT
+				STNDAMT
+			FROM
+				GIBU.TBRA_BSTYPGRAD
+			WHERE
+				BSTYP_CD = # { bstypCd }
+				AND GRAD_GBN = # { gradGbn }
+		)
+	END STNDAMT,
+	(
+		SELECT
+			/*+  INDEX_DESC(TBRA_FEERATE_HISTY  TBRA_FEERATE_HISTY_IDX_PK)  */
+			RATE
+		FROM
+			GIBU.TBRA_FEERATE_HISTY
+		WHERE
+			APPL_DAY <= A.APPL_DAY
+			AND BSTYP_CD = GIBU.FT_GET_BSTYP_INFO(# { upsoCd })
+			AND ROWNUM = 1
+	) RATE
+FROM
+	GIBU.TBRA_UPSORTAL_INFO A
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND CHG_DAY = # { chgDay }
+	AND CHG_NUM = # { chgNum }
+	AND CHG_BRAN = # { chgBran }
+</select>
+
+<insert id="SQLupso_amt_change_INS33" parameterType="">
+Insert into
+	GIBU.TBRA_NOREBANG_INFO (
+		INS_DATE,
+		CHG_BRAN,
+		INSPRES_ID,
+		CHG_NUM,
+		CHG_DAY,
+		STNDAMT,
+		MCHNDAESU,
+		AREA,
+		UPSO_CD,
+		BSTYP_CD,
+		GRAD_GBN,
+		GRAD_NUM
+	)
+values
+(
+		SYSDATE,
+		# { chgBran },
+		# { inspresId },
+		# { chgNum },
+		# { chgDay },
+		# { stndamt },
+		# { mchndaesu },
+		# { area },
+		# { upsoCd },
+		# { bstypCd },
+		# { gradGbn },
+		(
+			SELECT
+				NVL(MAX(GRAD_NUM), 0) + 1 GRAD_NUM
+			FROM
+				GIBU.TBRA_NOREBANG_INFO
+			WHERE
+				UPSO_CD = # { gradNum1 }
+		)
+	)
+</insert>
+
+<update id="SQLupso_amt_change_UPD35" parameterType="">
+Update
+	GIBU.TBRA_NOREBANG_INFO
+set
+	MODPRES_ID = # { modpresId },
+	STNDAMT = # { stndamt },
+	MCHNDAESU = # { mchndaesu },
+	AREA = # { area },
+	MOD_DATE = SYSDATE,
+	BSTYP_CD = # { bstypCd },
+	GRAD_GBN = # { gradGbn }
+where
+	CHG_BRAN = # { chgBran }
+	and CHG_NUM = # { chgNum }
+	and CHG_DAY = # { chgDay }
+	and UPSO_CD = # { upsoCd }
+	and GRAD_NUM = # { gradNum }
+</update>
+
+<update id="SQLupso_amt_change_XIUD30" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSORTAL_INFO
+SET
+	MONPRNCFEE2 = (
+		SELECT
+			SUM(STNDAMT * NVL(MCHNDAESU, 0))
+		FROM
+			GIBU.TBRA_NOREBANG_INFO
+		WHERE
+			UPSO_CD = # { upsoCd }
+			AND CHG_DAY = # { chgDay }
+			AND CHG_NUM = # { chgNum }
+			AND CHG_BRAN = # { chgBran }
+	),
+	MONPRNCFEE = (
+		SELECT
+			TRUNC(SUM(STNDAMT * NVL(MCHNDAESU, 0)) * 0.01 * # { rate }, -1)
+		FROM
+			GIBU.TBRA_NOREBANG_INFO
+		WHERE
+			UPSO_CD = # { upsoCd }
+			AND CHG_DAY = # { chgDay }
+			AND CHG_NUM = # { chgNum }
+			AND CHG_BRAN = # { chgBran }
+	)
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND CHG_DAY = # { chgDay }
+	AND CHG_NUM = # { chgNum }
+	AND CHG_BRAN = # { chgBran }
+</update>
+
+<update id="SQLupso_amt_change_XIUD31" parameterType="">
+UPDATE
+	GIBU.TBRA_UPSORTAL_INFO
+SET
+	MONPRNCFEE2 = (
+		SELECT
+			SUM(STNDAMT * NVL(MCHNDAESU, 0))
+		FROM
+			GIBU.TBRA_NOREBANG_INFO
+		WHERE
+			UPSO_CD = # { upsoCd }
+			AND CHG_DAY = # { chgDay }
+			AND CHG_NUM = # { chgNum }
+			AND CHG_BRAN = # { chgBran }
+	),
+	MONPRNCFEE = (
+		SELECT
+			TRUNC(SUM(STNDAMT * NVL(MCHNDAESU, 0)) * 0.01 * # { rate }, -1)
+		FROM
+			GIBU.TBRA_NOREBANG_INFO
+		WHERE
+			UPSO_CD = # { upsoCd }
+			AND CHG_DAY = # { chgDay }
+			AND CHG_NUM = # { chgNum }
+			AND CHG_BRAN = # { chgBran }
+	)
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND CHG_DAY = # { chgDay }
+	AND CHG_NUM = # { chgNum }
+	AND CHG_BRAN = # { chgBran }
+</update>
+
+<select id="SQLupso_amt_change_SEL9" parameterType="" resultType="">
+SELECT
+	ROWNUM,
+	A.CHG_DAY,
+	A.CHG_NUM,
+	A.CHG_BRAN,
+	TRIM(A.BSTYP_CD) || A.UPSO_GRAD GRAD,
+	TRIM(A.BSTYP_CD) BSTYP_CD,
+	A.UPSO_GRAD,
+	A.MONPRNCFEE,
+	A.MONPRNCFEE2,
+	A.APPL_DAY,
+	A.MCHNDAESU,
+	A.REMAK,
+	A.UPSO_CD,
+	A.USE_TIME
+FROM
+	GIBU.TBRA_UPSORTAL_INFO A
+WHERE
+	A.UPSO_CD = # { upsoCd }
+ORDER BY
+	A.CHG_DAY,
+	A.CHG_NUM
+</select>
+
+<select id="SQLupso_amt_change_SEL19" parameterType="" resultType="">
+SELECT
+	A.UPSO_CD,
+	TRIM(A.BSTYP_CD) || A.GRAD_GBN GRAD,
+	TRIM(A.BSTYP_CD) BSTYP_CD,
+	A.GRAD_GBN,
+	A.AREA,
+	A.MCHNDAESU,
+	A.STNDAMT,
+	B.GRADNM,
+	A.CHG_DAY,
+	A.CHG_NUM,
+	A.CHG_BRAN,
+	A.GRAD_NUM,
+	(A.MCHNDAESU * A.STNDAMT) AMT
+FROM
+	GIBU.TBRA_NOREBANG_INFO A,
+	GIBU.TBRA_BSTYPGRAD B,
+	GIBU.TBRA_UPSO C
+WHERE
+	A.UPSO_CD = # { upsoCd }
+	AND A.UPSO_CD = C.UPSO_CD
+	AND A.BSTYP_CD = B.BSTYP_CD
+	AND A.GRAD_GBN = B.GRAD_GBN
+	AND A.CHG_DAY = # { chgDay }
+	AND A.CHG_NUM = # { chgNum }
+	AND A.CHG_BRAN = # { chgBran }
+</select>
+
+<select id="SQLupso_noraebang_select_SEL1" parameterType="" resultType="">
+SELECT
+	A.UPSO_CD,
+	TRIM(A.BSTYP_CD) || A.GRAD_GBN GRAD,
+	TRIM(A.BSTYP_CD) BSTYP_CD,
+	A.GRAD_GBN,
+	A.AREA,
+	A.MCHNDAESU,
+	A.STNDAMT,
+	B.GRADNM,
+	A.CHG_DAY,
+	A.CHG_NUM,
+	A.CHG_BRAN,
+	A.MCHNDAESU * A.STNDAMT AMT,
+	A.GRAD_NUM
+FROM
+	GIBU.TBRA_NOREBANG_INFO A,
+	GIBU.TBRA_BSTYPGRAD B,
+	GIBU.TBRA_UPSO C
+WHERE
+	A.UPSO_CD = # { upsoCd }
+	AND A.UPSO_CD = C.UPSO_CD
+	AND A.BSTYP_CD = B.BSTYP_CD
+	AND A.GRAD_GBN = B.GRAD_GBN
+	AND A.CHG_DAY = # { chgDay }
+	AND A.CHG_NUM = # { chgNum }
+	AND A.CHG_BRAN = # { chgBran }
+</select>
+
+<select id="SQLfeerate_select_SEL1" parameterType="" resultType="">
+SELECT
+	/*+  INDEX_DESC(TBRA_FEERATE_HISTY  TBRA_FEERATE_HISTY_IDX_PK)  */
+	RATE
+FROM
+	GIBU.TBRA_FEERATE_HISTY
+WHERE
+	APPL_DAY <= # { applDay }
+	AND BSTYP_CD = GIBU.FT_GET_BSTYP_INFO(# { upsoCd })
+	AND ROWNUM = 1
+</select>
+
+</mapper>
