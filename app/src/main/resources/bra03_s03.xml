@@ -1,0 +1,88 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLocr_demd_insert_SEL2" parameterType="" resultType="">
+SELECT
+	A.DEMD_YRMN,
+	C.CODE_NM DEMD_NM,
+	A.DEMD_GBN,
+	A.UPSO_CD,
+	B.UPSO_NM,
+	A.START_YRMN,
+	A.END_YRMN,
+	A.ERR_GBN,
+	A.ERR_CTENT
+FROM
+	GIBU.TBRA_DEMD_ERR A,
+	GIBU.TBRA_UPSO B,
+	FIDU.TENV_CODE C
+WHERE
+	A.DEMD_YRMN = # { demdYrmn }
+	AND A.CRET_GBN = 'O'
+	AND B.UPSO_CD = A.UPSO_CD
+	AND B.BRAN_CD = # { branCd }
+	AND C.HIGH_CD = '00141'
+	AND A.DEMD_GBN = C.CODE_CD
+</select>
+
+<select id="SQLocr_demd_insert_SEL3" parameterType="" resultType="">
+SELECT
+	XA.GIBU BRAN_CD,
+	XA.DEPT_NM,
+	DECODE(XB.DEMD_YRMN, NULL, NULL, '완료') BRAN_END
+FROM
+	INSA.TCPM_DEPT XA,
+	(
+		SELECT
+			DISTINCT B.BRAN_CD,
+			DEMD_YRMN
+		FROM
+			GIBU.TBRA_DEMD_OCR A,
+			GIBU.TBRA_UPSO B
+		WHERE
+			A.DEMD_YRMN = # { demdYrmn }
+			AND B.UPSO_CD = A.UPSO_CD
+	) XB
+WHERE
+	XA.DEPT_CD BETWEEN '106010100' AND '106019999'
+	AND XA.GIBU = XB.BRAN_CD (+)
+ORDER BY
+	BRAN_CD
+</select>
+
+<select id="SQLocr_demd_init_SEL1" parameterType="" resultType="">
+SELECT
+	XA.GIBU BRAN_CD,
+	XA.DEPT_NM,
+	DECODE(XB.DEMD_YRMN, NULL, NULL, '완료') BRAN_END,
+	XB.INS_DAY
+FROM
+	INSA.TCPM_DEPT XA,
+	(
+		SELECT
+			BRAN_CD,
+			MAX(DEMD_YRMN) DEMD_YRMN,
+			TO_CHAR(MAX(INS_DATE), 'YYYYMMDD') INS_DAY
+		FROM
+			GIBU.TBRA_DEMD_OCR
+		WHERE
+			DEMD_YRMN = # { demdYrmn }
+		GROUP BY
+			BRAN_CD
+	) XB
+WHERE
+	XA.DEPT_CD BETWEEN '106010100' AND '106019999'
+	AND XA.GIBU = XB.BRAN_CD (+)
+ORDER BY
+	BRAN_CD
+</select>
+
+<select id="SQLrept_closing_SEL1" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_BRANEND
+WHERE
+	END_YEAR || END_MON = # { demdYrmn }
+	AND BRAN_CD = DECODE(# { branCd }, 'AL', BRAN_CD, # { branCd })
+</select>
+
+</mapper>
