@@ -1,0 +1,152 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLsel_card_req_SEL1" parameterType="" resultType="">
+SELECT
+	A.BRAN_CD,
+	GIBU.GET_BRAN_NM(A.BRAN_CD) AS BRAN_NM,
+	A.STAFF_CD,
+	FIDU.GET_STAFF_NM(A.STAFF_CD) AS STAFF_NM,
+	A.INS_DAY,
+	A.INS_NUM,
+	A.UPSO_CD,
+	B.UPSO_NM,
+	A.NONPY_TERM,
+	A.NONPY_AMT,
+	A.CARD_GBN,
+	A.CARD_NUM,
+	A.TERM_YRMN,
+	A.INSTP_MONTH_FREQ,
+	A.START_YRMN || '01' AS START_YRMN,
+	A.END_YRMN || '01' AS END_YRMN,
+	A.PAY_AMT,
+	A.PAY_DAY,
+	A.APPRV_NUM,
+	A.REPT_DAY,
+	A.REPT_AMT,
+	A.COMIS,
+	A.REMAK,
+	(
+		CASE
+			WHEN C.UPSO_CD IS NOT NULL THEN 'Y'
+			ELSE 'N'
+		END
+	) AS REPT_YN
+FROM
+	GIBU.TBRA_REPT_CARD_REQ A,
+	GIBU.TBRA_UPSO B,
+	GIBU.TBRA_REPT_CARD C
+WHERE
+	A.UPSO_CD = B.UPSO_CD
+	AND A.BRAN_CD = DECODE(# { branCd }, 'AL', A.BRAN_CD, # { branCd })
+	AND A.STAFF_CD = NVL(# { staffCd }, A.STAFF_CD)
+	AND A.CARD_GBN = NVL(# { cardGbn }, A.CARD_GBN)
+	AND A.INS_DAY = SUBSTR(C.REMAK(+), 1, 8)
+	AND A.INS_NUM = SUBSTR(C.REMAK(+), 10, 4)
+	AND A.INS_DAY BETWEEN # { insStart }
+	AND # { insEnd }
+	AND A.PAY_DAY BETWEEN # { paytrmStartDay }
+	AND # { paytrmEndDay }
+	AND A.REPT_DAY BETWEEN # { reptFrom }
+	AND # { reptTo }
+ORDER BY
+	INS_DAY,
+	INS_NUM
+</select>
+
+<delete id="SQLmng_card_req_DEL7" parameterType="">
+Delete from
+	GIBU.TBRA_REPT_CARD_REQ
+where
+	INS_NUM = # { insNum }
+	and INS_DAY = # { insDay }
+</delete>
+
+<update id="SQLmng_card_req_UPD6" parameterType="">
+Update
+	GIBU.TBRA_REPT_CARD_REQ
+set
+	MODPRES_ID = # { modpresId },
+	COMIS = # { comis },
+	REPT_DAY = # { reptDay },
+	TERM_YRMN = # { termYrmn },
+	PAY_DAY = # { payDay },
+	START_YRMN = # { startYrmn },
+	CARD_GBN = # { cardGbn },
+	INSTP_MONTH_FREQ = # { instpMonthFreq },
+	NONPY_TERM = # { nonpyTerm },
+	UPSO_CD = # { upsoCd },
+	MOD_DATE = SYSDATE,
+	REPT_AMT = # { reptAmt },
+	CARD_NUM = # { cardNum },
+	END_YRMN = # { endYrmn },
+	PAY_AMT = # { payAmt },
+	REMAK = # { remak },
+	APPRV_NUM = # { apprvNum },
+	NONPY_AMT = # { nonpyAmt }
+where
+	INS_DAY = # { insDay }
+	and INS_NUM = # { insNum }
+</update>
+
+<select id="SQLmng_card_req_SEL8" parameterType="" resultType="">
+SELECT
+	LPAD(NVL(MAX(TO_NUMBER(INS_NUM)), 0) + 1, 4, '0') AS INS_NUM
+FROM
+	GIBU.TBRA_REPT_CARD_REQ
+WHERE
+	INS_DAY = TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<insert id="SQLmng_card_req_INS5" parameterType="">
+Insert into
+	GIBU.TBRA_REPT_CARD_REQ (
+		COMIS,
+		REPT_DAY,
+		INSPRES_ID,
+		TERM_YRMN,
+		INS_DAY,
+		PAY_DAY,
+		START_YRMN,
+		INS_DATE,
+		CARD_GBN,
+		STAFF_CD,
+		INSTP_MONTH_FREQ,
+		NONPY_TERM,
+		INS_NUM,
+		UPSO_CD,
+		REPT_AMT,
+		CARD_NUM,
+		PAY_AMT,
+		BRAN_CD,
+		END_YRMN,
+		REMAK,
+		APPRV_NUM,
+		NONPY_AMT
+	)
+values
+(
+		# { comis },
+		# { reptDay },
+		# { inspresId },
+		# { termYrmn },
+		# { insDay },
+		# { payDay },
+		# { startYrmn },
+		SYSDATE,
+		# { cardGbn },
+		# { staffCd },
+		# { instpMonthFreq },
+		# { nonpyTerm },
+		# { insNum },
+		# { upsoCd },
+		# { reptAmt },
+		# { cardNum },
+		# { payAmt },
+		# { branCd },
+		# { endYrmn },
+		# { remak },
+		# { apprvNum },
+		# { nonpyAmt }
+	)
+</insert>
+
+</mapper>

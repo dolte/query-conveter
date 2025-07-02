@@ -1,0 +1,262 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLauto_card_app_save_SEL1" parameterType="" resultType="">
+SELECT
+	NVL(MAX(SEQ), 0) + 1 SEQ
+FROM
+	GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION
+WHERE
+	UPSO_CD = # { upsoCd }
+</select>
+
+<update id="SQLauto_card_app_save_UPD6" parameterType="">
+Update
+	GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION
+set
+	MODPRES_ID = # { modpresId },
+	RELATION_CD = # { relationCd },
+	PAYPRES_NM = # { paypresNm },
+	CARD_CD = # { cardCd },
+	PAYPRES_PHON_NUM = # { paypresPhonNum },
+	VAILD_YRMM = # { vaildYrmm },
+	APPTN_DAY = # { apptnDay },
+	APP_GBN = # { appGbn },
+	MOD_DATE = SYSDATE,
+	RESINUM = # { resinum },
+	CARD_NUM = # { cardNum },
+	PASSWD = # { passwd }
+where
+	SEQ = # { seq }
+	and UPSO_CD = # { upsoCd }
+	and BRAN_CD = # { branCd }
+</update>
+
+<insert id="SQLauto_card_app_save_INS5" parameterType="">
+Insert into
+	GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION (
+		RELATION_CD,
+		INSPRES_ID,
+		PAYPRES_NM,
+		SEQ,
+		INS_DATE,
+		CARD_CD,
+		PAYPRES_PHON_NUM,
+		VAILD_YRMM,
+		APPTN_DAY,
+		UPSO_CD,
+		APP_GBN,
+		RESINUM,
+		CARD_NUM,
+		BRAN_CD,
+		PASSWD
+	)
+values
+(
+		# { relationCd },
+		# { inspresId },
+		# { paypresNm },
+		# { seq },
+		SYSDATE,
+		# { cardCd },
+		# { paypresPhonNum },
+		# { vaildYrmm },
+		# { apptnDay },
+		# { upsoCd },
+		# { appGbn },
+		# { resinum },
+		# { cardNum },
+		# { branCd },
+		# { passwd }
+	)
+</insert>
+
+<select id="SQLauto_card_fileup_SEL_FILE" parameterType="" resultType="">
+SELECT
+	'/upload_file/GIBU/APPLICATION_CARD/' || SUBSTR(TO_CHAR(SYSDATE, 'YYYYMM'), 1, 6) AS DFILEPATH
+FROM
+	DUAL
+</select>
+
+<select id="SQLauto_card_fileup_SEL31" parameterType="" resultType="">
+SELECT
+	SVR_FILE_NM,
+	SVR_FILE_ROUT
+FROM
+	GIBU.TBRA_UPSO_AUTO_CARD_DOC_ATTCH
+WHERE
+	UPSO_CD = # { upsoCd }
+	AND SEQ = # { seq }
+</select>
+
+<select id="SQLauto_card_fileup_SEL25" parameterType="" resultType="">
+SELECT
+	'' || # { upsoCd } || '-' || TO_CHAR(SYSDATE, 'yyyymmdd') || '-' || # { seq } || '-' || TO_CHAR (SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3') || SUBSTR (# { fileNm }, INSTR (# { fileNm }, '.', '-1')) AS DFILENAME
+FROM
+	DUAL
+</select>
+
+<delete id="SQLauto_card_fileup_DEL40" parameterType="">
+Delete from
+	GIBU.TBRA_UPSO_AUTO_CARD_DOC_ATTCH
+where
+	UPSO_CD = # { upsoCd }
+	and SEQ = # { seq }
+</delete>
+
+<select id="SQLauto_card_fileup_SEL33" parameterType="" resultType="">
+SELECT
+	'' || # { upsoCd } || '-' || # { insDay } || '-' || # { seq } || '-' || TO_CHAR (SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3') || SUBSTR (# { fileNm }, INSTR (# { fileNm }, '.', '-1')) AS DFILENAME
+FROM
+	DUAL
+</select>
+
+<insert id="SQLauto_card_fileup_INS31" parameterType="">
+Insert into
+	GIBU.TBRA_UPSO_AUTO_CARD_DOC_ATTCH (
+		INS_DATE,
+		INSPRES_ID,
+		UPSO_CD,
+		SVR_FILE_ROUT,
+		SVR_FILE_NM,
+		SEQ,
+		REMAK,
+		FILE_NM
+	)
+values
+(
+		SYSDATE,
+		# { inspresId },
+		# { upsoCd },
+		# { svrFileRout },
+		# { svrFileNm },
+		# { seq },
+		# { remak },
+		# { fileNm }
+	)
+</insert>
+
+<update id="SQLauto_card_fileup_UPD36" parameterType="">
+Update
+	GIBU.TBRA_UPSO_AUTO_CARD_DOC_ATTCH
+set
+	MODPRES_ID = # { modpresId },
+	MOD_DATE = SYSDATE,
+	SVR_FILE_ROUT = # { svrFileRout },
+	SVR_FILE_NM = # { svrFileNm },
+	REMAK = # { remak },
+	FILE_NM = # { fileNm }
+where
+	UPSO_CD = # { upsoCd }
+	and SEQ = # { seq }
+</update>
+
+<select id="SQLauto_card_file_search_SEL1" parameterType="" resultType="">
+SELECT
+	A.UPSO_CD,
+	A.SEQ,
+	A.FILE_NM,
+	A.SVR_FILE_NM,
+	A.SVR_FILE_ROUT
+FROM
+	GIBU.TBRA_UPSO_AUTO_CARD_DOC_ATTCH A
+WHERE
+	1 = 1
+	AND A.UPSO_CD = # { upsoCd }
+	AND A.SEQ = # { seq }
+ORDER BY
+	SEQ
+</select>
+
+<select id="SQLsearch_auto_card_SEL1" parameterType="" resultType="">
+SELECT
+	XA.BRAN_CD,
+	XD.DEPT_NM AS BRAN_NM,
+	XA.UPSO_CD,
+	XA.UPSO_NM,
+	XB.BSTYP_CD || XB.UPSO_GRAD AS GRAD,
+	XB.GRADNM,
+	XA.STAFF_CD,
+	XC.HAN_NM AS STAFF_NM,
+	XB.MONPRNCFEE,
+	XA.UPSO_PHON,
+	XA.MNGEMSTR_NM,
+	XA.MNGEMSTR_RESINUM,
+	SUBSTR(REPLACE(XA.MNGEMSTR_HPNUM, '-', ''), 1, 11) AS MNGEMSTR_HPNUM,
+	XA.PERMMSTR_NM,
+	XA.PERMMSTR_RESINUM,
+	SUBSTR(REPLACE(XA.PERMMSTR_HPNUM, '-', ''), 1, 11) AS PERMMSTR_HPNUM,
+	XA.UPSO_NEW_ADDR1 || DECODE(XA.UPSO_NEW_ADDR2, '', '', ',  ' || XA.UPSO_NEW_ADDR2) || XA.UPSO_REF_INFO AS ADDR,
+	XA.CLIENT_NUM,
+	XA.CLSBS_YRMN || '01' AS CLSBS_YRMN,
+	GIBU.FT_GET_AUTO_BANK_USE(XA.UPSO_CD) CNT_AUTO_B
+FROM
+	GIBU.TBRA_UPSO XA,
+	(
+		SELECT
+			ZA.UPSO_CD,
+			ZB.MONPRNCFEE,
+			ZC.GRADNM,
+			TRIM(ZB.BSTYP_CD) AS BSTYP_CD,
+			ZB.UPSO_GRAD
+		FROM
+			(
+				SELECT
+					A.UPSO_CD,
+					MAX(A.JOIN_SEQ) AS JOIN_SEQ
+				FROM
+					GIBU.TBRA_UPSORTAL_INFO A
+				WHERE
+					A.UPSO_CD = # { upsoCd }
+				GROUP BY
+					A.UPSO_CD
+			) ZA,
+			GIBU.TBRA_UPSORTAL_INFO ZB,
+			GIBU.TBRA_BSTYPGRAD ZC
+		WHERE
+			ZB.JOIN_SEQ = ZA.JOIN_SEQ
+			AND ZB.UPSO_CD = ZA.UPSO_CD
+			AND ZC.BSTYP_CD = ZB.BSTYP_CD
+			AND ZC.GRAD_GBN = ZB.UPSO_GRAD
+	) XB,
+	INSA.TINS_MST01 XC,
+	INSA.TCPM_DEPT XD
+WHERE
+	XA.UPSO_CD = # { upsoCd }
+	AND XB.UPSO_CD = XA.UPSO_CD
+	AND XC.STAFF_NUM(+) = XA.STAFF_CD
+	AND XD.GIBU = XA.BRAN_CD
+</select>
+
+<select id="SQLsearch_auto_card_SEL3" parameterType="" resultType="">
+SELECT
+	BRAN_CD,
+	UPSO_CD,
+	SEQ,
+	CARD_CD,
+	CARD_NUM,
+	RESINUM,
+	PAYPRES_NM,
+	PAYPRES_PHON_NUM,
+	RELATION_CD,
+	VAILD_YRMM,
+	APPTN_DAY,
+	PASSWD,
+	APP_GBN,
+	NVL2(A.CONFIRM_DATE, '1', '0') CONFIRM_YN,
+	FIDU.GET_STAFF_NM(CONFIRM_ID) CONFIRM_NM,
+	TO_CHAR(INS_DATE, 'yyyymmdd') INS_DATE,
+	FIDU.GET_STAFF_NM(INSPRES_ID) INSPRES_NM,
+	MOD_DATE,
+	MODPRES_ID
+FROM
+	GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION A
+WHERE
+	1 = 1
+	AND BRAN_CD = # { branCd }
+	AND UPSO_CD = # { upsoCd }
+ORDER BY
+	1,
+	2,
+	3
+</select>
+
+</mapper>

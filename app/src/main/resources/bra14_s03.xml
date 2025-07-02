@@ -1,0 +1,161 @@
+<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLsel_auto_card_demd_SEL1" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.FMS_CREDIT_REAL_CASE_IF_TBL
+WHERE
+	1 = 1
+	AND SUBSTR(PROC_DT, 1, 6) = # { startDay }
+</select>
+
+<select id="SQLsel_auto_card_demd_SEL2" parameterType="" resultType="">
+SELECT
+	A.BRAN_CD,
+	GIBU.GET_BRAN_NM (A.BRAN_CD) AS BRAN_NM,
+	GIBU.FT_GET_BSTYPGRAD_NM (A.UPSO_CD, 'NM') AS BSTYP_NM,
+	A.UPSO_CD,
+	A.UPSO_NM,
+	B.DEMD_YRMN,
+	B.DEMD_MMCNT,
+	B.TOT_USE_AMT,
+	B.MONPRNCFEE,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT (1)
+				FROM
+					GIBU.TBRA_ACCU
+				WHERE
+					UPSO_CD = A.UPSO_CD
+					AND COMPN_DAY IS NULL
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS ACCU_YN,
+	A.CLSBS_YRMN,
+	A.MNGEMSTR_NM,
+	DECODE (C.APP_GBN, 0, '???', '????') APP_GBN,
+	C.PAYPRES_NM,
+	A.STAFF_CD,
+	FIDU.GET_STAFF_NM(A.STAFF_CD) STAFF_NM,
+	'' RESULT_MSG,
+	D.REPT_DAY,
+	D.REPT_AMT,
+	D.COMIS
+FROM
+	GIBU.TBRA_UPSO A,
+	GIBU.TBRA_DEMD_OCR B,
+	GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION C,
+	GIBU.TBRA_REPT D
+WHERE
+	A.UPSO_CD = B.UPSO_CD
+	AND A.UPSO_CD = C.UPSO_CD
+	AND A.UPSO_CD = D.UPSO_CD(+)
+	AND SUBSTR(D.REPT_DAY(+), 1, 6) = # { startDay }
+	AND D.REPT_GBN(+) = '10'
+	AND C.CONFIRM_DATE IS NOT NULL
+	AND C.APP_GBN = 0
+	AND B.DEMD_MMCNT > 0
+	AND A.BRAN_CD = DECODE (# { branCd }, 'AL', A.BRAN_CD, # { branCd })
+	AND C.SEQ = (
+		SELECT
+			MAX (SEQ)
+		FROM
+			GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION XX
+		WHERE
+			XX.UPSO_CD = C.UPSO_CD
+		GROUP BY
+			XX.UPSO_CD
+	)
+	AND B.DEMD_YRMN = # { startDay } STAFF_CD = # { staffCd }
+ORDER BY
+	BRAN_CD,
+	UPSO_CD
+</select>
+
+<select id="SQLsel_auto_card_demd_SEL3" parameterType="" resultType="">
+SELECT
+	A.BRAN_CD,
+	GIBU.GET_BRAN_NM (A.BRAN_CD) AS BRAN_NM,
+	GIBU.FT_GET_BSTYPGRAD_NM (A.UPSO_CD, 'NM') AS BSTYP_NM,
+	A.UPSO_CD,
+	A.UPSO_NM,
+	B.DEMD_YRMN,
+	B.DEMD_MMCNT,
+	B.TOT_USE_AMT,
+	B.MONPRNCFEE,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT (1)
+				FROM
+					GIBU.TBRA_ACCU
+				WHERE
+					UPSO_CD = A.UPSO_CD
+					AND COMPN_DAY IS NULL
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS ACCU_YN,
+	A.CLSBS_YRMN,
+	A.MNGEMSTR_NM,
+	DECODE (C.APP_GBN, 0, '???', '????') APP_GBN,
+	C.PAYPRES_NM,
+	A.STAFF_CD,
+	FIDU.GET_STAFF_NM(A.STAFF_CD) STAFF_NM,
+	(
+		SELECT
+			RESULT_MSG
+		FROM
+			(
+				SELECT
+					PROC_DT,
+					PROC_SEQ,
+					RESULT_MSG
+				FROM
+					GIBU.FMS_CREDIT_REAL_CASE_IF_TBL
+				WHERE
+					1 = 1
+					AND MEMBER_ID = A.UPSO_CD
+					AND SUBSTR(PROC_DT, 1, 6) = B.DEMD_YRMN
+				ORDER BY
+					1 desc,
+					2 desc
+			)
+		WHERE
+			rownum = 1
+	) RESULT_MSG,
+	D.REPT_DAY,
+	D.REPT_AMT,
+	D.COMIS
+FROM
+	GIBU.TBRA_UPSO A,
+	GIBU.TBRA_DEMD_OCR B,
+	GIBU.TBRA_UPSO_AUTO_CARD_APPLICATION C,
+	GIBU.TBRA_REPT D
+WHERE
+	A.UPSO_CD = B.UPSO_CD
+	AND A.UPSO_CD = C.UPSO_CD
+	AND A.UPSO_CD = D.UPSO_CD(+)
+	AND SUBSTR(D.REPT_DAY(+), 1, 6) = # { startDay }
+	AND D.REPT_GBN(+) = '10'
+	AND C.CONFIRM_DATE IS NOT NULL
+	AND A.BRAN_CD = DECODE (# { branCd }, 'AL', A.BRAN_CD, # { branCd })
+	AND A.UPSO_CD IN (
+		SELECT
+			MEMBER_ID
+		FROM
+			GIBU.FMS_CREDIT_REAL_CASE_IF_TBL X
+		WHERE
+			SUBSTR(X.PROC_DT, 1, 6) = # { startDay }
+	)
+	AND B.DEMD_YRMN = # { startDay } STAFF_CD = # { staffCd }
+ORDER BY
+	BRAN_CD,
+	UPSO_CD
+</select>
+
+</mapper>
