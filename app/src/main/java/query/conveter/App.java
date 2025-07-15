@@ -12,7 +12,7 @@ public class App {
     //static String createLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/java/query/conveter/";
     //static String xmlLocation = "/Users/pp01713/cursor-workspace/query-conveter/app/src/main/resources/";
     //static String filePath = "/Users/pp01713/cursor-workspace/kosmos-demo/src/main/resources/static/miplatform/java/bra/";
-    static String fileName = "bra14_s01";
+    static String fileName = "bra04_r22";
     
         public static void main(String[] args) {
     
@@ -71,8 +71,7 @@ public class App {
 
         // 클래스 시작 부분 추가
         result.append("package query.conveter;\n\n");
-        result.append("import java.io.FileWriter;\n");
-        result.append("import java.io.IOException;\n\n");
+        result.append("import java.io.*;\n");
         result.append("import com.github.vertical_blank.sqlformatter.core.FormatConfig;\n");
         result.append("import com.github.vertical_blank.sqlformatter.SqlFormatter;\n\n");
         result.append("public class ").append(className).append("_Generated {\n\n");
@@ -140,6 +139,8 @@ public class App {
                         result.append("            xml += \"<" +ddl+" id=\\\"").append(methodName.trim()).append("\\\" parameterType=\\\"\\\">\\n\";\n");
                     }
                     result.append("        xml += SqlFormatter.format(query, FormatConfig.builder().indent(\"\\t\").build());\n");
+                    result.append("        xml = xml.replaceAll(\"#\\\\s*\\\\{\\\\s*([a-zA-Z0-9_]+)\\\\s*\\\\}\", \"#{$1}\");\n");
+
                     result.append("            xml += \"\\n</" + ddl + ">\\n\" ;\n\n");
                     result.append("        return xml;\n\n");
                     result.append("    }\n\n");
@@ -158,9 +159,12 @@ public class App {
         }
         result.append("        content += bottom;\n\n");
         result.append("        try {\n");
-        result.append("            String fileName = \"bra01_s01_1.xml\";\n");
-        result.append("            FileWriter fw = new FileWriter(dir + \""+fileName+".xml\");\n");
-        result.append("            fw.write(new String(content.getBytes(), \"UTF-8\"));\n");
+        result.append("            String fileName = \""+fileName+".xml\";\n");
+        result.append("            OutputStreamWriter fw = new OutputStreamWriter(\n");
+        result.append("                new FileOutputStream(dir + fileName), \"UTF-8\"\n");
+        result.append("            );\n");
+        result.append("            fw.write('\uFEFF'); // BOM 추가\n");
+        result.append("            fw.write(content);\n");
         result.append("            fw.close();\n");
         result.append("        } catch (IOException e) {\n");
         result.append("            e.printStackTrace();\n");

@@ -1,4 +1,4 @@
-<mapper namespace="kr.or.komca.center..mapper.Mapper">
+﻿<mapper namespace="kr.or.komca.center..mapper.Mapper">
 <select id="SQLselect_tmp_account_SEL1" parameterType="" resultType="">
 SELECT
 	XA.REPT_DAY,
@@ -57,7 +57,7 @@ FROM
 		FROM
 			GIBU.TBRA_REPT
 		WHERE
-			BRAN_CD = # { branCd }
+			BRAN_CD = #{branCd}
 			AND DISTR_GBN IS NULL
 			AND UPSO_CD IS NULL
 		UNION ALL
@@ -68,14 +68,14 @@ FROM
 			BRAN_CD,
 			REPT_AMT - COMIS REPT_AMT,
 			REPT_AMT - COMIS OVER_AMT,
-			'???���?  ??????  (??��?)' REMAK,
+			'지부분배  가수금  (미분배)' REMAK,
 			BANK_CD,
 			ACCN_NUM,
 			RECV_DAY
 		FROM
 			GIBU.TBRA_REPT
 		WHERE
-			BRAN_CD = # { branCd }
+			BRAN_CD = #{branCd}
 			AND DISTR_GBN = '41'
 			AND REPT_DAY || REPT_NUM || REPT_GBN NOT IN (
 				SELECT
@@ -91,7 +91,7 @@ FROM
 			C.BRAN_CD,
 			C.REPT_AMT - NVL(C.COMIS, 0) REPT_AMT,
 			C.REPT_AMT - NVL(C.COMIS, 0) - NVL(B.REPT_AMT, 0) OVER_AMT,
-			'???���?  ??????' REMAK,
+			'지부분배  가수금' REMAK,
 			C.BANK_CD,
 			C.ACCN_NUM,
 			C.RECV_DAY
@@ -124,7 +124,7 @@ FROM
 			) B,
 			GIBU.TBRA_REPT C
 		WHERE
-			C.BRAN_CD = # { branCd }
+			C.BRAN_CD = #{branCd}
 			AND B.REPT_DAY = A.REPT_DAY
 			AND B.REPT_NUM = A.REPT_NUM
 			AND B.REPT_GBN = A.REPT_GBN
@@ -140,7 +140,7 @@ FROM
 			A.BRAN_CD,
 			(A.REPT_AMT - A.COMIS) REPT_AMT,
 			(A.REPT_AMT - A.COMIS) - NVL(B.REPT_AMT, 0) OVER_AMT,
-			'????��?  ??????' REMAK,
+			'업소분배  가수금' REMAK,
 			A.BANK_CD,
 			A.ACCN_NUM,
 			A.RECV_DAY
@@ -154,13 +154,13 @@ FROM
 				FROM
 					GIBU.TBRA_REPT_UPSO_DISTR
 				WHERE
-					BRAN_CD = # { branCd }
+					BRAN_CD = #{branCd}
 				GROUP BY
 					REPT_DAY,
 					REPT_NUM
 			) B
 		WHERE
-			A.BRAN_CD = # { branCd }
+			A.BRAN_CD = #{branCd}
 			AND A.REPT_DAY = B.REPT_DAY(+)
 			AND A.REPT_NUM = B.REPT_NUM(+)
 			AND A.DISTR_GBN = '42'
@@ -172,7 +172,7 @@ WHERE
 	XB.BANK_CD = XA.BANK_CD
 	AND XC.HIGH_CD = '00141'
 	AND XC.CODE_CD = XA.REPT_GBN
-	AND XA.ACCN_NUM = DECODE(# { accnNum }, NULL, XA.ACCN_NUM, # { accnNum })
+	AND XA.ACCN_NUM = DECODE(#{accnNum}, NULL, XA.ACCN_NUM, #{accnNum})
 	AND XA.REPT_AMT <> 0
 ORDER BY
 	XA.REPT_DAY,
@@ -228,10 +228,10 @@ FROM
 		FROM
 			GIBU.TBRA_REPT
 		WHERE
-			BRAN_CD = # { branCd }
+			BRAN_CD = #{branCd}
 			AND SUBSTR(REPT_DAY, 1, 6) < SUBSTR(MAPPING_DAY, 1, 6)
-			AND MAPPING_DAY BETWEEN # { reptYrmn } || '01'
-			AND # { reptYrmn } || '31'
+			AND MAPPING_DAY BETWEEN #{reptYrmn} || '01'
+			AND #{reptYrmn} || '31'
 			AND DISTR_GBN IS NULL
 			AND REPT_GBN = '03'
 		UNION ALL
@@ -261,13 +261,13 @@ FROM
 				FROM
 					GIBU.TBRA_REPT_UPSO_DISTR
 				WHERE
-					BRAN_CD = # { branCd }
-					AND MAPPING_DAY BETWEEN # { reptYrmn } || '01'
-					AND # { reptYrmn } || '31'
+					BRAN_CD = #{branCd}
+					AND MAPPING_DAY BETWEEN #{reptYrmn} || '01'
+					AND #{reptYrmn} || '31'
 			) A,
 			GIBU.TBRA_REPT B
 		WHERE
-			A.BRAN_CD = # { branCd }
+			A.BRAN_CD = #{branCd}
 			AND SUBSTR(A.REPT_DAY, 1, 6) < SUBSTR(A.MAPPING_DAY, 1, 6)
 			AND B.REPT_DAY = A.REPT_DAY
 			AND B.REPT_NUM = A.REPT_NUM

@@ -1,8 +1,6 @@
 package query.conveter;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
 import com.github.vertical_blank.sqlformatter.core.FormatConfig;
 import com.github.vertical_blank.sqlformatter.SqlFormatter;
 
@@ -45,6 +43,7 @@ public class bra04_r22_Generated {
         String xml ="";
             xml += "<select id=\"SQLselect_tmp_account_SEL1\" parameterType=\"\" resultType=\"\">\n";
         xml += SqlFormatter.format(query, FormatConfig.builder().indent("\t").build());
+        xml = xml.replaceAll("#\\s*\\{\\s*([a-zA-Z0-9_]+)\\s*\\}", "#{$1}");
             xml += "\n</select>\n" ;
 
         return xml;
@@ -81,6 +80,7 @@ public class bra04_r22_Generated {
         String xml ="";
             xml += "<select id=\"SQLselect_tmp_account_mapping_SEL1\" parameterType=\"\" resultType=\"\">\n";
         xml += SqlFormatter.format(query, FormatConfig.builder().indent("\t").build());
+        xml = xml.replaceAll("#\\s*\\{\\s*([a-zA-Z0-9_]+)\\s*\\}", "#{$1}");
             xml += "\n</select>\n" ;
 
         return xml;
@@ -98,9 +98,12 @@ public class bra04_r22_Generated {
         content += bottom;
 
         try {
-            String fileName = "bra01_s01_1.xml";
-            FileWriter fw = new FileWriter(dir + "bra04_r22.xml");
-            fw.write(new String(content.getBytes(), "UTF-8"));
+            String fileName = "bra04_r22.xml";
+            OutputStreamWriter fw = new OutputStreamWriter(
+                new FileOutputStream(dir + fileName), "UTF-8"
+            );
+            fw.write('﻿'); // BOM 추가
+            fw.write(content);
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
