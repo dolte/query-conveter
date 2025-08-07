@@ -1,0 +1,724 @@
+﻿<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLaccn_num_select_SEL1" parameterType="" resultType="">
+SELECT
+	ACCN_SEQ,
+	ACCN_NUM,
+	BANK_CD,
+	BANK_NM,
+	BRAN_CD,
+	BRAN_NM,
+	USAG
+FROM
+	(
+		SELECT
+			'' AS ACCN_SEQ,
+			'' AS ACCN_NUM,
+			'' AS BANK_CD,
+			'전체' AS BANK_NM,
+			#{branCd} AS BRAN_CD,
+			DEPT_NM AS BRAN_NM,
+			'' AS USAG,
+			0 AS ALL_TYPE
+		FROM
+			INSA.TCPM_DEPT
+		WHERE
+			GIBU = #{branCd}
+		UNION ALL
+		SELECT
+			A.ACCN_SEQ,
+			A.ACCN_NUM,
+			A.BANK_CD,
+			B.BANK_NM || '  ' || ACCN_NUM AS BANK_NM,
+			C.GIBU AS BRAN_CD,
+			C.DEPT_NM AS BRAN_NM,
+			A.USAG,
+			1
+		FROM
+			ACCT.TCAC_ACCOUNT A,
+			ACCT.TCAC_BANK B,
+			INSA.TCPM_DEPT C
+		WHERE
+			NVL(C.GIBU, '-') = DECODE(
+				#{useType},
+				'002',
+				'-',
+				'003',
+				'-',
+				'004',
+				'-',
+				'007',
+				'-',
+				DECODE(#{branCd}, 'AL', C.GIBU, #{branCd})
+			)
+			AND A.DEPT_CD = C.DEPT_CD
+			AND B.BANK_CD = A.BANK_CD
+			AND A.USE_TYPE = NVL(#{useType}, A.USE_TYPE)
+			AND A.ACCTN_GBN = '001'
+			AND A.USE_YN = 'Y'
+		UNION ALL
+		SELECT
+			A.ACCN_SEQ,
+			A.ACCN_NUM,
+			A.BANK_CD,
+			B.BANK_NM || '  ' || ACCN_NUM AS BANK_NM,
+			C.GIBU AS BRAN_CD,
+			C.DEPT_NM AS BRAN_NM,
+			A.USAG,
+			1
+		FROM
+			ACCT.TCAC_ACCOUNT A,
+			ACCT.TCAC_BANK B,
+			INSA.TCPM_DEPT C
+		WHERE
+			C.GIBU = 'AL'
+			AND A.DEPT_CD = C.DEPT_CD
+			AND B.BANK_CD = A.BANK_CD
+			AND A.ACCTN_GBN = '001'
+			AND #{useType} = '001'
+			AND A.USE_YN = 'Y'
+	) XA
+WHERE
+	ALL_TYPE = DECODE(#{allType}, NULL, 1, XA.ALL_TYPE)
+ORDER BY
+	BANK_NM ASC
+</select>
+
+<select id="SQLc_norebang_amt_SEL1" parameterType="" resultType="">
+SELECT
+	TRIM(BSTYP_CD) || GRAD_GBN GRAD,
+	GRADNM,
+	STNDAMT,
+	STNDAREA_START,
+	STNDAREA_END
+FROM
+	GIBU.TBRA_BSTYPGRAD
+WHERE
+	TRIM(BSTYP_CD) = 'o'
+</select>
+
+<select id="SQLm_grade_select_SEL1" parameterType="" resultType="">
+SELECT
+	'' GRAD_GBN,
+	'--전체--' GRAD_NM
+FROM
+	DUAL
+UNION ALL
+SELECT
+	TRIM(GRAD_GBN),
+	TRIM(GRAD_GBN) || '  :  ' || GRADNM
+FROM
+	GIBU.TBRA_BSTYPGRAD
+WHERE
+	BSTYP_CD = 'z'
+</select>
+
+<select id="SQLm_grade_select_SEL2" parameterType="" resultType="">
+SELECT
+	GRAD_GBN AS GRAD,
+	GRADNM,
+	STNDAMT,
+	BSTYP_CD,
+	GRAD_GBN
+FROM
+	GIBU.TBRA_BSTYPGRAD
+WHERE
+	BSTYP_CD = 'z'
+ORDER BY
+	GRADNM ASC
+</select>
+
+<select id="SQLloginfo_select_SEL1" parameterType="" resultType="">
+SELECT
+	'NLL' AS NLL
+FROM
+	DUAL
+</select>
+
+<select id="SQLrept_list_SEL1" parameterType="" resultType="">
+SELECT
+	A.REPT_DAY,
+	A.REPT_NUM,
+	'03' REPT_GBN,
+	NULL DISTR_SEQ,
+	(
+		SELECT
+			CODE_NM
+		FROM
+			FIDU.TENV_CODE
+		WHERE
+			HIGH_CD = '00141'
+			AND CODE_ETC = 'A'
+			AND CODE_CD = '03'
+	) AS REPT_GBN_NM,
+	A.REPT_AMT,
+	A.RECV_DAY,
+	A.BRAN_CD,
+	A.BANK_CD,
+	C.BANK_NM,
+	A.ACCN_NUM,
+	A.UPSO_CD,
+	A.DISTR_GBN,
+	DECODE (
+		A.DISTR_GBN,
+		NULL,
+		B.UPSO_NM,
+		'41',
+		'지부분배',
+		'42',
+		'업소분배'
+	) UPSO_NM,
+	A.REPTPRES,
+	A.REMAK
+FROM
+	GIBU.TBRA_REPT_TRANS A,
+	GIBU.TBRA_UPSO B,
+	ACCT.TCAC_BANK C
+WHERE
+	A.RECV_DAY BETWEEN #{startDay}
+	AND #{endDay}
+	AND A.BRAN_CD = #{branCd}
+	AND B.UPSO_CD (+) = A.UPSO_CD
+	AND C.BANK_CD (+) = A.BANK_CD
+	AND NVL(A.ACCN_NUM, '-') = DECODE(#{accnNum}, NULL, NVL(A.ACCN_NUM, '-'), #{accnNum})
+	AND NVL(A.REPTPRES, '  ') LIKE '%' || #{reptpres} || '%'
+	AND A.DISTR_GBN IS NULL
+ORDER BY
+	A.REPT_DAY,
+	A.REPT_NUM
+</select>
+
+<select id="SQLrept_list_SEL3" parameterType="" resultType="">
+SELECT
+	XA.REPT_DAY,
+	XA.REPT_NUM,
+	'03' REPT_GBN,
+	XA.DISTR_SEQ,
+	(
+		SELECT
+			CODE_NM
+		FROM
+			FIDU.TENV_CODE
+		WHERE
+			HIGH_CD = '00141'
+			AND CODE_ETC = 'A'
+			AND CODE_CD = '03'
+	) AS REPT_GBN_NM,
+	XA.REPT_AMT,
+	XA.RECV_DAY,
+	XA.BRAN_CD,
+	XA.BANK_CD,
+	XB.BANK_NM,
+	XA.ACCN_NUM,
+	XA.UPSO_CD,
+	XA.DISTR_GBN,
+	XA.UPSO_NM,
+	XA.REPTPRES,
+	XA.REMAK
+FROM
+	(
+		SELECT
+			A.REPT_DAY,
+			A.REPT_NUM,
+			A.REPT_GBN,
+			NULL DISTR_SEQ,
+			A.BRAN_CD,
+			A.DISTR_AMT - NVL(B.REPT_AMT, 0) REPT_AMT,
+			'지부분배' UPSO_CD,
+			NULL UPSO_NM,
+			A.REMAK,
+			'  ' || C.REPTPRES REPTPRES,
+			C.BANK_CD,
+			C.ACCN_NUM,
+			C.RECV_DAY,
+			C.DISTR_GBN
+		FROM
+			GIBU.TBRA_REPT_DISTR A,
+			(
+				SELECT
+					REPT_DAY,
+					REPT_NUM,
+					REPT_GBN,
+					BRAN_CD,
+					SUM(NVL(DISTR_AMT, 0)) REPT_AMT
+				FROM
+					GIBU.TBRA_REPT_UPSO_DISTR
+				WHERE
+					BRAN_CD = #{branCd}
+				GROUP BY
+					REPT_DAY,
+					REPT_NUM,
+					REPT_GBN,
+					BRAN_CD
+			) B,
+			GIBU.TBRA_REPT_TRANS C
+		WHERE
+			A.REPT_DAY = B.REPT_DAY(+)
+			AND A.REPT_NUM = B.REPT_NUM(+)
+			AND A.REPT_GBN = B.REPT_GBN(+)
+			AND A.BRAN_CD = B.BRAN_CD(+)
+			AND A.BRAN_CD = #{branCd}
+			AND C.REPT_DAY = A.REPT_DAY
+			AND C.REPT_NUM = A.REPT_NUM
+			AND C.DISTR_GBN = '41'
+			AND C.RECV_DAY BETWEEN #{startDay}
+			AND #{endDay}
+		UNION ALL
+		SELECT
+			A.REPT_DAY,
+			A.REPT_NUM,
+			A.REPT_GBN,
+			A.DISTR_SEQ,
+			B.BRAN_CD,
+			A.DISTR_AMT,
+			A.UPSO_CD,
+			B.UPSO_NM,
+			A.REMAK,
+			'  ' || C.REPTPRES REPTPRES,
+			C.BANK_CD,
+			C.ACCN_NUM,
+			C.RECV_DAY,
+			C.DISTR_GBN
+		FROM
+			GIBU.TBRA_REPT_UPSO_DISTR A,
+			GIBU.TBRA_UPSO B,
+			GIBU.TBRA_REPT_TRANS C
+		WHERE
+			C.RECV_DAY BETWEEN #{startDay}
+			AND #{endDay}
+			AND B.UPSO_CD = A.UPSO_CD
+			AND C.REPT_DAY = A.REPT_DAY
+			AND C.REPT_NUM = A.REPT_NUM
+			AND C.DISTR_GBN = '41'
+	) XA,
+	ACCT.TCAC_BANK XB
+WHERE
+	XB.BANK_CD (+) = XA.BANK_CD
+	AND XA.REPTPRES LIKE '%' || #{reptpres} || '%'
+	AND XA.BRAN_CD = #{branCd}
+	AND NVL(XA.ACCN_NUM, '-') = DECODE(#{accnNum}, NULL, NVL(XA.ACCN_NUM, '-'), #{accnNum})
+	AND XA.REPT_AMT > 0
+UNION ALL
+SELECT
+	XB.REPT_DAY,
+	XB.REPT_NUM,
+	'03' REPT_GBN,
+	XA.DISTR_SEQ,
+	(
+		SELECT
+			CODE_NM
+		FROM
+			FIDU.TENV_CODE
+		WHERE
+			HIGH_CD = '00141'
+			AND CODE_ETC = 'A'
+			AND CODE_CD = '03'
+	) AS REPT_GBN_NM,
+	XA.REPT_AMT,
+	XB.RECV_DAY,
+	XB.BRAN_CD,
+	XB.BANK_CD,
+	XD.BANK_NM,
+	XB.ACCN_NUM,
+	XA.UPSO_CD,
+	XB.DISTR_GBN,
+	XC.UPSO_NM,
+	XB.REPTPRES,
+	XA.REMAK
+FROM
+	(
+		SELECT
+			A.REPT_DAY,
+			A.REPT_NUM,
+			NULL DISTR_SEQ,
+			A.REPT_AMT - NVL(B.REPT_AMT, 0) REPT_AMT,
+			'업소분배' UPSO_CD,
+			NULL REMAK
+		FROM
+			GIBU.TBRA_REPT_TRANS A,
+			(
+				SELECT
+					REPT_DAY,
+					REPT_NUM,
+					SUM(NVL(DISTR_AMT, 0)) REPT_AMT
+				FROM
+					GIBU.TBRA_REPT_UPSO_DISTR
+				WHERE
+					BRAN_CD = #{branCd}
+				GROUP BY
+					REPT_DAY,
+					REPT_NUM
+			) B
+		WHERE
+			A.RECV_DAY BETWEEN #{startDay}
+			AND #{endDay}
+			AND A.REPT_DAY = B.REPT_DAY(+)
+			AND A.REPT_NUM = B.REPT_NUM(+)
+			AND A.DISTR_GBN = '42'
+		UNION ALL
+		SELECT
+			A.REPT_DAY,
+			A.REPT_NUM,
+			A.DISTR_SEQ,
+			NVL(A.DISTR_AMT, 0) REPT_AMT,
+			A.UPSO_CD,
+			A.REMAK
+		FROM
+			GIBU.TBRA_REPT_UPSO_DISTR A,
+			GIBU.TBRA_REPT_TRANS B
+		WHERE
+			B.RECV_DAY BETWEEN #{startDay}
+			AND #{endDay}
+			AND B.DISTR_GBN = '42'
+			AND A.REPT_DAY = B.REPT_DAY
+			AND A.REPT_NUM = B.REPT_NUM
+	) XA,
+	GIBU.TBRA_REPT_TRANS XB,
+	GIBU.TBRA_UPSO XC,
+	ACCT.TCAC_BANK XD
+WHERE
+	XB.REPT_DAY = XA.REPT_DAY
+	AND XB.REPT_NUM = XA.REPT_NUM
+	AND XC.UPSO_CD (+) = XA.UPSO_CD
+	AND XD.BANK_CD (+) = XB.BANK_CD
+	AND XB.REPTPRES LIKE '%' || #{reptpres} || '%'
+	AND XB.BRAN_CD = #{branCd}
+	AND NVL(XB.ACCN_NUM, '-') = DECODE(#{accnNum}, NULL, NVL(XB.ACCN_NUM, '-'), #{accnNum})
+	AND XA.REPT_AMT > 0
+</select>
+
+<select id="SQLupso_simple_select_SEL8" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_UPSO
+WHERE
+	BRAN_CD = #{branCd}
+	AND UPSO_CD = NVL(#{upsoCd}, UPSO_CD)
+	AND UPSO_NM LIKE '%' || #{upsoNm} || '%'
+</select>
+
+<select id="SQLupso_simple_select_SEL1" parameterType="" resultType="">
+SELECT
+	TA.BRAN_CD,
+	TA.UPSO_CD,
+	TA.UPSO_NM,
+	TA.STAFF_CD,
+	FIDU.GET_STAFF_NM(TA.STAFF_CD) AS STAFF_NM,
+	TA.UPSO_NEW_ADDR1 || DECODE(TA.UPSO_NEW_ADDR2, '', '', ',  ' || TA.UPSO_NEW_ADDR2) || TA.UPSO_REF_INFO UPSO_ADDR,
+	TB.BSTYP_CD,
+	TB.UPSO_GRAD,
+	TB.GRADNM,
+	TB.MONPRNCFEE,
+	TA.NEW_DAY
+FROM
+	GIBU.TBRA_UPSO TA,
+	(
+		SELECT
+			ZA.UPSO_CD,
+			ZB.MONPRNCFEE,
+			ZC.GRADNM,
+			ZB.BSTYP_CD,
+			ZB.UPSO_GRAD
+		FROM
+(
+				SELECT
+					A.UPSO_CD,
+					MAX(A.JOIN_SEQ) JOIN_SEQ
+				FROM
+					GIBU.TBRA_UPSORTAL_INFO A,
+					GIBU.TBRA_UPSO B
+				WHERE
+					B.BRAN_CD = #{branCd}
+					AND A.UPSO_CD = B.UPSO_CD
+				GROUP BY
+					A.UPSO_CD
+			) ZA,
+			GIBU.TBRA_UPSORTAL_INFO ZB,
+			GIBU.TBRA_BSTYPGRAD ZC
+		WHERE
+			ZB.JOIN_SEQ = ZA.JOIN_SEQ
+			AND ZB.UPSO_CD = ZA.UPSO_CD
+			AND ZC.BSTYP_CD = ZB.BSTYP_CD
+			AND ZC.GRAD_GBN = ZB.UPSO_GRAD
+	) TB
+WHERE
+	TA.BRAN_CD = #{branCd}
+	AND TA.UPSO_CD = NVL(#{upsoCd}, TA.UPSO_CD)
+	AND TA.UPSO_NM LIKE '%' || #{upsoNm} || '%'
+	AND TB.UPSO_CD = TA.UPSO_CD
+</select>
+
+<select id="SQLupso_simple_select_SEL2" parameterType="" resultType="">
+SELECT
+	'' BRAN_CD,
+	'' UPSO_CD,
+	'' UPSO_NM,
+	'' STAFF_CD,
+	'' STAFF_NM,
+	'' UPSO_ADDR,
+	'' BSTYP_CD,
+	'' UPSO_GRAD,
+	'' GRADNM,
+	'' MONPRNCFEE,
+	'' NEW_DAY
+FROM
+	DUAL
+</select>
+
+<select id="SQLgrade_simple_select_SEL1" parameterType="" resultType="">
+SELECT
+	BSTYP_CD || GRAD_GBN GRAD,
+	GRADNM,
+	STNDAMT
+FROM
+	GIBU.TBRA_BSTYPGRAD
+WHERE
+	BSTYP_CD = SUBSTR(#{grad}, 1, 1)
+	AND GRAD_GBN = SUBSTR(#{grad}, 2, 2)
+</select>
+
+<select id="SQLgrade_simple_select_SEL2" parameterType="" resultType="">
+SELECT
+	BSTYP_CD || GRAD_GBN AS GRAD,
+	GRADNM,
+	STNDAMT,
+	STNDAREA_START,
+	STNDAREA_END
+FROM
+	GIBU.TBRA_BSTYPGRAD
+WHERE
+	BSTYP_CD = SUBSTR(#{grad}, 1, 1)
+ORDER BY
+	BSTYP_CD,
+	GRAD_GBN ASC
+</select>
+
+<select id="SQLbank_select_SEL1" parameterType="" resultType="">
+SELECT
+	A.BANK_CD,
+	A.BANK_NM,
+	A.SHOP_NM,
+	A.PHON_NUM,
+	A.FAX_NUM,
+	A.POST_NUM,
+	A.REMAK
+FROM
+	ACCT.TCAC_BANK_7 A
+WHERE
+	A.BANK_NM LIKE DECODE(#{bankNm}, NULL, A.BANK_NM, #{bankNm}) || '%'
+	AND A.SHOP_NM LIKE DECODE(#{shopNm}, NULL, A.SHOP_NM, #{shopNm}) || '%'
+</select>
+
+<select id="SQLbank_search_SEL1" parameterType="" resultType="">
+SELECT
+	BANK_CD,
+	BANK_NM,
+	SHOP_NM
+FROM
+	(
+		SELECT
+			BANK_CD,
+			BANK_NM,
+			SHOP_NM
+		FROM
+			ACCT.TCAC_BANK_7
+		WHERE
+			BANK_CD = #{bankCd}
+		UNION ALL
+		SELECT
+			#{bankCd},
+			BANK_NM,
+			NULL
+		FROM
+			ACCT.TCAC_BANK_7
+		WHERE
+			BANK_CD LIKE SUBSTR(#{bankCd}, 1, 3) || '%'
+			AND ROWNUM = 1
+	)
+WHERE
+	ROWNUM = 1
+</select>
+
+<select id="SQLaccn_num_select2_SEL1" parameterType="" resultType="">
+SELECT
+	ACCN_SEQ,
+	ACCN_NUM,
+	BANK_CD,
+	BANK_NM,
+	BRAN_CD,
+	BRAN_NM,
+	USAG
+FROM
+	(
+		SELECT
+			'' AS ACCN_SEQ,
+			'' AS ACCN_NUM,
+			'' AS BANK_CD,
+			'전체' AS BANK_NM,
+			#{branCd} AS BRAN_CD,
+			DEPT_NM AS BRAN_NM,
+			'' AS USAG,
+			0 AS ALL_TYPE
+		FROM
+			INSA.TCPM_DEPT
+		WHERE
+			GIBU = #{branCd}
+		UNION ALL
+		SELECT
+			A.ACCN_SEQ,
+			A.ACCN_NUM,
+			A.BANK_CD,
+			B.BANK_NM,
+			C.GIBU BRAN_CD,
+			C.DEPT_NM BRAN_NM,
+			A.USAG,
+			1
+		FROM
+			ACCT.TCAC_ACCOUNT A,
+			ACCT.TCAC_BANK B,
+			INSA.TCPM_DEPT C
+		WHERE
+			NVL(C.GIBU, '-') = DECODE(
+				#{useType},
+				'002',
+				'-',
+				'003',
+				'-',
+				'004',
+				'-',
+				DECODE(#{branCd}, 'AL', C.GIBU, #{branCd})
+			)
+			AND A.DEPT_CD = C.DEPT_CD
+			AND B.BANK_CD = A.BANK_CD
+			AND A.USE_TYPE = NVL(#{useType}, A.USE_TYPE)
+			AND A.ACCTN_GBN = '001'
+			AND A.USE_YN = 'Y'
+	) XA
+WHERE
+	ALL_TYPE = DECODE(#{allType}, NULL, 1, XA.ALL_TYPE)
+ORDER BY
+	BANK_NM ASC
+</select>
+
+<select id="SQLc_gibu_select_SEL1" parameterType="" resultType="">
+SELECT
+	'AL' AS GIBU,
+	'--전체--' AS DEPT_NM,
+	'106010000' AS DEPT_CD
+FROM
+	DUAL
+UNION ALL
+SELECT
+	GIBU,
+	DEPT_NM,
+	DEPT_CD
+FROM
+	INSA.TCPM_DEPT
+WHERE
+	GIBU IS NOT NULL
+	AND USE_YN = 'Y'
+	AND GIBU <> 'AL'
+ORDER BY
+	DEPT_CD
+</select>
+
+<select id="SQLp_staff_select_SEL1" parameterType="" resultType="">
+SELECT
+	B.STAFF_NUM STAFF_CD,
+	B.HAN_NM STAFF_NM,
+	B.ETCOM_DAY
+FROM
+	INSA.TCPM_DEPT A,
+	INSA.TINS_MST01 B
+WHERE
+	A.DEPT_CD = B.DEPT_CD
+	AND A.GIBU = #{branCd}
+	AND B.RETIRE_DAY IS NULL
+UNION
+SELECT
+	B.STAFF_NUM STAFF_CD,
+	B.HAN_NM STAFF_NM,
+	B.ETCOM_DAY
+FROM
+	INSA.TCPM_DEPT A,
+	INSA.TINS_MST01 B
+WHERE
+	A.DEPT_CD = B.DUAL_DEPT_CD
+	AND NVL(B.DUAL_YN, 0) = 1
+	AND A.GIBU = #{branCd}
+	AND B.RETIRE_DAY IS NULL
+ORDER BY
+	STAFF_CD
+</select>
+
+<select id="SQLp_grade_select_SEL1" parameterType="" resultType="">
+SELECT
+	A.BSTYP_CD || A.GRAD_GBN GRAD,
+	A.GRADNM,
+	A.STNDAMT,
+	A.STNDAREA_START,
+	A.STNDAREA_END
+FROM
+	GIBU.TBRA_BSTYPGRAD A,
+	GIBU.TBRA_BSTYPGRAD B
+WHERE
+	A.BSTYP_CD = B.GRAD_GBN
+	AND B.BSTYP_CD = 'z'
+ORDER BY
+	A.BSTYP_CD || A.GRAD_GBN ASC
+</select>
+
+<select id="SQLchk_closed_yrmn_SEL3" parameterType="" resultType="">
+SELECT
+	REPT_GBN
+FROM
+	GIBU.TBRA_NOTE
+WHERE
+	UPSO_CD = #{upsoCd}
+	AND NOTE_YRMN = substr(#{endYrmn1}, 0, 6)
+</select>
+
+<select id="SQLchk_closed_yrmn_SEL6" parameterType="" resultType="">
+SELECT
+	#{reptGbn} AS REPT_GBN,
+	'' AS END_YRMN
+FROM
+	DUAL
+</select>
+
+<select id="SQLchk_closed_yrmn_SEL1" parameterType="" resultType="">
+SELECT
+	TO_CHAR(
+		ADD_MONTHS(TO_DATE(LAST_YRMN, 'YYYYMM'), 1),
+		'YYYYMM'
+	) END_YRMN,
+	REPT_GBN
+FROM
+	GIBU.TBRA_NOTE A,
+	(
+		SELECT
+			MAX(NOTE_YRMN) LAST_YRMN,
+			UPSO_CD
+		FROM
+			GIBU.TBRA_NOTE
+		WHERE
+			UPSO_CD = #{upsoCd}
+			AND NOTE_YRMN >= substr(#{endYrmn1}, 0, 6)
+			AND REPT_GBN BETWEEN '11' AND '19'
+		GROUP BY
+			UPSO_CD
+	) B
+WHERE
+	B.UPSO_CD = A.UPSO_CD
+	AND B.LAST_YRMN = A.NOTE_YRMN
+</select>
+
+<select id="SQLchk_closed_yrmn_SEL8" parameterType="" resultType="">
+SELECT
+	'' AS REPT_GBN,
+	substr(#{endYrmn1}, 0, 6) AS END_YRMN
+FROM
+	DUAL
+</select>
+
+</mapper>

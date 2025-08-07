@@ -1,0 +1,440 @@
+﻿<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLrept_detail_SEL2" parameterType="" resultType="">
+SELECT
+	AA.UPSO_CD B_UPSO_CD,
+	AA.YRMN B_REPT_YRMN,
+	AA.MM B_MM,
+	AA.REPT_GBN B_REPT_GBN,
+	AA.CODE_NM B_CODE_NM,
+	AA.USE_AMT B_USE_AMT,
+	AA.REPT_DAY B_REPT_DAY,
+	AA.REPT_NUM B_REPT_NUM,
+	AA.RECV_DAY B_RECV_DAY,
+	AA.ACCU_GBN B_ACCU_GBN,
+	AA.MAPPING_DAY B_MAPPING_DAY,
+	BB.UPSO_CD,
+	BB.YRMN REPT_YRMN,
+	BB.MM,
+	BB.REPT_GBN,
+	BB.CODE_NM,
+	BB.USE_AMT,
+	BB.REPT_DAY,
+	BB.REPT_NUM,
+	BB.RECV_DAY,
+	BB.ACCU_GBN,
+	BB.MAPPING_DAY
+FROM
+	(
+		SELECT
+			ZB.YRMN,
+			ZB.MM,
+			ZA.UPSO_CD,
+			ZA.NOTE_YRMN,
+			ZA.REPT_GBN,
+			ZA.CODE_NM,
+			ZA.USE_AMT,
+			ZA.REPT_DAY,
+			ZA.REPT_NUM,
+			ZA.RECV_DAY,
+			ZA.ACCU_GBN,
+			ZA.MAPPING_DAY
+		FROM
+			(
+				SELECT
+					A.UPSO_CD,
+					A.NOTE_YRMN,
+					A.REPT_GBN,
+					DECODE(
+						A.ACCU_GBN,
+						NULL,
+						C.CODE_NM,
+						DECODE(E.ACCU_CNT, 0, '고소해결', '고소분납')
+					) CODE_NM,
+					A.USE_AMT,
+					A.REPT_DAY,
+					A.REPT_NUM,
+					A.RECV_DAY,
+					A.ACCU_GBN,
+					D.MAPPING_DAY
+				FROM
+					GIBU.TBRA_NOTE A,
+					FIDU.TENV_CODE C,
+					GIBU.TBRA_REPT D,
+					(
+						SELECT
+							YRMN,
+							DECODE(XA.COMPN_DAY, NULL, 1, 0) ACCU_CNT
+						FROM
+							(
+								SELECT
+									DECODE(COMPN_DAY, NULL, START_YRMN, SOL_START_YRMN) START_YRMN,
+									DECODE(COMPN_DAY, NULL, END_YRMN, SOL_END_YRMN) END_YRMN,
+									COMPN_DAY
+								FROM
+									(
+										SELECT
+											START_YRMN,
+											END_YRMN,
+											SOL_START_YRMN,
+											SOL_END_YRMN,
+											COMPN_DAY
+										FROM
+											GIBU.TBRA_ACCU XA
+										WHERE
+											UPSO_CD = #{upsoCd}
+										ORDER BY
+											ACCU_DAY DESC,
+											ACCU_NUM DESC
+									)
+								WHERE
+									ROWNUM = 1
+							) XA,
+							GIBU.COPY_YRMN XB
+						WHERE
+							XB.YRMN BETWEEN XA.START_YRMN
+							AND XA.END_YRMN
+							AND XB.YYYY = TO_NUMBER(#{bYear1}) -  1
+					) E
+				WHERE
+					A.UPSO_CD = #{upsoCd}
+					AND A.NOTE_YRMN BETWEEN TO_NUMBER(#{bYear1}) -  1 || '01'
+					AND TO_NUMBER(#{bYear1}) -  1 || '12'
+					AND C.HIGH_CD = '00141'
+					AND DECODE(A.ACCU_GBN, NULL, A.REPT_GBN, A.ACCU_GBN) = C.CODE_CD
+					AND D.REPT_DAY(+) = A.REPT_DAY
+					AND D.REPT_NUM(+) = A.REPT_NUM
+					AND D.REPT_GBN(+) = A.REPT_GBN
+					AND E.YRMN(+) = A.NOTE_YRMN
+			) ZA,
+			(
+				SELECT
+					YRMN,
+					MM
+				FROM
+					GIBU.COPY_YRMN
+				WHERE
+					YYYY = TO_NUMBER(#{bYear1}) -  1
+			) ZB
+		WHERE
+			ZA.NOTE_YRMN(+) = ZB.YRMN
+	) BB,
+	(
+		SELECT
+			ZB.YRMN,
+			ZB.MM,
+			ZA.UPSO_CD,
+			ZA.NOTE_YRMN,
+			ZA.REPT_GBN,
+			ZA.CODE_NM,
+			ZA.USE_AMT,
+			ZA.REPT_DAY,
+			ZA.REPT_NUM,
+			ZA.RECV_DAY,
+			ZA.ACCU_GBN,
+			ZA.MAPPING_DAY
+		FROM
+			(
+				SELECT
+					A.UPSO_CD,
+					A.NOTE_YRMN,
+					A.REPT_GBN,
+					DECODE(
+						A.ACCU_GBN,
+						NULL,
+						C.CODE_NM,
+						DECODE(E.ACCU_CNT, 0, '고소해결', '고소분납')
+					) CODE_NM,
+					A.USE_AMT,
+					A.REPT_DAY,
+					A.REPT_NUM,
+					A.RECV_DAY,
+					A.ACCU_GBN,
+					D.MAPPING_DAY
+				FROM
+					GIBU.TBRA_NOTE A,
+					FIDU.TENV_CODE C,
+					GIBU.TBRA_REPT D,
+					(
+						SELECT
+							YRMN,
+							DECODE(XA.COMPN_DAY, NULL, 1, 0) ACCU_CNT
+						FROM
+							(
+								SELECT
+									DECODE(COMPN_DAY, NULL, START_YRMN, SOL_START_YRMN) START_YRMN,
+									DECODE(COMPN_DAY, NULL, END_YRMN, SOL_END_YRMN) END_YRMN,
+									COMPN_DAY
+								FROM
+									(
+										SELECT
+											START_YRMN,
+											END_YRMN,
+											SOL_START_YRMN,
+											SOL_END_YRMN,
+											COMPN_DAY
+										FROM
+											GIBU.TBRA_ACCU XA
+										WHERE
+											UPSO_CD = #{upsoCd}
+										ORDER BY
+											ACCU_DAY DESC,
+											ACCU_NUM DESC
+									)
+								WHERE
+									ROWNUM = 1
+							) XA,
+							GIBU.COPY_YRMN XB
+						WHERE
+							XB.YRMN BETWEEN XA.START_YRMN
+							AND XA.END_YRMN
+							AND XB.YYYY = #{year}
+					) E
+				WHERE
+					A.UPSO_CD = #{upsoCd}
+					AND A.NOTE_YRMN BETWEEN #{year} || '01'
+					AND #{year} || '12'
+					AND C.HIGH_CD = '00141'
+					AND DECODE(A.ACCU_GBN, NULL, A.REPT_GBN, A.ACCU_GBN) = C.CODE_CD
+					AND D.REPT_DAY(+) = A.REPT_DAY
+					AND D.REPT_NUM(+) = A.REPT_NUM
+					AND D.REPT_GBN(+) = A.REPT_GBN
+					AND E.YRMN(+) = A.NOTE_YRMN
+			) ZA,
+			(
+				SELECT
+					YRMN,
+					MM
+				FROM
+					GIBU.COPY_YRMN
+				WHERE
+					YYYY = #{year}
+			) ZB
+		WHERE
+			ZA.NOTE_YRMN(+) = ZB.YRMN
+	) CC
+WHERE
+	AA.MM = BB.MM
+ORDER BY
+	AA.MM
+</select>
+
+<select id="SQLrept_detail_SEL3" parameterType="" resultType="">
+SELECT
+	AA.UPSO_CD B_UPSO_CD,
+	AA.YRMN B_REPT_YRMN,
+	AA.MM B_MM,
+	AA.REPT_GBN B_REPT_GBN,
+	AA.CODE_NM B_CODE_NM,
+	AA.USE_AMT B_USE_AMT,
+	AA.REPT_DAY B_REPT_DAY,
+	AA.REPT_NUM B_REPT_NUM,
+	AA.RECV_DAY B_RECV_DAY,
+	AA.ACCU_GBN B_ACCU_GBN,
+	AA.MAPPING_DAY B_MAPPING_DAY,
+	BB.UPSO_CD,
+	BB.YRMN REPT_YRMN,
+	BB.MM,
+	BB.REPT_GBN,
+	BB.CODE_NM,
+	BB.USE_AMT,
+	BB.REPT_DAY,
+	BB.REPT_NUM,
+	BB.RECV_DAY,
+	BB.ACCU_GBN,
+	BB.MAPPING_DAY
+FROM
+	(
+		SELECT
+			ZB.YRMN,
+			ZB.MM,
+			ZA.UPSO_CD,
+			ZA.NOTE_YRMN,
+			ZA.REPT_GBN,
+			ZA.CODE_NM,
+			ZA.USE_AMT,
+			ZA.REPT_DAY,
+			ZA.REPT_NUM,
+			ZA.RECV_DAY,
+			ZA.ACCU_GBN,
+			ZA.MAPPING_DAY
+		FROM
+			(
+				SELECT
+					A.UPSO_CD,
+					A.NOTE_YRMN,
+					A.REPT_GBN,
+					DECODE(
+						A.ACCU_GBN,
+						NULL,
+						C.CODE_NM,
+						DECODE(E.ACCU_CNT, 0, '고소해결', '고소분납')
+					) CODE_NM,
+					A.USE_AMT,
+					A.REPT_DAY,
+					A.REPT_NUM,
+					A.RECV_DAY,
+					A.ACCU_GBN,
+					D.MAPPING_DAY
+				FROM
+					GIBU.TBRA_NOTE A,
+					FIDU.TENV_CODE C,
+					GIBU.TBRA_REPT D,
+					(
+						SELECT
+							YRMN,
+							DECODE(XA.COMPN_DAY, NULL, 1, 0) ACCU_CNT
+						FROM
+							(
+								SELECT
+									DECODE(COMPN_DAY, NULL, START_YRMN, SOL_START_YRMN) START_YRMN,
+									DECODE(COMPN_DAY, NULL, END_YRMN, SOL_END_YRMN) END_YRMN,
+									COMPN_DAY
+								FROM
+									(
+										SELECT
+											START_YRMN,
+											END_YRMN,
+											SOL_START_YRMN,
+											SOL_END_YRMN,
+											COMPN_DAY
+										FROM
+											GIBU.TBRA_ACCU XA
+										WHERE
+											UPSO_CD = #{upsoCd}
+										ORDER BY
+											ACCU_DAY DESC,
+											ACCU_NUM DESC
+									)
+								WHERE
+									ROWNUM = 1
+							) XA,
+							GIBU.COPY_YRMN XB
+						WHERE
+							XB.YRMN BETWEEN XA.START_YRMN
+							AND XA.END_YRMN
+							AND XB.YYYY = TO_NUMBER(#{bYear1}) -  1
+					) E
+				WHERE
+					A.UPSO_CD = #{upsoCd}
+					AND A.NOTE_YRMN BETWEEN TO_NUMBER(#{bYear1}) -  1 || '01'
+					AND TO_NUMBER(#{bYear1}) -  1 || '12'
+					AND C.HIGH_CD = '00141'
+					AND DECODE(A.ACCU_GBN, NULL, A.REPT_GBN, A.ACCU_GBN) = C.CODE_CD
+					AND D.REPT_DAY(+) = A.REPT_DAY
+					AND D.REPT_NUM(+) = A.REPT_NUM
+					AND D.REPT_GBN(+) = A.REPT_GBN
+					AND E.YRMN(+) = A.NOTE_YRMN
+			) ZA,
+			(
+				SELECT
+					YRMN,
+					MM
+				FROM
+					GIBU.COPY_YRMN
+				WHERE
+					YYYY = TO_NUMBER(#{bYear1}) -  1
+			) ZB
+		WHERE
+			ZA.NOTE_YRMN(+) = ZB.YRMN
+	) BB,
+	(
+		SELECT
+			ZB.YRMN,
+			ZB.MM,
+			ZA.UPSO_CD,
+			ZA.NOTE_YRMN,
+			ZA.REPT_GBN,
+			ZA.CODE_NM,
+			ZA.USE_AMT,
+			ZA.REPT_DAY,
+			ZA.REPT_NUM,
+			ZA.RECV_DAY,
+			ZA.ACCU_GBN,
+			ZA.MAPPING_DAY
+		FROM
+			(
+				SELECT
+					A.UPSO_CD,
+					A.NOTE_YRMN,
+					A.REPT_GBN,
+					DECODE(
+						A.ACCU_GBN,
+						NULL,
+						C.CODE_NM,
+						DECODE(E.ACCU_CNT, 0, '고소해결', '고소분납')
+					) CODE_NM,
+					A.USE_AMT,
+					A.REPT_DAY,
+					A.REPT_NUM,
+					A.RECV_DAY,
+					A.ACCU_GBN,
+					D.MAPPING_DAY
+				FROM
+					GIBU.TBRA_NOTE A,
+					FIDU.TENV_CODE C,
+					GIBU.TBRA_REPT D,
+					(
+						SELECT
+							YRMN,
+							DECODE(XA.COMPN_DAY, NULL, 1, 0) ACCU_CNT
+						FROM
+							(
+								SELECT
+									DECODE(COMPN_DAY, NULL, START_YRMN, SOL_START_YRMN) START_YRMN,
+									DECODE(COMPN_DAY, NULL, END_YRMN, SOL_END_YRMN) END_YRMN,
+									COMPN_DAY
+								FROM
+									(
+										SELECT
+											START_YRMN,
+											END_YRMN,
+											SOL_START_YRMN,
+											SOL_END_YRMN,
+											COMPN_DAY
+										FROM
+											GIBU.TBRA_ACCU XA
+										WHERE
+											UPSO_CD = #{upsoCd}
+										ORDER BY
+											ACCU_DAY DESC,
+											ACCU_NUM DESC
+									)
+								WHERE
+									ROWNUM = 1
+							) XA,
+							GIBU.COPY_YRMN XB
+						WHERE
+							XB.YRMN BETWEEN XA.START_YRMN
+							AND XA.END_YRMN
+							AND XB.YYYY = #{year}
+					) E
+				WHERE
+					A.UPSO_CD = #{upsoCd}
+					AND A.NOTE_YRMN BETWEEN #{year} || '01'
+					AND #{year} || '12'
+					AND C.HIGH_CD = '00141'
+					AND DECODE(A.ACCU_GBN, NULL, A.REPT_GBN, A.ACCU_GBN) = C.CODE_CD
+					AND D.REPT_DAY(+) = A.REPT_DAY
+					AND D.REPT_NUM(+) = A.REPT_NUM
+					AND D.REPT_GBN(+) = A.REPT_GBN
+					AND E.YRMN(+) = A.NOTE_YRMN
+			) ZA,
+			(
+				SELECT
+					YRMN,
+					MM
+				FROM
+					GIBU.COPY_YRMN
+				WHERE
+					YYYY = #{year}
+			) ZB
+		WHERE
+			ZA.NOTE_YRMN(+) = ZB.YRMN
+	) CC
+WHERE
+	AA.MM = BB.MM
+ORDER BY
+	AA.MM
+</select>
+
+</mapper>

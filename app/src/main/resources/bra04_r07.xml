@@ -1,0 +1,2575 @@
+﻿<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLsel_nonpy_history_SEL1" parameterType="" resultType="">
+SELECT
+	PRCON_YRMN,
+	GBN,
+	DEMD_MMCNT,
+	UPSO_CD,
+	UPSO_NM,
+	CHK_RESINUM,
+	MNGEMSTR_NM,
+	GRADNM,
+	BOND,
+	MONPRNCFEE,
+	MONPRNCFEE2,
+	UPSO_ADDR,
+	UPSO_PHON,
+	MNGEMSTR_HPNUM,
+	TOT_USE_AMT,
+	TOT_ADDT_AMT,
+	TOT_AMT,
+	REMAK,
+	UPSO_ZIP,
+	SIGUGUN,
+	START_YRMN,
+	END_YRMN,
+	BRAN_PHON_NUM,
+	AUTO_YN,
+	COL_CHECK,
+	DONG,
+	CLIENT_NUM,
+	BRAN_CD,
+	STAFF_CD,
+	STAFF_NM,
+	VISIT_YN5,
+	VISIT_YN6,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 0) AS ACCOUNT_NM,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 2) AS BANK_NM1,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 3) AS ACCN_NUM1,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 5) AS BANK_NM2,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 6) AS ACCN_NUM2,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 8) AS BANK_NM3,
+	GIBU.FT_SPLIT(BANK_RTN, ',', 9) AS ACCN_NUM3,
+	STOMU_YN,
+	SMS_CNT,
+	SMS_TOTCNT,
+	VISIT_TOTCNT,
+	CALL_TOTCNT
+FROM
+	(
+		SELECT
+			PRCON_YRMN,
+			GBN,
+			DEMD_MMCNT,
+			UPSO_CD,
+			UPSO_NM,
+			CHK_RESINUM,
+			MNGEMSTR_NM,
+			GRADNM,
+			BOND,
+			MONPRNCFEE,
+			MONPRNCFEE2,
+			UPSO_ADDR,
+			UPSO_PHON,
+			MNGEMSTR_HPNUM,
+			TOT_USE_AMT,
+			TOT_ADDT_AMT,
+			TOT_AMT,
+			REMAK,
+			UPSO_ZIP,
+			SIGUGUN,
+			START_YRMN,
+			END_YRMN,
+			BRAN_PHON_NUM,
+			AUTO_YN,
+			COL_CHECK,
+			DONG,
+			CLIENT_NUM,
+			BRAN_CD,
+			STAFF_CD,
+			STAFF_NM,
+			VISIT_YN5,
+			VISIT_YN6,
+			STOMU_YN,
+			SMS_CNT,
+			SMS_TOTCNT,
+			VISIT_TOTCNT,
+			CALL_TOTCNT,
+			GIBU.FT_GET_VIRTUAL_ACCOUNT(UPSO_CD) AS BANK_RTN
+		FROM
+			GIBU.TBRA_NONPY_PRCON
+		WHERE
+			PRCON_YRMN = #{prconYrmn}
+			AND GBN = DECODE(#{gbn}, '3', GBN, #{gbn})
+			AND BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+			AND STAFF_CD = NVL(#{staffCd}, STAFF_CD)
+			AND UPSO_ZIP BETWEEN NVL(#{startZip}, UPSO_ZIP)
+			AND NVL(#{endZip}, UPSO_ZIP)
+			AND DEMD_MMCNT BETWEEN #{startCntMon}
+			AND #{endCntMon}
+			AND (
+				#{bstypCd} IS NULL
+				OR INSTR(#{bstypCd}, BSTYP_CD) > 0
+			)
+	)
+</select>
+
+<select id="SQLsel_nonpy_history_SEL2" parameterType="" resultType="">
+SELECT
+	BRAN_CD,
+	FIDU.GET_GIBU_NM(BRAN_CD) AS BRAN_NM,
+	FIDU.GET_STAFF_NM(STAFF_CD) AS STAFF_NM,
+	CNT_UPSO,
+	CNT_3MONTH,
+	TRUNC(CNT_3MONTH / DECODE(CNT_UPSO, 0, 1, CNT_UPSO) * 100, 1) AS RATE_3MONTH,
+	CNT_6MONTH,
+	CNT_6MONTH_NT,
+	TRUNC(
+		CNT_6MONTH_NT / DECODE(CNT_UPSO, 0, 1, CNT_UPSO) * 100,
+		1
+	) AS RATE_6MONTH,
+	CNT_ACCU,
+	TRUNC(CNT_ACCU / DECODE(CNT_8MONTH, 0, 1, CNT_8MONTH) * 100, 1) AS RATE_ACCU
+FROM
+	(
+		SELECT
+			BRAN_CD,
+			STAFF_CD,
+			COUNT(1) AS CNT_UPSO,
+			SUM(
+				(
+					CASE
+						WHEN DEMD_MMCNT >= 3 THEN 1
+						ELSE 0
+					END
+				)
+			) AS CNT_3MONTH,
+			SUM(
+				(
+					CASE
+						WHEN DEMD_MMCNT >= 6 THEN 1
+						ELSE 0
+					END
+				)
+			) AS CNT_6MONTH,
+			SUM(
+				(
+					CASE
+						WHEN DEMD_MMCNT >= 6
+						AND (
+							SELECT
+								COUNT(ACCU_DAY)
+							FROM
+								GIBU.TBRA_ACCU
+							WHERE
+								UPSO_CD = A.UPSO_CD
+								AND COMPN_DAY IS NULL
+						) < 1 THEN 1
+						ELSE 0
+					END
+				)
+			) AS CNT_6MONTH_NT,
+			SUM(
+				(
+					CASE
+						WHEN DEMD_MMCNT >= 8 THEN 1
+						ELSE 0
+					END
+				)
+			) AS CNT_8MONTH,
+			SUM(
+				(
+					CASE
+						WHEN (
+							SELECT
+								COUNT(ACCU_DAY)
+							FROM
+								GIBU.TBRA_ACCU
+							WHERE
+								UPSO_CD = A.UPSO_CD
+								AND COMPN_DAY IS NULL
+						) = 1 THEN 1
+						ELSE 0
+					END
+				)
+			) AS CNT_ACCU
+		FROM
+			GIBU.TBRA_NONPY_PRCON A
+		WHERE
+			PRCON_YRMN = #{prconYrmn}
+		GROUP BY
+			BRAN_CD,
+			STAFF_CD
+		ORDER BY
+			BRAN_CD,
+			STAFF_CD
+	)
+</select>
+
+<select id="SQLnonpy_select_SEL1" parameterType="" resultType="">
+SELECT
+	/*+  optimizer_features_enable('11.1.0.6')  */
+	XA.DEMD_MMCNT,
+	XB.UPSO_CD,
+	XB.UPSO_NM,
+	DECODE(XB.MNGEMSTR_RESINUM, NULL, '', 'OK') CHK_RESINUM,
+	XB.MNGEMSTR_NM,
+	DECODE(
+		TRIM(XA.BSTYP_CD),
+		'o',
+		GIBU.FT_GET_NOREBANG_GRAD(XB.UPSO_CD),
+		XC.GRADNM
+	) GRADNM,
+	DECODE (
+		(
+			SELECT
+				NVL(COUNT(UPSO_CD), 0)
+			FROM
+				GIBU.TBRA_DLGTN_CLAIM
+			WHERE
+				UPSO_CD = XA.UPSO_CD
+				AND COMPN_DAY IS NULL
+		),
+		0,
+		'',
+		'채권'
+	) BOND,
+	XA.MONPRNCFEE,
+	XA.MONPRNCFEE2,
+	XB.UPSO_NEW_ADDR1 || DECODE(XB.UPSO_NEW_ADDR2, '', '', ',  ' || XB.UPSO_NEW_ADDR2) || XB.UPSO_REF_INFO UPSO_ADDR,
+	XB.UPSO_PHON,
+	XB.MNGEMSTR_HPNUM,
+	XA.TOT_USE_AMT,
+	XA.TOT_ADDT_AMT,
+	XA.TOT_USE_AMT + XA.TOT_ADDT_AMT AS TOT_AMT,
+	DECODE(
+		XB.BEFORE_UPSO_CD,
+		NULL,
+		'',
+		'재' || TO_CHAR(XB.INS_DATE, 'YYYYMMDD')
+	) || '  ' || NVL(XD.GOSO_YN, '') REMAK,
+	XB.UPSO_NEW_ZIP AS UPSO_ZIP,
+	(
+		SELECT
+			ATTE || '  ' || CITYCNTYDSRC
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS SIGUGUN,
+	SUBSTR(XA.START_YRMN, 1, 4) || '/' || SUBSTR(XA.START_YRMN, 5, 2) START_YRMN,
+	SUBSTR(XA.END_YRMN, 1, 4) || '/' || SUBSTR(XA.END_YRMN, 5, 2) END_YRMN,
+	(
+		SELECT
+			IPPBX_INPHONE_NUM
+		FROM
+			FIDU.TENV_MEMBER
+		WHERE
+			USER_ID = XB.STAFF_CD
+	) AS BRAN_PHON_NUM,
+	DECODE(
+		(
+			SELECT
+				COUNT(*) CNT
+			FROM
+				GIBU.TBRA_UPSO_AUTO
+			WHERE
+				UPSO_CD = XB.UPSO_CD
+				AND TERM_YN = 'N'
+		),
+		0,
+		'',
+		'OK'
+	) AUTO_YN,
+	'0' AS COL_CHECK,
+	(
+		SELECT
+			DECODE(COURT_NM, NULL, TOWNTWSHP, COURT_NM)
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS DONG,
+	XB.CLIENT_NUM,
+	XB.BRAN_CD,
+	XB.STAFF_CD,
+	FIDU.GET_STAFF_NM(XB.STAFF_CD) AS STAFF_NM,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+							AND TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 4),
+								'YYYYMM'
+							) || '31'
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN5,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 5),
+								'YYYYMM'
+							) || '01'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD')
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN6,
+	ACCOUNT_NM,
+	BANK_NM1,
+	ACCN_NUM1,
+	BANK_NM2,
+	ACCN_NUM2,
+	BANK_NM3,
+	ACCN_NUM3,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT(1)
+				FROM
+					GIBU.TBRA_STOMU_CONTRINFO
+				WHERE
+					UPSO_CD = XB.UPSO_CD
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS STOMU_YN,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM LIKE #{demdYrmn} || '%'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_CNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN XA.START_YRMN || '01000000'
+			and XA.END_YRMN || '31235959'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND JOB_GBN IN ('V', 'T')
+	) AS VISIT_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND INSPRES_ID = XB.STAFF_CD
+			AND JOB_GBN = 'P'
+	) AS CALL_TOTCNT
+FROM
+	(
+		SELECT
+			DEMD_GBN,
+			UPSO_CD,
+			DEMD_YRMN,
+			MONPRNCFEE,
+			MONPRNCFEE2,
+			BSTYP_CD,
+			UPSO_GRAD,
+			DEMD_MMCNT,
+			START_YRMN,
+			END_YRMN,
+			TOT_USE_AMT,
+			TOT_ADDT_AMT,
+			ACCOUNT_NM,
+			BANK_NM1,
+			ACCN_NUM1,
+			BANK_NM2,
+			ACCN_NUM2,
+			BANK_NM3,
+			ACCN_NUM3
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					#{demdYrmn} AS DEMD_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 0) START_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 1) END_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 2) BSTYP_CD,
+					GIBU.FT_SPLIT(DEMDS, ',', 3) UPSO_GRAD,
+					GIBU.FT_SPLIT(DEMDS, ',', 4) MONPRNCFEE,
+					GIBU.FT_SPLIT(DEMDS, ',', 5) MONPRNCFEE2,
+					GIBU.FT_SPLIT(DEMDS, ',', 6) DEMD_GBN,
+					GIBU.FT_SPLIT(DEMDS, ',', 7) DEMD_MMCNT,
+					GIBU.FT_SPLIT(DEMDS, ',', 8) TOT_USE_AMT,
+					GIBU.FT_SPLIT(DEMDS, ',', 9) + GIBU.FT_SPLIT(DEMDS, ',', 10) TOT_ADDT_AMT,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 0) AS ACCOUNT_NM,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 2) AS BANK_NM1,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 3) AS ACCN_NUM1,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 5) AS BANK_NM2,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 6) AS ACCN_NUM2,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 8) AS BANK_NM3,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 9) AS ACCN_NUM3
+				FROM
+					(
+						SELECT
+							A.UPSO_CD,
+							GIBU.FT_GET_DEMD_AMT2(
+								A.UPSO_CD,
+								A.START_YRMN,
+								#{demdYrmn},
+								#{demdYrmn},
+								'O'
+							) AS DEMDS,
+							GIBU.FT_GET_VIRTUAL_ACCOUNT(A.UPSO_CD) AS BANK_RTN
+						FROM
+							(
+								SELECT
+									UPSO_CD,
+									OPBI_YRMN,
+									MAX(DEMD_MMCNT) AS DEMD_MMCNT,
+									MIN(START_YRMN) AS START_YRMN
+								FROM
+									(
+										SELECT
+											UPSO_CD,
+											OPBI_YRMN,
+											COUNT(YRMN) DEMD_MMCNT,
+											MIN(YRMN) START_YRMN
+										FROM
+											(
+												SELECT
+													YRMN,
+													UPSO_CD,
+													OPBI_YRMN
+												FROM
+													GIBU.COPY_YRMN A,
+													(
+														SELECT
+															UPSO_CD,
+															SUBSTR(OPBI_DAY, 1, 6) OPBI_YRMN
+														FROM
+															GIBU.TBRA_UPSO
+														WHERE
+															UPSO_STAT = '1'
+															AND (
+																CLSBS_YRMN IS NULL
+																OR NVL(SUBSTR(CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+															)
+															AND NEW_DAY IS NOT NULL
+															AND NEW_DAY <= #{demdYrmn} || '31'
+															AND BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+															AND STAFF_CD = NVL(#{staffCd}, STAFF_CD)
+															AND UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, UPSO_NEW_ZIP)
+															AND NVL(#{endZip}, UPSO_NEW_ZIP)
+													) B
+												WHERE
+													YRMN NOT IN (
+														SELECT
+															NOTE_YRMN
+														FROM
+															GIBU.TBRA_NOTE
+														WHERE
+															UPSO_CD = B.UPSO_CD
+													)
+													AND YRMN BETWEEN B.OPBI_YRMN
+													AND #{demdYrmn}
+											)
+										GROUP BY
+											UPSO_CD,
+											OPBI_YRMN
+										HAVING
+											COUNT(YRMN) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+										UNION ALL
+										SELECT
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT - COUNT(TA.NOTE_YRMN) DEMD_MMCNT,
+											#{demdYrmn} START_YRMN
+										FROM
+											GIBU.TBRA_NOTE TA,
+											(
+												SELECT
+													A.UPSO_CD,
+													SUBSTR(A.OPBI_DAY, 1, 6) OPBI_YRMN,
+													MONTHS_BETWEEN(
+														TO_DATE(#{demdYrmn}, 'YYYYMM'),
+														TO_DATE(SUBSTR(A.OPBI_DAY, 1, 6), 'YYYYMM')
+													) + 1 OPBI_CNT
+												FROM
+													GIBU.TBRA_UPSO A,
+													GIBU.TBRA_NOTE B
+												WHERE
+													A.UPSO_STAT = '1'
+													AND (
+														A.CLSBS_YRMN IS NULL
+														OR NVL(SUBSTR(A.CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+													)
+													AND A.NEW_DAY IS NOT NULL
+													AND A.NEW_DAY <= #{demdYrmn} || '31'
+													AND A.BRAN_CD = DECODE(#{branCd}, 'AL', A.BRAN_CD, #{branCd})
+													AND A.STAFF_CD = NVL(#{staffCd}, A.STAFF_CD)
+													AND A.UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, A.UPSO_NEW_ZIP)
+													AND NVL(#{endZip}, A.UPSO_NEW_ZIP)
+													AND A.UPSO_CD = B.UPSO_CD
+													AND B.NOTE_YRMN = #{demdYrmn}
+											) TB
+										WHERE
+											TA.UPSO_CD = TB.UPSO_CD
+										GROUP BY
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT
+										HAVING
+											(TB.OPBI_CNT - COUNT(TA.NOTE_YRMN)) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+									)
+								GROUP BY
+									UPSO_CD,
+									OPBI_YRMN
+							) A
+					)
+			)
+	) XA,
+	GIBU.TBRA_UPSO XB,
+	GIBU.TBRA_BSTYPGRAD XC,
+	(
+		SELECT
+			UPSO_CD,
+			MAX(GOSO_YN) GOSO_YN
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					DECODE(
+						COMPN_DAY,
+						NULL,
+						'고소중',
+						DECODE(JUDG_CD, '2', '기소중지', '4', '구약식', NULL)
+					) GOSO_YN
+				FROM
+					GIBU.TBRA_ACCU
+			)
+		GROUP BY
+			UPSO_CD
+	) XD,
+	INSA.TCPM_BIPLC XF
+WHERE
+	XB.UPSO_CD = XA.UPSO_CD
+	AND XC.GRAD_GBN = XA.UPSO_GRAD
+	AND XC.BSTYP_CD = XA.BSTYP_CD
+	AND XD.UPSO_CD (+) = XA.UPSO_CD
+	AND XF.GIBU = XB.BRAN_CD
+	AND (
+		#{bstypCd} IS NULL
+		OR INSTR(#{bstypCd}, XC.BSTYP_CD) > 0
+	)
+	AND XA.DEMD_MMCNT BETWEEN TO_NUMBER(#{startCntMon})
+	AND TO_NUMBER(#{endCntMon})
+ORDER BY
+	SUBSTR(XB.UPSO_BD_MNG_NUM, 1, 5),
+	24,
+	XB.UPSO_NM
+</select>
+
+<select id="SQLnonpy_select_SEL5" parameterType="" resultType="">
+SELECT
+	/*+  optimizer_features_enable('11.1.0.6')  */
+	XA.DEMD_MMCNT,
+	XB.UPSO_CD,
+	XB.UPSO_NM,
+	DECODE(XB.MNGEMSTR_RESINUM, NULL, '', 'OK') CHK_RESINUM,
+	XB.MNGEMSTR_NM,
+	DECODE(
+		TRIM(XA.BSTYP_CD),
+		'o',
+		GIBU.FT_GET_NOREBANG_GRAD(XB.UPSO_CD),
+		XC.GRADNM
+	) GRADNM,
+	DECODE (
+		(
+			SELECT
+				NVL(COUNT(UPSO_CD), 0)
+			FROM
+				GIBU.TBRA_DLGTN_CLAIM
+			WHERE
+				UPSO_CD = XA.UPSO_CD
+				AND COMPN_DAY IS NULL
+		),
+		0,
+		'',
+		'채권'
+	) BOND,
+	XA.MONPRNCFEE,
+	XA.MONPRNCFEE2,
+	XB.UPSO_NEW_ADDR1 || DECODE(XB.UPSO_NEW_ADDR2, '', '', ',  ' || XB.UPSO_NEW_ADDR2) || XB.UPSO_REF_INFO UPSO_ADDR,
+	XB.UPSO_PHON,
+	XB.MNGEMSTR_HPNUM,
+	XA.TOT_USE_AMT,
+	XA.TOT_ADDT_AMT,
+	XA.TOT_USE_AMT + XA.TOT_ADDT_AMT AS TOT_AMT,
+	DECODE(
+		XB.BEFORE_UPSO_CD,
+		NULL,
+		'',
+		'재' || TO_CHAR(XB.INS_DATE, 'YYYYMMDD')
+	) || '  ' || NVL(XD.GOSO_YN, '') REMAK,
+	XB.UPSO_NEW_ZIP AS UPSO_ZIP,
+	(
+		SELECT
+			ATTE || '  ' || CITYCNTYDSRC
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS SIGUGUN,
+	SUBSTR(XA.START_YRMN, 1, 4) || '/' || SUBSTR(XA.START_YRMN, 5, 2) START_YRMN,
+	SUBSTR(XA.END_YRMN, 1, 4) || '/' || SUBSTR(XA.END_YRMN, 5, 2) END_YRMN,
+	(
+		SELECT
+			IPPBX_INPHONE_NUM
+		FROM
+			FIDU.TENV_MEMBER
+		WHERE
+			USER_ID = XB.STAFF_CD
+	) AS BRAN_PHON_NUM,
+	DECODE(
+		(
+			SELECT
+				COUNT(*) CNT
+			FROM
+				GIBU.TBRA_UPSO_AUTO
+			WHERE
+				UPSO_CD = XB.UPSO_CD
+				AND TERM_YN = 'N'
+		),
+		0,
+		'',
+		'OK'
+	) AUTO_YN,
+	'0' AS COL_CHECK,
+	(
+		SELECT
+			DECODE(COURT_NM, NULL, TOWNTWSHP, COURT_NM)
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS DONG,
+	XB.CLIENT_NUM,
+	XB.BRAN_CD,
+	XB.STAFF_CD,
+	FIDU.GET_STAFF_NM(XB.STAFF_CD) AS STAFF_NM,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+							AND TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 4),
+								'YYYYMM'
+							) || '31'
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN5,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 5),
+								'YYYYMM'
+							) || '01'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD')
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN6,
+	ACCOUNT_NM,
+	BANK_NM1,
+	ACCN_NUM1,
+	BANK_NM2,
+	ACCN_NUM2,
+	BANK_NM3,
+	ACCN_NUM3,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT(1)
+				FROM
+					GIBU.TBRA_STOMU_CONTRINFO
+				WHERE
+					UPSO_CD = XB.UPSO_CD
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS STOMU_YN,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM LIKE #{demdYrmn} || '%'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_CNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN XA.START_YRMN || '01000000'
+			and XA.END_YRMN || '31235959'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND JOB_GBN IN ('V', 'T')
+	) AS VISIT_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND INSPRES_ID = XB.STAFF_CD
+			AND JOB_GBN = 'P'
+	) AS CALL_TOTCNT
+FROM
+	(
+		SELECT
+			DEMD_GBN,
+			UPSO_CD,
+			DEMD_YRMN,
+			MONPRNCFEE,
+			MONPRNCFEE2,
+			BSTYP_CD,
+			UPSO_GRAD,
+			DEMD_MMCNT,
+			START_YRMN,
+			END_YRMN,
+			TOT_USE_AMT,
+			TOT_ADDT_AMT,
+			ACCOUNT_NM,
+			BANK_NM1,
+			ACCN_NUM1,
+			BANK_NM2,
+			ACCN_NUM2,
+			BANK_NM3,
+			ACCN_NUM3
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					#{demdYrmn} AS DEMD_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 0) START_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 1) END_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 2) BSTYP_CD,
+					GIBU.FT_SPLIT(DEMDS, ',', 3) UPSO_GRAD,
+					GIBU.FT_SPLIT(DEMDS, ',', 4) MONPRNCFEE,
+					GIBU.FT_SPLIT(DEMDS, ',', 5) MONPRNCFEE2,
+					GIBU.FT_SPLIT(DEMDS, ',', 6) DEMD_GBN,
+					GIBU.FT_SPLIT(DEMDS, ',', 7) DEMD_MMCNT,
+					GIBU.FT_SPLIT(DEMDS, ',', 8) TOT_USE_AMT,
+					GIBU.FT_SPLIT(DEMDS, ',', 9) + GIBU.FT_SPLIT(DEMDS, ',', 10) TOT_ADDT_AMT,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 0) AS ACCOUNT_NM,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 2) AS BANK_NM1,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 3) AS ACCN_NUM1,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 5) AS BANK_NM2,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 6) AS ACCN_NUM2,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 8) AS BANK_NM3,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 9) AS ACCN_NUM3
+				FROM
+					(
+						SELECT
+							A.UPSO_CD,
+							GIBU.FT_GET_DEMD_AMT2(
+								A.UPSO_CD,
+								A.START_YRMN,
+								#{demdYrmn},
+								#{demdYrmn},
+								'O'
+							) DEMDS,
+							GIBU.FT_GET_VIRTUAL_ACCOUNT(A.UPSO_CD) AS BANK_RTN
+						FROM
+							(
+								SELECT
+									UPSO_CD,
+									OPBI_YRMN,
+									MAX(DEMD_MMCNT) AS DEMD_MMCNT,
+									MIN(START_YRMN) AS START_YRMN
+								FROM
+									(
+										SELECT
+											UPSO_CD,
+											OPBI_YRMN,
+											COUNT(YRMN) DEMD_MMCNT,
+											MIN(YRMN) START_YRMN
+										FROM
+											(
+												SELECT
+													YRMN,
+													UPSO_CD,
+													OPBI_YRMN
+												FROM
+													GIBU.COPY_YRMN A,
+													(
+														SELECT
+															UPSO_CD,
+															SUBSTR(OPBI_DAY, 1, 6) OPBI_YRMN
+														FROM
+															GIBU.TBRA_UPSO
+														WHERE
+															(
+																CLSBS_YRMN IS NULL
+																OR NVL(SUBSTR(CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+															)
+															AND NEW_DAY IS NULL
+															AND BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+															AND STAFF_CD = NVL(#{staffCd}, STAFF_CD)
+															AND UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, UPSO_NEW_ZIP)
+															AND NVL(#{endZip}, UPSO_NEW_ZIP)
+													) B
+												WHERE
+													YRMN NOT IN (
+														SELECT
+															NOTE_YRMN
+														FROM
+															GIBU.TBRA_NOTE
+														WHERE
+															UPSO_CD = B.UPSO_CD
+													)
+													AND YRMN BETWEEN B.OPBI_YRMN
+													AND #{demdYrmn}
+											)
+										GROUP BY
+											UPSO_CD,
+											OPBI_YRMN
+										HAVING
+											COUNT(YRMN) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+										UNION ALL
+										SELECT
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT - COUNT(TA.NOTE_YRMN) DEMD_MMCNT,
+											#{demdYrmn} START_YRMN
+										FROM
+											GIBU.TBRA_NOTE TA,
+											(
+												SELECT
+													A.UPSO_CD,
+													SUBSTR(A.OPBI_DAY, 1, 6) OPBI_YRMN,
+													MONTHS_BETWEEN(
+														TO_DATE(#{demdYrmn}, 'YYYYMM'),
+														TO_DATE(SUBSTR(A.OPBI_DAY, 1, 6), 'YYYYMM')
+													) + 1 OPBI_CNT
+												FROM
+													GIBU.TBRA_UPSO A,
+													GIBU.TBRA_NOTE B
+												WHERE
+													(
+														A.CLSBS_YRMN IS NULL
+														OR NVL(SUBSTR(A.CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+													)
+													AND A.NEW_DAY IS NULL
+													AND A.BRAN_CD = DECODE(#{branCd}, 'AL', A.BRAN_CD, #{branCd})
+													AND A.STAFF_CD = NVL(#{staffCd}, A.STAFF_CD)
+													AND A.UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, A.UPSO_NEW_ZIP)
+													AND NVL(#{endZip}, A.UPSO_NEW_ZIP)
+													AND A.UPSO_CD = B.UPSO_CD
+													AND B.NOTE_YRMN = #{demdYrmn}
+											) TB
+										WHERE
+											TA.UPSO_CD = TB.UPSO_CD
+										GROUP BY
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT
+										HAVING
+											(TB.OPBI_CNT - COUNT(TA.NOTE_YRMN)) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+									)
+								GROUP BY
+									UPSO_CD,
+									OPBI_YRMN
+							) A
+					)
+			)
+	) XA,
+	GIBU.TBRA_UPSO XB,
+	GIBU.TBRA_BSTYPGRAD XC,
+	(
+		SELECT
+			UPSO_CD,
+			MAX(GOSO_YN) GOSO_YN
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					DECODE(
+						COMPN_DAY,
+						NULL,
+						'고소중',
+						DECODE(JUDG_CD, '2', '기소중지', '4', '구약식', NULL)
+					) GOSO_YN
+				FROM
+					GIBU.TBRA_ACCU
+			)
+		GROUP BY
+			UPSO_CD
+	) XD,
+	INSA.TCPM_BIPLC XF
+WHERE
+	XB.UPSO_CD = XA.UPSO_CD
+	AND XC.GRAD_GBN = XA.UPSO_GRAD
+	AND XC.BSTYP_CD = XA.BSTYP_CD
+	AND XD.UPSO_CD (+) = XA.UPSO_CD
+	AND XF.GIBU = XB.BRAN_CD
+	AND (
+		#{bstypCd} IS NULL
+		OR INSTR(#{bstypCd}, XC.BSTYP_CD) > 0
+	)
+	AND XA.DEMD_MMCNT BETWEEN TO_NUMBER(#{startCntMon})
+	AND TO_NUMBER(#{endCntMon})
+ORDER BY
+	SUBSTR(XB.UPSO_BD_MNG_NUM, 1, 5),
+	24,
+	XB.UPSO_NM
+</select>
+
+<select id="SQLnonpy_select_SEL6" parameterType="" resultType="">
+SELECT
+	/*+  optimizer_features_enable('11.1.0.6')  */
+	XA.DEMD_MMCNT,
+	XB.UPSO_CD,
+	XB.UPSO_NM,
+	DECODE(XB.MNGEMSTR_RESINUM, NULL, '', 'OK') CHK_RESINUM,
+	XB.MNGEMSTR_NM,
+	DECODE(
+		TRIM(XA.BSTYP_CD),
+		'o',
+		GIBU.FT_GET_NOREBANG_GRAD(XB.UPSO_CD),
+		XC.GRADNM
+	) GRADNM,
+	DECODE (
+		(
+			SELECT
+				NVL(COUNT(UPSO_CD), 0)
+			FROM
+				GIBU.TBRA_DLGTN_CLAIM
+			WHERE
+				UPSO_CD = XA.UPSO_CD
+				AND COMPN_DAY IS NULL
+		),
+		0,
+		'',
+		'채권'
+	) BOND,
+	XA.MONPRNCFEE,
+	XA.MONPRNCFEE2,
+	XB.UPSO_NEW_ADDR1 || DECODE(XB.UPSO_NEW_ADDR2, '', '', ',  ' || XB.UPSO_NEW_ADDR2) || XB.UPSO_REF_INFO UPSO_ADDR,
+	XB.UPSO_PHON,
+	XB.MNGEMSTR_HPNUM,
+	XA.TOT_USE_AMT,
+	XA.TOT_ADDT_AMT,
+	XA.TOT_USE_AMT + XA.TOT_ADDT_AMT AS TOT_AMT,
+	DECODE(
+		XB.BEFORE_UPSO_CD,
+		NULL,
+		'',
+		'재' || TO_CHAR(XB.INS_DATE, 'YYYYMMDD')
+	) || '  ' || NVL(XD.GOSO_YN, '') REMAK,
+	XB.UPSO_NEW_ZIP AS UPSO_ZIP,
+	(
+		SELECT
+			ATTE || '  ' || CITYCNTYDSRC
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS SIGUGUN,
+	SUBSTR(XA.START_YRMN, 1, 4) || '/' || SUBSTR(XA.START_YRMN, 5, 2) START_YRMN,
+	SUBSTR(XA.END_YRMN, 1, 4) || '/' || SUBSTR(XA.END_YRMN, 5, 2) END_YRMN,
+	(
+		SELECT
+			IPPBX_INPHONE_NUM
+		FROM
+			FIDU.TENV_MEMBER
+		WHERE
+			USER_ID = XB.STAFF_CD
+	) AS BRAN_PHON_NUM,
+	DECODE(
+		(
+			SELECT
+				COUNT(*) CNT
+			FROM
+				GIBU.TBRA_UPSO_AUTO
+			WHERE
+				UPSO_CD = XB.UPSO_CD
+				AND TERM_YN = 'N'
+		),
+		0,
+		'',
+		'OK'
+	) AUTO_YN,
+	'0' AS COL_CHECK,
+	(
+		SELECT
+			DECODE(COURT_NM, NULL, TOWNTWSHP, COURT_NM)
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS DONG,
+	XB.CLIENT_NUM,
+	XB.BRAN_CD,
+	XB.STAFF_CD,
+	FIDU.GET_STAFF_NM(XB.STAFF_CD) AS STAFF_NM,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+							AND TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 4),
+								'YYYYMM'
+							) || '31'
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN5,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 5),
+								'YYYYMM'
+							) || '01'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD')
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN6,
+	ACCOUNT_NM,
+	BANK_NM1,
+	ACCN_NUM1,
+	BANK_NM2,
+	ACCN_NUM2,
+	BANK_NM3,
+	ACCN_NUM3,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT(1)
+				FROM
+					GIBU.TBRA_STOMU_CONTRINFO
+				WHERE
+					UPSO_CD = XB.UPSO_CD
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS STOMU_YN,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM LIKE #{demdYrmn} || '%'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_CNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN XA.START_YRMN || '01000000'
+			and XA.END_YRMN || '31235959'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND JOB_GBN IN ('V', 'T')
+	) AS VISIT_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND INSPRES_ID = XB.STAFF_CD
+			AND JOB_GBN = 'P'
+	) AS CALL_TOTCNT
+FROM
+	(
+		SELECT
+			DEMD_GBN,
+			UPSO_CD,
+			DEMD_YRMN,
+			MONPRNCFEE,
+			MONPRNCFEE2,
+			BSTYP_CD,
+			UPSO_GRAD,
+			DEMD_MMCNT,
+			START_YRMN,
+			END_YRMN,
+			TOT_USE_AMT,
+			TOT_ADDT_AMT,
+			ACCOUNT_NM,
+			BANK_NM1,
+			ACCN_NUM1,
+			BANK_NM2,
+			ACCN_NUM2,
+			BANK_NM3,
+			ACCN_NUM3
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					#{demdYrmn} AS DEMD_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 0) START_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 1) END_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 2) BSTYP_CD,
+					GIBU.FT_SPLIT(DEMDS, ',', 3) UPSO_GRAD,
+					GIBU.FT_SPLIT(DEMDS, ',', 4) MONPRNCFEE,
+					GIBU.FT_SPLIT(DEMDS, ',', 5) MONPRNCFEE2,
+					GIBU.FT_SPLIT(DEMDS, ',', 6) DEMD_GBN,
+					GIBU.FT_SPLIT(DEMDS, ',', 7) DEMD_MMCNT,
+					GIBU.FT_SPLIT(DEMDS, ',', 8) TOT_USE_AMT,
+					GIBU.FT_SPLIT(DEMDS, ',', 9) + GIBU.FT_SPLIT(DEMDS, ',', 10) TOT_ADDT_AMT,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 0) AS ACCOUNT_NM,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 2) AS BANK_NM1,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 3) AS ACCN_NUM1,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 5) AS BANK_NM2,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 6) AS ACCN_NUM2,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 8) AS BANK_NM3,
+					GIBU.FT_SPLIT(BANK_RTN, ',', 9) AS ACCN_NUM3
+				FROM
+					(
+						SELECT
+							A.UPSO_CD,
+							GIBU.FT_GET_DEMD_AMT2(
+								A.UPSO_CD,
+								A.START_YRMN,
+								#{demdYrmn},
+								#{demdYrmn},
+								'O'
+							) DEMDS,
+							GIBU.FT_GET_VIRTUAL_ACCOUNT(A.UPSO_CD) AS BANK_RTN
+						FROM
+							(
+								SELECT
+									UPSO_CD,
+									OPBI_YRMN,
+									MAX(DEMD_MMCNT) AS DEMD_MMCNT,
+									MIN(START_YRMN) AS START_YRMN
+								FROM
+									(
+										SELECT
+											UPSO_CD,
+											OPBI_YRMN,
+											COUNT(YRMN) DEMD_MMCNT,
+											MIN(YRMN) START_YRMN
+										FROM
+											(
+												SELECT
+													YRMN,
+													UPSO_CD,
+													OPBI_YRMN
+												FROM
+													GIBU.COPY_YRMN A,
+													(
+														SELECT
+															UPSO_CD,
+															SUBSTR(OPBI_DAY, 1, 6) OPBI_YRMN
+														FROM
+															GIBU.TBRA_UPSO
+														WHERE
+															(
+																CLSBS_YRMN IS NULL
+																OR NVL(SUBSTR(CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+															)
+															AND (
+																NEW_DAY IS NULL
+																OR NEW_DAY <= #{demdYrmn} || '31'
+															)
+															AND BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+															AND STAFF_CD = NVL(#{staffCd}, STAFF_CD)
+															AND UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, UPSO_NEW_ZIP)
+															AND NVL(#{endZip}, UPSO_NEW_ZIP)
+													) B
+												WHERE
+													YRMN NOT IN (
+														SELECT
+															NOTE_YRMN
+														FROM
+															GIBU.TBRA_NOTE
+														WHERE
+															UPSO_CD = B.UPSO_CD
+													)
+													AND YRMN BETWEEN B.OPBI_YRMN
+													AND #{demdYrmn}
+											)
+										GROUP BY
+											UPSO_CD,
+											OPBI_YRMN
+										HAVING
+											COUNT(YRMN) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+										UNION ALL
+										SELECT
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT - COUNT(TA.NOTE_YRMN) DEMD_MMCNT,
+											#{demdYrmn} START_YRMN
+										FROM
+											GIBU.TBRA_NOTE TA,
+											(
+												SELECT
+													A.UPSO_CD,
+													SUBSTR(A.OPBI_DAY, 1, 6) OPBI_YRMN,
+													MONTHS_BETWEEN(
+														TO_DATE(#{demdYrmn}, 'YYYYMM'),
+														TO_DATE(SUBSTR(A.OPBI_DAY, 1, 6), 'YYYYMM')
+													) + 1 OPBI_CNT
+												FROM
+													GIBU.TBRA_UPSO A,
+													GIBU.TBRA_NOTE B
+												WHERE
+													(
+														A.CLSBS_YRMN IS NULL
+														OR NVL(SUBSTR(A.CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+													)
+													AND (
+														A.NEW_DAY IS NULL
+														OR A.NEW_DAY <= #{demdYrmn} || '31'
+													)
+													AND A.BRAN_CD = DECODE(#{branCd}, 'AL', A.BRAN_CD, #{branCd})
+													AND A.STAFF_CD = NVL(#{staffCd}, A.STAFF_CD)
+													AND A.UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, A.UPSO_NEW_ZIP)
+													AND NVL(#{endZip}, A.UPSO_NEW_ZIP)
+													AND A.UPSO_CD = B.UPSO_CD
+													AND B.NOTE_YRMN = #{demdYrmn}
+											) TB
+										WHERE
+											TA.UPSO_CD = TB.UPSO_CD
+										GROUP BY
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT
+										HAVING
+											(TB.OPBI_CNT - COUNT(TA.NOTE_YRMN)) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+									)
+								GROUP BY
+									UPSO_CD,
+									OPBI_YRMN
+							) A
+					)
+			)
+	) XA,
+	GIBU.TBRA_UPSO XB,
+	GIBU.TBRA_BSTYPGRAD XC,
+	(
+		SELECT
+			UPSO_CD,
+			MAX(GOSO_YN) GOSO_YN
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					DECODE(
+						COMPN_DAY,
+						NULL,
+						'고소중',
+						DECODE(JUDG_CD, '2', '기소중지', '4', '구약식', NULL)
+					) GOSO_YN
+				FROM
+					GIBU.TBRA_ACCU
+			)
+		GROUP BY
+			UPSO_CD
+	) XD,
+	INSA.TCPM_BIPLC XF
+WHERE
+	XB.UPSO_CD = XA.UPSO_CD
+	AND XC.GRAD_GBN = XA.UPSO_GRAD
+	AND XC.BSTYP_CD = XA.BSTYP_CD
+	AND XD.UPSO_CD (+) = XA.UPSO_CD
+	AND XF.GIBU = XB.BRAN_CD
+	AND (
+		#{bstypCd} IS NULL
+		OR INSTR(#{bstypCd}, XC.BSTYP_CD) > 0
+	)
+	AND XA.DEMD_MMCNT BETWEEN TO_NUMBER(#{startCntMon})
+	AND TO_NUMBER(#{endCntMon})
+ORDER BY
+	SUBSTR(XB.UPSO_BD_MNG_NUM, 1, 5),
+	24,
+	XB.UPSO_NM
+</select>
+
+<delete id="SQLnonpy_dispList_save_XIUD3" parameterType="">
+DELETE GIBU.TBRA_NOLEV_DISP_LIST
+WHERE
+	DISP_DAY = TO_CHAR(SYSDATE, 'YYYYMMDD')
+</delete>
+
+<insert id="SQLnonpy_dispList_save_XIUD7" parameterType="">
+INSERT INTO
+	GIBU.TBRA_NOLEV_DISP_LIST (
+		DISP_DAY,
+		UPSO_CD,
+		DEMD_YRMN,
+		START_YRMN,
+		END_YRMN,
+		DEMD_MMCNT,
+		DEMD_AMT,
+		ADDT_AMT,
+		INSPRES_ID,
+		INS_DATE
+	)
+SELECT
+	TO_CHAR(SYSDATE, 'YYYYMMDD'),
+	XB.UPSO_CD,
+	XA.DEMD_YRMN,
+	XA.START_YRMN,
+	XA.END_YRMN,
+	XA.DEMD_MMCNT,
+	XA.TOT_DEMD_AMT,
+	XA.TOT_ADDT_AMT,
+	#{inspresId},
+	SYSDATE
+FROM
+	(
+		SELECT
+			A.DEMD_GBN,
+			A.UPSO_CD,
+			A.DEMD_YRMN,
+			A.TOT_DEMD_AMT - (A.TOT_ADDT_AMT + A.TOT_EADDT_AMT) TOT_DEMD_AMT,
+			A.TOT_ADDT_AMT + A.TOT_EADDT_AMT TOT_ADDT_AMT,
+			A.DEMD_MMCNT,
+			A.MONPRNCFEE,
+			A.START_YRMN,
+			A.END_YRMN
+		FROM
+			GIBU.TBRA_DEMD_OCR A
+		WHERE
+			UPSO_CD IN (
+				SELECT
+					UPSO_CD
+				FROM
+					GIBU.TBRA_UPSO
+				WHERE
+					BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+			)
+			AND DEMD_YRMN > (
+				SELECT
+					NVL(MAX(DEMD_YRMN), '190001')
+				FROM
+					GIBU.TBRA_DEMD_REPT
+				WHERE
+					UPSO_CD = A.UPSO_CD
+			)
+			AND DEMD_YRMN = #{yrmn}
+		ORDER BY
+			DEMD_YRMN DESC
+	) XA,
+	GIBU.TBRA_UPSO XB,
+	(
+		SELECT
+			ZA.UPSO_CD,
+			ZB.MONPRNCFEE,
+			ZC.GRADNM,
+			ZB.BSTYP_CD,
+			ZB.UPSO_GRAD,
+			TRIM(ZB.BSTYP_CD) || ZB.UPSO_GRAD GRAD,
+			ZB.CHG_NUM
+		FROM
+			(
+				SELECT
+					MAX(JOIN_SEQ) JOIN_SEQ,
+					UPSO_CD
+				FROM
+					GIBU.TBRA_UPSORTAL_INFO
+				WHERE
+					UPSO_CD IN (
+						SELECT
+							UPSO_CD
+						FROM
+							GIBU.TBRA_DEMD_OCR A
+						WHERE
+							UPSO_CD IN (
+								SELECT
+									UPSO_CD
+								FROM
+									GIBU.TBRA_UPSO
+								WHERE
+									BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+							)
+							AND DEMD_YRMN > (
+								SELECT
+									NVL(MAX(DEMD_YRMN), '190001')
+								FROM
+									GIBU.TBRA_DEMD_REPT
+								WHERE
+									UPSO_CD = A.UPSO_CD
+							)
+							AND DEMD_YRMN = #{yrmn}
+					)
+					AND APPL_DAY <= #{yrmn} || '32'
+				GROUP BY
+					UPSO_CD
+			) ZA,
+			GIBU.TBRA_UPSORTAL_INFO ZB,
+			GIBU.TBRA_BSTYPGRAD ZC
+		WHERE
+			ZA.UPSO_CD = ZB.UPSO_CD
+			AND ZA.JOIN_SEQ = ZB.JOIN_SEQ
+			AND ZC.GRAD_GBN = ZB.BSTYP_CD
+			AND ZC.BSTYP_CD = 'z'
+	) XC,
+	(
+		SELECT
+			COUNT(UPSO_CD) ACCU_CNT,
+			UPSO_CD
+		FROM
+			GIBU.TBRA_ACCU
+		WHERE
+			COMPN_DAY IS NULL
+		GROUP BY
+			UPSO_CD
+	) XD,
+	(
+		SELECT
+			DISTINCT ZIP,
+			ATTE,
+			DSRCCNTY
+		FROM
+			GIBU.TBRA_BRANZIP_MNG
+	) XE
+WHERE
+	XA.DEMD_MMCNT BETWEEN #{startCntMon}
+	AND #{endCntMon}
+	AND XB.UPSO_CD = XA.UPSO_CD
+	AND XB.BRAN_CD = DECODE(#{branCd}, 'AL', XB.BRAN_CD, #{branCd})
+	AND XB.STAFF_CD = NVL(#{staffCd}, XB.STAFF_CD)
+	AND XB.UPSO_ZIP BETWEEN NVL(#{startZip}, XB.UPSO_ZIP)
+	AND NVL(#{endZip}, XB.UPSO_ZIP)
+	AND XC.UPSO_CD = XA.UPSO_CD
+	AND TRIM(XC.BSTYP_CD) = DECODE(
+		NVL(#{bstypCd}, 'A'),
+		'A',
+		TRIM(XC.BSTYP_CD),
+		#{bstypCd}
+	)
+	AND XD.UPSO_CD (+) = XA.UPSO_CD
+	AND XE.ZIP = XB.UPSO_ZIP
+</insert>
+
+<select id="SQLnonpy_dispList_save2_SEL4" parameterType="" resultType="">
+SELECT
+	TO_CHAR(SYSDATE, 'YYYYMMDD') AS SYS_DATE
+FROM
+	DUAL
+</select>
+
+<delete id="SQLnonpy_dispList_save2_DEL3" parameterType="">
+Delete from
+	GIBU.TBRA_NOLEV_DISP_LIST
+where
+	DISP_DAY = #{dispDay}
+	and UPSO_CD = #{upsoCd}
+</delete>
+
+<insert id="SQLnonpy_dispList_save2_INS8" parameterType="">
+Insert into
+	GIBU.TBRA_NOLEV_DISP_LIST (
+		INS_DATE,
+		INSPRES_ID,
+		DISP_DAY,
+		DEMD_YRMN,
+		DEMD_MMCNT,
+		UPSO_CD,
+		ADDT_AMT,
+		DEMD_AMT,
+		END_YRMN,
+		START_YRMN
+	)
+values
+(
+		SYSDATE,
+		#{inspresId},
+		#{dispDay},
+		#{demdYrmn},
+		#{demdMmcnt},
+		#{upsoCd},
+		#{addtAmt},
+		#{demdAmt},
+		#{endYrmn},
+		#{startYrmn}
+	)
+</insert>
+
+<select id="SQLsel_history_list_SEL1" parameterType="" resultType="">
+SELECT
+	PRCON_YRMN,
+	INSPRES_ID,
+	FIDU.GET_STAFF_NM(INSPRES_ID) AS INSPRES_NM,
+	INS_DATE
+FROM
+	GIBU.TBRA_NONPY_PRCON_HISTORY
+ORDER BY
+	PRCON_YRMN DESC
+</select>
+
+<select id="SQLchk_is_history_SEL1" parameterType="" resultType="">
+SELECT
+	COUNT(1) AS CNT
+FROM
+	GIBU.TBRA_NONPY_PRCON_HISTORY
+WHERE
+	PRCON_YRMN = #{prconYrmn}
+</select>
+
+<delete id="SQLsave_nonpy_history_DEL5" parameterType="">
+Delete from
+	GIBU.TBRA_NONPY_PRCON_HISTORY
+where
+	PRCON_YRMN = #{prconYrmn}
+</delete>
+
+<delete id="SQLsave_nonpy_history_DEL6" parameterType="">
+Delete from
+	GIBU.TBRA_NONPY_PRCON
+where
+	PRCON_YRMN = #{prconYrmn}
+</delete>
+
+<insert id="SQLsave_nonpy_history_INS7" parameterType="">
+Insert into
+	GIBU.TBRA_NONPY_PRCON_HISTORY (INS_DATE, INSPRES_ID, PRCON_YRMN)
+values
+(SYSDATE, #{inspresId}, #{prconYrmn})
+</insert>
+
+<select id="SQLsave_nonpy_history_SEL1" parameterType="" resultType="">
+SELECT
+	'1' AS GBN,
+	XA.DEMD_MMCNT,
+	XB.UPSO_CD,
+	XB.UPSO_NM,
+	DECODE(XB.MNGEMSTR_RESINUM, NULL, '', 'OK') AS CHK_RESINUM,
+	XB.MNGEMSTR_NM,
+	DECODE(
+		TRIM(XA.BSTYP_CD),
+		'o',
+		GIBU.FT_GET_NOREBANG_GRAD(XB.UPSO_CD),
+		XC.GRADNM
+	) AS GRADNM,
+	DECODE (
+		(
+			SELECT
+				NVL(COUNT(UPSO_CD), 0)
+			FROM
+				GIBU.TBRA_DLGTN_CLAIM
+			WHERE
+				UPSO_CD = XA.UPSO_CD
+				AND COMPN_DAY IS NULL
+		),
+		0,
+		'',
+		'채권'
+	) AS BOND,
+	XA.MONPRNCFEE,
+	XA.MONPRNCFEE2,
+	XB.UPSO_NEW_ADDR1 || DECODE(XB.UPSO_NEW_ADDR2, '', '', ',  ' || XB.UPSO_NEW_ADDR2) || XB.UPSO_REF_INFO AS UPSO_ADDR,
+	XB.UPSO_PHON,
+	XB.MNGEMSTR_HPNUM,
+	XA.TOT_USE_AMT,
+	XA.TOT_ADDT_AMT,
+	XA.TOT_USE_AMT + XA.TOT_ADDT_AMT AS TOT_AMT,
+	DECODE(
+		XB.BEFORE_UPSO_CD,
+		NULL,
+		'',
+		'재' || TO_CHAR(XB.INS_DATE, 'YYYYMMDD')
+	) || '  ' || NVL(XD.GOSO_YN, '') AS REMAK,
+	XB.UPSO_NEW_ZIP AS UPSO_ZIP,
+	(
+		SELECT
+			ATTE || '  ' || CITYCNTYDSRC
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS SIGUGUN,
+	SUBSTR(XA.START_YRMN, 1, 4) || '/' || SUBSTR(XA.START_YRMN, 5, 2) AS START_YRMN,
+	SUBSTR(XA.END_YRMN, 1, 4) || '/' || SUBSTR(XA.END_YRMN, 5, 2) AS END_YRMN,
+	XF.PHON_NUM AS BRAN_PHON_NUM,
+	DECODE(
+		(
+			SELECT
+				COUNT(*) CNT
+			FROM
+				GIBU.TBRA_UPSO_AUTO
+			WHERE
+				UPSO_CD = XB.UPSO_CD
+				AND TERM_YN = 'N'
+		),
+		0,
+		'',
+		'OK'
+	) AS AUTO_YN,
+	'0' AS COL_CHECK,
+	(
+		SELECT
+			DECODE(COURT_NM, NULL, TOWNTWSHP, COURT_NM)
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS DONG,
+	XB.CLIENT_NUM,
+	XB.BRAN_CD,
+	XB.STAFF_CD,
+	FIDU.GET_STAFF_NM(XB.STAFF_CD) AS STAFF_NM,
+	XA.BSTYP_CD,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+							AND TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 4),
+								'YYYYMM'
+							) || '31'
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN5,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 5),
+								'YYYYMM'
+							) || '01'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD')
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN6,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT(1)
+				FROM
+					GIBU.TBRA_STOMU_CONTRINFO
+				WHERE
+					UPSO_CD = XB.UPSO_CD
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS STOMU_YN,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN TO_CHAR(
+				ADD_MONTHS(TO_DATE(#{demdYrmn}, 'YYYYMM'), -3),
+				'YYYYMM'
+			)
+			AND #{demdYrmn}
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_CNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN XA.START_YRMN || '01000000'
+			and XA.END_YRMN || '31235959'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND JOB_GBN IN ('V', 'T')
+	) AS VISIT_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND INSPRES_ID = XB.STAFF_CD
+			AND JOB_GBN = 'P'
+	) AS CALL_TOTCNT
+FROM
+	(
+		SELECT
+			DEMD_GBN,
+			UPSO_CD,
+			DEMD_YRMN,
+			MONPRNCFEE,
+			MONPRNCFEE2,
+			BSTYP_CD,
+			UPSO_GRAD,
+			DEMD_MMCNT,
+			START_YRMN,
+			END_YRMN,
+			TOT_USE_AMT,
+			TOT_ADDT_AMT
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					#{demdYrmn} AS DEMD_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 0) START_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 1) END_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 2) BSTYP_CD,
+					GIBU.FT_SPLIT(DEMDS, ',', 3) UPSO_GRAD,
+					GIBU.FT_SPLIT(DEMDS, ',', 4) MONPRNCFEE,
+					GIBU.FT_SPLIT(DEMDS, ',', 5) MONPRNCFEE2,
+					GIBU.FT_SPLIT(DEMDS, ',', 6) DEMD_GBN,
+					GIBU.FT_SPLIT(DEMDS, ',', 7) DEMD_MMCNT,
+					GIBU.FT_SPLIT(DEMDS, ',', 8) TOT_USE_AMT,
+					GIBU.FT_SPLIT(DEMDS, ',', 9) + GIBU.FT_SPLIT(DEMDS, ',', 10) TOT_ADDT_AMT
+				FROM
+					(
+						SELECT
+							A.UPSO_CD,
+							GIBU.FT_GET_DEMD_AMT2(
+								A.UPSO_CD,
+								A.START_YRMN,
+								#{demdYrmn},
+								#{demdYrmn},
+								'O'
+							) DEMDS
+						FROM
+							(
+								SELECT
+									UPSO_CD,
+									OPBI_YRMN,
+									MAX(DEMD_MMCNT) AS DEMD_MMCNT,
+									MIN(START_YRMN) AS START_YRMN
+								FROM
+									(
+										SELECT
+											UPSO_CD,
+											OPBI_YRMN,
+											COUNT(YRMN) DEMD_MMCNT,
+											MIN(YRMN) START_YRMN
+										FROM
+											(
+												SELECT
+													YRMN,
+													UPSO_CD,
+													OPBI_YRMN
+												FROM
+													GIBU.COPY_YRMN A,
+													(
+														SELECT
+															UPSO_CD,
+															SUBSTR(OPBI_DAY, 1, 6) OPBI_YRMN
+														FROM
+															GIBU.TBRA_UPSO
+														WHERE
+															UPSO_STAT = '1'
+															AND (
+																CLSBS_YRMN IS NULL
+																OR NVL(SUBSTR(CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+															)
+															AND NEW_DAY IS NOT NULL
+															AND NEW_DAY <= #{demdYrmn} || '31'
+															AND BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+															AND STAFF_CD = NVL(#{staffCd}, STAFF_CD)
+															AND UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, UPSO_NEW_ZIP)
+															AND NVL(#{endZip}, UPSO_NEW_ZIP)
+													) B
+												WHERE
+													YRMN NOT IN (
+														SELECT
+															NOTE_YRMN
+														FROM
+															GIBU.TBRA_NOTE
+														WHERE
+															UPSO_CD = B.UPSO_CD
+													)
+													AND YRMN BETWEEN B.OPBI_YRMN
+													AND #{demdYrmn}
+											)
+										GROUP BY
+											UPSO_CD,
+											OPBI_YRMN
+										HAVING
+											COUNT(YRMN) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+										UNION ALL
+										SELECT
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT - COUNT(TA.NOTE_YRMN) DEMD_MMCNT,
+											#{demdYrmn} START_YRMN
+										FROM
+											GIBU.TBRA_NOTE TA,
+											(
+												SELECT
+													A.UPSO_CD,
+													SUBSTR(A.OPBI_DAY, 1, 6) OPBI_YRMN,
+													MONTHS_BETWEEN(
+														TO_DATE(#{demdYrmn}, 'YYYYMM'),
+														TO_DATE(SUBSTR(A.OPBI_DAY, 1, 6), 'YYYYMM')
+													) + 1 OPBI_CNT
+												FROM
+													GIBU.TBRA_UPSO A,
+													GIBU.TBRA_NOTE B
+												WHERE
+													A.UPSO_STAT = '1'
+													AND (
+														A.CLSBS_YRMN IS NULL
+														OR NVL(SUBSTR(A.CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+													)
+													AND A.NEW_DAY IS NOT NULL
+													AND A.NEW_DAY <= #{demdYrmn} || '31'
+													AND A.BRAN_CD = DECODE(#{branCd}, 'AL', A.BRAN_CD, #{branCd})
+													AND A.STAFF_CD = NVL(#{staffCd}, A.STAFF_CD)
+													AND A.UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, A.UPSO_NEW_ZIP)
+													AND NVL(#{endZip}, A.UPSO_NEW_ZIP)
+													AND A.UPSO_CD = B.UPSO_CD
+													AND B.NOTE_YRMN = #{demdYrmn}
+											) TB
+										WHERE
+											TA.UPSO_CD = TB.UPSO_CD
+										GROUP BY
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT
+										HAVING
+											(TB.OPBI_CNT - COUNT(TA.NOTE_YRMN)) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+									)
+								GROUP BY
+									UPSO_CD,
+									OPBI_YRMN
+							) A
+					)
+			)
+	) XA,
+	GIBU.TBRA_UPSO XB,
+	GIBU.TBRA_BSTYPGRAD XC,
+	(
+		SELECT
+			UPSO_CD,
+			MAX(GOSO_YN) GOSO_YN
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					DECODE(
+						COMPN_DAY,
+						NULL,
+						'고소중',
+						DECODE(JUDG_CD, '2', '기소중지', '4', '구약식', NULL)
+					) GOSO_YN
+				FROM
+					GIBU.TBRA_ACCU
+				WHERE
+					(
+						JUDG_CD NOT IN ('1', '3', '5', '6', '7', '8', '9', '41', '99')
+						OR JUDG_CD IS NULL
+					)
+			)
+		GROUP BY
+			UPSO_CD
+	) XD,
+	INSA.TCPM_BIPLC XF
+WHERE
+	XB.UPSO_CD = XA.UPSO_CD
+	AND XC.GRAD_GBN = XA.UPSO_GRAD
+	AND XC.BSTYP_CD = DECODE(
+		#{bstypCd},
+		NULL,
+		XC.BSTYP_CD,
+		'A',
+		XC.BSTYP_CD,
+		#{bstypCd}
+	)
+	AND XC.BSTYP_CD = XA.BSTYP_CD
+	AND XD.UPSO_CD (+) = XA.UPSO_CD
+	AND XF.GIBU = XB.BRAN_CD
+	AND XA.DEMD_MMCNT BETWEEN TO_NUMBER(#{startCntMon})
+	AND TO_NUMBER(#{endCntMon})
+UNION ALL
+SELECT
+	'2' AS GBN,
+	XA.DEMD_MMCNT,
+	XB.UPSO_CD,
+	XB.UPSO_NM,
+	DECODE(XB.MNGEMSTR_RESINUM, NULL, '', 'OK') AS CHK_RESINUM,
+	XB.MNGEMSTR_NM,
+	DECODE(
+		TRIM(XA.BSTYP_CD),
+		'o',
+		GIBU.FT_GET_NOREBANG_GRAD(XB.UPSO_CD),
+		XC.GRADNM
+	) AS GRADNM,
+	DECODE (
+		(
+			SELECT
+				NVL(COUNT(UPSO_CD), 0)
+			FROM
+				GIBU.TBRA_DLGTN_CLAIM
+			WHERE
+				UPSO_CD = XA.UPSO_CD
+				AND COMPN_DAY IS NULL
+		),
+		0,
+		'',
+		'채권'
+	) AS BOND,
+	XA.MONPRNCFEE,
+	XA.MONPRNCFEE2,
+	XB.UPSO_NEW_ADDR1 || DECODE(XB.UPSO_NEW_ADDR2, '', '', ',  ' || XB.UPSO_NEW_ADDR2) || XB.UPSO_REF_INFO AS UPSO_ADDR,
+	XB.UPSO_PHON,
+	XB.MNGEMSTR_HPNUM,
+	XA.TOT_USE_AMT,
+	XA.TOT_ADDT_AMT,
+	XA.TOT_USE_AMT + XA.TOT_ADDT_AMT AS TOT_AMT,
+	DECODE(
+		XB.BEFORE_UPSO_CD,
+		NULL,
+		'',
+		'재' || TO_CHAR(XB.INS_DATE, 'YYYYMMDD')
+	) || '  ' || NVL(XD.GOSO_YN, '') AS REMAK,
+	XB.UPSO_NEW_ZIP AS UPSO_ZIP,
+	(
+		SELECT
+			ATTE || '  ' || CITYCNTYDSRC
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS SIGUGUN,
+	SUBSTR(XA.START_YRMN, 1, 4) || '/' || SUBSTR(XA.START_YRMN, 5, 2) AS START_YRMN,
+	SUBSTR(XA.END_YRMN, 1, 4) || '/' || SUBSTR(XA.END_YRMN, 5, 2) AS END_YRMN,
+	XF.PHON_NUM AS BRAN_PHON_NUM,
+	DECODE(
+		(
+			SELECT
+				COUNT(*) CNT
+			FROM
+				GIBU.TBRA_UPSO_AUTO
+			WHERE
+				UPSO_CD = XB.UPSO_CD
+				AND TERM_YN = 'N'
+		),
+		0,
+		'',
+		'OK'
+	) AS AUTO_YN,
+	'0' AS COL_CHECK,
+	(
+		SELECT
+			DECODE(COURT_NM, NULL, TOWNTWSHP, COURT_NM)
+		FROM
+			FIDU.TENV_POST
+		WHERE
+			BD_MNG_NUM = XB.UPSO_BD_MNG_NUM
+	) AS DONG,
+	XB.CLIENT_NUM,
+	XB.BRAN_CD,
+	XB.STAFF_CD,
+	FIDU.GET_STAFF_NM(XB.STAFF_CD) AS STAFF_NM,
+	XA.BSTYP_CD,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+							AND TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 4),
+								'YYYYMM'
+							) || '31'
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN5,
+	(
+		CASE
+			WHEN XA.DEMD_MMCNT >= 6 THEN (
+				CASE
+					WHEN (
+						SELECT
+							COUNT(1)
+						FROM
+							GIBU.TBRA_UPSO_VISIT
+						WHERE
+							JOB_GBN IN ('V', 'T')
+							AND UPSO_CD = XB.UPSO_CD
+							AND VISIT_DAY BETWEEN TO_CHAR(
+								ADD_MONTHS(TO_DATE(XA.START_YRMN, 'YYYYMM'), 5),
+								'YYYYMM'
+							) || '01'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD')
+					) < 1 THEN 'N'
+					ELSE 'Y'
+				END
+			)
+			ELSE ''
+		END
+	) AS VISIT_YN6,
+	(
+		CASE
+			WHEN (
+				SELECT
+					COUNT(1)
+				FROM
+					GIBU.TBRA_STOMU_CONTRINFO
+				WHERE
+					UPSO_CD = XB.UPSO_CD
+			) > 0 THEN 'Y'
+			ELSE 'N'
+		END
+	) AS STOMU_YN,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN TO_CHAR(
+				ADD_MONTHS(TO_DATE(#{demdYrmn}, 'YYYYMM'), -3),
+				'YYYYMM'
+			)
+			AND #{demdYrmn}
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_CNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			KAKAO.MZSENDLOG
+		WHERE
+			USER_ID = XA.UPSO_CD
+			AND REQ_DTM BETWEEN XA.START_YRMN || '01000000'
+			and XA.END_YRMN || '31235959'
+			AND RESERVED6 NOT IN (
+				'bra03_r11',
+				'bra04_s25',
+				'bra05_s02',
+				'bra03_s01',
+				'HOMP'
+			)
+	) AS SMS_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND JOB_GBN IN ('V', 'T')
+	) AS VISIT_TOTCNT,
+	(
+		SELECT
+			COUNT(1)
+		FROM
+			GIBU.TBRA_UPSO_VISIT
+		WHERE
+			UPSO_CD = XA.UPSO_CD
+			AND VISIT_DAY BETWEEN XA.START_YRMN || '01'
+			and XA.END_YRMN || '31'
+			AND INSPRES_ID = XB.STAFF_CD
+			AND JOB_GBN = 'P'
+	) AS CALL_TOTCNT
+FROM
+	(
+		SELECT
+			DEMD_GBN,
+			UPSO_CD,
+			DEMD_YRMN,
+			MONPRNCFEE,
+			MONPRNCFEE2,
+			BSTYP_CD,
+			UPSO_GRAD,
+			DEMD_MMCNT,
+			START_YRMN,
+			END_YRMN,
+			TOT_USE_AMT,
+			TOT_ADDT_AMT
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					#{demdYrmn} AS DEMD_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 0) START_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 1) END_YRMN,
+					GIBU.FT_SPLIT(DEMDS, ',', 2) BSTYP_CD,
+					GIBU.FT_SPLIT(DEMDS, ',', 3) UPSO_GRAD,
+					GIBU.FT_SPLIT(DEMDS, ',', 4) MONPRNCFEE,
+					GIBU.FT_SPLIT(DEMDS, ',', 5) MONPRNCFEE2,
+					GIBU.FT_SPLIT(DEMDS, ',', 6) DEMD_GBN,
+					GIBU.FT_SPLIT(DEMDS, ',', 7) DEMD_MMCNT,
+					GIBU.FT_SPLIT(DEMDS, ',', 8) TOT_USE_AMT,
+					GIBU.FT_SPLIT(DEMDS, ',', 9) + GIBU.FT_SPLIT(DEMDS, ',', 10) TOT_ADDT_AMT
+				FROM
+					(
+						SELECT
+							A.UPSO_CD,
+							GIBU.FT_GET_DEMD_AMT2(
+								A.UPSO_CD,
+								A.START_YRMN,
+								#{demdYrmn},
+								#{demdYrmn},
+								'O'
+							) DEMDS
+						FROM
+							(
+								SELECT
+									UPSO_CD,
+									OPBI_YRMN,
+									MAX(DEMD_MMCNT) AS DEMD_MMCNT,
+									MIN(START_YRMN) AS START_YRMN
+								FROM
+									(
+										SELECT
+											UPSO_CD,
+											OPBI_YRMN,
+											COUNT(YRMN) DEMD_MMCNT,
+											MIN(YRMN) START_YRMN
+										FROM
+											(
+												SELECT
+													YRMN,
+													UPSO_CD,
+													OPBI_YRMN
+												FROM
+													GIBU.COPY_YRMN A,
+													(
+														SELECT
+															UPSO_CD,
+															SUBSTR(OPBI_DAY, 1, 6) OPBI_YRMN
+														FROM
+															GIBU.TBRA_UPSO
+														WHERE
+															(
+																CLSBS_YRMN IS NULL
+																OR NVL(SUBSTR(CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+															)
+															AND NEW_DAY IS NULL
+															AND BRAN_CD = DECODE(#{branCd}, 'AL', BRAN_CD, #{branCd})
+															AND STAFF_CD = NVL(#{staffCd}, STAFF_CD)
+															AND UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, UPSO_NEW_ZIP)
+															AND NVL(#{endZip}, UPSO_NEW_ZIP)
+													) B
+												WHERE
+													YRMN NOT IN (
+														SELECT
+															NOTE_YRMN
+														FROM
+															GIBU.TBRA_NOTE
+														WHERE
+															UPSO_CD = B.UPSO_CD
+													)
+													AND YRMN BETWEEN B.OPBI_YRMN
+													AND #{demdYrmn}
+											)
+										GROUP BY
+											UPSO_CD,
+											OPBI_YRMN
+										HAVING
+											COUNT(YRMN) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+										UNION ALL
+										SELECT
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT - COUNT(TA.NOTE_YRMN) DEMD_MMCNT,
+											#{demdYrmn} START_YRMN
+										FROM
+											GIBU.TBRA_NOTE TA,
+											(
+												SELECT
+													A.UPSO_CD,
+													SUBSTR(A.OPBI_DAY, 1, 6) OPBI_YRMN,
+													MONTHS_BETWEEN(
+														TO_DATE(#{demdYrmn}, 'YYYYMM'),
+														TO_DATE(SUBSTR(A.OPBI_DAY, 1, 6), 'YYYYMM')
+													) + 1 OPBI_CNT
+												FROM
+													GIBU.TBRA_UPSO A,
+													GIBU.TBRA_NOTE B
+												WHERE
+													(
+														A.CLSBS_YRMN IS NULL
+														OR NVL(SUBSTR(A.CLSBS_INS_DAY, 1, 6), '  ') > #{demdYrmn}
+													)
+													AND A.NEW_DAY IS NULL
+													AND A.BRAN_CD = DECODE(#{branCd}, 'AL', A.BRAN_CD, #{branCd})
+													AND A.STAFF_CD = NVL(#{staffCd}, A.STAFF_CD)
+													AND A.UPSO_NEW_ZIP BETWEEN NVL(#{startZip}, A.UPSO_NEW_ZIP)
+													AND NVL(#{endZip}, A.UPSO_NEW_ZIP)
+													AND A.UPSO_CD = B.UPSO_CD
+													AND B.NOTE_YRMN = #{demdYrmn}
+											) TB
+										WHERE
+											TA.UPSO_CD = TB.UPSO_CD
+										GROUP BY
+											TB.UPSO_CD,
+											TB.OPBI_YRMN,
+											TB.OPBI_CNT
+										HAVING
+											(TB.OPBI_CNT - COUNT(TA.NOTE_YRMN)) BETWEEN TO_NUMBER(#{startCntMon})
+											AND TO_NUMBER(#{endCntMon})
+									)
+								GROUP BY
+									UPSO_CD,
+									OPBI_YRMN
+							) A
+					)
+			)
+	) XA,
+	GIBU.TBRA_UPSO XB,
+	GIBU.TBRA_BSTYPGRAD XC,
+	(
+		SELECT
+			UPSO_CD,
+			MAX(GOSO_YN) GOSO_YN
+		FROM
+			(
+				SELECT
+					UPSO_CD,
+					DECODE(
+						COMPN_DAY,
+						NULL,
+						'고소중',
+						DECODE(JUDG_CD, '2', '기소중지', '4', '구약식', NULL)
+					) GOSO_YN
+				FROM
+					GIBU.TBRA_ACCU
+				WHERE
+					(
+						JUDG_CD NOT IN ('1', '3', '5', '6', '7', '8', '9', '41', '99')
+						OR JUDG_CD IS NULL
+					)
+			)
+		GROUP BY
+			UPSO_CD
+	) XD,
+	INSA.TCPM_BIPLC XF
+WHERE
+	XB.UPSO_CD = XA.UPSO_CD
+	AND XC.GRAD_GBN = XA.UPSO_GRAD
+	AND XC.BSTYP_CD = DECODE(
+		#{bstypCd},
+		NULL,
+		XC.BSTYP_CD,
+		'A',
+		XC.BSTYP_CD,
+		#{bstypCd}
+	)
+	AND XC.BSTYP_CD = XA.BSTYP_CD
+	AND XD.UPSO_CD (+) = XA.UPSO_CD
+	AND XF.GIBU = XB.BRAN_CD
+	AND XA.DEMD_MMCNT BETWEEN TO_NUMBER(#{startCntMon})
+	AND TO_NUMBER(#{endCntMon})
+</select>
+
+<insert id="SQLsave_nonpy_history_INS2" parameterType="">
+Insert into
+	GIBU.TBRA_NONPY_PRCON (
+		MNGEMSTR_HPNUM,
+		DONG,
+		GBN,
+		DEMD_MMCNT,
+		BOND,
+		MONPRNCFEE,
+		COL_CHECK,
+		BSTYP_CD,
+		UPSO_PHON,
+		SMS_TOTCNT,
+		CALL_TOTCNT,
+		MONPRNCFEE2,
+		STAFF_CD,
+		TOT_ADDT_AMT,
+		TOT_USE_AMT,
+		UPSO_CD,
+		PRCON_YRMN,
+		CLIENT_NUM,
+		UPSO_NM,
+		END_YRMN,
+		REMAK,
+		VISIT_YN6,
+		VISIT_YN5,
+		SIGUGUN,
+		SMS_CNT,
+		AUTO_YN,
+		STAFF_NM,
+		MNGEMSTR_NM,
+		GRADNM,
+		START_YRMN,
+		VISIT_TOTCNT,
+		CHK_RESINUM,
+		STOMU_YN,
+		UPSO_ADDR,
+		BRAN_CD,
+		TOT_AMT,
+		UPSO_ZIP
+	)
+values
+(
+		#{mngemstrHpnum},
+		#{dong},
+		#{gbn},
+		#{demdMmcnt},
+		#{bond},
+		#{monprncfee},
+		#{colCheck},
+		#{bstypCd},
+		#{upsoPhon},
+		#{smsTotcnt},
+		#{callTotcnt},
+		#{monprncfee2},
+		#{staffCd},
+		#{totAddtAmt},
+		#{totUseAmt},
+		#{upsoCd},
+		#{prconYrmn},
+		#{clientNum},
+		#{upsoNm},
+		#{endYrmn},
+		#{remak},
+		#{visitYn6},
+		#{visitYn5},
+		#{sigugun},
+		#{smsCnt},
+		#{autoYn},
+		#{staffNm},
+		#{mngemstrNm},
+		#{gradnm},
+		#{startYrmn},
+		#{visitTotcnt},
+		#{chkResinum},
+		#{stomuYn},
+		#{upsoAddr},
+		#{branCd},
+		#{totAmt},
+		#{upsoZip}
+	)
+</insert>
+
+</mapper>

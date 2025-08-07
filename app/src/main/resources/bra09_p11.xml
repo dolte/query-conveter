@@ -1,0 +1,745 @@
+﻿<mapper namespace="kr.or.komca.center..mapper.Mapper">
+<select id="SQLonoff_col_list_SEL3" parameterType="" resultType="">
+SELECT
+	#{gbn} AS GBN
+FROM
+	DUAL
+</select>
+
+<select id="SQLonoff_col_list_SEL5" parameterType="" resultType="">
+SELECT
+	BRAN_NM,
+	BRAN_CD,
+	BSTYP_CD,
+	GRADNM,
+	ONOFF_GBN,
+	SUM(REPT_AMT) AS REPT_AMT,
+	SUM(REPT_AMT) - (SUM(KOSCAP_AMT) + SUM(FKMP_AMT) + SUM(RIAK_AMT)) AS KOMCA_AMT,
+	SUM(KOSCAP_AMT) AS KOSCAP_AMT,
+	SUM(FKMP_AMT) AS FKMP_AMT,
+	SUM(RIAK_AMT) AS RIAK_AMT
+FROM
+	(
+		SELECT
+			B.DEPT_NM AS BRAN_NM,
+			A.BRAN_CD,
+			A.BSTYP_CD,
+			C.GRADNM,
+			DECODE(A.ONOFF_GBN, 'O', '온라인', '오프라인') AS ONOFF_GBN,
+			DECODE(A.ASS_GBN, 'K', A.LEVY_AMT, TO_NUMBER(NULL)) AS REPT_AMT,
+			DECODE(A.ASS_GBN, 'T0000001', A.LEVY_AMT, 0) AS KOSCAP_AMT,
+			DECODE(A.ASS_GBN, 'T0000002', A.LEVY_AMT, 0) AS FKMP_AMT,
+			DECODE(A.ASS_GBN, 'T0000003', A.LEVY_AMT, 0) AS RIAK_AMT
+		FROM
+			GIBU.TBRA_ONOFF_LEVY_PRCON A,
+			INSA.TCPM_DEPT B,
+			GIBU.TBRA_BSTYPGRAD C
+		WHERE
+			A.PRCON_YRMN = #{yrmn}
+			AND B.GIBU = A.BRAN_CD
+			AND C.BSTYP_CD = 'z'
+			AND C.GRAD_GBN = A.BSTYP_CD
+			AND A.ONOFF_GBN IS NOT NULL
+	)
+GROUP BY
+	BRAN_NM,
+	BRAN_CD,
+	BSTYP_CD,
+	GRADNM,
+	ONOFF_GBN
+ORDER BY
+	BRAN_CD,
+	BSTYP_CD,
+	ONOFF_GBN DESC
+</select>
+
+<select id="SQLonoff_col_list_SEL2" parameterType="" resultType="">
+SELECT
+	TC.DEPT_NM AS BRAN_NM,
+	TB.BRAN_CD,
+	TB.BSTYP_CD,
+	TB.GRADNM,
+	DECODE(TB.ONOFF_GBN, 'ON', '온라인', '오프라인') AS ONOFF_GBN,
+	DECODE(
+		TA.BRAN_CD,
+		NULL,
+		SUM(TB.REPT_AMT),
+		SUM(TA.REPT_AMT)
+	) AS REPT_AMT,
+	DECODE(
+		TA.BRAN_CD,
+		NULL,
+		SUM(TB.REPT_AMT),
+		SUM(TA.REPT_AMT)
+	) - (
+		NVL(SUM(TA.KOSCAP_AMT), 0) + NVL(SUM(TA.FKMP_AMT), 0) + NVL(SUM(TA.RIAK_AMT), 0)
+	) AS KOMCA_AMT,
+	NVL(SUM(TA.KOSCAP_AMT), 0) AS KOSCAP_AMT,
+	NVL(SUM(TA.FKMP_AMT), 0) AS FKMP_AMT,
+	NVL(SUM(TA.RIAK_AMT), 0) AS RIAK_AMT
+FROM
+	(
+		SELECT
+			XA.BRAN_CD,
+			XA.BSTYP_CD,
+			XA.GRADNM,
+			XA.ONOFF_GBN,
+			XB.REPT_AMT,
+			XB.KOSCAP_AMT,
+			XB.FKMP_AMT,
+			XB.RIAK_AMT
+		FROM
+			(
+				SELECT
+					A.UPSO_CD,
+					A.BRAN_CD,
+					B.BSTYP_CD,
+					D.GRADNM,
+					(
+						CASE
+							B.BSTYP_CD
+							WHEN 'o' THEN DECODE(A.ONOFF_GBN, 'O', 'ON', 'F', 'OFF')
+							WHEN 'k' THEN DECODE(A.ONOFF_GBN, 'O', 'ON', 'F', 'OFF')
+							WHEN 'l' THEN DECODE(A.ONOFF_GBN, 'O', 'ON', 'F', 'OFF')
+							WHEN 'p' THEN DECODE(A.ONOFF_GBN, 'O', 'ON', 'F', 'OFF')
+							WHEN 'y' THEN DECODE(A.ONOFF_GBN, 'O', 'ON', 'F', 'OFF')
+							WHEN 'm' THEN 'OFF'
+							WHEN 'n' THEN 'OFF'
+							WHEN 'f' THEN 'OFF'
+							ELSE 'OFF'
+						END
+					) AS ONOFF_GBN
+				FROM
+					GIBU.TBRA_UPSO A,
+					GIBU.TBRA_UPSORTAL_INFO B,
+					(
+						SELECT
+							A.UPSO_CD,
+							MAX(A.JOIN_SEQ) AS JOIN_SEQ
+						FROM
+							GIBU.TBRA_UPSORTAL_INFO A
+						GROUP BY
+							A.UPSO_CD
+					) C,
+					GIBU.TBRA_BSTYPGRAD D
+				WHERE
+					B.UPSO_CD = A.UPSO_CD
+					AND C.JOIN_SEQ = B.JOIN_SEQ
+					AND D.BSTYP_CD = B.BSTYP_CD
+					AND D.GRAD_GBN = B.UPSO_GRAD
+					AND B.BSTYP_CD IN ('k', 'l', 'o', 'p', 'y', 'm', 'n', 'J', 'f')
+			) XA,
+			(
+				SELECT
+					REPT_DAY,
+					UPSO_CD,
+					REPT_AMT - COMIS AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_REPT
+				WHERE
+					MAPPING_DAY LIKE #{yrmn} || '%'
+					AND DISTR_GBN IS NULL
+				UNION ALL
+				SELECT
+					REPT_DAY,
+					UPSO_CD,
+					DISTR_AMT AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_REPT_UPSO_DISTR
+				WHERE
+					MAPPING_DAY LIKE #{yrmn} || '%'
+					AND REPT_GBN <> '08'
+				UNION ALL
+				SELECT
+					A.REPT_DAY,
+					A.UPSO_CD,
+					(
+						CASE
+							WHEN MIN(DISTR_SEQ) OVER(PARTITION BY A.REPT_DAY, A.REPT_NUM, A.REPT_GBN) = DISTR_SEQ THEN A.DISTR_AMT - NVL(C.COMIS, 0)
+							ELSE A.DISTR_AMT
+						END
+					) AS REPT_AMT,
+					0,
+					0,
+					0
+				FROM
+					GIBU.TBRA_REPT_UPSO_DISTR A,
+					GIBU.TBRA_REPT_VIRTUAL B,
+					GIBU.TBRA_REPT C
+				WHERE
+					A.MAPPING_DAY LIKE #{yrmn} || '%'
+					AND A.REPT_DAY = B.REPT_DAY
+					AND A.REPT_NUM = B.REPT_NUM
+					AND A.REPT_GBN = '08'
+					AND A.REPT_DAY = C.REPT_DAY(+)
+					AND A.REPT_NUM = C.REPT_NUM(+)
+					AND C.REPT_GBN(+) = '08'
+				UNION ALL
+				SELECT
+					RETURN_DAY,
+					UPSO_CD,
+					(RETURN_AMT * -1) AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_REPT_RETURN
+				WHERE
+					RETURN_DAY LIKE #{yrmn} || '%'
+				UNION ALL
+				SELECT
+					REPT_DAY,
+					UPSO_CD,
+					0 AS REPT_AMT,
+					PROC_AMT AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_DEMD_REPT_BSCON
+				WHERE
+					MAPPING_YRMN = #{yrmn}
+					AND BSCON_CD = 'T0000001'
+				UNION ALL
+				SELECT
+					RETURN_DAY,
+					UPSO_CD,
+					0 AS REPT_AMT,
+					(PROC_AMT * -1) AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_BSCON_RETURN
+				WHERE
+					RETURN_YRMN = #{yrmn}
+					AND BSCON_CD = 'T0000001'
+				UNION ALL
+				SELECT
+					REPT_DAY,
+					UPSO_CD,
+					0 AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					PROC_AMT AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_DEMD_REPT_BSCON
+				WHERE
+					MAPPING_YRMN = #{yrmn}
+					AND BSCON_CD = 'T0000002'
+				UNION ALL
+				SELECT
+					RETURN_DAY,
+					UPSO_CD,
+					0 AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					(PROC_AMT * -1) AS FKMP_AMT,
+					0 AS RIAK_AMT
+				FROM
+					GIBU.TBRA_BSCON_RETURN
+				WHERE
+					RETURN_YRMN = #{yrmn}
+					AND BSCON_CD = 'T0000002'
+				UNION ALL
+				SELECT
+					REPT_DAY,
+					UPSO_CD,
+					0 AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					PROC_AMT AS RIAK_AMT
+				FROM
+					GIBU.TBRA_DEMD_REPT_BSCON
+				WHERE
+					MAPPING_YRMN = #{yrmn}
+					AND BSCON_CD = 'T0000003'
+				UNION ALL
+				SELECT
+					RETURN_DAY,
+					UPSO_CD,
+					0 AS REPT_AMT,
+					0 AS KOSCAP_AMT,
+					0 AS FKMP_AMT,
+					(PROC_AMT * -1) AS RIAK_AMT
+				FROM
+					GIBU.TBRA_BSCON_RETURN
+				WHERE
+					RETURN_YRMN = #{yrmn}
+					AND BSCON_CD = 'T0000003'
+			) XB
+		WHERE
+			XA.UPSO_CD = XB.UPSO_CD
+	) TA,
+	(
+		SELECT
+			XA.BRAN_CD,
+			XB.GRAD_GBN AS BSTYP_CD,
+			XB.GRADNM,
+			XC.ONOFF_GBN,
+			0 AS REPT_AMT
+		FROM
+			(
+				SELECT
+					GIBU AS BRAN_CD
+				FROM
+					INSA.TCPM_DEPT
+				WHERE
+					GIBU IS NOT NULL
+					AND GIBU <> 'AL'
+			) XA,
+			(
+				SELECT
+					GRAD_GBN,
+					GRADNM
+				FROM
+					GIBU.TBRA_BSTYPGRAD
+				WHERE
+					BSTYP_CD = 'z'
+					AND GRAD_GBN IN ('k', 'l', 'o', 'p', 'y', 'm', 'n', 'J', 'f')
+			) XB,
+			(
+				SELECT
+					'ON' AS ONOFF_GBN
+				FROM
+					DUAL
+			) XC
+		UNION ALL
+		SELECT
+			XA.BRAN_CD,
+			XB.GRAD_GBN AS BSTYP_CD,
+			XB.GRADNM,
+			XC.ONOFF_GBN,
+			0 AS REPT_AMT
+		FROM
+			(
+				SELECT
+					GIBU AS BRAN_CD
+				FROM
+					INSA.TCPM_DEPT
+				WHERE
+					GIBU IS NOT NULL
+					AND GIBU <> 'AL'
+			) XA,
+			(
+				SELECT
+					GRAD_GBN,
+					GRADNM
+				FROM
+					GIBU.TBRA_BSTYPGRAD
+				WHERE
+					BSTYP_CD = 'z'
+					AND GRAD_GBN IN ('k', 'l', 'o', 'p', 'y', 'm', 'n', 'J', 'f')
+			) XB,
+			(
+				SELECT
+					'OFF' AS ONOFF_GBN
+				FROM
+					DUAL
+			) XC
+	) TB,
+	INSA.TCPM_DEPT TC
+WHERE
+	TB.BRAN_CD = TA.BRAN_CD(+)
+	AND TB.BSTYP_CD = TA.BSTYP_CD(+)
+	AND TB.ONOFF_GBN = TA.ONOFF_GBN(+)
+	AND TC.GIBU = TB.BRAN_CD
+GROUP BY
+	TB.BRAN_CD,
+	TB.BSTYP_CD,
+	TB.ONOFF_GBN,
+	TA.BRAN_CD,
+	TC.DEPT_NM,
+	TB.GRADNM
+ORDER BY
+	TB.BRAN_CD,
+	TB.BSTYP_CD ASC,
+	TB.ONOFF_GBN DESC
+</select>
+
+<select id="SQLonoff_history_SEL1" parameterType="" resultType="">
+select
+	PRCON_YRMN,
+	INSPRES_ID,
+	INS_DATE
+from
+	GIBU.TBRA_ONOFF_LEVY_PRCON_HISTORY
+order by
+	prcon_yrmn desc,
+	ins_date desc
+</select>
+
+<select id="SQLonoff_col_save_SEL6" parameterType="" resultType="">
+SELECT
+	COUNT(*) CNT
+FROM
+	GIBU.TBRA_ONOFF_LEVY_PRCON
+WHERE
+	PRCON_YRMN = #{yrmn}
+</select>
+
+<insert id="SQLonoff_col_save_INS7" parameterType="">
+Insert into
+	GIBU.TBRA_ONOFF_LEVY_PRCON_HISTORY (INS_DATE, INSPRES_ID, PRCON_YRMN, SEQ)
+values
+(
+		SYSDATE,
+		#{inspresId},
+		#{prconYrmn},
+		(
+			SELECT
+				NVL(MAX(SEQ), 0) + 1 SEQ
+			FROM
+				GIBU.TBRA_ONOFF_LEVY_PRCON_HISTORY
+			WHERE
+				PRCON_YRMN = #{seq1}
+		)
+	)
+</insert>
+
+<select id="SQLonoff_col_save_SEL1" parameterType="" resultType="">
+SELECT
+	BRAN_NM,
+	BRAN_CD,
+	GRAD_GBN BSTYP_CD,
+	GRADNM,
+	ONOFF_GBN,
+	SUM(REPT_AMT) AS REPT_AMT,
+	DECODE(ASS_GBN, NULL, 'K', ASS_GBN) AS ASS_GBN
+FROM
+	(
+		SELECT
+			ZA.BRAN_NM,
+			ZA.BRAN_CD,
+			ZA.GRAD_GBN,
+			ZA.GRADNM,
+			DECODE(ZA.ONOFF_GBN, '-', NULL, ZA.ONOFF_GBN) ONOFF_GBN,
+			NVL(ZB.REPT_AMT, 0) REPT_AMT,
+			ZA.SRT,
+			ASS_GBN
+		FROM
+			(
+				SELECT
+					XB.BRAN_CD,
+					XB.BRAN_NM,
+					XA.GRAD_GBN,
+					XA.GRADNM,
+					XA.SRT,
+					DECODE(XA.ONOFF_GBN, '1', '-', XA.ONOFF_GBN) ONOFF_GBN
+				FROM
+					(
+						SELECT
+							A.GRAD_GBN,
+							A.GRADNM,
+							(
+								CASE
+									A.GRAD_GBN
+									WHEN 'k' THEN DECODE(B.SRT, '1', 1, 2)
+									WHEN 'l' THEN DECODE(B.SRT, '1', 3, 4)
+									WHEN 'o' THEN DECODE(B.SRT, '1', 5, 6)
+									WHEN 'p' THEN DECODE(B.SRT, '1', 7, 8)
+									WHEN 'y' THEN DECODE(B.SRT, '1', 9, 10)
+									WHEN 'n' THEN DECODE(B.SRT, '1', 11, 12)
+									WHEN 'm' THEN DECODE(B.SRT, '1', 13, 14)
+									WHEN 'f' THEN DECODE(B.SRT, '1', 15, 16)
+									ELSE 17
+								END
+							) AS SRT,
+							(
+								CASE
+									WHEN A.GRAD_GBN IN ('o', 'k', 'l', 'p', 'y', 'm', 'n', 'J', 'f') THEN DECODE (B.SRT, '1', 'O', 'F')
+									ELSE DECODE (B.SRT, '1', '1', NULL)
+								END
+							) AS ONOFF_GBN
+						FROM
+							GIBU.TBRA_BSTYPGRAD A,
+							(
+								SELECT
+									'1' SRT
+								FROM
+									DUAL
+								UNION ALL
+								SELECT
+									'2' SRT
+								FROM
+									DUAL
+							) B
+						WHERE
+							BSTYP_CD = 'z'
+					) XA,
+					(
+						SELECT
+							GIBU AS BRAN_CD,
+							DEPT_NM AS BRAN_NM
+						FROM
+							INSA.TCPM_DEPT
+						WHERE
+							GIBU IN (
+								SELECT
+									DISTINCT GIBU
+								FROM
+									INSA.TCPM_DEPT
+								WHERE
+									GIBU <> 'AL'
+							)
+					) XB
+				WHERE
+					XA.ONOFF_GBN IS NOT NULL
+				ORDER BY
+					BRAN_CD,
+					SRT
+			) ZA,
+			(
+				SELECT
+					TA.BRAN_CD,
+					TA.BSTYP_CD,
+					TA.ONOFF_GBN,
+					SUM(TA.REPT_AMT) AS REPT_AMT,
+					TA.ASS_GBN
+				FROM
+					(
+						SELECT
+							XA.UPSO_CD,
+							XA.BRAN_CD,
+							XB.BSTYP_CD,
+							(
+								CASE
+									WHEN XB.BSTYP_CD IN ('o', 'k', 'l', 'p', 'y') THEN XA.ONOFF_GBN
+									WHEN XB.BSTYP_CD IN ('m', 'n', 'J', 'f') THEN 'F'
+									ELSE '-'
+								END
+							) AS ONOFF_GBN,
+							XA.REPT_AMT,
+							XA.ASS_GBN
+						FROM
+							(
+								SELECT
+									A.BRAN_CD,
+									A.UPSO_CD,
+									A.ONOFF_GBN,
+									B.REPT_DAY,
+									B.REPT_AMT,
+									B.ASS_GBN
+								FROM
+									GIBU.TBRA_UPSO A,
+									(
+										SELECT
+											AA.REPT_DAY,
+											AA.UPSO_CD,
+											AA.REPT_AMT - AA.COMIS AS REPT_AMT,
+											'K' AS ASS_GBN
+										FROM
+											GIBU.TBRA_REPT AA,
+											GIBU.TBRA_UPSO AB
+										WHERE
+											AA.MAPPING_DAY LIKE #{yrmn} || '%'
+											AND AA.DISTR_GBN IS NULL
+											AND AB.UPSO_CD = AA.UPSO_CD
+										UNION ALL
+										SELECT
+											AA.REPT_DAY,
+											AA.UPSO_CD,
+											AA.DISTR_AMT AS REPT_AMT,
+											'K' AS ASS_GBN
+										FROM
+											GIBU.TBRA_REPT_UPSO_DISTR AA,
+											GIBU.TBRA_REPT AB,
+											GIBU.TBRA_UPSO AC
+										WHERE
+											AA.MAPPING_DAY LIKE #{yrmn} || '%'
+											AND AB.REPT_DAY = AA.REPT_DAY
+											AND AB.REPT_NUM = AA.REPT_NUM
+											AND AB.REPT_GBN = AA.REPT_GBN
+											AND AC.UPSO_CD = AA.UPSO_CD
+											AND AA.REPT_GBN <> '08'
+										UNION ALL
+										SELECT
+											A.REPT_DAY,
+											A.UPSO_CD,
+											(
+												CASE
+													WHEN MIN(DISTR_SEQ) OVER(PARTITION BY A.REPT_DAY, A.REPT_NUM, A.REPT_GBN) = DISTR_SEQ THEN A.DISTR_AMT - NVL(C.COMIS, 0)
+													ELSE A.DISTR_AMT
+												END
+											) AS REPT_AMT,
+											'K' AS ASS_GBN
+										FROM
+											GIBU.TBRA_REPT_UPSO_DISTR A,
+											GIBU.TBRA_REPT_VIRTUAL B,
+											GIBU.TBRA_REPT C
+										WHERE
+											A.MAPPING_DAY LIKE #{yrmn} || '%'
+											AND A.REPT_DAY = B.REPT_DAY
+											AND A.REPT_NUM = B.REPT_NUM
+											AND A.REPT_GBN = '08'
+											AND A.REPT_DAY = C.REPT_DAY(+)
+											AND A.REPT_NUM = C.REPT_NUM(+)
+											AND C.REPT_GBN(+) = '08'
+										UNION ALL
+										SELECT
+											RETURN_DAY,
+											UPSO_CD,
+											(RETURN_AMT * -1) AS REPT_AMT,
+											'K' AS ASS_GBN
+										FROM
+											GIBU.TBRA_REPT_RETURN
+										WHERE
+											RETURN_DAY LIKE #{yrmn} || '%'
+										UNION ALL
+										SELECT
+											REPT_DAY,
+											UPSO_CD,
+											PROC_AMT AS REPT_AMT,
+											BSCON_CD AS ASS_GBN
+										FROM
+											GIBU.TBRA_DEMD_REPT_BSCON
+										WHERE
+											MAPPING_YRMN = #{yrmn}
+											AND BSCON_CD = 'T0000001'
+										UNION ALL
+										SELECT
+											RETURN_DAY,
+											UPSO_CD,
+											(PROC_AMT * -1) AS REPT_AMT,
+											BSCON_CD AS ASS_GBN
+										FROM
+											GIBU.TBRA_BSCON_RETURN
+										WHERE
+											RETURN_YRMN = #{yrmn}
+											AND BSCON_CD = 'T0000001'
+										UNION ALL
+										SELECT
+											REPT_DAY,
+											UPSO_CD,
+											PROC_AMT AS REPT_AMT,
+											BSCON_CD AS ASS_GBN
+										FROM
+											GIBU.TBRA_DEMD_REPT_BSCON
+										WHERE
+											MAPPING_YRMN = #{yrmn}
+											AND BSCON_CD = 'T0000002'
+										UNION ALL
+										SELECT
+											RETURN_DAY,
+											UPSO_CD,
+											(PROC_AMT * -1) AS REPT_AMT,
+											BSCON_CD AS ASS_GBN
+										FROM
+											GIBU.TBRA_BSCON_RETURN
+										WHERE
+											RETURN_YRMN = #{yrmn}
+											AND BSCON_CD = 'T0000002'
+										UNION ALL
+										SELECT
+											REPT_DAY,
+											UPSO_CD,
+											PROC_AMT AS REPT_AM,
+											BSCON_CD AS ASS_GBN
+										FROM
+											GIBU.TBRA_DEMD_REPT_BSCON
+										WHERE
+											MAPPING_YRMN = #{yrmn}
+											AND BSCON_CD = 'T0000003'
+										UNION ALL
+										SELECT
+											RETURN_DAY,
+											UPSO_CD,
+											(PROC_AMT * -1) AS REPT_AMT,
+											BSCON_CD AS ASS_GBN
+										FROM
+											GIBU.TBRA_BSCON_RETURN
+										WHERE
+											RETURN_YRMN = #{yrmn}
+											AND BSCON_CD = 'T0000003'
+									) B
+								WHERE
+									A.UPSO_CD = B.UPSO_CD
+							) XA,
+							(
+								SELECT
+									A.UPSO_CD,
+									A.BSTYP_CD,
+									A.UPSO_GRAD
+								FROM
+									GIBU.TBRA_UPSORTAL_INFO A,
+									(
+										SELECT
+											UPSO_CD,
+											MAX(JOIN_SEQ) JOIN_SEQ
+										FROM
+											GIBU.TBRA_UPSORTAL_INFO
+										GROUP BY
+											UPSO_CD
+									) B
+								WHERE
+									A.JOIN_SEQ = B.JOIN_SEQ
+							) XB,
+							GIBU.TBRA_BSTYPGRAD XC
+						WHERE
+							XA.UPSO_CD = XB.UPSO_CD
+							AND XC.BSTYP_CD = XB.BSTYP_CD
+							AND XC.GRAD_GBN = XB.UPSO_GRAD
+					) TA
+				GROUP BY
+					TA.BRAN_CD,
+					TA.BSTYP_CD,
+					TA.ONOFF_GBN,
+					TA.ASS_GBN
+			) ZB
+		WHERE
+			ZA.BRAN_CD = ZB.BRAN_CD (+)
+			AND ZA.GRAD_GBN = ZB.BSTYP_CD (+)
+			AND ZA.ONOFF_GBN = ZB.ONOFF_GBN (+)
+	)
+GROUP BY
+	BRAN_NM,
+	BRAN_CD,
+	GRAD_GBN,
+	GRADNM,
+	ONOFF_GBN,
+	ASS_GBN
+ORDER BY
+	BRAN_CD,
+	BSTYP_CD,
+	ONOFF_GBN,
+	ASS_GBN
+</select>
+
+<insert id="SQLonoff_col_save_INS2" parameterType="">
+Insert into
+	GIBU.TBRA_ONOFF_LEVY_PRCON (
+		INS_DATE,
+		INSPRES_ID,
+		ONOFF_GBN,
+		ASS_GBN,
+		LEVY_AMT,
+		PRCON_YRMN,
+		BSTYP_CD,
+		SEQ,
+		BRAN_CD
+	)
+values
+(
+		SYSDATE,
+		#{inspresId},
+		#{onoffGbn},
+		#{assGbn},
+		#{levyAmt},
+		#{prconYrmn},
+		#{bstypCd},
+		(
+			SELECT
+				NVL(MAX(SEQ), 0) + 1 SEQ
+			FROM
+				GIBU.TBRA_ONOFF_LEVY_PRCON
+			WHERE
+				PRCON_YRMN = #{seq1}
+		),
+		#{branCd}
+	)
+</insert>
+
+</mapper>
